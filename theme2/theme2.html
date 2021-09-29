@@ -10,12 +10,16 @@
     {block:Hidden}
     <meta name="text:Body font" content="EB Garamond">
     <meta name="text:Font size" content="16px">
-    <meta name="color:Background color" content="#2d2f2e">
-    <meta name="color:Background accent color" content="#111111">
+    <meta name="color:Text" content="#e5e5e5">
+    <meta name="color:Headings" content="#ffffff">
+    <meta name="color:Background" content="#2d2f2e">
+    <meta name="color:Background accent" content="#111111">
     <meta name="select:Background image size" title="cover" content="no-repeat; background-size: cover">
     <meta name="select:Background image size" title="contain" content="no-repeat; background-size: contain">
     <meta name="select:Background image size" title="tiled" content="repeat">
-    <meta name="color:Text color" content="#e5e5e5">
+    <meta name="color:Blog profile background" content="#465a32">
+    <meta name="color:Blog profile accent" content="#e5e5e5">
+    <meta name="text:Post width" content="600px">
     {/block:Hidden}
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -27,19 +31,55 @@
 
 <style>
 body {
-    background-color: {color:Background color};
-    color: {color:Text color};
+    background-color: {color:Background};
+    color: {color:Text};
     font-size: {text:Font size};
     font-family: {text:Body font};
 }
 
 #bgaccent {
-    background: {color:Background accent color} {block:ShowHeaderImage}url({HeaderImage}){/block:ShowHeaderImage} center {select:Background image size};
+    background: {color:Background accent} {block:ShowHeaderImage}url({HeaderImage}){/block:ShowHeaderImage} center {select:Background image size};
     position: fixed;
     width: 100%;
     height: 30%;
     z-index: -1;
 }
+
+#bloginfo {
+	background: {color:Blog profile background};
+	position: fixed;
+	left: calc(50% - ({text:Post width}/2) - 10em);
+	top: calc(30% - 6em);
+	width: 15em;
+	text-align: center;
+	{block:HideDescription}padding-bottom: 1em;{/block:HideDescription}
+}
+#bloginfo::before {
+	content: "";
+	display: block;
+	background: {color:Blog profile accent};
+	width: 100%;
+	height: 6em;
+	margin-bottom: {block:ShowAvatar}3em{/block:ShowAvatar}{block:HideAvatar}0.5em{/block:HideAvatar};
+}
+#title { text-decoration: none }
+#title img {
+	position: absolute;
+	top: 3.5em;
+	height: 5em;
+	left: calc(50% - 2.5em);
+}
+#title span {
+	color: {color:Headings};
+	font-size: 1.25em;
+	margin-bottom: 0.5em;
+}
+#bloginfo div {
+	margin: 0.5em 1em 1em;
+}
+
+img.circle { border-radius: 100%; }
+img.square { border-radius: 0.25em; }
 
 /* Custom CSS */
 {CustomCSS}
@@ -49,7 +89,14 @@ body {
 <body>
 
 <div id="bgaccent"></div>
-<div>{Title}</div>
+
+<div id="bloginfo">
+    <a href="/" id="title">
+        {block:ShowAvatar}<img src="{PortraitURL-128}" class="{AvatarShape}" />{/block:ShowAvatar}
+        {block:ShowTitle}<span>{Title}</span>{/block:ShowTitle}
+    </a>
+    {block:ShowDescription}<div>{Description}</div>{/block:ShowDescription}
+</div>
 
 </body>
 </html>
