@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{Title}{block:TagPage} ({lang:Posts tagged Tag}){/block:TagPage}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+    <meta name="description" content="{MetaDescription}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family={text:Body font}:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet"> 
+    {block:Hidden}
+    <meta name="text:Body font" content="EB Garamond">
+    <meta name="text:Font size" content="16px">
+    <meta name="color:Background color" content="#2d2f2e">
+    <meta name="color:Background accent color" content="#111111">
+    <meta name="color:Text color" content="#e5e5e5">
+    {/block:Hidden}
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#35465D">
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
+    <link rel="stylesheet" href="https://static.tumblr.com/ryx1vdv/Pzbqkttjt/main-min.css">
+
+<style>
+body {
+    background-color: {color:Background color};
+    color: {color:Text color};
+    font-size: {text:Font size};
+    font-family: {text:Body font}, Capita;
+}
+
+#bgaccent {
+    background-color: {color:Background accent color};
+    position: fixed;
+    width: 100%;
+    height: 30%;
+    z-index: -1;
+}
+
+/* Custom CSS */
+{CustomCSS}
+</style>
+
+</head>
+<body>
+
+<div id="bgaccent"></div>
+<div>{Title}</div>
+
+</body>
+</html>
