@@ -14,12 +14,17 @@
     <meta name="color:Headings" content="#ffffff">
     <meta name="color:Background" content="#2d2f2e">
     <meta name="color:Background accent" content="#111111">
+    <meta name="image:Background accent" content="{HeaderImage}">
     <meta name="select:Background image size" title="cover" content="no-repeat; background-size: cover">
     <meta name="select:Background image size" title="contain" content="no-repeat; background-size: contain">
     <meta name="select:Background image size" title="tiled" content="repeat">
     <meta name="color:Sidecard background" content="#465a32">
-    <meta name="color:Sidecard accent" content="#e5e5e5">
+    <meta name="color:Sidecard accent" content="#a4704b">
+    <meta name="image:Sidecard accent">
     <meta name="text:Post width" content="600px">
+    <meta name="color:Post background" content="#443124">
+    <meta name="text:Custom links title" content="Links">
+    <meta name="if:Search bar" content="1">
     {/block:Hidden}
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -45,22 +50,30 @@ body {
     z-index: -1;
 }
 
-#bloginfo {
+.sidecard {
 	background: {color:Sidecard background};
 	position: fixed;
-	right: calc(50% + ({text:Post width}/2) + 2em);
 	top: calc(35% - 6em);
 	width: 15em;
 	text-align: center;
-	{block:HideDescription}padding-bottom: 1em;{/block:HideDescription}
 }
-#bloginfo::before {
+.sidecard::before {
 	content: "";
 	display: block;
 	background: {color:Sidecard accent};
 	width: 100%;
 	height: 6em;
 	margin-bottom: {block:ShowAvatar}3em{/block:ShowAvatar}{block:HideAvatar}0.5em{/block:HideAvatar};
+}
+.sidecard h2 {
+	color: {color:Headings};
+	font-size: 1.25em;
+	margin: 0.5em 0.3em;
+	font-weight: 600;
+}
+#bloginfo {
+	right: calc(50% + ({text:Post width}/2) + 2em);
+	{block:HideDescription}padding-bottom: 0.5em;{/block:HideDescription}
 }
 #title { text-decoration: none }
 #title img {
@@ -69,15 +82,10 @@ body {
 	height: 5em;
 	left: calc(50% - 2.5em);
 }
-#title h2 {
-	color: {color:Headings};
-	font-size: 1.25em;
-	margin: 0.5em 0.3em;
-	font-weight: 600;
-}
-#bloginfo div {
-	margin: 0.5em 1em 1em;
-}
+#bloginfo div { margin: 0.5em 1em 1em }
+#pagessearch { left: calc(50% + ({text:Post width}/2) + 2em) }
+#pagessearch a { display: block }
+#pagessearch::before { margin-bottom: 0 }
 
 main {
 	position: absolute;
@@ -101,17 +109,17 @@ img.square { border-radius: 0.25em; }
 </style>
 
 </head>
-<body>
+<body class="{block:HasPages}haspages{/block:HasPages} {block:IfNotSearchBar}no-search{/block:IfNotSearchBar}">
 
 <div id="bgaccent"></div>
 
-<div id="bloginfo">
+<section id="bloginfo" class="sidecard">
     <a href="/" id="title">
         {block:ShowAvatar}<img src="{PortraitURL-128}" class="{AvatarShape}" />{/block:ShowAvatar}
-        {block:ShowTitle}<span>{Title}</span>{/block:ShowTitle}
+        {block:ShowTitle}<h2>{Title}</h2>{/block:ShowTitle}
     </a>
     {block:ShowDescription}<div>{Description}</div>{/block:ShowDescription}
-</div>
+</section>
 
 <main>
     {block:Posts}
@@ -121,5 +129,18 @@ img.square { border-radius: 0.25em; }
     {/block:Posts}
 </main>
 
+<section id="pagessearch" class="sidecard">
+    {block:HasPages}
+    <h2>{text:Custom links title}</h2>
+    {block:Pages}
+    <a href="{URL}">{Label}</a>
+    {/block:Pages}{/block:HasPages}
+    {block:IfSearchBar}
+    <form action="/search" method="get">
+        <input type="text" name="q" value="{SearchQuery}"/>
+        <input type="submit" value="Search"/>
+    </form>
+    {/block:IfSearchBar}
+</section>
 </body>
 </html>
