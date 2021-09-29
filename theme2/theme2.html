@@ -79,6 +79,20 @@ body {
 	margin: 0.5em 1em 1em;
 }
 
+main {
+	position: absolute;
+	width: {text:Post width};
+	left: calc(50% - {text:Post width}/2);
+	top: calc(35% - 6em);
+	padding-bottom: 1em;
+}
+
+.post {
+	margin: 1em 0;
+	background: {color:Post background};
+}
+main .post:first-child { margin-top: 0; }
+
 img.circle { border-radius: 100%; }
 img.square { border-radius: 0.25em; }
 
@@ -98,6 +112,14 @@ img.square { border-radius: 0.25em; }
     </a>
     {block:ShowDescription}<div>{Description}</div>{/block:ShowDescription}
 </div>
+
+<main>
+    {block:Posts}
+    <section class="post">
+        {Body}
+    </section>
+    {/block:Posts}
+</main>
 
 </body>
 </html>
