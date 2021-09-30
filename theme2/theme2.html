@@ -178,25 +178,42 @@ main .post:first-child { margin-top: 0; }
 
 img.circle { border-radius: 100% }
 
+.post { position: relative; overflow: visible; }
+.post .actions,
 #credits {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	row-gap: 0.5em;
-	position: fixed;
-	right: 0;
-	bottom: 0;
-	padding: 0.75em;
 }
+.post .actions {
+    float: right;
+    position: sticky;
+    top: 10%;
+    margin: 1em -1em 1em 0;
+    z-index: 1;
+}
+.post .actions a,
 #credits a {
-	background: #252525;
 	width: 1.25em;
 	height: 1.25em;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 0.4em;
-	border-radius: 100%;
+	border-radius: 100% !important;
+}
+.post .actions a { background-color: {color:Tags and navigation} }
+.post .actions a:hover { background-color: {color:Tags and navigation hover} }
+
+#credits {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	padding: 0.75em;
+}
+#credits a {
+	background-color: {color:Background accent};
 	cursor: pointer;
 }
 body:not(.light) .feather-sun, body.light .feather-moon { display: none }
@@ -229,8 +246,31 @@ body:not(.light) .feather-sun, body.light .feather-moon { display: none }
 <main>
     {block:Posts}
     <section class="post">
-        {Body}
-    </section>
+        {block:Date}
+        <div class="actions">
+            <a href="#"><i data-feather="heart"></i></a>
+            <a href="{ReblogURL}"><i data-feather="repeat"></i></a>
+            <a title="{lang:Permalink}" href="{Permalink}"><i data-feather="link"></i></a>
+            {block:RebloggedFrom}
+            <a title="{lang:Reblogged from ReblogParentName}" href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-40}" class="circle"></a>
+            <a title="{lang:Originally from ReblogRootName}" href="{ReblogRootURL}"><img src="{ReblogRootPortraitURL-40}" class="circle"></a>
+            {/block:RebloggedFrom}
+        </div>
+        {/block:Date}
+        
+        {block:Text}
+        {block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+        <div class="postbody">
+        {block:NotReblog}{Body}{/block:NotReblog}
+        {block:RebloggedFrom}{block:Reblogs}
+        <div class="bodyitem">
+				<a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="{AvatarShape}"/></a>
+				<a class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>{Username}</a>
+				<div class="content">{Body}</div>
+			</div>
+        {/block:Reblogs}{/block:RebloggedFrom}
+        </div>
+        {/block:Text}
     {/block:Posts}
 </main>
 
