@@ -43,7 +43,7 @@ body {
 }
 
 #bgaccent {
-    background: {color:Background accent} {block:ShowHeaderImage}url({HeaderImage}){/block:ShowHeaderImage} center {select:Background image size};
+    background: {color:Background accent} {block:IfBackgroundAccentImage}url({image:Background accent}){/block:IfBackgroundAccentImage} center {select:Background image size};
     position: fixed;
     width: 100%;
     height: 35%;
@@ -60,7 +60,8 @@ body {
 .sidecard::before {
 	content: "";
 	display: block;
-	background: {color:Sidecard accent};
+	background: {color:Sidecard accent} {block:IfSidecardAccentImage}url({image:Sidecard accent}){/block:IfSidecardAccentImage} center no-repeat;
+	background-size: cover;
 	width: 100%;
 	height: 6em;
 	margin-bottom: {block:ShowAvatar}3em{/block:ShowAvatar}{block:HideAvatar}0.5em{/block:HideAvatar};
