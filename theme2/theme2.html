@@ -211,13 +211,17 @@ main .post:first-child { margin-top: 0; }
 	display: block;
 	text-decoration: none;
 	text-align: center;
-	background: #111;
+	background: {color:Tags and navigation};
 	padding: 0.25em 1em;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
 }
+.post .title a:hover { background-color: {color:Tags and navigation hover}; }
 .postbody {
 	padding: 1em;
 	padding-right: 1.25em;
 }
+.postbody * { border-radius: 0 }
 .postbody .usericon img {
 	width: 2em;
 	height: 2em;
@@ -229,7 +233,6 @@ main .post:first-child { margin-top: 0; }
 .post .datenotes {
     background-color: {color:Sidecard background};
     padding: 0.5em;
-    border-radius: 0;
     display: flex;
     justify-content: space-between;
 }
