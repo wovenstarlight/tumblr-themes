@@ -61,7 +61,9 @@ a {
 a:hover { color: {color:Links hover} }
 strong, b { color: {color:Bold} }
 em, i { color: {color:Italics} }
-{block:IfRoundedEdges}*, .sidecard::before { border-radius: .25em }{/block:IfRoundedEdges}
+{block:IfRoundedEdges}
+*:not(#bgaccent), .sidecard::before { border-radius: .25em }
+{/block:IfRoundedEdges}
 
 #bgaccent {
     background: {color:Background accent} {block:IfBackgroundAccentImage}url({image:Background accent}){/block:IfBackgroundAccentImage} center {select:Background image size};
