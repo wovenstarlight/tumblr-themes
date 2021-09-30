@@ -216,6 +216,7 @@ main .post:first-child { margin-top: 0; }
 }
 .post .actions a { background-color: {color:Tags and navigation}; box-shadow: 0 0 0.24em #1119; }
 .post .actions a:hover { background-color: {color:Tags and navigation hover} }
+.post .title { margin: 0 }
 .post .title a {
 	display: block;
 	text-decoration: none;
@@ -226,11 +227,10 @@ main .post:first-child { margin-top: 0; }
 	border-bottom-right-radius: 0;
 }
 .post .title a:hover { background-color: {color:Tags and navigation hover}; }
-.postbody {
-	padding: 1em;
-	padding-right: 1.25em;
-}
+.postbody { padding: 1em }
 .postbody * { border-radius: 0 }
+.bodyitemcontent *:first-child { margin-top: 0 }
+.bodyitemcontent *:last-child { margin-bottom: 0 }
 .postbody .usericon img {
 	width: 2em;
 	height: 2em;
@@ -258,7 +258,7 @@ main .post:first-child { margin-top: 0; }
     padding: 0.5em;
 }
 .post .tags svg { vertical-align: middle; margin-right: 0.25em; }
-.post .tags a { margin-right: 0.2em }
+.post .tags a { margin-right: 0.2em; text-decoration: none; }
 .post .tags a:not(:last-child)::after { content: "," }
 
 #credits {
@@ -315,19 +315,28 @@ body:not(.light) .feather-sun, body.light .feather-moon { display: none }
         {/block:RebloggedFrom}
         {/block:Date}
         
+        
+        
         {block:Text}
         {block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
         <div class="postbody">
-        {block:NotReblog}{Body}{/block:NotReblog}
-        {block:RebloggedFrom}{block:Reblogs}
-        <div class="bodyitem">
-				<a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="{AvatarShape}"/></a>
-				<a class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>{Username}</a>
-				<div class="rbitem">{Body}</div>
-			</div>
-        {/block:Reblogs}{/block:RebloggedFrom}
+            
+            {block:NotReblog}
+            <div class="bodyitemcontent">{Body}</div>
+            {/block:NotReblog}
+            
+            {block:RebloggedFrom}{block:Reblogs}
+            <div class="bodyitem">
+    		    <a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="{AvatarShape}"/></a>
+    			<a class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>{Username}</a>
+    			<div class="bodyitemcontent">{Body}</div>
+    		</div>
+            {/block:Reblogs}{/block:RebloggedFrom}
+            
         </div>
         {/block:Text}
+        
+        
         
         {block:Date}
         
