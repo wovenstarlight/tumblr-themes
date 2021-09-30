@@ -31,6 +31,8 @@
     <meta name="color:Sidecard accent" content="#a4704b">
     <meta name="image:Sidecard accent">
     <meta name="text:Custom links title" content="Links">
+    <meta name="if:Show Random post link" content="1">
+    <meta name="if:Show Archive link" content="1">
     <meta name="if:Search bar" content="1">
     <meta name="if:Rounded edges" content="1">
     {/block:Hidden}
@@ -89,6 +91,7 @@ em, i { color: {color:Italics} }
 #bloginfo {
 	right: calc(50% + ({text:Post width}/2) + 2em);
 	{block:HideDescription}padding-bottom: 0.5em;{/block:HideDescription}
+    padding-bottom: 1em
 }
 #bloginfo::before { margin-bottom: {block:ShowAvatar}3em{/block:ShowAvatar}{block:HideAvatar}0.5em{/block:HideAvatar} }
 #title { text-decoration: none }
@@ -99,7 +102,26 @@ em, i { color: {color:Italics} }
 	left: calc(50% - 2.5em);
 }
 #bloginfo div { margin: 0.5em 1em 1em }
-#bloginfo { padding-bottom: 1em }
+#cardlinks {
+	position: absolute;
+	bottom: -2.25em;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	column-gap: 0.5em;
+}
+#cardlinks a {
+    background-color: #183914;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	padding: 0.5em;
+}
+#cardlinks a:hover { color: white; background-color: #0c3108; }
 #pagessearch { left: calc(50% + ({text:Post width}/2) + 2em) }
 body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post width}/2)) }
 #pagessearch a {
@@ -165,6 +187,13 @@ img.square { border-radius: 0.25em; }
         {block:ShowTitle}<h2>{Title}</h2>{/block:ShowTitle}
     </a>
     {block:ShowDescription}<div>{Description}</div>{/block:ShowDescription}
+    <div id="cardlinks">
+        <a href="/"><i data-feather="home"></i></a>
+        {block:IfShowRandomPostLink}<a href="/" title="{lang:Random post}"><i data-feather="shuffle"></i></a>{/block:IfShowRandomPostLink}
+        {block:IfShowArchiveLink}<a href="/" title="{lang:Archive}"><i data-feather="archive"></i></a>{/block:IfShowArchiveLink}
+        {block:AskEnabled}<a href="/" title="{AskLabel}"><i data-feather="mail"></i></a>{/block:AskEnabled}
+        {block:SubmissionsEnabled}<a href="/" title="{SubmitLabel}"><i data-feather="inbox"></i></a>{/block:SubmissionsEnabled}
+    </div>
 </section>
 
 <main>
