@@ -36,6 +36,8 @@
     <meta name="if:Show Archive link" content="1">
     <meta name="if:Search bar" content="1">
     <meta name="if:Rounded edges" content="1">
+	<meta name="if:Show timestamp" content="1">
+	<meta name="if:24 hour timestamps" content="0">
     {/block:Hidden}
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -170,15 +172,15 @@ main {
 	padding-bottom: 1em;
 }
 
+img.circle { border-radius: 100% }
+
+main .post:first-child { margin-top: 0; }
 .post {
 	margin: 1em 0;
 	background: {color:Post background};
+	position: relative;
+	overflow: visible;
 }
-main .post:first-child { margin-top: 0; }
-
-img.circle { border-radius: 100% }
-
-.post { position: relative; overflow: visible; }
 .post .actions,
 #credits {
 	display: flex;
@@ -205,6 +207,40 @@ img.circle { border-radius: 100% }
 }
 .post .actions a { background-color: {color:Tags and navigation} }
 .post .actions a:hover { background-color: {color:Tags and navigation hover} }
+.postbody {
+	padding: 1em;
+	padding-right: 1.25em;
+}
+.postbody .usericon img {
+	width: 2em;
+	height: 2em;
+	margin-right: 0.5em
+}
+.post .below { border-top-left-radius: 0; border-top-right-radius: 0 }
+.post .below:not(:last-child) { border-radius: 0 }
+.post .below svg { height: 1.2em; width: 1.2em; }
+.post .datenotes {
+    background-color: {color:Sidecard background};
+    padding: 0.5em;
+    border-radius: 0;
+    display: flex;
+    justify-content: space-between;
+}
+.post .datenotes a {
+	display: flex;
+	align-items: center;
+	column-gap: 0.25em;
+	color: {color:Text};
+    text-decoration: none;
+}
+.post .datenotes span svg { height: 1.25em }
+.post .tags {
+    background-color: {color:Tags and navigation};
+    padding: 0.5em;
+}
+.post .tags svg { vertical-align: middle; margin-right: 0.25em; }
+.post .tags a { margin-right: 0.2em }
+.post .tags a:not(:last-child)::after { content: "," }
 
 #credits {
 	position: fixed;
@@ -266,11 +302,38 @@ body:not(.light) .feather-sun, body.light .feather-moon { display: none }
         <div class="bodyitem">
 				<a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="{AvatarShape}"/></a>
 				<a class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>{Username}</a>
-				<div class="content">{Body}</div>
+				<div class="rbitem">{Body}</div>
 			</div>
         {/block:Reblogs}{/block:RebloggedFrom}
         </div>
         {/block:Text}
+        
+        {block:Date}
+        
+        <div class="datenotes below">
+            <a class="date" href="{Permalink}">
+                <i data-feather="clock"></i>
+            {DayOfMonth} {ShortMonth} {Year}{block:IfShowTimestamp} at {block:If24HourTimestamps}{24Hour}{/block:If24HourTimestamps}{block:IfNot24HourTimestamps}{12Hour}{/block:IfNot24HourTimestamps}:{Minutes}{block:IfNot24HourTimestamps} {CapitalAmPm}{/block:IfNot24HourTimestamps}{/block:IfShowTimestamp}
+            </a>
+            {block:NoteCount}
+            <a class="notes" href="{Permalink}">
+                {NoteCountWithLabel}
+                <i data-feather="bookmark"></i>
+            </a>
+            {/block:NoteCount}
+        </div>
+        
+        {block:HasTags}
+        <div class="tags below">
+            <i data-feather="tag"></i>
+            {block:Tags}
+            <a href="{TagURL}">{Tag}</a>
+            {/block:Tags}
+        </div>
+        {/block:HasTags}
+        
+        {/block:Date}
+    </section>
     {/block:Posts}
 </main>
 
