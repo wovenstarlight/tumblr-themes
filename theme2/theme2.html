@@ -100,7 +100,7 @@ em, i { color: {color:Italics} }
 	font-weight: 600;
 }
 #bloginfo {
-	right: calc(50% + ({text:Post width}/2) + 2em);
+	right: calc(50% + ({text:Post width}/2) + 3em);
     padding-bottom: {block:ShowDescription}1em{/block:ShowDescription}{block:HideDescription}2em{/block:HideDescription};
 }
 #bloginfo::before { margin-bottom: {block:ShowAvatar}3em{/block:ShowAvatar}{block:HideAvatar}0.5em{/block:HideAvatar} }
@@ -132,7 +132,7 @@ em, i { color: {color:Italics} }
 	padding: 0.5em;
 }
 #cardlinks a:hover { color: {color:Links hover}; background-color: {color:Tags and navigation hover} }
-#pagessearch { left: calc(50% + ({text:Post width}/2) + 2em) }
+#pagessearch { left: calc(50% + ({text:Post width}/2) + 3em) }
 body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post width}/2)) }
 #pagessearch a {
     display: block;
@@ -189,11 +189,20 @@ main .post:first-child { margin-top: 0; }
 	row-gap: 0.5em;
 }
 .post .actions {
-    float: right;
     position: sticky;
-    top: 10%;
-    margin: 1em -1em 1em 0;
+    top: calc(35% - 6em);
     z-index: 1;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+.post .right.actions {
+    float: right;
+    margin-right: -2.5em;
+}
+.post .left.actions {
+	float: left;
+	margin-left: -2.5em;
+	padding: 1.25em 0;
 }
 .post .actions a,
 #credits a {
@@ -293,15 +302,17 @@ body:not(.light) .feather-sun, body.light .feather-moon { display: none }
     {block:Posts}
     <section class="post">
         {block:Date}
-        <div class="actions">
+        <div class="right actions">
             <a href="#"><i data-feather="heart"></i></a>
             <a href="{ReblogURL}"><i data-feather="repeat"></i></a>
             <a title="{lang:Permalink}" href="{Permalink}"><i data-feather="link"></i></a>
-            {block:RebloggedFrom}
+        </div>
+        {block:RebloggedFrom}
+        <div class="left actions">
             <a title="{lang:Reblogged from ReblogParentName}" href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-40}" class="circle"></a>
             <a title="{lang:Originally from ReblogRootName}" href="{ReblogRootURL}"><img src="{ReblogRootPortraitURL-40}" class="circle"></a>
-            {/block:RebloggedFrom}
         </div>
+        {/block:RebloggedFrom}
         {/block:Date}
         
         {block:Text}
