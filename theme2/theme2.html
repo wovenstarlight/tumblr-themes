@@ -129,6 +129,9 @@ body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post widt
 	right: 0;
 	height: 1em;
 }
+body:not(.haspages, .hassearch) main { left: calc(50% - 600px/2 + 8.5em) }
+body:not(.haspages, .hassearch) #bloginfo { right: calc(50% + 600px/2 - 6.5em) }
+body:not(.haspages, .hassearch) #pagessearch { display: none }
 
 main {
 	position: absolute;
@@ -152,7 +155,7 @@ img.square { border-radius: 0.25em; }
 </style>
 
 </head>
-<body class="{block:HasPages}haspages{/block:HasPages} {block:IfNotSearchBar}no-search{/block:IfNotSearchBar}">
+<body class="{block:HasPages}haspages{/block:HasPages} {block:IfSearchBar}hassearch{/block:IfSearchBar}">
 
 <div id="bgaccent"></div>
 
