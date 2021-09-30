@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family={text:Body font}:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet"> 
     <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     {block:Hidden}
     <meta name="text:Body font" content="EB Garamond">
     <meta name="text:Font size" content="16px">
@@ -51,7 +52,12 @@ body {
     font-size: {text:Font size};
     font-family: {text:Body font};
 }
-a { color: {color:Links}; transition-property: color, background-color; transition-duration: .2s }
+a {
+    color: {color:Links};
+    transition-property: color, background-color;
+    transition-duration: .2s;
+    font-weight: 600;
+}
 a:hover { color: {color:Links hover} }
 strong, b { color: {color:Bold} }
 em, i { color: {color:Italics} }
@@ -170,6 +176,29 @@ main .post:first-child { margin-top: 0; }
 img.circle { border-radius: 100%; }
 img.square { border-radius: 0.25em; }
 
+#credits {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	row-gap: 0.5em;
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	padding: 0.75em;
+}
+#credits a {
+	background: #252525;
+	width: 1.25em;
+	height: 1.25em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.4em;
+	border-radius: 100%;
+	cursor: pointer;
+}
+#credits a:last-child { cursor: help }
+
 /* Custom CSS */
 {CustomCSS}
 </style>
@@ -186,7 +215,7 @@ img.square { border-radius: 0.25em; }
     </a>
     {block:ShowDescription}<div>{Description}</div>{/block:ShowDescription}
     <div id="cardlinks">
-        <a href="/"><i data-feather="home"></i></a>
+        <a href="/" title="{lang:Home}"><i data-feather="home"></i></a>
         {block:IfShowRandomPostLink}<a href="/" title="{lang:Random post}"><i data-feather="shuffle"></i></a>{/block:IfShowRandomPostLink}
         {block:IfShowArchiveLink}<a href="/" title="{lang:Archive}"><i data-feather="archive"></i></a>{/block:IfShowArchiveLink}
         {block:AskEnabled}<a href="/" title="{AskLabel}"><i data-feather="mail"></i></a>{/block:AskEnabled}
@@ -216,6 +245,15 @@ img.square { border-radius: 0.25em; }
     </form>
     {/block:IfSearchBar}
 </section>
+
+<div id="credits">
+    <a href="https://starlightthemes.tumblr.com/theme2" title="{lang:Install this theme}"><i data-feather="download"></i></a>
+    <a title="Toggle light/dark mode" onclick="$('body').toggleClass('light')">
+        <i data-feather="sun"></i>
+        <i data-feather="moon"></i>
+    </a>
+    <a title="© {Name} {CopyrightYears}"><i data-feather="help-circle"></i></a>
+</div>
 
 <script>feather.replace()</script>
 
