@@ -7,11 +7,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family={text:Body font}:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet"> 
+    <script src="https://unpkg.com/feather-icons"></script>
     {block:Hidden}
     <meta name="text:Body font" content="EB Garamond">
     <meta name="text:Font size" content="16px">
     <meta name="color:Text" content="#e5e5e5">
     <meta name="color:Headings" content="#ffffff">
+    <meta name="color:Links" content="#ff9e29">
+    <meta name="color:Links hover" content="#fab25b">
+    <meta name="color:Bold" content="#ff5f2e">
+    <meta name="color:Italics" content="#f7de00">
+    <meta name="color:Tags and navigation" content="#073d00">
+    <meta name="color:Tags and navigation hover" content="#073d00">
+    <meta name="text:Post width" content="600px">
+    <meta name="color:Post background" content="#443124">
     <meta name="color:Background" content="#2d2f2e">
     <meta name="color:Background accent" content="#111111">
     <meta name="image:Background accent" content="{HeaderImage}">
@@ -21,10 +30,9 @@
     <meta name="color:Sidecard background" content="#465a32">
     <meta name="color:Sidecard accent" content="#a4704b">
     <meta name="image:Sidecard accent">
-    <meta name="text:Post width" content="600px">
-    <meta name="color:Post background" content="#443124">
     <meta name="text:Custom links title" content="Links">
     <meta name="if:Search bar" content="1">
+    <meta name="if:Rounded edges" content="1">
     {/block:Hidden}
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -41,6 +49,11 @@ body {
     font-size: {text:Font size};
     font-family: {text:Body font};
 }
+a { color: {color:Links} }
+a:hover { color: {color:Links hover} }
+strong, b { color: {color:Bold} }
+em, i { color: {color:Italics} }
+{block:IfRoundedEdges}*, .sidecard::before { border-radius: .25em }{/block:IfRoundedEdges}
 
 #bgaccent {
     background: {color:Background accent} {block:IfBackgroundAccentImage}url({image:Background accent}){/block:IfBackgroundAccentImage} center {select:Background image size};
@@ -64,18 +77,20 @@ body {
 	background-size: cover;
 	width: 100%;
 	height: 6em;
-	margin-bottom: {block:ShowAvatar}3em{/block:ShowAvatar}{block:HideAvatar}0.5em{/block:HideAvatar};
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
 }
-.sidecard h2 {
+.sidecard h2, #pagessearch form label {
 	color: {color:Headings};
 	font-size: 1.25em;
-	margin: 0.5em 0.3em;
+	margin: 0.5em 0.3em 0;
 	font-weight: 600;
 }
 #bloginfo {
 	right: calc(50% + ({text:Post width}/2) + 2em);
 	{block:HideDescription}padding-bottom: 0.5em;{/block:HideDescription}
 }
+#bloginfo::before { margin-bottom: {block:ShowAvatar}3em{/block:ShowAvatar}{block:HideAvatar}0.5em{/block:HideAvatar} }
 #title { text-decoration: none }
 #title img {
 	position: absolute;
@@ -84,9 +99,36 @@ body {
 	left: calc(50% - 2.5em);
 }
 #bloginfo div { margin: 0.5em 1em 1em }
+#bloginfo { padding-bottom: 1em }
 #pagessearch { left: calc(50% + ({text:Post width}/2) + 2em) }
-#pagessearch a { display: block }
-#pagessearch::before { margin-bottom: 0 }
+body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post width}/2)) }
+#pagessearch a {
+    display: block;
+    margin: 0.25em 1em;
+    padding: 0.175em 0.5em;
+    background-color: {color:Tags and navigation};
+    font-weight: 600;
+    text-decoration: none;
+    transition: color, background-color .2s;
+}
+#pagessearch a:hover { background-color: {color:Tags and navigation hover} }
+{block:IfNotSearchBar}
+#pagessearch a:last-of-type { margin-bottom: 1em }
+{/block:IfNotSearchBar}
+#pagessearch form { margin: 1em; position: relative; }
+#pagessearch form input {
+    width: 100%;
+	background: {color:Tags and navigation};
+	border: none;
+	color: {color:Text};
+	padding: 0.25em 1.5em 0.25em 0.5em;
+}
+#pagessearch form .feather-search {
+	position: absolute;
+	bottom: 0.35em;
+	right: 0;
+	height: 1em;
+}
 
 main {
 	position: absolute;
@@ -138,10 +180,14 @@ img.square { border-radius: 0.25em; }
     {/block:Pages}{/block:HasPages}
     {block:IfSearchBar}
     <form action="/search" method="get">
+        <label for="q">Search</label>
         <input type="text" name="q" value="{SearchQuery}"/>
-        <input type="submit" value="Search"/>
+        <i data-feather="search"></i>
     </form>
     {/block:IfSearchBar}
 </section>
+
+<script>feather.replace()</script>
+
 </body>
 </html>
