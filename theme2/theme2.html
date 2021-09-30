@@ -14,15 +14,15 @@
     <meta name="color:Text" content="#e5e5e5">
     <meta name="color:Headings" content="#ffffff">
     <meta name="color:Links" content="#ff9e29">
-    <meta name="color:Links hover" content="#fab25b">
+    <meta name="color:Links hover" content="#ffc37a">
     <meta name="color:Bold" content="#ff5f2e">
     <meta name="color:Italics" content="#f7de00">
-    <meta name="color:Tags and navigation" content="#073d00">
-    <meta name="color:Tags and navigation hover" content="#073d00">
+    <meta name="color:Tags and navigation" content="#183914">
+    <meta name="color:Tags and navigation hover" content="#0c3108">
     <meta name="text:Post width" content="600px">
     <meta name="color:Post background" content="#443124">
-    <meta name="color:Background" content="#2d2f2e">
-    <meta name="color:Background accent" content="#111111">
+    <meta name="color:Background" content="#393c3b">
+    <meta name="color:Background accent" content="#252525">
     <meta name="image:Background accent" content="{HeaderImage}">
     <meta name="select:Background image size" title="cover" content="no-repeat; background-size: cover">
     <meta name="select:Background image size" title="contain" content="no-repeat; background-size: contain">
@@ -51,7 +51,7 @@ body {
     font-size: {text:Font size};
     font-family: {text:Body font};
 }
-a { color: {color:Links} }
+a { color: {color:Links}; transition-property: color, background-color; transition-duration: .2s }
 a:hover { color: {color:Links hover} }
 strong, b { color: {color:Bold} }
 em, i { color: {color:Italics} }
@@ -90,8 +90,7 @@ em, i { color: {color:Italics} }
 }
 #bloginfo {
 	right: calc(50% + ({text:Post width}/2) + 2em);
-	{block:HideDescription}padding-bottom: 0.5em;{/block:HideDescription}
-    padding-bottom: 1em
+    padding-bottom: {block:ShowDescription}1em{/block:ShowDescription}{block:HideDescription}2em{/block:HideDescription};
 }
 #bloginfo::before { margin-bottom: {block:ShowAvatar}3em{/block:ShowAvatar}{block:HideAvatar}0.5em{/block:HideAvatar} }
 #title { text-decoration: none }
@@ -112,7 +111,7 @@ em, i { color: {color:Italics} }
 	column-gap: 0.5em;
 }
 #cardlinks a {
-    background-color: #183914;
+    background-color: {color:Tags and navigation};
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -121,7 +120,7 @@ em, i { color: {color:Italics} }
 	border-radius: 100%;
 	padding: 0.5em;
 }
-#cardlinks a:hover { color: white; background-color: #0c3108; }
+#cardlinks a:hover { color: {color:Links hover}; background-color: {color:Tags and navigation hover} }
 #pagessearch { left: calc(50% + ({text:Post width}/2) + 2em) }
 body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post width}/2)) }
 #pagessearch a {
@@ -131,7 +130,6 @@ body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post widt
     background-color: {color:Tags and navigation};
     font-weight: 600;
     text-decoration: none;
-    transition: color, background-color .2s;
 }
 #pagessearch a:hover { background-color: {color:Tags and navigation hover} }
 {block:IfNotSearchBar}
