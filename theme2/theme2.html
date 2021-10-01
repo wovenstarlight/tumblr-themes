@@ -181,6 +181,20 @@ main .post:first-child { margin-top: 0; }
 	position: relative;
 	overflow: visible;
 }
+#pinnedpost {
+    position: absolute;
+    background: #252525;
+    color: #ff9e29;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.4em;
+    height: 1.4em;
+    border-radius: 100%;
+    padding: 0.5em;
+    top: -1.1em;
+    left: -1.1em;
+}
 .post .actions,
 #credits {
 	display: flex;
@@ -229,12 +243,21 @@ main .post:first-child { margin-top: 0; }
 .post .title a:hover { background-color: {color:Tags and navigation hover}; }
 .postbody { padding: 1em }
 .postbody * { border-radius: 0 }
-.bodyitemcontent *:first-child { margin-top: 0 }
-.bodyitemcontent *:last-child { margin-bottom: 0 }
-.postbody .usericon img {
+.bodyitem { padding: 1em 0 }
+.bodyitem:not(:last-of-type) { border-bottom: thin solid rgba({RGBcolor:Links}, 0.3) }
+.bodyitem:first-of-type { padding-top: 0 }
+.bodyitem:last-of-type { padding-bottom: 0 }
+.bodyitemcontent *:first-child { margin-top: 0.25em }
+.bodyitemcontent *:last-child { margin-bottom: 0.25em }
+.bodyitemcontent p { margin: 0.5em 0 }
+.bodyitem .usericon img {
 	width: 2em;
 	height: 2em;
 	margin-right: 0.5em
+}
+.bodyitemcontent div.npf_row {
+    width: 100%;
+    margin: auto;
 }
 .post .below { border-top-left-radius: 0; border-top-right-radius: 0 }
 .post .below:not(:last-child) { border-radius: 0 }
@@ -301,6 +324,7 @@ body:not(.light) .feather-sun, body.light .feather-moon { display: none }
 <main>
     {block:Posts}
     <section class="post">
+        {block:PinnedPostLabel}<span id="pinnedpost" title="{PinnedPostLabel}"><i data-feather="star"></i></span>{/block:PinnedPostLabel}
         {block:Date}
         <div class="right actions">
             <a href="#"><i data-feather="heart"></i></a>
@@ -335,6 +359,27 @@ body:not(.light) .feather-sun, body.light .feather-moon { display: none }
             
         </div>
         {/block:Text}
+        
+        
+        {block:Photo}
+        <div class="postbody">
+            
+            <img src="{PhotoURL-500}" width="100%">
+            
+            {block:NotReblog}
+            <div class="bodyitemcontent">{Caption}</div>
+            {/block:NotReblog}
+            
+            {block:RebloggedFrom}{block:Reblogs}
+            <div class="bodyitem">
+    		    <a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="{AvatarShape}"/></a>
+    			<a class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>{Username}</a>
+    			<div class="bodyitemcontent">{Body}</div>
+    		</div>
+            {/block:Reblogs}{/block:RebloggedFrom}
+            
+        </div>
+        {/block:Photo}
         
         
         
