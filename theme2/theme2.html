@@ -65,6 +65,7 @@ a {
     font-weight: 600;
 }
 a:hover { color: {color:Links hover} }
+a:not(:hover) { text-decoration: none }
 strong, b { color: {color:Bold} }
 em, i { color: {color:Italics} }
 /* Rounding overall */
@@ -108,7 +109,6 @@ em, i { color: {color:Italics} }
     padding-bottom: {block:ShowDescription}1em{/block:ShowDescription}{block:HideDescription}2em{/block:HideDescription};
 }
 #bloginfo::before { margin-bottom: {block:ShowAvatar}3em{/block:ShowAvatar}{block:HideAvatar}0.5em{/block:HideAvatar} }
-#title { text-decoration: none }
 #title img {
 	position: absolute;
 	top: 3.5em;
@@ -116,6 +116,7 @@ em, i { color: {color:Italics} }
 	left: calc(50% - 2.5em);
 }
 #bloginfo div { margin: 0.5em 1em 1em }
+#bloginfo div a, .bodyitemcontent a { text-decoration: underline }
 #cardlinks {
 	position: absolute;
 	bottom: -2.25em;
@@ -144,7 +145,6 @@ body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post widt
     padding: 0.175em 0.5em;
     background-color: {color:Tags and navigation};
     font-weight: 600;
-    text-decoration: none;
 }
 #pagessearch a:hover { background-color: {color:Tags and navigation hover} }
 {block:IfNotSearchBar}
@@ -237,7 +237,6 @@ main .post:first-child { margin-top: 0 }
 .post .title { margin: 0 }
 .post .title a {
 	display: block;
-	text-decoration: none;
 	text-align: center;
 	background: {color:Tags and navigation};
 	padding: 0.25em 1em;
@@ -250,7 +249,6 @@ main .post:first-child { margin-top: 0 }
 	position: absolute;
 	bottom: 0.5em;
 	left: 0.5em;
-	text-decoration: none;
 	padding: 0.5em 0.75em;
 	background: {color:Background accent};
 	border-radius: 0.5em;
