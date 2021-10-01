@@ -146,7 +146,7 @@ body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post widt
 {block:IfNotSearchBar}
 #pagessearch a:last-of-type { margin-bottom: 1em }
 {/block:IfNotSearchBar}
-#pagessearch form { margin: 1em; position: relative; }
+#pagessearch form { margin: 1em; position: relative }
 #pagessearch form input {
     width: 100%;
 	background: {color:Tags and navigation};
@@ -174,7 +174,7 @@ main {
 
 img.circle { border-radius: 100% }
 
-main .post:first-child { margin-top: 0; }
+main .post:first-child { margin-top: 0 }
 .post {
 	margin: 1em 0;
 	background: {color:Post background};
@@ -228,7 +228,7 @@ main .post:first-child { margin-top: 0; }
 	padding: 0.4em;
 	border-radius: 100% !important;
 }
-.post .actions a { background-color: {color:Tags and navigation}; box-shadow: 0 0 0.24em #1119; }
+.post .actions a { background-color: {color:Tags and navigation}; box-shadow: 0 0 0.24em #1119 }
 .post .actions a:hover { background-color: {color:Tags and navigation hover} }
 .post .title { margin: 0 }
 .post .title a {
@@ -240,7 +240,7 @@ main .post:first-child { margin-top: 0; }
 	border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;
 }
-.post .title a:hover { background-color: {color:Tags and navigation hover}; }
+.post .title a:hover { background-color: {color:Tags and navigation hover} }
 .postbody { padding: 1em }
 .postbody * { border-radius: 0 }
 .bodyitem { padding: 1em 0 }
@@ -261,7 +261,7 @@ main .post:first-child { margin-top: 0; }
 }
 .post .below { border-top-left-radius: 0; border-top-right-radius: 0 }
 .post .below:not(:last-child) { border-radius: 0 }
-.post .below svg { height: 1.2em; width: 1.2em; }
+.post .below svg { height: 1.2em; width: 1.2em }
 .post .datenotes {
     background-color: {color:Sidecard background};
     padding: 0.5em;
@@ -280,8 +280,8 @@ main .post:first-child { margin-top: 0; }
     background-color: {color:Tags and navigation};
     padding: 0.5em;
 }
-.post .tags svg { vertical-align: middle; margin-right: 0.25em; }
-.post .tags a { margin-right: 0.2em; text-decoration: none; }
+.post .tags svg { vertical-align: middle; margin-right: 0.25em }
+.post .tags a { margin-right: 0.2em; text-decoration: none }
 .post .tags a:not(:last-child)::after { content: "," }
 
 #credits {
