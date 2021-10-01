@@ -70,7 +70,7 @@ a:not(:hover) { text-decoration: none }
 strong, b { color: {color:Bold} }
 em, i { color: {color:Italics} }
 /* Rounding overall */
-.sidecard, .post, form input, #pagessearch a { border-radius: {select:Roundness of edges} }
+.sidecard, .post, form input, #pagessearch a, .page.title { border-radius: {select:Roundness of edges} }
 /*Rounding top edges*/
 .post .title a, .sidecard::before { border-top-left-radius: {select:Roundness of edges}; border-top-right-radius: {select:Roundness of edges} }
 /*Rounding bottom edges*/
@@ -168,6 +168,7 @@ body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post widt
 	border: none;
 	color: {color:Text};
 	padding: 0.25em 1.5em 0.25em 0.5em;
+	margin: 0.25em 0;
 }
 #pagessearch form .feather-search {
 	position: absolute;
@@ -189,6 +190,11 @@ main {
 
 img.circle { border-radius: 100% }
 
+.page.title { margin-bottom: 1.5em }
+.page.title h2 { margin: 0 }
+.page.title .tag::before { content: "#" }
+.page.title .search_query::before { content: "\201C" }
+.page.title .search_query::after { content: "\201D" }
 main .post:first-child { margin-top: 0 }
 .post {
 	margin: 1em 0;
@@ -246,8 +252,8 @@ main .post:first-child { margin-top: 0 }
 }
 .post .actions a { background-color: {color:Tags and navigation} }
 .post .actions a:hover { background-color: {color:Tags and navigation hover} }
-.post .title { margin: 0 }
-.post .title a {
+main .title { margin: 0 }
+.post .title a, .page.title {
 	display: block;
 	text-align: center;
 	background: {color:Tags and navigation};
@@ -297,6 +303,15 @@ main .post:first-child { margin-top: 0 }
     text-decoration: none;
 }
 .post .datenotes span svg { height: 1.25em }
+.datenotes .date { display: flex; column-gap: 0.5em }
+.datenotes .date .today {
+	transition: .2s;
+	font-style: italic;
+	font-size: 0.8em;
+	color: {color:Links};
+}
+.datenotes .date:not(:hover) .today { opacity: 0 }
+.datenotes .date .today:hover { text-decoration: underline }
 .post .tags {
     background-color: {color:Tags and navigation};
     padding: 0.5em;
@@ -371,6 +386,23 @@ body:not(.light) .feather-sun, body.light .feather-moon { display: none }
 </section>
 
 <main>
+    {block:TagPage}
+    <div class="page title">
+        <h2>{lang:TagResultCount posts tagged Tag 2}</h2>
+        Sort <a href="/tagged/{URLSafeTag}">newest first</a> or <a href="/tagged/{URLSafeTag}/chrono">oldest first</a>
+    </div>
+    {/block:TagPage}
+    {block:DayPage}
+    <div class="page title"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
+    {/block:DayPage}
+    {block:SearchPage}
+    <div class="page title">
+        <h2>{lang:SearchResultCount results for SearchQuery 2}
+        {block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}
+    </h2></div>
+    {/block:SearchPage}
+    
+    
     {block:Posts}
     <section class="post">
         {block:PinnedPostLabel}<span id="pinnedpost" title="{PinnedPostLabel}"><i data-feather="star"></i></span>{/block:PinnedPostLabel}
@@ -389,10 +421,11 @@ body:not(.light) .feather-sun, body.light .feather-moon { display: none }
         {/block:Date}
         
         
-        
-        {block:Text}
         {block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
         <div class="postbody">
+        
+        
+        {block:Text}
             
             {block:NotReblog}
             <div class="bodyitemcontent">{Body}</div>
@@ -406,13 +439,11 @@ body:not(.light) .feather-sun, body.light .feather-moon { display: none }
     		</div>
             {/block:Reblogs}{/block:RebloggedFrom}
             
-        </div>
         {/block:Text}
         
         
         {block:Photo}
-        <div class="postbody">
-            
+        
             <div class="photowrapper">
                 {LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
                 <a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
@@ -430,18 +461,23 @@ body:not(.light) .feather-sun, body.light .feather-moon { display: none }
     		</div>
             {/block:Reblogs}{/block:RebloggedFrom}
             
-        </div>
         {/block:Photo}
+        
+        
+        </div>
         
         
         
         {block:Date}
         
         <div class="datenotes below">
-            <a class="date" href="{Permalink}">
-                <i data-feather="clock"></i>
-            {DayOfMonth} {ShortMonth} {Year}{block:IfShowTimestamp} at {block:If24HourTimestamps}{24Hour}{/block:If24HourTimestamps}{block:IfNot24HourTimestamps}{12Hour}{/block:IfNot24HourTimestamps}:{Minutes}{block:IfNot24HourTimestamps} {CapitalAmPm}{/block:IfNot24HourTimestamps}{/block:IfShowTimestamp}
-            </a>
+            <span class="date">
+                <a href="{Permalink}">
+                    <i data-feather="clock"></i>
+                {DayOfMonth} {ShortMonth} {Year}{block:IfShowTimestamp} at {block:If24HourTimestamps}{24Hour}{/block:If24HourTimestamps}{block:IfNot24HourTimestamps}{12Hour}{/block:IfNot24HourTimestamps}:{Minutes}{block:IfNot24HourTimestamps} {CapitalAmPm}{/block:IfNot24HourTimestamps}{/block:IfShowTimestamp}
+                </a>
+                <a class="today" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">({lang:Show all posts made on this day})</a>
+            </span>
             {block:NoteCount}
             <a class="notes" href="{Permalink}">
                 {NoteCountWithLabel}
@@ -467,11 +503,27 @@ body:not(.light) .feather-sun, body.light .feather-moon { display: none }
     
     {block:Pagination}
     <nav id="navigation">
-        {block:PreviousPage}<a href="{PreviousPage}"><i data-feather="chevron-left"></i></a>{/block:PreviousPage}
+        {block:PreviousPage}<a href="{PreviousPage}" title="{lang:Previous page}"><i data-feather="chevron-left"></i></a>{/block:PreviousPage}
         <span>{lang:CurrentPage of TotalPages}</span>
-        {block:NextPage}<a href="{NextPage}"><i data-feather="chevron-right"></i></a>{/block:NextPage}
+        {block:NextPage}<a href="{NextPage}" title="{lang:Next page}"><i data-feather="chevron-right"></i></a>{/block:NextPage}
     </nav>
     {/block:Pagination}
+    
+    {block:PermalinkPagination}
+    <nav id="navigation">
+        {block:PreviousPost}<a href="{PreviousPost}" title="{lang:Previous post}"><i data-feather="chevron-left"></i></a>{/block:PreviousPost}
+        <span>{lang:See more posts}</span>
+        {block:NextPost}<a href="{NextPost}" title="{lang:Next post}"><i data-feather="chevron-right"></i></a>{/block:NextPost}
+    </nav>
+    {/block:PermalinkPagination}
+    
+    {block:DayPagination}
+    <nav id="navigation">
+        {block:PreviousDayPage}<a href="{PreviousDayPage}" title="{lang:Previous day}"><i data-feather="chevron-left"></i></a>{/block:PreviousDayPage}
+        <span>{lang:See more posts}</span>
+        {block:NextDayPage}<a href="{NextDayPage}" title="{lang:Next day}"><i data-feather="chevron-right"></i></a>{/block:NextDayPage}
+    </nav>
+    {/block:DayPagination}
 </main>
 
 <section id="pagessearch" class="sidecard">
