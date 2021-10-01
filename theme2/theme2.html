@@ -18,9 +18,10 @@
     <meta name="color:Links hover" content="#ffc37a">
     <meta name="color:Bold" content="#ff9781">
     <meta name="color:Italics" content="#fff382">
-    <meta name="color:Tags and navigation" content="#183914">
     <meta name="text:Post width" content="600px">
     <meta name="color:Post background" content="#443124">
+    <meta name="color:Post accent 1" content="#465a32">
+    <meta name="color:Post accent 2" content="#183914">
     <meta name="color:Background" content="#393c3b">
     <meta name="color:Background accent" content="#252525">
     <meta name="image:Background accent" content="{HeaderImage}">
@@ -28,9 +29,8 @@
     <meta name="select:Background image size" title="contain" content="no-repeat; background-size: contain">
     <meta name="select:Background image size" title="tiled" content="repeat">
     <meta name="text:Background image opacity" content="1">
-    <meta name="color:Sidecard background" content="#465a32">
-    <meta name="color:Sidecard accent" content="#a4704b">
-    <meta name="image:Sidecard accent">
+    <meta name="color:Sidebar accent" content="#a4704b">
+    <meta name="image:Sidebar accent">
     <meta name="text:Custom links title" content="Links">
     <meta name="if:Show Random post link" content="1">
     <meta name="if:Show Archive link" content="1">
@@ -95,7 +95,7 @@ em, i { color: {color:Italics} }
 {/block:IfBackgroundAccentImage}
 
 .sidecard {
-	background: {color:Sidecard background};
+	background: {color:Post accent 1};
 	position: fixed;
 	top: calc(35% - 6em);
 	width: 15em;
@@ -104,7 +104,7 @@ em, i { color: {color:Italics} }
 .sidecard::before {
 	content: "";
 	display: block;
-	background: {color:Sidecard accent}{block:IfSidecardAccentImage} url({image:Sidecard accent}){/block:IfSidecardAccentImage} center no-repeat;
+	background: {color:Sidebar accent}{block:IfSidebarAccentImage} url({imageSidebar accent}){/block:IfSidebarAccentImage} center no-repeat;
 	background-size: cover;
 	width: 100%;
 	height: 6em;
@@ -138,7 +138,7 @@ em, i { color: {color:Italics} }
 	column-gap: 0.5em;
 }
 #cardlinks a {
-    background-color: {color:Tags and navigation};
+    background-color: {color:Post accent 2};
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -156,7 +156,7 @@ em, i { color: {color:Italics} }
 	align-items: center;
 	text-align: left;
 	margin: 0.25em 0;
-	background: {color:Tags and navigation};
+	background: {color:Post accent 2};
 	border-radius: 5em;
 }
 #blogmembers figure:hover { filter: contrast(1.2) }
@@ -173,7 +173,7 @@ body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post widt
     display: block;
     margin: 0.25em 1em;
     padding: 0.175em 0.5em;
-    background-color: {color:Tags and navigation};
+    background-color: {color:Post accent 2};
     font-weight: 600;
 }
 #pagessearch a:hover { filter: contrast(1.2) }
@@ -183,7 +183,7 @@ body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post widt
 #pagessearch form { margin: 1em; position: relative }
 #pagessearch form input {
     width: 100%;
-	background: {color:Tags and navigation};
+	background: {color:Post accent 2};
 	border: none;
 	color: {color:Text};
 	padding: 0.25em 1.5em 0.25em 0.5em;
@@ -195,8 +195,8 @@ body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post widt
 	right: 0;
 	height: 1em;
 }
-body:not(.haspages, .hassearch) main { left: calc(50% - 600px/2 + 8.5em) }
-body:not(.haspages, .hassearch) #bloginfo { right: calc(50% + 600px/2 - 6.5em) }
+body:not(.haspages, .hassearch) main { left: calc(50% - {text:Post width}/2 + 9em) }
+body:not(.haspages, .hassearch) #bloginfo { right: calc(50% + {text:Post width}/2 - 6em) }
 body:not(.haspages, .hassearch) #pagessearch { display: none }
 
 main {
@@ -210,11 +210,17 @@ main {
 img {max-width: 100%}
 img.circle { border-radius: 100% }
 
-.page.title { margin-bottom: 1.5em }
+main .title { margin: 0 }
+.page.title { margin-bottom: 1.25em; padding: 0.5em 1em }
 .page.title h2 { margin: 0 }
 .page.title .tag::before { content: "#" }
 .page.title .search_query::before { content: "\201C" }
 .page.title .search_query::after { content: "\201D" }
+.post .title a, .page.title {
+	display: block;
+	text-align: center;
+	background: {color:Post accent 2};
+}
 main .post:first-child { margin-top: 0 }
 .post {
 	margin: 1em 0;
@@ -271,7 +277,7 @@ main .post:first-child { margin-top: 0 }
 	padding: 0.4em;
 	border-radius: 100%;
 }
-.post .actions a { background-color: {color:Tags and navigation} }
+.post .actions a { background-color: {color:Post accent 2} }
 .post .actions a:hover { filter: contrast(1.2) }
 .customlike { position: relative }
 .customlike .like_button {
@@ -283,13 +289,7 @@ main .post:first-child { margin-top: 0 }
     opacity: 0;
 }
 .customlike .like_button.liked + svg { fill: {color:Links} }
-main .title { margin: 0 }
-.post .title a, .page.title {
-	display: block;
-	text-align: center;
-	background: {color:Tags and navigation};
-	padding: 0.25em 1em;
-}
+.post .title a { padding: 0.25em 1em }
 .post .title a:hover { filter: contrast(1.2) }
 .postbody { padding: 1em }
 .postbody img.photopost { width: 100%; }
@@ -321,7 +321,7 @@ main .title { margin: 0 }
 }
 .post .below svg { height: 1.2em; width: 1.2em }
 .post .datenotes {
-    background-color: {color:Sidecard background};
+    background-color: {color:Post accent 1};
     padding: 0.5em;
     display: flex;
     justify-content: space-between;
@@ -344,7 +344,7 @@ main .title { margin: 0 }
 .datenotes .date:not(:hover) .today { opacity: 0 }
 .datenotes .date .today:hover { text-decoration: underline }
 .post .tags {
-    background-color: {color:Tags and navigation};
+    background-color: {color:Post accent 2};
     padding: 0.5em;
 }
 .post .tags svg { vertical-align: middle; margin-right: 0.25em }
@@ -357,7 +357,7 @@ main .title { margin: 0 }
 	justify-content: center;
 	margin: 1.5em auto;
 	padding: 0.3em;
-	background-color: {color:Sidecard background};
+	background-color: {color:Post accent 1};
 	border-radius: 5em;
 	width: -webkit-fit-content;
 	width: -moz-fit-content;
@@ -365,7 +365,7 @@ main .title { margin: 0 }
 }
 #navigation a {
 	border-radius: 100%;
-	background-color: {color:Tags and navigation};
+	background-color: {color:Post accent 2};
 	display: flex;
 	width: 1em;
 	height: 1em;
