@@ -293,6 +293,34 @@ main .post:first-child { margin-top: 0 }
 .post .tags a { margin-right: 0.2em; text-decoration: none }
 .post .tags a:not(:last-child)::after { content: "," }
 
+#navigation {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 1.5em auto;
+	padding: 0.3em;
+	background-color: {color:Sidecard background};
+	border-radius: 5em;
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
+	width: fit-content;
+}
+#navigation a {
+	border-radius: 100%;
+	background-color: {color:Tags and navigation};
+	display: flex;
+	width: 1em;
+	height: 1em;
+	padding: 0.5em;
+}
+#navigation a:hover { background-color: {color:Tags and navigation hover} }
+#navigation a svg {
+	width: 1em;
+	height: 1em;
+	transform: scale(1.5)
+}
+#navigation span { margin: 0 0.75em; font-weight: 600 }
+
 #credits {
 	position: fixed;
 	right: 0;
@@ -422,6 +450,16 @@ body:not(.light) .feather-sun, body.light .feather-moon { display: none }
         {/block:Date}
     </section>
     {/block:Posts}
+    
+    
+    
+    {block:Pagination}
+    <nav id="navigation">
+        {block:PreviousPage}<a href="{PreviousPage}"><i data-feather="chevron-left"></i></a>{/block:PreviousPage}
+        <span>{lang:CurrentPage of TotalPages}</span>
+        {block:NextPage}<a href="{NextPage}"><i data-feather="chevron-right"></i></a>{/block:NextPage}
+    </nav>
+    {/block:Pagination}
 </main>
 
 <section id="pagessearch" class="sidecard">
