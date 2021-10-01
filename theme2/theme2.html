@@ -252,6 +252,16 @@ main .post:first-child { margin-top: 0 }
 }
 .post .actions a { background-color: {color:Tags and navigation} }
 .post .actions a:hover { background-color: {color:Tags and navigation hover} }
+.customlike { position: relative }
+.customlike .like_button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+}
+.customlike .like_button.liked + svg { fill: {color:Links} }
 main .title { margin: 0 }
 .post .title a, .page.title {
 	display: block;
@@ -408,7 +418,10 @@ body:not(.light) .feather-sun, body.light .feather-moon { display: none }
         {block:PinnedPostLabel}<span id="pinnedpost" title="{PinnedPostLabel}"><i data-feather="star"></i></span>{/block:PinnedPostLabel}
         {block:Date}
         <div class="right actions">
-            <a href="#"><i data-feather="heart"></i></a>
+            <a href="#" class="customlike">
+                {LikeButton size="30"}
+                <i data-feather="heart"></i>
+            </a>
             <a href="{ReblogURL}"><i data-feather="repeat"></i></a>
             <a title="{lang:Permalink}" href="{Permalink}"><i data-feather="link"></i></a>
         </div>
