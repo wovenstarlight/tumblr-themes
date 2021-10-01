@@ -28,6 +28,7 @@
     <meta name="select:Background image size" title="cover" content="no-repeat; background-size: cover">
     <meta name="select:Background image size" title="contain" content="no-repeat; background-size: contain">
     <meta name="select:Background image size" title="tiled" content="repeat">
+    <meta name="text:Background image opacity" content="1">
     <meta name="color:Sidecard background" content="#465a32">
     <meta name="color:Sidecard accent" content="#a4704b">
     <meta name="image:Sidecard accent">
@@ -76,12 +77,22 @@ em, i { color: {color:Italics} }
 .post .below:last-child { border-bottom-left-radius: {select:Roundness of edges}; border-bottom-right-radius: {select:Roundness of edges} }
 
 #bgaccent {
-    background: {color:Background accent}{block:IfBackgroundAccentImage} url({image:Background accent}){/block:IfBackgroundAccentImage} center {select:Background image size};
+    background: {color:Background accent};
     position: fixed;
     width: 100%;
     height: 35%;
     z-index: -1;
 }
+{block:IfBackgroundAccentImage}
+#bgaccent::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: url({image:Background accent}) center {select:Background image size};
+    opacity: {text:Background image opacity};
+}
+{/block:IfBackgroundAccentImage}
 
 .sidecard {
 	background: {color:Sidecard background};
