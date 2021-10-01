@@ -16,10 +16,9 @@
     <meta name="color:Headings" content="#ffffff">
     <meta name="color:Links" content="#ff9e29">
     <meta name="color:Links hover" content="#ffc37a">
-    <meta name="color:Bold" content="#ff5f2e">
-    <meta name="color:Italics" content="#f7de00">
+    <meta name="color:Bold" content="#ff9781">
+    <meta name="color:Italics" content="#fff382">
     <meta name="color:Tags and navigation" content="#183914">
-    <meta name="color:Tags and navigation hover" content="#0c3108">
     <meta name="text:Post width" content="600px">
     <meta name="color:Post background" content="#443124">
     <meta name="color:Background" content="#393c3b">
@@ -62,7 +61,7 @@ body {
 }
 a {
     color: {color:Links};
-    transition-property: color, background-color;
+    transition-property: color, filter;
     transition-duration: .2s;
     font-weight: 600;
 }
@@ -148,7 +147,7 @@ em, i { color: {color:Italics} }
 	border-radius: 100%;
 	padding: 0.5em;
 }
-#cardlinks a:hover { color: {color:Links hover}; background-color: {color:Tags and navigation hover} }
+#cardlinks a:hover { filter: contrast(1.2) }
 #bloginfo #blogmembers a { text-decoration: none }
 #blogmembers figure {
 	display: grid;
@@ -160,7 +159,7 @@ em, i { color: {color:Italics} }
 	background: {color:Tags and navigation};
 	border-radius: 5em;
 }
-#blogmembers figure:hover { background: {color:Tags and navigation hover} }
+#blogmembers figure:hover { filter: contrast(1.2) }
 #blogmembers figcaption {
 	text-align: center;
 	margin-left: -0.5em;
@@ -177,7 +176,7 @@ body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post widt
     background-color: {color:Tags and navigation};
     font-weight: 600;
 }
-#pagessearch a:hover { background-color: {color:Tags and navigation hover} }
+#pagessearch a:hover { filter: contrast(1.2) }
 {block:IfNotSearchBar}
 #pagessearch a:last-of-type { margin-bottom: 1em }
 {/block:IfNotSearchBar}
@@ -237,6 +236,7 @@ main .post:first-child { margin-top: 0 }
     padding: 0.5em;
     top: -1.1em;
     left: -1.1em;
+    z-index: 1;
 }
 .post .actions,
 #credits {
@@ -272,7 +272,7 @@ main .post:first-child { margin-top: 0 }
 	border-radius: 100%;
 }
 .post .actions a { background-color: {color:Tags and navigation} }
-.post .actions a:hover { background-color: {color:Tags and navigation hover} }
+.post .actions a:hover { filter: contrast(1.2) }
 .customlike { position: relative }
 .customlike .like_button {
     position: absolute;
@@ -290,7 +290,7 @@ main .title { margin: 0 }
 	background: {color:Tags and navigation};
 	padding: 0.25em 1em;
 }
-.post .title a:hover { background-color: {color:Tags and navigation hover} }
+.post .title a:hover { filter: contrast(1.2) }
 .postbody { padding: 1em }
 .postbody img.photopost { width: 100%; }
 .postbody .photowrapper { position: relative }
@@ -371,7 +371,7 @@ main .title { margin: 0 }
 	height: 1em;
 	padding: 0.5em;
 }
-#navigation a:hover { background-color: {color:Tags and navigation hover} }
+#navigation a:hover { filter: contrast(1.2) }
 #navigation a svg {
 	width: 1em;
 	height: 1em;
