@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     {block:Hidden}
-    <meta name="text:Body font" content="EB Garamond">
+    <meta name="text:Body font" content="Abel">
     <meta name="text:Font size" content="16px">
     <meta name="color:Text" content="#e5e5e5">
     <meta name="color:Headings" content="#ffffff">
@@ -35,7 +35,11 @@
     <meta name="if:Show Random post link" content="1">
     <meta name="if:Show Archive link" content="1">
     <meta name="if:Search bar" content="1">
-    <meta name="if:Rounded edges" content="1">
+    <meta name="select:Roundness of edges" title="Least" content="0.25rem">
+    <meta name="select:Roundness of edges" title="None" content="0">
+    <meta name="select:Roundness of edges" title="Less" content="0.5rem">
+    <meta name="select:Roundness of edges" title="More" content="0.75rem">
+    <meta name="select:Roundness of edges" title="Most" content="1.25rem">
 	<meta name="if:Show timestamp" content="1">
 	<meta name="if:24 hour timestamps" content="0">
     {/block:Hidden}
@@ -63,17 +67,19 @@ a {
 a:hover { color: {color:Links hover} }
 strong, b { color: {color:Bold} }
 em, i { color: {color:Italics} }
-{block:IfRoundedEdges}
-*, .sidecard::before { border-radius: .25em }
-{/block:IfRoundedEdges}
+/* Rounding overall */
+.sidecard, .post, form input, #pagessearch a { border-radius: {select:Roundness of edges} }
+/*Rounding top edges*/
+.post .title a, .sidecard::before { border-top-left-radius: {select:Roundness of edges}; border-top-right-radius: {select:Roundness of edges} }
+/*Rounding bottom edges*/
+.post .below:last-child { border-bottom-left-radius: {select:Roundness of edges}; border-bottom-right-radius: {select:Roundness of edges} }
 
 #bgaccent {
-    background: {color:Background accent} {block:IfBackgroundAccentImage}url({image:Background accent}){/block:IfBackgroundAccentImage} center {select:Background image size};
+    background: {color:Background accent}{block:IfBackgroundAccentImage} url({image:Background accent}){/block:IfBackgroundAccentImage} center {select:Background image size};
     position: fixed;
     width: 100%;
     height: 35%;
     z-index: -1;
-    border-radius: 0;
 }
 
 .sidecard {
@@ -86,12 +92,10 @@ em, i { color: {color:Italics} }
 .sidecard::before {
 	content: "";
 	display: block;
-	background: {color:Sidecard accent} {block:IfSidecardAccentImage}url({image:Sidecard accent}){/block:IfSidecardAccentImage} center no-repeat;
+	background: {color:Sidecard accent}{block:IfSidecardAccentImage} url({image:Sidecard accent}){/block:IfSidecardAccentImage} center no-repeat;
 	background-size: cover;
 	width: 100%;
 	height: 6em;
-	border-bottom-left-radius: 0;
-	border-bottom-right-radius: 0;
 }
 .sidecard h2, #pagessearch form label {
 	color: {color:Headings};
@@ -226,9 +230,9 @@ main .post:first-child { margin-top: 0 }
 	align-items: center;
 	justify-content: center;
 	padding: 0.4em;
-	border-radius: 100% !important;
+	border-radius: 100%;
 }
-.post .actions a { background-color: {color:Tags and navigation}; box-shadow: 0 0 0.24em #1119 }
+.post .actions a { background-color: {color:Tags and navigation} }
 .post .actions a:hover { background-color: {color:Tags and navigation hover} }
 .post .title { margin: 0 }
 .post .title a {
@@ -237,18 +241,27 @@ main .post:first-child { margin-top: 0 }
 	text-align: center;
 	background: {color:Tags and navigation};
 	padding: 0.25em 1em;
-	border-bottom-left-radius: 0;
-	border-bottom-right-radius: 0;
 }
 .post .title a:hover { background-color: {color:Tags and navigation hover} }
 .postbody { padding: 1em }
-.postbody * { border-radius: 0 }
+.postbody img.photopost { width: 100%; }
+.postbody .photowrapper { position: relative }
+.postbody .photowrapper .highres {
+	position: absolute;
+	bottom: 0.5em;
+	left: 0.5em;
+	text-decoration: none;
+	padding: 0.5em 0.75em;
+	background: {color:Background accent};
+	border-radius: 0.5em;
+}
+.postbody .photowrapper:not(:hover) .highres { display: none }
 .bodyitem { padding: 1em 0 }
 .bodyitem:not(:last-of-type) { border-bottom: thin solid rgba({RGBcolor:Links}, 0.3) }
 .bodyitem:first-of-type { padding-top: 0 }
 .bodyitem:last-of-type { padding-bottom: 0 }
-.bodyitemcontent *:first-child { margin-top: 0.25em }
-.bodyitemcontent *:last-child { margin-bottom: 0.25em }
+.bodyitemcontent > *:first-child { margin-top: 0.25em }
+.bodyitemcontent > *:last-child { margin-bottom: 0.25em }
 .bodyitemcontent p { margin: 0.5em 0 }
 .bodyitem .usericon img {
 	width: 2em;
@@ -259,8 +272,6 @@ main .post:first-child { margin-top: 0 }
     width: 100%;
     margin: auto;
 }
-.post .below { border-top-left-radius: 0; border-top-right-radius: 0 }
-.post .below:not(:last-child) { border-radius: 0 }
 .post .below svg { height: 1.2em; width: 1.2em }
 .post .datenotes {
     background-color: {color:Sidecard background};
@@ -364,7 +375,10 @@ body:not(.light) .feather-sun, body.light .feather-moon { display: none }
         {block:Photo}
         <div class="postbody">
             
-            <img src="{PhotoURL-500}" width="100%">
+            <div class="photowrapper">
+                {LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+                <a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
+            </div>
             
             {block:NotReblog}
             <div class="bodyitemcontent">{Caption}</div>
