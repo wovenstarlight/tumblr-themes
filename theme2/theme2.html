@@ -43,6 +43,7 @@
     <meta name="select:Roundness of edges" title="Most" content="1.25rem">
 	<meta name="if:Show timestamp" content="1">
 	<meta name="if:24 hour timestamps" content="0">
+	<meta name="if:Show group blog members" content="0">
     {/block:Hidden}
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -148,6 +149,25 @@ em, i { color: {color:Italics} }
 	padding: 0.5em;
 }
 #cardlinks a:hover { color: {color:Links hover}; background-color: {color:Tags and navigation hover} }
+#bloginfo #blogmembers a { text-decoration: none }
+#blogmembers figure {
+	display: grid;
+	grid-template-columns: 2em 1fr;
+	padding: 0.25em;
+	align-items: center;
+	text-align: left;
+	margin: 0.25em 0;
+	background: {color:Tags and navigation};
+	border-radius: 5em;
+}
+#blogmembers figure:hover { background: {color:Tags and navigation hover} }
+#blogmembers figcaption {
+	text-align: center;
+	margin-left: -0.5em;
+	padding: 0.1em 1em;
+	z-index: 0;
+	color: {color:Text};
+}
 #pagessearch { left: calc(50% + ({text:Post width}/2) + 3em) }
 body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post width}/2)) }
 #pagessearch a {
@@ -188,6 +208,7 @@ main {
 	padding-bottom: 1em;
 }
 
+img {max-width: 100%}
 img.circle { border-radius: 100% }
 
 .page.title { margin-bottom: 1.5em }
@@ -393,6 +414,20 @@ body:not(.light) .feather-sun, body.light .feather-moon { display: none }
         {block:AskEnabled}<a href="/" title="{AskLabel}"><i data-feather="mail"></i></a>{/block:AskEnabled}
         {block:SubmissionsEnabled}<a href="/" title="{SubmitLabel}"><i data-feather="inbox"></i></a>{/block:SubmissionsEnabled}
     </div>
+    
+    {block:IfShowGroupBlogMembers}{block:GroupMembers}
+    <div id="blogmembers">
+        <h2>{lang:Group members}</h2>
+        {block:GroupMember}
+        <a href="{GroupMemberURL}">
+            <figure>
+                <img class="circle" src="{GroupMemberPortraitURL-64}">
+                <figcaption>{GroupMemberName}</figcaption>
+            </figure>
+        </a>
+        {/block:GroupMember}
+    </div>
+    {/block:GroupMembers}{/block:IfShowGroupBlogMembers}
 </section>
 
 <main>
