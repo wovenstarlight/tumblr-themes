@@ -602,6 +602,53 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 		{/block:Photo}
 		
 		
+		{block:Panorama}
+		
+			<div class="photowrapper">
+				{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+				<a class="highres" href="{PhotoURL-Panorama}">{lang:View high resolution}</a>
+			</div>
+			
+			{block:NotReblog}
+			<div class="bodyitemcontent">{Caption}</div>
+			{/block:NotReblog}
+			
+			{block:RebloggedFrom}{block:Reblogs}
+			<div class="bodyitem">
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>
+    				<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+    				<span class="username">{Username}</span>
+				</a>
+				<div class="bodyitemcontent">{Body}</div>
+			</div>
+			{/block:Reblogs}{/block:RebloggedFrom}
+			
+		{/block:Panorama}
+		
+		
+		{block:Photoset}
+		
+			<div class="photowrapper">
+				{Photoset}
+			</div>
+			
+			{block:NotReblog}
+			<div class="bodyitemcontent">{Caption}</div>
+			{/block:NotReblog}
+			
+			{block:RebloggedFrom}{block:Reblogs}
+			<div class="bodyitem">
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>
+    				<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+    				<span class="username">{Username}</span>
+				</a>
+				<div class="bodyitemcontent">{Body}</div>
+			</div>
+			{/block:Reblogs}{/block:RebloggedFrom}
+			
+		{/block:Photoset}
+		
+		
 		</div>
 		
 		
