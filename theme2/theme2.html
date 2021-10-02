@@ -554,7 +554,7 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 				<i data-feather="clock"></i>
 				{DayOfMonth} {ShortMonth} {Year}{block:IfShowTimestamp} at {block:If24HourTimestamps}{24Hour}{/block:If24HourTimestamps}{block:IfNot24HourTimestamps}{12Hour}{/block:IfNot24HourTimestamps}:{Minutes}{block:IfNot24HourTimestamps} {CapitalAmPm}{/block:IfNot24HourTimestamps}{/block:IfShowTimestamp}
 			</a>
-			<a class="today" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">({lang:Show all posts made on this day})</a>
+			<a class="today" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">{lang:Show all posts made on this day}</a>
 			{block:NoteCount}
 			<a class="notes" href="{Permalink}">
 				{NoteCountWithLabel}
