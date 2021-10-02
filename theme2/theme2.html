@@ -47,11 +47,17 @@
 	<meta name="color:LM Sidebar accent" content="#c2208a">
 	
 	<meta name="image:Background accent" content="{HeaderImage}">
+	<meta name="select:Background image position" title="center" content="center">
+	<meta name="select:Background image position" title="left" content="left">
+	<meta name="select:Background image position" title="right" content="right">
+	<meta name="select:Background image position" title="top" content="top">
+	<meta name="select:Background image position" title="bottom" content="bottom">
 	<meta name="select:Background image size" title="cover" content="no-repeat; background-size: cover">
 	<meta name="select:Background image size" title="contain" content="no-repeat; background-size: contain">
 	<meta name="select:Background image size" title="tiled" content="repeat">
 	<meta name="text:Background image opacity" content="1">
-	<meta name="image:Sidebar accent">
+	<meta name="image:Left sidebar accent">
+	<meta name="image:Right sidebar accent">
 	<meta name="text:Custom links title" content="Links">
 	<meta name="if:Show Random post link" content="1">
 	<meta name="if:Show Archive link" content="1">
@@ -151,7 +157,7 @@ em, i { color: var(--italics) }
 	width: 100%;
 	height: 100%;
 	display: block;
-	background: url({image:Background accent}) center {select:Background image size};
+	background: url({image:Background accent}) {select:Background image position} {select:Background image size};
 	opacity: {text:Background image opacity};
 }
 {/block:IfBackgroundAccentImage}
@@ -166,7 +172,7 @@ em, i { color: var(--italics) }
 .sidecard::before {
 	content: "";
 	display: block;
-	background: var(--side-accent){block:IfSidebarAccentImage} url({imageSidebar accent}){/block:IfSidebarAccentImage} center no-repeat;
+	background: var(--side-accent) center no-repeat;
 	background-size: cover;
 	width: 100%;
 	height: 6em;
@@ -181,7 +187,10 @@ em, i { color: var(--italics) }
 	right: calc(50% + (var(--post-width)/2) + 3em);
 	padding-bottom: {block:ShowDescription}1em{/block:ShowDescription}{block:HideDescription}2em{/block:HideDescription};
 }
-#bloginfo::before { margin-bottom: {block:ShowAvatar}3em{/block:ShowAvatar}{block:HideAvatar}0.5em{/block:HideAvatar} }
+#bloginfo::before {
+    margin-bottom: {block:ShowAvatar}3em{/block:ShowAvatar}{block:HideAvatar}0.5em{/block:HideAvatar};
+    {block:IfLeftSidebarAccentImage}background-image: url({image:Left sidebar accent}){/block:IfLeftSidebarAccentImage}
+}
 #title img {
 	position: absolute;
 	top: 3.5em;
@@ -229,6 +238,9 @@ em, i { color: var(--italics) }
 	color: var(--text);
 }
 #pagessearch { left: calc(50% + (var(--post-width)/2) + 3em) }
+{block:IfRightSidebarAccentImage}
+#pagessearch::before { background-image: url({image:Right sidebar accent}) }
+{/block:IfRightSidebarAccentImage}
 body.not(.no-search, .haspages) #pagessearch { left: calc(50% + (var(--post-width)/2)) }
 #pagessearch a {
 	display: block;
