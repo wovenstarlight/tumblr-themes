@@ -78,7 +78,7 @@ $(".collapsible > .clpbutton").click( function() {
 
 Make sure you get everything, including the `<script>` tags! This will make your dropdowns functional. **Ensure that the script tags are below all your collapsible sections, as well. Otherwise they will not load correctly.**
 
-Now you can get started on editing! Add as many collapsibles as you want, and [nest](#Nesting sections) as many as you want (i.e. place one collapsible section inside another collapsible section). Once you're done, make sure to `Update Preview` and check that everything works and looks right, then hit `Save`.
+Now you can get started on editing! Add as many collapsibles as you want, and [nest](#nesting-collapsibles) as many as you want (i.e. place one collapsible section inside another collapsible section). Once you're done, make sure to `Update Preview` and check that everything works and looks right, then hit `Save`.
 
 ***IMPORTANT NOTE:*** Make sure you don't put a link inside the `clpbutton`! Since this is the text to open/close the dropdown, you don't want to add something clickable that DOESN'T open the dropdown. The text is already link-colored, so you might confuse people, and they won't be able to open the collapsible section.
 
