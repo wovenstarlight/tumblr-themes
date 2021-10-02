@@ -56,9 +56,9 @@
 	width: 1.25em;
 	border-radius: 100%;
 }
-#notes .like .avatar_frame::after { background-image: url("https://wovenstarlight.github.io/discord-theme/like.svg") }
-#notes .reblog .avatar_frame::after { background-image: url("https://wovenstarlight.github.io/discord-theme/reblog.svg") }
-#notes .original_post .avatar_frame::after { background-image: url("https://wovenstarlight.github.io/discord-theme/star.svg") }
+#notes .like .avatar_frame::after { background-image: url("https://wovenstarlight.github.io/tumblr-themes/theme1/like.svg") }
+#notes .reblog .avatar_frame::after { background-image: url("https://wovenstarlight.github.io/tumblr-themes/theme1/reblog.svg") }
+#notes .original_post .avatar_frame::after { background-image: url("https://wovenstarlight.github.io/tumblr-themes/theme1/star.svg") }
 #notes .with_commentary blockquote { font-size: 0.75em }
 #notes .with_commentary blockquote a { color: var(--text-muted) }
 #notes .more_notes_link_container { margin: 1em }
