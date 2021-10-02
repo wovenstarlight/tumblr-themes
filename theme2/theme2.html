@@ -16,6 +16,8 @@
 	<script src="https://unpkg.com/feather-icons"></script>
 	<!-- jQuery CDN -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Infinite scroll -->
+	<script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
 
 	{block:Hidden}
 	<meta name="text:Google font for body" content="Abel">
@@ -76,6 +78,8 @@
 	<meta name="if:Show timestamp" content="1">
 	<meta name="if:24 hour timestamps" content="0">
 	<meta name="if:Show group blog members" content="0">
+	<meta name="if:Infinite scroll" content="0">
+	<meta name="if:Manual load for infinite scroll" content="0">
 	{/block:Hidden}
 	
 	{block:IfNotUseTumblrFonts}<link href="https://fonts.googleapis.com/css2?family={text:Google font for body}:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet"> {/block:IfNotUseTumblrFonts}
@@ -548,6 +552,22 @@ blockquote {
 	transform: scale(1.5)
 }
 #navigation span { margin: 0 0.75em; font-weight: 600 }
+#loadmore {
+	border-radius: 5em;
+	background-color: var(--accent1);
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
+	width: fit-content;
+	margin: 1.5em auto;
+	padding: 0.75em 1em;
+	font-weight: 600;
+	cursor: pointer;
+	transition: .2s;
+}
+#loadmore:hover {
+	background-color: var(--accent2);
+	text-decoration: underline;
+}
 
 #credits {
 	position: fixed;
@@ -667,7 +687,8 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 	</h2></div>
 	{/block:SearchPage}
 		
-		
+	<div id="postwrapper">
+	
 	{block:Posts}
 	<section class="post">
 		{block:PinnedPostLabel}<span id="pinnedpost" data-tippy-content="{PinnedPostLabel}"><i data-feather="star"></i></span>{/block:PinnedPostLabel}
@@ -951,6 +972,8 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 	</section>
 	{/block:Posts}
 	
+	</div>
+	
 	
 	{block:PostNotes}
 	<section class="post notes">
@@ -961,11 +984,15 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 	
 	
 	
+	{block:IfInfiniteScroll}{block:IfManualLoadForInfiniteScroll}
+	<div id="loadmore">{lang:Load more posts}</div>
+	{/block:IfManualLoadForInfiniteScroll}{/block:IfInfiniteScroll}
+	
 	{block:Pagination}
 	<nav id="navigation">
-		{block:PreviousPage}<a href="{PreviousPage}" data-tippy-content="{lang:Previous page}"><i data-feather="chevron-left"></i></a>{/block:PreviousPage}
+		{block:PreviousPage}<a id="prevpage" href="{PreviousPage}" data-tippy-content="{lang:Previous page}"><i data-feather="chevron-left"></i></a>{/block:PreviousPage}
 		<span>{lang:CurrentPage of TotalPages}</span>
-		{block:NextPage}<a href="{NextPage}" data-tippy-content="{lang:Next page}"><i data-feather="chevron-right"></i></a>{/block:NextPage}
+		{block:NextPage}<a id="nextpage" href="{NextPage}" data-tippy-content="{lang:Next page}"><i data-feather="chevron-right"></i></a>{/block:NextPage}
 	</nav>
 	{/block:Pagination}
 		
@@ -1087,6 +1114,26 @@ $(window).resize( function() {
 });
 
 $(window).resize();
+
+{block:IfInfiniteScroll}
+$("#postwrapper").infiniteScroll({
+	// options
+	path: '#nextpage',
+	append: '.post',
+	history: false,
+	{block:IfManualLoadForInfiniteScroll}button: '#loadmore',
+	scrollThreshold: false,{/block:IfManualLoadForInfiniteScroll}
+	hideNav: '#navigation'
+});
+
+$("#postwrapper").on( 'append.infiniteScroll', function( event, body, path, items, response ) {
+	feather.replace();
+	
+	tippy("#pinnedpost", { theme: 'standard' });
+	tippy(".left.actions [data-tippy-content]", { placement: 'left', theme: 'standard' });
+	tippy(".right.actions [data-tippy-content]", { placement: 'right', theme: 'standard' });
+});
+{/block:IfInfiniteScroll}
 
 </script>
 
