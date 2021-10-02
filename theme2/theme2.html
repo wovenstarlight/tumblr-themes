@@ -340,6 +340,8 @@ main .post:first-child { margin-top: 0 }
 	width: 100%;
 	margin: auto;
 }
+.quote h2 { margin: 0.25em 0 }
+.quote p { margin: 0.25em 0.5em }
 .post .below svg { height: 1.2em; width: 1.2em }
 .post .datenotes {
 	background-color: var(--accent1);
@@ -391,17 +393,17 @@ main .post:first-child { margin-top: 0 }
 	height: var(--size);
 	border-radius: 100%;
 }
-.post.notes .note blockquote {
-	margin: 0;
+blockquote {
+	margin: 0.5em;
 	padding-left: 0.75em;
-	border-left: 0.2em solid var(--accent1);
+	border-left: 0.2em solid rgba({RGBcolor:Text}, 0.6);
 }
 .post.notes .more_notes_link,
 .post.notes .notes_loading {
 	background: var(--accent2);
 	margin: 0.5em;
 	padding: 0.5em;
-	width: 100%;
+	grid-column: 1 / span 2;
 	border-radius: var(--roundness);
 }
 .post.notes .more_notes_link:hover { filter: contrast(1.2) }
@@ -616,8 +618,8 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
-					<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
-					<span class="username">{Username}</span>
+    				<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+    				<span class="username">{Username}</span>
 				</a>
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
@@ -647,6 +649,14 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 			{/block:Reblogs}{/block:RebloggedFrom}
 			
 		{/block:Photoset}
+		
+		
+		{block:Quote}
+		    <div class="quote">
+    			<h2>{Quote}</h2>
+    			{block:Source}<p>— {Source}</p>{/block:Source}
+			</div>
+		{/block:Quote}
 		
 		
 		</div>
