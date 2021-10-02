@@ -1,16 +1,25 @@
-/**
- * Commented version of the JS for Theme 2.
- * Original script is present in the file theme2.html.
- */
-
 // Set up all SVG icons on initial load
 feather.replace();
 
+// Set up page-wide tooltips for...
+// ...Pinned post icon
+tippy("#pinnedpost", { theme: 'standard' });
+// ...Links to home/ask/submit/random/archive
+tippy("#cardlinks [data-tippy-content]", { placement: 'bottom', theme: 'standard' });
+// ...Links to post actions (like/reblog/permalink, via/source)
+tippy(".left.actions [data-tippy-content]", { placement: 'left', theme: 'standard' });
+tippy(".right.actions [data-tippy-content]", { placement: 'right', theme: 'standard' });
+// ...Links to page-wise navigation
+tippy("#navigation a:first-child", { placement: 'left', theme: 'standard' });
+tippy("#navigation a:last-child", { placement: 'right', theme: 'standard' });
+// ...Links to theme/blog credits and color mode toggle
+tippy("#credits [data-tippy-content]", { placement: 'left', theme: 'standard' });
+
 /*************************** RESPONSIVENESS SETUP ***************************/
-var em = parseInt("{text:Font size}");
+var em = parseInt($("body").css("font-size"));
 
 // Get basic value for page width
-var narrow1width = ( parseInt("{text:Post width}")
+var narrow1width = ( parseInt($("body").css("--post-width"))
 					+ $("#bloginfo").width() + 3*em );
 
 // Adjust page width if pagessearch is showing
@@ -35,7 +44,7 @@ function updatetops(narrowness) {
 		if (narrowness === "narrow1") {
 			// Position main just under both sidecards
 			maintop = Math.max(maintop, pagessearchHeight);
-			maintop -= 1.5*em;
+			maintop -= 2.5*em;
 		}
 		else { //narrowness === narrow2
 			// Position pagessearch under bloginfo and adjust main positioning
