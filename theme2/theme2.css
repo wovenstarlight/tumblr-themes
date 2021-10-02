@@ -25,6 +25,15 @@ a:not(:hover) { text-decoration: none }
 /* Overall styles setup - Special bold/italic colors */
 strong, b { color: var(--bold) }
 em, i { color: var(--italics) }
+/* Overall styles setup - highlighting text */
+::selection {
+    background-color: var(--highlight-bg);
+    color: var(--highlight);
+}
+::moz-selection {
+    background-color: var(--highlight-bg);
+    color: var(--highlight);
+}
 /* Overall styles setup - Rounding all corners */
 .sidecard, .post, form input, #pagessearch a, .page.title { border-radius: var(--roundness) }
 /* Overall styles setup - Rounding top edges */

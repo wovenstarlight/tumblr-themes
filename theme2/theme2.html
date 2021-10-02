@@ -53,6 +53,8 @@
 	<meta name="color:Background" content="#393c3b">
 	<meta name="color:Background accent" content="#252525">
 	<meta name="color:Sidebar accent" content="#a4704b">
+	<meta name="color:Text highlight" content="#ffbf92">
+	<meta name="color:Text highlight background" content="#0e6600">
 	
 	<meta name="if:Show color mode toggle" content="1">
 	<meta name="if:Default to light mode" content="0">
@@ -68,6 +70,8 @@
 	<meta name="color:LM Background" content="#704e86">
 	<meta name="color:LM Background accent" content="#31244d">
 	<meta name="color:LM Sidebar accent" content="#c2208a">
+	<meta name="color:LM Text highlight" content="#2f0030">
+	<meta name="color:LM Text highlight background" content="#ff598f">
 	
 	<meta name="image:Background accent" content="{HeaderImage}">
 	<meta name="select:Background image position" title="center" content="center">
@@ -117,6 +121,8 @@ body {
 	--bg: {color:Background};
 	--bg-accent: {color:Background accent};
 	--side-accent: {color:Sidebar accent};
+	--highlight: {color:Text highlight};
+	--highlight-bg: {color:Text highlight background};
 	--roundness: {select:Roundness of edges};
 	--post-width: {text:Post width};
 	font-size: {text:Font size};
@@ -137,6 +143,8 @@ body.light {
 	--bg: {color:LM Background};
 	--bg-accent: {color:LM Background accent};
 	--side-accent: {color:LM Sidebar accent};
+	--highlight: {color:LM Text highlight};
+	--highlight-bg: {color:LM Text highlight background};
 }
 {block:IfBackgroundAccentImage}
 #bgaccent::before {
