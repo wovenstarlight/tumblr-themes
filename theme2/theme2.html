@@ -221,6 +221,7 @@ img.circle { border-radius: 100% }
 main .title { margin: 0 }
 .page.title { margin-bottom: 1.25em; padding: 0.5em 1em }
 .page.title h2 { margin: 0 }
+body:not(.haspages, .hassearch).narrow1 .page.title, body:not(.haspages, .hassearch).narrow2 .page.title { margin-top: -2em }
 .page.title .tag::before { content: "#" }
 .page.title .search_query::before { content: "\201C" }
 .page.title .search_query::after { content: "\201D" }
@@ -405,12 +406,14 @@ body:not(.light) .feather-sun, body.light .feather-moon { display: none }
 
 /* faux @media calls */
 body.narrow1 .sidecard {
+	--width: min(20em, 45%);
 	margin: 0 auto;
-	width: min(20em, 45%);
+	width: var(--width);
 	--spacing: calc(50% + 0.5em);
 	position: absolute;
 }
 body.narrow1 #bloginfo { right: var(--spacing) }
+body.narrow1:not(.hassearch, .haspages) #bloginfo { right: calc(50% - var(--width)/2) }
 body.narrow1 #pagessearch { left: var(--spacing) }
 body.narrow1 main {
 	position: absolute;
@@ -659,7 +662,7 @@ function updatetops(narrowness) {
 		
 		if (narrowness === "narrow1") {
 			maintop = Math.max(maintop, pagessearchHeight);
-			maintop -= 1.5*em;
+			maintop -= 2.5*em;
 		}
 		else { //narrowness === narrow2
 			searchtop = maintop;
