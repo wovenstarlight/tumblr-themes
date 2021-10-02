@@ -324,17 +324,18 @@ main .post:first-child { margin-top: 0 }
 .bodyitemcontent > *:first-child { margin-top: 0.25em }
 .bodyitemcontent > *:last-child { margin-bottom: 0.25em }
 .bodyitemcontent p { margin: 0.5em 0 }
-.bodyitem .user {
+.user {
 	display: flex;
 	align-items: center;
+	margin-bottom: 0.5em;
 }
-.bodyitem .user.deactivated .username::after {
+.user.deactivated .username::after {
 	content: "(deactivated)";
 	margin-left: 0.5em;
 	opacity: 0.75;
 	font-size: 0.8em;
 }
-.bodyitem .usericon {
+.usericon {
 	width: 2em;
 	height: 2em;
 	margin-right: 0.5em
@@ -370,6 +371,24 @@ main .post:first-child { margin-top: 0 }
 .postbody .chat li:first-child { margin-top: 0 }
 .postbody .chat li:last-child { margin-bottom: 0 }
 .postbody p.npf_chat { font-family: unset }
+.ask {
+	border-radius: var(--roundness);
+	background-color: var(--accent1);
+	padding: 1em;
+}
+.ask .user {
+	margin-bottom: 0.5em;
+	font-style: italic;
+	font-weight: 600
+}
+.bodyitemcontent .read_more {
+	display: block;
+	padding: 0.5em;
+	text-align: center;
+	background: var(--accent2);
+	border-radius: var(--roundness);
+	text-decoration: none;
+}
 .post .below svg { height: 1.2em; width: 1.2em }
 .post .datenotes {
 	background-color: var(--accent1);
@@ -723,6 +742,42 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 				{/block:Lines}
 			</ol>
 		{/block:Chat}
+		
+		
+		{block:Answer}
+		
+			<div class="ask">
+			
+				<div class="user">
+					<img src="{AskerPortraitURL-64}" class="{AvatarShape} usericon">
+					<span class="username">{lang:Asker asked 2}</span>
+				</div>
+				<div class="question">{Question}</div>
+			</div>
+			
+			{block:RebloggedFrom}{block:Answerer}
+			<div class="bodyitem">
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" href="{ReblogRootURL}">
+					<img src="{AnswererPortraitURL-64}" class="{AvatarShape} usericon"/>
+					<span class="username">{ReblogRootName}</span>
+				</a>
+			{/block:Answerer}
+			
+			<div class="bodyitemcontent">{Answer}</div>
+			
+			{block:Answerer}</div>{/block:Answerer}{/block:RebloggedFrom}
+			
+			{block:RebloggedFrom}{block:Reblogs}
+			<div class="bodyitem">
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+					<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+					<span class="username">{Username}</span>
+				</a>
+				<div class="bodyitemcontent">{Body}</div>
+			</div>
+			{/block:Reblogs}{/block:RebloggedFrom}
+			
+		{/block:Answer}
 		
 		
 		</div>
