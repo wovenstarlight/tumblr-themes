@@ -495,10 +495,10 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 	{block:ShowDescription}<div>{Description}</div>{/block:ShowDescription}
 	<div id="cardlinks">
 		<a href="/" title="{lang:Home}"><i data-feather="home"></i></a>
-		{block:IfShowRandomPostLink}<a href="/" title="{lang:Random post}"><i data-feather="shuffle"></i></a>{/block:IfShowRandomPostLink}
-		{block:IfShowArchiveLink}<a href="/" title="{lang:Archive}"><i data-feather="archive"></i></a>{/block:IfShowArchiveLink}
 		{block:AskEnabled}<a href="/" title="{AskLabel}"><i data-feather="mail"></i></a>{/block:AskEnabled}
 		{block:SubmissionsEnabled}<a href="/" title="{SubmitLabel}"><i data-feather="inbox"></i></a>{/block:SubmissionsEnabled}
+		{block:IfShowRandomPostLink}<a href="/" title="{lang:Random post}"><i data-feather="shuffle"></i></a>{/block:IfShowRandomPostLink}
+		{block:IfShowArchiveLink}<a href="/" title="{lang:Archive}"><i data-feather="archive"></i></a>{/block:IfShowArchiveLink}
 	</div>
 		
 	{block:IfShowGroupBlogMembers}{block:GroupMembers}
