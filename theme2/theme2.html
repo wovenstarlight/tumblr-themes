@@ -16,8 +16,10 @@
 	<script src="https://unpkg.com/feather-icons"></script>
 	<!-- jQuery CDN -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	{block:IfInfiniteScroll}
 	<!-- Infinite scroll -->
 	<script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
+	{/block:IfInfiniteScroll}
 
 	{block:Hidden}
 	<meta name="text:Google font for body" content="Abel">
@@ -79,7 +81,7 @@
 	<meta name="if:24 hour timestamps" content="0">
 	<meta name="if:Show group blog members" content="0">
 	<meta name="if:Infinite scroll" content="0">
-	<meta name="if:Manual load for infinite scroll" content="0">
+	<meta name="if:Manual load for infinite scroll" content="1">
 	{/block:Hidden}
 	
 	{block:IfNotUseTumblrFonts}<link href="https://fonts.googleapis.com/css2?family={text:Google font for body}:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet"> {/block:IfNotUseTumblrFonts}
