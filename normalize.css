@@ -347,3 +347,8 @@ template {
 [hidden] {
 	display: none;
 }
+
+/* ADDITION: Set consistent box sizing for everything */
+* {
+	box-sizing: border-box;
+}
