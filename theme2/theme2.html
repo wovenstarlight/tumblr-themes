@@ -9,8 +9,14 @@
 	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
 	<link rel="alternate" type="application/rss+xml" href="{RSS}">
 
+	<!-- Tippy.js tooltips by atomiks -->
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
+	<!-- Feather SVG icons -->
 	<script src="https://unpkg.com/feather-icons"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<!-- jQuery CDN -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 	{block:Hidden}
 	<meta name="text:Google font for body" content="Abel">
 	<meta name="font:Tumblr font for body" content="Capita">
@@ -588,6 +594,24 @@ body.narrow2 .sidecard {
 body.narrow2 #pagessearch { top: calc(35% + var(--top)) }
 body.narrow2 main { top: calc(35% + var(--top)) }
 
+.tippy-box[data-theme~='standard'] {
+  background-color: var(--accent1);
+  color: var(--headings);
+  filter: drop-shadow(0 0 0.25em #1119);
+}
+.tippy-box[data-theme~='standard'][data-placement^='top'] > .tippy-arrow::before {
+  border-top-color: var(--accent1);
+}
+.tippy-box[data-theme~='standard'][data-placement^='bottom'] > .tippy-arrow::before {
+  border-bottom-color: var(--accent1);
+}
+.tippy-box[data-theme~='standard'][data-placement^='left'] > .tippy-arrow::before {
+  border-left-color: var(--accent1);
+}
+.tippy-box[data-theme~='standard'][data-placement^='right'] > .tippy-arrow::before {
+  border-right-color: var(--accent1);
+}
+
 /* Custom CSS */
 {CustomCSS}
 </style>
@@ -604,11 +628,11 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 	</a>
 	{block:ShowDescription}<div>{Description}</div>{/block:ShowDescription}
 	<div id="cardlinks">
-		<a href="/" title="{lang:Home}"><i data-feather="home"></i></a>
-		{block:AskEnabled}<a href="/ask" title="{AskLabel}"><i data-feather="mail"></i></a>{/block:AskEnabled}
-		{block:SubmissionsEnabled}<a href="/submit" title="{SubmitLabel}"><i data-feather="inbox"></i></a>{/block:SubmissionsEnabled}
-		{block:IfShowRandomPostLink}<a href="/random" title="{lang:Random post}"><i data-feather="shuffle"></i></a>{/block:IfShowRandomPostLink}
-		{block:IfShowArchiveLink}<a href="/archive" title="{lang:Archive}"><i data-feather="archive"></i></a>{/block:IfShowArchiveLink}
+		<a href="/" data-tippy-content="{lang:Home}"><i data-feather="home"></i></a>
+		{block:AskEnabled}<a href="/ask" data-tippy-content="{AskLabel}"><i data-feather="mail"></i></a>{/block:AskEnabled}
+		{block:SubmissionsEnabled}<a href="/submit" data-tippy-content="{SubmitLabel}"><i data-feather="inbox"></i></a>{/block:SubmissionsEnabled}
+		{block:IfShowRandomPostLink}<a href="/random" data-tippy-content="{lang:Random post}"><i data-feather="shuffle"></i></a>{/block:IfShowRandomPostLink}
+		{block:IfShowArchiveLink}<a href="/archive" data-tippy-content="{lang:Archive}"><i data-feather="archive"></i></a>{/block:IfShowArchiveLink}
 	</div>
 		
 	{block:IfShowGroupBlogMembers}{block:GroupMembers}
@@ -646,20 +670,20 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 		
 	{block:Posts}
 	<section class="post">
-		{block:PinnedPostLabel}<span id="pinnedpost" title="{PinnedPostLabel}"><i data-feather="star"></i></span>{/block:PinnedPostLabel}
+		{block:PinnedPostLabel}<span id="pinnedpost" data-tippy-content="{PinnedPostLabel}"><i data-feather="star"></i></span>{/block:PinnedPostLabel}
 		{block:Date}
 		<div class="right actions">
-			<a href="#" class="customlike">
+			<a data-tippy-content="Like" href="#" class="customlike">
 				{LikeButton size="30"}
 				<i data-feather="heart"></i>
 			</a>
-			<a href="{ReblogURL}"><i data-feather="repeat"></i></a>
-			<a title="{lang:Permalink}" href="{Permalink}"><i data-feather="link"></i></a>
+			<a  data-tippy-content="Reblog" href="{ReblogURL}"><i data-feather="repeat"></i></a>
+			<a data-tippy-content="{lang:Permalink}" href="{Permalink}"><i data-feather="link"></i></a>
 		</div>
 		{block:RebloggedFrom}
 		<div class="left actions">
-			<a title="{lang:Reblogged from ReblogParentName}" href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-40}" class="circle"></a>
-			<a title="{lang:Originally from ReblogRootName}" href="{ReblogRootURL}"><img src="{ReblogRootPortraitURL-40}" class="circle"></a>
+			<a data-tippy-content="{lang:Reblogged from ReblogParentName}" href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-40}" class="circle"></a>
+			<a data-tippy-content="{lang:Originally from ReblogRootName}" href="{ReblogRootURL}"><img src="{ReblogRootPortraitURL-40}" class="circle"></a>
 		</div>
 		{/block:RebloggedFrom}
 		{/block:Date}
@@ -939,25 +963,25 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 	
 	{block:Pagination}
 	<nav id="navigation">
-		{block:PreviousPage}<a href="{PreviousPage}" title="{lang:Previous page}"><i data-feather="chevron-left"></i></a>{/block:PreviousPage}
+		{block:PreviousPage}<a href="{PreviousPage}" data-tippy-content="{lang:Previous page}"><i data-feather="chevron-left"></i></a>{/block:PreviousPage}
 		<span>{lang:CurrentPage of TotalPages}</span>
-		{block:NextPage}<a href="{NextPage}" title="{lang:Next page}"><i data-feather="chevron-right"></i></a>{/block:NextPage}
+		{block:NextPage}<a href="{NextPage}" data-tippy-content="{lang:Next page}"><i data-feather="chevron-right"></i></a>{/block:NextPage}
 	</nav>
 	{/block:Pagination}
 		
 	{block:PermalinkPagination}
 	<nav id="navigation">
-		{block:PreviousPost}<a href="{PreviousPost}" title="{lang:Previous post}"><i data-feather="chevron-left"></i></a>{/block:PreviousPost}
+		{block:PreviousPost}<a href="{PreviousPost}" data-tippy-content="{lang:Previous post}"><i data-feather="chevron-left"></i></a>{/block:PreviousPost}
 		<span>{lang:See more posts}</span>
-		{block:NextPost}<a href="{NextPost}" title="{lang:Next post}"><i data-feather="chevron-right"></i></a>{/block:NextPost}
+		{block:NextPost}<a href="{NextPost}" data-tippy-content="{lang:Next post}"><i data-feather="chevron-right"></i></a>{/block:NextPost}
 	</nav>
 	{/block:PermalinkPagination}
 		
 	{block:DayPagination}
 	<nav id="navigation">
-		{block:PreviousDayPage}<a href="{PreviousDayPage}" title="{lang:Previous day}"><i data-feather="chevron-left"></i></a>{/block:PreviousDayPage}
+		{block:PreviousDayPage}<a href="{PreviousDayPage}" data-tippy-content="{lang:Previous day}"><i data-feather="chevron-left"></i></a>{/block:PreviousDayPage}
 		<span>{lang:See more posts}</span>
-		{block:NextDayPage}<a href="{NextDayPage}" title="{lang:Next day}"><i data-feather="chevron-right"></i></a>{/block:NextDayPage}
+		{block:NextDayPage}<a href="{NextDayPage}" data-tippy-content="{lang:Next day}"><i data-feather="chevron-right"></i></a>{/block:NextDayPage}
 	</nav>
 	{/block:DayPagination}
 </main>
@@ -978,18 +1002,30 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 </section>
 
 <div id="credits">
-	<a href="https://starlightthemes.tumblr.com/theme2" title="{lang:Install this theme}"><i data-feather="download"></i></a>
+	<a href="https://starlightthemes.tumblr.com/theme2" data-tippy-content="{lang:Install this theme}"><i data-feather="download"></i></a>
 	{block:IfShowColorModeToggle}
-	<a title="Toggle light/dark mode" onclick="$('body').toggleClass('light')">
+	<a data-tippy-content="Toggle light/dark mode" onclick="$('body').toggleClass('light')">
 		<i data-feather="sun"></i>
 		<i data-feather="moon"></i>
 	</a>
 	{/block:IfShowColorModeToggle}
-	<a title="© {Name} {CopyrightYears}"><i data-feather="help-circle"></i></a>
+	<a data-tippy-content="© {Name} {CopyrightYears}"><i data-feather="help-circle"></i></a>
 </div>
 
 <script>
 feather.replace();
+
+tippy("#pinnedpost", { theme: 'standard' });
+
+tippy("#cardlinks [data-tippy-content]", { placement: 'bottom', theme: 'standard' });
+
+tippy(".left.actions [data-tippy-content]", { placement: 'left', theme: 'standard' });
+tippy(".right.actions [data-tippy-content]", { placement: 'right', theme: 'standard' });
+
+tippy("#navigation a:first-child", { placement: 'left', theme: 'standard' });
+tippy("#navigation a:last-child", { placement: 'right', theme: 'standard' });
+
+tippy("#credits [data-tippy-content]", { placement: 'left', theme: 'standard' });
 
 var em = parseInt($("body").css("font-size"));
 
