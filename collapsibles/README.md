@@ -35,10 +35,9 @@ No. | Name | Collapsibles CSS file
 Once you've copied the CSS as instructed above and saved it, you're ready to start making collapsible sections!
 
 ## Step 3: Creating sections in your page
-Hopefully you already have a blog page you want to put these sections on. If not, then create a page as follows:
-- Go to https://www.tumblr.com/customize/YOUR_BLOG_NAME_HERE (replaced with your blog's name).
-- Scroll to the bottom of the Customize menu.
-- Above "Advanced options", select the option reading `Add a page +`. This will open the page editor on a blank page.
+If you don't already have a custom blog page you want to put these sections on:
+- Back out of "Advanced options" into the main Customize page.
+- Just above "Advanced options", select the option reading `Add a page +`. This will open the page editor on a blank page in Standard Layout mode.
 
 If your target page is already created, click that instead to open the page editor.
 
