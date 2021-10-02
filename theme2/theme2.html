@@ -361,6 +361,35 @@ main .post:first-child { margin-top: 0 }
 .post .tags a { margin-right: 0.2em; text-decoration: none }
 .post .tags a:not(:last-child)::after { content: "," }
 
+.post.notes { padding: 0.5em 1em }
+.post.notes .title { text-align: center }
+.post.notes ol {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post.notes li {
+	margin: 0.25em 0;
+	display: flex;
+	align-items: center;
+	column-gap: 0.5em;
+}
+.post.notes .avatar {
+	--size: 1.5em;
+	width: var(--size);
+	height: var(--size);
+	border-radius: 100%;
+}
+.post.notes .more_notes_link,
+.post.notes .notes_loading {
+	background: var(--accent2);
+	margin: 0.5em;
+	padding: 0.5em;
+	width: 100%;
+	border-radius: var(--roundness);
+}
+.post.notes .more_notes_link:hover { filter: contrast(1.2) }
+
 #navigation {
 	display: flex;
 	align-items: center;
@@ -585,9 +614,17 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 		{/block:Date}
 	</section>
 	{/block:Posts}
-		
-		
-		
+	
+	
+	{block:PostNotes}
+	<section class="post notes">
+		<h2 class="title">{lang:Notes}</h2>
+		{PostNotes-64}
+	</section>
+	{/block:PostNotes}
+	
+	
+	
 	{block:Pagination}
 	<nav id="navigation">
 		{block:PreviousPage}<a href="{PreviousPage}" title="{lang:Previous page}"><i data-feather="chevron-left"></i></a>{/block:PreviousPage}
