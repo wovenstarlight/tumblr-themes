@@ -990,9 +990,9 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 <script>
 feather.replace();
 
-var em = parseInt("{text:Font size}");
+var em = parseInt($("body").css("font-size"));
 
-var narrow1width = ( parseInt("{text:Post width}")
+var narrow1width = ( parseInt($("body").css("--post-width"))
 					+ $("#bloginfo").width() + 3*em );
 
 if ($("body").hasClass("haspages") || $("body").hasClass("hassearch")) {
