@@ -79,9 +79,12 @@ em, i { color: {color:Italics} }
 /* Rounding overall */
 .sidecard, .post, form input, #pagessearch a, .page.title { border-radius: var(--roundness) }
 /*Rounding top edges*/
-.post .title a, .sidecard::before { border-top-left-radius: var(--roundness); border-top-right-radius: var(--roundness) }
+.post .title a,
+.sidecard::before,
+.bodyitemcontent .link :first-child { border-top-left-radius: var(--roundness); border-top-right-radius: var(--roundness) }
 /*Rounding bottom edges*/
-.post .below:last-child { border-bottom-left-radius: var(--roundness); border-bottom-right-radius: var(--roundness) }
+.post .below:last-child,
+.bodyitemcontent .link :last-child { border-bottom-left-radius: var(--roundness); border-bottom-right-radius: var(--roundness) }
 
 #bgaccent {
 	background: var(--bg-accent);
@@ -342,6 +345,31 @@ main .post:first-child { margin-top: 0 }
 }
 .quote h2 { margin: 0.25em 0 }
 .quote p { margin: 0.25em 0.5em }
+.postbody .link {
+	display: flex;
+	flex-direction: column;
+	text-decoration: none;
+	margin: 0.75em 0;
+}
+.postbody .link .name {
+	background-color: var(--accent2);
+	font-size: 1.25em;
+	padding: 0.5em 1em;
+}
+.postbody .link .excerpt {
+	color: var(--text);
+	background-color: var(--accent1);
+	padding: 0.5em 1.25em;
+}
+.postbody .chat {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.postbody .chat li { margin: 0.5em 0 }
+.postbody .chat li:first-child { margin-top: 0 }
+.postbody .chat li:last-child { margin-bottom: 0 }
+.postbody p.npf_chat { font-family: unset }
 .post .below svg { height: 1.2em; width: 1.2em }
 .post .datenotes {
 	background-color: var(--accent1);
@@ -618,8 +646,8 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
-    				<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
-    				<span class="username">{Username}</span>
+					<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+					<span class="username">{Username}</span>
 				</a>
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
@@ -652,11 +680,49 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 		
 		
 		{block:Quote}
-		    <div class="quote">
-    			<h2>{Quote}</h2>
-    			{block:Source}<p>— {Source}</p>{/block:Source}
+			<div class="quote">
+				<h2>{Quote}</h2>
+				{block:Source}<p>— {Source}</p>{/block:Source}
 			</div>
 		{/block:Quote}
+		
+		
+		{block:Link}
+			
+			{block:NotReblog}
+			<div class="bodyitemcontent">{Caption}</div>
+			{/block:NotReblog}
+			
+			{block:RebloggedFrom}{block:Reblogs}
+			<div class="bodyitem">
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+					<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+					<span class="username">{Username}</span>
+				</a>
+				<div class="bodyitemcontent">
+					{block:IsOriginalEntry}
+					<a class="link" href="{URL}" {Target}>
+						{block:Thumbnail}<img href="{Thumbnail}">{/block:Thumbnail}
+						<span class="name">{Name}{block:Author} — {Author}{/block:Author}</span>
+						{block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}
+					</a>
+					{/block:IsOriginalEntry}
+					{Body}
+				</div>
+			</div>
+			{/block:Reblogs}{/block:RebloggedFrom}
+			
+		{/block:Link}
+		
+		
+		{block:Chat}
+			<ol class="chat">
+				{block:Lines}
+				{block:Label}
+				<li><strong>{Label}</strong> {/block:Label}{Line}</li>
+				{/block:Lines}
+			</ol>
+		{/block:Chat}
 		
 		
 		</div>
