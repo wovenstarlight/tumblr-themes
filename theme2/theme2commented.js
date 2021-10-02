@@ -77,5 +77,3 @@ $(window).resize( function() {
 
 // Position everything on initial pageload
 $(window).resize();
-
-</script>
