@@ -12,7 +12,7 @@
 		NPF photosets fix by glenthemes: https://glenthemes.tumblr.com/post/659034084446748672/npf-images-v3
 		Dark/light mode toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 
-	Last updated 28 Sep 2021.
+	Last updated 3 Oct 2021.
 -->
 
 <!DOCTYPE html>
@@ -328,7 +328,7 @@ body.light em, body.light i { color: {color:Light mode italics} }
 	</div>
 </header>
 
-<main id="allposts" {block:IfInfiniteScroll}data-infinite-scroll='{ "path": ".paginate .next", "append": ".post", "history": false{block:IfManualLoadForInfiniteScroll}, "button": "#iscroll", "scrollThreshold": false{/block:IfManualLoadForInfiniteScroll} }'{/block:IfInfiniteScroll}>
+<main id="allposts">
 	
 	{block:AskPage}
 	<div class="ask-submit-wrapper">
@@ -920,6 +920,23 @@ body.light em, body.light i { color: {color:Light mode italics} }
 		</g>
 	</defs>
 </svg>
+
+{block:IfInfiniteScroll}
+<script>
+	$("#allposts").infiniteScroll({
+		// options
+		path: ".paginate .next",
+		append: ".post",
+		history: false,
+		{block:IfManualLoadForInfiniteScroll}button: "#iscroll",
+		scrollThreshold: false,{/block:IfManualLoadForInfiniteScroll}
+	});
+
+	$("#allposts").on( 'append.infiniteScroll', function( event, body, path, items, response ) {
+		tippy(".timestamp [data-tippy-content], .actions [data-tippy-content]", { theme: "default" });
+	});
+</script>
+{/block:IfInfiniteScroll}
 
 {block:HasPages}
 {block:PermalinkPage}
