@@ -340,8 +340,8 @@ main .post:first-child { margin-top: 0 }
 	font-size: 0.8em;
 	color: {color:Links};
 }
-.datenotes .date:not(:hover) .today { opacity: 0 }
-.datenotes .date .today:hover { text-decoration: underline }
+.datenotes:not(:hover) .today { opacity: 0 }
+.datenotes .today:hover { text-decoration: underline }
 .post .tags {
 	background-color: {color:Post accent 2};
 	padding: 0.5em;
@@ -546,13 +546,11 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 		{block:Date}
 		
 		<div class="datenotes below">
-			<span class="date">
-				<a href="{Permalink}">
-					<i data-feather="clock"></i>
+			<a class="date" href="{Permalink}">
+				<i data-feather="clock"></i>
 				{DayOfMonth} {ShortMonth} {Year}{block:IfShowTimestamp} at {block:If24HourTimestamps}{24Hour}{/block:If24HourTimestamps}{block:IfNot24HourTimestamps}{12Hour}{/block:IfNot24HourTimestamps}:{Minutes}{block:IfNot24HourTimestamps} {CapitalAmPm}{/block:IfNot24HourTimestamps}{/block:IfShowTimestamp}
-				</a>
-				<a class="today" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">({lang:Show all posts made on this day})</a>
-			</span>
+			</a>
+			<a class="today" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">({lang:Show all posts made on this day})</a>
 			{block:NoteCount}
 			<a class="notes" href="{Permalink}">
 				{NoteCountWithLabel}
