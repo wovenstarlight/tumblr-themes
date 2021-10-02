@@ -709,7 +709,14 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 		{block:Link}
 			
 			{block:NotReblog}
-			<div class="bodyitemcontent">{Caption}</div>
+			<div class="bodyitemcontent">
+				<a class="link" href="{URL}" {Target}>
+					{block:Thumbnail}<img href="{Thumbnail}">{/block:Thumbnail}
+					<span class="name">{Name}{block:Author} — {Author}{/block:Author}</span>
+					{block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}
+				</a>
+				{Body}
+			</div>
 			{/block:NotReblog}
 			
 			{block:RebloggedFrom}{block:Reblogs}
