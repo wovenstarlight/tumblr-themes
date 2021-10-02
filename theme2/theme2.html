@@ -370,15 +370,21 @@ main .post:first-child { margin-top: 0 }
 }
 .post.notes li {
 	margin: 0.25em 0;
-	display: flex;
+	display: grid;
 	align-items: center;
 	column-gap: 0.5em;
+	grid-template-columns: auto 1fr;
 }
 .post.notes .avatar {
 	--size: 1.5em;
 	width: var(--size);
 	height: var(--size);
 	border-radius: 100%;
+}
+.post.notes .note blockquote {
+	margin: 0;
+	padding-left: 0.75em;
+	border-left: 0.2em solid var(--accent1);
 }
 .post.notes .more_notes_link,
 .post.notes .notes_loading {
