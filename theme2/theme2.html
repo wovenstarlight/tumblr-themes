@@ -4,13 +4,17 @@
 	<meta charset="utf-8">
 	<title>{Title}{block:TagPage} ({lang:Posts tagged Tag}){/block:TagPage}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
 	<meta name="description" content="{MetaDescription}">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family={text:Body font}:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+
 	<script src="https://unpkg.com/feather-icons"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	{block:Hidden}
-	<meta name="text:Body font" content="Abel">
+	<meta name="text:Google font for body" content="Abel">
+	<meta name="font:Tumblr font for body" content="Capita">
+	<meta name="if:Use Tumblr fonts" content="0">
 	<meta name="text:Font size" content="16px">
 	<meta name="color:Text" content="#e5e5e5">
 	<meta name="color:Headings" content="#ffffff">
@@ -45,17 +49,15 @@
 	<meta name="if:Show group blog members" content="0">
 	{/block:Hidden}
 	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<meta name="theme-color" content="#35465D">
-	<link rel="shortcut icon" href="{Favicon}">
-	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
-	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+	{block:IfNotUseTumblrFonts}<link href="https://fonts.googleapis.com/css2?family={text:Google font for body}:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet"> {/block:IfNotUseTumblrFonts}
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
 
 <style>
 body {
 	--text: {color:Text};
+	--text--rgb: {RGBcolor:Text};
 	--links: {color:Links};
+	--links--rgb: {RGBcolor:Links};
 	--roundness: {select:Roundness of edges};
 	--bg-accent: {color:Background accent};
 	--accent1: {color:Post accent 1};
@@ -64,7 +66,7 @@ body {
 	background-color: {color:Background};
 	color: var(--text);
 	font-size: {text:Font size};
-	font-family: {text:Body font};
+	font-family: {block:IfUseTumblrFonts}{font:Tumblr font for body}, {/block:IfUseTumblrFonts}{text:Google font for body};
 }
 a {
 	color: var(--links);
@@ -323,7 +325,7 @@ main .post:first-child { margin-top: 0 }
 }
 .postbody .photowrapper:not(:hover) .highres { display: none }
 .bodyitem { padding: 1em 0 }
-.bodyitem:not(:last-of-type) { border-bottom: thin solid rgba({RGBcolor:Links}, 0.3) }
+.bodyitem:not(:last-of-type) { border-bottom: thin solid rgba(var(--links--rgb), 0.3) }
 .bodyitem:first-of-type { padding-top: 0 }
 .bodyitem:last-of-type { padding-bottom: 0 }
 .bodyitemcontent > *:first-child { margin-top: 0.25em }
@@ -449,7 +451,7 @@ main .post:first-child { margin-top: 0 }
 blockquote {
 	margin: 0.5em;
 	padding-left: 0.75em;
-	border-left: 0.2em solid rgba({RGBcolor:Text}, 0.6);
+	border-left: 0.2em solid rgba(var(--text--rgb), 0.6);
 }
 .post.notes .more_notes_link,
 .post.notes .notes_loading {
