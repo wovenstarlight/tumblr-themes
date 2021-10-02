@@ -16,24 +16,41 @@
 	<meta name="font:Tumblr font for body" content="Capita">
 	<meta name="if:Use Tumblr fonts" content="0">
 	<meta name="text:Font size" content="16px">
+	<meta name="text:Post width" content="600px">
+	
 	<meta name="color:Text" content="#e5e5e5">
 	<meta name="color:Headings" content="#ffffff">
 	<meta name="color:Links" content="#ff9e29">
 	<meta name="color:Links hover" content="#ffc37a">
 	<meta name="color:Bold" content="#ff9781">
 	<meta name="color:Italics" content="#fff382">
-	<meta name="text:Post width" content="600px">
 	<meta name="color:Post background" content="#443124">
 	<meta name="color:Post accent 1" content="#465a32">
 	<meta name="color:Post accent 2" content="#183914">
 	<meta name="color:Background" content="#393c3b">
 	<meta name="color:Background accent" content="#252525">
+	<meta name="color:Sidebar accent" content="#a4704b">
+	
+	<meta name="if:Show color mode toggle" content="1">
+	<meta name="if:Default to light mode" content="0">
+	<meta name="color:LM Text" content="#370033">
+	<meta name="color:LM Headings" content="#6a0090">
+	<meta name="color:LM Links" content="#c70070">
+	<meta name="color:LM Links hover" content="#be0024">
+	<meta name="color:LM Bold" content="#730000">
+	<meta name="color:LM Italics" content="#5f00a1">
+	<meta name="color:LM Post background" content="#e9cfdf">
+	<meta name="color:LM Post accent 1" content="#ebaccd">
+	<meta name="color:LM Post accent 2" content="#ffc5d3">
+	<meta name="color:LM Background" content="#704e86">
+	<meta name="color:LM Background accent" content="#31244d">
+	<meta name="color:LM Sidebar accent" content="#c2208a">
+	
 	<meta name="image:Background accent" content="{HeaderImage}">
 	<meta name="select:Background image size" title="cover" content="no-repeat; background-size: cover">
 	<meta name="select:Background image size" title="contain" content="no-repeat; background-size: contain">
 	<meta name="select:Background image size" title="tiled" content="repeat">
 	<meta name="text:Background image opacity" content="1">
-	<meta name="color:Sidebar accent" content="#a4704b">
 	<meta name="image:Sidebar accent">
 	<meta name="text:Custom links title" content="Links">
 	<meta name="if:Show Random post link" content="1">
@@ -56,17 +73,40 @@
 body {
 	--text: {color:Text};
 	--text--rgb: {RGBcolor:Text};
+	--headings: {color:Headings};
 	--links: {color:Links};
 	--links--rgb: {RGBcolor:Links};
-	--roundness: {select:Roundness of edges};
-	--bg-accent: {color:Background accent};
+	--links-hover: {color:Links hover};
+	--bold: {color:Bold};
+	--italics: {color:Italics};
+	--post-bg: {color:Post background};
 	--accent1: {color:Post accent 1};
 	--accent2: {color:Post accent 2};
+	--bg: {color:Background};
+	--bg-accent: {color:Background accent};
+	--side-accent: {color:Sidebar accent};
+	--roundness: {select:Roundness of edges};
 	--post-width: {text:Post width};
-	background-color: {color:Background};
+	background-color: var(--bg);
 	color: var(--text);
 	font-size: {text:Font size};
 	font-family: {block:IfUseTumblrFonts}{font:Tumblr font for body}, {/block:IfUseTumblrFonts}{text:Google font for body};
+}
+body.light {
+	--text: {color:LM Text};
+	--text--rgb: {RGBcolor:LM Text};
+	--headings: {color:LM Headings};
+	--links: {color:LM Links};
+	--links--rgb: {RGBcolor:LM Links};
+	--links-hover: {color:LM Links hover};
+	--bold: {color:LM Bold};
+	--italics: {color:LM Italics};
+	--post-bg: {color:LM Post background};
+	--accent1: {color:LM Post accent 1};
+	--accent2: {color:LM Post accent 2};
+	--bg: {color:LM Background};
+	--bg-accent: {color:LM Background accent};
+	--side-accent: {color:LM Sidebar accent};
 }
 a {
 	color: var(--links);
@@ -74,7 +114,7 @@ a {
 	transition-duration: .2s;
 	font-weight: 600;
 }
-a:hover { color: {color:Links hover} }
+a:hover { color: var(--links-hover) }
 a:not(:hover) { text-decoration: none }
 #cardlinks a:hover,
 #blogmembers figure:hover,
@@ -86,8 +126,8 @@ a:not(:hover) { text-decoration: none }
 .bodyitemcontent .read_more:hover {
 	filter: contrast(1.2)
 }
-strong, b { color: {color:Bold} }
-em, i { color: {color:Italics} }
+strong, b { color: var(--bold) }
+em, i { color: var(--italics) }
 /* Rounding overall */
 .sidecard, .post, form input, #pagessearch a, .page.title { border-radius: var(--roundness) }
 /*Rounding top edges*/
@@ -126,13 +166,13 @@ em, i { color: {color:Italics} }
 .sidecard::before {
 	content: "";
 	display: block;
-	background: {color:Sidebar accent}{block:IfSidebarAccentImage} url({imageSidebar accent}){/block:IfSidebarAccentImage} center no-repeat;
+	background: var(--side-accent){block:IfSidebarAccentImage} url({imageSidebar accent}){/block:IfSidebarAccentImage} center no-repeat;
 	background-size: cover;
 	width: 100%;
 	height: 6em;
 }
 .sidecard h2, #pagessearch form label {
-	color: {color:Headings};
+	color: var(--headings);
 	font-size: 1.25em;
 	margin: 0.5em 0.3em 0;
 	font-weight: 600;
@@ -245,7 +285,7 @@ body:not(.haspages, .hassearch).narrow1 .page.title, body:not(.haspages, .hassea
 main .post:first-child { margin-top: 0 }
 .post {
 	margin: 1em 0;
-	background: {color:Post background};
+	background: var(--post-bg);
 	position: relative;
 	overflow: visible;
 }
@@ -540,7 +580,7 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 </style>
 
 </head>
-<body class="{block:HasPages}haspages{/block:HasPages} {block:IfSearchBar}hassearch{/block:IfSearchBar}">
+<body class="{block:HasPages}haspages{/block:HasPages} {block:IfSearchBar}hassearch{/block:IfSearchBar} {block:IfDefaultToLightMode}light{/block:IfDefaultToLightMode}">
 
 <div id="bgaccent"></div>
 
@@ -926,10 +966,12 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 
 <div id="credits">
 	<a href="https://starlightthemes.tumblr.com/theme2" title="{lang:Install this theme}"><i data-feather="download"></i></a>
+	{block:IfShowColorModeToggle}
 	<a title="Toggle light/dark mode" onclick="$('body').toggleClass('light')">
 		<i data-feather="sun"></i>
 		<i data-feather="moon"></i>
 	</a>
+	{/block:IfShowColorModeToggle}
 	<a title="© {Name} {CopyrightYears}"><i data-feather="help-circle"></i></a>
 </div>
 
