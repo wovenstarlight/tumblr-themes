@@ -376,6 +376,7 @@ main .post:first-child { margin-top: 0 }
 .postbody .chat li:first-child { margin-top: 0 }
 .postbody .chat li:last-child { margin-bottom: 0 }
 .postbody p.npf_chat { font-family: unset }
+.audiowrapper iframe, .tumblr_video_container, .tumblr_video_container iframe { width: 100% !important }
 .ask {
 	border-radius: var(--roundness);
 	background-color: var(--accent1);
@@ -752,6 +753,52 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 				{/block:Lines}
 			</ol>
 		{/block:Chat}
+		
+		
+		{block:Audio}
+		
+			<div class="audiowrapper">
+				{AudioEmbed}
+			</div>
+			
+			{block:NotReblog}
+			<div class="bodyitemcontent">{Caption}</div>
+			{/block:NotReblog}
+			
+			{block:RebloggedFrom}{block:Reblogs}
+			<div class="bodyitem">
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+					<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+					<span class="username">{Username}</span>
+				</a>
+				<div class="bodyitemcontent">{Body}</div>
+			</div>
+			{/block:Reblogs}{/block:RebloggedFrom}
+			
+		{/block:Audio}
+		
+		
+		{block:Video}
+		
+			<div class="videowrapper">
+				{Video-500}
+			</div>
+			
+			{block:NotReblog}
+			<div class="bodyitemcontent">{Caption}</div>
+			{/block:NotReblog}
+			
+			{block:RebloggedFrom}{block:Reblogs}
+			<div class="bodyitem">
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+					<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+					<span class="username">{Username}</span>
+				</a>
+				<div class="bodyitemcontent">{Body}</div>
+			</div>
+			{/block:Reblogs}{/block:RebloggedFrom}
+			
+		{/block:Video}
 		
 		
 		{block:Answer}
