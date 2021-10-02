@@ -321,7 +321,17 @@ main .post:first-child { margin-top: 0 }
 .bodyitemcontent > *:first-child { margin-top: 0.25em }
 .bodyitemcontent > *:last-child { margin-bottom: 0.25em }
 .bodyitemcontent p { margin: 0.5em 0 }
-.bodyitem .usericon img {
+.bodyitem .user {
+	display: flex;
+	align-items: center;
+}
+.bodyitem .user.deactivated .username::after {
+	content: "(deactivated)";
+	margin-left: 0.5em;
+	opacity: 0.75;
+	font-size: 0.8em;
+}
+.bodyitem .usericon {
 	width: 2em;
 	height: 2em;
 	margin-right: 0.5em
@@ -557,8 +567,10 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 			
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
-				<a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="{AvatarShape}"/></a>
-				<a class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>{Username}</a>
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>
+    				<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+    				<span class="username">{Username}</span>
+				</a>
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
 			{/block:Reblogs}{/block:RebloggedFrom}
@@ -579,8 +591,10 @@ body.narrow2 main { top: calc(35% + var(--top)) }
 			
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
-				<a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="{AvatarShape}"/></a>
-				<a class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>{Username}</a>
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>
+    				<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+    				<span class="username">{Username}</span>
+				</a>
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
 			{/block:Reblogs}{/block:RebloggedFrom}
