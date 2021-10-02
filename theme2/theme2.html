@@ -74,6 +74,16 @@ a {
 }
 a:hover { color: {color:Links hover} }
 a:not(:hover) { text-decoration: none }
+#cardlinks a:hover,
+#blogmembers figure:hover,
+#pagessearch a:hover,
+.post .actions a:hover,
+.post .title a:hover,
+.post.notes .more_notes_link:hover,
+#navigation a:hover,
+.bodyitemcontent .read_more:hover {
+	filter: contrast(1.2)
+}
 strong, b { color: {color:Bold} }
 em, i { color: {color:Italics} }
 /* Rounding overall */
@@ -158,7 +168,6 @@ em, i { color: {color:Italics} }
 	border-radius: 100%;
 	padding: 0.5em;
 }
-#cardlinks a:hover { filter: contrast(1.2) }
 #bloginfo #blogmembers a { text-decoration: none }
 #blogmembers figure {
 	display: grid;
@@ -170,7 +179,6 @@ em, i { color: {color:Italics} }
 	background: var(--accent2);
 	border-radius: 5em;
 }
-#blogmembers figure:hover { filter: contrast(1.2) }
 #blogmembers figcaption {
 	text-align: center;
 	margin-left: -0.5em;
@@ -187,7 +195,6 @@ body.not(.no-search, .haspages) #pagessearch { left: calc(50% + (var(--post-widt
 	background-color: var(--accent2);
 	font-weight: 600;
 }
-#pagessearch a:hover { filter: contrast(1.2) }
 {block:IfNotSearchBar}
 #pagessearch a:last-of-type { margin-bottom: 1em }
 {/block:IfNotSearchBar}
@@ -292,7 +299,6 @@ main .post:first-child { margin-top: 0 }
 	border-radius: 100%;
 }
 .post .actions a { background-color: var(--accent2) }
-.post .actions a:hover { filter: contrast(1.2) }
 .customlike { position: relative }
 .customlike .like_button {
 	position: absolute;
@@ -304,7 +310,6 @@ main .post:first-child { margin-top: 0 }
 }
 .customlike .like_button.liked + svg { fill: var(--links) }
 .post .title a { padding: 0.25em 1em }
-.post .title a:hover { filter: contrast(1.2) }
 .postbody { padding: 1em }
 .postbody img.photopost { width: 100%; }
 .postbody .photowrapper { position: relative }
@@ -453,7 +458,6 @@ blockquote {
 	grid-column: 1 / span 2;
 	border-radius: var(--roundness);
 }
-.post.notes .more_notes_link:hover { filter: contrast(1.2) }
 
 #navigation {
 	display: flex;
@@ -476,7 +480,6 @@ blockquote {
 	height: var(--size);
 	padding: 0.5em;
 }
-#navigation a:hover { filter: contrast(1.2) }
 #navigation a svg {
 	width: 1em;
 	height: 1em;
