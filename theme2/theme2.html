@@ -1,69 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>{Title}{block:TagPage} ({lang:Posts tagged Tag}){/block:TagPage}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
-    <meta name="description" content="{MetaDescription}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family={text:Body font}:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet"> 
-    <script src="https://unpkg.com/feather-icons"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    {block:Hidden}
-    <meta name="text:Body font" content="Abel">
-    <meta name="text:Font size" content="16px">
-    <meta name="color:Text" content="#e5e5e5">
-    <meta name="color:Headings" content="#ffffff">
-    <meta name="color:Links" content="#ff9e29">
-    <meta name="color:Links hover" content="#ffc37a">
-    <meta name="color:Bold" content="#ff9781">
-    <meta name="color:Italics" content="#fff382">
-    <meta name="text:Post width" content="600px">
-    <meta name="color:Post background" content="#443124">
-    <meta name="color:Post accent 1" content="#465a32">
-    <meta name="color:Post accent 2" content="#183914">
-    <meta name="color:Background" content="#393c3b">
-    <meta name="color:Background accent" content="#252525">
-    <meta name="image:Background accent" content="{HeaderImage}">
-    <meta name="select:Background image size" title="cover" content="no-repeat; background-size: cover">
-    <meta name="select:Background image size" title="contain" content="no-repeat; background-size: contain">
-    <meta name="select:Background image size" title="tiled" content="repeat">
-    <meta name="text:Background image opacity" content="1">
-    <meta name="color:Sidebar accent" content="#a4704b">
-    <meta name="image:Sidebar accent">
-    <meta name="text:Custom links title" content="Links">
-    <meta name="if:Show Random post link" content="1">
-    <meta name="if:Show Archive link" content="1">
-    <meta name="if:Search bar" content="1">
-    <meta name="select:Roundness of edges" title="Least" content="0.25rem">
-    <meta name="select:Roundness of edges" title="None" content="0">
-    <meta name="select:Roundness of edges" title="Less" content="0.5rem">
-    <meta name="select:Roundness of edges" title="More" content="0.75rem">
-    <meta name="select:Roundness of edges" title="Most" content="1.25rem">
+	<meta charset="utf-8">
+	<title>{Title}{block:TagPage} ({lang:Posts tagged Tag}){/block:TagPage}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+	<meta name="description" content="{MetaDescription}">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family={text:Body font}:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet"> 
+	<script src="https://unpkg.com/feather-icons"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	{block:Hidden}
+	<meta name="text:Body font" content="Abel">
+	<meta name="text:Font size" content="16px">
+	<meta name="color:Text" content="#e5e5e5">
+	<meta name="color:Headings" content="#ffffff">
+	<meta name="color:Links" content="#ff9e29">
+	<meta name="color:Links hover" content="#ffc37a">
+	<meta name="color:Bold" content="#ff9781">
+	<meta name="color:Italics" content="#fff382">
+	<meta name="text:Post width" content="600px">
+	<meta name="color:Post background" content="#443124">
+	<meta name="color:Post accent 1" content="#465a32">
+	<meta name="color:Post accent 2" content="#183914">
+	<meta name="color:Background" content="#393c3b">
+	<meta name="color:Background accent" content="#252525">
+	<meta name="image:Background accent" content="{HeaderImage}">
+	<meta name="select:Background image size" title="cover" content="no-repeat; background-size: cover">
+	<meta name="select:Background image size" title="contain" content="no-repeat; background-size: contain">
+	<meta name="select:Background image size" title="tiled" content="repeat">
+	<meta name="text:Background image opacity" content="1">
+	<meta name="color:Sidebar accent" content="#a4704b">
+	<meta name="image:Sidebar accent">
+	<meta name="text:Custom links title" content="Links">
+	<meta name="if:Show Random post link" content="1">
+	<meta name="if:Show Archive link" content="1">
+	<meta name="if:Search bar" content="1">
+	<meta name="select:Roundness of edges" title="Least" content="0.25rem">
+	<meta name="select:Roundness of edges" title="None" content="0">
+	<meta name="select:Roundness of edges" title="Less" content="0.5rem">
+	<meta name="select:Roundness of edges" title="More" content="0.75rem">
+	<meta name="select:Roundness of edges" title="Most" content="1.25rem">
 	<meta name="if:Show timestamp" content="1">
 	<meta name="if:24 hour timestamps" content="0">
 	<meta name="if:Show group blog members" content="0">
-    {/block:Hidden}
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#35465D">
-    <link rel="shortcut icon" href="{Favicon}">
-    <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
-    <link rel="alternate" type="application/rss+xml" href="{RSS}">
-    <link rel="stylesheet" href="https://static.tumblr.com/ryx1vdv/Pzbqkttjt/main-min.css">
+	{/block:Hidden}
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="theme-color" content="#35465D">
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
 
 <style>
 body {
-    background-color: {color:Background};
-    color: {color:Text};
-    font-size: {text:Font size};
-    font-family: {text:Body font};
+	background-color: {color:Background};
+	color: {color:Text};
+	font-size: {text:Font size};
+	font-family: {text:Body font};
 }
 a {
-    color: {color:Links};
-    transition-property: color, filter;
-    transition-duration: .2s;
-    font-weight: 600;
+	color: {color:Links};
+	transition-property: color, filter;
+	transition-duration: .2s;
+	font-weight: 600;
 }
 a:hover { color: {color:Links hover} }
 a:not(:hover) { text-decoration: none }
@@ -77,20 +76,20 @@ em, i { color: {color:Italics} }
 .post .below:last-child { border-bottom-left-radius: {select:Roundness of edges}; border-bottom-right-radius: {select:Roundness of edges} }
 
 #bgaccent {
-    background: {color:Background accent};
-    position: fixed;
-    width: 100%;
-    height: 35%;
-    z-index: -1;
+	background: {color:Background accent};
+	position: fixed;
+	width: 100%;
+	height: 35%;
+	z-index: -1;
 }
 {block:IfBackgroundAccentImage}
 #bgaccent::before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    display: block;
-    background: url({image:Background accent}) center {select:Background image size};
-    opacity: {text:Background image opacity};
+	content: "";
+	width: 100%;
+	height: 100%;
+	display: block;
+	background: url({image:Background accent}) center {select:Background image size};
+	opacity: {text:Background image opacity};
 }
 {/block:IfBackgroundAccentImage}
 
@@ -117,7 +116,7 @@ em, i { color: {color:Italics} }
 }
 #bloginfo {
 	right: calc(50% + ({text:Post width}/2) + 3em);
-    padding-bottom: {block:ShowDescription}1em{/block:ShowDescription}{block:HideDescription}2em{/block:HideDescription};
+	padding-bottom: {block:ShowDescription}1em{/block:ShowDescription}{block:HideDescription}2em{/block:HideDescription};
 }
 #bloginfo::before { margin-bottom: {block:ShowAvatar}3em{/block:ShowAvatar}{block:HideAvatar}0.5em{/block:HideAvatar} }
 #title img {
@@ -138,7 +137,7 @@ em, i { color: {color:Italics} }
 	column-gap: 0.5em;
 }
 #cardlinks a {
-    background-color: {color:Post accent 2};
+	background-color: {color:Post accent 2};
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -170,11 +169,11 @@ em, i { color: {color:Italics} }
 #pagessearch { left: calc(50% + ({text:Post width}/2) + 3em) }
 body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post width}/2)) }
 #pagessearch a {
-    display: block;
-    margin: 0.25em 1em;
-    padding: 0.175em 0.5em;
-    background-color: {color:Post accent 2};
-    font-weight: 600;
+	display: block;
+	margin: 0.25em 1em;
+	padding: 0.175em 0.5em;
+	background-color: {color:Post accent 2};
+	font-weight: 600;
 }
 #pagessearch a:hover { filter: contrast(1.2) }
 {block:IfNotSearchBar}
@@ -182,7 +181,7 @@ body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post widt
 {/block:IfNotSearchBar}
 #pagessearch form { margin: 1em; position: relative }
 #pagessearch form input {
-    width: 100%;
+	width: 100%;
 	background: {color:Post accent 2};
 	border: none;
 	color: {color:Text};
@@ -229,20 +228,20 @@ main .post:first-child { margin-top: 0 }
 	overflow: visible;
 }
 #pinnedpost {
-    position: absolute;
-    background: #252525;
-    color: #ff9e29;
-    {block:IfNotBackgroundAccentImage}border: thin solid;{/block:IfNotBackgroundAccentImage}
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.4em;
-    height: 1.4em;
-    border-radius: 100%;
-    padding: 0.5em;
-    top: -1.1em;
-    left: -1.1em;
-    z-index: 1;
+	position: absolute;
+	background: #252525;
+	color: #ff9e29;
+	{block:IfNotBackgroundAccentImage}border: thin solid;{/block:IfNotBackgroundAccentImage}
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.4em;
+	height: 1.4em;
+	border-radius: 100%;
+	padding: 0.5em;
+	top: -1.1em;
+	left: -1.1em;
+	z-index: 1;
 }
 .post .actions,
 #credits {
@@ -252,15 +251,15 @@ main .post:first-child { margin-top: 0 }
 	row-gap: 0.5em;
 }
 .post .actions {
-    position: sticky;
-    top: calc(35% - 6em);
-    z-index: 1;
+	position: sticky;
+	top: calc(35% - 6em);
+	z-index: 1;
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
 .post .right.actions {
-    float: right;
-    margin-right: -2.5em;
+	float: right;
+	margin-right: -2.5em;
 }
 .post .left.actions {
 	float: left;
@@ -281,12 +280,12 @@ main .post:first-child { margin-top: 0 }
 .post .actions a:hover { filter: contrast(1.2) }
 .customlike { position: relative }
 .customlike .like_button {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
 }
 .customlike .like_button.liked + svg { fill: {color:Links} }
 .post .title a { padding: 0.25em 1em }
@@ -316,22 +315,22 @@ main .post:first-child { margin-top: 0 }
 	margin-right: 0.5em
 }
 .bodyitemcontent div.npf_row {
-    width: 100%;
-    margin: auto;
+	width: 100%;
+	margin: auto;
 }
 .post .below svg { height: 1.2em; width: 1.2em }
 .post .datenotes {
-    background-color: {color:Post accent 1};
-    padding: 0.5em;
-    display: flex;
-    justify-content: space-between;
+	background-color: {color:Post accent 1};
+	padding: 0.5em;
+	display: flex;
+	justify-content: space-between;
 }
 .post .datenotes a {
 	display: flex;
 	align-items: center;
 	column-gap: 0.25em;
 	color: {color:Text};
-    text-decoration: none;
+	text-decoration: none;
 }
 .post .datenotes span svg { height: 1.25em }
 .datenotes .date { display: flex; column-gap: 0.5em }
@@ -344,8 +343,8 @@ main .post:first-child { margin-top: 0 }
 .datenotes .date:not(:hover) .today { opacity: 0 }
 .datenotes .date .today:hover { text-decoration: underline }
 .post .tags {
-    background-color: {color:Post accent 2};
-    padding: 0.5em;
+	background-color: {color:Post accent 2};
+	padding: 0.5em;
 }
 .post .tags svg { vertical-align: middle; margin-right: 0.25em }
 .post .tags a { margin-right: 0.2em; text-decoration: none }
@@ -402,200 +401,200 @@ body:not(.light) .feather-sun, body.light .feather-moon { display: none }
 <div id="bgaccent"></div>
 
 <section id="bloginfo" class="sidecard">
-    <a href="/" id="title">
-        {block:ShowAvatar}<img src="{PortraitURL-128}" class="{AvatarShape}" />{/block:ShowAvatar}
-        {block:ShowTitle}<h2>{Title}</h2>{/block:ShowTitle}
-    </a>
-    {block:ShowDescription}<div>{Description}</div>{/block:ShowDescription}
-    <div id="cardlinks">
-        <a href="/" title="{lang:Home}"><i data-feather="home"></i></a>
-        {block:IfShowRandomPostLink}<a href="/" title="{lang:Random post}"><i data-feather="shuffle"></i></a>{/block:IfShowRandomPostLink}
-        {block:IfShowArchiveLink}<a href="/" title="{lang:Archive}"><i data-feather="archive"></i></a>{/block:IfShowArchiveLink}
-        {block:AskEnabled}<a href="/" title="{AskLabel}"><i data-feather="mail"></i></a>{/block:AskEnabled}
-        {block:SubmissionsEnabled}<a href="/" title="{SubmitLabel}"><i data-feather="inbox"></i></a>{/block:SubmissionsEnabled}
-    </div>
-    
-    {block:IfShowGroupBlogMembers}{block:GroupMembers}
-    <div id="blogmembers">
-        <h2>{lang:Group members}</h2>
-        {block:GroupMember}
-        <a href="{GroupMemberURL}">
-            <figure>
-                <img class="circle" src="{GroupMemberPortraitURL-64}">
-                <figcaption>{GroupMemberName}</figcaption>
-            </figure>
-        </a>
-        {/block:GroupMember}
-    </div>
-    {/block:GroupMembers}{/block:IfShowGroupBlogMembers}
+	<a href="/" id="title">
+		{block:ShowAvatar}<img src="{PortraitURL-128}" class="{AvatarShape}" />{/block:ShowAvatar}
+		{block:ShowTitle}<h2>{Title}</h2>{/block:ShowTitle}
+	</a>
+	{block:ShowDescription}<div>{Description}</div>{/block:ShowDescription}
+	<div id="cardlinks">
+		<a href="/" title="{lang:Home}"><i data-feather="home"></i></a>
+		{block:IfShowRandomPostLink}<a href="/" title="{lang:Random post}"><i data-feather="shuffle"></i></a>{/block:IfShowRandomPostLink}
+		{block:IfShowArchiveLink}<a href="/" title="{lang:Archive}"><i data-feather="archive"></i></a>{/block:IfShowArchiveLink}
+		{block:AskEnabled}<a href="/" title="{AskLabel}"><i data-feather="mail"></i></a>{/block:AskEnabled}
+		{block:SubmissionsEnabled}<a href="/" title="{SubmitLabel}"><i data-feather="inbox"></i></a>{/block:SubmissionsEnabled}
+	</div>
+		
+	{block:IfShowGroupBlogMembers}{block:GroupMembers}
+	<div id="blogmembers">
+		<h2>{lang:Group members}</h2>
+		{block:GroupMember}
+		<a href="{GroupMemberURL}">
+			<figure>
+				<img class="circle" src="{GroupMemberPortraitURL-64}">
+				<figcaption>{GroupMemberName}</figcaption>
+			</figure>
+		</a>
+		{/block:GroupMember}
+	</div>
+	{/block:GroupMembers}{/block:IfShowGroupBlogMembers}
 </section>
 
 <main>
-    {block:TagPage}
-    <div class="page title">
-        <h2>{lang:TagResultCount posts tagged Tag 2}</h2>
-        Sort <a href="/tagged/{URLSafeTag}">newest first</a> or <a href="/tagged/{URLSafeTag}/chrono">oldest first</a>
-    </div>
-    {/block:TagPage}
-    {block:DayPage}
-    <div class="page title"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
-    {/block:DayPage}
-    {block:SearchPage}
-    <div class="page title">
-        <h2>{lang:SearchResultCount results for SearchQuery 2}
-        {block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}
-    </h2></div>
-    {/block:SearchPage}
-    
-    
-    {block:Posts}
-    <section class="post">
-        {block:PinnedPostLabel}<span id="pinnedpost" title="{PinnedPostLabel}"><i data-feather="star"></i></span>{/block:PinnedPostLabel}
-        {block:Date}
-        <div class="right actions">
-            <a href="#" class="customlike">
-                {LikeButton size="30"}
-                <i data-feather="heart"></i>
-            </a>
-            <a href="{ReblogURL}"><i data-feather="repeat"></i></a>
-            <a title="{lang:Permalink}" href="{Permalink}"><i data-feather="link"></i></a>
-        </div>
-        {block:RebloggedFrom}
-        <div class="left actions">
-            <a title="{lang:Reblogged from ReblogParentName}" href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-40}" class="circle"></a>
-            <a title="{lang:Originally from ReblogRootName}" href="{ReblogRootURL}"><img src="{ReblogRootPortraitURL-40}" class="circle"></a>
-        </div>
-        {/block:RebloggedFrom}
-        {/block:Date}
-        
-        
-        {block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
-        <div class="postbody">
-        
-        
-        {block:Text}
-            
-            {block:NotReblog}
-            <div class="bodyitemcontent">{Body}</div>
-            {/block:NotReblog}
-            
-            {block:RebloggedFrom}{block:Reblogs}
-            <div class="bodyitem">
-    		    <a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="{AvatarShape}"/></a>
-    			<a class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>{Username}</a>
-    			<div class="bodyitemcontent">{Body}</div>
-    		</div>
-            {/block:Reblogs}{/block:RebloggedFrom}
-            
-        {/block:Text}
-        
-        
-        {block:Photo}
-        
-            <div class="photowrapper">
-                {LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
-                <a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
-            </div>
-            
-            {block:NotReblog}
-            <div class="bodyitemcontent">{Caption}</div>
-            {/block:NotReblog}
-            
-            {block:RebloggedFrom}{block:Reblogs}
-            <div class="bodyitem">
-    		    <a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="{AvatarShape}"/></a>
-    			<a class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>{Username}</a>
-    			<div class="bodyitemcontent">{Body}</div>
-    		</div>
-            {/block:Reblogs}{/block:RebloggedFrom}
-            
-        {/block:Photo}
-        
-        
-        </div>
-        
-        
-        
-        {block:Date}
-        
-        <div class="datenotes below">
-            <span class="date">
-                <a href="{Permalink}">
-                    <i data-feather="clock"></i>
-                {DayOfMonth} {ShortMonth} {Year}{block:IfShowTimestamp} at {block:If24HourTimestamps}{24Hour}{/block:If24HourTimestamps}{block:IfNot24HourTimestamps}{12Hour}{/block:IfNot24HourTimestamps}:{Minutes}{block:IfNot24HourTimestamps} {CapitalAmPm}{/block:IfNot24HourTimestamps}{/block:IfShowTimestamp}
-                </a>
-                <a class="today" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">({lang:Show all posts made on this day})</a>
-            </span>
-            {block:NoteCount}
-            <a class="notes" href="{Permalink}">
-                {NoteCountWithLabel}
-                <i data-feather="bookmark"></i>
-            </a>
-            {/block:NoteCount}
-        </div>
-        
-        {block:HasTags}
-        <div class="tags below">
-            <i data-feather="tag"></i>
-            {block:Tags}
-            <a href="{TagURL}">{Tag}</a>
-            {/block:Tags}
-        </div>
-        {/block:HasTags}
-        
-        {/block:Date}
-    </section>
-    {/block:Posts}
-    
-    
-    
-    {block:Pagination}
-    <nav id="navigation">
-        {block:PreviousPage}<a href="{PreviousPage}" title="{lang:Previous page}"><i data-feather="chevron-left"></i></a>{/block:PreviousPage}
-        <span>{lang:CurrentPage of TotalPages}</span>
-        {block:NextPage}<a href="{NextPage}" title="{lang:Next page}"><i data-feather="chevron-right"></i></a>{/block:NextPage}
-    </nav>
-    {/block:Pagination}
-    
-    {block:PermalinkPagination}
-    <nav id="navigation">
-        {block:PreviousPost}<a href="{PreviousPost}" title="{lang:Previous post}"><i data-feather="chevron-left"></i></a>{/block:PreviousPost}
-        <span>{lang:See more posts}</span>
-        {block:NextPost}<a href="{NextPost}" title="{lang:Next post}"><i data-feather="chevron-right"></i></a>{/block:NextPost}
-    </nav>
-    {/block:PermalinkPagination}
-    
-    {block:DayPagination}
-    <nav id="navigation">
-        {block:PreviousDayPage}<a href="{PreviousDayPage}" title="{lang:Previous day}"><i data-feather="chevron-left"></i></a>{/block:PreviousDayPage}
-        <span>{lang:See more posts}</span>
-        {block:NextDayPage}<a href="{NextDayPage}" title="{lang:Next day}"><i data-feather="chevron-right"></i></a>{/block:NextDayPage}
-    </nav>
-    {/block:DayPagination}
+	{block:TagPage}
+	<div class="page title">
+		<h2>{lang:TagResultCount posts tagged Tag 2}</h2>
+		Sort <a href="/tagged/{URLSafeTag}">newest first</a> or <a href="/tagged/{URLSafeTag}/chrono">oldest first</a>
+	</div>
+	{/block:TagPage}
+	{block:DayPage}
+	<div class="page title"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
+	{/block:DayPage}
+	{block:SearchPage}
+	<div class="page title">
+		<h2>{lang:SearchResultCount results for SearchQuery 2}
+		{block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}
+	</h2></div>
+	{/block:SearchPage}
+		
+		
+	{block:Posts}
+	<section class="post">
+		{block:PinnedPostLabel}<span id="pinnedpost" title="{PinnedPostLabel}"><i data-feather="star"></i></span>{/block:PinnedPostLabel}
+		{block:Date}
+		<div class="right actions">
+			<a href="#" class="customlike">
+				{LikeButton size="30"}
+				<i data-feather="heart"></i>
+			</a>
+			<a href="{ReblogURL}"><i data-feather="repeat"></i></a>
+			<a title="{lang:Permalink}" href="{Permalink}"><i data-feather="link"></i></a>
+		</div>
+		{block:RebloggedFrom}
+		<div class="left actions">
+			<a title="{lang:Reblogged from ReblogParentName}" href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-40}" class="circle"></a>
+			<a title="{lang:Originally from ReblogRootName}" href="{ReblogRootURL}"><img src="{ReblogRootPortraitURL-40}" class="circle"></a>
+		</div>
+		{/block:RebloggedFrom}
+		{/block:Date}
+		
+		
+		{block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+		<div class="postbody">
+		
+		
+		{block:Text}
+			
+			{block:NotReblog}
+			<div class="bodyitemcontent">{Body}</div>
+			{/block:NotReblog}
+			
+			{block:RebloggedFrom}{block:Reblogs}
+			<div class="bodyitem">
+				<a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="{AvatarShape}"/></a>
+				<a class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>{Username}</a>
+				<div class="bodyitemcontent">{Body}</div>
+			</div>
+			{/block:Reblogs}{/block:RebloggedFrom}
+			
+		{/block:Text}
+		
+		
+		{block:Photo}
+		
+			<div class="photowrapper">
+				{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+				<a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
+			</div>
+			
+			{block:NotReblog}
+			<div class="bodyitemcontent">{Caption}</div>
+			{/block:NotReblog}
+			
+			{block:RebloggedFrom}{block:Reblogs}
+			<div class="bodyitem">
+				<a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="{AvatarShape}"/></a>
+				<a class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>{Username}</a>
+				<div class="bodyitemcontent">{Body}</div>
+			</div>
+			{/block:Reblogs}{/block:RebloggedFrom}
+			
+		{/block:Photo}
+		
+		
+		</div>
+		
+		
+		
+		{block:Date}
+		
+		<div class="datenotes below">
+			<span class="date">
+				<a href="{Permalink}">
+					<i data-feather="clock"></i>
+				{DayOfMonth} {ShortMonth} {Year}{block:IfShowTimestamp} at {block:If24HourTimestamps}{24Hour}{/block:If24HourTimestamps}{block:IfNot24HourTimestamps}{12Hour}{/block:IfNot24HourTimestamps}:{Minutes}{block:IfNot24HourTimestamps} {CapitalAmPm}{/block:IfNot24HourTimestamps}{/block:IfShowTimestamp}
+				</a>
+				<a class="today" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">({lang:Show all posts made on this day})</a>
+			</span>
+			{block:NoteCount}
+			<a class="notes" href="{Permalink}">
+				{NoteCountWithLabel}
+				<i data-feather="bookmark"></i>
+			</a>
+			{/block:NoteCount}
+		</div>
+		
+		{block:HasTags}
+		<div class="tags below">
+			<i data-feather="tag"></i>
+			{block:Tags}
+			<a href="{TagURL}">{Tag}</a>
+			{/block:Tags}
+		</div>
+		{/block:HasTags}
+		
+		{/block:Date}
+	</section>
+	{/block:Posts}
+		
+		
+		
+	{block:Pagination}
+	<nav id="navigation">
+		{block:PreviousPage}<a href="{PreviousPage}" title="{lang:Previous page}"><i data-feather="chevron-left"></i></a>{/block:PreviousPage}
+		<span>{lang:CurrentPage of TotalPages}</span>
+		{block:NextPage}<a href="{NextPage}" title="{lang:Next page}"><i data-feather="chevron-right"></i></a>{/block:NextPage}
+	</nav>
+	{/block:Pagination}
+		
+	{block:PermalinkPagination}
+	<nav id="navigation">
+		{block:PreviousPost}<a href="{PreviousPost}" title="{lang:Previous post}"><i data-feather="chevron-left"></i></a>{/block:PreviousPost}
+		<span>{lang:See more posts}</span>
+		{block:NextPost}<a href="{NextPost}" title="{lang:Next post}"><i data-feather="chevron-right"></i></a>{/block:NextPost}
+	</nav>
+	{/block:PermalinkPagination}
+		
+	{block:DayPagination}
+	<nav id="navigation">
+		{block:PreviousDayPage}<a href="{PreviousDayPage}" title="{lang:Previous day}"><i data-feather="chevron-left"></i></a>{/block:PreviousDayPage}
+		<span>{lang:See more posts}</span>
+		{block:NextDayPage}<a href="{NextDayPage}" title="{lang:Next day}"><i data-feather="chevron-right"></i></a>{/block:NextDayPage}
+	</nav>
+	{/block:DayPagination}
 </main>
 
 <section id="pagessearch" class="sidecard">
-    {block:HasPages}
-    <h2>{text:Custom links title}</h2>
-    {block:Pages}
-    <a href="{URL}">{Label}</a>
-    {/block:Pages}{/block:HasPages}
-    {block:IfSearchBar}
-    <form action="/search" method="get">
-        <label for="q">Search</label>
-        <input type="text" name="q" value="{SearchQuery}"/>
-        <i data-feather="search"></i>
-    </form>
-    {/block:IfSearchBar}
+	{block:HasPages}
+	<h2>{text:Custom links title}</h2>
+	{block:Pages}
+	<a href="{URL}">{Label}</a>
+	{/block:Pages}{/block:HasPages}
+	{block:IfSearchBar}
+	<form action="/search" method="get">
+		<label for="q">Search</label>
+		<input type="text" name="q" value="{SearchQuery}"/>
+		<i data-feather="search"></i>
+	</form>
+	{/block:IfSearchBar}
 </section>
 
 <div id="credits">
-    <a href="https://starlightthemes.tumblr.com/theme2" title="{lang:Install this theme}"><i data-feather="download"></i></a>
-    <a title="Toggle light/dark mode" onclick="$('body').toggleClass('light')">
-        <i data-feather="sun"></i>
-        <i data-feather="moon"></i>
-    </a>
-    <a title="© {Name} {CopyrightYears}"><i data-feather="help-circle"></i></a>
+	<a href="https://starlightthemes.tumblr.com/theme2" title="{lang:Install this theme}"><i data-feather="download"></i></a>
+	<a title="Toggle light/dark mode" onclick="$('body').toggleClass('light')">
+		<i data-feather="sun"></i>
+		<i data-feather="moon"></i>
+	</a>
+	<a title="© {Name} {CopyrightYears}"><i data-feather="help-circle"></i></a>
 </div>
 
 <script>feather.replace()</script>
