@@ -1,4 +1,7 @@
-/* Commented version of the JS for Theme 2. */
+/**
+ * Commented version of the JS for Theme 2.
+ * Original script is present in the file theme2.html.
+ */
 
 // Set up all SVG icons on initial load
 feather.replace();
