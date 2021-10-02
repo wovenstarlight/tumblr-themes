@@ -54,13 +54,20 @@
 
 <style>
 body {
+	--text: {color:Text};
+	--links: {color:Links};
+	--roundness: {select:Roundness of edges};
+	--bg-accent: {color:Background accent};
+	--accent1: {color:Post accent 1};
+	--accent2: {color:Post accent 2};
+	--post-width: {text:Post width};
 	background-color: {color:Background};
-	color: {color:Text};
+	color: var(--text);
 	font-size: {text:Font size};
 	font-family: {text:Body font};
 }
 a {
-	color: {color:Links};
+	color: var(--links);
 	transition-property: color, filter;
 	transition-duration: .2s;
 	font-weight: 600;
@@ -70,14 +77,14 @@ a:not(:hover) { text-decoration: none }
 strong, b { color: {color:Bold} }
 em, i { color: {color:Italics} }
 /* Rounding overall */
-.sidecard, .post, form input, #pagessearch a, .page.title { border-radius: {select:Roundness of edges} }
+.sidecard, .post, form input, #pagessearch a, .page.title { border-radius: var(--roundness) }
 /*Rounding top edges*/
-.post .title a, .sidecard::before { border-top-left-radius: {select:Roundness of edges}; border-top-right-radius: {select:Roundness of edges} }
+.post .title a, .sidecard::before { border-top-left-radius: var(--roundness); border-top-right-radius: var(--roundness) }
 /*Rounding bottom edges*/
-.post .below:last-child { border-bottom-left-radius: {select:Roundness of edges}; border-bottom-right-radius: {select:Roundness of edges} }
+.post .below:last-child { border-bottom-left-radius: var(--roundness); border-bottom-right-radius: var(--roundness) }
 
 #bgaccent {
-	background: {color:Background accent};
+	background: var(--bg-accent);
 	position: fixed;
 	width: 100%;
 	height: 35%;
@@ -95,7 +102,7 @@ em, i { color: {color:Italics} }
 {/block:IfBackgroundAccentImage}
 
 .sidecard {
-	background: {color:Post accent 1};
+	background: var(--accent1);
 	position: fixed;
 	top: calc(35% - 6em);
 	width: 15em;
@@ -116,7 +123,7 @@ em, i { color: {color:Italics} }
 	font-weight: 600;
 }
 #bloginfo {
-	right: calc(50% + ({text:Post width}/2) + 3em);
+	right: calc(50% + (var(--post-width)/2) + 3em);
 	padding-bottom: {block:ShowDescription}1em{/block:ShowDescription}{block:HideDescription}2em{/block:HideDescription};
 }
 #bloginfo::before { margin-bottom: {block:ShowAvatar}3em{/block:ShowAvatar}{block:HideAvatar}0.5em{/block:HideAvatar} }
@@ -138,7 +145,7 @@ em, i { color: {color:Italics} }
 	column-gap: 0.5em;
 }
 #cardlinks a {
-	background-color: {color:Post accent 2};
+	background-color: var(--accent2);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -157,7 +164,7 @@ em, i { color: {color:Italics} }
 	align-items: center;
 	text-align: left;
 	margin: 0.25em 0;
-	background: {color:Post accent 2};
+	background: var(--accent2);
 	border-radius: 5em;
 }
 #blogmembers figure:hover { filter: contrast(1.2) }
@@ -166,15 +173,15 @@ em, i { color: {color:Italics} }
 	margin-left: -0.5em;
 	padding: 0.1em 1em;
 	z-index: 0;
-	color: {color:Text};
+	color: var(--text);
 }
-#pagessearch { left: calc(50% + ({text:Post width}/2) + 3em) }
-body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post width}/2)) }
+#pagessearch { left: calc(50% + (var(--post-width)/2) + 3em) }
+body.not(.no-search, .haspages) #pagessearch { left: calc(50% + (var(--post-width)/2)) }
 #pagessearch a {
 	display: block;
 	margin: 0.25em 1em;
 	padding: 0.175em 0.5em;
-	background-color: {color:Post accent 2};
+	background-color: var(--accent2);
 	font-weight: 600;
 }
 #pagessearch a:hover { filter: contrast(1.2) }
@@ -184,26 +191,26 @@ body.not(.no-search, .haspages) #pagessearch { left: calc(50% + ({text:Post widt
 #pagessearch form { margin: 1em; position: relative }
 #pagessearch form input {
 	width: 100%;
-	background: {color:Post accent 2};
+	background: var(--accent2);
 	border: none;
-	color: {color:Text};
+	color: var(--text);
 	padding: 0.25em 1.75em 0.25em 0.5em;
 	margin: 0.25em 0;
 }
 #pagessearch form .feather-search {
 	position: absolute;
 	bottom: 0.65em;
-	right: 0.15em
+	right: 0.15em;
 	height: 1em;
 }
-body:not(.haspages, .hassearch) main { left: calc(50% - {text:Post width}/2 + 9em) }
-body:not(.haspages, .hassearch) #bloginfo { right: calc(50% + {text:Post width}/2 - 6em) }
+body:not(.haspages, .hassearch) main { left: calc(50% - var(--post-width)/2 + 9em) }
+body:not(.haspages, .hassearch) #bloginfo { right: calc(50% + var(--post-width)/2 - 6em) }
 body:not(.haspages, .hassearch) #pagessearch { display: none }
 
 main {
 	position: absolute;
-	width: {text:Post width};
-	left: calc(50% - {text:Post width}/2);
+	width: var(--post-width);
+	left: calc(50% - var(--post-width)/2);
 	top: calc(35% - 6em);
 	padding-bottom: 1em;
 }
@@ -220,7 +227,7 @@ main .title { margin: 0 }
 .post .title a, .page.title {
 	display: block;
 	text-align: center;
-	background: {color:Post accent 2};
+	background: var(--accent2);
 }
 main .post:first-child { margin-top: 0 }
 .post {
@@ -280,7 +287,7 @@ main .post:first-child { margin-top: 0 }
 	padding: 0.4em;
 	border-radius: 100%;
 }
-.post .actions a { background-color: {color:Post accent 2} }
+.post .actions a { background-color: var(--accent2) }
 .post .actions a:hover { filter: contrast(1.2) }
 .customlike { position: relative }
 .customlike .like_button {
@@ -291,7 +298,7 @@ main .post:first-child { margin-top: 0 }
 	bottom: 0;
 	opacity: 0;
 }
-.customlike .like_button.liked + svg { fill: {color:Links} }
+.customlike .like_button.liked + svg { fill: var(--links) }
 .post .title a { padding: 0.25em 1em }
 .post .title a:hover { filter: contrast(1.2) }
 .postbody { padding: 1em }
@@ -302,7 +309,7 @@ main .post:first-child { margin-top: 0 }
 	bottom: 0.5em;
 	left: 0.5em;
 	padding: 0.5em 0.75em;
-	background: {color:Background accent};
+	background: var(--bg-accent);
 	border-radius: 0.5em;
 }
 .postbody .photowrapper:not(:hover) .highres { display: none }
@@ -324,7 +331,7 @@ main .post:first-child { margin-top: 0 }
 }
 .post .below svg { height: 1.2em; width: 1.2em }
 .post .datenotes {
-	background-color: {color:Post accent 1};
+	background-color: var(--accent1);
 	padding: 0.5em;
 	display: flex;
 	justify-content: space-between;
@@ -333,7 +340,7 @@ main .post:first-child { margin-top: 0 }
 	display: flex;
 	align-items: center;
 	column-gap: 0.25em;
-	color: {color:Text};
+	color: var(--text);
 	text-decoration: none;
 }
 .datenotes span svg { height: 1.25em }
@@ -341,12 +348,12 @@ main .post:first-child { margin-top: 0 }
 	transition: .2s;
 	font-style: italic;
 	font-size: 0.8em;
-	color: {color:Links};
+	color: var(--links);
 }
 .datenotes:not(:hover) .today { opacity: 0 }
 .datenotes .today:hover { text-decoration: underline }
 .post .tags {
-	background-color: {color:Post accent 2};
+	background-color: var(--accent2);
 	padding: 0.5em;
 }
 .post .tags svg { vertical-align: middle; margin-right: 0.25em }
@@ -359,7 +366,7 @@ main .post:first-child { margin-top: 0 }
 	justify-content: center;
 	margin: 1.5em auto;
 	padding: 0.3em;
-	background-color: {color:Post accent 1};
+	background-color: var(--accent1);
 	border-radius: 5em;
 	width: -webkit-fit-content;
 	width: -moz-fit-content;
@@ -367,7 +374,7 @@ main .post:first-child { margin-top: 0 }
 }
 #navigation a {
 	border-radius: 100%;
-	background-color: {color:Post accent 2};
+	background-color: var(--accent2);
 	display: flex;
 	--size: 2em;
 	width: var(--size);
@@ -390,7 +397,7 @@ main .post:first-child { margin-top: 0 }
 	z-index: 99;
 }
 #credits a {
-	background-color: {color:Background accent};
+	background-color: var(--bg-accent);
 	cursor: pointer;
 }
 body:not(.light) .feather-sun, body.light .feather-moon { display: none }
