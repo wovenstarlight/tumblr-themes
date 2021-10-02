@@ -1,0 +1,271 @@
+<!--
+	For a set of collapsible boxes. Useful for an information page!
+	Demo page here: https://starlightthemes.tumblr.com/dropdowns
+	The demo page lists my fanfiction, but you can list whatever you'd like ^_^
+
+	Two part instructions below. Ctrl+F/Cmd+F to find them:
+		1. HTML/JS: Installing on blog page
+		2. CSS STYLING: Making it look right
+-->
+
+
+<!--
+	1. HTML/JS: Installing on blog page
+
+	A standard collapsible section ("div") has two parts:
+	- the collapsible section's button ("clpbutton")
+	- the collapsible content ("clpcontent")
+	You can place anything you want inside the content section. I recommend
+	placing standard text inside <p> tags to ensure a decent amount of spacing
+	around it on either side.
+
+	To create a series of collapsible sections in a page:
+	- Go to https://www.tumblr.com/customize/YOUR_BLOG_NAME_HERE (replaced with
+		your blog's name). From the bottom of the menu, edit an existing blog
+		page or create a new blog page through "+ Add a page".
+	- On a Standard Layout page, under the title bar, select the "<html>" option
+		to switch to the HTML editor mode.
+	- Copy the following default Collapsibles template into the page.
+		Don't forget to include the <script> code! Ensure it's at the VERY BOTTOM
+		of the entire page, even when you start adding more content to the page.
+
+START COPYING FROM THE LINE BELOW -->
+
+<div class="collapsible">
+	<p class="clpbutton">Click to open the collapsible</p>
+	<div class="clpcontent">
+	<p>Collapsible content goes here. Add any HTML you want!</p>
+	</div>
+</div>
+
+<script>
+// Close all collapsible sections on initial pageload
+$(".collapsible .clpcontent").hide();
+
+// Make nested collapsibles have alternating backgrounds
+$(".collapsible").each( function() {
+	if ($(this).parent(".clpcontent").parent(".collapsible").hasClass("odd")) {
+		$(this).addClass("even")
+	}
+	else { $(this).addClass("odd") }
+});
+
+// Click to collapse functionality
+$(".collapsible > .clpbutton").click( function() {
+	var collapsible = $(this).parent();
+	var content = $(this).next();
+	if (collapsible.hasClass("active")) { content.slideUp() }
+	else { content.slideDown() }
+	collapsible.toggleClass("active");
+});
+</script>
+
+<!-- FINISH COPYING FROM THE LINE ABOVE
+
+	Now you can get started editing! You can add as many collapsibles as you
+	want, and nest as many collapsibles (place a collapsible section inside
+	another collapsible section) as you like. Once you're done, make sure to
+	Update Preview, ensure that everything looks as you want it to, and Save.
+
+	****IMPORTANT NOTE:****
+		Make sure you don't put a link inside the "clpbutton"! Since this is
+		the text to open/close the dropdown, you don't want to add something
+		clickable that DOESN'T open the dropdown. Since the text is already
+		link-colored, you might confuse people, and they won't open/won't be
+		able to open the collapsible section.
+	
+	When you're nesting collapsibles, make sure to place the entire collapsible
+	section, <div class="collapsible"></div>, INSIDE the outer section's content,
+	<div class="clpcontent"></div>. You can see a sample of this below- it's the
+	code for the "S-Ranks" section from the demo page.
+-->
+
+<div class="collapsible">
+	<p class="clpbutton">The S-Ranks That I’ve Raised</p>
+	<div class="clpcontent">
+
+		<!-- Nested sections start here! -->
+
+		<div class="collapsible">
+			<p class="clpbutton">and tomorrow may be something to look for [SERIES]</p>
+			<div class="clpcontent">
+				
+				<div class="collapsible">
+					<p class="clpbutton">yesterday will be kinder</p>
+					<div class="clpcontent">
+						<blockquote>
+							<p>“…and don’t worry, Yoohyun-ah,” Yoojin tacks on absently. “Hyung loves you.”</p>
+							<p>“Who the hell are you to say that?”</p>
+							<p>Yoojin jolts, reflexively tugging Yoohyun behind his back. He spreads his arms out protectively and looks at the intruder.</p>
+							<p>Han Yoojin, 18 years old and arms weighed down with overstuffed grocery bags, glares at him from the front door.</p>
+							<p>Hm.</p>
+							<p>Well, this is… unfortunate.</p>
+						</blockquote>
+						<hr>
+						<p>Instead of regressing 5 years and regaining his status as guardian and hyung of Han Yoohyun, Han Yoojin travels 12 years back in time and becomes the guardian and hyung to Han Yoojin (the younger) and Han Yoohyun.</p>
+						<p>This… isn’t as bad as he’d expected it to be.</p>
+						<p><a href="https://archiveofourown.org/works/24028408">Read on AO3 →</a></p>
+					</div>
+				</div>
+				
+				<div class="collapsible">
+					<p class="clpbutton">steady</p>
+					<div class="clpcontent">
+						<blockquote>
+							<p>Yoohyun’s hyung is steady.</p>
+						</blockquote>
+						<hr>
+						<p>An exploration of Yoohyun's thoughts about his brother.</p>
+						<p><a href="https://archiveofourown.org/works/24988879">Read on AO3 →</a></p>
+					</div>
+				</div>
+				
+				<div class="collapsible">
+					<p class="clpbutton">walk a mile in my shoes</p>
+					<div class="clpcontent">
+						<p>By all rights, Han Hyunjae should feel like a threat. By all rights, Yoojin should be attacking this man, trying to push him away so that he can’t get whatever it is he wants from them, so that he can’t hurt them. By all rights, Yoojin should want him gone, should be rude and mean and all types of ill-mannered so that he’ll be driven away.</p>
+						<p>But—</p>
+						<p><a href="https://archiveofourown.org/works/24025030">Read on AO3 →</a></p>
+					</div>
+				</div>
+				
+				<div class="collapsible">
+					<p class="clpbutton">the sweater curse</p>
+					<div class="clpcontent">
+						<p>“Hi, kid,” Yoojin grunts, tired and stiff from the cold. “Looking for a sweater of mine. Winter cold makes my leg hurt, and that thing is <em>warm.”</em></p>
+						<p><a href="https://archiveofourown.org/works/24027709">Read on AO3 →</a></p>
+					</div>
+				</div>
+				
+				<div class="collapsible">
+					<p class="clpbutton">in all of the lives we are</p>
+					<div class="clpcontent">
+						<p>A ficlet collection of missing scenes, or universes that could be.</p>
+						<p><a href="https://archiveofourown.org/works/27627722">Read on AO3 →</a></p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="collapsible">
+			<p class="clpbutton">till this life to the next</p>
+			<div class="clpcontent">
+				<blockquote>
+					<p>Things Sung Hyunjae wishes he’d said to Han Yoojin:</p>
+					<ul><li>I’m sorry.</li></ul>
+				</blockquote>
+				<hr>
+				<p><strong>Spoilers</strong> for chapter 507!</p>
+				<p><a href="https://archiveofourown.org/works/24884641">Read on AO3 →</a></p>
+			</div>
+		</div>
+
+		<div class="collapsible">
+			<p class="clpbutton">My S-Ranks: System Windows</p>
+			<div class="clpcontent">
+				<p>A work skin for system windows. Designed for S-Class, but can be adapted to work with other fandoms. Works on both mobile and desktop, with the creator's style enabled or disabled. UPDATE 19/9/20202: Code is linked in the fic notes.</p>
+				<p><a href="https://archiveofourown.org/works/26228326">Read on AO3 →</a></p>
+			</div>
+		</div>
+
+		<div class="collapsible">
+			<p class="clpbutton">midnight musings [SERIES]</p>
+			<div class="clpcontent">
+				
+				<div class="collapsible">
+					<p class="clpbutton">i don't think this is what pillow talk means</p>
+					<div class="clpcontent">
+						<p>“Yoojin-ah…?”</p>
+						<p>Yoojin twitches. “Hey,” he murmurs. “Why’re you awake?”</p>
+						<p>“Mmph.” Hyunjae shifts slightly, burying his face in Yoojin’s hair and inhaling deeply. “Felt you move. You ‘kay?”</p>
+						<p>Yoojin hums, blinking up at the ceiling that’s barely visible in the dimness of the room. “I’m fine. Go back to sleep.”</p>
+						<p><a href="https://archiveofourown.org/works/26463574">Read on AO3 →</a></p>
+					</div>
+				</div>
+				
+				<div class="collapsible">
+					<p class="clpbutton">midnight musings</p>
+					<div class="clpcontent">
+						<blockquote>
+							<p>There's something about nighttime that makes people weirdly honest.</p>
+							<p>Or maybe that's just Yoojin.</p>
+						</blockquote>
+						<hr>
+						<p>A series of unconnected ficlets about Yoojin, Hyunjae, and Taewon and their conversations at night.</p>
+						<p><a href="https://archiveofourown.org/works/26535088">Read on AO3 →</a></p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="collapsible">
+			<p class="clpbutton">the glitter of our iron crowns</p>
+			<div class="clpcontent">
+				<blockquote>
+					<p>Hyunjae wonders how the rebel leader hasn’t been arrested yet.</p>
+					<p><em>Know him when you see him</em> is one vague matter. A neck scarf and earrings are one small, easily-concealed matter. This man, wearing a thick scarf up to his chin painted red as the royals’ blood and laughing loud enough to draw the eyes of the entire street, is another matter entirely.</p>
+				</blockquote>
+				<hr>
+				<p>Crown Prince Yoojin is framed for his parents' murder as a child and runs away to lose himself in the city. Years later, the Regent King Everwhite and their children have their hands full dealing with the rebellion brewing in the capital's streets.</p>
+				<p><a href="https://archiveofourown.org/works/28848645">Read on AO3 →</a></p>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+<!--
+	2. CSS STYLING: Making it look right
+
+	Here's the styling for the collapsible sections. From the main Customize menu,
+	go to "Advanced options" at the very bottom. In the "Add Custom CSS" section,
+	copy the following code into the box. If you already have any custom CSS,
+	just add the following below it.
+	(Make sure not to copy the <style> tags!)
+
+START COPYING FROM THE LINE *BELOW* THIS ONE --><style>
+
+.collapsible { margin-bottom: 1em }
+.collapsible > .clpbutton {
+	font-family: var(--font-normal);
+    color: var(--link);
+	display: flex;
+    align-items: center;
+    column-gap: 0.5em;
+    cursor: pointer;
+    transition: color .2s;
+	margin-bottom: 0.25em;
+}
+.collapsible > .clpbutton:hover { color: var(--header) }
+.collapsible > .clpbutton::before { content: "▶"; transition: transform 0.4s; }
+.collapsible.active > .clpbutton::before { transform: rotate(90deg) }
+
+.collapsible > .clpcontent {
+  padding: 0.3em 1em;
+  transition: max-height 0.4s ease;
+  background-color: var(--sidebar);
+  border: 1px solid var(--bg-dark);
+  border-radius: 0.25em;
+}
+.collapsible.even > .clpcontent {
+	background-color: var(--bg-dark);
+    border-color: var(--blogname)
+}
+.clpcontent :not(ul, ol, li) { margin: 0.5em 0 }
+
+.clpcontent hr {
+    color: var(--header);
+    opacity: .25;
+    width: 33%;
+    margin: 1em auto;
+}
+
+</style><!-- FINISH COPYING FROM THE LINE *ABOVE* THIS ONE
+
+	And that's it! You're done! Enjoy making collapsible sections for your
+	pages. If you have any questions, feel free to send an ask to @starlightthemes.
+-->
