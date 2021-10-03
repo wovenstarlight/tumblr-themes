@@ -7,8 +7,9 @@ tippy("#pinnedpost", { theme: 'standard' });
 // ...Links to home/ask/submit/random/archive
 tippy("#cardlinks [data-tippy-content]", { placement: 'bottom', theme: 'standard' });
 // ...Links to post actions (like/reblog/permalink, via/source)
-tippy(".left.actions [data-tippy-content]", { placement: 'left', theme: 'standard' });
-tippy(".right.actions [data-tippy-content]", { placement: 'right', theme: 'standard' });
+// Want these to display on top of the post body, don't make viewer look out of their way
+tippy(".left.actions [data-tippy-content]", { placement: 'right', theme: 'standard' });
+tippy(".right.actions [data-tippy-content]", { placement: 'left', theme: 'standard' });
 // ...Links to page-wise navigation
 tippy("#navigation a:first-child", { placement: 'left', theme: 'standard' });
 tippy("#navigation a:last-child", { placement: 'right', theme: 'standard' });
