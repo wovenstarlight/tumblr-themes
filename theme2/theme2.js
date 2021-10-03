@@ -17,7 +17,7 @@ tippy("#navigation a:last-child", { placement: 'right', theme: 'standard' });
 tippy("#credits [data-tippy-content]", { placement: 'left', theme: 'standard' });
 
 // Set up color mode toggle
-const body = $("body");
+const body = $("body"); // This will also be useful in responsiveness setup
 		
 const currTheme = localStorage.getItem("theme");
 
@@ -36,14 +36,14 @@ $("#darklight").click( function() {
 });
 
 /*************************** RESPONSIVENESS SETUP ***************************/
-var em = parseInt($("body").css("font-size"));
+const em = parseInt(body.css("font-size"));
 
 // Get basic value for page width
-var narrow1width = ( parseInt($("body").css("--post-width"))
+var narrow1width = ( parseInt(body.css("--post-width"))
 					+ $("#bloginfo").width() + 3*em );
 
 // Adjust page width if pagessearch is showing
-if ($("body").hasClass("haspages") || $("body").hasClass("hassearch")) {
+if (body.hasClass("haspages") || body.hasClass("hassearch")) {
 	narrow1width += ( $("#pagessearch").width() + 3*em );
 }
 
@@ -59,7 +59,7 @@ function updatetops(narrowness) {
 	maintop = bloginfoHeight;
 	
 	// If pagessearch is displaying, adjust positioning of both
-	if ($("body").hasClass("haspages") || $("body").hasClass("hassearch")) {
+	if (body.hasClass("haspages") || body.hasClass("hassearch")) {
 		
 		if (narrowness === "narrow1") {
 			// Position main just under both sidecards
@@ -85,21 +85,21 @@ $(window).resize( function() {
 	var width = $(window).width();
 		
 	if ( width < narrow2width ) {
-		$("body").addClass("narrow1");
-		$("body").addClass("narrow2");
+		body.addClass("narrow1");
+		body.addClass("narrow2");
 		
 		updatetops("narrow2");
 	}
 	else if ( width < narrow1width ) {
-		$("body").addClass("narrow1");
-		$("body").removeClass("narrow2");
+		body.addClass("narrow1");
+		body.removeClass("narrow2");
 		
 		updatetops("narrow1");
 	}
 	else {
 		$("main, #pagessearch").removeAttr("style");
-		$("body").removeClass("narrow1");
-		$("body").removeClass("narrow2");
+		body.removeClass("narrow1");
+		body.removeClass("narrow2");
 	}
 
 });
