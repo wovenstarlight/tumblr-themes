@@ -1,11 +1,30 @@
 $(document).ready( function() {
+	const body = $("body");
+	
+	const currTheme = localStorage.getItem("theme");
+
+	if ( currTheme == "light" ) {
+		body.addClass("light");
+		body.removeClass("dark");
+	}
+
+	$("#darklight").click( function() {
+		body.toggleClass("dark light");
+		
+		var newTheme = "dark";
+		if (body.hasClass("light")) {
+			newTheme = "light";
+		}
+		localStorage.setItem("theme", newTheme);
+	});
+
 	$("#servers .more").click( function() {
 		$(this).toggleClass("active");
 		$("#sidebar").toggleClass("active");
 	});
 
 	$("#tmblr-controls-toggle").click(function(){
-		$("body").toggleClass("controls-click");
+		body.toggleClass("controls-click");
 	});
 
 	tippy("#servers a[data-tippy-content]", {
