@@ -259,8 +259,8 @@ main .post:first-child { margin-top: 0 }
 .bodyitem:not(:last-of-type) { border-bottom: thin solid rgba(var(--links--rgb), 0.3) }
 .bodyitem:first-of-type { padding-top: 0 }
 .bodyitem:last-of-type { padding-bottom: 0 }
-.bodyitemcontent > *:first-child { margin-top: 0.25em }
-.bodyitemcontent > *:last-child { margin-bottom: 0.25em }
+.bodyitemcontent > *:first-child, .question :first-child { margin-top: 0.25em }
+.bodyitemcontent > *:last-child, .question :last-child { margin-bottom: 0.25em }
 .bodyitemcontent p { margin: 0.5em 0 }
 /* Username/icon in a single bodyitem */
 .user {
