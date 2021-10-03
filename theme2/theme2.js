@@ -16,6 +16,25 @@ tippy("#navigation a:last-child", { placement: 'right', theme: 'standard' });
 // ...Links to theme/blog credits and color mode toggle
 tippy("#credits [data-tippy-content]", { placement: 'left', theme: 'standard' });
 
+// Set up color mode toggle
+const body = $("body");
+		
+const currTheme = localStorage.getItem("theme");
+
+if ( currTheme == "light" ) {
+	body.addClass("light");
+}
+
+$("#darklight").click( function() {
+	body.toggleClass("light");
+	
+	var newTheme = "dark";
+	if (body.hasClass("light")) {
+		newTheme = "light";
+	}
+	localStorage.setItem("theme", newTheme);
+});
+
 /*************************** RESPONSIVENESS SETUP ***************************/
 var em = parseInt($("body").css("font-size"));
 
