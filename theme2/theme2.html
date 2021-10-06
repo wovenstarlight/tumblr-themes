@@ -468,17 +468,16 @@ body.light {
 				<div class="question">{Question}</div>
 			</div>
 			
-			{block:RebloggedFrom}{block:Answerer}
 			<div class="bodyitem">
+				{block:RebloggedFrom}{block:Answerer}
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" href="{ReblogRootURL}">
 					<img src="{AnswererPortraitURL-64}" class="{AvatarShape} usericon"/>
 					<span class="username">{ReblogRootName}</span>
 				</a>
-			{/block:Answerer}
-			
-			<div class="bodyitemcontent">{Answer}</div>
-			
-			{block:Answerer}</div>{/block:Answerer}{/block:RebloggedFrom}
+				{/block:Answerer}{/block:RebloggedFrom}
+				
+				<div class="bodyitemcontent">{Answer}</div>
+			</div>
 			
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
