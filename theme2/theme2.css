@@ -241,6 +241,7 @@ main .post:first-child { margin-top: 0 }
 	border-radius: 100%;
 }
 .post .actions a { background-color: var(--accent2) }
+.post .left.actions a { padding: 0.2em }
 /* Custom like button */
 .customlike { position: relative }
 .customlike .like_button {
