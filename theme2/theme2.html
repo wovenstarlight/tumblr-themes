@@ -531,11 +531,11 @@ body.light {
 	
 	
 	
+	
+	{block:Pagination}
 	{block:IfInfiniteScroll}{block:IfManualLoadForInfiniteScroll}
 	<div id="loadmore">{lang:Load more posts}</div>
 	{/block:IfManualLoadForInfiniteScroll}{/block:IfInfiniteScroll}
-	
-	{block:Pagination}
 	<nav id="navigation">
 		{block:PreviousPage}<a id="prevpage" href="{PreviousPage}" data-tippy-content="{lang:Previous page}"><i data-feather="chevron-left"></i></a>{/block:PreviousPage}
 		<span>{lang:CurrentPage of TotalPages}</span>
