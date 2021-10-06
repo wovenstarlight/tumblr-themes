@@ -35,7 +35,7 @@ em, i { color: var(--italics) }
 	color: var(--highlight);
 }
 /* Overall styles setup - Rounding all corners */
-.sidecard, .post, form input, #pagessearch a, .page.title { border-radius: var(--roundness) }
+.sidecard, .post, form input, #pagessearch a, .page.title, img.square { border-radius: var(--roundness) }
 /* Overall styles setup - Rounding top edges */
 .post .title a,
 .sidecard::before,
