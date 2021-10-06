@@ -46,7 +46,7 @@ em, i { color: var(--italics) }
 
 /* Background accent */
 #bgaccent {
-	background: var(--bg-accent);
+	background-color: var(--bg-accent);
 	position: fixed;
 	width: 100%;
 	height: 35%;
@@ -64,8 +64,7 @@ em, i { color: var(--italics) }
 .sidecard::before {
 	content: "";
 	display: block;
-	background: var(--side-accent) center no-repeat;
-	background-size: cover;
+	background-color: var(--side-accent);
 	width: 100%;
 	height: 6em;
 }
