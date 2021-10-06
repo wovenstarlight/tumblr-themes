@@ -187,7 +187,6 @@ body.light em, body.light i { color: {color:Light mode italics} }
 	margin: 0 0.25em
 }
 {block:IfInfiniteScroll}
-#navigate .paginate.index { display: none }
 {block:IfManualLoadForInfiniteScroll}
 #iscroll {
 	display: block;
@@ -811,9 +810,9 @@ body.light em, body.light i { color: {color:Light mode italics} }
 	{/block:PostNotes}
 </main>
 
-{block:IfInfiniteScroll}{block:IfManualLoadForInfiniteScroll}{block:Pagination}
+{block:Pagination}{block:IfInfiniteScroll}{block:IfManualLoadForInfiniteScroll}
 <a id="iscroll">{lang:Load more posts}</a>
-{/block:Pagination}{/block:IfManualLoadForInfiniteScroll}{/block:IfInfiniteScroll}
+{/block:IfManualLoadForInfiniteScroll}{/block:IfInfiniteScroll}{/block:Pagination}
 
 <footer id="navigate"><div>
 	<svg width="1.25em" height="1.25em" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin"><use href="#img-copyright"></use></svg>
@@ -823,7 +822,7 @@ body.light em, body.light i { color: {color:Light mode italics} }
 	<p class="tagorder">Sort <a href="/tagged/{URLSafeTag}">newest first</a> or <a href="/tagged/{URLSafeTag}/chrono">oldest first</a></p>
 	{/block:TagPage}
 	{block:Pagination}
-	<div class="paginate index">
+	<div class="paginate">
 		{block:PreviousPage}<a class="prev" href="{PreviousPage}" data-tippy-content="{lang:Previous}"><svg width="1.25em" height="1.25em" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin"><use href="#img-arrow"></use></svg></a>{/block:PreviousPage}
 		<p class="curr">{CurrentPage}</p>
 		<p>{TotalPages}</p>
@@ -832,21 +831,21 @@ body.light em, body.light i { color: {color:Light mode italics} }
 	{/block:Pagination}
 	{block:TagPage}</div>{/block:TagPage}
 	
-	{block:PermalinkPage}{block:PermalinkPagination}
-	<div class="paginate permalink">
+	{block:PermalinkPagination}
+	<div class="paginate">
 		{block:PreviousPost}<a class="prev" href="{PreviousPost}" data-tippy-content="{lang:Previous post}"><svg width="1.25em" height="1.25em" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin"><use href="#img-arrow"></use></svg></a>{/block:PreviousPost}
 		<p>{lang:See more posts}</p>
 		{block:NextPost}<a class="next" href="{NextPost}" data-tippy-content="{lang:Next post}"><svg width="1.25em" height="1.25em" viewBox="3 2 18 18" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin"><use href="#img-arrow"></use></svg></a>{/block:NextPost}
 	</div>
-	{/block:PermalinkPagination}{/block:PermalinkPage}
+	{/block:PermalinkPagination}
 	
-	{block:DayPage}{block:DayPagination}
-	<div class="paginate day">
+	{block:DayPagination}
+	<div class="paginate">
 		{block:PreviousDayPage}<a class="prev" href="{PreviousDayPage}" data-tippy-content="{lang:Previous day}"><svg width="1.25em" height="1.25em" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin"><use href="#img-arrow"></use></svg></a>{/block:PreviousDayPage}
 		<p>{lang:See more posts}</p>
 		{block:NextDayPage}<a class="next" href="{NextDayPage}" data-tippy-content="{lang:Next day}"><svg width="1.25em" height="1.25em" viewBox="3 2 18 18" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin"><use href="#img-arrow"></use></svg></a>{/block:NextDayPage}
 	</div>
-	{/block:DayPagination}{/block:DayPage}
+	{/block:DayPagination}
 </div></footer>
 
 <svg display="none">
@@ -931,6 +930,7 @@ body.light em, body.light i { color: {color:Light mode italics} }
 		history: false,
 		{block:IfManualLoadForInfiniteScroll}button: "#iscroll",
 		scrollThreshold: false,{/block:IfManualLoadForInfiniteScroll}
+		hideNav: '.paginate'
 	});
 
 	$("#allposts").on( 'append.infiniteScroll', function( event, body, path, items, response ) {
