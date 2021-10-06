@@ -197,8 +197,8 @@ main .post:first-child { margin-top: 0 }
 /* Pinned post icon */
 #pinnedpost {
 	position: absolute;
-	background: #252525;
-	color: #ff9e29;
+	background: var(--bg-accent);
+	color: var(--links);
 	display: flex;
 	align-items: center;
 	justify-content: center;
