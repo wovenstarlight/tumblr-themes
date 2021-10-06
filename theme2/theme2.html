@@ -87,6 +87,8 @@
 	<meta name="image:Left sidebar accent">
 	<meta name="image:Right sidebar accent">
 	<meta name="text:Custom links title" content="Links">
+	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever code or plain text you want. If you don't want an FAQ, leave this field blank!">
+	<meta name="text:Submission guidelines" content="This will go on your submission page, above your submission box.&NewLine;Add whatever code or plain text you want. If you don't want submission guidelines, leave this field blank!">
 	<meta name="if:Show Random post link" content="1">
 	<meta name="if:Show Archive link" content="1">
 	<meta name="if:Show search bar" content="1">
@@ -260,6 +262,8 @@ body.light {
 		{block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
 		<div class="postbody">
 		
+		{block:AskPage}<div class="asksubmitwrapper">{text:FAQ}</div>{/block:AskPage}
+		{block:SubmitPage}<div class="asksubmitwrapper">{text:Submission guidelines}</div>{/block:SubmitPage}
 		
 		{block:Text}
 			

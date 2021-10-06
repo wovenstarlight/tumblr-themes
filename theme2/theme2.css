@@ -255,6 +255,8 @@ main .post:first-child { margin-top: 0 }
 .customlike .like_button.liked + svg { fill: var(--links) }
 /* Spacing post titles */
 .post .title a { padding: 0.25em 1em }
+/* Spacing FAQ/guidelines for Ask/Submit pages */
+.asksubmitwrapper:not(:empty) { margin-bottom: 1em }
 /* Actual post content */
 .postbody { padding: 1em }
 /* Bodyitems are items in the reblog chain */
