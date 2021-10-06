@@ -247,7 +247,7 @@ body.light {
 			<a data-tippy-content="{lang:Permalink}" href="{Permalink}"><i data-feather="link"></i></a>
 		</div>
 		{block:RebloggedFrom}
-		<div class="left actions">
+		<div class="left actions {block:IfNotShowLikeButtons}nolike{block:IfNotShowLikeButtons} {block:IfNotShowReblogButtons}noreblog{block:IfNotShowReblogButtons}">
 			<a data-tippy-content="{lang:Reblogged from ReblogParentName}" href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-40}" class="circle"></a>
 			<a data-tippy-content="{lang:Originally from ReblogRootName}" href="{ReblogRootURL}"><img src="{ReblogRootPortraitURL-40}" class="circle"></a>
 		</div>
