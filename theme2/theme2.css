@@ -276,6 +276,7 @@ main .post:first-child { margin-top: 0 }
 	margin-left: 0.5em;
 	opacity: 0.75;
 	font-size: 0.8em;
+	font-weight: 400
 }
 .usericon {
 	width: 2em;
