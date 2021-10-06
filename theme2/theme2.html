@@ -6,6 +6,7 @@
 		Icons by Feather: https://feathericons.com/
 		Custom like buttons by Georgi Demirev: https://demirev.cubthemes.com/post/106345243051/changing-like-and-reblog-button-colors-revisited
 		Infinite scroll by Paul Irish & Metafizzy: https://infinite-scroll.com/
+		NPF photosets fix by glenthemes: https://glenthemes.tumblr.com/post/659034084446748672/npf-images-v3
 		Dark/light mode toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 
 	Last updated 6 Oct 2021.
@@ -22,13 +23,25 @@
 	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
 	<link rel="alternate" type="application/rss+xml" href="{RSS}">
 
+	<!-- jQuery CDN -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Tippy.js tooltips by atomiks -->
 	<script src="https://unpkg.com/@popperjs/core@2"></script>
 	<script src="https://unpkg.com/tippy.js@6"></script>
+	<!--
+			NPF images fix v3.0 by @glenthemes [2021]
+			💌 git.io/JRBt7
+	--->
+	<script src="//npf-images-v3.github.io/script.js"></script>
+	<link rel="stylesheet" href="//npf-images-v3.github.io/recon.css">
+	<style tmblr-npf>
+	:root {
+		--NPF-Caption-Spacing:1em;
+		--NPF-Image-Spacing:0.5em;
+	}
+	</style>
 	<!-- Feather SVG icons -->
 	<script src="https://unpkg.com/feather-icons"></script>
-	<!-- jQuery CDN -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	{block:IfInfiniteScroll}
 	<!-- Infinite scroll -->
 	<script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
@@ -253,8 +266,8 @@ body.light {
 	
 	<div id="postwrapper">
 	
-	{block:Posts}
-	<section class="post">
+	{block:Posts inlineMediaWidth="1000" inlineNestedMediaWidth="1000"}
+	<section class="post" post-type="{PostType}">
 		{block:PinnedPostLabel}<span id="pinnedpost" data-tippy-content="{PinnedPostLabel}"><i data-feather="star"></i></span>{/block:PinnedPostLabel}
 		{block:Date}
 		<div class="right actions {block:IfNotShowLikeButtons}nolike{block:IfNotShowLikeButtons} {block:IfNotShowReblogButtons}noreblog{block:IfNotShowReblogButtons}">
