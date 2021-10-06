@@ -96,6 +96,8 @@
 	<meta name="select:Roundness of edges" title="Most" content="1.25rem">
 	<meta name="if:Show timestamp" content="1">
 	<meta name="if:24 hour timestamps" content="0">
+	<meta name="if:Show Like buttons" content="1">
+	<meta name="if:Show Reblog buttons" content="1">
 	<meta name="if:Show group blog members" content="0">
 	<meta name="if:Infinite scroll" content="0">
 	<meta name="if:Manual load for infinite scroll" content="1">
@@ -232,12 +234,16 @@ body.light {
 	<section class="post">
 		{block:PinnedPostLabel}<span id="pinnedpost" data-tippy-content="{PinnedPostLabel}"><i data-feather="star"></i></span>{/block:PinnedPostLabel}
 		{block:Date}
-		<div class="right actions">
+		<div class="right actions {block:IfNotShowLikeButtons}nolike{block:IfNotShowLikeButtons} {block:IfNotShowReblogButtons}noreblog{block:IfNotShowReblogButtons}">
+			{block:IfShowLikeButtons}
 			<a data-tippy-content="Like" href="#" class="customlike">
 				{LikeButton size="30"}
 				<i data-feather="heart"></i>
 			</a>
+			{/block:IfShowLikeButtons}
+			{block:IfShowReblogButtons}
 			<a  data-tippy-content="Reblog" href="{ReblogURL}"><i data-feather="repeat"></i></a>
+			{/block:IfShowReblogButtons}
 			<a data-tippy-content="{lang:Permalink}" href="{Permalink}"><i data-feather="link"></i></a>
 		</div>
 		{block:RebloggedFrom}
