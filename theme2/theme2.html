@@ -95,6 +95,7 @@
 	<meta name="select:Roundness of edges" title="More" content="0.75rem">
 	<meta name="select:Roundness of edges" title="Most" content="1.25rem">
 	<meta name="if:Show timestamp" content="1">
+	<meta name="if:Dates formatted month first" content="0">
 	<meta name="if:24 hour timestamps" content="0">
 	<meta name="if:Show Like buttons" content="1">
 	<meta name="if:Show Reblog buttons" content="1">
@@ -493,7 +494,7 @@ body.light {
 		<div class="datenotes below">
 			<a class="date" href="{Permalink}">
 				<i data-feather="clock"></i>
-				{DayOfMonth} {ShortMonth} {Year}{block:IfShowTimestamp} at {block:If24HourTimestamps}{24Hour}{/block:If24HourTimestamps}{block:IfNot24HourTimestamps}{12Hour}{/block:IfNot24HourTimestamps}:{Minutes}{block:IfNot24HourTimestamps} {CapitalAmPm}{/block:IfNot24HourTimestamps}{/block:IfShowTimestamp}
+				{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfShowTimestamp} at {block:If24HourTimestamps}{24Hour}{/block:If24HourTimestamps}{block:IfNot24HourTimestamps}{12Hour}{/block:IfNot24HourTimestamps}:{Minutes}{block:IfNot24HourTimestamps} {CapitalAmPm}{/block:IfNot24HourTimestamps}{/block:IfShowTimestamp}
 			</a>
 			<a class="today" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">{lang:Show all posts made on this day}</a>
 			{block:NoteCount}
