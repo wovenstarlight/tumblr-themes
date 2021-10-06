@@ -390,7 +390,7 @@ iframe { max-width: 100% }
 	padding: 0.5em;
 }
 .post .tags svg { vertical-align: middle; margin-right: 0.25em }
-.post .tags a { margin-right: 0.2em; text-decoration: none }
+.post .tags a { margin-right: 0.2em }
 .post .tags a:not(:last-child)::after { content: "," }
 
 /* Post notes on permalink pages */
