@@ -231,7 +231,10 @@ body.light {
 		{block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}
 	</h2></div>
 	{/block:SearchPage}
-		
+	{block:NoPosts}
+	<div class="post no-posts"><h2>{lang:This Tumblr hasnt posted anything}</h2></div>
+	{/block:NoPosts}
+	
 	<div id="postwrapper">
 	
 	{block:Posts}
