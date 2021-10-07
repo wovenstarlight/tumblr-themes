@@ -103,18 +103,18 @@
 	<meta name="select:Left accent image position" title="right" content="right">
 	<meta name="select:Left accent image position" title="top" content="top">
 	<meta name="select:Left accent image position" title="bottom" content="bottom">
-	<meta name="select:Left accent image size" title="cover" content="no-repeat; background-size: cover">
-	<meta name="select:Left accent image size" title="contain" content="no-repeat; background-size: contain">
-	<meta name="select:Left accent image size" title="tiled" content="repeat">
+	<meta name="select:Left accent image size" title="cover" content="cover; background-repeat: no-repeat">
+	<meta name="select:Left accent image size" title="contain" content="contain; background-repeat: no-repeat">
+	<meta name="select:Left accent image size" title="tiled" content="contain; background-repeat: repeat">
 	<meta name="image:Right sidebar accent">
 	<meta name="select:Right accent image position" title="center" content="center">
 	<meta name="select:Right accent image position" title="left" content="left">
 	<meta name="select:Right accent image position" title="right" content="right">
 	<meta name="select:Right accent image position" title="top" content="top">
 	<meta name="select:Right accent image position" title="bottom" content="bottom">
-	<meta name="select:Right accent image size" title="cover" content="no-repeat; background-size: cover">
-	<meta name="select:Right accent image size" title="contain" content="no-repeat; background-size: contain">
-	<meta name="select:Right accent image size" title="tiled" content="repeat">
+	<meta name="select:Right accent image size" title="cover" content="cover; background-repeat: no-repeat">
+	<meta name="select:Right accent image size" title="contain" content="contain; background-repeat: no-repeat">
+	<meta name="select:Right accent image size" title="tiled" content="contain; background-repeat: repeat">
 	<meta name="text:Custom links title" content="Links">
 	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever code or plain text you want. If you don't want an FAQ, leave this field blank!">
 	<meta name="text:Submission guidelines" content="This will go on your submission page, above your submission box.&NewLine;Add whatever code or plain text you want. If you don't want submission guidelines, leave this field blank!">
@@ -194,10 +194,18 @@ body.light {
 #bloginfo { padding-bottom: {block:ShowDescription}1em{/block:ShowDescription}{block:HideDescription}2em{/block:HideDescription} }
 #bloginfo::before {
 	margin-bottom: {block:ShowAvatar}3em{/block:ShowAvatar}{block:HideAvatar}0.5em{/block:HideAvatar};
-	{block:IfLeftSidebarAccentImage}background: url({image:Left sidebar accent}) {select:Left accent image position} {select:Left accent image size}{/block:IfLeftSidebarAccentImage}
+	{block:IfLeftSidebarAccentImage}
+	background-image: url({image:Left sidebar accent});
+	background-position: {select:Left accent image position};
+	background-size: {select:Left accent image size};
+	{/block:IfLeftSidebarAccentImage}
 }
 {block:IfRightSidebarAccentImage}
-#pagessearch::before { background: url({image:Right sidebar accent})  {select:Right accent image position} {select:Right accent image size} }
+#pagessearch::before {
+	background-image: url({image:Right sidebar accent});
+	background-position: {select:Right accent image position};
+	background-size: {select:Right accent image size};
+}
 {/block:IfRightSidebarAccentImage}
 {block:IfNotShowSearchBar}
 #pagessearch a:last-of-type { margin-bottom: 1em }
