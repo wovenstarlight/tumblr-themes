@@ -485,6 +485,7 @@ blockquote {
 #credits a {
 	background-color: var(--bg-accent);
 	cursor: pointer;
+	color: var(--credits)
 }
 body:not(.light) .feather-sun, body.light .feather-moon { display: none }
 #credits a:last-child { cursor: help }
