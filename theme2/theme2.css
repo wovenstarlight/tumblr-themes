@@ -298,6 +298,7 @@ main .post:first-child { margin-top: 0 }
 	bottom: 0.5em;
 	left: 0.5em;
 	padding: 0.5em 0.75em;
+	color: var(--credits);
 	background: var(--bg-accent);
 	border-radius: 0.5em;
 }
