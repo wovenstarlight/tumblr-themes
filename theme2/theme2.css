@@ -197,7 +197,7 @@ main .post:first-child { margin-top: 0 }
 #pinnedpost {
 	position: absolute;
 	background: var(--bg-accent);
-	color: var(--links);
+	color: var(--credits);
 	display: flex;
 	align-items: center;
 	justify-content: center;
