@@ -19,7 +19,7 @@ Here is a look at the basic structure in HTML:
 ```
 You can place anything you want inside the content section. I recommend placing standard text inside `<p>` tags to ensure a decent amount of spacing around it on either side. This means you'd surround your text with `<p>` and `</p>` tags, like this: `<p>Sample text here!</p>`
 
-To see the collapsibles in action, you can view [a sample page listing my fanfiction](https://starlightthemes.tumblr.com/collapsibles) on my theme blog.
+To see the collapsibles in action, find the appropriate preview link in the theme table below.
 
 ## Step 2: Getting the styling right
 Before you create your collapsible sections, you'll want to import the code that makes them look right. To do that, follow these steps:
@@ -27,10 +27,10 @@ Before you create your collapsible sections, you'll want to import the code that
 - Scroll to the bottom of the Customize menu and open "Advanced options".
 - Under `Custom CSS`, insert your theme's corresponding Collapsibles CSS. You can find the corresponding CSS by locating your theme in the table below and opening the code linked alongside. Copy everything on the page and paste it into the `Custom CSS` box.
 
-No. | Name | Collapsibles CSS file
---- | ---- | ---------------------
-1 | Discord | [theme1.css](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/collapsibles/theme1_collapsibles.css)
-2 | - | [theme2.css](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/collapsibles/theme2_collapsibles.css)
+No. | Name | Collapsibles CSS file | Preview
+--- | ---- | --------------------- | -------
+1 | Discord | [theme1.css](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/collapsibles/theme1_collapsibles.css) | [Preview link](https://starlightpreviews.tumblr.com/theme1/collapsibles)
+2 | Paint Job | [theme2.css](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/collapsibles/theme2_collapsibles.css) | [Preview link](https://starlightpreviews.tumblr.com/theme2/collapsibles)
 
 Once you've copied the CSS as instructed above and saved it, you're ready to start making collapsible sections!
 
