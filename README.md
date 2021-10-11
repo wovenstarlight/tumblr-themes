@@ -9,10 +9,10 @@ Blog previews can be seen at [starlightpreviews](https://starlightpreviews.tumbl
 My main blog is [wovenstarlight](https://wovenstarlight.tumblr.com).
 
 ## List of themes
-No. | Name | Status | Last Updated | Direct installation
---- | ---- | ------ | ------------ | ---------
-1 | [Discord](https://wovenstarlight.github.io/tumblr-themes/theme1) | Complete | 4 Oct 2021 | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme1/theme1.html)
-2 | [Paint Job](https://wovenstarlight.github.io/tumblr-themes/theme2) | Complete | 11 Oct 2021 | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme2/theme2.html)
+No. | Name | Status | Last Updated | Previews | Direct installation
+--- | ---- | ------ | ------------ | -------- | -------------------
+1 | [Discord](https://wovenstarlight.github.io/tumblr-themes/theme1) | Complete | 4 Oct 2021 | [Index page](https://starlightpreviews.tumblr.com/theme1), [Permalink](https://starlightpreviews.tumblr.com/theme1/permalink) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme1/theme1.html)
+2 | [Paint Job](https://wovenstarlight.github.io/tumblr-themes/theme2) | Complete | 11 Oct 2021 | [Index page](https://starlightpreviews.tumblr.com/theme2), [Permalink](https://starlightpreviews.tumblr.com/theme2/permalink) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme2/theme2.html)
 
 ## Collapsible sections
 I've made a guide to adding collapsible sections to your blogs if they're using my themes. As tie-in to my themes, they have associated styling to make them look good based on whatever colors you've chosen for your blog.
