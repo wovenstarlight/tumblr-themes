@@ -10,4 +10,4 @@ My main blog is [wovenstarlight](https://wovenstarlight.tumblr.com).
 No. | Name | Status | Last Updated | Direct installation
 --- | ---- | ------ | ------------ | ---------
 1 | [Discord](https://wovenstarlight.github.io/tumblr-themes/theme1) | Complete | 4 Oct 2021 | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme1/theme1.html)
-2 | [Theme 2](https://wovenstarlight.github.io/tumblr-themes/theme2) | In progress | - | 
+2 | [Paint Job](https://wovenstarlight.github.io/tumblr-themes/theme2) | Complete | 11 Oct 2021 | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme2/theme2.html)
