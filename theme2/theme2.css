@@ -82,7 +82,7 @@ em, i { color: var(--italics) }
 	height: 5em;
 	left: calc(50% - 2.5em);
 }
-#bloginfo div { margin: 0.5em 1em 1em }
+#description, #cardlinks { margin: 0.5em 1em 1em }
 #bloginfo div a, .bodyitemcontent a { text-decoration: underline }
 #cardlinks {
 	position: absolute;
