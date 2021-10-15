@@ -8,6 +8,8 @@ PREVIEWS: [Index page](https://starlightpreviews.tumblr.com/theme2), [permalink]
 
 [INSTALL (spoiler plugin)](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme2/theme2spoilers.html)
 
+If you plan to use this theme, please [reblog it](https://starlightthemes.tumblr.com/post/664789392768008192/theme-2-paint-job) on Tumblr!
+
 ## Features
 ### Theme-specific
 - *All* colors customizable
