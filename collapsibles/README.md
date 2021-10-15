@@ -9,7 +9,7 @@ Each collapsible section or division (`div`) has two parts:
 - the collapsible content (`clpcontent`)
 
 Here is a look at the basic structure in HTML:
-```HTML
+```
 <div class="collapsible">
 	<p class="clpbutton">Click to open the collapsible</p>
 	<div class="clpcontent">
