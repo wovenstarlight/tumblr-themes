@@ -2,6 +2,11 @@
 
 A super customizable theme, with everything you might need visible at a glance.
 
+PREVIEWS: [Index page](https://starlightpreviews.tumblr.com/theme2), [permalink](https://starlightpreviews.tumblr.com/theme2/permalink)
+
+[INSTALL (standard)](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme2/theme2.html)
+[INSTALL (spoiler plugin)](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme2/theme2spoilers.html)
+
 ## Features
 ### Theme-specific
 - *All* colors customizable
@@ -25,6 +30,7 @@ A super customizable theme, with everything you might need visible at a glance.
 	- MM/DD or DD/MM format
 	- Times in 24-hour or 12-hour AM/PM format
 - [Collapsible sections](https://github.com/wovenstarlight/tumblr-themes/tree/main/collapsibles) for use on custom blog pages
+	- [Preview here](https://starlightpreviews.tumblr.com/theme2/collapsibles)
 - Choose between jump pagination or infinite scroll
 	- Jump pagination: Use [glenthemes' spoiler tag plugin](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme1/theme1.html) to filter posts on your blog
 	- Infinite scroll: Choose between automatic or manual load
