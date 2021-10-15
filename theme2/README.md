@@ -54,3 +54,9 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 - [NPF photosets fix](https://glenthemes.tumblr.com/post/659034084446748672/npf-images-v3) by glenthemes
 - [Dark/light mode toggle](https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a) by eggdesign
 - [Spoiler tags plugin](https://glenthemes.tumblr.com/spoilertags) by glenthemes
+
+## Screenshot previews
+![Screenshot of a Tumblr blog on the home page. It has posts in the center, blog information to the left, and links & search to the right. It's set to light mode in mint green, off-white, and brown colors. The page has a background of dark brown wood.](https://github.com/wovenstarlight/tumblr-themes/blob/main/theme2/theme2_screenshot1light.png?raw=true)
+![Screenshot of the home page, now scrolled to the bottom. The page navigation is visible below the posts, showing the total number of pages and a next page button. The blog has been changed to the dark theme, in dark green, black, and gold colors. The background is black instead of having the wood background, and the sidebars have accent images of gold foil.](https://github.com/wovenstarlight/tumblr-themes/blob/main/theme2/theme2_screenshot1dark.png?raw=true)
+![Dark mode screenshot of a post permalink page. The notes section is visible just below the post.](https://github.com/wovenstarlight/tumblr-themes/blob/main/theme2/theme2_screenshot2dark.png?raw=true)
+![Screenshot of the same permalink page, now on light mode and scrolled to the bottom. At the bottom of the notes section is a Load more notes button. The navigation below the post and notes area now reads Show more posts, with links to the next and previous posts.](https://github.com/wovenstarlight/tumblr-themes/blob/main/theme2/theme2_screenshot2light.png?raw=true)
