@@ -43,6 +43,7 @@ If you plan to use this theme, please [reblog it](https://starlightthemes.tumblr
 - Responsive
 - Unlimited custom links
 - Supports new post types (NPF) and pinned posts
+- Unnested captions
 
 ## Credits
 - [Tippy.js tooltips](https://atomiks.github.io/tippyjs) by atomiks
