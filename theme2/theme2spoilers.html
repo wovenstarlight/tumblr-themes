@@ -1,0 +1,665 @@
+<!-- 
+	THEME 2: PAINT JOB by starlightthemes
+
+	Credits:
+		Tippy.js tooltips by atomiks: https://atomiks.github.io/tippyjs
+		Icons by Feather: https://feathericons.com/
+		Custom like buttons by Georgi Demirev: https://demirev.cubthemes.com/post/106345243051/changing-like-and-reblog-button-colors-revisited
+		Infinite scroll by Paul Irish & Metafizzy: https://infinite-scroll.com/
+		NPF photosets fix by glenthemes: https://glenthemes.tumblr.com/post/659034084446748672/npf-images-v3
+		Dark/light mode toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
+
+	Last updated 15 Oct 2021.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{Title}{block:TagPage} ({lang:Posts tagged Tag}){/block:TagPage}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+	<meta name="description" content="{MetaDescription}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+	<!-- jQuery CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+	<!-- Tippy.js tooltips by atomiks -->
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
+	<!--
+			NPF images fix v3.0 by @glenthemes [2021]
+			💌 git.io/JRBt7
+	--->
+	<script src="//npf-images-v3.github.io/script.js"></script>
+	<link rel="stylesheet" href="//npf-images-v3.github.io/recon.css">
+	<style tmblr-npf>
+	:root {
+		--NPF-Caption-Spacing:1em;
+		--NPF-Image-Spacing:0.5em;
+	}
+	</style>
+	<!-- Feather SVG icons -->
+	<script src="https://unpkg.com/feather-icons"></script>
+	{block:IfInfiniteScroll}
+	<!-- Infinite scroll -->
+	<script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
+	{/block:IfInfiniteScroll}
+	<script src="https://wovenstarlight.github.io/tumblr-themes/theme2/theme2.min.js"></script>
+
+	{block:Hidden}
+	<meta name="text:Google font for body" content="Abel">
+	<meta name="font:Tumblr font for body" content="Capita">
+	<meta name="if:Use Tumblr fonts" content="0">
+	<meta name="text:Font size" content="16px">
+	<meta name="text:Post width" content="600px">
+	
+	<meta name="color:Text" content="#e5e5e5">
+	<meta name="color:Headings" content="#ffffff">
+	<meta name="color:Links" content="#ff9e29">
+	<meta name="color:Links hover" content="#ffc37a">
+	<meta name="color:Bold" content="#ff9781">
+	<meta name="color:Italics" content="#fff382">
+	<meta name="color:Post background" content="#443124">
+	<meta name="color:Post accent 1" content="#465a32">
+	<meta name="color:Post accent 2" content="#183914">
+	<meta name="color:Background" content="#393c3b">
+	<meta name="color:Background accent" content="#252525">
+	<meta name="color:Sidebar accent" content="#a4704b">
+	<meta name="color:Credits and mode toggle" content="#ff9e29">
+	<meta name="color:Text highlight" content="#ffbf92">
+	<meta name="color:Text highlight background" content="#0e6600">
+	
+	<meta name="if:Show color mode toggle" content="1">
+	<meta name="if:Default to light mode" content="0">
+	<meta name="color:LM Text" content="#1f1f1f">
+	<meta name="color:LM Headings" content="#073700">
+	<meta name="color:LM Links" content="#005d06">
+	<meta name="color:LM Links hover" content="#00960a">
+	<meta name="color:LM Bold" content="#005f51">
+	<meta name="color:LM Italics" content="#375600">
+	<meta name="color:LM Post background" content="#f3f4f3">
+	<meta name="color:LM Post accent 1" content="#dde2de">
+	<meta name="color:LM Post accent 2" content="#b3beb6">
+	<meta name="color:LM Background" content="#b1d9b7">
+	<meta name="color:LM Background accent" content="#5e3b2e">
+	<meta name="color:LM Sidebar accent" content="#b5835f">
+	<meta name="color:LM Credits and mode toggle" content="#95d99f">
+	<meta name="color:LM Text highlight" content="#d1d1d1">
+	<meta name="color:LM Text highlight background" content="#6e402f">
+	
+	<meta name="image:Background accent" content="{HeaderImage}">
+	<meta name="select:Background image position" title="center" content="center">
+	<meta name="select:Background image position" title="left" content="left">
+	<meta name="select:Background image position" title="right" content="right">
+	<meta name="select:Background image position" title="top" content="top">
+	<meta name="select:Background image position" title="bottom" content="bottom">
+	<meta name="select:Background image size" title="cover" content="no-repeat; background-size: cover">
+	<meta name="select:Background image size" title="contain" content="no-repeat; background-size: contain">
+	<meta name="select:Background image size" title="tiled" content="repeat">
+	<meta name="text:Background image opacity" content="1">
+	<meta name="image:Left sidebar accent">
+	<meta name="select:Left accent image position" title="center" content="center">
+	<meta name="select:Left accent image position" title="left" content="left">
+	<meta name="select:Left accent image position" title="right" content="right">
+	<meta name="select:Left accent image position" title="top" content="top">
+	<meta name="select:Left accent image position" title="bottom" content="bottom">
+	<meta name="select:Left accent image size" title="cover" content="cover; background-repeat: no-repeat">
+	<meta name="select:Left accent image size" title="contain" content="contain; background-repeat: no-repeat">
+	<meta name="select:Left accent image size" title="tiled" content="contain; background-repeat: repeat">
+	<meta name="image:Right sidebar accent">
+	<meta name="select:Right accent image position" title="center" content="center">
+	<meta name="select:Right accent image position" title="left" content="left">
+	<meta name="select:Right accent image position" title="right" content="right">
+	<meta name="select:Right accent image position" title="top" content="top">
+	<meta name="select:Right accent image position" title="bottom" content="bottom">
+	<meta name="select:Right accent image size" title="cover" content="cover; background-repeat: no-repeat">
+	<meta name="select:Right accent image size" title="contain" content="contain; background-repeat: no-repeat">
+	<meta name="select:Right accent image size" title="tiled" content="contain; background-repeat: repeat">
+	<meta name="text:Custom links title" content="Links">
+	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever code or plain text you want. If you don't want an FAQ, leave this field blank!">
+	<meta name="text:Submission guidelines" content="This will go on your submission page, above your submission box.&NewLine;Add whatever code or plain text you want. If you don't want submission guidelines, leave this field blank!">
+	<meta name="if:Show Random post link" content="1">
+	<meta name="if:Show Archive link" content="1">
+	<meta name="if:Show search bar" content="1">
+	<meta name="select:Roundness of edges" title="Less" content="0.5rem">
+	<meta name="select:Roundness of edges" title="None" content="0">
+	<meta name="select:Roundness of edges" title="Least" content="0.25rem">
+	<meta name="select:Roundness of edges" title="More" content="0.75rem">
+	<meta name="select:Roundness of edges" title="Most" content="1.25rem">
+	<meta name="if:Show timestamps" content="1">
+	<meta name="if:Dates formatted month first" content="0">
+	<meta name="if:24 hour timestamps" content="0">
+	<meta name="if:Show tags" content="1">
+	<meta name="if:Show Like buttons" content="1">
+	<meta name="if:Show Reblog buttons" content="1">
+	<meta name="if:Show group blog members" content="0">
+	<meta name="if:Infinite scroll" content="0">
+	<meta name="if:Manual load for infinite scroll" content="1">
+	{/block:Hidden}
+	
+	{block:IfNotUseTumblrFonts}<link href="https://fonts.googleapis.com/css2?family={text:Google font for body}:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet"> {/block:IfNotUseTumblrFonts}
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme2/theme2.min.css">
+
+<style>
+body {
+	--text: {color:Text};
+	--text--rgb: {RGBcolor:Text};
+	--headings: {color:Headings};
+	--links: {color:Links};
+	--links--rgb: {RGBcolor:Links};
+	--links-hover: {color:Links hover};
+	--bold: {color:Bold};
+	--italics: {color:Italics};
+	--post-bg: {color:Post background};
+	--accent1: {color:Post accent 1};
+	--accent2: {color:Post accent 2};
+	--bg: {color:Background};
+	--bg-accent: {color:Background accent};
+	--side-accent: {color:Sidebar accent};
+	--highlight: {color:Text highlight};
+	--highlight-bg: {color:Text highlight background};
+	--credits: {color:Credits and mode toggle};
+	--roundness: {select:Roundness of edges};
+	--post-width: {text:Post width};
+	font-size: {text:Font size};
+	font-family: {block:IfUseTumblrFonts}{font:Tumblr font for body}, {/block:IfUseTumblrFonts}{text:Google font for body};
+}
+body.light {
+	--text: {color:LM Text};
+	--text--rgb: {RGBcolor:LM Text};
+	--headings: {color:LM Headings};
+	--links: {color:LM Links};
+	--links--rgb: {RGBcolor:LM Links};
+	--links-hover: {color:LM Links hover};
+	--bold: {color:LM Bold};
+	--italics: {color:LM Italics};
+	--post-bg: {color:LM Post background};
+	--accent1: {color:LM Post accent 1};
+	--accent2: {color:LM Post accent 2};
+	--bg: {color:LM Background};
+	--bg-accent: {color:LM Background accent};
+	--side-accent: {color:LM Sidebar accent};
+	--highlight: {color:LM Text highlight};
+	--highlight-bg: {color:LM Text highlight background};
+	--credits: {color:LM Credits and mode toggle};
+}
+{block:IfBackgroundAccentImage}
+#bgaccent::before {
+	content: "";
+	width: 100%;
+	height: 100%;
+	display: block;
+	background: url({image:Background accent}) {select:Background image position} {select:Background image size};
+	opacity: {text:Background image opacity};
+}
+{/block:IfBackgroundAccentImage}
+#bloginfo { padding-bottom: {block:ShowDescription}1em{/block:ShowDescription}{block:HideDescription}2em{/block:HideDescription} }
+#bloginfo::before {
+	margin-bottom: {block:ShowAvatar}3em{/block:ShowAvatar}{block:HideAvatar}0.5em{/block:HideAvatar};
+	{block:IfLeftSidebarAccentImage}
+	background-image: url({image:Left sidebar accent});
+	background-position: {select:Left accent image position};
+	background-size: {select:Left accent image size};
+	{/block:IfLeftSidebarAccentImage}
+}
+{block:IfRightSidebarAccentImage}
+#pagessearch::before {
+	background-image: url({image:Right sidebar accent});
+	background-position: {select:Right accent image position};
+	background-size: {select:Right accent image size};
+}
+{/block:IfRightSidebarAccentImage}
+{block:IfNotShowSearchBar}
+#pagessearch a:last-of-type { margin-bottom: 1em }
+{/block:IfNotShowSearchBar}
+{block:IfNotBackgroundAccentImage}
+#pinnedpost { border: .1em solid }
+{/block:IfNotBackgroundAccentImage}
+
+/* Custom CSS */
+{CustomCSS}
+</style>
+
+</head>
+<body class="{block:HasPages}haspages{/block:HasPages} {block:IfShowSearchBar}hassearch{/block:IfShowSearchBar} {block:IfDefaultToLightMode}light{/block:IfDefaultToLightMode}">
+
+<div id="bgaccent"></div>
+
+<section id="bloginfo" class="sidecard">
+	<a href="/" id="title">
+		{block:ShowAvatar}<img src="{PortraitURL-128}" class="{AvatarShape}" />{/block:ShowAvatar}
+		{block:ShowTitle}<h2>{Title}</h2>{/block:ShowTitle}
+	</a>
+	{block:ShowDescription}<div id="description">{Description}</div>{/block:ShowDescription}
+	<nav id="cardlinks">
+		<a href="/" data-tippy-content="{lang:Home}"><i data-feather="home"></i></a>
+		{block:AskEnabled}<a href="/ask" data-tippy-content="{AskLabel}"><i data-feather="mail"></i></a>{/block:AskEnabled}
+		{block:SubmissionsEnabled}<a href="/submit" data-tippy-content="{SubmitLabel}"><i data-feather="inbox"></i></a>{/block:SubmissionsEnabled}
+		{block:IfShowRandomPostLink}<a href="/random" data-tippy-content="{lang:Random post}"><i data-feather="shuffle"></i></a>{/block:IfShowRandomPostLink}
+		{block:IfShowArchiveLink}<a href="/archive" data-tippy-content="{lang:Archive}"><i data-feather="archive"></i></a>{/block:IfShowArchiveLink}
+	</nav>
+		
+	{block:IfShowGroupBlogMembers}{block:GroupMembers}
+	<div id="blogmembers">
+		<h2>{lang:Group members}</h2>
+		{block:GroupMember}
+		<a href="{GroupMemberURL}">
+			<figure>
+				<img class="circle" src="{GroupMemberPortraitURL-64}">
+				<figcaption>{GroupMemberName}</figcaption>
+			</figure>
+		</a>
+		{/block:GroupMember}
+	</div>
+	{/block:GroupMembers}{/block:IfShowGroupBlogMembers}
+</section>
+
+<main>
+	{block:TagPage}
+	<div class="page title">
+		<h2>{lang:TagResultCount posts tagged Tag 2}</h2>
+		Sort <a href="/tagged/{URLSafeTag}">newest first</a> or <a href="/tagged/{URLSafeTag}/chrono">oldest first</a>
+	</div>
+	{/block:TagPage}
+	{block:DayPage}
+	<div class="page title"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
+	{/block:DayPage}
+	{block:SearchPage}
+	<div class="page title">
+		<h2>{lang:SearchResultCount results for SearchQuery 2}
+		{block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}
+	</h2></div>
+	{/block:SearchPage}
+	{block:NoPosts}
+	<div class="post no-posts"><h2>{lang:This Tumblr hasnt posted anything}</h2></div>
+	{/block:NoPosts}
+	
+	<div id="postwrapper">
+	
+	{block:Posts inlineMediaWidth="1000" inlineNestedMediaWidth="1000"}
+	<section class="post" post-type="{PostType}">
+		{block:PinnedPostLabel}<span id="pinnedpost" data-tippy-content="{PinnedPostLabel}"><i data-feather="star"></i></span>{/block:PinnedPostLabel}
+		{block:Date}
+		<div class="right actions {block:IfNotShowLikeButtons}nolike{block:IfNotShowLikeButtons} {block:IfNotShowReblogButtons}noreblog{block:IfNotShowReblogButtons}">
+			{block:IfShowLikeButtons}
+			<a data-tippy-content="Like" href="#" class="customlike">
+				{LikeButton size="30"}
+				<i data-feather="heart"></i>
+			</a>
+			{/block:IfShowLikeButtons}
+			{block:IfShowReblogButtons}
+			<a  data-tippy-content="Reblog" href="{ReblogURL}"><i data-feather="repeat"></i></a>
+			{/block:IfShowReblogButtons}
+			<a data-tippy-content="{lang:Permalink}" href="{Permalink}"><i data-feather="link"></i></a>
+		</div>
+		{block:RebloggedFrom}
+		<div class="left actions {block:IfNotShowLikeButtons}nolike{block:IfNotShowLikeButtons} {block:IfNotShowReblogButtons}noreblog{block:IfNotShowReblogButtons}">
+			<a data-tippy-content="{lang:Reblogged from ReblogParentName}" href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-40}" class="circle"></a>
+			<a data-tippy-content="{lang:Originally from ReblogRootName}" href="{ReblogRootURL}"><img src="{ReblogRootPortraitURL-40}" class="circle"></a>
+		</div>
+		{/block:RebloggedFrom}
+		{/block:Date}
+		
+		
+		{block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+		<div class="postbody">
+		
+		{block:AskPage}<div class="asksubmitwrapper">{text:FAQ}</div>{/block:AskPage}
+		{block:SubmitPage}<div class="asksubmitwrapper">{text:Submission guidelines}</div>{/block:SubmitPage}
+		
+		{block:Text}
+			
+			{block:NotReblog}
+			<div class="bodyitemcontent">{Body}</div>
+			{/block:NotReblog}
+			
+			{block:RebloggedFrom}{block:Reblogs}
+			<div class="bodyitem">
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+					<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+					<span class="username">{Username}</span>
+				</a>
+				<div class="bodyitemcontent">{Body}</div>
+			</div>
+			{/block:Reblogs}{/block:RebloggedFrom}
+			
+		{/block:Text}
+		
+		
+		{block:Photo}
+		
+			<div class="photowrapper">
+				{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+				<a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
+			</div>
+			
+			{block:NotReblog}
+			<div class="bodyitemcontent">{Caption}</div>
+			{/block:NotReblog}
+			
+			{block:RebloggedFrom}{block:Reblogs}
+			<div class="bodyitem">
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+					<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+					<span class="username">{Username}</span>
+				</a>
+				<div class="bodyitemcontent">{Body}</div>
+			</div>
+			{/block:Reblogs}{/block:RebloggedFrom}
+			
+		{/block:Photo}
+		
+		
+		{block:Panorama}
+		
+			<div class="photowrapper">
+				{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+				<a class="highres" href="{PhotoURL-Panorama}">{lang:View high resolution}</a>
+			</div>
+			
+			{block:NotReblog}
+			<div class="bodyitemcontent">{Caption}</div>
+			{/block:NotReblog}
+			
+			{block:RebloggedFrom}{block:Reblogs}
+			<div class="bodyitem">
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+					<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+					<span class="username">{Username}</span>
+				</a>
+				<div class="bodyitemcontent">{Body}</div>
+			</div>
+			{/block:Reblogs}{/block:RebloggedFrom}
+			
+		{/block:Panorama}
+		
+		
+		{block:Photoset}
+		
+			<div class="photowrapper">
+				{Photoset}
+			</div>
+			
+			{block:NotReblog}
+			<div class="bodyitemcontent">{Caption}</div>
+			{/block:NotReblog}
+			
+			{block:RebloggedFrom}{block:Reblogs}
+			<div class="bodyitem">
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+					<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+					<span class="username">{Username}</span>
+				</a>
+				<div class="bodyitemcontent">{Body}</div>
+			</div>
+			{/block:Reblogs}{/block:RebloggedFrom}
+			
+		{/block:Photoset}
+		
+		
+		{block:Quote}
+			<div class="quote">
+				<h2>{Quote}</h2>
+				{block:Source}<p>— {Source}</p>{/block:Source}
+			</div>
+		{/block:Quote}
+		
+		
+		{block:Link}
+			
+			{block:NotReblog}
+			<div class="bodyitemcontent">
+				<a class="link" href="{URL}" {Target}>
+					{block:Thumbnail}<img href="{Thumbnail}">{/block:Thumbnail}
+					<span class="name">{Name}{block:Author} — {Author}{/block:Author}</span>
+					{block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}
+				</a>
+				{Body}
+			</div>
+			{/block:NotReblog}
+			
+			{block:RebloggedFrom}{block:Reblogs}
+			<div class="bodyitem">
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+					<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+					<span class="username">{Username}</span>
+				</a>
+				<div class="bodyitemcontent">
+					{block:IsOriginalEntry}
+					<a class="link" href="{URL}" {Target}>
+						{block:Thumbnail}<img href="{Thumbnail}">{/block:Thumbnail}
+						<span class="name">{Name}{block:Author} — {Author}{/block:Author}</span>
+						{block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}
+					</a>
+					{/block:IsOriginalEntry}
+					{Body}
+				</div>
+			</div>
+			{/block:Reblogs}{/block:RebloggedFrom}
+			
+		{/block:Link}
+		
+		
+		{block:Chat}
+			<ol class="chat">
+				{block:Lines}
+				{block:Label}
+				<li><strong>{Label}</strong> {/block:Label}{Line}</li>
+				{/block:Lines}
+			</ol>
+		{/block:Chat}
+		
+		
+		{block:Audio}
+		
+			<div class="audiowrapper">
+				{AudioEmbed}
+			</div>
+			
+			{block:NotReblog}
+			<div class="bodyitemcontent">{Caption}</div>
+			{/block:NotReblog}
+			
+			{block:RebloggedFrom}{block:Reblogs}
+			<div class="bodyitem">
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+					<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+					<span class="username">{Username}</span>
+				</a>
+				<div class="bodyitemcontent">{Body}</div>
+			</div>
+			{/block:Reblogs}{/block:RebloggedFrom}
+			
+		{/block:Audio}
+		
+		
+		{block:Video}
+		
+			<div class="videowrapper">
+				{Video-500}
+			</div>
+			
+			{block:NotReblog}
+			<div class="bodyitemcontent">{Caption}</div>
+			{/block:NotReblog}
+			
+			{block:RebloggedFrom}{block:Reblogs}
+			<div class="bodyitem">
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+					<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+					<span class="username">{Username}</span>
+				</a>
+				<div class="bodyitemcontent">{Body}</div>
+			</div>
+			{/block:Reblogs}{/block:RebloggedFrom}
+			
+		{/block:Video}
+		
+		
+		{block:Answer}
+		
+			<div class="ask">
+			
+				<div class="user">
+					<img src="{AskerPortraitURL-64}" class="{AvatarShape} usericon">
+					<span class="username">{lang:Asker asked 2}</span>
+				</div>
+				<div class="question">{Question}</div>
+			</div>
+			
+			<div class="bodyitem">
+				{block:RebloggedFrom}{block:Answerer}
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" href="{ReblogRootURL}">
+					<img src="{AnswererPortraitURL-64}" class="{AvatarShape} usericon"/>
+					<span class="username">{ReblogRootName}</span>
+				</a>
+				{/block:Answerer}{/block:RebloggedFrom}
+				
+				<div class="bodyitemcontent">{Answer}</div>
+			</div>
+			
+			{block:RebloggedFrom}{block:Reblogs}
+			<div class="bodyitem">
+				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+					<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+					<span class="username">{Username}</span>
+				</a>
+				<div class="bodyitemcontent">{Body}</div>
+			</div>
+			{/block:Reblogs}{/block:RebloggedFrom}
+			
+		{/block:Answer}
+		
+		
+		</div>
+		
+		
+		
+		{block:Date}
+		
+		<div class="datenotes below">
+			<a class="date" href="{Permalink}">
+				<i data-feather="clock"></i>
+				{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfShowTimestamps} at {block:If24HourTimestamps}{24Hour}{/block:If24HourTimestamps}{block:IfNot24HourTimestamps}{12Hour}{/block:IfNot24HourTimestamps}:{Minutes}{block:IfNot24HourTimestamps} {CapitalAmPm}{/block:IfNot24HourTimestamps}{/block:IfShowTimestamps}
+			</a>
+			<a class="today" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">{lang:Show all posts made on this day}</a>
+			{block:NoteCount}
+			<a class="notes" href="{Permalink}">
+				{NoteCountWithLabel}
+				<i data-feather="bookmark"></i>
+			</a>
+			{/block:NoteCount}
+		</div>
+		
+		{block:IfShowTags}{block:HasTags}
+		<div class="tags below">
+			<i data-feather="tag"></i>
+			{block:Tags}
+			<a href="{TagURL}">{Tag}</a>
+			{/block:Tags}
+		</div>
+		{/block:HasTags}{/block:IfShowTags}
+		
+		{/block:Date}
+	</section>
+	{/block:Posts}
+	
+	</div>
+	
+	
+	{block:PostNotes}
+	<section class="post notes">
+		<h2 class="title">{lang:Notes}</h2>
+		{PostNotes-64}
+	</section>
+	{/block:PostNotes}
+	
+	
+	
+	
+	{block:Pagination}
+	{block:IfInfiniteScroll}{block:IfManualLoadForInfiniteScroll}
+	<div id="loadmore">{lang:Load more posts}</div>
+	{/block:IfManualLoadForInfiniteScroll}{/block:IfInfiniteScroll}
+	<nav id="navigation">
+		{block:PreviousPage}<a id="prevpage" href="{PreviousPage}" data-tippy-content="{lang:Previous page}"><i data-feather="chevron-left"></i></a>{/block:PreviousPage}
+		<span>{lang:CurrentPage of TotalPages}</span>
+		{block:NextPage}<a id="nextpage" href="{NextPage}" data-tippy-content="{lang:Next page}"><i data-feather="chevron-right"></i></a>{/block:NextPage}
+	</nav>
+	{/block:Pagination}
+		
+	{block:PermalinkPagination}
+	<nav id="navigation">
+		{block:PreviousPost}<a href="{PreviousPost}" data-tippy-content="{lang:Previous post}"><i data-feather="chevron-left"></i></a>{/block:PreviousPost}
+		<span>{lang:See more posts}</span>
+		{block:NextPost}<a href="{NextPost}" data-tippy-content="{lang:Next post}"><i data-feather="chevron-right"></i></a>{/block:NextPost}
+	</nav>
+	{/block:PermalinkPagination}
+		
+	{block:DayPagination}
+	<nav id="navigation">
+		{block:PreviousDayPage}<a href="{PreviousDayPage}" data-tippy-content="{lang:Previous day}"><i data-feather="chevron-left"></i></a>{/block:PreviousDayPage}
+		<span>{lang:See more posts}</span>
+		{block:NextDayPage}<a href="{NextDayPage}" data-tippy-content="{lang:Next day}"><i data-feather="chevron-right"></i></a>{/block:NextDayPage}
+	</nav>
+	{/block:DayPagination}
+</main>
+
+<section id="pagessearch" class="sidecard">
+	{block:HasPages}
+	<nav>
+		<h2>{text:Custom links title}</h2>
+		{block:Pages}
+		<a href="{URL}">{Label}</a>
+		{/block:Pages}
+	</nav>
+	{/block:HasPages}
+	{block:IfShowSearchBar}
+	<form action="/search" method="get">
+		<label for="q">Search</label>
+		<input type="text" name="q" value="{SearchQuery}"/>
+		<i data-feather="search"></i>
+	</form>
+	{/block:IfShowSearchBar}
+</section>
+
+<div id="credits">
+	<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+	<a href="https://starlightthemes.tumblr.com/theme2" data-tippy-content="{lang:Install this theme}"><i data-feather="download"></i></a>
+	<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+	{block:IfShowColorModeToggle}
+	<a data-tippy-content="Toggle light/dark mode" id="darklight">
+		<i data-feather="sun"></i>
+		<i data-feather="moon"></i>
+	</a>
+	{/block:IfShowColorModeToggle}
+	<a data-tippy-content="© {Name} {CopyrightYears}"><i data-feather="help-circle"></i></a>
+</div>
+
+{block:IfInfiniteScroll}
+<script>
+$("#postwrapper").infiniteScroll({
+	// options
+	path: '#nextpage',
+	append: '.post',
+	history: false,
+	{block:IfManualLoadForInfiniteScroll}button: '#loadmore',
+	scrollThreshold: false,{/block:IfManualLoadForInfiniteScroll}
+	hideNav: '#navigation'
+});
+
+$("#postwrapper").on( 'append.infiniteScroll', function( event, body, path, items, response ) {
+	feather.replace();
+	
+	tippy("#pinnedpost", { theme: 'standard' });
+	tippy(".left.actions [data-tippy-content]", { placement: 'right', theme: 'standard' });
+	tippy(".right.actions [data-tippy-content]", { placement: 'left', theme: 'standard' });
+});
+</script>
+{/block:IfInfiniteScroll}
+
+</body>
+</html>
