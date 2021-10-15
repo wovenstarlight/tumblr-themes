@@ -17,4 +17,4 @@ No. | Name | Status | Last Updated | Previews | Direct installation
 ## Collapsible sections
 I've made a guide to adding collapsible sections to your blogs if they're using my themes. As tie-in to my themes, they have associated styling to make them look good based on whatever colors you've chosen for your blog.
 
-For a guide on installing them, [see here.](https://github.com/wovenstarlight/tumblr-themes/tree/main/collapsibles)
+For a guide on installing them, [see here.](https://wovenstarlight.github.io/tumblr-themes/collapsibles/)
