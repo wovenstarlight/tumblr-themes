@@ -31,7 +31,7 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 - Date/time options
 	- MM/DD or DD/MM format
 	- Times in 24-hour or 12-hour AM/PM format
-- [Collapsible sections](https://github.com/wovenstarlight/tumblr-themes/tree/main/collapsibles) for use on custom blog pages
+- [Collapsible sections](https://wovenstarlight.github.io/tumblr-themes/collapsibles/) for use on custom blog pages
 	- [Preview here](https://starlightpreviews.tumblr.com/theme1/collapsibles)
 - Choose between jump pagination or infinite scroll
 	- Infinite scroll: Choose between automatic or manual load
