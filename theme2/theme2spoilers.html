@@ -8,6 +8,7 @@
 		Infinite scroll by Paul Irish & Metafizzy: https://infinite-scroll.com/
 		NPF photosets fix by glenthemes: https://glenthemes.tumblr.com/post/659034084446748672/npf-images-v3
 		Dark/light mode toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
+		Spoiler tags plugin by glenthemes: https://glenthemes.tumblr.com/spoilertags
 
 	Last updated 15 Oct 2021.
 -->
@@ -47,6 +48,58 @@
 	<script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
 	{/block:IfInfiniteScroll}
 	<script src="https://wovenstarlight.github.io/tumblr-themes/theme2/theme2.min.js"></script>
+
+	<!--------- HIDE POSTS WITH SPOILER TAGS | @glenthemes -------->
+	<script src="//spoilertags.glitch.me/filter.js"></script>
+	<link href="//spoilertags.glitch.me/style.css" rel="stylesheet">
+	<script>
+	$(function(){
+		$("[init-tags]").spoilerTags({
+			filter:[
+				"#spoilers"
+			],
+			
+			message: "This post contains the following:",
+			includeHashtag: "no",
+			tagSeparator: ",",
+			viewPostText: "show anyway",
+			shrinkPosts: "yes"
+		});
+	});
+
+	$(document).ready( function() {
+		$(".view-button").click( function() {
+			$(this).parents(".posts-selector").addClass("visible");
+		});
+	});
+	</script>
+
+	<style>
+	body {
+		--Spoiler-Overlay-Color: var(--post-bg);
+		--Spoiler-Overlay-Transparency: 0%; /* MUST be in % */
+			
+		--Warning-Text-Size: 0.9em;
+		--Warning-Text-Color: var(--text);
+		--Spoiler-Tags-Color: var(--links);
+			
+		--ViewPost-Button-Padding: 1em;
+		--ViewPost-Button-Border: transparent;
+		--ViewPost-Button-Roundness: var(--roundness);
+		--ViewPost-Button-Background: var(--accent2);
+		--ViewPost-Button-FontSize: 80%;
+		--ViewPost-Button-Text-Color: var(--links);
+			
+		--ViewPost-Button-HOVER-Border: transparent;
+		--ViewPost-Button-HOVER-Background: var(--accent1);
+		--ViewPost-Button-HOVER-Text-Color: var(--text);
+			
+		--ShrinkPost-Transition-Speed: 699ms; /* can be in ms or s */
+	}
+
+	.spoiler-overlay { border-radius: var(--roundness) }
+	.posts-selector.visible { max-height: unset !important }
+	</style>
 
 	{block:Hidden}
 	<meta name="text:Google font for body" content="Abel">
@@ -303,6 +356,7 @@ body.light {
 		{/block:RebloggedFrom}
 		{/block:Date}
 		
+		<div class="posts-selector" posts-selector>
 		
 		{block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
 		<div class="postbody">
@@ -558,7 +612,7 @@ body.light {
 		<div class="tags below">
 			<i data-feather="tag"></i>
 			{block:Tags}
-			<a href="{TagURL}">{Tag}</a>
+			<a href="{TagURL}" init-tags>{Tag}</a>
 			{/block:Tags}
 		</div>
 		{/block:HasTags}{/block:IfShowTags}
@@ -569,6 +623,7 @@ body.light {
 	
 	</div>
 	
+	</div>
 	
 	{block:PostNotes}
 	<section class="post notes">
