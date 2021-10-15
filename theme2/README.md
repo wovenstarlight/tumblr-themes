@@ -35,7 +35,7 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 - [Collapsible sections](https://wovenstarlight.github.io/tumblr-themes/collapsibles/) for use on custom blog pages
 	- [Preview here](https://starlightpreviews.tumblr.com/theme2/collapsibles)
 - Choose between jump pagination or infinite scroll
-	- Jump pagination: Use [glenthemes' spoiler tag plugin](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme1/theme1.html) to filter posts on your blog
+	- Jump pagination: Use [glenthemes' spoiler tag plugin](https://glenthemes.tumblr.com/spoilertags) to filter posts on your blog
 	- Infinite scroll: Choose between automatic or manual load
 - Supports group blogs (show/hide list of blog members)
 
