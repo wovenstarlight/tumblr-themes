@@ -1,4 +1,4 @@
-# Tumblr themes by starlightthemes
+# Tumblr themes by wovenstarlight
 
 This repository contains the codes for all my Tumblr themes.
 
