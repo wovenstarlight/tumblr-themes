@@ -9,8 +9,8 @@ Blog previews can be seen at [starlightpreviews](https://starlightpreviews.tumbl
 My main blog is [wovenstarlight](https://wovenstarlight.tumblr.com).
 
 ## List of themes
-No. | Name | Status | Last Updated | Previews | Direct installation
---- | ---- | ------ | ------------ | -------- | -------------------
+No. | Name | Status | Last Updated | Previews | Install
+--- | ---- | ------ | ------------ | -------- | -------
 1 | [Discord](https://wovenstarlight.github.io/tumblr-themes/theme1) | Complete | 15 Oct 2021 | [Index page](https://starlightpreviews.tumblr.com/theme1), [permalink](https://starlightpreviews.tumblr.com/theme1/permalink) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme1/theme1.html)
 2 | [Paint Job](https://wovenstarlight.github.io/tumblr-themes/theme2) | Complete | 15 Oct 2021 | [Index page](https://starlightpreviews.tumblr.com/theme2), [permalink](https://starlightpreviews.tumblr.com/theme2/permalink) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme2/theme2.html)
 
