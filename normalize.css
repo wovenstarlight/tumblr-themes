@@ -348,7 +348,25 @@ template {
 	display: none;
 }
 
-/* ADDITION: Set consistent box sizing for everything */
+/* Misc
+	========================================================================== */
+/**
+* Set consistent box sizing for everything.
+*/
 * {
 	box-sizing: border-box;
+}
+
+/**
+* Make images fit their containers.
+*/
+img {
+	max-width: 100%;
+}
+
+/**
+* Make Tumblr's "circle" images round.
+*/
+img.circle {
+	border-radius: 100%;
 }
