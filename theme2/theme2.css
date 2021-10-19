@@ -160,10 +160,6 @@ main {
 	padding-bottom: 1em;
 }
 
-/* General image styles */
-img { max-width: 100% }
-img.circle { border-radius: 100% }
-
 /* Page/post titles */
 main .title { margin: 0 }
 .page.title { margin-bottom: 1.25em; padding: 0.5em 1em }
