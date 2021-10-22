@@ -414,7 +414,7 @@ iframe { max-width: 100% }
 blockquote {
 	margin: 0.5em;
 	padding-left: 0.75em;
-	border-left: 0.2em solid rgba(var(--text--rgb), 0.6);
+	border-left: 0.2em solid rgba(var(--links--rgb), 0.6);
 }
 .post.notes .more_notes_link,
 .post.notes .notes_loading {
