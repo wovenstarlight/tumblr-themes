@@ -10,7 +10,7 @@
 		Dark/light mode toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 		Stamp patterning: https://codepen.io/orhanveli/pen/tbGJL
 
-	Last updated 22 Oct 2021.
+	Last updated 23 Oct 2021.
 -->
 
 <!DOCTYPE html>
@@ -268,9 +268,31 @@ main {
 	justify-self: end;
 }
 #sidebar {
-	max-width: calc(var(--post-width) / 2);
-	padding: 1em 0 1em 1em;
-	border-left: thin solid var(--accent2);
+	max-width: max(calc(var(--post-width) / 2), 300px);
+	padding: 1em 0 1em 2em;
+	border-left: 0.2em solid var(--accent2);
+	--sidebar-spacing: 0.75em;
+}
+#sidebar > *:not(:last-child) {
+	border-bottom: 0.15em solid var(--accent2);
+	margin-bottom: var(--sidebar-spacing);
+	padding-bottom: var(--sidebar-spacing);
+}
+.title,
+#pages h2 {
+	text-transform: uppercase;
+	font-weight: 300;
+	text-align: center;
+}
+#pages h2 { margin: 0 }
+#pages a {
+	text-align: center;
+	display: block;
+	padding: 0.5em 0;
+	border-top: thin solid var(--accent2);
+}
+#pages a:last-child {
+	border-bottom: thin solid var(--accent2);
 }
 
 
@@ -283,6 +305,8 @@ main {
 	#title a { font-size: 1.5em }
 	
 	#links { grid-template-columns: 1fr 2fr 2fr }
+	
+	#sidebar { padding-left: 1em }
 }
 @media (max-width: 600px) {
 	body { font-size: 80% }
