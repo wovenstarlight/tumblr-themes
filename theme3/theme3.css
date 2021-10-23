@@ -105,10 +105,24 @@ header a { color: var(--headings) }
 	grid-template-columns: 1fr; /* Assume all links disabled by default*/
 	--line-spacing: 0.5em;
 }
-/* For when one or both link blocks are enabled */
-#links.random, #links.archive
-#links.ask, #links.submit { grid-template-columns: 1fr 1fr;}
-#links.ask.submit.random.archive { grid-template-columns: 1fr 1fr 1fr }
+/* For when only one link block is enabled */
+/* Only ask/submit */
+#links.ask:not(.random, .archive),
+#links.submit:not(.random, .archive),
+/* Only random/archive */
+#links.random:not(.ask, .submit),
+#links.archive:not(.ask, .submit) {
+	grid-template-columns:1fr 1fr
+}
+/* For when both link blocks are enabled */
+/* Ask and the random/archive block */
+#links.ask.random,
+#links.ask.archive,
+/* Submit and the random/archive block */
+#links.submit.random,
+#links.submit.archive {
+	grid-template-columns: 1fr 1fr 1fr
+}
 /* Transforming leftmost/rightmost links to stand out from central links */
 #links > :first-child, #links > :last-child {
 	text-transform: uppercase;
@@ -192,8 +206,24 @@ main {
 	/* Resize elements */
 	#title a { font-size: 1.5em }
 	
-	#links.ask, #links.submit, #links.random, #links.archive { grid-template-columns: 1fr 2fr;}
-	#links.randomarchive.asksubmit { grid-template-columns: 1fr 2fr 2fr }
+	/* For when only one link block is enabled */
+	/* Only ask/submit */
+	#links.ask:not(.random, .archive),
+	#links.submit:not(.random, .archive),
+	/* Only random/archive */
+	#links.random:not(.ask, .submit),
+	#links.archive:not(.ask, .submit) {
+		grid-template-columns:1fr 2fr
+	}
+	/* For when both link blocks are enabled */
+	/* Ask and the random/archive block */
+	#links.ask.random,
+	#links.ask.archive,
+	/* Submit and the random/archive block */
+	#links.submit.random,
+	#links.submit.archive {
+		grid-template-columns: 1fr 2fr 2fr
+	}
 	
 	#sidebar { padding-left: 1em }
 }
