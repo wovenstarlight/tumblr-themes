@@ -184,6 +184,10 @@ body:not(.sidebarleft) main {
 	border-top: thin solid var(--accent2);
 	padding: 0.25em 0;
 }
+.post > div:last-child {
+	border-bottom: 0.1em solid var(--accent2);
+	padding-bottom: 0.5em
+}
 /* Setting up actions menu (date/notes, via/source, like/reblog) */
 .actions {
 	display: flex;
@@ -210,6 +214,11 @@ body:not(.sidebarleft) main {
 	height: 100%;
 }
 .customlike .like_button.liked + span::after { content: "d" }
+/* Tags section */
+.tags a:not(:last-child)::after {
+	content: ",";
+	margin-right: 0.25em;
+}
 
 
 /***************************** BLOG INFO SIDEBAR *****************************/
