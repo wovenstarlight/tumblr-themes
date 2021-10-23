@@ -123,8 +123,11 @@ header a { color: var(--headings) }
 #links.submit.archive {
 	grid-template-columns: 1fr 1fr 1fr
 }
-/* Transforming leftmost/rightmost links to stand out from central links */
-#links > :first-child, #links > :last-child {
+/* Transforming leftmost/rightmost links to stand out from central links
+	Have to do ask/submit separately since second span still shows up even if it's empty */
+#links > :first-child,
+#links.archive span:last-child, #links.random span:last-child,
+#links:not(.archive, .random) span {
 	text-transform: uppercase;
 	font-style: italic;
 }
@@ -141,7 +144,11 @@ header a { color: var(--headings) }
 	/* Put home on left if anything else is enabled */
 	text-align: left;
 }
-#links span:last-child { text-align: right }
+/* Right-align random/archive, and ask/submit if random/archive are disabled */
+#links span:last-child,
+#links:not(.archive, .random) span {
+	text-align: right
+}
 #links a[href*='home']:last-child { text-align: center }
 /* Separators between links */
 #links.ask.submit span:first-child a:first-child,
