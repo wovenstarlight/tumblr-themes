@@ -270,6 +270,26 @@ main {
 #sidebar {
 	max-width: calc(var(--post-width) / 2);
 }
+
+@media (max-width: 800px) {
+	body { font-size: 90% }
+}
+@media (max-width: 700px) {
+	#title a { font-size: 1.5em }
+	
+	#links { grid-template-columns: 1fr 2fr 2fr }
+}
+@media (max-width: 600px) {
+	body { font-size: 80% }
+	
+	#title { grid-template-columns: 1fr 1fr }
+	#currdate { max-width: 6em }
+	#currdate, #title .stamp { justify-self: center }
+	#title a {
+		grid-row: 2;
+		grid-column: 1 / span 2;
+	}
+}
 </style>
 
 </head>
