@@ -162,7 +162,7 @@ body {
 	padding: 0.5em 1em;
 	font-family: Georgia;
 	display: grid;
-	column-gap: 2em;
+	column-gap: 1em;
 	{block:ifSidebarOnLeft}grid-template-columns: 2fr 3fr;{/block:ifSidebarOnLeft}
 	{block:ifNotSidebarOnLeft}grid-template-columns: 3fr 2fr;
 }
@@ -210,7 +210,7 @@ header a { color: var(--headings) }
 }
 
 #links {
-	margin: 0.15em 0;
+	margin-top: 0.15em;
 	padding: 0.15em;
 	border-top: 0.1em solid var(--accent2);
 	border-bottom: 0.1em solid var(--accent2);
@@ -269,6 +269,8 @@ main {
 }
 #sidebar {
 	max-width: calc(var(--post-width) / 2);
+	padding: 1em 0 1em 1em;
+	border-left: thin solid var(--accent2);
 }
 
 
