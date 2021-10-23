@@ -1,7 +1,23 @@
 $(document).ready( function() {
 
-	// Color mode toggle
-	$("#darklight").click( function() { body.toggleClass("light"); });
+	// Persistent color mode toggle
+	const body = $("body"); // This will also be useful in responsiveness setup
+			
+	const currTheme = localStorage.getItem("theme");
+
+	if ( currTheme == "light" ) {
+		body.addClass("light");
+	}
+
+	$("#darklight").click( function() {
+		body.toggleClass("light");
+		
+		var newTheme = "dark";
+		if (body.hasClass("light")) {
+			newTheme = "light";
+		}
+		localStorage.setItem("theme", newTheme);
+	});
 
 	// Date display on top left
 	var d = new Date();
