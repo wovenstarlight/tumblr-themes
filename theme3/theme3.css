@@ -175,6 +175,15 @@ body:not(.sidebarleft) main {
 	grid-row: 2;
 	justify-self: end
 }
+/* Dividers between posts and post components */
+.post {
+	border-bottom: 0.15em solid var(--accent2);
+	padding: 0.5em 0;
+}
+.postbody ~ div {
+	border-top: thin solid var(--accent2);
+	padding: 0.25em 0;
+}
 /* Custom like buttons */
 .customlike { position: relative }
 .customlike .like_button {
