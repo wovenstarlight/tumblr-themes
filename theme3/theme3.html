@@ -539,14 +539,14 @@ header:not(:hover) .stamp img,
 
 			<span class="likereblog" {block:IfNotShowLikeButtons}{block:IfNotShowReblogButtons}hidden{/block:IfNotShowReblogButtons}{/block:IfNotShowLikeButtons}>
 				{block:IfShowLikeButtons}
-				<a data-tippy-content="Like" href="#" class="customlike">
+				<a href="#" class="customlike">
 					{LikeButton size="30"}
 					<span>Like</span>
 				</a>
 				{/block:IfShowLikeButtons}
 				<span class="divider">•</span>
 				{block:IfShowReblogButtons}
-				<a data-tippy-content="Reblog" href="{ReblogURL}" class="customreblog">Reblog</a>
+				<a href="{ReblogURL}" class="customreblog">Reblog</a>
 				{/block:IfShowReblogButtons}
 			</span>
 
