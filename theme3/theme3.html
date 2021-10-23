@@ -134,12 +134,6 @@ body {
 	--title-font: "Engravers' Old English";
 	font-size: {text:Font size};
 	font-family: "Times New Roman", {block:IfUseTumblrFonts}{font:Tumblr font for body}, {/block:IfUseTumblrFonts}{text:Google font for body}, serif;
-	{block:ifSidebarOnLeft}grid-template-columns: 2fr 3fr;{/block:ifSidebarOnLeft}
-	{block:ifNotSidebarOnLeft}grid-template-columns: 3fr 2fr;
-}
-main { grid-column: 1; grid-row: 2 }
-#sidebar {
-	grid-column: 2;{block:ifNotSidebarOnLeft}
 }
 body.light {
 	--text: {color:LM Text};
@@ -173,8 +167,8 @@ header:not(:hover) .stamp img,
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme3/theme3.min.css">
 
 </head>
-<!-- PAGE CLASSES; START WITH BASIC LIGHT MODE TOGGLE -->
-<body class="{block:IfDefaultToLightMode}light{/block:IfDefaultToLightMode}">
+<!-- PAGE CLASSES -->
+<body class="{block:IfDefaultToLightMode}light{/block:IfDefaultToLightMode} {block:IfSidebarOnLeft}sidebarleft{/block:IfSidebarOnLeft}">
 
 <!-- HEADER -->
 <header>

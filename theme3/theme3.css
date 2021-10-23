@@ -10,6 +10,9 @@ body {
 	display: grid;
 	column-gap: 1em;
 }
+/* Account for placement of sidebar... */
+body.sidebarleft { grid-template-columns: 2fr 3fr } /* ...on left */
+body:not(.sidebarleft) { grid-template-columns: 3fr 2fr } /* ...on right */
 /* Setting standard link/bold/italics colors and styles */
 a { color: var(--links) }
 a:hover { color: var(--links-hover) }
@@ -165,7 +168,12 @@ header a { color: var(--headings) }
 main {
 	width: 100%;
 	max-width: var(--post-width);
-	justify-self: end;
+}
+/* Account for sidebar placement on right */
+body:not(.sidebarleft) main {
+	grid-column: 1;
+	grid-row: 2;
+	justify-self: end
 }
 /* Custom like buttons */
 .customlike { position: relative }
@@ -187,9 +195,19 @@ main {
 /***************************** BLOG INFO SIDEBAR *****************************/
 #sidebar {
 	max-width: max(calc(var(--post-width) / 2), 300px);
-	padding: 1em 0 1em 2em;
-	border-left: 0.2em solid var(--accent2);
+	padding: 1em 0;
 	--sidebar-spacing: 0.75em;
+}
+/* Account for placement of sidebar... */
+body:not(.sidebarleft) #sidebar { /* ...on right */
+	padding-left: 2em;
+	border-left: 0.2em solid var(--accent2);
+	grid-column: 2;
+}
+body.sidebarleft #sidebar { /* ...on left */
+	padding-right: 2em;
+	border-right: 0.2em solid var(--accent2);
+	justify-self: end;
 }
 /* Separators for sidebar sections */
 #sidebar > *:not(:last-child) {
