@@ -99,17 +99,33 @@ header a { color: var(--headings) }
 	border-top: 0.1em solid var(--accent2);
 	border-bottom: 0.1em solid var(--accent2);
 	display: grid;
-   	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr; /* Assume all links disabled by default*/
 	--line-spacing: 0.5em;
 }
+/* For when one or both link blocks are enabled */
+#links.random, #links.archive
+#links.ask, #links.submit { grid-template-columns: 1fr 1fr;}
+#links.ask.submit.random.archive { grid-template-columns: 1fr 1fr 1fr }
 /* Transforming leftmost/rightmost links to stand out from central links */
 #links > :first-child, #links > :last-child {
 	text-transform: uppercase;
 	font-style: italic;
 }
 /* Spacing out each links block across page */
-#links .ask, #links .submit { text-align: center }
-#links .random, #links .archive { text-align: right }
+#links > :first-child,
+#links span:nth-child(even) {
+	/* Center align ask/submit, and home if nothing else is enabled */
+	text-align: center
+}
+#links.random > :first-child,
+#links.archive > :first-child,
+#links.ask > :first-child,
+#links.submit > :first-child {
+	/* Put home on left if anything else is enabled */
+	text-align: left;
+}
+#links span:last-child { text-align: right }
+#links a[href*='home']:last-child { text-align: center }
 /* Separators between links */
 #links .ask.submit a:first-child,
 #links .random.archive a:first-child {
