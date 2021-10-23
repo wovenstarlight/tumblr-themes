@@ -24,6 +24,15 @@ strong, bold { color: var(--bold) }
 em, i:not([class*='fa']) { color: var(--italics) }
 /* Setting standard heading colors */
 h1, h2, h3, h4, h5, h6 { color: var(--headings) }
+/* Setting text highlight colors */
+::selection {
+	background-color: var(--highlight-bg);
+	color: var(--highlight);
+}
+::moz-selection {
+	background-color: var(--highlight-bg);
+	color: var(--highlight);
+}
 
 
 /****************************** HEADER SECTION ******************************/
