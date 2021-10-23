@@ -247,6 +247,7 @@ body.sidebarleft #sidebar { /* ...on left */
 /* Description special styles */
 #description.justify { text-align: justify }
 #description.dropcap::first-letter {
+	text-transform: uppercase;
 	float: left;
 	margin-top: 0.05em;
 	margin-right: 0.025em;
