@@ -632,6 +632,19 @@ $("#postwrapper").on( 'append.infiniteScroll', function( event, body, path, item
 });
 </script>
 {/block:IfInfiniteScroll}
+<script>
+$("#darklight").click( function() { $("body").toggleClass("light");})
+
+var d = new Date();
+var month = d.getMonth();
+var date = d.getDate();
+var day = d.getDay();
+var year = d.getFullYear();
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+$("#currdate").html(days[day]+" "+months[month]+" "+date+", "+year);
+</script>
 
 </body>
 </html>
