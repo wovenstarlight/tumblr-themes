@@ -26,7 +26,7 @@ $(document).ready( function() {
 	var day = d.getDay();
 	var year = d.getFullYear();
 	const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+	const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 	$("#currdate").html(days[day]+" "+months[month]+" "+date+", "+year);
 
