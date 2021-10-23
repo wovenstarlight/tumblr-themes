@@ -179,6 +179,7 @@ main {
 #pages a:last-child {
 	border-bottom: thin solid var(--accent2);
 }
+#pages a:hover { background-color: rgba(var(--links--rgb), 0.05) }
 
 
 
