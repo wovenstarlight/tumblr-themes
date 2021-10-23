@@ -191,12 +191,12 @@ header:not(:hover) .stamp img,
 	
 	<!-- BLOG LINKS -->
 	<nav id="links" class="{block:AskEnabled}ask{/block:AskEnabled} {block:SubmissionsEnabled}submit{/block:SubmissionsEnabled} {block:IfShowRandomPostLink}random{/block:IfShowRandomPostLink} {block:IfShowArchiveLink}archive{/block:IfShowArchiveLink}">
-		<a href="/">{lang:Home}</a>
-		<span>
+		<a href="/" class="home">{lang:Home}</a>
+		<span class="as">
 			{block:AskEnabled}<a href="/ask">{AskLabel}</a>{/block:AskEnabled}
 			{block:SubmissionsEnabled}<a href="/submit">{SubmitLabel}</a>{/block:SubmissionsEnabled}
 		</span>
-		<span>
+		<span class="ra">
 			{block:IfShowRandomPostLink}<a href="/random">{lang:Random post}</a>{/block:IfShowRandomPostLink}
 			{block:IfShowArchiveLink}<a href="/archive">{lang:Archive}</a>{/block:IfShowArchiveLink}
 		</span>
