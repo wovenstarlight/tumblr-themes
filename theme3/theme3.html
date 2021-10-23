@@ -156,6 +156,107 @@ body.light {
 {CustomCSS}
 </style>
 
+
+<style>
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    padding: 0.5em 1em;
+    font-family: Georgia;
+    display: grid;
+    grid-template-columns: 1fr 40%;
+}
+a { color: var(--links) }
+a:hover { color: var(--links-hover) }
+a:not(:hover) { text-decoration: none }
+strong, bold { color: var(--bold) }
+em, i { color: var(--italics) }
+
+h1, h2, h3, h4, h5, h6 { color: var(--headings) }
+
+header {
+    border-top: 0.25rem solid;
+    grid-column: 1/span 2;
+}
+header::before {
+    content: "";
+    display: block;
+    border-top: 0.1em solid;
+    margin-top: 0.15em;
+}
+header a { color: var(--headings) }
+#title {
+    display: grid;
+    grid-template-columns: 6em 1fr 6em;
+    column-gap: 1em;
+    text-align: center;
+    align-items: start;
+    padding: 0.3em;
+    border-bottom: 0.25rem solid;
+}
+#currdate {
+    padding: 0.25em;
+    border: thin solid;
+}
+#title h1 { margin: 0 }
+#title a {
+    font-size: 2em;
+    display: block;
+    padding-top: 0.5em;
+}
+
+#links {
+    margin: 0.15em 0;
+    padding: 0.15em;
+    border-top: 0.1em solid;
+    border-bottom: 0.1em solid;
+    display: grid;
+   	grid-template-columns: 1fr 1fr 1fr;
+    --line-spacing: 0.5em;
+}
+#links > :first-child, #links > :last-child {
+    text-transform: uppercase;
+    font-style: italic;
+}
+#links .ask, #links .submit { text-align: center }
+#links .random, #links .archive { text-align: right }
+#links .ask.submit a:first-child,
+#links .random.archive a:first-child {
+    border-right: thin solid var(--text);
+    padding-right: var(--line-spacing);
+}
+#links .ask.submit a:last-child,
+#links .random.archive a:last-child {
+    padding-left: var(--line-spacing);
+}
+
+.stamp {
+    --size: 5em;
+    width: var(--size);
+    height: var(--size);
+    display: inline-block;
+    padding: 0.5em 0.625em;
+    background: white;
+    position: relative;
+    -webkit-filter: drop-shadow(0 0 0.25em rgba(0,0,0,0.5));
+    /*The stamp cutout will be created using crisp radial gradients*/
+    background: radial-gradient(
+        transparent 0px, 
+        transparent 0.25em, 
+        white 0.25em,
+        white
+    );
+    /*reducing the gradient size*/
+    background-size: 1.25em 1.25em;
+    /*Offset to move the holes to the edge*/
+    background-position: -0.625em -0.625em;
+}
+.stamp img {
+    height: calc(var(--size) - 1em);
+    width: calc(var(--size) - 1em);
+}
+</style>
+
 </head>
 <!-- PAGE CLASSES; START WITH BASIC LIGHT MODE TOGGLE -->
 <body class="{block:IfDefaultToLightMode}light{/block:IfDefaultToLightMode}">
