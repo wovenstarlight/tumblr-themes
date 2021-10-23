@@ -179,13 +179,13 @@ em, i:not([class*='fa']) { color: var(--italics) }
 h1, h2, h3, h4, h5, h6 { color: var(--headings) }
 
 header {
-	border-top: 0.25rem solid;
+	border-top: 0.25rem solid var(--accent2);
 	grid-column: 1/span 2;
 }
 header::before {
 	content: "";
 	display: block;
-	border-top: 0.1em solid;
+	border-top: 0.1em solid var(--accent2);
 	margin-top: 0.15em;
 }
 header a { color: var(--headings) }
@@ -196,7 +196,7 @@ header a { color: var(--headings) }
 	text-align: center;
 	align-items: start;
 	padding: 0.3em;
-	border-bottom: 0.25rem solid;
+	border-bottom: 0.25rem solid var(--accent2);
 }
 #currdate {
 	padding: 0.25em;
@@ -212,8 +212,8 @@ header a { color: var(--headings) }
 #links {
 	margin: 0.15em 0;
 	padding: 0.15em;
-	border-top: 0.1em solid;
-	border-bottom: 0.1em solid;
+	border-top: 0.1em solid var(--accent2);
+	border-bottom: 0.1em solid var(--accent2);
 	display: grid;
    	grid-template-columns: 1fr 1fr 1fr;
 	--line-spacing: 0.5em;
@@ -242,13 +242,14 @@ header a { color: var(--headings) }
 	padding: 0.5em 0.625em;
 	background: white;
 	position: relative;
-	-webkit-filter: drop-shadow(0 0 0.25em rgba(0,0,0,0.5));
+	-webkit-filter: drop-shadow(0 0 0.25em rgba(var(--text--rgb),0.5));
+	filter: drop-shadow(0 0 0.25em rgba(var(--text--rgb),0.5));
 	/*The stamp cutout will be created using crisp radial gradients*/
 	background: radial-gradient(
 		transparent 0px, 
 		transparent 0.25em, 
-		white 0.25em,
-		white
+		var(--accent1) 0.25em,
+		var(--accent1)
 	);
 	/*reducing the gradient size*/
 	background-size: 1.25em 1.25em;
