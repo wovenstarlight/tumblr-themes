@@ -162,8 +162,9 @@ body {
 	padding: 0.5em 1em;
 	font-family: Georgia;
 	display: grid;
-	{block:ifSidebarOnLeft}grid-template-columns: 40% 1fr;{/block:ifSidebarOnLeft}
-	{block:ifNotSidebarOnLeft}grid-template-columns: 1fr 40%;
+	column-gap: 2em;
+	{block:ifSidebarOnLeft}grid-template-columns: 2fr 3fr;{/block:ifSidebarOnLeft}
+	{block:ifNotSidebarOnLeft}grid-template-columns: 3fr 2fr;
 }
 main { grid-column: 1; grid-row: 2 }
 #sidebar {
@@ -257,6 +258,16 @@ header a { color: var(--headings) }
 .stamp img {
 	height: calc(var(--size) - 1em);
 	width: calc(var(--size) - 1em);
+}
+
+
+main {
+	width: 100%;
+	max-width: var(--post-width);
+	justify-self: end;
+}
+#sidebar {
+	max-width: calc(var(--post-width) / 2);
 }
 </style>
 
