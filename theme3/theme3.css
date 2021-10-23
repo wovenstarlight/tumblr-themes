@@ -209,7 +209,7 @@ body:not(.sidebarleft) main {
 	width: 100%;
 	height: 100%;
 }
-.customlike .like_button.liked + i { color: var(--links-hover) }
+.customlike .like_button.liked + span::after { content: "d" }
 
 
 /***************************** BLOG INFO SIDEBAR *****************************/
