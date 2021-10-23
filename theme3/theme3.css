@@ -130,13 +130,13 @@ header a { color: var(--headings) }
 #links span:last-child { text-align: right }
 #links a[href*='home']:last-child { text-align: center }
 /* Separators between links */
-#links .ask.submit a:first-child,
-#links .random.archive a:first-child {
+#links.ask.submit a:first-child,
+#links.random.archive a:first-child {
 	border-right: thin solid var(--text);
 	padding-right: var(--line-spacing);
 }
-#links .ask.submit a:last-child,
-#links .random.archive a:last-child {
+#links.ask.submit a:last-child,
+#links.random.archive a:last-child {
 	padding-left: var(--line-spacing);
 }
 
