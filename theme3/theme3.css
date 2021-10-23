@@ -184,6 +184,17 @@ body:not(.sidebarleft) main {
 	border-top: thin solid var(--accent2);
 	padding: 0.25em 0;
 }
+/* Setting up actions menu (date/notes, via/source, like/reblog) */
+.actions {
+	display: flex;
+	justify-content: space-between;
+}
+.actions .divider { margin: 0 0.25em }
+/* Hide divider if like xor reblog button is hidden */
+.likereblog .divider:first-child,
+.likereblog .customlike + .divider:last-child {
+	display: none
+}
 /* Custom like buttons */
 .customlike { position: relative }
 .customlike .like_button {

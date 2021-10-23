@@ -521,28 +521,28 @@ header:not(:hover) .stamp img,
 
 			<span class="datenotes">
 				{block:ifShowDates}
-				<a class="date" href="{Permalink}">
-					{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfShowTimestamps}, {block:If24HourTimestamps}{24Hour}{/block:If24HourTimestamps}{block:IfNot24HourTimestamps}{12Hour}{/block:IfNot24HourTimestamps}:{Minutes}{block:IfNot24HourTimestamps} {CapitalAmPm}{/block:IfNot24HourTimestamps}{/block:IfShowTimestamps}
-				</a>
+				<a class="date" href="{Permalink}">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfShowTimestamps}, {block:If24HourTimestamps}{24Hour}{/block:If24HourTimestamps}{block:IfNot24HourTimestamps}{12Hour}{/block:IfNot24HourTimestamps}:{Minutes}{block:IfNot24HourTimestamps} {CapitalAmPm}{/block:IfNot24HourTimestamps}{/block:IfShowTimestamps}</a>
 				{/block:ifShowDates}
 				{block:NoteCount}
+				<span class="divider">•</span>
 				<a class="notes" href="{Permalink}">{NoteCountWithLabel}</a>
 				{/block:NoteCount}
 			</span>
 
 			{block:RebloggedFrom}
 			<span class="viasource">
-				<a data-tippy-content="{ReblogParentName}" href="{ReblogParentURL}">{lang:Via}</a> • <a data-tippy-content="{ReblogRootName}" href="{ReblogRootURL}">{lang:Source}</a>
+				<a data-tippy-content="{ReblogParentName}" href="{ReblogParentURL}">{lang:Via}</a><span class="divider">•</span><a data-tippy-content="{ReblogRootName}" href="{ReblogRootURL}">{lang:Source}</a>
 			</span>
 			{/block:RebloggedFrom}
 
-			<span class="likereblog">
+			<span class="likereblog" {block:IfNotShowLikeButtons}{block:IfNotShowReblogButtons}hidden{/block:IfNotShowReblogButtons}{/block:IfNotShowLikeButtons}>
 				{block:IfShowLikeButtons}
 				<a data-tippy-content="Like" href="#" class="customlike">
 					{LikeButton size="30"}
 					<i class="fa-solid fa-heart"></i>
 				</a>
 				{/block:IfShowLikeButtons}
+				<span class="divider">•</span>
 				{block:IfShowReblogButtons}
 				<a data-tippy-content="Reblog" href="{ReblogURL}" class="customreblog">
 					<i class="fa-solid fa-repeat"></i>
