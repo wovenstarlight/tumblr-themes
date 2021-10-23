@@ -553,9 +553,8 @@ header:not(:hover) .stamp img,
 		<!-- TAGS SECTION -->
 		{block:IfShowTags}{block:HasTags}
 		<div class="tags">
-			<i class="fa-solid fa-hashtag"></i>
 			{block:Tags}
-			<a href="{TagURL}">{Tag}</a>
+			<a href="{TagURL}">#{Tag}</a>
 			{/block:Tags}
 		</div>
 		{/block:HasTags}{/block:IfShowTags}
