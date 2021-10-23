@@ -9,12 +9,6 @@ body {
 	font-family: Georgia;
 	display: grid;
 	column-gap: 1em;
-	{block:ifSidebarOnLeft}grid-template-columns: 2fr 3fr;{/block:ifSidebarOnLeft}
-	{block:ifNotSidebarOnLeft}grid-template-columns: 3fr 2fr;
-}
-main { grid-column: 1; grid-row: 2 }
-#sidebar {
-	grid-column: 2;{block:ifNotSidebarOnLeft}
 }
 /* Setting standard link/bold/italics colors and styles */
 a { color: var(--links) }
