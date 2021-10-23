@@ -104,11 +104,13 @@
 	<!-- Font Awesome icons -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
 	<!-- Google fonts import -->
-	{block:IfNotUseTumblrFonts}<link href="https://fonts.googleapis.com/css2?family={text:Google font for body}" rel="stylesheet"> {/block:IfNotUseTumblrFonts}
+	{block:IfNotUseTumblrFonts}<link href="https://fonts.googleapis.com/css2?family={text:Google font for body}" rel="stylesheet">{/block:IfNotUseTumblrFonts}
 
 	<!-- Theme stylesheets -->
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
 	<!-- <link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme#/theme#.min.css"> -->
+
+	<link href="//db.onlinewebfonts.com/c/77576ff6ead1d882deb79df39f3fba90?family=Engravers'+Old+English" rel="stylesheet" type="text/css"/> 
 
 <style>
 /* DEFAULT VARIABLES */
@@ -129,7 +131,7 @@ body {
 	--highlight-bg: {color:Text highlight background};
 	--post-width: {text:Post width};
 	font-size: {text:Font size};
-	font-family: {block:IfUseTumblrFonts}{font:Tumblr font for body}, {/block:IfUseTumblrFonts}{text:Google font for body};
+	font-family: "Times New Roman", {block:IfUseTumblrFonts}{font:Tumblr font for body}, {/block:IfUseTumblrFonts}{text:Google font for body}, serif;
 }
 body.light {
 	--text: {color:LM Text};
@@ -148,6 +150,8 @@ body.light {
 	--highlight-bg: {color:LM Text highlight background};
 }
 
+#title h1 { font-family: "Engravers' Old English", serif; }
+
 /* Custom CSS */
 {CustomCSS}
 </style>
@@ -156,25 +160,38 @@ body.light {
 <!-- PAGE CLASSES; START WITH BASIC LIGHT MODE TOGGLE -->
 <body class="{block:IfDefaultToLightMode}light{/block:IfDefaultToLightMode}">
 
-<!-- SIDEBAR -->
-<aside id="sidebar">
+<!-- HEADER -->
+<header>
 	<!-- PFP/TITLE/DESCRIPTION -->
-	<a href="/" id="title">
-		{block:ShowAvatar}<img src="{PortraitURL-128}" class="{AvatarShape}" />{/block:ShowAvatar}
-		{block:ShowTitle}<h2>{Title}</h2>{/block:ShowTitle}
-	</a>
-	{block:ShowDescription}
-	<div id="description">{Description}</div>
-	{/block:ShowDescription}
+	<div id="title">
+        <span id="currdate"></span>
+		{block:ShowTitle}<a href="/"><h1>{Title}</h1></a>{/block:ShowTitle}
+		{block:ShowAvatar}
+		<div class="stamp">
+		    <img src="{PortraitURL-128}"/>
+		</div>
+		{/block:ShowAvatar}
+	</div>
 	
 	<!-- BLOG LINKS -->
 	<nav id="links">
-		<a href="/" data-tippy-content="{lang:Home}"><i class="fa-solid fa-house"></i></a>
-		{block:AskEnabled}<a href="/ask" data-tippy-content="{AskLabel}"><i class="fa-solid fa-envelope"></i></a>{/block:AskEnabled}
-		{block:SubmissionsEnabled}<a href="/submit" data-tippy-content="{SubmitLabel}"><i class="fa-solid fa-gift"></i></a>{/block:SubmissionsEnabled}
-		{block:IfShowRandomPostLink}<a href="/random" data-tippy-content="{lang:Random post}"><i class="fa-solid fa-shuffle"></i></a>{/block:IfShowRandomPostLink}
-		{block:IfShowArchiveLink}<a href="/archive" data-tippy-content="{lang:Archive}"><i class="fa-solid fa-calendar-days"></i></a>{/block:IfShowArchiveLink}
+		<a href="/">{lang:Home}</a>
+		<span class="{block:AskEnabled}ask{/block:AskEnabled} {block:SubmissionsEnabled}submit{/block:SubmissionsEnabled}">
+    		{block:AskEnabled}<a href="/ask">{AskLabel}</a>{/block:AskEnabled}
+    		{block:SubmissionsEnabled}<a href="/submit">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+		</span>
+		<span class="{block:IfShowRandomPostLink}random{/block:IfShowRandomPostLink} {block:IfShowArchiveLink}archive{/block:IfShowArchiveLink}">
+    		{block:IfShowRandomPostLink}<a href="/random">{lang:Random post}</a>{/block:IfShowRandomPostLink}
+    		{block:IfShowArchiveLink}<a href="/archive">{lang:Archive}</a>{/block:IfShowArchiveLink}
+		</span>
 	</nav>
+</header>
+
+<!-- SIDEBAR -->
+<aside id="sidebar">
+	{block:ShowDescription}
+	<div id="description">{Description}</div>
+	{/block:ShowDescription}
 
 	<!-- BLOG MEMBERS -->
 	{block:IfShowGroupBlogMembers}{block:GroupMembers}
