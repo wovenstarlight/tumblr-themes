@@ -244,6 +244,15 @@ body.sidebarleft #sidebar { /* ...on left */
 	margin-bottom: var(--sidebar-spacing);
 	padding-bottom: var(--sidebar-spacing);
 }
+/* Description special styles */
+#description.justify { text-align: justify }
+#description.dropcap::first-letter {
+	float: left;
+	margin-top: 0.05em;
+	margin-right: 0.025em;
+	font-size: 3.25em;
+	color: var(--bold)
+}
 /* Custom pages section */
 .title,
 #pages h2 {

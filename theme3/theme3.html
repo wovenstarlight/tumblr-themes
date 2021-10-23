@@ -84,6 +84,8 @@
 	
 	<meta name="if:Sidebar on left" content="0">
 	<meta name="if:Sepia filter on images" content="0">
+	<meta name="if:Justify description" content="1">
+	<meta name="if:Dropcap in description" content="1">
 	<meta name="text:Custom links title" content="Links">
 	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever code or plain text you want. If you don't want an FAQ, leave this field blank!">
 	<meta name="text:Submission guidelines" content="This will go on your submission page, above your submission box.&NewLine;Add whatever code or plain text you want. If you don't want submission guidelines, leave this field blank!">
@@ -200,7 +202,7 @@ header:not(:hover) .stamp img,
 <!-- SIDEBAR -->
 <aside id="sidebar">
 	{block:ShowDescription}
-	<div id="description">{Description}</div>
+	<div id="description" class="{block:ifJustifyDescription}justify{/block:ifJustifyDescription} {block:ifDropcapInDescription}dropcap{/block:ifDropcapInDescription}">{Description}</div>
 	{/block:ShowDescription}
 
 	<!-- BLOG MEMBERS -->
