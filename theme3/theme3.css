@@ -188,7 +188,8 @@ main {
 	/* Resize elements */
 	#title a { font-size: 1.5em }
 	
-	#links { grid-template-columns: 1fr 2fr 2fr }
+	#links.ask, #links.submit, #links.random, #links.archive { grid-template-columns: 1fr 2fr;}
+	#links.randomarchive.asksubmit { grid-template-columns: 1fr 2fr 2fr }
 	
 	#sidebar { padding-left: 1em }
 }
