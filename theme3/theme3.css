@@ -1,3 +1,7 @@
+/*************************** STANDARD PAGE STYLES ***************************/
+/* Making everything transition over time */
+* { transition-duration: .2s; }
+/* Setting body font, layout, etc. */
 body {
 	background-color: var(--bg);
 	color: var(--text);
@@ -12,14 +16,18 @@ main { grid-column: 1; grid-row: 2 }
 #sidebar {
 	grid-column: 2;{block:ifNotSidebarOnLeft}
 }
+/* Setting standard link/bold/italics colors and styles */
 a { color: var(--links) }
 a:hover { color: var(--links-hover) }
 a:not(:hover) { text-decoration: none }
 strong, bold { color: var(--bold) }
 em, i:not([class*='fa']) { color: var(--italics) }
-
+/* Setting standard heading colors */
 h1, h2, h3, h4, h5, h6 { color: var(--headings) }
 
+
+/****************************** HEADER SECTION ******************************/
+/* Layout and borders */
 header {
 	border-top: 0.25rem solid var(--accent2);
 	grid-column: 1/span 2;
@@ -30,7 +38,9 @@ header::before {
 	border-top: 0.1em solid var(--accent2);
 	margin-top: 0.15em;
 }
+/* Overriding link color for heading */
 header a { color: var(--headings) }
+/* Title section (date, blog title, blog icon) styling */
 #title {
 	display: grid;
 	grid-template-columns: 6em 1fr 6em;
@@ -40,45 +50,22 @@ header a { color: var(--headings) }
 	padding: 0.3em;
 	border-bottom: 0.25rem solid var(--accent2);
 }
+/* Date */
 #currdate {
 	padding: 0.25em;
 	border: thin solid;
 }
-#title h1 {
-	font-family: var(--title-font), serif;
-	margin: 0;
-}
+/* Title */
 #title a {
 	font-size: 2em;
 	display: block;
 	padding-top: 0.5em;
 }
-
-#links {
-	margin-top: 0.15em;
-	padding: 0.15em;
-	border-top: 0.1em solid var(--accent2);
-	border-bottom: 0.1em solid var(--accent2);
-	display: grid;
-   	grid-template-columns: 1fr 1fr 1fr;
-	--line-spacing: 0.5em;
+#title h1 {
+	font-family: var(--title-font), serif;
+	margin: 0;
 }
-#links > :first-child, #links > :last-child {
-	text-transform: uppercase;
-	font-style: italic;
-}
-#links .ask, #links .submit { text-align: center }
-#links .random, #links .archive { text-align: right }
-#links .ask.submit a:first-child,
-#links .random.archive a:first-child {
-	border-right: thin solid var(--text);
-	padding-right: var(--line-spacing);
-}
-#links .ask.submit a:last-child,
-#links .random.archive a:last-child {
-	padding-left: var(--line-spacing);
-}
-
+/* Icon; stamp styling */
 .stamp {
 	--size: 5em;
 	width: var(--size);
@@ -105,24 +92,58 @@ header a { color: var(--headings) }
 	height: calc(var(--size) - 1em);
 	width: calc(var(--size) - 1em);
 }
+/* Links section, bottom of header */
+#links {
+	margin-top: 0.15em;
+	padding: 0.15em;
+	border-top: 0.1em solid var(--accent2);
+	border-bottom: 0.1em solid var(--accent2);
+	display: grid;
+   	grid-template-columns: 1fr 1fr 1fr;
+	--line-spacing: 0.5em;
+}
+/* Transforming leftmost/rightmost links to stand out from central links */
+#links > :first-child, #links > :last-child {
+	text-transform: uppercase;
+	font-style: italic;
+}
+/* Spacing out each links block across page */
+#links .ask, #links .submit { text-align: center }
+#links .random, #links .archive { text-align: right }
+/* Separators between links */
+#links .ask.submit a:first-child,
+#links .random.archive a:first-child {
+	border-right: thin solid var(--text);
+	padding-right: var(--line-spacing);
+}
+#links .ask.submit a:last-child,
+#links .random.archive a:last-child {
+	padding-left: var(--line-spacing);
+}
 
 
+/**************************** MAIN POSTS SECTION ****************************/
 main {
 	width: 100%;
 	max-width: var(--post-width);
 	justify-self: end;
 }
+
+
+/***************************** BLOG INFO SIDEBAR *****************************/
 #sidebar {
 	max-width: max(calc(var(--post-width) / 2), 300px);
 	padding: 1em 0 1em 2em;
 	border-left: 0.2em solid var(--accent2);
 	--sidebar-spacing: 0.75em;
 }
+/* Separators for sidebar sections */
 #sidebar > *:not(:last-child) {
 	border-bottom: 0.15em solid var(--accent2);
 	margin-bottom: var(--sidebar-spacing);
 	padding-bottom: var(--sidebar-spacing);
 }
+/* Custom pages section */
 .title,
 #pages h2 {
 	text-transform: uppercase;
@@ -142,11 +163,13 @@ main {
 
 
 
-/* RESPONSIVENESS */
+/****************************** RESPONSIVENESS ******************************/
 @media (max-width: 800px) {
+	/* Slight page shrink */
 	body { font-size: 90% }
 }
 @media (max-width: 700px) {
+	/* Resize elements */
 	#title a { font-size: 1.5em }
 	
 	#links { grid-template-columns: 1fr 2fr 2fr }
@@ -154,8 +177,10 @@ main {
 	#sidebar { padding-left: 1em }
 }
 @media (max-width: 600px) {
+	/* Further page shrink */
 	body { font-size: 80% }
 	
+	/* Repositioning title elements */
 	#title { grid-template-columns: 1fr 1fr }
 	#currdate { max-width: 6em }
 	#currdate, #title .stamp { justify-self: center }
@@ -164,6 +189,7 @@ main {
 		grid-column: 1 / span 2;
 	}
 	
+	/* Stacking links to give them more space */
 	#links {
 		display: flex;
 		flex-direction: column;
