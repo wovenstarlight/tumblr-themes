@@ -397,7 +397,7 @@ header:not(:hover) .stamp img,
 			<div class="bodyitemcontent">
 				<a class="link" href="{URL}" {Target}>
 					{block:Thumbnail}<img href="{Thumbnail}">{/block:Thumbnail}
-					<span class="name">{Name}{block:Author} — {Author}{/block:Author}</span>
+					<h2 class="name">{Name}{block:Author} — {Author}{/block:Author}</h2>
 					{block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}
 				</a>
 				{Body}
@@ -413,7 +413,7 @@ header:not(:hover) .stamp img,
 					{block:IsOriginalEntry}
 					<a class="link" href="{URL}" {Target}>
 						{block:Thumbnail}<img href="{Thumbnail}">{/block:Thumbnail}
-						<span class="name">{Name}{block:Author} — {Author}{/block:Author}</span>
+						<h2 class="name">{Name}{block:Author} — {Author}{/block:Author}</h2>
 						{block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}
 					</a>
 					{/block:IsOriginalEntry}

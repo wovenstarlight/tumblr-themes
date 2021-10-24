@@ -294,6 +294,16 @@ p.npf_quote, .quote h2 { font-family: unset }
 	font-size: 0.9em;
 	text-align: right;
 }
+/* Link posts */
+.link {
+	border: thin solid var(--accent2);
+	display: block;
+	padding: 0.5em;
+}
+.link .name {
+	text-align: center;
+	font-variant: small-caps
+}
 /* Chat posts */
 ol.chat {
 	list-style: none;
