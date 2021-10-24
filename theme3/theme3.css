@@ -194,11 +194,15 @@ body:not(.sidebarleft) main {
 .bodyitemcontent > :first-child { margin-top: 0 }
 .bodyitemcontent > :last-child { margin-bottom: 0 }
 /* Read more */
-.read_more_container { text-align: center }
 .read_more {
 	border-top: double var(--accent2);
 	border-bottom: double var(--accent2);
-	padding: 0.25em 1em;
+	padding: 0.25em 1.25em;
+	width: -webkit-fit-content;
+	width: -moz-fit-content;
+	width: fit-content;
+	display: block;
+	margin: 0.5em auto;
 }
 /* Setting up actions menu (date/notes, via/source, like/reblog) */
 .actions {
