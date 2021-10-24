@@ -196,6 +196,20 @@ body:not(.sidebarleft) main {
 .bodyitemcontent { margin-left: 1em }
 .bodyitemcontent > :first-child { margin-top: 0 }
 .bodyitemcontent > :last-child { margin-bottom: 0 }
+/* Users */
+.user {
+	display: flex;
+	align-items: center;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+}
+.user.deactivated .username::after {
+	content: " (deactivated)";
+	text-transform: lowercase;
+	font-size: 0.9em;
+	opacity: 0.6;
+}
 /* Read more */
 .read_more {
 	border-top: double var(--accent2);
