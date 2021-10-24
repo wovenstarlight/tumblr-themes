@@ -227,7 +227,7 @@ body:not(.sidebarleft) main {
 	width: -moz-fit-content;
 	width: fit-content;
 	display: block;
-	margin: 0.5em auto;
+	margin: 0.5em auto 0;
 }
 /* Setting up actions menu (date/notes, via/source, like/reblog) */
 .actions {
