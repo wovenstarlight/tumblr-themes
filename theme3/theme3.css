@@ -269,6 +269,10 @@ body:not(.sidebarleft) main {
 .post.notes li .avatar_frame { display: none }
 .post.notes li .action a { font-weight: bold }
 .post.notes li blockquote { margin: 0.5em }
+.post.notes .more_notes_link_container {
+	border-top: double var(--accent2);
+	border-bottom: double var(--accent2);
+}
 
 
 /*************************** POST-SPECIFIC STYLES ***************************/
