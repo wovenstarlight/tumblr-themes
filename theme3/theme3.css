@@ -258,6 +258,17 @@ body:not(.sidebarleft) main {
 
 
 /*************************** POST-SPECIFIC STYLES ***************************/
+/* Photo posts */
+.photowrapper { position: relative }
+.highres {
+	padding: 0.25em;
+	border: thin solid var(--accent2);
+	position: absolute;
+	bottom: 0.75em;
+	left: 0.5em;
+	background: var(--bg);
+}
+.photowrapper:not(:hover) .highres { opacity: 0 }
 /* Chat posts */
 ol.chat {
 	list-style: none;
