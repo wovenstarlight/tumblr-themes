@@ -521,6 +521,13 @@ header:not(:hover) .stamp img,
 		<div class="actions">
 
 			<span class="datenotes">
+			    {block:PermalinkPage}
+				<!-- Link to the relevant day page on permalink pages -->
+				<span class="currdate">
+			        <a href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">{lang:Show all posts made on this day}</a>
+			    </span>
+				{/block:PermalinkPage}
+
 				{block:ifShowDates}
 				<a class="date" href="{Permalink}">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfShowTimestamps}, {block:If24HourTimestamps}{24Hour}{/block:If24HourTimestamps}{block:IfNot24HourTimestamps}{12Hour}{/block:IfNot24HourTimestamps}:{Minutes}{block:IfNot24HourTimestamps} {CapitalAmPm}{/block:IfNot24HourTimestamps}{/block:IfShowTimestamps}</a>
 				{/block:ifShowDates}

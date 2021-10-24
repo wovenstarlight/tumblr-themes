@@ -30,4 +30,10 @@ $(document).ready( function() {
 
 	$("#currdate").html(days[day]+" "+months[month]+" "+date+", "+year);
 
+	// On permalink pages, link to day page instead of displaying current date on top left
+	if ($(".currdate").length) { // class=currdate exists; only true on permalink pages
+		$("#currdate").html("");
+		$("#currdate").append($(".currdate a"));
+	}
+
 });

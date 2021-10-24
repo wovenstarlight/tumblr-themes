@@ -60,8 +60,14 @@ header a { color: var(--headings) }
 	padding: 0.25em;
 	border: thin solid;
 }
+/* Day page link on permalink pages */
+#currdate a {
+	display: block;
+	font-style: italic
+}
+.currdate { display: none }
 /* Title */
-#title a {
+#title > a {
 	font-size: 2em;
 	display: block;
 	padding-top: 0.5em;
@@ -506,7 +512,7 @@ body.light #darklight .fa-sun {
 }
 @media (max-width: 700px) {
 	/* Resize elements */
-	#title a { font-size: 1.5em }
+	#title > a { font-size: 1.5em }
 	
 	/* For when only one link block is enabled */
 	/* Only ask/submit */
@@ -553,7 +559,7 @@ body.light #darklight .fa-sun {
 	#title { grid-template-columns: 1fr 1fr }
 	#currdate { max-width: 6em }
 	#currdate, #title .stamp { justify-self: center }
-	#title a {
+	#title > a {
 		grid-row: 2;
 		grid-column: 1 / span 2;
 	}
