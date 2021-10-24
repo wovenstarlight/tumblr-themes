@@ -234,8 +234,10 @@ header:not(:hover) .stamp img,
 	<!-- SEARCH BAR -->
 	<form action="/search" method="get" id="search">
 		<h2><label for="q">Search</label></h2>
-		<input type="text" name="q" value="{SearchQuery}"/>
-		<i class="fa-solid fa-magnifying-glass"></i>
+		<div>
+			<input type="text" name="q" value="{SearchQuery}"/>
+			<i class="fa-solid fa-magnifying-glass"></i>
+		</div>
 	</form>
 	{/block:IfShowSearchBar}
 </aside>

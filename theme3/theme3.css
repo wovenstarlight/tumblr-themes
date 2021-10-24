@@ -277,7 +277,7 @@ form h2 {
 	border-bottom: thin solid var(--accent2);
 }
 #pages a:hover { background-color: rgba(var(--links--rgb), 0.05) }
-form { position: relative }
+form div { position: relative }
 form input {
 	width: 100%;
 	border: thin solid var(--accent2);
