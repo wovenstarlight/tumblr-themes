@@ -193,7 +193,7 @@ body:not(.sidebarleft) main {
 .postbody { margin: 0.75em 0 }
 .bodyitem { padding: 0.75em 0 }
 .bodyitem + .bodyitem { border-top: thin solid rgba(var(--text--rgb), 0.25) }
-.bodyitemcontent { margin-left: 1em }
+.bodyitemcontent:not(:first-child) { margin-left: 1em }
 .bodyitemcontent > :first-child { margin-top: 0 }
 .bodyitemcontent > :last-child { margin-bottom: 0 }
 /* Users */
