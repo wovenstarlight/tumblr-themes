@@ -175,6 +175,8 @@ body:not(.sidebarleft) main {
 	grid-row: 2;
 	justify-self: end
 }
+/* Spacing between posts and footer when pagination isn't happening */
+#postswrapper:last-child { padding-bottom: 1em }
 /* Dividers between posts and post components */
 .post {
 	border-bottom: 0.15em solid var(--accent2);
