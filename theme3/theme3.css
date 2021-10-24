@@ -202,6 +202,24 @@ body:not(.sidebarleft) main {
 .user + .bodyitemcontent { margin-left: 1em }
 .bodyitemcontent > :first-child { margin-top: 0 }
 .bodyitemcontent > :last-child { margin-bottom: 0 }
+/* Border off page titles */
+.page.title { border-bottom: 0.25em solid var(--accent2) }
+.page.title::after {
+	content: "";
+	display: block;
+	border-bottom: 0.1em solid var(--accent2);
+	margin-bottom: 0.2em
+}
+/* Proper spacing for tag page headers */
+.tag.page.title h2 { margin-bottom: 0 }
+.tag.page.title p {
+	margin: 0.25em 0 0.75em;
+	font-size: 0.9em;
+}
+/* Add special symbols */
+.page.title .tag::before { content: "#" }
+.page.title .search_query::before { content: "\201C" }
+.page.title .search_query::after { content: "\201D" }
 /* FAQ/Submit guidelines spacing */
 .asksubmitwrapper:not(:empty) { margin-bottom: 1em }
 /* Users */
