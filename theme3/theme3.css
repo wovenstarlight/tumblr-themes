@@ -6,7 +6,6 @@ body {
 	background-color: var(--bg);
 	color: var(--text);
 	padding: 0.5em 1em;
-	font-family: Georgia;
 	display: grid;
 	column-gap: 1em;
 }
