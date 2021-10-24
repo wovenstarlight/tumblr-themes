@@ -256,14 +256,15 @@ body.sidebarleft #sidebar { /* ...on left */
 	font-size: 3.25em;
 	color: var(--bold)
 }
-/* Custom pages section */
+/* Custom pages and search sections */
 .title,
-#pages h2 {
+#pages h2,
+form h2 {
 	text-transform: uppercase;
 	font-weight: 300;
 	text-align: center;
 }
-#pages h2 { margin: 0 }
+#pages h2, form h2 { margin: 0 }
 #pages a {
 	text-align: center;
 	display: block;
@@ -274,6 +275,21 @@ body.sidebarleft #sidebar { /* ...on left */
 	border-bottom: thin solid var(--accent2);
 }
 #pages a:hover { background-color: rgba(var(--links--rgb), 0.05) }
+form { position: relative }
+form input {
+	width: 100%;
+	border: thin solid var(--accent2);
+	background: var(--accent1);
+	height: 1.5em;
+	padding: 0.25em;
+	padding-right: 1.5em;
+}
+form i {
+	position: absolute;
+	font-size: 1em;
+	bottom: 0.25em;
+	right: 0.25em;
+}
 
 
 
