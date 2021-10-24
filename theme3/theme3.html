@@ -594,32 +594,50 @@ header:not(:hover) .stamp img,
 	<!-- PAGINATION (index pages) -->
 	{block:IfInfiniteScroll}{block:IfManualLoadForInfiniteScroll}
 	<!-- infinite scroll button -->
-	<div id="loadmore">{lang:Load more posts}</div>
+	<a id="loadmore">{lang:Load more posts}</a>
 	{/block:IfManualLoadForInfiniteScroll}{/block:IfInfiniteScroll}
 
 	<!-- jump pagination -->
 	<nav id="navigation">
-		{block:PreviousPage}<a id="prevpage" href="{PreviousPage}" data-tippy-content="{lang:Previous page}"><i class="fa-solid fa-chevron-left"></i></a>{/block:PreviousPage}
-		<span>{lang:CurrentPage of TotalPages}</span>
-		{block:NextPage}<a id="nextpage" href="{NextPage}" data-tippy-content="{lang:Next page}"><i class="fa-solid fa-chevron-right"></i></a>{/block:NextPage}
+		{block:PreviousPage}<a id="prevpage" href="{PreviousPage}" class="prev">
+			<i class="fa-solid fa-chevron-left"></i>
+			<span>{lang:Previous page}</span>
+		</a>{/block:PreviousPage}
+		<span>{lang:Page CurrentPage of TotalPages 2}</span>
+		{block:NextPage}<a id="nextpage" href="{NextPage}" class="next">
+			<span>{lang:Next page}</span>
+			<i class="fa-solid fa-chevron-right"></i>
+		</a>{/block:NextPage}
 	</nav>
 	{/block:Pagination}
 	
 	{block:PermalinkPagination}
 	<!-- PAGINATION (permalink pages) -->
-	<nav id="navigation">
-		{block:PreviousPost}<a href="{PreviousPost}" data-tippy-content="{lang:Previous post}"><i class="fa-solid fa-chevron-left"></i></a>{/block:PreviousPost}
+	<nav id="navigation" class="permalink">
+		{block:PreviousPost}<a href="{PreviousPost}" class="prev">
+			<i class="fa-solid fa-chevron-left"></i>
+			<span>{lang:Previous post}</span>
+		</a>{/block:PreviousPost}
 		<span>{lang:See more posts}</span>
-		{block:NextPost}<a href="{NextPost}" data-tippy-content="{lang:Next post}"><i class="fa-solid fa-chevron-right"></i></a>{/block:NextPost}
+		{block:NextPost}<a href="{NextPost}" class="next">
+			<span>{lang:Next post}</span>
+			<i class="fa-solid fa-chevron-right"></i>
+		</a>{/block:NextPost}
 	</nav>
 	{/block:PermalinkPagination}
 	
 	{block:DayPagination}
 	<!-- PAGINATION (day pages) -->
-	<nav id="navigation">
-		{block:PreviousDayPage}<a href="{PreviousDayPage}" data-tippy-content="{lang:Previous day}"><i class="fa-solid fa-chevron-left"></i></a>{/block:PreviousDayPage}
+	<nav id="navigation" class="day">
+		{block:PreviousDayPage}<a href="{PreviousDayPage}" class="prev">
+			<i class="fa-solid fa-chevron-left"></i>
+			<span>{lang:Previous day}</span>
+		</a>{/block:PreviousDayPage}
 		<span>{lang:See more posts}</span>
-		{block:NextDayPage}<a href="{NextDayPage}" data-tippy-content="{lang:Next day}"><i class="fa-solid fa-chevron-right"></i></a>{/block:NextDayPage}
+		{block:NextDayPage}<a href="{NextDayPage}" class="next">
+			<span>{lang:Next day}</span>
+			<i class="fa-solid fa-chevron-right"></i>
+		</a>{/block:NextDayPage}
 	</nav>
 	{/block:DayPagination}
 </main>
