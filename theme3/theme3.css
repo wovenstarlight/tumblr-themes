@@ -365,7 +365,9 @@ ol.chat li:nth-child(even) {
 	justify-self: end;
 }
 @media (min-width: 1000px) {
-	#navigation a span { display: none }
+	#navigation a span,
+	#navigation.day span,
+	#navigation.permalink span { display: none }
 }
 @media (max-width: 1000px) {
 	#navigation a {
