@@ -9,7 +9,7 @@
 		NPF photosets fix by glenthemes: https://glenthemes.tumblr.com/post/659034084446748672/npf-images-v3
 		Dark/light mode toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 
-	Last updated 15 Oct 2021.
+	Last updated 24 Oct 2021.
 -->
 
 <!DOCTYPE html>
@@ -413,7 +413,7 @@ body.light {
 			{block:NotReblog}
 			<div class="bodyitemcontent">
 				<a class="link" href="{URL}" {Target}>
-					{block:Thumbnail}<img href="{Thumbnail}">{/block:Thumbnail}
+					{block:Thumbnail}<img src="{Thumbnail}">{/block:Thumbnail}
 					<span class="name">{Name}{block:Author} — {Author}{/block:Author}</span>
 					{block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}
 				</a>
@@ -430,7 +430,7 @@ body.light {
 				<div class="bodyitemcontent">
 					{block:IsOriginalEntry}
 					<a class="link" href="{URL}" {Target}>
-						{block:Thumbnail}<img href="{Thumbnail}">{/block:Thumbnail}
+						{block:Thumbnail}<img src="{Thumbnail}">{/block:Thumbnail}
 						<span class="name">{Name}{block:Author} — {Author}{/block:Author}</span>
 						{block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}
 					</a>
