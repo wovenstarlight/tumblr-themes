@@ -220,6 +220,8 @@ body:not(.sidebarleft) main {
 .page.title .tag::before { content: "#" }
 .page.title .search_query::before { content: "\201C" }
 .page.title .search_query::after { content: "\201D" }
+/* Special message for when blog has no posts */
+.post.no-posts { text-align: center }
 /* FAQ/Submit guidelines spacing */
 .asksubmitwrapper:not(:empty) { margin-bottom: 1em }
 /* Users */
