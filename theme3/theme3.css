@@ -189,6 +189,10 @@ body:not(.sidebarleft) main {
 	border-bottom: 0.1em solid var(--accent2);
 	padding-bottom: 0.5em
 }
+/* Space out post and line up top and bottom elements flush to edges */
+.postbody { margin: 0.75em 0 }
+.bodyitemcontent > :first-child { margin-top: 0 }
+.bodyitemcontent > :last-child { margin-bottom: 0 }
 /* Setting up actions menu (date/notes, via/source, like/reblog) */
 .actions {
 	display: flex;
