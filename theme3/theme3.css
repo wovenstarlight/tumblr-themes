@@ -318,7 +318,8 @@ form div { position: relative }
 form input {
 	width: 100%;
 	border: thin solid var(--accent2);
-	background: var(--accent1);
+	background: rgba(var(--links--rgb), 0.1);
+	color: var(--text);
 	height: 1.5em;
 	padding: 0.25em;
 	padding-right: 1.5em;
