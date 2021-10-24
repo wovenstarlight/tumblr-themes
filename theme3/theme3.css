@@ -253,7 +253,7 @@ body.sidebarleft #sidebar { /* ...on left */
 }
 /* Description special styles */
 #description.justify { text-align: justify }
-#description.dropcap { min-height: 3.3em }
+#description.dropcap { min-height: 3.5em }
 #description.dropcap::first-letter {
 	text-transform: uppercase;
 	float: left;
