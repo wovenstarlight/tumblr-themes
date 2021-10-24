@@ -263,6 +263,12 @@ body:not(.sidebarleft) main {
 	content: ",";
 	margin-right: 0.25em;
 }
+/* Permalink posts: notes section */
+.post.notes { padding-bottom: 1em }
+.post.notes li:nth-child(even) { background:rgba(var(--text--rgb),.05) }
+.post.notes li .avatar_frame { display: none }
+.post.notes li .action a { font-weight: bold }
+.post.notes li blockquote { margin: 0.5em }
 
 
 /*************************** POST-SPECIFIC STYLES ***************************/
@@ -312,14 +318,16 @@ p.npf_quote, .quote h2 { font-family: unset }
 	text-align: center;
 	font-variant: small-caps
 }
-/* Chat posts */
-ol.chat {
+/* Chat posts (and some post notes styling) */
+ol.chat,
+.post.notes ol {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 p.npf_chat,
-ol.chat li {
+ol.chat li,
+.post.notes li {
 	margin: 0;
 	padding: 0.25em 0.5em;
 	font-family: unset;
