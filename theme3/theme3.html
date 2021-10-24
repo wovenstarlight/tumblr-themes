@@ -155,8 +155,6 @@ body.light {
 
 {block:IfSepiaFilterOnImages}
 header:not(:hover) .stamp img,
-.user:not(:hover) .usericon,
-.ask:not(:hover) .usericon,
 .bodyitemcontent img:not(:hover) {
 	filter: sepia(50%);
 }
@@ -307,8 +305,7 @@ header:not(:hover) .stamp img,
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
-					<img src="{PortraitURL-64}" class="usericon"/>
-					<span class="username">{Username}</span>
+					<span class="username">{Username}</span>:
 				</a>
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
@@ -331,8 +328,7 @@ header:not(:hover) .stamp img,
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
-					<img src="{PortraitURL-64}" class="usericon"/>
-					<span class="username">{Username}</span>
+					<span class="username">{Username}</span>:
 				</a>
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
@@ -355,8 +351,7 @@ header:not(:hover) .stamp img,
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
-					<img src="{PortraitURL-64}" class="usericon"/>
-					<span class="username">{Username}</span>
+					<span class="username">{Username}</span>:
 				</a>
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
@@ -378,8 +373,7 @@ header:not(:hover) .stamp img,
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
-					<img src="{PortraitURL-64}" class="usericon"/>
-					<span class="username">{Username}</span>
+					<span class="username">{Username}</span>:
 				</a>
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
@@ -413,8 +407,7 @@ header:not(:hover) .stamp img,
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
-					<img src="{PortraitURL-64}" class="usericon"/>
-					<span class="username">{Username}</span>
+					<span class="username">{Username}</span>:
 				</a>
 				<div class="bodyitemcontent">
 					{block:IsOriginalEntry}
@@ -456,8 +449,7 @@ header:not(:hover) .stamp img,
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
-					<img src="{PortraitURL-64}" class="usericon"/>
-					<span class="username">{Username}</span>
+					<span class="username">{Username}</span>:
 				</a>
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
@@ -479,8 +471,7 @@ header:not(:hover) .stamp img,
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
-					<img src="{PortraitURL-64}" class="usericon"/>
-					<span class="username">{Username}</span>
+					<span class="username">{Username}</span>:
 				</a>
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
@@ -494,8 +485,6 @@ header:not(:hover) .stamp img,
 			<div class="ask">
 			
 				<span class="username">{lang:Asker asked 2}</span>
-				
-				<img src="{AskerPortraitURL-64}" class="usericon">
 
 				<div class="question">{Question}</div>
 			</div>
@@ -503,7 +492,6 @@ header:not(:hover) .stamp img,
 			<div class="bodyitem">
 				{block:RebloggedFrom}{block:Answerer}
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" href="{ReblogRootURL}">
-					<img src="{AnswererPortraitURL-64}" class="usericon"/>
 					<span class="username">{ReblogRootName}</span>
 				</a>
 				{/block:Answerer}{/block:RebloggedFrom}
@@ -514,8 +502,7 @@ header:not(:hover) .stamp img,
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
-					<img src="{PortraitURL-64}" class="usericon"/>
-					<span class="username">{Username}</span>
+					<span class="username">{Username}</span>:
 				</a>
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
