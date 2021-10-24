@@ -294,6 +294,30 @@ form i {
 }
 
 
+/********************************** FOOTER **********************************/
+footer {
+	padding-top: 0.5em;
+	margin-bottom: 0.5em;
+	grid-column: 1/span 2;
+	border-top: 0.1em solid var(--accent2);
+	border-bottom: 0.2em solid var(--accent2);
+	text-align: center;
+}
+footer::after {
+	content: "";
+	display: block;
+	border-bottom: 0.1em solid var(--accent2);
+	width: 100%;
+	margin: 0.5em 0 0.2em;
+}
+/* Blog credit's separator */
+footer span {
+	border-right: thin solid var(--accent2);
+	margin-right: 0.5em;
+	padding-right: 0.5em;
+}
+
+
 
 /****************************** RESPONSIVENESS ******************************/
 @media (max-width: 800px) {

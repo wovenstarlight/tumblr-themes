@@ -624,19 +624,19 @@ header:not(:hover) .stamp img,
 	{/block:DayPagination}
 </main>
 
-<!-- THEME LINK, DARK/LIGHT MODE TOGGLE, BLOG COPYRIGHT -->
-<div id="credits">
+<!-- THEME LINK AND BLOG COPYRIGHT -->
+<footer>
+	<span>© {Name} {CopyrightYears}</span>
 	<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
-	<a href="https://starlightthemes.tumblr.com/theme3" data-tippy-content="{lang:Install this theme}"><i class="fa-solid fa-code"></i></a>
+	<a href="https://starlightthemes.tumblr.com/theme3">Theme by starlightthemes</a>
 	<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
-	{block:IfShowColorModeToggle}
-	<a data-tippy-content="Toggle light/dark mode" id="darklight">
-		<i class="fa-solid fa-sun"></i>
-		<i class="fa-solid fa-moon"></i>
-	</a>
-	{/block:IfShowColorModeToggle}
-	<a data-tippy-content="{Name} {CopyrightYears}"><i class="fa-solid fa-copyright"></i></a>
-</div>
+</footer>
+<!-- {block:IfShowColorModeToggle}
+<a data-tippy-content="Toggle light/dark mode" id="darklight">
+	<i class="fa-solid fa-sun"></i>
+	<i class="fa-solid fa-moon"></i>
+</a>
+{/block:IfShowColorModeToggle} -->
 
 {block:IfInfiniteScroll}
 <script>
