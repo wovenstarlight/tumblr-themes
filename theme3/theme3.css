@@ -370,8 +370,8 @@ footer span {
 	text-align: center;
 }
 /* Hide the opposing icon when on each color mode */
-body:not(.light) #darklight .fa-sun,
-body.light #darklight .fa-moon {
+body:not(.light) #darklight .fa-moon,
+body.light #darklight .fa-sun {
 	display: none
 }
 
