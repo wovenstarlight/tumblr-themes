@@ -350,8 +350,24 @@ footer span {
 	#sidebar { padding-left: 1em }
 }
 @media (max-width: 600px) {
-	/* Further page shrink */
-	body { font-size: 80% }
+	/* Further page shrink and lining up all page elements vertically */
+	body {
+		font-size: 80%;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	/* Resetting sidebar styles for vertical positioning */
+	#sidebar {
+		margin-top: 0.2em;
+		border-left: none !important;
+		border-right: none !important;
+		border-top: var(--main-border);
+		border-bottom: var(--main-border);
+		border-width: 0.3em;
+		max-width: unset;
+		padding: 1em;
+	}
 	
 	/* Repositioning title elements */
 	#title { grid-template-columns: 1fr 1fr }
