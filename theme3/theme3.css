@@ -268,7 +268,7 @@ form h2 {
 #pages a {
 	text-align: center;
 	display: block;
-	padding: 0.5em 0;
+	padding: 0.5em 0.25em;
 	border-top: thin solid var(--accent2);
 }
 #pages a:last-child {
