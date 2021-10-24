@@ -100,7 +100,7 @@ header a { color: var(--headings) }
 }
 /* Links section, bottom of header */
 #links {
-	margin-top: 0.15em;
+	margin-top: 0.2em;
 	padding: 0.15em;
 	border-top: 0.1em solid var(--accent2);
 	border-bottom: 0.1em solid var(--accent2);
@@ -178,7 +178,7 @@ body:not(.sidebarleft) main {
 /* Dividers between posts and post components */
 .post {
 	border-bottom: 0.15em solid var(--accent2);
-	padding: 0.5em 0;
+	padding: 0.5em 0 0.2em;
 }
 .postbody ~ div {
 	border-top: thin solid var(--accent2);
