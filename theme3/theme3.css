@@ -258,6 +258,21 @@ body:not(.sidebarleft) main {
 
 
 /*************************** POST-SPECIFIC STYLES ***************************/
+/* Text posts */
+.post h1,
+.post h2,
+.post h3,
+.post h4,
+.post h5,
+.post h6 {
+	font-weight: normal;
+	margin: 0.25em 0;
+}
+blockquote {
+	border-left: solid;
+	margin: 0 0.5em;
+	padding-left: 1em;
+}
 /* Photo posts */
 .photowrapper { position: relative }
 .highres {
@@ -275,7 +290,13 @@ ol.chat {
 	margin: 0;
 	padding: 0;
 }
-ol.chat li { padding: 0.25em 0.5em }
+p.npf_chat,
+ol.chat li {
+	margin: 0;
+	padding: 0.25em 0.5em;
+	font-family: unset;
+}
+p.npf_chat:nth-child(even),
 ol.chat li:nth-child(even) {
 	padding-left: 1.5em;
 	background: rgba(var(--text--rgb), 0.05)
