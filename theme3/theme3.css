@@ -232,22 +232,32 @@ body:not(.sidebarleft) main {
 /* And for pagination */
 #navigation {
 	padding: 1em 0;
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
 	align-items: center;
-	justify-content: center;
 }
 #navigation a {
 	font-size: 2em;
 	position: fixed;
 	top: calc(50% - 1em);
 }
-#navigation .prev { left: 0.5em }
-#navigation .next { right: 0.5em }
+#navigation .prev {
+	left: 0.5em;
+	grid-column: 1;
+}
+#navigation > span {
+	grid-column: 2;
+	justify-self: center;
+}
+#navigation .next {
+	right: 0.5em;
+	grid-column: 3;
+	justify-self: end;
+}
 @media (min-width: 1000px) {
 	#navigation a span { display: none }
 }
 @media (max-width: 1000px) {
-	#navigation { justify-content: space-between }
 	#navigation a {
 		position: static;
 		font-size: 1em;
