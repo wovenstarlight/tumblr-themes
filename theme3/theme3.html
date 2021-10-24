@@ -267,15 +267,15 @@ header:not(:hover) .stamp img,
 	</div>
 	{/block:SearchPage}
 
-	{block:NoPosts}
-	<!-- SPECIAL PAGE HEADER: EMPTY BLOG -->
-	<div class="post no-posts"><h2>{lang:This Tumblr hasnt posted anything}</h2></div>
-	{/block:NoPosts}
-	
 
 
 	<!-- MAIN POSTS SECTION -->
 	<div id="postswrapper">
+
+	{block:NoPosts}
+	<!-- SPECIAL MESSAGE: EMPTY BLOG -->
+	<section class="post no-posts"><p>{lang:This Tumblr hasnt posted anything}</p></section>
+	{/block:NoPosts}
 	
 	{block:Posts inlineMediaWidth="1000" inlineNestedMediaWidth="1000"}
 	<section class="post" post-type="{PostType}">
