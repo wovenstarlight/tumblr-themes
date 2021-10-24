@@ -353,6 +353,26 @@ footer span {
 	margin-right: 0.5em;
 	padding-right: 0.5em;
 }
+/* Dark/light mode toggle */
+#darklight {
+	background: var(--bg);
+	border: thin solid var(--accent2);
+	font-size: 1.25em;
+	position: fixed;
+	bottom: 0.5em;
+	right: 0.5em;
+	width: 1.5em;
+	height: 1.5em;
+	padding: 0.225em;
+	line-height: 0;
+	vertical-align: middle;
+	text-align: center;
+}
+/* Hide the opposing icon when on each color mode */
+body:not(.light) #darklight .fa-sun,
+body.light #darklight .fa-moon {
+	display: none
+}
 
 
 
