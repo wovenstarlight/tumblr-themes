@@ -258,20 +258,11 @@ ol.chat li:nth-child(even) {
 /* Ask posts */
 .ask {
 	background: rgba(var(--text--rgb), 0.1);
-	padding: 0.75em;
-	display: grid;
-	grid-template-columns: 1fr 4em;
-	column-gap: 1em;
-	row-gap: 0.5em;
-	align-items: center;
+	padding: 0.75em 1em;
 	margin-bottom: 1em;
 }
-.ask .usericon {
-	grid-column: 2;
-	grid-row: 1 / span 2;
-	align-self: start;
-}
-.ask .question { margin-left: 1em }
+.ask .username { font-weight: bold; }
+.ask .question { margin-top: 0.5em; margin-left: 1em }
 .ask .question > :first-child { margin-top: 0 }
 .ask .question > :last-child { margin-bottom: 0 }
 
