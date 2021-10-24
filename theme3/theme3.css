@@ -284,6 +284,16 @@ blockquote {
 	background: var(--bg);
 }
 .photowrapper:not(:hover) .highres { opacity: 0 }
+/* Quote styles */
+p.npf_quote {
+	font-size: 1.5em;
+	color: var(--headings)
+}
+p.npf_quote, .quote h2 { font-family: unset }
+.quote p {
+	font-size: 0.9em;
+	text-align: right;
+}
 /* Chat posts */
 ol.chat {
 	list-style: none;
