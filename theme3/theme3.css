@@ -193,6 +193,13 @@ body:not(.sidebarleft) main {
 .postbody { margin: 0.75em 0 }
 .bodyitemcontent > :first-child { margin-top: 0 }
 .bodyitemcontent > :last-child { margin-bottom: 0 }
+/* Read more */
+.read_more_container { text-align: center }
+.read_more {
+	border-top: double var(--accent2);
+	border-bottom: double var(--accent2);
+	padding: 0.25em 1em;
+}
 /* Setting up actions menu (date/notes, via/source, like/reblog) */
 .actions {
 	display: flex;
