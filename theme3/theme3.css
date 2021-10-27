@@ -255,12 +255,14 @@ body:not(.sidebarleft) main {
 	justify-content: space-between;
 	column-gap: 0.75em;
 }
-.actions .divider { margin: 0 0.25em }
-/* Hide divider if (dates xor notes) || (like xor reblog button) is hidden */
+.divider { margin: 0 0.25em }
+/* Hide divider if (dates xor notes) || (like xor reblog button) || (artist xor album) is hidden */
 .datenotes .divider:first-child,
 .datenotes .date + .divider:last-child,
 .likereblog .divider:first-child,
-.likereblog .customlike + .divider:last-child {
+.likereblog .customlike + .divider:last-child,
+.making .divider:first-child,
+.making .artist + .divider:last-child {
 	display: none
 }
 /* Custom like buttons */
@@ -362,6 +364,79 @@ ol.chat li:nth-child(even) {
 	padding-left: 1.5em;
 	background: rgba(var(--text--rgb), 0.05)
 }
+/* Audio posts */
+.audiowrapper {
+	--albumsize: 5em;
+	border: thin solid var(--accent2);
+	padding: 1em;
+	display: grid;
+	grid-template-columns: var(--albumsize) 1fr;
+	column-gap: 1em;
+}
+.audiowrapper > span { display: none } /* Bring the hidden player out of the grid */
+.audiowrapper .albumart { /* Album art and play/pause button section */
+	z-index: 0;
+	height: var(--albumsize);
+	background-color: var(--text);
+	color: var(--bg);
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.audiowrapper .albumart img { /* Album art, if available */
+	z-index: -1;
+	position: absolute;
+	/* should auto-scale and auto-position, but just in case */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.audiowrapper .custom_audio_buttons { /* Play/pause buttons */
+	background: rgba(var(--text--rgb), 0.85);
+	--size: 40%;
+	width: var(--size);
+	height: var(--size);
+}
+.audiowrapper .custom_audio_buttons svg {
+	padding: 10%;
+	width: 100%;
+	height: 100%;
+}
+.audiowrapper .custom_audio_error_icon svg { stroke: red } /* If audio file errors */
+.audiowrapper .trackinfo,
+.audiowrapper .textinfo{ /* General track information */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+.audiowrapper .trackinfo { justify-content: space-between }
+.audiowrapper .trackname { /* Text info: track name */
+	text-transform: uppercase;
+	color: var(--headings);
+	font-size: 1.2em;
+}
+.audiowrapper .making { font-size: 0.9em } /* Text info: artist and album */
+.audiowrapper .album { font-style: italic } /* Differentiate from artist */
+.audiowrapper .audio_player {
+	display: flex;
+	width: 100%;
+	column-gap: 0.5em;
+	align-items: center;
+}
+.audiowrapper .custom_audio_seekbar { /* Audio progress bar */
+	width: 100%;
+	height: 1em;
+	border: thin solid var(--links);
+}
+.audiowrapper .custom_audio_seekbar_progress { /* Audio progress bar, darkened bit */
+	width: 0;
+	height: 100%;
+	background: var(--links);
+}
+.custom_audio_time_left::before { content : "-" }
 /* Ask posts */
 .post .ask {
 	background: rgba(var(--text--rgb), 0.1);
