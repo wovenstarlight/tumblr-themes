@@ -29,6 +29,14 @@ h1, h2, h3, h4, h5, h6 { color: var(--headings) }
 	background-color: var(--highlight-bg);
 	color: var(--highlight);
 }
+/* Tooltips */
+.tippy-box[data-theme~='standard'] {
+	background-color: var(--bg);
+	color: var(--text);
+	border: double;
+	border-radius: 0;
+}
+.tippy-box[data-theme~='standard'] .tippy-content { padding: 0.15em 0.3em }
 /* Setting sepia filter on images, if enabled */
 body.sepia header:not(:hover) .stamp img,
 body.sepia .bodyitemcontent img:not(:hover),
