@@ -1,6 +1,6 @@
 /*************************** STANDARD PAGE STYLES ***************************/
 /* Making everything transition over time */
-* { transition-duration: .2s; }
+* { transition: color, background-color .2s; }
 /* Setting body font, layout, etc. */
 body {
 	background-color: var(--bg);
