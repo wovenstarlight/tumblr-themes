@@ -1,5 +1,8 @@
 $(document).ready( function() {
 
+	// audio post setup
+	customAudio();
+
 	// icon replacement
 	feather.replace();
 
