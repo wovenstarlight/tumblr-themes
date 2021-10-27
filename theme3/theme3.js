@@ -1,5 +1,12 @@
 $(document).ready( function() {
 
+	// set up tooltips
+	tippy.setDefaultProps({
+		theme: 'standard',
+		arrow: false
+	});
+	tippy("[data-tippy-content]");
+
 	// audio post setup
 	customAudio();
 
@@ -7,7 +14,7 @@ $(document).ready( function() {
 	feather.replace();
 
 	// Persistent color mode toggle
-	const body = $("body"); // This will also be useful in responsiveness setup
+	const body = $("body");
 			
 	const currTheme = localStorage.getItem("theme");
 

@@ -697,7 +697,7 @@ $("#postwrapper").on( 'append.infiniteScroll', function( event, body, path, item
 	feather.replace();
 
 	// initialize new posts' tooltips
-	tippy("#pinnedpost", { theme: 'standard' });
+	tippy("[data-tippy-content]");
 });
 </script>
 {/block:IfInfiniteScroll}
