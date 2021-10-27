@@ -11,7 +11,7 @@
 		Stamp patterning: https://codepen.io/orhanveli/pen/tbGJL
 		Custom audio posts by annasthms: https://annasthms.tumblr.com/more/js/customaudio/new
 
-	Last updated 24 Oct 2021.
+	Last updated 27 Oct 2021.
 -->
 
 <!DOCTYPE html>
@@ -281,11 +281,6 @@ body.light {
 		{block:Posts inlineMediaWidth="1000" inlineNestedMediaWidth="1000"}
 		<article class="post" post-type="{PostType}">
 
-			{block:PinnedPostLabel}
-			<!-- PINNED POST -->
-			<span id="pinnedpost" data-tippy-content="{PinnedPostLabel}"><i data-feather="star"></i></span>
-			{/block:PinnedPostLabel}
-
 			{block:Title}
 			<!-- POST TITLE -->
 			<h2 class="title"><a href="{Permalink}">{Title}</a></h2>
@@ -550,6 +545,11 @@ body.light {
 					</span>
 					{/block:PermalinkPage}
 
+					{block:PinnedPostLabel}
+					<!-- PINNED POST -->
+					<span id="pinnedpost">{PinnedPostLabel}</span>
+					{/block:PinnedPostLabel}
+					
 					{block:ifShowDates}
 					<a class="date" href="{Permalink}">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfShowTimestamps}, {block:If24HourTimestamps}{24Hour}{/block:If24HourTimestamps}{block:IfNot24HourTimestamps}{12Hour}{/block:IfNot24HourTimestamps}:{Minutes}{block:IfNot24HourTimestamps} {CapitalAmPm}{/block:IfNot24HourTimestamps}{/block:IfShowTimestamps}</a>
 					{/block:ifShowDates}

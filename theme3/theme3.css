@@ -220,6 +220,11 @@ body:not(.sidebarleft) main {
 .page.title .search_query::after { content: "\201D" }
 /* Special message for when blog has no posts */
 .post.no-posts { text-align: center }
+/* Pinned posts marker */
+#pinnedpost {
+	font-style: italic;
+	color: var(--bold);
+}
 /* FAQ/Submit guidelines spacing */
 .asksubmitwrapper:not(:empty) { margin-bottom: 1em }
 /* Users */
@@ -254,15 +259,9 @@ body:not(.sidebarleft) main {
 	column-gap: 0.75em;
 }
 .divider { margin: 0 0.25em }
-/* Hide divider if (dates xor notes) || (like xor reblog button) || (artist xor album) is hidden */
-.as .divider:first-child,
-.as a + .divider:last-child,
-.ra .divider:first-child,
-.ra a + .divider:last-child,
-.likereblog .divider:first-child,
-.likereblog .customlike + .divider:last-child,
-.making .divider:first-child,
-.making .artist + .divider:last-child {
+/* Hide divider if items on either side aren't present */
+.divider:first-child,
+.divider:last-child {
 	display: none
 }
 /* Custom like buttons */
