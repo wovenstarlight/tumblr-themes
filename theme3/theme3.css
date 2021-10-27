@@ -164,15 +164,7 @@ header a { color: var(--headings) }
 	text-align: right
 }
 /* Separators between links */
-#links.ask.submit .as a:first-child,
-#links.random.archive .ra a:first-child {
-	border-right: thin solid var(--text);
-	padding-right: var(--line-spacing);
-}
-#links.ask.submit .as a:last-child,
-#links.random.archive .ra a:last-child {
-	padding-left: var(--line-spacing);
-}
+#links .divider { margin: 0 0.5em }
 
 
 /**************************** MAIN POSTS SECTION ****************************/
@@ -263,8 +255,10 @@ body:not(.sidebarleft) main {
 }
 .divider { margin: 0 0.25em }
 /* Hide divider if (dates xor notes) || (like xor reblog button) || (artist xor album) is hidden */
-.datenotes .divider:first-child,
-.datenotes .date + .divider:last-child,
+.as .divider:first-child,
+.as a + .divider:last-child,
+.ra .divider:first-child,
+.ra a + .divider:last-child,
 .likereblog .divider:first-child,
 .likereblog .customlike + .divider:last-child,
 .making .divider:first-child,
@@ -443,6 +437,11 @@ ol.chat li:nth-child(even) {
 	background: var(--links);
 }
 .custom_audio_time_left::before { content : "-" }
+/* Video posts */
+.tumblr_video_container,
+.tumblr_video_container iframe {
+	max-width: 100%;
+}
 /* Ask posts */
 .post .ask {
 	background: rgba(var(--text--rgb), 0.1);
@@ -612,7 +611,7 @@ footer span {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 0.125em;
+	padding: 0.25em;
 }
 /* Hide the opposing icon when on each color mode */
 body:not(.light) #darklight .feather-moon,

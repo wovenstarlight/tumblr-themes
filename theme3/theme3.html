@@ -188,10 +188,12 @@ body.light {
 		<a href="/" class="home">{lang:Home}</a>
 		<span class="as">
 			{block:AskEnabled}<a href="/ask">{AskLabel}</a>{/block:AskEnabled}
+			<span class="divider">•</span>
 			{block:SubmissionsEnabled}<a href="/submit">{SubmitLabel}</a>{/block:SubmissionsEnabled}
 		</span>
 		<span class="ra">
 			{block:IfShowRandomPostLink}<a href="/random">{lang:Random post}</a>{/block:IfShowRandomPostLink}
+			<span class="divider">•</span>
 			{block:IfShowArchiveLink}<a href="/archive">{lang:Archive}</a>{/block:IfShowArchiveLink}
 		</span>
 	</nav>
