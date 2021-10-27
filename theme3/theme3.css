@@ -17,7 +17,7 @@ a { color: var(--links) }
 a:hover { color: var(--links-hover) }
 a:not(:hover) { text-decoration: none }
 strong, bold { color: var(--bold) }
-em, i:not([class*='fa']) { color: var(--italics) }
+em, i { color: var(--italics) }
 /* Setting standard heading colors */
 h1, h2, h3, h4, h5, h6 { color: var(--headings) }
 /* Setting text highlight colors */
@@ -292,6 +292,7 @@ body:not(.sidebarleft) main {
 .post.notes .more_notes_link_container {
 	border-top: double var(--accent2);
 	border-bottom: double var(--accent2);
+	margin-top: 0.5em;
 }
 
 
@@ -406,6 +407,8 @@ ol.chat li:nth-child(even) {
 	#navigation a span,
 	#navigation.day span,
 	#navigation.permalink span { display: none }
+	
+	#navigation a svg { transform: scale(250%) }
 }
 @media (max-width: 1000px) {
 	#navigation a {
@@ -413,7 +416,6 @@ ol.chat li:nth-child(even) {
 		font-size: 1em;
 		padding: 0 0.5em;
 		display: flex;
-		column-gap: 0.25em;
 		align-items: center;
 	}
 }
@@ -482,13 +484,15 @@ form input {
 	color: var(--text);
 	height: 1.5em;
 	padding: 0.25em;
-	padding-right: 1.5em;
+	padding-right: 1.625em;
 }
-form i {
+form svg {
 	position: absolute;
-	font-size: 1em;
-	bottom: 0.25em;
-	right: 0.25em;
+	top: 0;
+	right: 0;
+	display: flex;
+	height: 100%;
+	padding: 0.125em;
 }
 
 
@@ -518,20 +522,20 @@ footer span {
 #darklight {
 	background: var(--bg);
 	border: thin solid var(--accent2);
-	font-size: 1.25em;
 	position: fixed;
 	bottom: 0.5em;
 	right: 0.5em;
-	width: 1.5em;
-	height: 1.5em;
-	padding: 0.225em;
-	line-height: 0;
-	vertical-align: middle;
-	text-align: center;
+	--size: 2em;
+	width: var(--size);
+	height: var(--size);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0.125em;
 }
 /* Hide the opposing icon when on each color mode */
-body:not(.light) #darklight .fa-moon,
-body.light #darklight .fa-sun {
+body:not(.light) #darklight .feather-moon,
+body.light #darklight .feather-sun {
 	display: none
 }
 

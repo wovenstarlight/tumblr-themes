@@ -1,5 +1,8 @@
 $(document).ready( function() {
 
+	// icon replacement
+	feather.replace();
+
 	// Persistent color mode toggle
 	const body = $("body"); // This will also be useful in responsiveness setup
 			

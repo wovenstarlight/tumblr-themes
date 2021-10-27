@@ -3,7 +3,7 @@
 
 	Credits:
 		Tippy.js tooltips by atomiks: https://atomiks.github.io/tippyjs
-		Icons by Font Awesome: https://fontawesome.com/
+		Feather Icons by colebemis: https://feathericons.com/
 		Custom like buttons by Georgi Demirev: https://demirev.cubthemes.com/post/106345243051/changing-like-and-reblog-button-colors-revisited
 		Infinite scroll by Paul Irish & Metafizzy: https://infinite-scroll.com/
 		NPF photosets fix by glenthemes: https://glenthemes.tumblr.com/post/659034084446748672/npf-images-v3
@@ -109,8 +109,8 @@
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
 
 	<!-- Resource imports -->
-	<!-- Font Awesome icons -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+	<!-- Feather SVG icons -->
+	<script src="https://unpkg.com/feather-icons"></script>
 	<!-- Google fonts import -->
 	{block:IfNotUseTumblrFonts}<link href="https://fonts.googleapis.com/css2?family={text:Google font for body}" rel="stylesheet">{/block:IfNotUseTumblrFonts}
 	<!-- Title font import -->
@@ -235,7 +235,7 @@ header:not(:hover) .stamp img,
 		<h2><label for="q">Search</label></h2>
 		<div>
 			<input type="text" name="q" value="{SearchQuery}"/>
-			<i class="fa-solid fa-magnifying-glass"></i>
+			<i data-feather="search"></i>
 		</div>
 	</form>
 	{/block:IfShowSearchBar}
@@ -282,7 +282,7 @@ header:not(:hover) .stamp img,
 
 			{block:PinnedPostLabel}
 			<!-- PINNED POST -->
-			<span id="pinnedpost" data-tippy-content="{PinnedPostLabel}"><i class="fa-solid fa-thumbtack"></i></span>
+			<span id="pinnedpost" data-tippy-content="{PinnedPostLabel}"><i data-feather="star"></i></span>
 			{/block:PinnedPostLabel}
 
 			{block:Title}
@@ -595,13 +595,13 @@ header:not(:hover) .stamp img,
 	<!-- jump pagination -->
 	<nav id="navigation">
 		{block:PreviousPage}<a id="prevpage" href="{PreviousPage}" class="prev">
-			<i class="fa-solid fa-chevron-left"></i>
+			<i data-feather="chevron-left"></i>
 			<span>{lang:Previous page}</span>
 		</a>{/block:PreviousPage}
 		<span>{lang:Page CurrentPage of TotalPages 2}</span>
 		{block:NextPage}<a id="nextpage" href="{NextPage}" class="next">
 			<span>{lang:Next page}</span>
-			<i class="fa-solid fa-chevron-right"></i>
+			<i data-feather="chevron-right"></i>
 		</a>{/block:NextPage}
 	</nav>
 	{/block:Pagination}
@@ -610,13 +610,13 @@ header:not(:hover) .stamp img,
 	<!-- PAGINATION (permalink pages) -->
 	<nav id="navigation" class="permalink">
 		{block:PreviousPost}<a href="{PreviousPost}" class="prev">
-			<i class="fa-solid fa-chevron-left"></i>
+			<i data-feather="chevron-left"></i>
 			<span>{lang:Previous post}</span>
 		</a>{/block:PreviousPost}
 		<span>{lang:See more posts}</span>
 		{block:NextPost}<a href="{NextPost}" class="next">
 			<span>{lang:Next post}</span>
-			<i class="fa-solid fa-chevron-right"></i>
+			<i data-feather="chevron-right"></i>
 		</a>{/block:NextPost}
 	</nav>
 	{/block:PermalinkPagination}
@@ -625,13 +625,13 @@ header:not(:hover) .stamp img,
 	<!-- PAGINATION (day pages) -->
 	<nav id="navigation" class="day">
 		{block:PreviousDayPage}<a href="{PreviousDayPage}" class="prev">
-			<i class="fa-solid fa-chevron-left"></i>
+			<i data-feather="chevron-left"></i>
 			<span>{lang:Previous day}</span>
 		</a>{/block:PreviousDayPage}
 		<span>{lang:See more posts}</span>
 		{block:NextDayPage}<a href="{NextDayPage}" class="next">
 			<span>{lang:Next day}</span>
-			<i class="fa-solid fa-chevron-right"></i>
+			<i data-feather="chevron-right"></i>
 		</a>{/block:NextDayPage}
 	</nav>
 	{/block:DayPagination}
@@ -648,8 +648,8 @@ header:not(:hover) .stamp img,
 <!-- DARK/LIGHT MODE TOGGLE -->
 {block:IfShowColorModeToggle}
 <a data-tippy-content="Toggle light/dark mode" id="darklight">
-	<i class="fa-solid fa-sun"></i>
-	<i class="fa-solid fa-moon"></i>
+	<i data-feather="sun"></i>
+	<i data-feather="moon"></i>
 </a>
 {/block:IfShowColorModeToggle}
 
@@ -667,6 +667,8 @@ $("#postwrapper").infiniteScroll({
 
 // TIPPY.JS ON INFINITE SCROLL
 $("#postwrapper").on( 'append.infiniteScroll', function( event, body, path, items, response ) {
+	feather.replace();
+	
 	tippy("#pinnedpost", { theme: 'standard' });
 });
 </script>
