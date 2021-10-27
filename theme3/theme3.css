@@ -462,12 +462,19 @@ ol.chat li:nth-child(even) {
 
 
 /******************************** PAGINATION ********************************/
-/* For infinite scroll */
-#loadmore { cursor: pointer }
+/* Consistent spacing for both types of pagination */
 #loadmore,
-/* And for pagination */
 #navigation {
 	padding: 1em 0;
+}
+/* For infinite scroll */
+#loadmore {
+	cursor: pointer;
+	display: block;
+	text-align: center;
+}
+/* And for pagination */
+#navigation {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	align-items: center;
