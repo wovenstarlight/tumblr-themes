@@ -270,7 +270,7 @@ header:not(:hover) .stamp img,
 
 
 	<!-- MAIN POSTS SECTION -->
-	<div id="postswrapper">
+	<section id="postswrapper">
 
 	{block:NoPosts}
 	<!-- SPECIAL MESSAGE: EMPTY BLOG -->
@@ -278,7 +278,7 @@ header:not(:hover) .stamp img,
 	{/block:NoPosts}
 	
 	{block:Posts inlineMediaWidth="1000" inlineNestedMediaWidth="1000"}
-	<section class="post" post-type="{PostType}">
+	<article class="post" post-type="{PostType}">
 
 		{block:PinnedPostLabel}
 		<!-- PINNED POST -->
@@ -570,10 +570,10 @@ header:not(:hover) .stamp img,
 		{/block:IfShowTags}
 		
 		{/block:Date}
-	</section>
+	</article>
 	{/block:Posts}
 	
-	</div>
+	</section>
 	
 	{block:PostNotes}
 	<!-- NOTES SECTION ON PERMALINK PAGES -->
