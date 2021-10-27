@@ -164,14 +164,6 @@ body.light {
 	--highlight-bg: {color:LM Text highlight background};
 }
 
-{block:IfSepiaFilterOnImages}
-header:not(:hover) .stamp img,
-.bodyitemcontent img:not(:hover),
-.audiowrapper:not(:hover) img {
-	filter: sepia(50%);
-}
-{/block:IfSepiaFilterOnImages}
-
 /* Custom CSS */
 {CustomCSS}
 </style>
@@ -181,7 +173,7 @@ header:not(:hover) .stamp img,
 
 </head>
 <!-- PAGE CLASSES -->
-<body class="{block:IfDefaultToLightMode}light{/block:IfDefaultToLightMode} {block:IfSidebarOnLeft}sidebarleft{/block:IfSidebarOnLeft}">
+<body class="{block:IfDefaultToLightMode}light{/block:IfDefaultToLightMode} {block:IfSidebarOnLeft}sidebarleft{/block:IfSidebarOnLeft} {block:IfSepiaFilterOnImages}sepia{/block:IfSepiaFilterOnImages}">
 
 <!-- HEADER -->
 <header>

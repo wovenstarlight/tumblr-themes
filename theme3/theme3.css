@@ -29,6 +29,12 @@ h1, h2, h3, h4, h5, h6 { color: var(--headings) }
 	background-color: var(--highlight-bg);
 	color: var(--highlight);
 }
+/* Setting sepia filter on images, if enabled */
+body.sepia header:not(:hover) .stamp img,
+body.sepia .bodyitemcontent img:not(:hover),
+body.sepia .audiowrapper:not(:hover) img {
+	filter: sepia(50%);
+}
 
 
 /****************************** HEADER SECTION ******************************/
