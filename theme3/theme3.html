@@ -546,8 +546,8 @@ body.light {
 					
 					{block:ifShowDates}
 					<a class="date" href="{Permalink}">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfShowTimestamps}, {block:If24HourTimestamps}{24Hour}{/block:If24HourTimestamps}{block:IfNot24HourTimestamps}{12Hour}{/block:IfNot24HourTimestamps}:{Minutes}{block:IfNot24HourTimestamps} {CapitalAmPm}{/block:IfNot24HourTimestamps}{/block:IfShowTimestamps}</a>
-					{/block:ifShowDates}
 					<span class="divider">•</span>
+					{/block:ifShowDates}
 					{block:NoteCount}
 					<a class="notes" href="{Permalink}">{NoteCountWithLabel}</a>
 					{/block:NoteCount}
