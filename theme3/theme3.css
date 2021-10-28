@@ -322,6 +322,7 @@ blockquote {
 }
 /* Photo posts */
 .photowrapper { position: relative }
+.photopost { width: 100% }
 .highres {
 	padding: 0.25em;
 	border: thin solid var(--accent2);
@@ -447,6 +448,7 @@ ol.chat li:nth-child(even) {
 .tumblr_video_container,
 .tumblr_video_container iframe {
 	max-width: 100%;
+	width: 100% !important;
 }
 /* Ask posts */
 .post .ask {
