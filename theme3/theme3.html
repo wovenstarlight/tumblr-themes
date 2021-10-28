@@ -85,6 +85,7 @@
 
 	<meta name="if:Sidebar on left" content="0">
 	<meta name="if:Sepia filter on images" content="0">
+	<meta name="if:Title in all caps" content="1">
 	<meta name="if:Justify description" content="1">
 	<meta name="if:Dropcap in description" content="1">
 	<meta name="text:Custom links title" content="Links">
@@ -168,7 +169,7 @@ body.light {
 	<!-- PFP/TITLE/DESCRIPTION -->
 	<div id="title">
 		<span id="currdate"></span>
-		<a href="/"><h1>{Title}</h1></a>
+		<a href="/" {block:ifTitleInAllCaps}class="capslock"{/block:ifTitleInAllCaps}><h1>{Title}</h1></a>
 		{block:ShowAvatar}
 		<div class="stamp">
 			<img src="{PortraitURL-128}"/>

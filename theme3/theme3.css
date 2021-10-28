@@ -69,6 +69,7 @@ header a { color: var(--headings) }
 	padding: 0.3em;
 	border-bottom: 0.25rem solid var(--accent2);
 }
+#title .capslock { text-transform: uppercase }
 /* Date */
 #currdate {
 	padding: 0.25em;
