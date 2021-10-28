@@ -474,15 +474,11 @@ ol.chat li:nth-child(even) {
 	grid-template-columns: 1fr 1fr 1fr;
 	align-items: center;
 }
-#navigation a {
-	font-size: 2em;
-	position: fixed;
-	top: calc(50% - 1em);
-}
 #navigation .prev {
 	left: 0.5em;
 	grid-column: 1;
 	justify-self: left;
+	padding-right: 0.25em;
 }
 #navigation > span {
 	grid-column: 2;
@@ -492,18 +488,19 @@ ol.chat li:nth-child(even) {
 	right: 0.5em;
 	grid-column: 3;
 	justify-self: right;
+	padding-left: 0.25em;
 }
-@media (min-width: 1000px) {
+@media (min-width: 62.5em) {
+	#navigation a {
+		font-size:2em;
+		position:fixed;
+		top:calc(50% - 1em)
+	}
+
 	#navigation a svg { transform: scale(250%) }
 }
-@media (max-width: 1000px) {
-	#navigation a {
-		position: static;
-		font-size: 1em;
-		padding: 0 0.5em;
-		display: flex;
-		align-items: center;
-	}
+@media (max-width: 62.5em) {
+	#navigation a { line-height: 0 }
 }
 
 
