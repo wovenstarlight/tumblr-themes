@@ -42,6 +42,7 @@ body.sepia header:not(:hover) .stamp img,
 body.sepia .bodyitemcontent img:not(:hover),
 body.sepia .audiowrapper:not(:hover) img {
 	filter: sepia(50%);
+	transition: filter .2s;
 }
 
 
