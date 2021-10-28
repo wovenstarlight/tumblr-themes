@@ -1,0 +1,666 @@
+<!-- 
+	THEME 3: NEWSPRINT by starlightthemes
+
+	Credits:
+		Tippy.js tooltips by atomiks: https://atomiks.github.io/tippyjs
+		Feather icons by Cole Bemis: https://feathericons.com/
+		Custom like buttons by Georgi Demirev: https://demirev.cubthemes.com/post/106345243051/changing-like-and-reblog-button-colors-revisited
+		NPF photosets fix by glenthemes: https://glenthemes.tumblr.com/post/659034084446748672/npf-images-v3
+		Dark/light mode toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
+		Stamp patterning: https://codepen.io/orhanveli/pen/tbGJL
+		Custom audio posts by annasthms: https://annasthms.tumblr.com/more/js/customaudio/new
+
+	Last updated 28 Oct 2021.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- BASIC META TAGS -->
+	<meta charset="utf-8">
+	<title>{Title}{block:TagPage} ({lang:Posts tagged Tag}){/block:TagPage}{block:SearchPage} ({lang:Search results for SearchQuery}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+	<meta name="description" content="{MetaDescription}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+	<!-- jQuery CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+	<!-- Tippy.js tooltips by atomiks -->
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
+	<!--
+			NPF images fix v3.0 by @glenthemes [2021]
+			💌 git.io/JRBt7
+	--->
+	<script src="//npf-images-v3.github.io/script.js"></script>
+	<link rel="stylesheet" href="//npf-images-v3.github.io/recon.css">
+	<style tmblr-npf>
+	:root {
+		--NPF-Caption-Spacing:1em;
+		--NPF-Image-Spacing:0.5em;
+	}
+	</style>
+	<!--
+			customaudio.js by @annasthms
+			https://annasthms.tumblr.com/more/js/customaudio/new
+	-->
+	<script src="https://cdn.jsdelivr.net/gh/annasthms/customaudio@latest/customaudio.min.js"></script>
+	<script src="https://wovenstarlight.github.io/tumblr-themes/theme3/theme3.min.js"></script>
+
+	<!-- THEME VARIABLES -->
+	{block:Hidden}
+	<meta name="text:Google font for body" content="Zen Old Mincho">
+	<meta name="font:Tumblr font for body" content="Bookmania">
+	<meta name="text:Google font for title" content="IM Fell English SC">
+	<meta name="font:Tumblr font for title" content="1785 Baskerville">
+	<meta name="if:Use Tumblr fonts for body" content="0">
+	<meta name="if:Use Tumblr fonts for title" content="0">
+	<meta name="text:Font size" content="16px">
+	<meta name="text:Post width" content="540px">
+
+	<meta name="color:Text" content="#d2ceb8">
+	<meta name="color:Headings" content="#d2d2d2">
+	<meta name="color:Links" content="#ff915c">
+	<meta name="color:Links hover" content="#ffc454">
+	<meta name="color:Bold" content="#ffc29d">
+	<meta name="color:Italics" content="#f7ff99">
+	<meta name="color:Background" content="#21201f">
+	<meta name="color:Accent 1" content="#ededed">
+	<meta name="color:Accent 2" content="#ffcfb7">
+	<meta name="color:Text highlight" content="#fff5f1">
+	<meta name="color:Text highlight background" content="#847000">
+
+	<meta name="if:Show color mode toggle" content="1">
+	<meta name="if:Default to light mode" content="0">
+	<meta name="color:LM Text" content="#2b2b2b">
+	<meta name="color:LM Headings" content="#150000">
+	<meta name="color:LM Links" content="#663a04">
+	<meta name="color:LM Links hover" content="#c66d00">
+	<meta name="color:LM Bold" content="#840606">
+	<meta name="color:LM Italics" content="#8b4f00">
+	<meta name="color:LM Background" content="#d0cdba">
+	<meta name="color:LM Accent 1" content="#f1f0eb">
+	<meta name="color:LM Accent 2" content="#524000">
+	<meta name="color:LM Text highlight" content="#3e0000">
+	<meta name="color:LM Text highlight background" content="#ffd325">
+
+	<meta name="if:Sidebar on left" content="0">
+	<meta name="if:Sepia filter on images" content="0">
+	<meta name="if:Title in all caps" content="1">
+	<meta name="if:Justify description" content="1">
+	<meta name="if:Dropcap in description" content="1">
+	<meta name="text:Custom links title" content="Links">
+	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever code or plain text you want. If you don't want an FAQ, leave this field blank!">
+	<meta name="text:Submission guidelines" content="This will go on your submission page, above your submission box.&NewLine;Add whatever code or plain text you want. If you don't want submission guidelines, leave this field blank!">
+	<meta name="if:Show Random post link" content="1">
+	<meta name="if:Show Archive link" content="1">
+	<meta name="if:Show search bar" content="1">
+	<meta name="if:Show dates" content="1">
+	<meta name="if:Show timestamps" content="1">
+	<meta name="if:Dates formatted month first" content="0">
+	<meta name="if:24 hour timestamps" content="0">
+	<meta name="if:Show tags" content="1">
+	<meta name="if:Show Like buttons" content="1">
+	<meta name="if:Show Reblog buttons" content="1">
+	<meta name="if:Show group blog members" content="0">
+	{/block:Hidden}
+
+	<!-- Theme styles -->
+	<!-- Standardization -->
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
+
+	<!-- Resource imports -->
+	<!-- Feather SVG icons -->
+	<script src="https://unpkg.com/feather-icons"></script>
+	<!-- Google fonts import -->
+	{block:IfNotUseTumblrFontsForBody}<link href="https://fonts.googleapis.com/css2?family={text:Google font for body}" rel="stylesheet">{/block:IfNotUseTumblrFontsForBody}
+	{block:IfNotUseTumblrFontsForTitle}<link href="https://fonts.googleapis.com/css2?family={text:Google font for title}" rel="stylesheet">{/block:IfNotUseTumblrFontsForTitle}
+	<!-- Base title font import -->
+	<link href="//db.onlinewebfonts.com/c/77576ff6ead1d882deb79df39f3fba90?family=Engravers'+Old+English" rel="stylesheet" type="text/css"/> 
+
+<style>
+/* DEFAULT VARIABLES */
+body {
+	--text: {color:Text};
+	--text--rgb: {RGBcolor:Text};
+	--headings: {color:Headings};
+	--links: {color:Links};
+	--links--rgb: {RGBcolor:Links};
+	--links-hover: {color:Links hover};
+	--bold: {color:Bold};
+	--italics: {color:Italics};
+	--bg: {color:Background};
+	--accent1: {color:Accent 1};
+	--accent2: {color:Accent 2};
+	--highlight: {color:Text highlight};
+	--highlight-bg: {color:Text highlight background};
+	--post-width: {text:Post width};
+	--title-font: {block:IfUseTumblrFontsForTitle}{font:Tumblr font for title}, {/block:IfUseTumblrFontsForTitle}"{text:Google font for title}", "Engravers' Old English", serif;
+	font-size: {text:Font size};
+	font-family: {block:IfUseTumblrFontsForBody}{font:Tumblr font for body}, {/block:IfUseTumblrFontsForBody}"{text:Google font for body}", Georgia, serif;
+}
+body.light {
+	--text: {color:LM Text};
+	--text--rgb: {RGBcolor:LM Text};
+	--headings: {color:LM Headings};
+	--links: {color:LM Links};
+	--links--rgb: {RGBcolor:LM Links};
+	--links-hover: {color:LM Links hover};
+	--bold: {color:LM Bold};
+	--italics: {color:LM Italics};
+	--bg: {color:LM Background};
+	--accent1: {color:LM Accent 1};
+	--accent2: {color:LM Accent 2};
+	--highlight: {color:LM Text highlight};
+	--highlight-bg: {color:LM Text highlight background};
+}
+
+/* Custom CSS */
+{CustomCSS}
+</style>
+
+	<!-- Theme stylesheet -->
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme3/theme3.min.css">
+
+</head>
+<!-- PAGE CLASSES -->
+<body class="{block:IfDefaultToLightMode}light{/block:IfDefaultToLightMode} {block:IfSidebarOnLeft}sidebarleft{/block:IfSidebarOnLeft} {block:IfSepiaFilterOnImages}sepia{/block:IfSepiaFilterOnImages}">
+
+<!-- HEADER -->
+<header>
+	<!-- PFP/TITLE/DESCRIPTION -->
+	<div id="title">
+		<span id="currdate"></span>
+		<a href="/" {block:ifTitleInAllCaps}class="capslock"{/block:ifTitleInAllCaps}><h1>{Title}</h1></a>
+		{block:ShowAvatar}
+		<div class="stamp">
+			<img src="{PortraitURL-128}"/>
+		</div>
+		{/block:ShowAvatar}
+	</div>
+
+	<!-- BLOG LINKS -->
+	<nav id="links" class="{block:AskEnabled}ask{/block:AskEnabled} {block:SubmissionsEnabled}submit{/block:SubmissionsEnabled} {block:IfShowRandomPostLink}random{/block:IfShowRandomPostLink} {block:IfShowArchiveLink}archive{/block:IfShowArchiveLink}">
+		<a href="/" class="home">{lang:Home}</a>
+		<span class="as">
+			{block:AskEnabled}<a href="/ask">{AskLabel}</a>{/block:AskEnabled}
+			<span class="divider">•</span>
+			{block:SubmissionsEnabled}<a href="/submit">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+		</span>
+		<span class="ra">
+			{block:IfShowRandomPostLink}<a href="/random">{lang:Random post}</a>{/block:IfShowRandomPostLink}
+			<span class="divider">•</span>
+			{block:IfShowArchiveLink}<a href="/archive">{lang:Archive}</a>{/block:IfShowArchiveLink}
+		</span>
+	</nav>
+</header>
+
+<!-- SIDEBAR -->
+<aside id="sidebar">
+	{block:ShowDescription}
+	<div id="description" class="{block:ifJustifyDescription}justify{/block:ifJustifyDescription} {block:ifDropcapInDescription}dropcap{/block:ifDropcapInDescription}">{Description}</div>
+	{/block:ShowDescription}
+
+	{block:IfShowGroupBlogMembers}{block:GroupMembers}
+	<!-- BLOG MEMBERS -->
+	<div id="members">
+		<h2>{lang:Group members}</h2>
+		{block:GroupMember}
+		<a href="{GroupMemberURL}">
+			<figure>
+				<img class="circle" src="{GroupMemberPortraitURL-64}">
+				<figcaption>{GroupMemberName}</figcaption>
+			</figure>
+		</a>
+		{/block:GroupMember}
+	</div>
+	{/block:GroupMembers}{/block:IfShowGroupBlogMembers}
+
+	{block:HasPages}
+	<!-- CUSTOM PAGES -->
+	<nav id="pages">
+		<h2>{text:Custom links title}</h2>
+		{block:Pages}
+		<a href="{URL}">{Label}</a>
+		{/block:Pages}
+	</nav>
+	{/block:HasPages}
+
+	{block:IfShowSearchBar}
+	<!-- SEARCH BAR -->
+	<form action="/search" method="get" id="search">
+		<h2><label for="q">Search</label></h2>
+		<div>
+			<input type="text" name="q" value="{SearchQuery}"/>
+			<i data-feather="search"></i>
+		</div>
+	</form>
+	{/block:IfShowSearchBar}
+</aside>
+
+<!-- MAIN POSTS SECTION -->
+<main>
+
+	{block:TagPage}
+	<!-- SPECIAL PAGE HEADER: TAG -->
+	<div class="tag page title">
+		<h2>{lang:TagResultCount posts tagged Tag 2}</h2>
+		<p>Sort <a href="/tagged/{URLSafeTag}">newest first</a> or <a href="/tagged/{URLSafeTag}/chrono">oldest first</a></p>
+	</div>
+	{/block:TagPage}
+
+	{block:DayPage}
+	<!-- SPECIAL PAGE HEADER: DAY -->
+	<div class="page title"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
+	{/block:DayPage}
+
+	{block:SearchPage}
+	<!-- SPECIAL PAGE HEADER: SEARCH -->
+	<div class="page title">
+		<h2>
+			{lang:SearchResultCount results for SearchQuery 2}
+			{block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}
+		</h2>
+	</div>
+	{/block:SearchPage}
+
+
+
+	<!-- MAIN POSTS SECTION -->
+	<section id="postswrapper">
+
+		{block:NoPosts}
+		<!-- SPECIAL MESSAGE: EMPTY BLOG -->
+		<section class="post no-posts"><p>{lang:This Tumblr hasnt posted anything}</p></section>
+		{/block:NoPosts}
+
+		{block:Posts inlineMediaWidth="1000" inlineNestedMediaWidth="1000"}
+		<article class="post" post-type="{PostType}">
+
+			{block:Title}
+			<!-- POST TITLE -->
+			<h2 class="title"><a href="{Permalink}">{Title}</a></h2>
+			{/block:Title}
+
+			<!-- POST BODY -->
+			<div class="postbody">
+
+			{block:AskPage}<div class="asksubmitwrapper">{text:FAQ}</div>{/block:AskPage}
+			{block:SubmitPage}<div class="asksubmitwrapper">{text:Submission guidelines}</div>{/block:SubmitPage}
+
+			{block:Text}
+				<!-- TEXT POST -->
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Body}</div>
+				{/block:NotReblog}
+
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+						<span class="username">{Username}</span>:
+					</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+
+			{/block:Text}
+
+
+			{block:Photo}
+				<!-- PHOTO POST -->
+				<div class="photowrapper">
+					{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+					<a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
+				</div>
+
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Caption}</div>
+				{/block:NotReblog}
+
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+						<span class="username">{Username}</span>:
+					</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+
+			{/block:Photo}
+
+
+			{block:Panorama}
+				<!-- PANORAMA PHOTO POST -->
+				<div class="photowrapper">
+					{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+					<a class="highres" href="{PhotoURL-Panorama}">{lang:View high resolution}</a>
+				</div>
+
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Caption}</div>
+				{/block:NotReblog}
+
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+						<span class="username">{Username}</span>:
+					</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+
+			{/block:Panorama}
+
+
+			{block:Photoset}
+				<!-- PHOTOSET POST -->
+				<div class="photowrapper">
+					{Photoset}
+				</div>
+
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Caption}</div>
+				{/block:NotReblog}
+
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+						<span class="username">{Username}</span>:
+					</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+
+			{/block:Photoset}
+
+
+			{block:Quote}
+				<!-- QUOTE POST -->
+				<div class="quote">
+					<h2>{Quote}</h2>
+					{block:Source}<p>— {Source}</p>{/block:Source}
+				</div>
+			{/block:Quote}
+
+
+			{block:Link}
+				<!-- LINK POST -->
+				{block:NotReblog}
+				<div class="bodyitemcontent">
+					<a class="link" href="{URL}" {Target}>
+						{block:Thumbnail}<img href="{Thumbnail}">{/block:Thumbnail}
+						<h2 class="name">{Name}{block:Author} — {Author}{/block:Author}</h2>
+						{block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}
+					</a>
+					{Body}
+				</div>
+				{/block:NotReblog}
+
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+						<span class="username">{Username}</span>:
+					</a>
+					<div class="bodyitemcontent">
+						{block:IsOriginalEntry}
+						<a class="link" href="{URL}" {Target}>
+							{block:Thumbnail}<img href="{Thumbnail}">{/block:Thumbnail}
+							<h2 class="name">{Name}{block:Author} — {Author}{/block:Author}</h2>
+							{block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}
+						</a>
+						{/block:IsOriginalEntry}
+						{Body}
+					</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+
+			{/block:Link}
+
+
+			{block:Chat}
+				<!-- CHAT POST -->
+				<ol class="chat">
+					{block:Lines}
+					{block:Label}
+					<li><strong>{Label}</strong> {/block:Label}{Line}</li>
+					{/block:Lines}
+				</ol>
+			{/block:Chat}
+
+
+			{block:Audio}
+				<!-- AUDIO POST -->
+				{block:AudioPlayer}
+				<div class="audiowrapper">
+					{AudioPlayer}
+					<div class="albumart">
+						{block:AlbumArt}<img src="{AlbumArtURL}">{/block:AlbumArt}
+						<span class="custom_audio_buttons"></span>
+					</div>
+					<div class="trackinfo">
+						<div class="textinfo">
+							{block:TrackName}<span class="trackname">{TrackName}</span>{/block:TrackName}
+							<div class="making">
+								{block:Artist}<span class="artist">{Artist}</span>{/block:Artist}
+								<span class="divider">•</span>
+								{block:Album}<span class="album">{Album}</span>{/block:Album}
+							</div>
+						</div>
+						<div class="audio_player">
+							<span class="custom_audio_current_time"></span>
+							<div class="custom_audio_seekbar"></div>
+							<span class="custom_audio_time_left"></span>
+						</div>
+					</div>
+				</div>
+				{/block:AudioPlayer}
+
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Caption}</div>
+				{/block:NotReblog}
+
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+						<span class="username">{Username}</span>:
+					</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+
+			{/block:Audio}
+
+
+			{block:Video}
+				<!-- VIDEO POST -->
+				<div class="videowrapper">
+					{Video-500}
+				</div>
+
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Caption}</div>
+				{/block:NotReblog}
+
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+						<span class="username">{Username}</span>:
+					</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+
+			{/block:Video}
+
+
+			{block:Answer}
+				<!-- ASK/ANSWER POST -->
+				<div class="ask">
+
+					<span class="username">{lang:Asker asked 2}:</span>
+
+					<div class="question">{Question}</div>
+				</div>
+
+				<div class="bodyitem">
+					{block:RebloggedFrom}{block:Answerer}
+					<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" href="{ReblogRootURL}">
+						<span class="username">{ReblogRootName}</span>:
+					</a>
+					{/block:Answerer}{/block:RebloggedFrom}
+
+					<div class="bodyitemcontent">{Answer}</div>
+				</div>
+
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+						<span class="username">{Username}</span>:
+					</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+
+			{/block:Answer}
+
+
+			</div>
+
+
+
+			{block:Date}
+
+			<!-- DATES, NOTES, VIA/SOURCE, AND POST ACTIONS -->
+			<div class="actions">
+
+				<span class="datenotes">
+					{block:PermalinkPage}
+					<!-- Link to the relevant day page on permalink pages -->
+					<span class="currdate">
+						<a href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">{lang:Show all posts made on this day}</a>
+					</span>
+					{/block:PermalinkPage}
+
+					{block:PinnedPostLabel}
+					<!-- PINNED POST -->
+					<span id="pinnedpost">{PinnedPostLabel}</span>
+					<span class="divider">•</span>
+					{/block:PinnedPostLabel}
+					
+					{block:ifShowDates}
+					<a class="date" href="{Permalink}">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfShowTimestamps}, {block:If24HourTimestamps}{24Hour}{/block:If24HourTimestamps}{block:IfNot24HourTimestamps}{12Hour}{/block:IfNot24HourTimestamps}:{Minutes}{block:IfNot24HourTimestamps} {CapitalAmPm}{/block:IfNot24HourTimestamps}{/block:IfShowTimestamps}</a>
+					<span class="divider">•</span>
+					{/block:ifShowDates}
+					{block:NoteCount}
+					<a class="notes" href="{Permalink}">{NoteCountWithLabel}</a>
+					{/block:NoteCount}
+				</span>
+
+				{block:RebloggedFrom}
+				<span class="viasource">
+					<a data-tippy-content="{ReblogParentName}" href="{ReblogParentURL}">{lang:Via}</a><span class="divider">•</span><a data-tippy-content="{ReblogRootName}" href="{ReblogRootURL}">{lang:Source}</a>
+				</span>
+				{/block:RebloggedFrom}
+
+				<span class="likereblog" {block:IfNotShowLikeButtons}{block:IfNotShowReblogButtons}hidden{/block:IfNotShowReblogButtons}{/block:IfNotShowLikeButtons}>
+					{block:IfShowLikeButtons}
+					<a href="#" class="customlike">
+						{LikeButton size="30"}
+						<span>Like</span>
+					</a>
+					{/block:IfShowLikeButtons}
+					<span class="divider">•</span>
+					{block:IfShowReblogButtons}
+					<a href="{ReblogURL}" class="customreblog">Reblog</a>
+					{/block:IfShowReblogButtons}
+				</span>
+
+			</div>
+
+			{block:IfShowTags}
+			<!-- TAGS SECTION -->
+			{block:HasTags}
+			<div class="tags">
+				{block:Tags}
+				<a href="{TagURL}">#{Tag}</a>
+				{/block:Tags}
+			</div>
+			{/block:HasTags}
+			{/block:IfShowTags}
+
+			{/block:Date}
+		</article>
+		{/block:Posts}
+
+	</section>
+
+	{block:PostNotes}
+	<!-- NOTES SECTION ON PERMALINK PAGES -->
+	<section class="post notes">
+		<h2 class="title">{lang:Notes}</h2>
+		{PostNotes-64}
+	</section>
+	{/block:PostNotes}
+
+
+
+	{block:Pagination}
+	<!-- PAGINATION (index pages) -->
+	<nav id="navigation">
+		{block:PreviousPage}<a id="prevpage" href="{PreviousPage}" class="prev" data-tippy-content="{lang:Previous page}" data-tippy-placement="right" data-tippy-offset="[0, 0]">
+			<i data-feather="chevron-left"></i>
+		</a>{/block:PreviousPage}
+		<span>{lang:Page CurrentPage of TotalPages 2}</span>
+		{block:NextPage}<a id="nextpage" href="{NextPage}" class="next" data-tippy-content="{lang:Next page}" data-tippy-placement="left" data-tippy-offset="[0, 0]">
+			<i data-feather="chevron-right"></i>
+		</a>{/block:NextPage}
+	</nav>
+	{/block:Pagination}
+
+	{block:PermalinkPagination}
+	<!-- PAGINATION (permalink pages) -->
+	<nav id="navigation" class="permalink">
+		{block:PreviousPost}<a href="{PreviousPost}" class="prev" data-tippy-content="{lang:Previous post}" data-tippy-placement="right" data-tippy-offset="[0, 0]">
+			<i data-feather="chevron-left"></i>
+		</a>{/block:PreviousPost}
+		<span>{lang:See more posts}</span>
+		{block:NextPost}<a href="{NextPost}" class="next" data-tippy-content="{lang:Next post}" data-tippy-placement="left" data-tippy-offset="[0, 0]">
+			<i data-feather="chevron-right"></i>
+		</a>{/block:NextPost}
+	</nav>
+	{/block:PermalinkPagination}
+
+	{block:DayPagination}
+	<!-- PAGINATION (day pages) -->
+	<nav id="navigation" class="day">
+		{block:PreviousDayPage}<a href="{PreviousDayPage}" class="prev" data-tippy-content="{lang:Previous day}" data-tippy-placement="right" data-tippy-offset="[0, 0]">
+			<i data-feather="chevron-left"></i>
+		</a>{/block:PreviousDayPage}
+		<span>{lang:See more posts}</span>
+		{block:NextDayPage}<a href="{NextDayPage}" class="next" data-tippy-content="{lang:Next day}" data-tippy-placement="left" data-tippy-offset="[0, 0]">
+			<i data-feather="chevron-right"></i>
+		</a>{/block:NextDayPage}
+	</nav>
+	{/block:DayPagination}
+</main>
+
+<!-- THEME LINK AND BLOG COPYRIGHT -->
+<footer>
+	<span>© {Name} {CopyrightYears}</span>
+	<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+	<a href="https://starlightthemes.tumblr.com/theme3">Theme by starlightthemes</a>
+	<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+</footer>
+
+<!-- DARK/LIGHT MODE TOGGLE -->
+{block:IfShowColorModeToggle}
+<a data-tippy-content="Toggle light/dark mode" id="darklight">
+	<i data-feather="sun"></i>
+	<i data-feather="moon"></i>
+</a>
+{/block:IfShowColorModeToggle}
+
+</body>
+</html>
