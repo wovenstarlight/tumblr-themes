@@ -48,7 +48,7 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 
 ## Credits
 - [Tippy.js tooltips](https://atomiks.github.io/tippyjs) by atomiks
-- [Icons by Feather](https://feathericons.com/)
+- [Feather icons by Cole Bemis](https://feathericons.com/)
 - [Custom like buttons](https://demirev.cubthemes.com/post/106345243051/changing-like-and-reblog-button-colors-revisited) by Georgi Demirev
 - [Infinite scroll](https://infinite-scroll.com/) by Paul Irish & Metafizzy
 - [NPF photosets fix](https://glenthemes.tumblr.com/post/659034084446748672/npf-images-v3) by glenthemes
