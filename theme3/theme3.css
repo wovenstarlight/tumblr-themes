@@ -482,6 +482,7 @@ ol.chat li:nth-child(even) {
 #navigation .prev {
 	left: 0.5em;
 	grid-column: 1;
+	justify-self: left;
 }
 #navigation > span {
 	grid-column: 2;
@@ -490,13 +491,9 @@ ol.chat li:nth-child(even) {
 #navigation .next {
 	right: 0.5em;
 	grid-column: 3;
-	justify-self: end;
+	justify-self: right;
 }
 @media (min-width: 1000px) {
-	#navigation a span,
-	#navigation.day span,
-	#navigation.permalink span { display: none }
-	
 	#navigation a svg { transform: scale(250%) }
 }
 @media (max-width: 1000px) {

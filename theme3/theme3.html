@@ -609,13 +609,11 @@ body.light {
 	{block:Pagination}
 	<!-- PAGINATION (index pages) -->
 	<nav id="navigation">
-		{block:PreviousPage}<a id="prevpage" href="{PreviousPage}" class="prev">
+		{block:PreviousPage}<a id="prevpage" href="{PreviousPage}" class="prev" data-tippy-content="{lang:Previous page}" data-tippy-placement="right" data-tippy-offset="[0, 0]">
 			<i data-feather="chevron-left"></i>
-			<span>{lang:Previous page}</span>
 		</a>{/block:PreviousPage}
 		<span>{lang:Page CurrentPage of TotalPages 2}</span>
-		{block:NextPage}<a id="nextpage" href="{NextPage}" class="next">
-			<span>{lang:Next page}</span>
+		{block:NextPage}<a id="nextpage" href="{NextPage}" class="next" data-tippy-content="{lang:Next page}" data-tippy-placement="left" data-tippy-offset="[0, 0]">
 			<i data-feather="chevron-right"></i>
 		</a>{/block:NextPage}
 	</nav>
@@ -624,13 +622,11 @@ body.light {
 	{block:PermalinkPagination}
 	<!-- PAGINATION (permalink pages) -->
 	<nav id="navigation" class="permalink">
-		{block:PreviousPost}<a href="{PreviousPost}" class="prev">
+		{block:PreviousPost}<a href="{PreviousPost}" class="prev" data-tippy-content="{lang:Previous post}" data-tippy-placement="right" data-tippy-offset="[0, 0]">
 			<i data-feather="chevron-left"></i>
-			<span>{lang:Previous post}</span>
 		</a>{/block:PreviousPost}
 		<span>{lang:See more posts}</span>
-		{block:NextPost}<a href="{NextPost}" class="next">
-			<span>{lang:Next post}</span>
+		{block:NextPost}<a href="{NextPost}" class="next" data-tippy-content="{lang:Next post}" data-tippy-placement="left" data-tippy-offset="[0, 0]">
 			<i data-feather="chevron-right"></i>
 		</a>{/block:NextPost}
 	</nav>
@@ -639,13 +635,11 @@ body.light {
 	{block:DayPagination}
 	<!-- PAGINATION (day pages) -->
 	<nav id="navigation" class="day">
-		{block:PreviousDayPage}<a href="{PreviousDayPage}" class="prev">
+		{block:PreviousDayPage}<a href="{PreviousDayPage}" class="prev" data-tippy-content="{lang:Previous day}" data-tippy-placement="right" data-tippy-offset="[0, 0]">
 			<i data-feather="chevron-left"></i>
-			<span>{lang:Previous day}</span>
 		</a>{/block:PreviousDayPage}
 		<span>{lang:See more posts}</span>
-		{block:NextDayPage}<a href="{NextDayPage}" class="next">
-			<span>{lang:Next day}</span>
+		{block:NextDayPage}<a href="{NextDayPage}" class="next" data-tippy-content="{lang:Next day}" data-tippy-placement="left" data-tippy-offset="[0, 0]">
 			<i data-feather="chevron-right"></i>
 		</a>{/block:NextDayPage}
 	</nav>
