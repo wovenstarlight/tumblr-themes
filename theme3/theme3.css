@@ -186,12 +186,11 @@ body:not(.sidebarleft) main {
 	grid-row: 2;
 	justify-self: end
 }
-/* Spacing between posts and footer when pagination isn't happening */
-#postswrapper:last-child { padding-bottom: 1em }
 /* Dividers between posts and post components */
 .post {
 	border-bottom: 0.15em solid var(--accent2);
-	padding: 0.5em 0 0.2em;
+	padding-bottom: 0.2em;
+	margin: 0.75em 0;
 }
 .postbody ~ div {
 	border-top: thin solid var(--accent2);
@@ -462,19 +461,8 @@ ol.chat li:nth-child(even) {
 
 
 /******************************** PAGINATION ********************************/
-/* Consistent spacing for both types of pagination */
-#loadmore,
 #navigation {
-	padding: 1em 0;
-}
-/* For infinite scroll */
-#loadmore {
-	cursor: pointer;
-	display: block;
-	text-align: center;
-}
-/* And for pagination */
-#navigation {
+	padding: 0.25em 0 1em;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	align-items: center;
