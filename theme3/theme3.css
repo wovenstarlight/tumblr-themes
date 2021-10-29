@@ -540,15 +540,26 @@ body.sidebarleft #sidebar { /* ...on left */
 	font-size: 3.25em;
 	color: var(--bold)
 }
+/* Group members section */
+#members .members {
+	display: flex;
+	flex-direction: column;
+	row-gap: 0.5em;
+}
+#members a figure {
+	display: grid;
+	grid-template-columns: 2.5em 1fr;
+	align-items: center;
+	column-gap: 0.75em;
+}
 /* Custom pages and search sections */
 .title,
-#pages h2,
-form h2 {
+#sidebar h2 {
 	text-transform: uppercase;
 	font-weight: 300;
 	text-align: center;
 }
-#pages h2, form h2 { margin: 0 }
+#sidebar h2 { margin: 0 0 0.25em }
 #pages a {
 	text-align: center;
 	display: block;

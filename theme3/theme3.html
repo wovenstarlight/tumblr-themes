@@ -207,14 +207,16 @@ body.light {
 	<!-- BLOG MEMBERS -->
 	<div id="members">
 		<h2>{lang:Group members}</h2>
-		{block:GroupMember}
-		<a href="{GroupMemberURL}">
-			<figure>
-				<img class="circle" src="{GroupMemberPortraitURL-64}">
-				<figcaption>{GroupMemberName}</figcaption>
-			</figure>
-		</a>
-		{/block:GroupMember}
+		<div class="members">
+			{block:GroupMember}
+			<a href="{GroupMemberURL}">
+				<figure>
+					<img class="circle" src="{GroupMemberPortraitURL-64}">
+					<figcaption>{GroupMemberName}</figcaption>
+				</figure>
+			</a>
+			{/block:GroupMember}
+		</div>
 	</div>
 	{/block:GroupMembers}{/block:IfShowGroupBlogMembers}
 
