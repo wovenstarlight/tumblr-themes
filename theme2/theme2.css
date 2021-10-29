@@ -484,7 +484,7 @@ blockquote {
 	cursor: pointer;
 	color: var(--credits)
 }
-body:not(.light) .feather-sun, body.light .feather-moon { display: none }
+body:not(.light) .feather-moon, body.light .feather-sun { display: none }
 #credits a:last-child { cursor: help }
 
 /* Faux @media calls */

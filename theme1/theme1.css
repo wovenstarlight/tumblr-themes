@@ -364,7 +364,7 @@ body.light .tmblr-iframe {
 	width: 1em;
 	color: var(--text-muted);
 }
-body.dark #light, body.light #dark { display: none }
+body.dark #dark, body.light #light { display: none }
 #navigate {
 	width: calc(100% - var(--left));
 	bottom: 0;
