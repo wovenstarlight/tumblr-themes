@@ -12,7 +12,7 @@ My main blog is [wovenstarlight](https://wovenstarlight.tumblr.com).
 No. | Name | Status | Last Updated | Previews | Install
 --- | ---- | ------ | ------------ | -------- | -------
 1 | [Discord](https://wovenstarlight.github.io/tumblr-themes/theme1) | Complete | 15 Oct 2021 | [Index page](https://starlightpreviews.tumblr.com/theme1), [permalink](https://starlightpreviews.tumblr.com/theme1/permalink) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme1/theme1.html)
-2 | [Paint Job](https://wovenstarlight.github.io/tumblr-themes/theme2) | Complete | 24 Oct 2021 | [Index page](https://starlightpreviews.tumblr.com/theme2), [permalink](https://starlightpreviews.tumblr.com/theme2/permalink) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme2/theme2.html)
+2 | [Paint Job](https://wovenstarlight.github.io/tumblr-themes/theme2) | Complete | 7 Nov 2021 | [Index page](https://starlightpreviews.tumblr.com/theme2), [permalink](https://starlightpreviews.tumblr.com/theme2/permalink) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme2/theme2.html)
 
 ## Collapsible sections
 I've made a guide to adding collapsible sections to your blogs if they're using my themes. As tie-in to my themes, they have associated styling to make them look good based on whatever colors you've chosen for your blog.

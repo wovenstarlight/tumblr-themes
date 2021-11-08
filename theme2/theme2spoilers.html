@@ -10,7 +10,7 @@
 		Dark/light mode toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 		Spoiler tags plugin by glenthemes: https://glenthemes.tumblr.com/spoilertags
 
-	Last updated 15 Oct 2021.
+	Last updated 7 Nov 2021.
 -->
 
 <!DOCTYPE html>
@@ -675,7 +675,7 @@ body.light {
 	{block:IfShowSearchBar}
 	<form action="/search" method="get">
 		<label for="q">Search</label>
-		<input type="text" name="q" value="{SearchQuery}"/>
+		<input id="q" type="text" name="q" value="{SearchQuery}"/>
 		<i data-feather="search"></i>
 	</form>
 	{/block:IfShowSearchBar}
