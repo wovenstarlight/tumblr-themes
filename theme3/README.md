@@ -8,7 +8,7 @@ PREVIEWS: [Index page](https://starlightpreviews.tumblr.com/theme3), [permalink]
 
 [INSTALL (spoiler plugin)](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme3/theme3spoilers.html)
 
-If you like this theme or plan to use it, please [reblog it](https://starlightthemes.tumblr.com/post/664789392768008192/theme-2-paint-job) on Tumblr! (PLACEHOLDER LINK)
+If you like this theme or plan to use it, please [reblog it](https://starlightthemes.tumblr.com/post/669390258666946560/theme-3-newsprint) on Tumblr!
 
 ## Features
 ### Theme-specific
@@ -53,9 +53,6 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 - [Spoiler tags plugin](https://glenthemes.tumblr.com/spoilertags) by glenthemes
 
 ## Screenshot previews
-(PLACEHOLDER PREVIEWS)
-
-![Screenshot of a Tumblr blog on the home page. It has posts in the center, blog information to the left, and links & search to the right. It's set to light mode in mint green, off-white, and brown colors. The page has a background of dark brown wood.](https://github.com/wovenstarlight/tumblr-themes/blob/main/theme2/theme2_screenshot1light.png?raw=true)
-![Screenshot of the home page, now scrolled to the bottom. The page navigation is visible below the posts, showing the total number of pages and a next page button. The blog has been changed to the dark theme, in dark green, black, and gold colors. The background is black instead of having the wood background, and the sidebars have accent images of gold foil.](https://github.com/wovenstarlight/tumblr-themes/blob/main/theme2/theme2_screenshot1dark.png?raw=true)
-![Dark mode screenshot of a post permalink page. The notes section is visible just below the post.](https://github.com/wovenstarlight/tumblr-themes/blob/main/theme2/theme2_screenshot2dark.png?raw=true)
-![Screenshot of the same permalink page, now on light mode and scrolled to the bottom. At the bottom of the notes section is a Load more notes button. The navigation below the post and notes area now reads Show more posts, with links to the next and previous posts.](https://github.com/wovenstarlight/tumblr-themes/blob/main/theme2/theme2_screenshot2light.png?raw=true)
+![Screenshot of a Tumblr blog on the home page. It is text-heavy, with a newspaper-like header, showing the blog title on the top alongside a date and a stamp-like icon. The links, description, and other information are placed in columns alongside the posts. The blog is set to light mode, with a yellowed background and dark text.](https://github.com/wovenstarlight/tumblr-themes/blob/main/theme3/theme3_screenshot1light.png?raw=true)
+![Screenshot of the home page, now scrolled to the bottom. Page navigation is visible on the sides of the page as large arrows. The blog has been changed to the dark theme, in dark brown and light orange colors.](https://github.com/wovenstarlight/tumblr-themes/blob/main/theme3/theme3_screenshot1dark.png?raw=true)
+![Dark mode screenshot of a tag page. The sidebar has been shifted to the left, all visible images have a sepia filter over them, and the header lists the number of posts in the tag along with links to posts sorted oldest first and newest first.](https://github.com/wovenstarlight/tumblr-themes/blob/main/theme3/theme3_screenshot2dark.png?raw=true)
