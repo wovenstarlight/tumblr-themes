@@ -40,7 +40,8 @@ h1, h2, h3, h4, h5, h6 { color: var(--headings) }
 /* Setting sepia filter on images, if enabled */
 body.sepia header:not(:hover) .stamp img,
 body.sepia .bodyitemcontent img:not(:hover),
-body.sepia .audiowrapper:not(:hover) img {
+body.sepia .audiowrapper:not(:hover) img,
+body.sepia .html_photoset:not(:hover) {
 	filter: sepia(50%);
 	transition: filter .2s;
 }
@@ -407,6 +408,7 @@ ol.chat li:nth-child(even) {
 	--size: 40%;
 	width: var(--size);
 	height: var(--size);
+	cursor: pointer;
 }
 .audiowrapper .custom_audio_buttons svg {
 	padding: 10%;
