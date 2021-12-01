@@ -139,6 +139,8 @@ header a { color: var(--headings) }
 #links.archive:not(.ask, .submit) {
 	grid-template-columns:1fr 1fr
 }
+/* Also, when only random/archive are there, hide ask/submit container */
+#links:not(.ask, .submit) .as { display: none }
 /* For when both link blocks are enabled */
 /* Ask and the random/archive block */
 #links.ask.random,
