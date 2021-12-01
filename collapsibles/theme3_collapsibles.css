@@ -17,7 +17,6 @@
   transition: max-height 0.4s ease;
   background-color: rgba(var(--text--rgb),0.05);
   border: 1px solid rgba(var(--links--rgb),0.5);
-  border-radius: 0.25em;
 }
 .clpcontent :not(ul, ol, li) { margin: 0.5em 0 }
 
