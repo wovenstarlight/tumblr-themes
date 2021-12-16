@@ -102,9 +102,8 @@
 	<meta name="if:Archive link" content="1">
 	<meta name="if:Search bar" content="1">
 	<meta name="if:Post dates" content="1">
-	<meta name="if:Post timestamps" content="1">
+	<meta name="if:Number dates" content="0">
 	<meta name="if:Dates formatted month first" content="0">
-	<meta name="if:24 hour timestamps" content="0">
 	<meta name="if:Post tags" content="1">
 	<meta name="if:Like buttons" content="1">
 	<meta name="if:Reblog buttons" content="1">
@@ -180,10 +179,46 @@ body.light {
 		<a href="/tagged/{text:Main content tag}/chrono"><i class="fas fa-hourglass-half"></i></a>
 	</header>
 
+	<!-- MAIN POSTS SECTION -->
 	<main>
-		<!-- To do; posts will go here -->
+		{block:Posts}
+		<!-- POST -->
+		<article class="post">
+			{block:Date}
+			<header class="postheader">
+				{block:NoteCount}
+				<!-- POST NOTE COUNT -->
+				<a href="{Permalink}" class="postnotecount"><i class="fas fa-bookmark"></i>{NoteCountWithLabel}</a>
+				{/block:NoteCount}
+
+				{block:IfPostDates}
+				<!-- DATE OF POSTING -->
+				<a href="{Permalink}" class="postdate">
+				{block:IfNumberDates}{block:IfDatesFormattedMonthFirst}{MonthNumber}/{DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}/{MonthNumber}{/block:IfNotDatesFormattedMonthFirst}/{Year}{/block:IfNumberDates}
+				{block:IfNotNumberDates}{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst}, {Year}{/block:IfNotNumberDates}
+				</a>
+				{/block:IfPostDates}
+
+				<span class="likereblog">
+					{block:IfLikeButtons}
+					<a href="#" class="customlike">
+						{LikeButton size="30"}
+						<i class="fas fa-heart"></i>
+					</a>
+					{/block:IfLikeButtons}
+					{block:IfReblogButtons}
+					<a href="{ReblogURL}" class="customreblog"><i class="fas fa-sync"></i></a>
+					{/block:IfReblogButtons}
+				</span>
+			</header>
+			{/block:Date}
+
+			<!-- TODO: rest of post -->
+		</article>
+		{/block:Posts}
 	</main>
 
+	<!-- SIDEBAR -->
 	<aside id="sidebar">
 		{block:ShowAvatar}
 		<!-- BLOG ICON -->
@@ -238,6 +273,7 @@ body.light {
 		</div>
 	</aside>
 
+	<!-- SPECIAL BUTTONS -->
 	<div id="buttons">
 		{block:IfBackToTopButton}
 		<!-- BACK TO TOP BUTTON -->
