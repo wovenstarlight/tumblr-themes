@@ -19,10 +19,10 @@ $(document).ready(function() {
 
     /*Make the rectangle a circle or give it round corners.*/
     if(scrolltotop_circle_mode==true){
-        $("#scrolltotop_parent").addClass("scrolltotop_circle");
+        $("#scrolltotop_parent").addClass("circle");
     }
     else{
-        $("#scrolltotop_parent").addClass("scrolltotop_round_corners");
+        $("#scrolltotop_parent").addClass("square");
     }
 
     /*Scrolls to the top of the page.*/
