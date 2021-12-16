@@ -1,13 +1,22 @@
 $(document).ready( function() {
 
-	const body = $("body");
-			
-	const currTheme = localStorage.getItem("theme");
+	// audio post setup
+	customAudio();
 
+	// photoset setup
+	npfPhotosets("article", {
+		includeCommonPhotosets: true,
+		photosetMargins:""
+	 });
+
+	const body = $("body");
+
+	// Color mode on first load
+	const currTheme = localStorage.getItem("theme");
 	if ( currTheme == "light" ) {
 		body.addClass("light");
 	}
-
+	// Color mode button click
 	$("#darklight").click( function() {
 		body.toggleClass("light");
 		
