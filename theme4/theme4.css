@@ -1,0 +1,44 @@
+/******************************** GENERAL STYLES ********************************/
+body {
+	background: var(--bg-page);
+	color: var(--text);
+	display: grid;
+	grid-template-columns: 1fr min(var(--post-width), calc(100% - 15em)) 15em 1fr;
+}
+a { color: var(--links) }
+a:hover { color: var(--links-hover) }
+strong, b { color: var(--bold) }
+em, i { color: var(--italics) }
+h1, h2, h3 { color: var(--headings) }
+
+
+
+/********************************* PAGE HEADER *********************************/
+#pageheader {
+	background: var(--accent1);
+	grid-column: 1 / span 4;
+}
+
+
+
+/***************************** MAIN CONTENT SECTION *****************************/
+main {
+	background: rgba(var(--bg--rgb), var(--bg-opacity));
+}
+
+
+
+/*********************************** SIDEBAR ***********************************/
+aside {
+	background: rgba(var(--bg--rgb), var(--bg-opacity));
+}
+
+
+
+/******************* BACK TO TOP / COLOR MODE TOGGLE BUTTONS *******************/
+#buttons {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}
+body:not(.light) .fa-moon, body.light .fa-sun { display: none }
