@@ -80,7 +80,17 @@
 	<meta name="color:LM Text highlight" content="#3e0000">
 	<meta name="color:LM Text highlight background" content="#ffd325">
 	
-	<meta name="text:Custom links title" content="Links">
+	<meta name="text:Main content tag" content="comic">
+	<meta name="if:Show tag links" content="1">
+	<meta name="text:Tag 1 name" content="ooc">
+	<meta name="text:Tag 1 label" content="OOC content">
+	<meta name="text:Tag 2 name" content="reblog">
+	<meta name="text:Tag 2 label" content="Reblogs">
+	<meta name="text:Tag 3 name" content="ask">
+	<meta name="text:Tag 3 label" content="Asks">
+	<meta name="text:Tag 4 name" content="submitted">
+	<meta name="text:Tag 4 label" content="Submissions">
+	
 	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever code or plain text you want. If you don't want an FAQ, leave this field blank!">
 	<meta name="text:Submission guidelines" content="This will go on your submission page, above your submission box.&NewLine;Add whatever code or plain text you want. If you don't want submission guidelines, leave this field blank!">
 	<meta name="if:Show Random post link" content="1">
@@ -155,6 +165,48 @@ body.light {
 
 <!-- PAGE CLASSES -->
 <body class="{select:Default color mode}">
+
+	<!-- HEADER -->
+	<header>
+		<a href="/" title="{lang:Home}"><i class="fas fa-home"></i></a>
+		
+		<h1 id="title">{Title}</h1>
+		
+		<a href="/tagged/{text:Main content tag}/chrono"><i class="fas fa-hourglass-half"></i></a>
+	</header>
+
+	<main>
+		<!-- To do; posts will go here -->
+	</main>
+
+	<aside id="sidebar">
+		{block:ShowAvatar}
+		<!-- BLOG ICON -->
+		<img id="blogavatar" src="{PortraitURL-128}"/>
+		{/block:ShowAvatar}
+
+		<!-- USERNAME & ASK/SUBMIT -->
+		<div id="name-asksubmit">
+			{block:AskEnabled}<a href="/ask" title="{AskLabel}"><i class="fas fa-envelope"></i></a>{/block:AskEnabled}
+			<div id="blogname">{Name}</div>
+			{block:SubmissionsEnabled}<a href="/submit" title="{SubmitLabel}"><i class="fas fa-inbox"></i></a>{/block:SubmissionsEnabled}
+		</div>
+		
+		{block:ShowDescription}
+		<!-- DESCRIPTION -->
+		<div id="description">{Description}</div>
+		{/block:ShowDescription}
+		
+		{block:IfShowTagLinks}
+		<!-- TAG LINKS -->
+		<nav id="sidebarlinks">
+			{block:IfTag1Name}<a href="/tagged/{text:Tag 1 name}">{text:Tag 1 label}</a>{block:IfTag1Name}
+			{block:IfTag2Name}<a href="/tagged/{text:Tag 2 name}">{text:Tag 2 label}</a>{block:IfTag2Name}
+			{block:IfTag3Name}<a href="/tagged/{text:Tag 3 name}">{text:Tag 3 label}</a>{block:IfTag3Name}
+			{block:IfTag4Name}<a href="/tagged/{text:Tag 4 name}">{text:Tag 4 label}</a>{block:IfTag4Name}
+		</nav>
+		{/block:IfShowTagLinks}
+	</aside>
 
 </body>
 </html>
