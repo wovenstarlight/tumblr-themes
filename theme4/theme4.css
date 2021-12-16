@@ -10,8 +10,20 @@ a { color: var(--links) }
 a:hover { color: var(--links-hover) }
 strong, b { color: var(--bold) }
 em, i:not(.fas, .far) { color: var(--italics) }
-h1, h2, h3 { color: var(--headings) }
-
+h1, h2 {
+	color: var(--headings);
+	font-family: var(--title-font);
+}
+/* Text highlighting */
+::selection {
+	background-color: var(--highlight-bg);
+	color: var(--highlight);
+}
+::moz-selection {
+	background-color: var(--highlight-bg);
+	color: var(--highlight);
+}
+/* Accessibility skipper */
 #skip {
 	position: fixed;
 	top: -100px;
