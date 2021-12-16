@@ -2,8 +2,9 @@
 body {
 	background: var(--bg-page);
 	color: var(--text);
+	--sidebar-width: 15em;
 	display: grid;
-	grid-template-columns: 1fr min(var(--post-width), calc(100% - 15em)) 15em 1fr;
+	grid-template-columns: 1fr min(var(--post-width), calc(100% - var(--sidebar-width))) var(--sidebar-width) 1fr;
 }
 a { color: var(--links) }
 a:hover { color: var(--links-hover) }
@@ -40,5 +41,23 @@ aside {
 	position: fixed;
 	bottom: 0;
 	right: 0;
+	z-index: 100;
 }
+#buttons > div {
+	background: var(--bg-page);
+	box-shadow: 0 0 5px var(--accent2);
+	--size: 2em;
+	width: var(--size);
+	height: var(--size);
+	border-radius: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0.5em;
+	cursor: pointer;
+	opacity: 0.8;
+}
+#buttons > div:hover { opacity: 1 }
+#buttons > div:hover i { color: var(--links-hover) }
+.scrolltotop_hide_onload { display: none }
 body:not(.light) .fa-moon, body.light .fa-sun { display: none }
