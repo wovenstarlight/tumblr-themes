@@ -233,5 +233,20 @@ body.light {
 		</div>
 	</aside>
 
+	<div id="buttons">
+		{block:IfShowBackToTopButton}
+		<!-- BACK TO TOP BUTTON -->
+		<i id="top" class="fas fa-chevron-up"></i>
+		{block:IfShowBackToTopButton}
+		
+		{block:IfShowColorModeToggle}
+		<!-- DARK/LIGHT MODE TOGGLE -->
+		<span id="darklight">
+			<i class="fas fa-moon"></i>
+			<i class="fas fa-sun"></i>
+		</span>
+		{/block:IfShowColorModeToggle}
+	</div>
+
 </body>
 </html>
