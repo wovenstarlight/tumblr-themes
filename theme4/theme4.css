@@ -23,6 +23,31 @@ h1, h2, h3 { color: var(--headings) }
 #pageheader {
 	background: var(--accent1);
 	grid-column: 1 / span 4;
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	column-gap: 1em;
+	padding: 0.5em 1em;
+}
+#title {
+	margin: 0;
+	padding: 0.25em;
+	height: var(--title-height);
+	border: 0.15em solid var(--border);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#pageheader a {
+	background: var(--accent2);
+	display: flex;
+	--size: 2.5rem;
+	width: var(--size);
+	height: var(--size);
+	align-items: center;
+	justify-content: center;
+	font-size: 1.5em;
+	text-decoration: none;
 }
 
 
