@@ -104,6 +104,12 @@
 	<meta name="if:Post dates" content="1">
 	<meta name="if:Number dates" content="0">
 	<meta name="if:Dates formatted month first" content="0">
+	<meta name="if:Comic navigation" content="1">
+	<meta name="image:First button" content=""/>
+	<meta name="image:Previous button" content=""/>
+	<meta name="image:Next button" content=""/>
+	<meta name="image:Last button" content=""/>
+	<meta name="text:First comic page URL" content="">
 	<meta name="if:Post tags" content="1">
 	<meta name="if:Like buttons" content="1">
 	<meta name="if:Reblog buttons" content="1">
@@ -181,6 +187,23 @@ body.light {
 
 	<!-- MAIN POSTS SECTION -->
 	<main>
+		{block:IfComicNavigation}
+		{block:Pagination}
+		<!-- TOP COMIC NAVIGATION -->
+		{block:NextPage}
+		<a href="{text:First comic page URL}">{block:IfFirstButtonImage}<img src="{image:First button}">{/block:IfFirstButtonImage}{block:IfNotFirstButtonImage}First{block:IfNotFirstButtonImage}</a>
+		<a href="{NextPage}">{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}</a>
+		{/block:NextPage}
+		{block:PreviousPage}
+		<a href="{PreviousPage}">{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}</a>
+		<a href="/">
+			{block:IfLastButtonImage}<img src="{image:Last button}">{/block:IfLastButtonImage}{block:IfNotLastButtonImage}Last{block:IfNotLastButtonImage}
+		</a>
+		{/block:PreviousPage}
+		{/block:Pagination}
+		{/block:IfComicNavigation}
+
+
 		{block:Posts}
 		<!-- POST -->
 		<article class="post">
@@ -216,6 +239,23 @@ body.light {
 			<!-- TODO: rest of post -->
 		</article>
 		{/block:Posts}
+
+
+		{block:IfComicNavigation}
+		{block:Pagination}
+		<!-- BOTTOM COMIC NAVIGATION -->
+		{block:NextPage}
+		<a href="{text:First comic page URL}">{block:IfFirstButtonImage}<img src="{image:First button}">{/block:IfFirstButtonImage}{block:IfNotFirstButtonImage}First{block:IfNotFirstButtonImage}</a>
+		<a href="{NextPage}">{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}</a>
+		{/block:NextPage}
+		{block:PreviousPage}
+		<a href="{PreviousPage}">{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}</a>
+		<a href="/">
+			{block:IfLastButtonImage}<img src="{image:Last button}">{/block:IfLastButtonImage}{block:IfNotLastButtonImage}Last{block:IfNotLastButtonImage}
+		</a>
+		{/block:PreviousPage}
+		{/block:Pagination}
+		{/block:IfComicNavigation}
 	</main>
 
 	<!-- SIDEBAR -->
