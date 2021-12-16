@@ -9,7 +9,7 @@ body {
 a { color: var(--links) }
 a:hover { color: var(--links-hover) }
 strong, b { color: var(--bold) }
-em, i { color: var(--italics) }
+em, i:not(.fas, .far) { color: var(--italics) }
 h1, h2, h3 { color: var(--headings) }
 
 
