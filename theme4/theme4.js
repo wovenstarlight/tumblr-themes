@@ -7,7 +7,7 @@ $(document).ready( function() {
 	npfPhotosets("article", {
 		includeCommonPhotosets: true,
 		photosetMargins:""
-	 });
+	});
 
 	const body = $("body");
 
@@ -25,6 +25,12 @@ $(document).ready( function() {
 			newTheme = "light";
 		}
 		localStorage.setItem("theme", newTheme);
+	});
+
+	// Tumblr settings display button
+	$("#tmblriframe").click( function() {
+		$(this).toggleClass("active");
+		$(".tmblr-iframe").toggleClass("active")
 	});
 
 });

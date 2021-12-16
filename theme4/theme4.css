@@ -57,7 +57,21 @@ aside {
 	cursor: pointer;
 	opacity: 0.8;
 }
-#buttons > div:hover { opacity: 1 }
-#buttons > div:hover i { color: var(--links-hover) }
+#buttons > div:hover {
+	opacity: 1;
+	color: var(--links);
+}
+#tmblriframe { transition: .4s }
+#buttons #tmblriframe.active {
+	transform: rotate(-90deg);
+	color: var(--links-hover);
+}
+.tmblr-iframe.tmblr-iframe--unified-controls {
+	position: fixed;
+	bottom: 0;
+	top: unset;
+	right: 3em;
+}
+.tmblr-iframe.tmblr-iframe--unified-controls:not(.active) { display: none }
 .scrolltotop_hide_onload { display: none }
 body:not(.light) .fa-moon, body.light .fa-sun { display: none }
