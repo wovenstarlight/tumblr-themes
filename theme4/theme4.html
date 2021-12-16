@@ -104,6 +104,8 @@
 	<meta name="if:Post dates" content="1">
 	<meta name="if:Number dates" content="0">
 	<meta name="if:Dates formatted month first" content="0">
+	<meta name="if:Like buttons" content="1">
+	<meta name="if:Reblog buttons" content="1">
 	<meta name="if:Comic navigation" content="1">
 	<meta name="image:First button" content=""/>
 	<meta name="image:Previous button" content=""/>
@@ -111,8 +113,7 @@
 	<meta name="image:Last button" content=""/>
 	<meta name="text:First comic page URL" content="">
 	<meta name="if:Post tags" content="1">
-	<meta name="if:Like buttons" content="1">
-	<meta name="if:Reblog buttons" content="1">
+	<meta name="if:Post share links" content="1">
 	<meta name="if:Show group blog members" content="0">
 	{/block:Hidden}
 
@@ -207,6 +208,7 @@ body.light {
 		{block:Posts}
 		<!-- POST -->
 		<article class="post">
+			
 			{block:Date}
 			<header class="postheader">
 				{block:NoteCount}
@@ -237,6 +239,33 @@ body.light {
 			{/block:Date}
 
 			<!-- TODO: rest of post -->
+			
+			<footer class="postfooter">
+				<!-- PERMALINK BUTTON -->
+				<a href="{Permalink}"><i class="fas fa-link"></i></a>
+
+				<div class="tags">
+					<!-- TAGS SECTION -->
+					{block:HasTags}{block:Tags}<a href="{TagURL}">#{Tag}</a>{block:Tags}{/block:HasTags}
+				</div>
+
+				{block:IfPostShareLinks}
+				<!-- SHARE OPTIONS -->
+				<div class="sharelinks">
+					<i class="fas fa-share-square"></i>
+					<div class="dropdown">
+						<h3>{lang:Share this}</h3>
+						<ul>
+							<li><a target="_new" href="{ShortURL}">{lang:Short URL for this post}</a></li>
+							<li><a target="_new" href="https://twitter.com/intent/tweet?url={ShortURL}">Twitter</a></li>
+							<li><a target="_new" href="https://www.facebook.com/sharer.php?u={Permalink}{block:Title}&t={Title}{/block:Title}">Facebook</a></li>
+							<li><a target="_new" href="https://pinterest.com/pin/create/button/?url={Permalink}&media={PhotoURL-500}">Pinterest</a></li>
+						</ul>
+					</div>
+				</div>
+				{/block:IfPostShareLinks}
+			</footer>
+
 		</article>
 		{/block:Posts}
 
