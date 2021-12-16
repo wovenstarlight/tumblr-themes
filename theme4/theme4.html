@@ -211,7 +211,7 @@ body.light {
 			<header class="postheader">
 				{block:NoteCount}
 				<!-- POST NOTE COUNT -->
-				<a href="{Permalink}" class="postnotecount"><i class="fas fa-bookmark"></i>{NoteCountWithLabel}</a>
+				<a href="{Permalink}#notes" class="postnotecount"><i class="fas fa-bookmark"></i>{NoteCountWithLabel}</a>
 				{/block:NoteCount}
 
 				{block:IfPostDates}
@@ -239,6 +239,9 @@ body.light {
 			<!-- TODO: rest of post -->
 		</article>
 		{/block:Posts}
+
+
+		<!-- TODO: add a section id="notes" for permalink pages only -->
 
 
 		{block:IfComicNavigation}
