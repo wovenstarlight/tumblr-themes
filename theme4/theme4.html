@@ -238,7 +238,11 @@ body.light {
 			</header>
 			{/block:Date}
 
-			<!-- TODO: rest of post -->
+
+
+			<!-- TODO: body of post -->
+
+			
 			
 			<footer class="postfooter">
 				<!-- PERMALINK BUTTON -->
@@ -288,6 +292,22 @@ body.light {
 		{/block:PreviousPage}
 		{/block:Pagination}
 		{/block:IfComicNavigation}
+
+
+		<section id="scrollnav">
+			<!-- SCROLLBAR -->
+			<div class="progress-container">
+				<div class="progress-bar" id="scrollbar"></div>
+			</div>
+
+			{block:Pagination}
+			<!-- SIMPLE PAGINATION -->
+			<nav>
+				{block:NextPage}<a href="{NextPage}" title="{lang:Previous page}"><i class="fas fa-chevron-left"></i></a>{/block:NextPage}
+				{block:PreviousPage}<a href="{PreviousPage}" title="{lang:Next page}"><i class="fas fa-chevron-right"></i></a>{/block:PreviousPage}
+			</nav>
+			{/block:Pagination}
+		</section>
 	</main>
 
 	<!-- SIDEBAR -->
