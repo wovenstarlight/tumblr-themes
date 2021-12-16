@@ -62,7 +62,8 @@
 	<meta name="color:Links hover" content="#ffc454">
 	<meta name="color:Bold" content="#ffc29d">
 	<meta name="color:Italics" content="#f7ff99">
-	<meta name="color:Background" content="#21201f">
+	<meta name="color:Post background" content="#21201f">
+	<meta name="color:Page background" content="#000">
 	<meta name="color:Accent 1" content="#ededed">
 	<meta name="color:Accent 2" content="#ffcfb7">
 	<meta name="color:Text highlight" content="#fff5f1">
@@ -77,11 +78,18 @@
 	<meta name="color:LM Links hover" content="#c66d00">
 	<meta name="color:LM Bold" content="#840606">
 	<meta name="color:LM Italics" content="#8b4f00">
-	<meta name="color:LM Background" content="#d0cdba">
+	<meta name="color:LM Post background" content="#d0cdba">
+	<meta name="color:LM Page background" content="#fff">
 	<meta name="color:LM Accent 1" content="#f1f0eb">
 	<meta name="color:LM Accent 2" content="#524000">
 	<meta name="color:LM Text highlight" content="#3e0000">
 	<meta name="color:LM Text highlight background" content="#ffd325">
+
+	<meta name="select:Post background opacity" content="0.5" title="50%">
+	<meta name="select:Post background opacity" content="0.25" title="25%">
+	<meta name="select:Post background opacity" content="0.75" title="75%">
+	<meta name="select:Post background opacity" content="0.9" title="90%">
+	<meta name="select:Post background opacity" content="1" title="100%">
 
 	<meta name="if:Back to top button" content="1">
 	
@@ -139,7 +147,10 @@ body {
 	--links-hover: {color:Links hover};
 	--bold: {color:Bold};
 	--italics: {color:Italics};
-	--bg: {color:Background};
+	--bg: {color:Post background};
+	--bg--rgb: {RGBcolor:Post background};
+	--bg-opacity: {select:Post background opacity};
+	--bg-page: {color:Page background};
 	--accent1: {color:Accent 1};
 	--accent2: {color:Accent 2};
 	--highlight: {color:Text highlight};
@@ -159,6 +170,8 @@ body.light {
 	--bold: {color:LM Bold};
 	--italics: {color:LM Italics};
 	--bg: {color:LM Background};
+	--bg--rgb: {RGBcolor:LM Background};
+	--bg-page: {color:LM Page background};
 	--accent1: {color:LM Accent 1};
 	--accent2: {color:LM Accent 2};
 	--highlight: {color:LM Text highlight};
@@ -185,6 +198,9 @@ body.light {
 		
 		<a href="/tagged/{text:Main content tag}/chrono"><i class="fas fa-hourglass-half"></i></a>
 	</header>
+
+	<!-- CUSTOM BACKGROUND IMAGE (LEFT) -->
+	<div id="bgimg-left"></div>
 
 	<!-- MAIN POSTS SECTION -->
 	<main>
@@ -364,6 +380,9 @@ body.light {
 			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
 		</div>
 	</aside>
+
+	<!-- CUSTOM BACKGROUND IMAGE (RIGHT) -->
+	<div id="bgimg-right"></div>
 
 	<!-- SPECIAL BUTTONS -->
 	<div id="buttons">
