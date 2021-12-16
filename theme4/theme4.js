@@ -1,11 +1,5 @@
 $(document).ready( function() {
 
-	$("#top").click( function() {
-		$('html, body').animate({
-			scrollTop: 0
-		}, 300);
-	});
-
 	const body = $("body");
 			
 	const currTheme = localStorage.getItem("theme");
@@ -23,5 +17,5 @@ $(document).ready( function() {
 		}
 		localStorage.setItem("theme", newTheme);
 	});
-	
+
 });
