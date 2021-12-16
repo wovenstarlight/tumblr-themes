@@ -199,13 +199,38 @@ body.light {
 		
 		{block:IfShowTagLinks}
 		<!-- TAG LINKS -->
-		<nav id="sidebarlinks">
+		<nav id="taglinks">
 			{block:IfTag1Name}<a href="/tagged/{text:Tag 1 name}">{text:Tag 1 label}</a>{block:IfTag1Name}
 			{block:IfTag2Name}<a href="/tagged/{text:Tag 2 name}">{text:Tag 2 label}</a>{block:IfTag2Name}
 			{block:IfTag3Name}<a href="/tagged/{text:Tag 3 name}">{text:Tag 3 label}</a>{block:IfTag3Name}
 			{block:IfTag4Name}<a href="/tagged/{text:Tag 4 name}">{text:Tag 4 label}</a>{block:IfTag4Name}
 		</nav>
 		{/block:IfShowTagLinks}
+
+		{block:IfShowSearchBar}
+		<!-- SEARCH BAR -->
+		<form action="/search" method="get" id="search">
+			<i class="fas fa-search"></i>
+			<label for="q">Search</label>
+			<input id="q" type="text" name="q" value="{SearchQuery}"/>
+		</form>
+		{/block:IfShowSearchBar}
+
+		{block:HasPages}
+		<!-- CUSTOM PAGES -->
+		<nav id="blogpages">
+			{block:Pages}<a href="{URL}">{Label}</a>{/block:Pages}
+		</nav>
+		{/block:HasPages}
+
+		<!-- RANDOM/ARCHIVE & THEME CREDIT -->
+		<div id="cred-arch">
+			{block:IfShowRandomPostLink}<a href="/random">{lang:Random}</a>{/block:IfShowRandomPostLink}
+			{block:IfShowArchiveLink}<a href="/archive">{lang:Archive}</a>{/block:IfShowArchiveLink}
+			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+			<a href="https://starlightthemes.tumblr.com/theme4">{lang:Install this theme}</a>
+			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+		</div>
 	</aside>
 
 </body>
