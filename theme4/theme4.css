@@ -91,7 +91,7 @@ aside {
 	opacity: 1;
 	color: var(--links);
 }
-#tmblriframe { transition: .4s }
+#tmblriframe { transition: transform .4s }
 #buttons #tmblriframe.active {
 	transform: rotate(-90deg);
 	color: var(--links-hover);
