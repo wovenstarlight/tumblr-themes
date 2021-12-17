@@ -86,8 +86,8 @@ aside {
 	z-index: 100;
 }
 #buttons > div {
-	background: var(--bg-page);
-	box-shadow: 0 0 5px var(--accent2);
+	background: var(--accent1);
+	box-shadow: 0 0 5px var(--border);
 	--size: 2em;
 	width: var(--size);
 	height: var(--size);
