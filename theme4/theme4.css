@@ -251,6 +251,7 @@ form {
 	grid-template-columns: auto 1fr;
 	align-items: center;
 	border: 0.25em solid var(--border);
+	margin: 0.75em 0;
 }
 form label {
 	position: fixed;
