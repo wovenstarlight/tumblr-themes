@@ -50,14 +50,19 @@ h1, h2 {
 	z-index: 2;
 }
 #title {
-	margin: 0;
-	padding: 0.25em;
+	padding: 0.5rem;
 	height: var(--title-height);
-	border: 0.15em solid var(--border);
+	border: 0.3rem solid var(--border);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	text-align: center;
+}
+#title h1 { margin: 0 }
+#hiddentitle {
+	font-size: 1rem;
+	position: fixed;
+	top: -100px;
 }
 #pageheader a {
 	background: var(--accent2);
