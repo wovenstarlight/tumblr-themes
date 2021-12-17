@@ -6,7 +6,10 @@ body {
 	display: grid;
 	grid-template-columns: 1fr min(var(--post-width), calc(100% - var(--sidebar-width))) var(--sidebar-width) 1fr;
 }
-a { color: var(--links) }
+a {
+	color: var(--links);
+	text-decoration: none;
+}
 a:hover { color: var(--links-hover) }
 strong, b { color: var(--bold) }
 em, i:not(.fas, .far) { color: var(--italics) }
@@ -64,7 +67,6 @@ h1, h2 {
 	align-items: center;
 	justify-content: center;
 	font-size: 1.5em;
-	text-decoration: none;
 }
 
 
@@ -120,7 +122,6 @@ aside .sticky.header { top: calc(var(--title-height) + 3.5em) }
 	align-items: center;
 	justify-content: center;
 	background-color: var(--accent2);
-	text-decoration: none;
 }
 #description {
 	border: 0.25em solid var(--border);
@@ -138,7 +139,6 @@ aside .sticky.header { top: calc(var(--title-height) + 3.5em) }
 }
 #taglinks a, #credit-ra a {
 	background-color: var(--accent2);
-	text-decoration: none;
 	padding: 0.25em 0.5em;
 	display: flex;
 	align-items: center;
@@ -184,7 +184,6 @@ form input {
 	display: block;
 	text-align: center;
 	padding: 0.3em;
-	text-decoration: none;
 }
 #blogpages a:not(:last-child) { border-bottom: thin solid var(--accent2) }
 
