@@ -293,6 +293,7 @@ form input {
 	padding: 0.3em;
 }
 #blogpages a:not(:last-child) { border-bottom: thin solid var(--accent2) }
+#blogpages a.current-page { background-color: var(--accent1) }
 
 
 
