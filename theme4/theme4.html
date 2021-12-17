@@ -110,8 +110,6 @@
 	<meta name="text:Tag 4 name" content="submitted">
 	<meta name="text:Tag 4 label" content="Submissions">
 	
-	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever code or plain text you want. If you don't want an FAQ, leave this field blank!">
-	<meta name="text:Submission guidelines" content="This will go on your submission page, above your submission box.&NewLine;Add whatever code or plain text you want. If you don't want submission guidelines, leave this field blank!">
 	<meta name="if:Tall header" content="0">
 	<meta name="if:Fixed header" content="0">
 	<meta name="if:Random post link" content="1">
@@ -131,6 +129,20 @@
 	<meta name="if:Post tags" content="1">
 	<meta name="if:Post share links" content="1">
 	<meta name="if:Show group blog members" content="0">
+	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever code or plain text you want. If you don't want an FAQ, leave this field blank!">
+	
+	<meta name="image:Left background" content="">
+	<meta name="select:Left background image sizing" content="no-repeat; background-size: cover" title="Cover">
+	<meta name="select:Left background image sizing" content="no-repeat; background-size: contain" title="Contain">
+	<meta name="select:Left background image sizing" content="repeat" title="Repeat">
+	<meta name="select:Left background image positioning" content="fixed" title="Fixed">
+	<meta name="select:Left background image positioning" content="initial" title="Scrollable">
+    <meta name="image:Right background" content="">
+	<meta name="select:Right background image sizing" content="no-repeat; background-size: cover" title="Cover">
+	<meta name="select:Right background image sizing" content="no-repeat; background-size: contain" title="Contain">
+	<meta name="select:Right background image sizing" content="repeat" title="Repeat">
+	<meta name="select:Right background image positioning" content="fixed" title="Fixed">
+	<meta name="select:Right background image positioning" content="initial" title="Scrollable">
 	{/block:Hidden}
 
 	<!-- Theme styles -->
@@ -192,6 +204,23 @@ body.light {
 	--highlight: {color:LM Text highlight};
 	--highlight-bg: {color:LM Text highlight background};
 }
+
+{block:IfLeftBackgroundImage}
+#bgimg-left {
+	background-image: url({image:Left background});
+	background-position: center left;
+	background-repeat: {select:Left background image sizing};
+	background-attachment: {select:Left background image positioning};
+}
+{/block:IfLeftBackgroundImage}
+{block:IfRightBackgroundImage}
+#bgimg-right {
+	background-image: url({image:Right background});
+	background-position: center right;
+	background-repeat: {select:Right background image sizing};
+	background-attachment: {select:Right background image positioning};
+}
+{/block:IfRightBackgroundImage}
 
 /* Custom CSS */
 {CustomCSS}
