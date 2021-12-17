@@ -62,7 +62,8 @@
 	<meta name="color:Links hover" content="#ff228d">
 	<meta name="color:Bold" content="#d6ffbc">
 	<meta name="color:Italics" content="#7fff6f">
-	<meta name="color:Post background" content="#282427">
+	<meta name="color:Post background" content="#141414">
+	<meta name="color:Body background" content="#282427">
 	<meta name="color:Page background" content="#001b00">
 	<meta name="color:Accent 1" content="#003100">
 	<meta name="color:Accent 2" content="#3a2f3a">
@@ -79,7 +80,8 @@
 	<meta name="color:LM Links hover" content="#319b00">
 	<meta name="color:LM Bold" content="#971f7e">
 	<meta name="color:LM Italics" content="#aa0052">
-	<meta name="color:LM Post background" content="#d8f7da">
+	<meta name="color:LM Post background" content="#eeeeee">
+	<meta name="color:LM Body background" content="#d8f7da">
 	<meta name="color:LM Page background" content="#d0b3cb">
 	<meta name="color:LM Accent 1" content="#ffbee9">
 	<meta name="color:LM Accent 2" content="#beffb1">
@@ -87,11 +89,11 @@
 	<meta name="color:LM Text highlight" content="#970822">
 	<meta name="color:LM Text highlight background" content="#ffb1a0">
 
-	<meta name="select:Post background opacity" content="1.00" title="100%">
-	<meta name="select:Post background opacity" content="0.9" title="90%">
-	<meta name="select:Post background opacity" content="0.75" title="75%">
-	<meta name="select:Post background opacity" content="0.50" title="50%">
-	<meta name="select:Post background opacity" content="0.25" title="25%">
+	<meta name="select:Body background opacity" content="1.00" title="100%">
+	<meta name="select:Body background opacity" content="0.9" title="90%">
+	<meta name="select:Body background opacity" content="0.75" title="75%">
+	<meta name="select:Body background opacity" content="0.50" title="50%">
+	<meta name="select:Body background opacity" content="0.25" title="25%">
 
 	<meta name="if:Back to top button" content="1">
 	
@@ -151,9 +153,10 @@ body {
 	--links-hover: {color:Links hover};
 	--bold: {color:Bold};
 	--italics: {color:Italics};
-	--bg: {color:Post background};
-	--bg--rgb: {RGBcolor:Post background};
-	--bg-opacity: {select:Post background opacity};
+	--post: {color:Post background};
+	--bg: {color:Body background};
+	--bg--rgb: {RGBcolor:Body background};
+	--bg-opacity: {select:Body background opacity};
 	--bg-page: {color:Page background};
 	--accent1: {color:Accent 1};
 	--accent2: {color:Accent 2};
@@ -175,8 +178,9 @@ body.light {
 	--links-hover: {color:LM Links hover};
 	--bold: {color:LM Bold};
 	--italics: {color:LM Italics};
-	--bg: {color:LM Post background};
-	--bg--rgb: {RGBcolor:LM Post background};
+	--post: {color:LM Post background};
+	--bg: {color:LM Body background};
+	--bg--rgb: {RGBcolor:LM Body background};
 	--bg-page: {color:LM Page background};
 	--accent1: {color:LM Accent 1};
 	--accent2: {color:LM Accent 2};
@@ -318,22 +322,18 @@ body.light {
 		{/block:PreviousPage}
 		{/block:Pagination}
 		{/block:IfComicNavigation}
-
-
-		<section id="scrollnav">
-			<!-- SCROLLBAR -->
-			<div class="progress-container">
-				<div class="progress-bar" id="scrollbar"></div>
-			</div>
-
-			{block:Pagination}
-			<!-- SIMPLE PAGINATION -->
-			<nav>
-				{block:NextPage}<a href="{NextPage}" title="{lang:Previous page}"><i class="fas fa-chevron-left"></i></a>{/block:NextPage}
-				{block:PreviousPage}<a href="{PreviousPage}" title="{lang:Next page}"><i class="fas fa-chevron-right"></i></a>{/block:PreviousPage}
-			</nav>
-			{/block:Pagination}
-		</section>
+		
+		{block:IfNotComicNavigation}
+		{block:Pagination}
+		<!-- BOTTOM NORMAL NAVIGATION -->
+		{block:NextPage}
+		<a href="{NextPage}">{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}</a>
+		{/block:NextPage}
+		{block:PreviousPage}
+		<a href="{PreviousPage}">{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}</a>
+		{/block:PreviousPage}
+		{/block:Pagination}
+		{/block:IfNotComicNavigation}
 	</main>
 
 	<!-- SIDEBAR -->
