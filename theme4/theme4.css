@@ -102,9 +102,12 @@ article:first-child { margin-top: 0 }
 	justify-self: end;
 	display: flex;
 	column-gap: 0.5em;
+	align-items: center;
 }
+.pinnedpost { color: var(--headings) }
 .customlike { position: relative }
 .customlike .like_button { cursor: pointer }
+.customlike .like_button.liked + i { color: var(--like) }
 .customlike iframe {
 	position: absolute;
 	width: 100%;

@@ -68,6 +68,7 @@
 	<meta name="color:Accent 1" content="#003100">
 	<meta name="color:Accent 2" content="#3a2f3a">
 	<meta name="color:Borders" content="#90ac7f">
+	<meta name="color:Like button" content="#d40063">
 	<meta name="color:Text highlight" content="#f6ffc7">
 	<meta name="color:Text highlight background" content="#006707">
 	
@@ -86,6 +87,7 @@
 	<meta name="color:LM Accent 1" content="#ffbee9">
 	<meta name="color:LM Accent 2" content="#beffb1">
 	<meta name="color:LM Borders" content="#cd89ba">
+	<meta name="color:LM Like button" content="#e42c7a">
 	<meta name="color:LM Text highlight" content="#970822">
 	<meta name="color:LM Text highlight background" content="#ffb1a0">
 
@@ -161,6 +163,7 @@ body {
 	--accent1: {color:Accent 1};
 	--accent2: {color:Accent 2};
 	--border: {color:Borders};
+	--like: {color:Like button};
 	--highlight: {color:Text highlight};
 	--highlight-bg: {color:Text highlight background};
 	--post-width: {text:Post width};
@@ -185,6 +188,7 @@ body.light {
 	--accent1: {color:LM Accent 1};
 	--accent2: {color:LM Accent 2};
 	--border: {color:LM Borders};
+	--like: {color:LM Like button};
 	--highlight: {color:LM Text highlight};
 	--highlight-bg: {color:LM Text highlight background};
 }
@@ -255,6 +259,8 @@ body.light {
 				{/block:IfPostDates}
 
 				<span class="likereblog">
+					{block:PinnedPostLabel}<i class="fas fa-thumbtack" title="{PinnedPostLabel}"></i>{/block:PinnedPostLabel}
+
 					{block:IfLikeButtons}
 					<a href="#" class="customlike">
 						{LikeButton size="30"}
