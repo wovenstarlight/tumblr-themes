@@ -106,6 +106,7 @@ aside .sticky.header { top: calc(var(--title-height) + 3.5em) }
 	justify-items: center;
 }
 #blogname {
+	grid-column: 2;
 	background-color: var(--accent1);
 	width: 100%;
 	display: flex;
