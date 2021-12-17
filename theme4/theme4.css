@@ -29,7 +29,7 @@ h1, h2 {
 /* Accessibility skipper */
 #skip {
 	position: fixed;
-	top: -100px;
+	top: -100em;
 }
 
 
@@ -62,7 +62,7 @@ h1, h2 {
 #hiddentitle {
 	font-size: 1rem;
 	position: fixed;
-	top: -100px;
+	top: -100em;
 }
 #pageheader a {
 	background: var(--accent2);
@@ -263,7 +263,7 @@ form {
 }
 form label {
 	position: fixed;
-	top: -100px;
+	top: -100em;
 }
 form i.fa-search {
 	background-color: var(--border);
