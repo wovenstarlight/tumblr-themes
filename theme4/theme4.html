@@ -155,7 +155,8 @@
 	<meta name="select:Corner roundness" title="None" content="0">
 	<meta name="select:Corner roundness" title="Least" content="0.25rem">
 	<meta name="select:Corner roundness" title="Less" content="0.5rem">
-	<meta name="select:Corner roundness" title="More" content="0.75rem">
+	<meta name="select:Corner roundness" title="Medium" content="0.75rem">
+	<meta name="select:Corner roundness" title="More" content="1rem">
 	<meta name="select:Corner roundness" title="Most" content="1.25rem">
 	<meta name="if:Show group blog members" content="0">
 	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever code or plain text you want. If you don't want an FAQ, leave this field blank!">
@@ -332,6 +333,241 @@ body.light {
 
 
 			<!-- TODO: body of post -->
+			{block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+			<div class="postbody">
+				{block:AskPage}<div class="askwrapper">{text:FAQ}</div>{/block:AskPage}
+
+				{block:Text}
+					
+					{block:NotReblog}
+					<div class="bodyitemcontent">{Body}</div>
+					{/block:NotReblog}
+					
+					{block:RebloggedFrom}{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<img src="{PortraitURL-64}" class="usericon"/>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">{Body}</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+				{/block:Text}
+
+
+				{block:Photo}
+				
+					<div class="photowrapper">
+						{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+						<a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
+					</div>
+					
+					{block:NotReblog}
+					<div class="bodyitemcontent">{Caption}</div>
+					{/block:NotReblog}
+					
+					{block:RebloggedFrom}{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">{Body}</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+				{/block:Photo}
+
+
+				{block:Panorama}
+				
+					<div class="photowrapper">
+						{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+						<a class="highres" href="{PhotoURL-Panorama}">{lang:View high resolution}</a>
+					</div>
+					
+					{block:NotReblog}
+					<div class="bodyitemcontent">{Caption}</div>
+					{/block:NotReblog}
+					
+					{block:RebloggedFrom}{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">{Body}</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+				{/block:Panorama}
+
+
+				{block:Photoset}
+				<div class="npf_photoset" data-layout="{PhotosetLayout}">
+					{block:Photos}
+						<figure class="tmblr-full"> 
+							<img class="npf_image" alt="{PhotoAlt}" src="{PhotoURL-500}" data-orig-width="{PhotoWidth-HighRes}" data-orig-height="{PhotoHeight-HighRes}" data-highres="{PhotoURL-HighRes}">
+						</figure>
+					{/block:Photos}
+				</div>
+				{/block:Photoset}
+		
+		
+				{block:Quote}
+					<div class="quote">
+						<h2>{Quote}</h2>
+						{block:Source}<p>— {Source}</p>{/block:Source}
+					</div>
+				{/block:Quote}
+				
+				
+				{block:Link}
+					
+					{block:NotReblog}
+					<div class="bodyitemcontent">
+						<a class="link" href="{URL}" {Target}>
+							{block:Thumbnail}<img src="{Thumbnail}">{/block:Thumbnail}
+							<span class="name">{Name}{block:Author} — {Author}{/block:Author}</span>
+							{block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}
+						</a>
+						{Body}
+					</div>
+					{/block:NotReblog}
+					
+					{block:RebloggedFrom}{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">
+							{block:IsOriginalEntry}
+							<a class="link" href="{URL}" {Target}>
+								{block:Thumbnail}<img src="{Thumbnail}">{/block:Thumbnail}
+								<span class="name">{Name}{block:Author} — {Author}{/block:Author}</span>
+								{block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}
+							</a>
+							{/block:IsOriginalEntry}
+							{Body}
+						</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+				{/block:Link}
+				
+				
+				{block:Chat}
+					<ol class="chat">
+						{block:Lines}
+						{block:Label}
+						<li><strong>{Label}</strong> {/block:Label}{Line}</li>
+						{/block:Lines}
+					</ol>
+				{/block:Chat}
+				
+				
+				{block:Audio}
+				
+					{block:AudioPlayer}
+					<div class="audiowrapper">
+						{AudioPlayer}
+						<div class="albumart">
+							{block:AlbumArt}<img src="{AlbumArtURL}">{/block:AlbumArt}
+							<span class="custom_audio_buttons"></span>
+						</div>
+						<div class="trackinfo">
+							<div class="textinfo">
+								{block:TrackName}<span class="trackname">{TrackName}</span>{/block:TrackName}
+								<div class="making">
+									{block:Artist}<span class="artist">{Artist}</span>{/block:Artist}<span class="divider">, </span>{block:Album}<span class="album">{Album}</span>{/block:Album}
+								</div>
+							</div>
+							<div class="audio_player">
+								<span class="custom_audio_current_time"></span>
+								<div class="custom_audio_seekbar"></div>
+								<span class="custom_audio_time_left"></span>
+							</div>
+						</div>
+					</div>
+					{/block:AudioPlayer}
+					
+					{block:NotReblog}
+					<div class="bodyitemcontent">{Caption}</div>
+					{/block:NotReblog}
+					
+					{block:RebloggedFrom}{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">{Body}</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+				{/block:Audio}
+				
+				
+				{block:Video}
+				
+					<div class="videowrapper">
+						{Video-500}
+					</div>
+					
+					{block:NotReblog}
+					<div class="bodyitemcontent">{Caption}</div>
+					{/block:NotReblog}
+					
+					{block:RebloggedFrom}{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">{Body}</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+				{/block:Video}
+				
+				
+				{block:Answer}
+				
+					<div class="ask">
+					
+						<div class="user">
+							<img src="{AskerPortraitURL-64}" class="{AvatarShape} usericon">
+							<span class="username">{lang:Asker asked 2}</span>
+						</div>
+						<div class="question">{Question}</div>
+					</div>
+					
+					<div class="bodyitem">
+						{block:RebloggedFrom}{block:Answerer}
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" href="{ReblogRootURL}">
+							<img src="{AnswererPortraitURL-64}" class="{AvatarShape} usericon"/>
+							<span class="username">{ReblogRootName}</span>
+						</a>
+						{/block:Answerer}{/block:RebloggedFrom}
+						
+						<div class="bodyitemcontent">{Answer}</div>
+					</div>
+					
+					{block:RebloggedFrom}{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">{Body}</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+				{/block:Answer}
+
+			</div>
 
 			
 			
