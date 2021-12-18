@@ -6,10 +6,8 @@ body {
 	display: grid;
 	grid-template-columns: 1fr min(var(--post-width), calc(100% - var(--sidebar-width))) var(--sidebar-width) 1fr;
 }
-a {
-	color: var(--links);
-	text-decoration: none;
-}
+a { color: var(--links) }
+a:not(:hover) { text-decoration: none }
 a:hover { color: var(--links-hover) }
 strong, b { color: var(--bold) }
 em, i:not(.fas, .far) { color: var(--italics) }
