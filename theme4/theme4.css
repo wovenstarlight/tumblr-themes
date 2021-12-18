@@ -36,7 +36,7 @@ h1, h2 {
 /* Roundness */
 #pageheader a, #title,
 #blogavatar,
-#name-asksubmit a[href*="ask"], #name-asksubmit a[href*="submit"], #description,
+#asklink, #submitlink, #description,
 #taglinks a,
 form,
 #blogpages,
@@ -45,10 +45,11 @@ form,
 .post, .postfooter > *, .postfooter div i, .sharelinks .dropdown,
 .user .usericon,
 .read_more,
+.postbody .chat,
 .postbody .link,
 .photowrapper .highres,
 .audiowrapper, .audiowrapper .albumart, .audiowrapper .custom_audio_buttons, .audiowrapper .custom_audio_seekbar,
-.ask {
+.postbody .ask {
 	border-radius: var(--roundness);
 }
 /* Roundness (top) */
@@ -167,8 +168,10 @@ article:first-child { margin-top: 0 }
 	grid-template-columns: 2em 1fr;
 	column-gap: 0.5em;
 	align-items: center;
+	text-transform: uppercase;
 }
-.user.deactivated .username::after {
+:not(.ask) > .user.deactivated .username::after,
+.postbody .ask .user.deactivated .username a::after {
 	content: " (deactivated)";
 	font-size: 0.9em;
 	opacity: 0.5;
@@ -183,15 +186,15 @@ article:first-child { margin-top: 0 }
 .bodyitem .bodyitemcontent { padding: 0.75em 0.5em 0.5em 1em; }
 .bodyitemcontent :first-child, .question :first-child { margin-top: 0 }
 .bodyitemcontent :last-child, .question :last-child { margin-bottom: 0 }
-.post .title {
-	margin: 0;
-}
+.post .title { margin: 0 }
 .post .title a {
 	display: block;
 	text-align: center;
 	background: var(--accent1);
 	padding: 0.3em 0.5em;
 }
+.bodyitemcontent h1 { font-size: 1.4em }
+.bodyitemcontent h2 { font-size: 1.25em }
 .read_more {
 	display: block;
 	margin: 0 auto;
@@ -255,12 +258,28 @@ article:first-child { margin-top: 0 }
 }
 .postfooter .dropdown li { margin: 0.25em 0 }
 /***************************** SPECIAL POST STYLES *****************************/
+/* Special post margins - chats, photos, videos */
+.postbody .quote, .postbody .chat, .photowrapper, .npf_photoset, .videowrapper { margin: 0.75em 1em 0 }
+/* Quote posts */
+.postbody .quote h2 { margin: 0 }
+.postbody .quote p { margin-bottom: 0 }
+/* Chat posts */
+.postbody .chat {
+	list-style: none;
+	padding: 0;
+	overflow: hidden;
+	border: 0.1em solid var(--border);
+}
+.postbody .chat li {
+	padding: 0.25em 0.5em;
+}
+.postbody .chat li:nth-child(odd) { background: rgba(var(--accent1--rgb), 0.75) }
+.postbody .chat li:nth-child(even) { background: rgba(var(--accent1--rgb), 0.25) }
 /* Link posts */
 .postbody .link {
 	display: flex;
 	flex-direction: column;
 	text-decoration: none;
-	margin: 0.75em 0;
 	border: 0.25em solid var(--border);
 	overflow: hidden;
 }
@@ -356,6 +375,7 @@ article:first-child { margin-top: 0 }
 	height: 1em;
 	border: thin solid var(--links);
 	overflow: hidden;
+	cursor: pointer;
 }
 .audiowrapper .custom_audio_seekbar_progress { /* Audio progress bar, darkened bit */
 	width: 0;
@@ -363,8 +383,6 @@ article:first-child { margin-top: 0 }
 	background: var(--links);
 }
 .custom_audio_time_left::before { content : "-" }
-/* Visual media posts - photos, videos */
-.photowrapper, .npf_photoset, .videowrapper { margin: 0.75em 1em 0 }
 /* Photo posts */
 .photowrapper { position: relative }
 .photowrapper .photopost { width: 100% }
@@ -385,7 +403,7 @@ article:first-child { margin-top: 0 }
 	max-width: 100% !important;
 }
 /* Answer posts */
-.ask {
+.postbody .ask {
 	background: var(--accent1);
 	padding: 0.75em;
 	margin: 1em 1em 0;
@@ -433,7 +451,7 @@ aside .sticky.header { top: calc(var(--title-height) + 1.5em) }
 	padding: 0.5em;
 	word-wrap: anywhere;
 }
-#name-asksubmit a[href*="ask"], #name-asksubmit a[href*="submit"] {
+#asklink, #submitlink {
 	width: 1.75em;
 	height: 1.75em;
 	display: flex;
@@ -577,10 +595,12 @@ body:not(.light) .fa-moon, body.light .fa-sun { display: none }
 		display: grid;
 		height: var(--avatar-size);
 		grid-column: 2;
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr 1fr;
 		row-gap: 0.25em;
+		align-items: center;
 	}
+	#name-asksubmit a.hidden { display: none }
+	#name-asksubmit.ask, #name-asksubmit.submit { grid-template-columns: 1fr }
+	#name-asksubmit.ask.submit { grid-template-columns: 1fr 1fr }
 	#blogname {
 		grid-row: 1;
 		grid-column: 1 / span 2;
@@ -588,7 +608,7 @@ body:not(.light) .fa-moon, body.light .fa-sun { display: none }
 		height: unset;
 		border-radius: var(--roundness);
 	}
-	#name-asksubmit > a { width: 100% }
+	#asklink, #submitlink { width: 100% }
 	
 	.postfooter .dropdown {
 		left: unset;
