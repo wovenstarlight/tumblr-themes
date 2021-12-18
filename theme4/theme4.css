@@ -292,7 +292,7 @@ article:first-child { margin-top: 0 }
 	cursor: pointer;
 	transition: opacity .2s;
 }
-.audiowrapper:not(:hover) .custom_audio_buttons { opacity: 0 }
+.post:not(:hover) .custom_audio_buttons { opacity: 0 }
 .audiowrapper .custom_audio_buttons > div {
 	width: 100%;
 	height: 100%;
