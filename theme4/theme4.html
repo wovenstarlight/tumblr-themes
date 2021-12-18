@@ -544,8 +544,8 @@ body.light {
 						<div class="question">{Question}</div>
 					</div>
 					
-					<div class="bodyitem">
-						{block:RebloggedFrom}{block:Answerer}
+					{block:RebloggedFrom}<div class="bodyitem">
+						{block:Answerer}
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" href="{ReblogRootURL}">
 							<img src="{AnswererPortraitURL-64}" class="{AvatarShape} usericon"/>
 							<span class="username">{ReblogRootName}</span>
@@ -553,9 +553,9 @@ body.light {
 						{/block:Answerer}{/block:RebloggedFrom}
 						
 						<div class="bodyitemcontent">{Answer}</div>
-					</div>
+					{block:RebloggedFrom}</div>
 					
-					{block:RebloggedFrom}{block:Reblogs}
+					{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
 							<img src="{PortraitURL-64}" class="{AvatarShape} usericon"/>
