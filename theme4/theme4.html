@@ -623,12 +623,12 @@ body.light {
 		{block:IfNotComicNavigation}
 		{block:Pagination}
 		<!-- BOTTOM NORMAL NAVIGATION -->
-		{block:NextPage}
-		<a href="{NextPage}">{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}</a>
-		{/block:NextPage}
 		{block:PreviousPage}
 		<a href="{PreviousPage}">{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}</a>
 		{/block:PreviousPage}
+		{block:NextPage}
+		<a href="{NextPage}">{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}</a>
+		{/block:NextPage}
 		{/block:Pagination}
 		{/block:IfNotComicNavigation}
 	</main>
