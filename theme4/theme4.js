@@ -33,4 +33,7 @@ $(document).ready( function() {
 		$(".tmblr-iframe").toggleClass("active")
 	});
 
+	// Remove stray paragraph tags
+	$(".bodyitemcontent p:first-child:empty").remove();
+
 });
