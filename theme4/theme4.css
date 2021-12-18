@@ -33,13 +33,15 @@ h1, h2 {
 /* Roundness */
 #pageheader a, #title,
 #blogavatar,
-#name-asksubmit a, #description,
+#name-asksubmit a[href*="ask"], #name-asksubmit a[href*="submit"], #description,
 #taglinks a,
 form,
 #blogpages,
 #credit-ra a,
 #buttons > div,
-.post, .postfooter > *, .postfooter div i, .sharelinks .dropdown {
+.post, .postfooter > *, .postfooter div i, .sharelinks .dropdown,
+.user .usericon,
+.read_more {
 	border-radius: var(--roundness);
 }
 /* Roundness (top) */
@@ -152,6 +154,30 @@ article:first-child { margin-top: 0 }
 	z-index: 1;
 	opacity: 0;
 }
+/* Post body */
+.user {
+	display: grid;
+	grid-template-columns: 2em 1fr;
+	column-gap: 0.5em;
+	align-items: center;
+}
+.bodyitem {
+	margin: 0.5em 1em;
+	padding: 0.5em 0;
+}
+.bodyitem:last-child, .postbody > .bodyitemcontent:last-child { padding-bottom: 0; margin-bottom: 0 }
+.bodyitem:not(:last-child) { border-bottom: 0.1em solid var(--accent1) }
+.postbody > .bodyitemcontent { padding: 0.5em 1em }
+.bodyitem .bodyitemcontent { padding: 0.75em 0.5em 0.5em }
+.bodyitemcontent :first-child { margin-top: 0 }
+.bodyitemcontent :last-child { margin-bottom: 0 }
+.read_more {
+	display: block;
+	margin: 0 auto;
+	background: var(--accent2);
+	width: fit-content;
+	padding: 0.5em 0.75em;
+}
 /* Post footer */
 .postfooter {
 	display: grid;
@@ -210,7 +236,6 @@ article:first-child { margin-top: 0 }
 
 
 
-
 /*********************************** SIDEBAR ***********************************/
 aside {
 	background: rgba(var(--bg--rgb), var(--bg-opacity));
@@ -239,6 +264,7 @@ aside .sticky.header { top: calc(var(--title-height) + 1.5em) }
 }
 #blogname {
 	grid-column: 2;
+	color: var(--headings);
 	background-color: var(--accent1);
 	width: 100%;
 	display: flex;
@@ -248,7 +274,7 @@ aside .sticky.header { top: calc(var(--title-height) + 1.5em) }
 	height: 3em;
 	padding: 0.5em;
 }
-#name-asksubmit a {
+#name-asksubmit a[href*="ask"], #name-asksubmit a[href*="submit"] {
 	width: 1.75em;
 	height: 1.75em;
 	display: flex;
