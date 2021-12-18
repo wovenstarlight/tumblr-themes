@@ -45,6 +45,7 @@ form,
 .post, .postfooter > *, .postfooter div i, .sharelinks .dropdown,
 .user .usericon,
 .read_more,
+.photowrapper .highres,
 .audiowrapper, .audiowrapper .albumart, .audiowrapper .custom_audio_buttons, .audiowrapper .custom_audio_seekbar,
 .ask {
 	border-radius: var(--roundness);
@@ -342,6 +343,27 @@ article:first-child { margin-top: 0 }
 	background: var(--links);
 }
 .custom_audio_time_left::before { content : "-" }
+/* Visual media posts - photos, videos */
+.photowrapper, .npf_photoset, .videowrapper { margin: 0.75em 1em 0 }
+/* Photo posts */
+.photowrapper { position: relative }
+.photowrapper .photopost { width: 100% }
+.photowrapper .highres {
+	position: absolute;
+	bottom: 1em;
+	left: 1em;
+	padding: 0.5em;
+	background: var(--accent2);
+	transition: opacity .2s;
+}
+.post:not(:hover) .photowrapper .highres { opacity: 0; pointer-events: none }
+/* Video posts */
+.videowrapper, .tumblr_video_container, .videowrapper iframe {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	max-width: 100% !important;
+}
 /* Answer posts */
 .ask {
 	background: var(--accent1);
