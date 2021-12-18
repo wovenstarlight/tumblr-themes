@@ -49,7 +49,7 @@ h1, h2 {
 }
 #title {
 	padding: 0.5rem;
-	height: var(--title-height);
+	min-height: var(--title-height);
 	border: 0.3rem solid var(--border);
 	display: flex;
 	align-items: center;
@@ -92,6 +92,7 @@ article:first-child { margin-top: 0 }
 .postheader {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
+	align-items: center;
 	background: var(--accent2);
 	padding: 0.25em 0.5em;
 }
@@ -161,14 +162,14 @@ article:first-child { margin-top: 0 }
 	transition: 0.2s;
 	position: absolute;
 	bottom: 2.25em;
-	left: 0;
+	left: 50%;
+	transform: translateX(-50%);
 	background: var(--accent2);
 	border: 0.125em solid var(--border);
 	text-align: center;
 	padding: 0.5em 0.75em;
 	z-index: 100;
 	width: 13em;
-	transform: translateX(-42.5%);
 }
 .postfooter .dropdown h3 { margin: 0 0 0.5em 0 }
 .postfooter .dropdown ul {
@@ -334,3 +335,89 @@ form input {
 .tmblr-iframe.tmblr-iframe--unified-controls:not(.active) { display: none }
 .scrolltotop_hide_onload { display: none }
 body:not(.light) .fa-moon, body.light .fa-sun { display: none }
+
+
+
+/****************************** RESPONSIVE SIZING ******************************/
+@media (max-width: 750px) {
+	/* Moving sidebar to bottom of blog */
+	body {
+		grid-template-columns: 1fr min(var(--post-width), 100%) 1fr;
+	}
+	
+	aside {
+		grid-row: 3;
+		grid-column: 1 / span 3;
+		--avatar-size: 5em;
+		border-top: 0.5em solid var(--border);
+	}
+	
+	#blogavatar {
+		width: var(--avatar-size);
+		height: var(--avatar-size);
+		position: absolute;
+	}
+	
+	#name-asksubmit {
+		display: grid;
+		height: var(--avatar-size);
+		grid-column: 2;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+		row-gap: 0.25em;
+	}
+	#blogname {
+		grid-row: 1;
+		grid-column: 1 / span 2;
+		align-self: top;
+		height: unset;
+	}
+	#name-asksubmit > a { width: 100% }
+	
+	.postfooter .dropdown {
+		left: unset;
+		transform: unset;
+		right: -0.5em;
+	}
+}
+
+@media (max-width: 750px) and (min-width: 500px) {
+	/* Rearranging sidebar */
+	aside {
+		grid-row: 3;
+		grid-column: 1 / span 3;
+		flex-direction: row;
+		position: relative;
+	}
+	aside .sticky {
+		display: grid;
+		grid-template-columns: var(--avatar-size) 1fr 1fr;
+		column-gap: 1em;
+		row-gap: 1em;
+	}
+	#description {
+		grid-row: 2 / span 2;
+		grid-column: 1 / span 2;
+		width: 100%;
+		vertical-align: middle;
+	}
+	#taglinks, form, #blogpages, #credit-ra {
+		height: 100%;
+		margin: 0;
+	}
+	#credit-ra {
+		grid-row: 3;
+		grid-column: 3;
+	}
+	#blogpages {
+		grid-column: 1 / span 3
+	}
+}
+
+@media (max-width: 500px) {
+	body { font-size: 90% }
+	#name-asksubmit {
+		margin: 0 0 0.75em var(--avatar-size);
+		padding-left: 0.5em;
+	}
+}
