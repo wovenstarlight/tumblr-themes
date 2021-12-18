@@ -659,9 +659,9 @@ body.light {
 		<div class="sticky {block:IfFixedHeader}header{/block:IfFixedHeader}">
 			<!-- USERNAME & ASK/SUBMIT -->
 			<div id="name-asksubmit">
-				{block:AskEnabled}<a href="/ask" title="{AskLabel}"><i class="fas fa-envelope"></i></a>{/block:AskEnabled}
+				{block:AskEnabled}<a href="/ask" id="asklink" title="{AskLabel}"><i class="fas fa-envelope"></i></a>{/block:AskEnabled}
 				<a href="/" id="blogname">{Name}</a>
-				{block:SubmissionsEnabled}<a href="/submit" title="{SubmitLabel}"><i class="fas fa-inbox"></i></a>{/block:SubmissionsEnabled}
+				{block:SubmissionsEnabled}<a href="/submit" id="submitlink" title="{SubmitLabel}"><i class="fas fa-inbox"></i></a>{/block:SubmissionsEnabled}
 			</div>
 			
 			{block:ShowDescription}
