@@ -161,6 +161,11 @@ article:first-child { margin-top: 0 }
 	column-gap: 0.5em;
 	align-items: center;
 }
+.user.deactivated .username::after {
+	content: " (deactivated)";
+	font-size: 0.9em;
+	opacity: 0.5;
+}
 .bodyitem {
 	margin: 0.5em 1em;
 	padding: 0.5em 0;
@@ -359,7 +364,7 @@ form input {
 }
 #buttons > div {
 	background: var(--accent1);
-	box-shadow: 0 0 5px var(--border);
+	border: 0.15em solid var(--border);
 	--size: 2em;
 	width: var(--size);
 	height: var(--size);
