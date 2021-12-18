@@ -176,6 +176,15 @@ article:first-child { margin-top: 0 }
 .bodyitem .bodyitemcontent { padding: 0.75em 0.5em 0.5em }
 .bodyitemcontent :first-child { margin-top: 0 }
 .bodyitemcontent :last-child { margin-bottom: 0 }
+.post .title {
+	margin: 0;
+}
+.post .title a {
+	display: block;
+	text-align: center;
+	background: var(--accent1);
+	padding: 0.3em 0.5em;
+}
 .read_more {
 	display: block;
 	margin: 0 auto;
@@ -379,8 +388,8 @@ form input {
 	opacity: 1;
 	color: var(--links);
 }
-#tmblriframe { transition: transform .4s }
-#buttons #tmblriframe.active {
+#tmblriframe i { transition: transform .4s }
+#buttons #tmblriframe.active i {
 	transform: rotate(-90deg);
 	color: var(--links-hover);
 }
