@@ -1,7 +1,12 @@
 $(document).ready( function() {
 
 	// audio post setup
-	customAudio();
+	customAudio({
+		playButton: "<i class='fas fa-play'></i>",
+		pauseButton: "<i class='fas fa-pause'></i>",
+		errorIcon: "<i class='fas fa-times'></i>",
+		callAfterLoad: null
+	});
 
 	// photoset setup
 	npfPhotosets("article", {
