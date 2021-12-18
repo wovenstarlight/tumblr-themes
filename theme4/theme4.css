@@ -199,7 +199,6 @@ aside .sticky.header { top: calc(var(--title-height) + 1.5em) }
 #blogavatar {
 	width: 100%;
 	border: 0.4em solid var(--border);
-	align-items: center;
 }
 /* Name, ask/submit, description */
 #name-asksubmit {
@@ -339,7 +338,11 @@ body:not(.light) .fa-moon, body.light .fa-sun { display: none }
 
 
 /****************************** RESPONSIVE SIZING ******************************/
-@media (max-width: 750px) {
+@media (min-width: 47em) {
+	#blogavatar.circle { margin-bottom: 0.5em }
+}
+
+@media (max-width: 47em) {
 	/* Moving sidebar to bottom of blog */
 	body {
 		grid-template-columns: 1fr min(var(--post-width), 100%) 1fr;
@@ -381,7 +384,7 @@ body:not(.light) .fa-moon, body.light .fa-sun { display: none }
 	}
 }
 
-@media (max-width: 750px) and (min-width: 500px) {
+@media (max-width: 47em) and (min-width: 31em) {
 	/* Rearranging sidebar */
 	aside {
 		grid-row: 3;
@@ -414,7 +417,7 @@ body:not(.light) .fa-moon, body.light .fa-sun { display: none }
 	}
 }
 
-@media (max-width: 500px) {
+@media (max-width: 31em) {
 	body { font-size: 90% }
 	#name-asksubmit {
 		margin: 0 0 0.75em var(--avatar-size);
