@@ -386,7 +386,6 @@ form input {
 	right: 3em;
 }
 .tmblr-iframe.tmblr-iframe--unified-controls:not(.active) { display: none }
-#scrolltotop_parent.scrolltotop_hide_onload { display: none }
 body:not(.light) .fa-moon, body.light .fa-sun { display: none }
 
 

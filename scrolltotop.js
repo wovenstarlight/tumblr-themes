@@ -37,7 +37,6 @@ $(document).ready(function() {
     /*Fades the scrolltotop box in and out while scrolling.*/
     $(window).scroll(function () {
         if (window.pageYOffset >= scrolltotop_fadein_start_position) {
-            $("#scrolltotop_parent").removeClass("scrolltotop_hide_onload");
             $("#scrolltotop_parent").fadeIn(scrolltotop_animation_speed);
         }
         else {
