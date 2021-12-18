@@ -45,6 +45,7 @@ form,
 .post, .postfooter > *, .postfooter div i, .sharelinks .dropdown,
 .user .usericon,
 .read_more,
+.postbody .link,
 .photowrapper .highres,
 .audiowrapper, .audiowrapper .albumart, .audiowrapper .custom_audio_buttons, .audiowrapper .custom_audio_seekbar,
 .ask {
@@ -254,6 +255,25 @@ article:first-child { margin-top: 0 }
 }
 .postfooter .dropdown li { margin: 0.25em 0 }
 /***************************** SPECIAL POST STYLES *****************************/
+/* Link posts */
+.postbody .link {
+	display: flex;
+	flex-direction: column;
+	text-decoration: none;
+	margin: 0.75em 0;
+	border: 0.25em solid var(--border);
+	overflow: hidden;
+}
+.postbody .link .name {
+	background-color: var(--accent2);
+	font-size: 1.25em;
+	padding: 0.5em 1em;
+}
+.postbody .link .excerpt {
+	color: var(--text);
+	background-color: var(--accent1);
+	padding: 0.5em 1.25em;
+}
 /* Audio posts */
 .audiowrapper {
 	--albumsize: 5em;
@@ -411,6 +431,7 @@ aside .sticky.header { top: calc(var(--title-height) + 1.5em) }
 	text-align: center;
 	height: 3em;
 	padding: 0.5em;
+	word-wrap: anywhere;
 }
 #name-asksubmit a[href*="ask"], #name-asksubmit a[href*="submit"] {
 	width: 1.75em;
