@@ -45,7 +45,8 @@ form,
 .post, .postfooter > *, .postfooter div i, .sharelinks .dropdown,
 .user .usericon,
 .read_more,
-.audiowrapper, .audiowrapper .albumart, .audiowrapper .custom_audio_buttons, .audiowrapper .custom_audio_seekbar {
+.audiowrapper, .audiowrapper .albumart, .audiowrapper .custom_audio_buttons, .audiowrapper .custom_audio_seekbar,
+.ask {
 	border-radius: var(--roundness);
 }
 /* Roundness (top) */
@@ -177,9 +178,9 @@ article:first-child { margin-top: 0 }
 .bodyitem:last-child, .postbody > .bodyitemcontent:last-child { padding-bottom: 0; margin-bottom: 0 }
 .bodyitem:not(:last-child) { border-bottom: 0.1em solid var(--accent1) }
 .postbody > .bodyitemcontent { padding: 0.5em 1em }
-.bodyitem .bodyitemcontent { padding: 0.75em 0.5em 0.5em }
-.bodyitemcontent :first-child { margin-top: 0 }
-.bodyitemcontent :last-child { margin-bottom: 0 }
+.bodyitem .bodyitemcontent { padding: 0.75em 0.5em 0.5em 1em; }
+.bodyitemcontent :first-child, .question :first-child { margin-top: 0 }
+.bodyitemcontent :last-child, .question :last-child { margin-bottom: 0 }
 .post .title {
 	margin: 0;
 }
@@ -341,6 +342,13 @@ article:first-child { margin-top: 0 }
 	background: var(--links);
 }
 .custom_audio_time_left::before { content : "-" }
+/* Answer posts */
+.ask {
+	background: var(--accent1);
+	padding: 0.75em;
+	margin: 1em 1em 0;
+}
+.ask .question { margin: 0.5em 0 0 1em; }
 
 
 
