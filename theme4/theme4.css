@@ -30,6 +30,35 @@ h1, h2 {
 	top: -100em;
 }
 
+/* Roundness */
+#pageheader a, #title,
+#blogavatar,
+#name-asksubmit a, #description,
+#taglinks a,
+form,
+#blogpages,
+#credit-ra a,
+#buttons > div,
+.post, .postfooter > *, .postfooter div i, .sharelinks .dropdown {
+	border-radius: var(--roundness);
+}
+/* Roundness (top) */
+#blogpages a:first-child,
+.postheader{
+	border-top-left-radius: var(--roundness);
+	border-top-right-radius: var(--roundness);
+}
+/* Roundness (right) */
+form input {
+	border-top-right-radius: var(--roundness);
+	border-bottom-right-radius: var(--roundness);
+}
+/* Roundness (bottom) */
+#blogpages a:lasst-child {
+	border-bottom-left-radius: var(--roundness);
+	border-bottom-right-radius: var(--roundness);
+}
+
 
 
 /********************************* PAGE HEADER *********************************/
@@ -308,7 +337,6 @@ form input {
 	--size: 2em;
 	width: var(--size);
 	height: var(--size);
-	border-radius: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -332,7 +360,7 @@ form input {
 	right: 3em;
 }
 .tmblr-iframe.tmblr-iframe--unified-controls:not(.active) { display: none }
-#scrolltotop_parent.scrolltotop_hide_onload { display: none }
+.scrolltotop_hide_onload { display: none }
 body:not(.light) .fa-moon, body.light .fa-sun { display: none }
 
 
@@ -374,6 +402,7 @@ body:not(.light) .fa-moon, body.light .fa-sun { display: none }
 		grid-column: 1 / span 2;
 		align-self: top;
 		height: unset;
+		border-radius: var(--roundness);
 	}
 	#name-asksubmit > a { width: 100% }
 	
