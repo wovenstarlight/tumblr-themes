@@ -216,7 +216,7 @@ main {
 }
 .postfooter.sharelinks { grid-template-columns: 2em 1fr 2em }
 .postfooter > a:first-child,
-.postfooter div i {
+.postfooter .sharelinks i {
 	width: 2em;
 	height: 2em;
 	display: flex;
@@ -224,10 +224,17 @@ main {
 	justify-content: center;
 	background-color: var(--border);
 	color: var(--bg);
+	border: 0.125em solid var(--border);
+	transition-property: color, background-color;
+}
+.postfooter > a:first-child:hover,
+.postfooter .sharelinks i:hover{
+	background-color: var(--accent2);
+	color: var(--links);
 }
 /* Post footer: tags section */
 .postfooter .tags {
-	background-color: var(--bg);
+	background-color: var(--accent2);
 	border: 0.125em solid var(--border);
 	padding: 0.25em 0.5em;
 }
@@ -498,6 +505,7 @@ aside .sticky.header { top: calc(var(--title-height) + 1.5em) }
 	border: 0.25em solid var(--border);
 	padding: 0.5em;
 	text-align: center;
+	background-color: var(--post);
 }
 /* Tag links and Random/Archive + Credit */
 #taglinks, #credit-ra {
@@ -532,7 +540,7 @@ form label {
 }
 form i.fa-search {
 	background-color: var(--border);
-	color: var(--bg);
+	color: var(--post);
 	height: 100%;
 	display: flex;
 	justify-content: center;
@@ -542,7 +550,7 @@ form i.fa-search {
 }
 form input {
 	width: 100%;
-	background-color: var(--bg);
+	background-color: var(--post);
 	color: var(--text);
 	border: none;
 	padding: 0.25em 0.5em;
@@ -551,6 +559,7 @@ form input {
 #blogpages {
 	border: 0.25em solid var(--border);
 	margin: 0.75em 0;
+	background-color: var(--post);
 }
 #blogpages a {
 	display: block;
