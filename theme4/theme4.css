@@ -105,7 +105,7 @@ form input {
 	position: fixed;
 	top: -100em;
 }
-#pageheader a {
+#pageheader a:not(#title) {
 	background: var(--accent2);
 	display: flex;
 	--size: 2.5rem;
