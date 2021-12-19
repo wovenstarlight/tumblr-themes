@@ -920,8 +920,8 @@ body.light {
 	<div id="buttons">
 		{block:IfBackToTopButton}
 		<!-- BACK TO TOP BUTTON -->
-		<div id="scrolltotop_parent" style="display: none;">
-			<div tabindex="0" id="scrolltotop_arrow">
+		<div id="scrolltotop_parent" tabindex="0" style="display: none;" data-tippy-content="{lang:Back to top}" data-tippy-placement="left">
+			<div id="scrolltotop_arrow">
 				<i class="fas fa-chevron-up"></i>
 			</div>
 		</div>
@@ -929,14 +929,14 @@ body.light {
 		
 		{block:IfColorModeToggle}
 		<!-- DARK/LIGHT MODE TOGGLE -->
-		<div id="darklight">
+		<div id="darklight" tabindex="0" data-tippy-content="Toggle color mode" data-tippy-placement="left">
 			<i class="fas fa-moon"></i>
 			<i class="fas fa-sun"></i>
 		</div>
 		{/block:IfColorModeToggle}
 
 		<!-- TUMBLR OPTIONS TOGGLE -->
-		<div id="tmblriframe">
+		<div id="tmblriframe" tabindex="0" data-tippy-content="Show Tumblr controls" data-tippy-placement="left">
 			<i class="fas fa-cog"></i>
 		</div>
 	</div>

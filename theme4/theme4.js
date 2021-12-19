@@ -72,7 +72,7 @@ $(document).ready( function() {
 		body.addClass("light");
 	}
 	// Color mode button click
-	$("#darklight").click( function() {
+	$("#darklight").on("click keypress", function() {
 		body.toggleClass("light");
 		
 		var newTheme = "dark";
@@ -83,7 +83,7 @@ $(document).ready( function() {
 	});
 
 	// Tumblr settings display button
-	$("#tmblriframe").click( function() {
+	$("#tmblriframe").on("click keypress", function() {
 		$(this).toggleClass("active");
 		$(".tmblr-iframe").toggleClass("active")
 	});
