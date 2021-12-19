@@ -43,6 +43,7 @@ form,
 #credit-ra a,
 #buttons > div,
 .post, .postfooter > *, .postfooter div i, .sharelinks .dropdown,
+#notes, #notes .avatar, #notes .more_notes_link, #notes .notes_loading,
 .user .usericon,
 .read_more,
 .postbody .chat,
@@ -55,7 +56,8 @@ form,
 }
 /* Roundness (top) */
 #blogpages a:first-child,
-.postheader{
+.postheader,
+.post .title:first-child a {
 	border-top-left-radius: var(--roundness);
 	border-top-right-radius: var(--roundness);
 }
@@ -122,12 +124,12 @@ main {
 	position: relative;
 }
 /* Posts */
-article {
+.post, #notes {
 	background-color: var(--post);
 	margin: 1em 0;
 	border: 0.25em solid var(--border);
 }
-article:first-child { margin-top: 0 }
+.post:first-child { margin-top: 0 }
 /* Post header; notes, dates, and like/reblog buttons */
 .postheader {
 	display: grid;
@@ -164,13 +166,15 @@ article:first-child { margin-top: 0 }
 	opacity: 0;
 }
 /* Post body */
-.user {
+.user, #notes li {
 	display: grid;
 	grid-template-columns: 2em 1fr;
 	column-gap: 0.5em;
 	align-items: center;
-	text-transform: uppercase;
 }
+.user,
+#notes li.like a,
+#notes li.reblog span > a { text-transform: uppercase }
 :not(.ask) > .user.deactivated .username::after,
 .postbody .ask .user.deactivated .username a::after {
 	content: " (deactivated)";
@@ -258,6 +262,7 @@ article:first-child { margin-top: 0 }
 	padding: 0;
 }
 .postfooter .dropdown li { margin: 0.25em 0 }
+/* Pagination */
 .pagination {
 	margin: 0 auto;
 	width: fit-content;
@@ -272,6 +277,21 @@ article:first-child { margin-top: 0 }
 	text-transform: uppercase;
 }
 .prevpage + .nextpage { margin-left: 0.75em;}
+/* Post notes */
+#notes ol {
+	list-style: none;
+	margin: 1em;
+	padding: 0;
+}
+#notes li { margin: 0.25em 0 }
+#notes .more_notes_link_container { display: block }
+#notes .more_notes_link, #notes .notes_loading {
+	display: block;
+	width: fit-content;
+	margin: auto;
+	background-color: var(--accent2);
+	padding: 0.5em 1.5em;
+}
 /***************************** SPECIAL POST STYLES *****************************/
 /* Special post margins - chats, photos, videos */
 .postbody .quote, .postbody .chat, .photowrapper, .npf_photoset, .videowrapper { margin: 0.75em 1em 0 }

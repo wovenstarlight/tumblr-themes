@@ -346,7 +346,7 @@ body.light {
 
 
 
-			<!-- TODO: body of post -->
+			<!-- POST BODY -->
 			{block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
 			<div class="postbody">
 				{block:AskPage}<div class="askwrapper">{text:FAQ}</div>{/block:AskPage}
@@ -629,7 +629,12 @@ body.light {
 		{/block:Posts}
 
 
-		<!-- TODO: add a section id="notes" for permalink pages only -->
+		<!-- NOTES SECTION -->
+		{block:PostNotes}
+		<section id="notes">
+		    {PostNotes-64}
+		</section>
+		{/block:PostNotes}
 
 
 		{block:IfComicNavigation}
