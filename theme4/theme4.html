@@ -306,7 +306,90 @@ body.light {
 			{/block:PreviousPage}
 		</nav>
 		{/block:Pagination}
+		
+		{block:PermalinkPagination}
+		<!-- TOP COMIC NAVIGATION -->
+		<nav class="pagination {block:IfNotFirstButtonImage}{block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}{block:IfNotLastButtonImage}noimages{/block:IfNotLastButtonImage}{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}{/block:IfNotFirstButtonImage}">
+			{block:NextPost}
+			<a href="{text:First comic page URL}" class="firstpage" {block:IfNotFirstButtonImage}title="First"{block:IfNotFirstButtonImage}>
+				{block:IfFirstButtonImage}<img src="{image:First button}">{/block:IfFirstButtonImage}
+				{block:IfNotFirstButtonImage}First{block:IfNotFirstButtonImage}
+			</a>
+			<a href="{NextPost}" class="prevpage" {block:IfNotPreviousButtonImage}title="{lang:Previous}"{block:IfNotPreviousButtonImage}>
+				{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}
+				{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}
+			</a>
+			{/block:NextPost}
+			{block:PreviousPost}
+			<a href="{PreviousPost}" class="nextpage" {block:IfNotNextButtonImage}title="{lang:Next}"{block:IfNotNextButtonImage}>
+				{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}
+				{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}
+			</a>
+			<a href="/" class="lastpage" {block:IfNotLastButtonImage}title="Last"{block:IfNotLastButtonImage}>
+				{block:IfLastButtonImage}<img src="{image:Last button}">{/block:IfLastButtonImage}
+				{block:IfNotLastButtonImage}Last{block:IfNotLastButtonImage}
+			</a>
+			{/block:PreviousPost}
+		</nav>
+		{/block:PermalinkPagination}
+		
+		{block:DayPagination}
+		<!-- TOP COMIC NAVIGATION -->
+		<nav class="pagination {block:IfNotFirstButtonImage}{block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}{block:IfNotLastButtonImage}noimages{/block:IfNotLastButtonImage}{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}{/block:IfNotFirstButtonImage}">
+			{block:PreviousDayPage}
+			<a href="{text:First comic page URL}" class="firstpage" {block:IfNotFirstButtonImage}title="First"{block:IfNotFirstButtonImage}>
+				{block:IfFirstButtonImage}<img src="{image:First button}">{/block:IfFirstButtonImage}
+				{block:IfNotFirstButtonImage}First{block:IfNotFirstButtonImage}
+			</a>
+			<a href="{PreviousDayPage}" class="prevpage" {block:IfNotPreviousButtonImage}title="{lang:Previous}"{block:IfNotPreviousButtonImage}>
+				{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}
+				{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}
+			</a>
+			{/block:PreviousDayPage}
+			{block:NextDayPage}
+			<a href="{NextDayPage}" class="nextpage" {block:IfNotNextButtonImage}title="{lang:Next}"{block:IfNotNextButtonImage}>
+				{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}
+				{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}
+			</a>
+			<a href="/" class="lastpage" {block:IfNotLastButtonImage}title="Last"{block:IfNotLastButtonImage}>
+				{block:IfLastButtonImage}<img src="{image:Last button}">{/block:IfLastButtonImage}
+				{block:IfNotLastButtonImage}Last{block:IfNotLastButtonImage}
+			</a>
+			{/block:NextDayPage}
+		</nav>
+		{/block:DayPagination}
 		{/block:IfComicNavigation}
+
+
+
+		{block:TagPage}
+		<!-- SPECIAL PAGE HEADER: TAG -->
+		<div class="tag page title">
+			<h2>{lang:TagResultCount posts tagged Tag 2}</h2>
+			<p>Sort <a href="/tagged/{URLSafeTag}">newest first</a> or <a href="/tagged/{URLSafeTag}/chrono">oldest first</a></p>
+		</div>
+		{/block:TagPage}
+
+		{block:DayPage}
+		<!-- SPECIAL PAGE HEADER: DAY -->
+		<div class="page title"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
+		{/block:DayPage}
+
+		{block:SearchPage}
+		<!-- SPECIAL PAGE HEADER: SEARCH -->
+		<div class="page title">
+			<h2>
+				{lang:SearchResultCount results for SearchQuery 2}
+				{block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}
+			</h2>
+		</div>
+		{/block:SearchPage}
+		
+		{block:NoPosts}
+		<!-- SPECIAL MESSAGE: EMPTY BLOG -->
+		<section class="post no-posts"><p>{lang:This Tumblr hasnt posted anything}</p></section>
+		{/block:NoPosts}
+
 
 
 		{block:Posts}
@@ -629,8 +712,8 @@ body.light {
 		{/block:Posts}
 
 
-		<!-- NOTES SECTION -->
 		{block:PostNotes}
+		<!-- NOTES SECTION -->
 		<section id="notes" class="post">
 			<h2 class="title">{lang:Notes}</h2>
 		    {PostNotes-64}
@@ -665,14 +748,66 @@ body.light {
 		</nav>
 		<script>
 			chronoCheck(
-				"{block:IfFirstButtonImage}<img src="{image:First button}">{/block:IfFirstButtonImage}{block:IfNotFirstButtonImage}First{block:IfNotFirstButtonImage}",
-				"{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}",
-				"{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}",
-				"{block:IfLastButtonImage}<img src="{image:Last button}">{/block:IfLastButtonImage}{block:IfNotLastButtonImage}Last{block:IfNotLastButtonImage}",
+				"{block:IfFirstButtonImage}<img src='{image:First button}'>{/block:IfFirstButtonImage}{block:IfNotFirstButtonImage}First{block:IfNotFirstButtonImage}",
+				"{block:IfPreviousButtonImage}<img src='{image:Previous button}'>{/block:IfPreviousButtonImage}{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}",
+				"{block:IfNextButtonImage}<img src='{image:Next button}'>{/block:IfNextButtonImage}{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}",
+				"{block:IfLastButtonImage}<img src='{image:Last button}'>{/block:IfLastButtonImage}{block:IfNotLastButtonImage}Last{block:IfNotLastButtonImage}",
 				"{TotalPages}", "{text:First comic page URL}"
 			);
 		</script>
 		{/block:Pagination}
+		
+		{block:PermalinkPagination}
+		<!-- BOTTOM COMIC NAVIGATION -->
+		<nav class="pagination {block:IfNotFirstButtonImage}{block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}{block:IfNotLastButtonImage}noimages{/block:IfNotLastButtonImage}{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}{/block:IfNotFirstButtonImage}">
+			{block:NextPost}
+			<a href="{text:First comic page URL}" class="firstpage" {block:IfNotFirstButtonImage}title="First"{block:IfNotFirstButtonImage}>
+				{block:IfFirstButtonImage}<img src="{image:First button}">{/block:IfFirstButtonImage}
+				{block:IfNotFirstButtonImage}First{block:IfNotFirstButtonImage}
+			</a>
+			<a href="{NextPost}" class="prevpage" {block:IfNotPreviousButtonImage}title="{lang:Previous}"{block:IfNotPreviousButtonImage}>
+				{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}
+				{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}
+			</a>
+			{/block:NextPost}
+			{block:PreviousPost}
+			<a href="{PreviousPost}" class="nextpage" {block:IfNotNextButtonImage}title="{lang:Next}"{block:IfNotNextButtonImage}>
+				{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}
+				{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}
+			</a>
+			<a href="/" class="lastpage" {block:IfNotLastButtonImage}title="Last"{block:IfNotLastButtonImage}>
+				{block:IfLastButtonImage}<img src="{image:Last button}">{/block:IfLastButtonImage}
+				{block:IfNotLastButtonImage}Last{block:IfNotLastButtonImage}
+			</a>
+			{/block:PreviousPost}
+		</nav>
+		{/block:PermalinkPagination}
+		
+		{block:DayPagination}
+		<!-- BOTTOM COMIC NAVIGATION -->
+		<nav class="pagination {block:IfNotFirstButtonImage}{block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}{block:IfNotLastButtonImage}noimages{/block:IfNotLastButtonImage}{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}{/block:IfNotFirstButtonImage}">
+			{block:PreviousDayPage}
+			<a href="{text:First comic page URL}" class="firstpage" {block:IfNotFirstButtonImage}title="First"{block:IfNotFirstButtonImage}>
+				{block:IfFirstButtonImage}<img src="{image:First button}">{/block:IfFirstButtonImage}
+				{block:IfNotFirstButtonImage}First{block:IfNotFirstButtonImage}
+			</a>
+			<a href="{PreviousDayPage}" class="prevpage" {block:IfNotPreviousButtonImage}title="{lang:Previous}"{block:IfNotPreviousButtonImage}>
+				{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}
+				{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}
+			</a>
+			{/block:PreviousDayPage}
+			{block:NextDayPage}
+			<a href="{NextDayPage}" class="nextpage" {block:IfNotNextButtonImage}title="{lang:Next}"{block:IfNotNextButtonImage}>
+				{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}
+				{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}
+			</a>
+			<a href="/" class="lastpage" {block:IfNotLastButtonImage}title="Last"{block:IfNotLastButtonImage}>
+				{block:IfLastButtonImage}<img src="{image:Last button}">{/block:IfLastButtonImage}
+				{block:IfNotLastButtonImage}Last{block:IfNotLastButtonImage}
+			</a>
+			{/block:NextDayPage}
+		</nav>
+		{/block:DayPagination}
 		{/block:IfComicNavigation}
 		
 		{block:IfNotComicNavigation}
@@ -687,6 +822,30 @@ body.light {
 			{/block:NextPage}
 		</nav>
 		{/block:Pagination}
+		
+		{block:PermalinkPagination}
+		<!-- BOTTOM NORMAL NAVIGATION -->
+		<nav class="pagination {block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}noimages{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}">
+		{block:PreviousPost}
+			<a href="{PreviousPost}" class="prevpage">{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}</a>
+			{/block:PreviousPost}
+			{block:NextPost}
+			<a href="{NextPost}" class="nextpage">{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}</a>
+			{/block:NextPost}
+		</nav>
+		{/block:PermalinkPagination}
+		
+		{block:DayPagination}
+		<!-- BOTTOM NORMAL NAVIGATION -->
+		<nav class="pagination {block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}noimages{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}">
+		{block:PreviousDayPage}
+			<a href="{PreviousDayPage}" class="prevpage">{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}</a>
+			{/block:PreviousDayPage}
+			{block:NextDayPage}
+			<a href="{NextDayPage}" class="nextpage">{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}</a>
+			{/block:NextDayPage}
+		</nav>
+		{/block:DayPagination}
 		{/block:IfNotComicNavigation}
 	</main>
 
