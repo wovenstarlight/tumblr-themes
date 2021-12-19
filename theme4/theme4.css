@@ -140,6 +140,8 @@ main {
 	padding: 0 1em;
 	text-align: center;
 }
+/* Ask page FAQ */
+.askwrapper:not(:empty) + iframe { margin-top: 15px }
 /* Posts */
 .post, #notes {
 	background-color: var(--post);
