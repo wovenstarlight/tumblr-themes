@@ -45,6 +45,11 @@ function chronoCheck(firstHTML, prevHTML, nextHTML, lastHTML, totalpages, firstU
 
 $(document).ready( function() {
 
+	// set up tooltips
+	tippy("[data-tippy-content]", {
+		theme: 'standard'
+	});
+
 	// audio post setup
 	customAudio({
 		playButton: "<i class='fas fa-play'></i>",
