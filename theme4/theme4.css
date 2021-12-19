@@ -68,9 +68,28 @@ form input {
 	border-bottom-right-radius: var(--roundness);
 }
 /* Roundness (bottom) */
-#blogpages a:lasst-child {
+#blogpages a:last-child {
 	border-bottom-left-radius: var(--roundness);
 	border-bottom-right-radius: var(--roundness);
+}
+
+/* Tippy tooltips styling */
+.tippy-box[data-theme~="standard"] {
+	background-color: var(--post);
+	color: var(--text);
+	border: 0.15em solid var(--border);
+}
+.tippy-box[data-theme~="standard"][data-placement^="top"] > .tippy-arrow::before {
+	border-top-color: var(--post);
+	filter: drop-shadow(0 0.2em var(--border))
+}
+.tippy-box[data-theme~="standard"][data-placement^="bottom"] > .tippy-arrow::before {
+	border-bottom-color: var(--post);
+	filter: drop-shadow(0 -0.2em var(--border))
+}
+.tippy-box[data-theme~="standard"][data-placement^="left"] > .tippy-arrow::before {
+	border-left-color: var(--post);
+	filter: drop-shadow(0.2em 0 var(--border))
 }
 
 
