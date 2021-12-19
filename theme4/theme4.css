@@ -49,7 +49,8 @@ form,
 .postbody .link,
 .photowrapper .highres,
 .audiowrapper, .audiowrapper .albumart, .audiowrapper .custom_audio_buttons, .audiowrapper .custom_audio_seekbar,
-.postbody .ask {
+.postbody .ask,
+.pagination:not(.noimages), .pagination.noimages a {
 	border-radius: var(--roundness);
 }
 /* Roundness (top) */
@@ -181,7 +182,7 @@ article:first-child { margin-top: 0 }
 	padding: 0.5em 0;
 }
 .bodyitem:last-child, .postbody > .bodyitemcontent:last-child { padding-bottom: 0; margin-bottom: 0 }
-.bodyitem:not(:last-child) { border-bottom: 0.1em solid var(--accent1) }
+.bodyitem:not(:last-child) { border-bottom: 0.1em solid var(--border) }
 .postbody > .bodyitemcontent { padding: 0.5em 1em }
 .bodyitem .bodyitemcontent { padding: 0.75em 0.5em 0.5em 1em; }
 .bodyitemcontent :first-child, .question :first-child { margin-top: 0 }
@@ -257,6 +258,20 @@ article:first-child { margin-top: 0 }
 	padding: 0;
 }
 .postfooter .dropdown li { margin: 0.25em 0 }
+.pagination {
+	margin: 0 auto;
+	width: fit-content;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	column-gap: 1.5em;
+}
+.pagination.noimages a {
+	padding: 0.5em 1em;
+	background: var(--accent2);
+	text-transform: uppercase;
+}
+#previous + #next { margin-left: 0.75em;}
 /***************************** SPECIAL POST STYLES *****************************/
 /* Special post margins - chats, photos, videos */
 .postbody .quote, .postbody .chat, .photowrapper, .npf_photoset, .videowrapper { margin: 0.75em 1em 0 }
