@@ -90,6 +90,7 @@ form input {
 	top: 0;
 	z-index: 2;
 }
+#pageheader.nochrono { grid-template-columns: auto 1fr }
 #title {
 	padding: 0.5rem;
 	min-height: var(--title-height);

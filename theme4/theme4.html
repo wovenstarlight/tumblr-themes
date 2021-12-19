@@ -125,6 +125,7 @@
 	<meta name="if:Post tags" content="1">
 	<meta name="if:Post share links" content="1">
 	<meta name="if:Comic navigation" content="1">
+	<meta name="if:Read Chronologically button" content="1">
 	<meta name="image:First button" content=""/>
 	<meta name="image:Previous button" content=""/>
 	<meta name="image:Next button" content=""/>
@@ -267,12 +268,12 @@ body.light {
 	{block:HideTitle}<h1 id="hiddentitle">{Title}</h1>{/block:HideTitle}
 
 	<!-- HEADER -->
-	<header id="pageheader" {block:IfFixedHeader}class="sticky"{/block:IfFixedHeader}>
+	<header id="pageheader" class="{block:IfFixedHeader}sticky{/block:IfFixedHeader} {block:IfNotReadChronologicallyButton}nochrono{block:IfNotReadChronologicallyButton}">
 		<a href="/" data-tippy-content="{lang:Home}" data-tippy-placement="bottom"><i class="fas fa-home"></i></a>
 		
 		<a href="/" id="title">{block:ShowTitle}<h1>{Title}</h1>{/block:ShowTitle}</a>
 		
-		<a href="/tagged/{text:Main content tag}/chrono" data-tippy-content="Read from the start" data-tippy-placement="bottom"><i class="fas fa-hourglass-half"></i></a>
+		{block:IfReadChronologicallyButton}<a href="/tagged/{text:Main content tag}/chrono" data-tippy-content="Read from the start" data-tippy-placement="bottom"><i class="fas fa-hourglass-half"></i></a>{/block:IfReadChronologicallyButton}
 	</header>
 
 	<!-- CUSTOM BACKGROUND IMAGE (LEFT) -->
