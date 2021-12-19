@@ -42,6 +42,7 @@ form,
 #blogpages,
 #credit-ra a,
 #buttons > div,
+.page.title,
 .post, .postfooter > *, .postfooter div i, .sharelinks .dropdown,
 #notes, #notes .avatar, #notes .more_notes_link, #notes .notes_loading,
 .user .usericon,
@@ -121,7 +122,22 @@ form input {
 main {
 	background: rgba(var(--bg--rgb), var(--bg-opacity));
 	padding: 0.75em 0.5em;
-	position: relative;
+}
+/* Special page titles */
+.page.title {
+	background: var(--accent1);
+	border: 0.25em solid var(--border);
+	margin: 1em 0 1.5em;
+	text-align: center;
+	padding: 0.75em 1em;
+}
+.page.title h2, .page.title p { margin: 0 }
+.page.title .tag::before { content: "#" }
+.page.title .search_query::before { content: "\201C" }
+.page.title .search_query::after { content: "\201D" }
+.post.no-posts {
+	padding: 0 1em;
+	text-align: center;
 }
 /* Posts */
 .post, #notes {
@@ -152,7 +168,6 @@ main {
 }
 .pinnedpost { color: var(--headings) }
 .customlike { position: relative }
-.customlike .like_button { cursor: pointer }
 .customlike .like_button.liked + i { color: var(--like) }
 .customlike iframe {
 	position: absolute;
