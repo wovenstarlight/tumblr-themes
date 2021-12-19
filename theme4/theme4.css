@@ -271,7 +271,7 @@ article:first-child { margin-top: 0 }
 	background: var(--accent2);
 	text-transform: uppercase;
 }
-#previous + #next { margin-left: 0.75em;}
+.prevpage + .nextpage { margin-left: 0.75em;}
 /***************************** SPECIAL POST STYLES *****************************/
 /* Special post margins - chats, photos, videos */
 .postbody .quote, .postbody .chat, .photowrapper, .npf_photoset, .videowrapper { margin: 0.75em 1em 0 }
