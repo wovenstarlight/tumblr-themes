@@ -285,13 +285,23 @@ body.light {
 		<!-- TOP COMIC NAVIGATION -->
 		<nav class="pagination {block:IfNotFirstButtonImage}{block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}{block:IfNotLastButtonImage}noimages{/block:IfNotLastButtonImage}{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}{/block:IfNotFirstButtonImage}">
 			{block:NextPage}
-			<a href="{text:First comic page URL}">{block:IfFirstButtonImage}<img src="{image:First button}">{/block:IfFirstButtonImage}{block:IfNotFirstButtonImage}First{block:IfNotFirstButtonImage}</a>
-			<a href="{NextPage}">{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}</a>
+			<a href="{text:First comic page URL}" class="firstpage" {block:IfNotFirstButtonImage}title="First"{block:IfNotFirstButtonImage}>
+				{block:IfFirstButtonImage}<img src="{image:First button}">{/block:IfFirstButtonImage}
+				{block:IfNotFirstButtonImage}First{block:IfNotFirstButtonImage}
+			</a>
+			<a href="{NextPage}" class="prevpage" {block:IfNotPreviousButtonImage}title="{lang:Previous}"{block:IfNotPreviousButtonImage}>
+				{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}
+				{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}
+			</a>
 			{/block:NextPage}
 			{block:PreviousPage}
-			<a href="{PreviousPage}">{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}</a>
-			<a href="/">
-				{block:IfLastButtonImage}<img src="{image:Last button}">{/block:IfLastButtonImage}{block:IfNotLastButtonImage}Last{block:IfNotLastButtonImage}
+			<a href="{PreviousPage}" class="nextpage" {block:IfNotNextButtonImage}title="{lang:Next}"{block:IfNotNextButtonImage}>
+				{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}
+				{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}
+			</a>
+			<a href="/" class="lastpage" {block:IfNotLastButtonImage}title="Last"{block:IfNotLastButtonImage}>
+				{block:IfLastButtonImage}<img src="{image:Last button}">{/block:IfLastButtonImage}
+				{block:IfNotLastButtonImage}Last{block:IfNotLastButtonImage}
 			</a>
 			{/block:PreviousPage}
 		</nav>
@@ -627,28 +637,47 @@ body.light {
 		<!-- BOTTOM COMIC NAVIGATION -->
 		<nav class="pagination {block:IfNotFirstButtonImage}{block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}{block:IfNotLastButtonImage}noimages{/block:IfNotLastButtonImage}{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}{/block:IfNotFirstButtonImage}">
 			{block:NextPage}
-			<a href="{text:First comic page URL}">{block:IfFirstButtonImage}<img src="{image:First button}">{/block:IfFirstButtonImage}{block:IfNotFirstButtonImage}First{block:IfNotFirstButtonImage}</a>
-			<a href="{NextPage}">{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}</a>
+			<a href="{text:First comic page URL}" class="firstpage" {block:IfNotFirstButtonImage}title="First"{block:IfNotFirstButtonImage}>
+				{block:IfFirstButtonImage}<img src="{image:First button}">{/block:IfFirstButtonImage}
+				{block:IfNotFirstButtonImage}First{block:IfNotFirstButtonImage}
+			</a>
+			<a href="{NextPage}" class="prevpage" {block:IfNotPreviousButtonImage}title="{lang:Previous}"{block:IfNotPreviousButtonImage}>
+				{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}
+				{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}
+			</a>
 			{/block:NextPage}
 			{block:PreviousPage}
-			<a href="{PreviousPage}">{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}</a>
-			<a href="/">
-				{block:IfLastButtonImage}<img src="{image:Last button}">{/block:IfLastButtonImage}{block:IfNotLastButtonImage}Last{block:IfNotLastButtonImage}
+			<a href="{PreviousPage}" class="nextpage" {block:IfNotNextButtonImage}title="{lang:Next}"{block:IfNotNextButtonImage}>
+				{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}
+				{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}
+			</a>
+			<a href="/" class="lastpage" {block:IfNotLastButtonImage}title="Last"{block:IfNotLastButtonImage}>
+				{block:IfLastButtonImage}<img src="{image:Last button}">{/block:IfLastButtonImage}
+				{block:IfNotLastButtonImage}Last{block:IfNotLastButtonImage}
 			</a>
 			{/block:PreviousPage}
 		</nav>
+		<script>
+			chronoCheck(
+				"{block:IfFirstButtonImage}<img src="{image:First button}">{/block:IfFirstButtonImage}{block:IfNotFirstButtonImage}First{block:IfNotFirstButtonImage}",
+				"{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}",
+				"{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}",
+				"{block:IfLastButtonImage}<img src="{image:Last button}">{/block:IfLastButtonImage}{block:IfNotLastButtonImage}Last{block:IfNotLastButtonImage}",
+				"{TotalPages}", "{text:First comic page URL}"
+			);
+		</script>
 		{/block:Pagination}
 		{/block:IfComicNavigation}
 		
 		{block:IfNotComicNavigation}
 		{block:Pagination}
 		<!-- BOTTOM NORMAL NAVIGATION -->
-		<nav class="pagination">
+		<nav class="pagination {block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}noimages{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}">
 		{block:PreviousPage}
-			<a href="{PreviousPage}">{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}</a>
+			<a href="{PreviousPage}" class="prevpage">{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}</a>
 			{/block:PreviousPage}
 			{block:NextPage}
-			<a href="{NextPage}">{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}</a>
+			<a href="{NextPage}" class="nextpage">{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}</a>
 			{/block:NextPage}
 		</nav>
 		{/block:Pagination}
