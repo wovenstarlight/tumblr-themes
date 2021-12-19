@@ -25,28 +25,6 @@
 	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
 	<link rel="alternate" type="application/rss+xml" href="{RSS}">
 
-	<!-- jQuery CDN -->
-	<script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
-	<!-- Tippy.js tooltips by atomiks -->
-	<script src="https://unpkg.com/@popperjs/core@2"></script>
-	<script src="https://unpkg.com/tippy.js@6"></script>
-	<!--
-	NPF photosets plugin by @codematurgy
-	https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin
-	-->
-	<script src="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosets.js"></script>
-	<link href="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosetstyle.css" rel="stylesheet" type="text/css">
-	<!--
-	customaudio.js by @annasthms
-	https://annasthms.tumblr.com/more/js/customaudio/new
-	-->
-	<script src="https://cdn.jsdelivr.net/gh/annasthms/customaudio@latest/customaudio.min.js"></script>
-	{block:IfBackToTopButton}
-	<!-- Scroll to top button -->
-	<script src="https://wovenstarlight.github.io/tumblr-themes/scrolltotop.min.js"></script>
-	{/block:IfBackToTopButton}
-	<script src="https://wovenstarlight.github.io/tumblr-themes/theme4/theme4.min.js"></script>
-
 	<!-- THEME VARIABLES -->
 	{block:Hidden}
 	<meta name="text:Google font for body" content="Zen Old Mincho">
@@ -255,6 +233,29 @@ body.light {
 	<!-- Theme stylesheet -->
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme4/theme4.min.css">
 
+
+	<!-- jQuery CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+	<!-- Tippy.js tooltips by atomiks -->
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
+	<!--
+	NPF photosets plugin by @codematurgy
+	https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin
+	-->
+	<script src="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosets.js"></script>
+	<link href="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosetstyle.css" rel="stylesheet" type="text/css">
+	<!--
+	customaudio.js by @annasthms
+	https://annasthms.tumblr.com/more/js/customaudio/new
+	-->
+	<script src="https://cdn.jsdelivr.net/gh/annasthms/customaudio@latest/customaudio.min.js"></script>
+	{block:IfBackToTopButton}
+	<!-- Scroll to top button -->
+	<script src="https://wovenstarlight.github.io/tumblr-themes/scrolltotop.min.js"></script>
+	{/block:IfBackToTopButton}
+	<script src="https://wovenstarlight.github.io/tumblr-themes/theme4/theme4.min.js"></script>
+
 </head>
 
 <!-- PAGE CLASSES -->
@@ -267,11 +268,11 @@ body.light {
 
 	<!-- HEADER -->
 	<header id="pageheader" {block:IfFixedHeader}class="sticky"{/block:IfFixedHeader}>
-		<a href="/" title="{lang:Home}"><i class="fas fa-home"></i></a>
+		<a href="/" data-tippy-content="{lang:Home}" data-tippy-placement="bottom"><i class="fas fa-home"></i></a>
 		
 		<div id="title">{block:ShowTitle}<h1>{Title}</h1>{/block:ShowTitle}</div>
 		
-		<a href="/tagged/{text:Main content tag}/chrono"><i class="fas fa-hourglass-half"></i></a>
+		<a href="/tagged/{text:Main content tag}/chrono" data-tippy-content="Read from the start" data-tippy-placement="bottom"><i class="fas fa-hourglass-half"></i></a>
 	</header>
 
 	<!-- CUSTOM BACKGROUND IMAGE (LEFT) -->
@@ -310,21 +311,21 @@ body.light {
 		<!-- TOP COMIC NAVIGATION -->
 		<nav class="pagination {block:IfNotFirstButtonImage}{block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}{block:IfNotLastButtonImage}noimages{/block:IfNotLastButtonImage}{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}{/block:IfNotFirstButtonImage}">
 			{block:NextPost}
-			<a href="{text:First comic page URL}" class="firstpage" {block:IfNotFirstButtonImage}title="First"{block:IfNotFirstButtonImage}>
+			<a href="{text:First comic page URL}" class="firstpage" {block:IfNotFirstButtonImage}title="First post"{block:IfNotFirstButtonImage}>
 				{block:IfFirstButtonImage}<img src="{image:First button}">{/block:IfFirstButtonImage}
 				{block:IfNotFirstButtonImage}First{block:IfNotFirstButtonImage}
 			</a>
-			<a href="{NextPost}" class="prevpage" {block:IfNotPreviousButtonImage}title="{lang:Previous}"{block:IfNotPreviousButtonImage}>
+			<a href="{NextPost}" class="prevpage" {block:IfNotPreviousButtonImage}title="{lang:Previous post}"{block:IfNotPreviousButtonImage}>
 				{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}
 				{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}
 			</a>
 			{/block:NextPost}
 			{block:PreviousPost}
-			<a href="{PreviousPost}" class="nextpage" {block:IfNotNextButtonImage}title="{lang:Next}"{block:IfNotNextButtonImage}>
+			<a href="{PreviousPost}" class="nextpage" {block:IfNotNextButtonImage}title="{lang:Next post}"{block:IfNotNextButtonImage}>
 				{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}
 				{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}
 			</a>
-			<a href="/" class="lastpage" {block:IfNotLastButtonImage}title="Last"{block:IfNotLastButtonImage}>
+			<a href="/" class="lastpage" {block:IfNotLastButtonImage}title="Last post"{block:IfNotLastButtonImage}>
 				{block:IfLastButtonImage}<img src="{image:Last button}">{/block:IfLastButtonImage}
 				{block:IfNotLastButtonImage}Last{block:IfNotLastButtonImage}
 			</a>
@@ -336,21 +337,21 @@ body.light {
 		<!-- TOP COMIC NAVIGATION -->
 		<nav class="pagination {block:IfNotFirstButtonImage}{block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}{block:IfNotLastButtonImage}noimages{/block:IfNotLastButtonImage}{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}{/block:IfNotFirstButtonImage}">
 			{block:PreviousDayPage}
-			<a href="{text:First comic page URL}" class="firstpage" {block:IfNotFirstButtonImage}title="First"{block:IfNotFirstButtonImage}>
+			<a href="{text:First comic page URL}" class="firstpage" {block:IfNotFirstButtonImage}title="First page"{block:IfNotFirstButtonImage}>
 				{block:IfFirstButtonImage}<img src="{image:First button}">{/block:IfFirstButtonImage}
 				{block:IfNotFirstButtonImage}First{block:IfNotFirstButtonImage}
 			</a>
-			<a href="{PreviousDayPage}" class="prevpage" {block:IfNotPreviousButtonImage}title="{lang:Previous}"{block:IfNotPreviousButtonImage}>
+			<a href="{PreviousDayPage}" class="prevpage" {block:IfNotPreviousButtonImage}title="{lang:Previous day}"{block:IfNotPreviousButtonImage}>
 				{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}
 				{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}
 			</a>
 			{/block:PreviousDayPage}
 			{block:NextDayPage}
-			<a href="{NextDayPage}" class="nextpage" {block:IfNotNextButtonImage}title="{lang:Next}"{block:IfNotNextButtonImage}>
+			<a href="{NextDayPage}" class="nextpage" {block:IfNotNextButtonImage}title="{lang:Next day}"{block:IfNotNextButtonImage}>
 				{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}
 				{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}
 			</a>
-			<a href="/" class="lastpage" {block:IfNotLastButtonImage}title="Last"{block:IfNotLastButtonImage}>
+			<a href="/" class="lastpage" {block:IfNotLastButtonImage}title="Last day"{block:IfNotLastButtonImage}>
 				{block:IfLastButtonImage}<img src="{image:Last button}">{/block:IfLastButtonImage}
 				{block:IfNotLastButtonImage}Last{block:IfNotLastButtonImage}
 			</a>
@@ -411,7 +412,7 @@ body.light {
 				{/block:IfPostDates}
 
 				<span class="likereblog">
-					{block:PinnedPostLabel}<i class="fas fa-thumbtack" title="{PinnedPostLabel}"></i>{/block:PinnedPostLabel}
+					{block:PinnedPostLabel}<i class="fas fa-thumbtack" data-tippy-content="{PinnedPostLabel}"></i>{/block:PinnedPostLabel}
 
 					{block:IfLikeButtons}
 					<a href="#" class="customlike">
@@ -762,21 +763,21 @@ body.light {
 		<!-- BOTTOM COMIC NAVIGATION -->
 		<nav class="pagination {block:IfNotFirstButtonImage}{block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}{block:IfNotLastButtonImage}noimages{/block:IfNotLastButtonImage}{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}{/block:IfNotFirstButtonImage}">
 			{block:NextPost}
-			<a href="{text:First comic page URL}" class="firstpage" {block:IfNotFirstButtonImage}title="First"{block:IfNotFirstButtonImage}>
+			<a href="{text:First comic page URL}" class="firstpage" {block:IfNotFirstButtonImage}title="First post"{block:IfNotFirstButtonImage}>
 				{block:IfFirstButtonImage}<img src="{image:First button}">{/block:IfFirstButtonImage}
 				{block:IfNotFirstButtonImage}First{block:IfNotFirstButtonImage}
 			</a>
-			<a href="{NextPost}" class="prevpage" {block:IfNotPreviousButtonImage}title="{lang:Previous}"{block:IfNotPreviousButtonImage}>
+			<a href="{NextPost}" class="prevpage" {block:IfNotPreviousButtonImage}title="{lang:Previous post}"{block:IfNotPreviousButtonImage}>
 				{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}
 				{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}
 			</a>
 			{/block:NextPost}
 			{block:PreviousPost}
-			<a href="{PreviousPost}" class="nextpage" {block:IfNotNextButtonImage}title="{lang:Next}"{block:IfNotNextButtonImage}>
+			<a href="{PreviousPost}" class="nextpage" {block:IfNotNextButtonImage}title="{lang:Next post}"{block:IfNotNextButtonImage}>
 				{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}
 				{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}
 			</a>
-			<a href="/" class="lastpage" {block:IfNotLastButtonImage}title="Last"{block:IfNotLastButtonImage}>
+			<a href="/" class="lastpage" {block:IfNotLastButtonImage}title="Last post"{block:IfNotLastButtonImage}>
 				{block:IfLastButtonImage}<img src="{image:Last button}">{/block:IfLastButtonImage}
 				{block:IfNotLastButtonImage}Last{block:IfNotLastButtonImage}
 			</a>
@@ -788,21 +789,21 @@ body.light {
 		<!-- BOTTOM COMIC NAVIGATION -->
 		<nav class="pagination {block:IfNotFirstButtonImage}{block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}{block:IfNotLastButtonImage}noimages{/block:IfNotLastButtonImage}{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}{/block:IfNotFirstButtonImage}">
 			{block:PreviousDayPage}
-			<a href="{text:First comic page URL}" class="firstpage" {block:IfNotFirstButtonImage}title="First"{block:IfNotFirstButtonImage}>
+			<a href="{text:First comic page URL}" class="firstpage" {block:IfNotFirstButtonImage}title="First page"{block:IfNotFirstButtonImage}>
 				{block:IfFirstButtonImage}<img src="{image:First button}">{/block:IfFirstButtonImage}
 				{block:IfNotFirstButtonImage}First{block:IfNotFirstButtonImage}
 			</a>
-			<a href="{PreviousDayPage}" class="prevpage" {block:IfNotPreviousButtonImage}title="{lang:Previous}"{block:IfNotPreviousButtonImage}>
+			<a href="{PreviousDayPage}" class="prevpage" {block:IfNotPreviousButtonImage}title="{lang:Previous day}"{block:IfNotPreviousButtonImage}>
 				{block:IfPreviousButtonImage}<img src="{image:Previous button}">{/block:IfPreviousButtonImage}
 				{block:IfNotPreviousButtonImage}{lang:Previous}{block:IfNotPreviousButtonImage}
 			</a>
 			{/block:PreviousDayPage}
 			{block:NextDayPage}
-			<a href="{NextDayPage}" class="nextpage" {block:IfNotNextButtonImage}title="{lang:Next}"{block:IfNotNextButtonImage}>
+			<a href="{NextDayPage}" class="nextpage" {block:IfNotNextButtonImage}title="{lang:Next day}"{block:IfNotNextButtonImage}>
 				{block:IfNextButtonImage}<img src="{image:Next button}">{/block:IfNextButtonImage}
 				{block:IfNotNextButtonImage}{lang:Next}{block:IfNotNextButtonImage}
 			</a>
-			<a href="/" class="lastpage" {block:IfNotLastButtonImage}title="Last"{block:IfNotLastButtonImage}>
+			<a href="/" class="lastpage" {block:IfNotLastButtonImage}title="Last day"{block:IfNotLastButtonImage}>
 				{block:IfLastButtonImage}<img src="{image:Last button}">{/block:IfLastButtonImage}
 				{block:IfNotLastButtonImage}Last{block:IfNotLastButtonImage}
 			</a>
@@ -860,9 +861,9 @@ body.light {
 		<div class="sticky {block:IfFixedHeader}header{/block:IfFixedHeader}">
 			<!-- USERNAME & ASK/SUBMIT -->
 			<div id="name-asksubmit" class="{block:AskEnabled}ask{/block:AskEnabled} {block:SubmissionsEnabled}submit{/block:SubmissionsEnabled}">
-				{block:AskEnabled}<a href="/ask" id="asklink" title="{AskLabel}"><i class="fas fa-envelope"></i></a>{/block:AskEnabled}
+				{block:AskEnabled}<a href="/ask" id="asklink" data-tippy-content="{AskLabel}"><i class="fas fa-envelope"></i></a>{/block:AskEnabled}
 				<a href="/" id="blogname">{Name}</a>
-				{block:SubmissionsEnabled}<a href="/submit" id="submitlink" title="{SubmitLabel}"><i class="fas fa-inbox"></i></a>{/block:SubmissionsEnabled}
+				{block:SubmissionsEnabled}<a href="/submit" id="submitlink" data-tippy-content="{SubmitLabel}"><i class="fas fa-inbox"></i></a>{/block:SubmissionsEnabled}
 			</div>
 			
 			{block:ShowDescription}
