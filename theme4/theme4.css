@@ -104,9 +104,8 @@ form,
 	top: 0;
 	z-index: 2;
 }
-#pageheader.nochrono, #pageheader.nohome {
-	grid-template-columns: auto 1fr;
-}
+#pageheader.nochrono { grid-template-columns: auto 1fr }
+#pageheader.nohome { grid-template-columns: 1fr auto }
 #pageheader.nochrono.nohome {
 	display: block;
 }
