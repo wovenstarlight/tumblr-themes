@@ -484,7 +484,7 @@ p.npf_chat { margin: 0 }
 .audiowrapper .trackinfo { justify-content: space-between }
 .audiowrapper .trackname { /* Text info: track name */
 	text-transform: uppercase;
-	color: var(--headings);
+	color: var(--links);
 	font-size: 1.2em;
 }
 .audiowrapper .making { font-size: 0.9em } /* Text info: artist and album */
@@ -523,7 +523,9 @@ p.npf_chat { margin: 0 }
 	transition: opacity .2s;
 }
 .post:not(:hover) .photowrapper .highres { opacity: 0; pointer-events: none }
-/* Video posts */
+/* General iframe backup... */
+.bodyitemcontent iframe,
+/* ...and Video posts */
 .videowrapper, .tumblr_video_container, .videowrapper iframe {
 	margin-left: auto;
 	margin-right: auto;
