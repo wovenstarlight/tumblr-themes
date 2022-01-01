@@ -140,6 +140,7 @@
 	<meta name="if:Like buttons" content="1">
 	<meta name="if:Reblog buttons" content="1">
 	<meta name="if:Post tags" content="1">
+	<meta name="if:Show tags on click" content="0">
 	<meta name="if:Post share links" content="1">
 	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
 	{/block:Hidden}
@@ -257,6 +258,19 @@ body.light {
 	<!-- Scroll to top button -->
 	<script src="https://wovenstarlight.github.io/tumblr-themes/scrolltotop.min.js"></script>
 	{/block:IfBackToTopButton}
+	{block:IfShowTagsOnClick}
+	<!-- Show tags on click -->
+	<script>
+	$(document).ready(function(){
+		$(".tags").hide();
+		
+		$(".showtags").on("click keypress", function(){
+			$(this).parent().next(".tags").slideToggle();
+			$(this).toggleClass('active');
+		});
+	});
+	</script>
+	{/block:IfShowTagsOnClick}	
 	<script src="https://wovenstarlight.github.io/tumblr-themes/theme4/theme4.min.js"></script>
 
 </head>
@@ -687,30 +701,47 @@ body.light {
 
 			
 			
-			<footer class="postfooter {block:Date}{block:IfPostShareLinks}sharelinks{/block:IfPostShareLinks}{/block:Date}">
-				<!-- PERMALINK BUTTON -->
-				<a href="{Permalink}"><i class="fas fa-link"></i></a>
+			<footer class="postfooter">
+				<div class="linksbar">
+					<!-- PERMALINK BUTTON -->
+					<a href="{Permalink}" class="permalink" data-tippy-content="{lang:Permalink}"><i class="fas fa-link"></i></a>
 
+					{block:RebloggedFrom}
+					<!-- VIA and SOURCE -->
+					<a href="{ReblogParentURL}" class="viasource" data-tippy-content="{lang:Reblogged from ReblogParentName}"><img src="{ReblogParentPortraitURL-64}"></a>
+
+					<a href="{ReblogRootURL}" class="viasource" data-tippy-content="{lang:Originally from ReblogRootName}"><img src="{ReblogRootPortraitURL-64}"></a>
+					{/block:RebloggedFrom}
+
+					<div class="showtags" tabindex="0">
+						{block:IfPostTags}{block:HasTags}{block:IfShowTagsOnClick}
+						<i class="fas fa-chevron-right"></i> Show tags
+						{/block:IfShowTagsOnClick}{/block:HasTags}{/block:IfPostTags}
+					</div>
+
+					{block:Date}{block:IfPostShareLinks}
+					<!-- SHARE OPTIONS -->
+					<div class="sharelinks" tabindex="0">
+						<i class="fas fa-share-square"></i>
+						<div class="dropdown">
+							<h3>{lang:Share this}</h3>
+							<ul>
+								<li><a target="_new" href="{ShortURL}">{lang:Short URL for this post}</a></li>
+								<li><a target="_new" href="https://twitter.com/intent/tweet?url={ShortURL}">Twitter</a></li>
+								<li><a target="_new" href="https://www.facebook.com/sharer.php?u={Permalink}{block:Title}&t={Title}{/block:Title}">Facebook</a></li>
+								<li><a target="_new" href="https://pinterest.com/pin/create/button/?url={Permalink}&media={PhotoURL-500}">Pinterest</a></li>
+							</ul>
+						</div>
+					</div>
+					{/block:IfPostShareLinks}{block:Date}
+				</div>
+
+				{block:IfPostTags}{block:HasTags}
 				<div class="tags">
 					<!-- TAGS SECTION -->
-					{block:IfPostTags}{block:HasTags}{block:Tags}<a href="{TagURL}">#{Tag}</a>{block:Tags}{/block:HasTags}{/block:IfPostTags}
+					{block:Tags}<a href="{TagURL}">#{Tag}</a>{block:Tags}
 				</div>
-
-				{block:Date}{block:IfPostShareLinks}
-				<!-- SHARE OPTIONS -->
-				<div class="sharelinks">
-					<i class="fas fa-share-square"></i>
-					<div class="dropdown">
-						<h3>{lang:Share this}</h3>
-						<ul>
-							<li><a target="_new" href="{ShortURL}">{lang:Short URL for this post}</a></li>
-							<li><a target="_new" href="https://twitter.com/intent/tweet?url={ShortURL}">Twitter</a></li>
-							<li><a target="_new" href="https://www.facebook.com/sharer.php?u={Permalink}{block:Title}&t={Title}{/block:Title}">Facebook</a></li>
-							<li><a target="_new" href="https://pinterest.com/pin/create/button/?url={Permalink}&media={PhotoURL-500}">Pinterest</a></li>
-						</ul>
-					</div>
-				</div>
-				{/block:IfPostShareLinks}{block:Date}
+				{/block:HasTags}{/block:IfPostTags}
 			</footer>
 
 		</article>

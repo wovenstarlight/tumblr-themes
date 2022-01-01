@@ -39,6 +39,7 @@ blockquote {
 }
 
 /* Roundness */
+.tippy-box[data-theme~="standard"],
 #pageheader a, #title,
 #blogavatar,
 #asklink, #submitlink, #description,
@@ -48,7 +49,7 @@ form,
 #credit-ra a,
 #buttons > div,
 .page.title,
-.post, .postfooter > *, .postfooter div i, .sharelinks .dropdown,
+.post, .linksbar a, .linksbar a img, .showtags, .tags, .sharelinks i, .sharelinks .dropdown,
 #notes, #notes .avatar, #notes .more_notes_link, #notes .notes_loading,
 .user .usericon,
 .read_more,
@@ -220,7 +221,7 @@ main {
 .bodyitem:last-child, .postbody > .bodyitemcontent:last-child { padding-bottom: 0; margin-bottom: 0 }
 .bodyitem:not(:last-child) { border-bottom: 0.1em solid var(--border) }
 .postbody > .bodyitemcontent { padding: 0.5em 1em }
-.bodyitem .bodyitemcontent { padding: 0.75em 0.5em 0.5em 1em; }
+.bodyitem .bodyitemcontent { padding: 0.75em 0.5em 0.5em; }
 .bodyitemcontent :first-child, .question :first-child { margin-top: 0 }
 .bodyitemcontent :last-child, .question :last-child { margin-bottom: 0 }
 .post .title { margin: 0 }
@@ -240,15 +241,31 @@ main {
 	padding: 0.5em 0.75em;
 }
 /* Post footer */
-.postfooter {
-	display: grid;
-	grid-template-columns: 2em 1fr;
-	margin: 0.75em;
-	column-gap: 1em;
+.postfooter { margin: 0.75em }
+.linksbar {
+	display: flex;
+	column-gap: 0.5em;
 }
-.postfooter.sharelinks { grid-template-columns: 2em 1fr 2em }
-.postfooter > a:first-child,
-.postfooter .sharelinks i {
+.showtags { flex-grow: 1 }
+.showtags:empty { background: var(--border) }
+.showtags:not(:empty) {
+	cursor: pointer;
+	border: 0.125em solid var(--border);
+	background-color: var(--accent2);
+	color: var(--text);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	column-gap: 0.35em;
+}
+.showtags:not(:empty):hover, .showtags:not(:empty):focus { color: var(--links-hover) }
+.showtags i {
+	transition: transform 0.4s;
+	font-size: 0.75em;
+}
+.showtags.active i { transform: rotate(90deg) }
+.linksbar .permalink,
+.sharelinks i {
 	width: 2em;
 	height: 2em;
 	display: flex;
@@ -258,30 +275,44 @@ main {
 	color: var(--post);
 	border: 0.125em solid var(--border);
 	transition-property: color, background-color;
+	transition-duration: .2s;
+	text-decoration: none;
 }
-.postfooter > a:first-child:hover,
-.postfooter .sharelinks i:hover{
+.linksbar .viasource img {
+	width: 2em;
+	height: 2em;
+	display: block;
+	padding: 0.15em;
+	background-color: var(--border);
+	color: var(--post);
+	border: 0.125em solid var(--border);
+	transition-property: color, background-color;
+	transition-duration: .2s;
+}
+.linksbar .permalink:hover, .linksbar .permalink:focus,
+.linksbar .viasource:hover img, .linksbar .viasource:focus img,
+.sharelinks:hover i, .sharelinks:focus i {
 	background-color: var(--accent2);
 	color: var(--links);
 }
 /* Post footer: tags section */
 .postfooter .tags {
+	margin-top: 0.5em;
 	background-color: var(--accent2);
 	border: 0.125em solid var(--border);
 	padding: 0.25em 0.5em;
 }
-.postfooter .tags:empty { background-color: var(--border) }
-.postfooter .tags a { margin-right: 0.75em }
+.tags a { margin-right: 0.75em }
 /* Post footer: Share menu */
-.postfooter .sharelinks {
+.sharelinks {
 	position: relative;
 	height: fit-content;
 }
-.postfooter .sharelinks:not(:hover) .dropdown {
+.sharelinks:not(:hover, :focus) .dropdown {
 	opacity: 0;
 	pointer-events: none;
 }
-.postfooter .dropdown {
+.dropdown {
 	transition: 0.2s;
 	position: absolute;
 	bottom: 2.25em;
@@ -294,13 +325,13 @@ main {
 	z-index: 100;
 	width: 13em;
 }
-.postfooter .dropdown h3 { margin: 0 0 0.5em 0 }
-.postfooter .dropdown ul {
+.dropdown h3 { margin: 0 0 0.5em 0 }
+.dropdown ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
-.postfooter .dropdown li { margin: 0.25em 0 }
+.dropdown li { margin: 0.25em 0 }
 /* Pagination */
 .pagination {
 	margin: 0 auto;
