@@ -155,6 +155,13 @@ main {
 	padding: 0 1em;
 	text-align: center;
 }
+/* Slimmer tag page title, optimized for comics */
+.slim.page.title {
+	padding: 0.25em 1em;
+	margin-bottom: 1em
+}
+.slim.page.title h2 { font-size: 1.25em }
+.slim.page.title p { font-size: 0.9em }
 /* Ask page FAQ */
 .askwrapper:not(:empty) + iframe { margin-top: 15px }
 /* Posts */
