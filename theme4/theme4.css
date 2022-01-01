@@ -558,6 +558,7 @@ aside {
 aside .sticky {
 	position: sticky;
 	top: 0.5em;
+	width: 100%;
 }
 aside .sticky.header { top: calc(var(--title-height) + 1.5em) }
 /* User icon */
@@ -746,7 +747,8 @@ body:not(.light) .fa-moon, body.light .fa-sun { display: none }
 		height: unset;
 		border-radius: var(--roundness);
 	}
-	#name-asksubmit.noavatar, #name-asksubmit.ask.submit #blogname { grid-column: 1 / span 2 }
+	#name-asksubmit.noavatar,
+	#name-asksubmit.ask.submit #blogname { grid-column: 1 / span 2 }
 	#asklink, #submitlink { width: 100% }
 	
 	.postfooter .dropdown {
@@ -757,7 +759,7 @@ body:not(.light) .fa-moon, body.light .fa-sun { display: none }
 }
 
 @media (max-width: 47em) and (min-width: 31em) {
-	/* Rearranging sidebar */
+	/* Rearranging sidebar: default */
 	aside {
 		grid-row: 3;
 		grid-column: 1 / span 3;
@@ -777,22 +779,53 @@ body:not(.light) .fa-moon, body.light .fa-sun { display: none }
 		vertical-align: middle;
 	}
 	#taglinks, form, #blogpages, #credit-ra {
-		height: 100%;
+		height: fit-content;
+		align-self: center;
 		margin: 0;
 	}
 	#credit-ra {
 		grid-row: 3;
 		grid-column: 3;
 	}
-	#blogpages {
-		grid-column: 1 / span 3
-	}
+	#blogpages { grid-column: 1 / span 3 }
+	
+	/* If description alone is missing */
+	.sticky:not(.description) #search { grid-column: 1 / span 2 }
+	.sticky:not(.description) #credit-ra { grid-row: 2 }
+	
+	/* If taglinks alone is missing */
+	.sticky.notaglinks.description #credit-ra { grid-row: 2 / span 2 }
+	
+	/* If search alone is missing */
+	.sticky.nosearch.description #credit-ra { grid-row: 2 / span 2 }
+	
+	/* If two things are missing */
+	.sticky:not(.description).notaglinks #name-asksubmit,
+	.sticky:not(.description).nosearch #name-asksubmit,
+	.sticky.notaglinks.nosearch.description #name-asksubmit { grid-column: 2 / span 2 }
+	/* (check for missing avatar) */
+	.sticky:not(.description).notaglinks #name-asksubmit.noavatar,
+	.sticky:not(.description).nosearch #name-asksubmit.noavatar,
+	.sticky.notaglinks.nosearch.description #name-asksubmit.noavatar { grid-column: 1 / span 3 }
+	
+	/* If one of the missing two is description */
+	.sticky:not(.description).notaglinks #credit-ra,
+	.stick:not(.description).nosearch #credit-ra { grid-row: 2 }
+	/* If the other of the missing two is search */
+	.sticky:not(.description).nosearch #taglinks { grid-column: 1 / span 2}
+	
+	/* If description, taglinks, and search are all missing */
+	.sticky:not(.description).nosearch.notaglinks #name-asksubmit { grid-column: 2 }
+	.sticky:not(.description).nosearch.notaglinks #credit-ra { grid-row: 1; grid-column: 3 }
+	/* (check for missing avatar) */
+	.sticky:not(.description).nosearch.notaglinks #name-asksubmit { grid-column: 1 / span 2 }
 }
 
 @media (max-width: 31em) {
 	body { font-size: 90% }
 	#name-asksubmit {
-		margin: 0 0 0.75em var(--avatar-size);
+		margin: 0 0 0.75em;
 		padding-left: 0.5em;
 	}
+	#name-asksubmit:not(.noavatar) { margin-left: var(--avatar-size) }
 }

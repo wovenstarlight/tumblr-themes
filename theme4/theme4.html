@@ -897,7 +897,7 @@ body.light {
 		<img id="blogavatar" class="{AvatarShape}" src="{PortraitURL-128}"/>
 		{/block:ShowAvatar}
 
-		<div class="sticky {block:IfFixedHeader}header{/block:IfFixedHeader}">
+		<div class="sticky {block:IfFixedHeader}header{/block:IfFixedHeader} {block:ShowDescription}{block:Description}description{/block:Description}{/block:ShowDescription} {block:IfNotTagLinksSection}notaglinks{/block:IfNotTagLinksSection} {block:IfNotSearchBar}nosearch{/block:IfNotSearchBar}">
 			<!-- USERNAME & ASK/SUBMIT -->
 			<div id="name-asksubmit" class="{block:AskEnabled}ask{/block:AskEnabled} {block:SubmissionsEnabled}submit{/block:SubmissionsEnabled} {block:HideAvatar}noavatar{/block:HideAvatar}">
 				{block:AskEnabled}<a href="/ask" id="asklink" data-tippy-content="{AskLabel}"><i class="fas fa-envelope"></i></a>{/block:AskEnabled}
@@ -905,10 +905,10 @@ body.light {
 				{block:SubmissionsEnabled}<a href="/submit" id="submitlink" data-tippy-content="{SubmitLabel}"><i class="fas fa-inbox"></i></a>{/block:SubmissionsEnabled}
 			</div>
 			
-			{block:ShowDescription}
+			{block:ShowDescription}{block:Description}
 			<!-- DESCRIPTION -->
 			<div id="description">{Description}</div>
-			{/block:ShowDescription}
+			{/block:Description}{/block:ShowDescription}
 			
 			{block:IfTagLinksSection}
 			<!-- TAG LINKS -->
