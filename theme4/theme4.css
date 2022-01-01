@@ -746,7 +746,7 @@ body:not(.light) .fa-moon, body.light .fa-sun { display: none }
 		height: unset;
 		border-radius: var(--roundness);
 	}
-	#name-asksubmit.ask.submit #blogname { grid-column: 1 / span 2 }
+	#name-asksubmit.noavatar, #name-asksubmit.ask.submit #blogname { grid-column: 1 / span 2 }
 	#asklink, #submitlink { width: 100% }
 	
 	.postfooter .dropdown {
