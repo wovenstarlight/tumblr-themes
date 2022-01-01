@@ -94,9 +94,9 @@ form,
 	background: var(--accent1);
 	grid-column: 1 / span 4;
 	display: grid;
-	grid-template-columns: auto 1fr auto;
 	align-items: center;
 	column-gap: 1em;
+	grid-template-columns: auto 1fr auto;
 	padding: 0.5em 1em;
 }
 #pageheader.sticky {
@@ -104,7 +104,12 @@ form,
 	top: 0;
 	z-index: 2;
 }
-#pageheader.nochrono { grid-template-columns: auto 1fr }
+#pageheader.nochrono, #pageheader.nohome {
+	grid-template-columns: auto 1fr;
+}
+#pageheader.nochrono.nohome {
+	display: block;
+}
 #title {
 	padding: 0.5rem;
 	min-height: var(--title-height);

@@ -80,6 +80,7 @@
 	<meta name="image:Previous button" content=""/>
 	<meta name="image:Next button" content=""/>
 	<meta name="image:Last button" content=""/>
+	<meta name="if:Home button" content="1">
 	<meta name="if:Read Chronologically button" content="1">
 	<meta name="text:Main content tag" content="comic">
 	<meta name="if:Tag links section" content="1">
@@ -287,8 +288,8 @@ body.light {
 	{block:HideTitle}<h1 id="hiddentitle">{Title}</h1>{/block:HideTitle}
 
 	<!-- HEADER -->
-	<header id="pageheader" class="{block:IfFixedHeader}sticky{/block:IfFixedHeader} {block:IfNotReadChronologicallyButton}nochrono{block:IfNotReadChronologicallyButton}">
-		<a href="/" data-tippy-content="{lang:Home}" data-tippy-placement="bottom"><i class="fas fa-home"></i></a>
+	<header id="pageheader" class="{block:IfFixedHeader}sticky{/block:IfFixedHeader} {block:IfNotHomeButton}nohome{/block:IfNotHomeButton} {block:IfNotReadChronologicallyButton}nochrono{/block:IfNotReadChronologicallyButton}">
+		{block:IfHomeButton}<a href="/" data-tippy-content="{lang:Home}" data-tippy-placement="bottom"><i class="fas fa-home"></i></a>{/block:IfHomeButton}
 		
 		<a href="/" id="title">{block:ShowTitle}<h1>{Title}</h1>{/block:ShowTitle}</a>
 		
@@ -755,7 +756,7 @@ body.light {
 		<!-- NOTES SECTION -->
 		<section id="notes" class="post">
 			<h2 class="title">{lang:Notes}</h2>
-		    {PostNotes-64}
+			{PostNotes-64}
 		</section>
 		{/block:PostNotes}
 
