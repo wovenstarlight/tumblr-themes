@@ -32,6 +32,7 @@ No. | Name | Collapsibles CSS file | Preview
 1 | Discord | [theme1.css](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/collapsibles/theme1_collapsibles.css) | [Preview link](https://starlightpreviews.tumblr.com/theme1/collapsibles)
 2 | Paint Job | [theme2.css](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/collapsibles/theme2_collapsibles.css) | [Preview link](https://starlightpreviews.tumblr.com/theme2/collapsibles)
 3 | Newsprint | [theme3.css](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/collapsibles/theme3_collapsibles.css) | [Preview link](https://starlightpreviews.tumblr.com/theme3/collapsibles)
+4 | Sans Comic | [theme4.css](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/collapsibles/theme4_collapsibles.css) | [Preview link](https://starlightpreviews.tumblr.com/theme4/collapsibles)
 
 Once you've copied the CSS as instructed above and saved it, you're ready to start making collapsible sections!
 
