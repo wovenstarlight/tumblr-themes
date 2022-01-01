@@ -729,17 +729,17 @@ body:not(.light) .fa-moon, body.light .fa-sun { display: none }
 		grid-column: 2;
 		row-gap: 0.25em;
 		align-items: center;
+		grid-template-columns: 1fr;
 	}
-	#name-asksubmit a.hidden { display: none }
-	#name-asksubmit.ask, #name-asksubmit.submit { grid-template-columns: 1fr }
 	#name-asksubmit.ask.submit { grid-template-columns: 1fr 1fr }
 	#blogname {
 		grid-row: 1;
-		grid-column: 1 / span 2;
+		grid-column: 1;
 		align-self: top;
 		height: unset;
 		border-radius: var(--roundness);
 	}
+	#name-asksubmit.ask.submit #blogname { grid-column: 1 / span 2 }
 	#asklink, #submitlink { width: 100% }
 	
 	.postfooter .dropdown {
