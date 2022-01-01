@@ -717,7 +717,7 @@ body.light {
 					<a href="{ReblogRootURL}" class="viasource" data-tippy-content="{lang:Originally from ReblogRootName}"><img src="{ReblogRootPortraitURL-64}"></a>
 					{/block:RebloggedFrom}
 
-					<div class="showtags" tabindex="0">
+					<div class="showtags" {block:IfPostTags}{block:HasTags}{block:IfShowTagsOnClick}tabindex="0"{/block:IfShowTagsOnClick}{/block:HasTags}{/block:IfPostTags}>
 						{block:IfPostTags}{block:HasTags}{block:IfShowTagsOnClick}
 						<i class="fas fa-chevron-right"></i> Show tags
 						{/block:IfShowTagsOnClick}{/block:HasTags}{/block:IfPostTags}
@@ -731,9 +731,10 @@ body.light {
 							<h3>{lang:Share this}</h3>
 							<ul>
 								<li><a target="_new" href="{ShortURL}">{lang:Short URL for this post}</a></li>
-								<li><a target="_new" href="https://twitter.com/intent/tweet?url={ShortURL}">Twitter</a></li>
-								<li><a target="_new" href="https://www.facebook.com/sharer.php?u={Permalink}{block:Title}&t={Title}{/block:Title}">Facebook</a></li>
-								<li><a target="_new" href="https://pinterest.com/pin/create/button/?url={Permalink}&media={PhotoURL-500}">Pinterest</a></li>
+								<li><a target="_new" href="https://twitter.com/intent/tweet?text={URLEncodedTweetSummary}">Twitter</a></li>
+								<li><a target="_new" href="https://facebook.com/sharer.php?u={URLEncodedPermalink}&t={URLEncodedTitle}">Facebook</a></li>
+								{block:Photo}<li><a target="_new" href="//www.pinterest.com/pin/create/button/?url={URLEncodedPermalink}&media={PhotoURL-500}">Pinterest</a></li>{/block:Photo}
+								{block:Video}<li><a target="_new" href="//www.pinterest.com/pin/create/button/?url={URLEncodedPermalink}&media={VideoThumbnailURL}&is_video=true">Pinterest</a></li>{/block:Video}
 							</ul>
 						</div>
 					</div>
