@@ -41,7 +41,7 @@ blockquote {
 /* Roundness */
 .tippy-box[data-theme~="standard"],
 #pageheader a, #title,
-#blogavatar,
+#blogavatar.square,
 #asklink, #submitlink, #description,
 #taglinks a,
 form,
