@@ -62,7 +62,7 @@
 #notes .with_commentary blockquote { font-size: 0.75em }
 #notes .with_commentary blockquote a { color: var(--text-muted) }
 #notes .more_notes_link_container { margin: 1em }
-#notes .more_notes_link {
+#notes .more_notes_link, #notes .notes_loading {
 	display: block;
 	background-color: var(--bg-standard);
 	padding: 0.5em;
