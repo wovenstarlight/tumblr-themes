@@ -602,8 +602,8 @@ aside .sticky.header { top: calc(var(--title-height) + 1.5em) }
 }
 /* Tag links and Random/Archive + Credit */
 #taglinks, #credit-ra {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
+	display: flex;
+	flex-flow: row wrap;
 	column-gap: 0.5em;
 	row-gap: 0.5em;
 	margin: 0.75em 0;
@@ -612,13 +612,11 @@ aside .sticky.header { top: calc(var(--title-height) + 1.5em) }
 #taglinks a, #credit-ra a {
 	background-color: var(--accent2);
 	padding: 0.25em 0.5em;
+	flex-grow: 1;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-#credit-ra.random:not(.archive) #randomlink,
-#credit-ra.archive:not(.random) #archivelink,
-#creditlink { grid-column: 1 / span 2 }
 /* Search bar */
 form {
 	display: grid;
