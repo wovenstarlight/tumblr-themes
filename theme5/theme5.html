@@ -203,7 +203,17 @@ body.light {
 	</div>
 	{/block:ShowAvatar}
 
-	<!-- TODO: links nav -->
+	<!-- BLOG NAVIGATION -->
+	<div id="homelinks">
+		<hr>
+		<nav>
+			<a href="/" data-tippy-content="{lang:Home}"><i class="fas fa-home"></i></a>
+			{block:AskEnabled}<a href="/ask" id="asklink"><i class="fas fa-envelope"></i></a>{/block:AskEnabled}
+			{block:SubmissionsEnabled}<a href="/submit" id="submitlink"><i class="fas fa-inbox"></i></a>{/block:SubmissionsEnabled}
+			{block:IfRandomPostLink}<a href="/random" id="randomlink"><i class="fas fa-shuffle"></i></a>{/block:IfRandomPostLink}
+			{block:IfArchiveLink}<a href="/archive" id="archivelink"><i class="fas fa-box-archive"></i></a>{/block:IfArchiveLink}
+		</nav>
+	</div>
 
 	<!-- TODO: description and search section -->
 </aside>

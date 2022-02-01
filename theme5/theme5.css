@@ -41,8 +41,10 @@ h1, h2 {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	row-gap: 1em;
 	height: 100vh;
 }
+/* Planet icon */
 .planet {
 	position: relative;
 	display: flex;
@@ -65,4 +67,50 @@ h1, h2 {
 	top: 25%;
 	transform: rotate(-15deg);
 	z-index: -1;
+}
+/* Blog navigation */
+#homelinks {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#homelinks hr {
+	margin: 0;
+	border-width: 0.0625em;
+	border-color: rgba(var(--accent--rgb), 0.5);
+	position: absolute;
+	width: 100%;
+	z-index: -1;
+}
+#homelinks nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 15em;
+}
+#homelinks nav a {
+	background-color: var(--post);
+	--size: 2em;
+	width: var(--size);
+	height: var(--size);
+	border-radius: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition-property: color, transform;
+}
+#homelinks nav a:hover {
+	text-decoration: none;
+	transform: scale(1.15);
+}
+#homelinks nav::before, #homelinks nav::after {
+	content: "";
+	display: block;
+	background-color: var(--accent);
+	--size: 0.4rem;
+	width: var(--size);
+	height: var(--size);
+	border-radius: 100%;
 }
