@@ -2,6 +2,8 @@
 body {
 	background: var(--bg);
 	color: var(--text);
+	display: grid;
+	grid-template-columns: 2fr 1fr;
 }
 a {
 	color: var(--links);
@@ -28,4 +30,39 @@ h1, h2 {
 #skip {
 	position: fixed;
 	top: -100em;
+}
+
+
+
+/*********************************** SIDEBAR ***********************************/
+#sidebar {
+	border-left: 1px solid red; /* temporary */
+	padding: 2em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100vh;
+}
+.planet {
+	position: relative;
+	display: flex;
+	justify-content: center;
+}
+.planet img {
+	border-radius: 100%;
+	--size: 5em;
+	width: var(--size);
+	height: var(--size);
+	background-color: var(--accent);
+}
+.planet .ring {
+	border-radius: 100%;
+	display: block;
+	width: 10em;
+	height: 2.5em;
+	border: 2px solid var(--accent);
+	position: absolute;
+	top: 25%;
+	transform: rotate(-15deg);
+	z-index: -1;
 }
