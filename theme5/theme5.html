@@ -215,7 +215,23 @@ body.light {
 		</nav>
 	</div>
 
-	<!-- TODO: description and search section -->
+	<section id="sidebartext" class="frame">
+		{block:ShowTitle}<a href="/" id="title"><h1>{Title}</h1></a>{/block:ShowTitle}
+
+		{block:ShowDescription}{block:Description}
+		<!-- DESCRIPTION -->
+		<div id="description">{Description}</div>
+		{/block:Description}{/block:ShowDescription}
+
+		{block:IfSearchBar}
+		<!-- SEARCH BAR -->
+		<form action="/search" method="get" id="search">
+			<i class="fas fa-search"></i>
+			<label for="q">Search</label>
+			<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="Search"/>
+		</form>
+		{/block:IfSearchBar}
+	</section>
 </aside>
 
 </body>

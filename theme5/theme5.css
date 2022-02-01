@@ -26,8 +26,8 @@ h1, h2 {
 	background-color: var(--highlight-bg);
 	color: var(--highlight);
 }
-/* Accessibility skipper */
-#skip {
+/* Accessibility */
+#skip, #hiddentitle, form label {
 	position: fixed;
 	top: -100em;
 }
@@ -141,4 +141,25 @@ h1, h2 {
 	width: var(--size);
 	height: var(--size);
 	border-radius: 100%;
+}
+/* Description */
+#sidebartext { text-align: center }
+#description { margin: 0.5em 0 }
+form {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	max-width: 20em;
+	margin: 1em auto;
+	background: var(--bg);
+	align-items: center;
+}
+form i.fa-search {
+	color: var(--accent);
+	padding: 0.5em;
+}
+form input {
+	margin-right: 0.5em;
+	background: none;
+	color: var(--text);
+	border: none;
 }
