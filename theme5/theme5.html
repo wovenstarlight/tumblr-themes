@@ -66,7 +66,32 @@
 	<meta name="color:LM Text highlight" content="#3c000a">
 	<meta name="color:LM Text highlight background" content="#f17ea9">
 
-	<!-- Extra options -->
+	<!-- Icon/page link options -->
+	<meta name="if:Standard page link icons" content="0">
+	<meta name="text:Page 1 link" content="/one">
+	<meta name="text:Page 1 label" content="Custom page 1">
+	<meta name="text:Page 1 icon" content="bolt">
+	<meta name="text:Page 2 link" content="/two">
+	<meta name="text:Page 2 label" content="Custom page two">
+	<meta name="text:Page 2 icon" content="dragon">
+	<meta name="text:Page 3 link" content="/three">
+	<meta name="text:Page 3 label" content="Custom page tres">
+	<meta name="text:Page 3 icon" content="bullseye">
+	<meta name="text:Page 4 link" content="">
+	<meta name="text:Page 4 label" content="">
+	<meta name="text:Page 4 icon" content="">
+	<meta name="text:Page 5 link" content="">
+	<meta name="text:Page 5 label" content="">
+	<meta name="text:Page 5 icon" content="">
+	<meta name="text:Page 6 link" content="">
+	<meta name="text:Page 6 label" content="">
+	<meta name="text:Page 6 icon" content="">
+	<meta name="text:Page 7 link" content="">
+	<meta name="text:Page 7 label" content="">
+	<meta name="text:Page 7 icon" content="">
+	<meta name="text:Page 8 link" content="">
+	<meta name="text:Page 8 label" content="">
+	<meta name="text:Page 8 icon" content="">
 
 	<!-- General theme options -->
 	<meta name="if:Back to top button" content="1">
@@ -147,6 +172,9 @@ body.light {
 
 	<!-- jQuery CDN -->
 	<script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+	<!-- Tippy.js tooltips by atomiks -->
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
 	<!--
 	NPF photosets plugin by @codematurgy
 	https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin
@@ -208,10 +236,10 @@ body.light {
 		<hr>
 		<nav>
 			<a href="/" data-tippy-content="{lang:Home}"><i class="fas fa-home"></i></a>
-			{block:AskEnabled}<a href="/ask" id="asklink"><i class="fas fa-envelope"></i></a>{/block:AskEnabled}
-			{block:SubmissionsEnabled}<a href="/submit" id="submitlink"><i class="fas fa-inbox"></i></a>{/block:SubmissionsEnabled}
-			{block:IfRandomPostLink}<a href="/random" id="randomlink"><i class="fas fa-shuffle"></i></a>{/block:IfRandomPostLink}
-			{block:IfArchiveLink}<a href="/archive" id="archivelink"><i class="fas fa-box-archive"></i></a>{/block:IfArchiveLink}
+			{block:AskEnabled}<a href="/ask" id="asklink" data-tippy-content="{AskLabel}"><i class="fas fa-envelope"></i></a>{/block:AskEnabled}
+			{block:SubmissionsEnabled}<a href="/submit" id="submitlink" data-tippy-content="{SubmitLabel}"><i class="fas fa-inbox"></i></a>{/block:SubmissionsEnabled}
+			{block:IfRandomPostLink}<a href="/random" id="randomlink" data-tippy-content="{lang:Random}"><i class="fas fa-shuffle"></i></a>{/block:IfRandomPostLink}
+			{block:IfArchiveLink}<a href="/archive" id="archivelink" data-tippy-content="{lang:Archive}"><i class="fas fa-box-archive"></i></a>{/block:IfArchiveLink}
 		</nav>
 	</div>
 
@@ -232,6 +260,33 @@ body.light {
 		</form>
 		{/block:IfSearchBar}
 	</section>
+
+	{block:IfStandardPageLinkIcons}{block:HasPages}
+	<!-- BLOG PLAGES -->
+	<div id="pages">
+		<hr>
+		<nav>
+			{block:Pages}<a href="{URL}" class="{CurrentState}" data-tippy-content="{Label}"><i class="fas fa-link"></i></a>{/block:Pages}
+		</nav>
+	</div>
+	{/block:HasPages}{/block:IfStandardPageLinkIcons}
+
+	{block:IfNotStandardPageLinkIcons}
+	<!-- BLOG PAGES -->
+	<div id="pages">
+		<hr>
+		<nav>
+			{block:IfPage1Link}<a href="{text:Page 1 link}" data-tippy-content="{text:Page 1 label}"><i class="fas fa-{text:Page 1 icon}"></i></a>{block:IfPage1Link}
+			{block:IfPage2Link}<a href="{text:Page 2 link}" data-tippy-content="{text:Page 2 label}"><i class="fas fa-{text:Page 2 icon}"></i></a>{block:IfPage2Link}
+			{block:IfPage3Link}<a href="{text:Page 3 link}" data-tippy-content="{text:Page 3 label}"><i class="fas fa-{text:Page 3 icon}"></i></a>{block:IfPage3Link}
+			{block:IfPage4Link}<a href="{text:Page 4 link}" data-tippy-content="{text:Page 4 label}"><i class="fas fa-{text:Page 4 icon}"></i></a>{block:IfPage4Link}
+			{block:IfPage5Link}<a href="{text:Page 5 link}" data-tippy-content="{text:Page 5 label}"><i class="fas fa-{text:Page 5 icon}"></i></a>{block:IfPage5Link}
+			{block:IfPage6Link}<a href="{text:Page 6 link}" data-tippy-content="{text:Page 6 label}"><i class="fas fa-{text:Page 6 icon}"></i></a>{block:IfPage6Link}
+			{block:IfPage7Link}<a href="{text:Page 7 link}" data-tippy-content="{text:Page 7 label}"><i class="fas fa-{text:Page 7 icon}"></i></a>{block:IfPage7Link}
+			{block:IfPage8Link}<a href="{text:Page 8 link}" data-tippy-content="{text:Page 8 label}"><i class="fas fa-{text:Page 8 icon}"></i></a>{block:IfPage8Link}
+		</nav>
+	</div>
+	{/block:IfNotStandardPageLinkIcons}
 </aside>
 
 </body>

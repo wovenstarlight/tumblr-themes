@@ -96,14 +96,14 @@ h1, h2 {
 	transform: rotate(-15deg);
 	z-index: -1;
 }
-/* Blog navigation */
-#homelinks {
+/* Blog and custom pages navigation */
+#homelinks, #pages {
 	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-#homelinks hr {
+#homelinks hr, #pages hr {
 	margin: 0;
 	border-width: 0.0625em;
 	border-color: rgba(var(--accent--rgb), 0.5);
@@ -111,14 +111,20 @@ h1, h2 {
 	width: 100%;
 	z-index: -1;
 }
-#homelinks nav {
+#homelinks nav, #pages nav {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
 	width: 100%;
-	max-width: 15em;
 }
-#homelinks nav a {
+#homelinks nav {
+	max-width: 15em;
+	justify-content: space-between;
+}
+#pages nav {
+	max-width: 23em;
+	justify-content: space-around;
+}
+#homelinks nav a, #pages nav a {
 	background-color: var(--post);
 	--size: 2em;
 	width: var(--size);
@@ -129,11 +135,13 @@ h1, h2 {
 	justify-content: center;
 	transition-property: color, transform;
 }
-#homelinks nav a:hover {
+#homelinks nav a:hover,
+#pages nav a:hover{
 	text-decoration: none;
 	transform: scale(1.15);
 }
-#homelinks nav::before, #homelinks nav::after {
+#homelinks nav::before, #homelinks nav::after,
+#pages nav::before, #pages nav::after {
 	content: "";
 	display: block;
 	background-color: var(--accent);
