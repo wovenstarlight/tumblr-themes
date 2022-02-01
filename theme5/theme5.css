@@ -1,9 +1,10 @@
 /******************************** GENERAL STYLES ********************************/
+html, body { height: 100% }
 body {
 	background: var(--bg);
 	color: var(--text);
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr var(--sidebar-width);
 }
 a {
 	color: var(--links);
@@ -31,7 +32,7 @@ h1, h2 {
 	position: fixed;
 	top: -100em;
 }
-
+/* Frame component */
 .frame {
 	background-color: var(--post);
 	position: relative;
@@ -57,20 +58,50 @@ h1, h2 {
 }
 .frame::before { top: var(--displacement); left: var(--displacement) }
 .frame::after { bottom: var(--displacement); right: var(--displacement) }
-.frame :first-child { margin-top: 0 }
-.frame :last-child { margin-bottom: 0 }
+.frame > :first-child { margin-top: 0 }
+.frame > :last-child { margin-bottom: 0 }
+/* Scroll to top button */
+#scrolltotop_parent {
+	cursor: pointer;
+	position: absolute;
+	bottom: 0.5em;
+	right: 0.5em;
+	color: var(--links);
+	background-color: var(--post);
+	--size: 2em;
+	width: var(--size);
+	height: var(--size);
+	border-radius: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition-property: color, transform;
+}
+#scrolltotop_parent:hover {
+	color: var(--links-hover);
+	transform: scale(1.15);
+}
+
+
+
+/***************************** MAIN CONTENT SECTION *****************************/
+#main {
+	background:red; /* temporary */
+}
+.post {
+	max-width: var(--post-width);
+}
 
 
 
 /*********************************** SIDEBAR ***********************************/
 #sidebar {
-	border-left: 1px solid red; /* temporary */
 	padding: 2em;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	row-gap: 1em;
-	height: 100vh;
+	max-width: 25em;
+	align-self: center;
 }
 /* Planet icon */
 .planet {
@@ -103,7 +134,16 @@ h1, h2 {
 	align-items: center;
 	justify-content: center;
 }
-#homelinks hr, #pages hr {
+#buttons {
+	position: relative;
+	max-width: 15em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
+	column-gap: 1em;
+}
+#homelinks hr, #pages hr, #buttons hr {
 	margin: 0;
 	border-width: 0.0625em;
 	border-color: rgba(var(--accent--rgb), 0.5);
@@ -124,7 +164,7 @@ h1, h2 {
 	max-width: 23em;
 	justify-content: space-around;
 }
-#homelinks nav a, #pages nav a {
+#homelinks nav a, #pages nav a, #buttons > div, #buttons > a {
 	background-color: var(--post);
 	--size: 2em;
 	width: var(--size);
@@ -135,13 +175,26 @@ h1, h2 {
 	justify-content: center;
 	transition-property: color, transform;
 }
+#buttons > * { font-size: 0.9em }
+#buttons > div {
+	color: var(--links);
+	transition: color, transform .2s;
+}
+#buttons > div:hover { color: var(--links-hover) }
+body:not(.light) .fa-moon,
+body.light .fa-sun { display: none }
+#darklight:hover { cursor: pointer }
+#copyright:hover { cursor: help }
 #homelinks nav a:hover,
-#pages nav a:hover{
+#pages nav a:hover,
+#buttons > a:hover,
+#buttons > div:hover{
 	text-decoration: none;
 	transform: scale(1.15);
 }
 #homelinks nav::before, #homelinks nav::after,
-#pages nav::before, #pages nav::after {
+#pages nav::before, #pages nav::after,
+#buttons::before, #buttons::after {
 	content: "";
 	display: block;
 	background-color: var(--accent);
@@ -152,7 +205,10 @@ h1, h2 {
 }
 /* Description */
 #sidebartext { text-align: center }
+#title h1 { margin: 0 }
 #description { margin: 0.5em 0 }
+#description > :first-child { margin-top: 0 }
+#description > :last-child { margin-bottom: 0 }
 form {
 	display: grid;
 	grid-template-columns: auto 1fr;
