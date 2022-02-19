@@ -63,7 +63,7 @@ h1, h2 {
 /* Scroll to top button */
 #scrolltotop_parent {
 	cursor: pointer;
-	position: absolute;
+	position: fixed;
 	bottom: 0.5em;
 	right: 0.5em;
 	color: var(--links);
