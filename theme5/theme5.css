@@ -184,11 +184,8 @@ h1, h2 {
 #homelinks nav, #pages nav {
 	display: flex;
 	align-items: center;
-	width: 100%;
-	justify-content: space-between;
+	column-gap: 0.75em;
 }
-#homelinks nav { max-width: 15em }
-#pages nav { max-width: 23em }
 #homelinks nav a, #pages nav a, #buttons a {
 	background-color: var(--post);
 	--size: 2em;
