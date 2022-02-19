@@ -103,11 +103,18 @@ h1, h2 {
 	max-width: 25em;
 	align-self: center;
 }
-/* Planet icon */
-.planet {
+/* Icon and important links section */
+#iconlinks { min-height: 7em }
+#iconlinks, .planet {
 	position: relative;
 	display: flex;
 	justify-content: center;
+	align-items: center;
+}
+/* Planet icon */
+.planet {
+	left: 0;
+	z-index: 1;
 }
 .planet img {
 	border-radius: 100%;
@@ -127,6 +134,38 @@ h1, h2 {
 	transform: rotate(-15deg);
 	z-index: -1;
 }
+/* Icon buttons */
+#buttons {
+	display: inline-flex;
+	flex-direction: column;
+	row-gap: .25em;
+	z-index: 1;
+	position: relative;
+}
+#buttons a { transform: scale(0.9) }
+#darklight:hover { cursor: pointer }
+#creditlink { margin-left: 1em }
+#copyright:hover { cursor: help }
+#btnctr svg {
+	position: absolute;
+	right: .75em;
+	z-index: 0;
+}
+#btnctr svg line {
+	stroke: var(--accent);
+	stroke-width: 0.0625em;
+	stroke-opacity: 0.75;
+}
+#btnctr {
+	position: absolute;
+	top: 50%; left: 50%; transform: translate(-50%, -50%);
+	z-index: 0;
+	width: fit-content;
+}
+.planet, #btnctr { transition: .5s ease; transition-property: left, opacity }
+#sidebar:hover .planet { left: -15% }
+#sidebar:not(:hover) #btnctr { opacity: 0; }
+#sidebar:hover #btnctr { left: 80% }
 /* Blog and custom pages navigation */
 #homelinks, #pages {
 	position: relative;
@@ -134,16 +173,7 @@ h1, h2 {
 	align-items: center;
 	justify-content: center;
 }
-#buttons {
-	position: relative;
-	max-width: 15em;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	align-self: center;
-	column-gap: 1em;
-}
-#homelinks hr, #pages hr, #buttons hr {
+#homelinks hr, #pages hr {
 	margin: 0;
 	border-width: 0.0625em;
 	border-color: rgba(var(--accent--rgb), 0.5);
@@ -155,16 +185,11 @@ h1, h2 {
 	display: flex;
 	align-items: center;
 	width: 100%;
-}
-#homelinks nav {
-	max-width: 15em;
 	justify-content: space-between;
 }
-#pages nav {
-	max-width: 23em;
-	justify-content: space-around;
-}
-#homelinks nav a, #pages nav a, #buttons > div, #buttons > a {
+#homelinks nav { max-width: 15em }
+#pages nav { max-width: 23em }
+#homelinks nav a, #pages nav a, #buttons a {
 	background-color: var(--post);
 	--size: 2em;
 	width: var(--size);
@@ -175,26 +200,16 @@ h1, h2 {
 	justify-content: center;
 	transition-property: color, transform;
 }
-#buttons > * { font-size: 0.9em }
-#buttons > div {
-	color: var(--links);
-	transition: color, transform .2s;
-}
-#buttons > div:hover { color: var(--links-hover) }
 body:not(.light) .fa-moon,
 body.light .fa-sun { display: none }
-#darklight:hover { cursor: pointer }
-#copyright:hover { cursor: help }
 #homelinks nav a:hover,
 #pages nav a:hover,
-#buttons > a:hover,
-#buttons > div:hover{
+#buttons > a:hover {
 	text-decoration: none;
 	transform: scale(1.15);
 }
 #homelinks nav::before, #homelinks nav::after,
-#pages nav::before, #pages nav::after,
-#buttons::before, #buttons::after {
+#pages nav::before, #pages nav::after {
 	content: "";
 	display: block;
 	background-color: var(--accent);
@@ -226,4 +241,18 @@ form input {
 	background: none;
 	color: var(--text);
 	border: none;
+}
+
+
+
+/******************************** MEDIA QUERIES ********************************/
+@media (max-width: 800px) {
+	body { grid-template-columns: 1fr }
+	#main { grid-row: 2 }
+	#sidebar { justify-self: center }
+}
+
+@media (max-width: 500px) {
+	body { font-size: 90% }
+	#btnctr svg { right: 0.5em }
 }

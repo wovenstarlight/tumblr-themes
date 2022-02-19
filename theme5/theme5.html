@@ -70,6 +70,7 @@
 	<meta name="color:LM Text highlight background" content="#f17ea9">
 
 	<!-- Icon/page link options -->
+	<meta name="text:Main theme icon" content="bolt">
 	<meta name="if:Standard page link icons" content="0">
 	<meta name="text:Page 1 link" content="/one">
 	<meta name="text:Page 1 label" content="Custom page 1">
@@ -216,18 +217,56 @@ body.light {
 
 <!-- MAIN POSTS SECTION -->
 <main id="main">
-	<!-- TODO: Main content -->
+	<!-- POST WRAPPER -->
+	<section class="posts">
+	{block:Posts}
+
+		<article class="post">
+			<section class="frame">Post body</section>
+		</article>
+
+	{/block:Posts}
+	</section>
 </main>
 
 
 <!-- SIDEBAR -->
 <aside id="sidebar">
-	{block:ShowAvatar}
-	<div class="planet">
-		<div class="ring"></div>
-		<img src="{PortraitURL-128}" />
+	<div id="iconlinks">
+		<div class="planet">
+			<div class="ring"></div>
+			<img {block:ShowAvatar}src="{PortraitURL-128}"{/block:ShowAvatar} />
+		</div>
+		
+		<div id="btnctr">
+			<!-- SPECIAL BUTTONS -->
+			<div id="buttons">
+				{block:IfColorModeToggle}
+				<!-- DARK/LIGHT MODE TOGGLE -->
+				<a id="darklight" tabindex="0" data-tippy-content="Toggle color mode">
+					<i class="fas fa-moon"></i>
+					<i class="fas fa-sun"></i>
+				</a>
+				{/block:IfColorModeToggle}
+				{block:IfNotColorModeToggle}
+				<a><i class="fas fa-{text:Main theme icon}"></i></a>
+				{block:IfNotColorModeToggle}
+				
+				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+				<a href="https://starlightthemes.tumblr.com/theme5" id="creditlink" data-tippy-content="{lang:Install this theme}"><i class="fas fa-download"></i></a>
+				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+
+				<!-- BLOG COPYRIGHT -->
+				<a data-tippy-content="{Name} {CopyrightYears}"><i class="fas fa-copyright"></i></a>
+			</div>
+			<svg height="100%" xmlns="http://www.w3.org/2000/svg" width="65" viewBox="0 0 65 100">
+				<line x1="40" y1="10" x2="65" y2="50" />
+				<line x1="65" y1="50" x2="40" y2="90" />
+				<line x1="0" y1="50" x2="65" y2="50" />
+				<circle r="0.2rem" cx="0.2rem" cy="50" fill="var(--accent)" />
+			</svg>
+		</div>
 	</div>
-	{/block:ShowAvatar}
 
 	<!-- BLOG NAVIGATION -->
 	<div id="homelinks">
@@ -285,28 +324,6 @@ body.light {
 		</nav>
 	</div>
 	{/block:IfNotStandardPageLinkIcons}
-
-	<!-- SPECIAL BUTTONS -->
-	<div id="buttons">
-		{block:IfColorModeToggle}
-		<!-- DARK/LIGHT MODE TOGGLE -->
-		<div id="darklight" tabindex="0" data-tippy-content="Toggle color mode">
-			<i class="fas fa-moon"></i>
-			<i class="fas fa-sun"></i>
-		</div>
-		{/block:IfColorModeToggle}
-
-		<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
-		<a href="https://starlightthemes.tumblr.com/theme5" id="creditlink" data-tippy-content="lang:Install this theme}">
-			<i class="fas fa-download"></i>
-		</a>
-		<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
-
-		<!-- BLOG COPYRIGHT -->
-		<div data-tippy-content="{Name} {CopyrightYears}">
-			<i class="fas fa-copyright"></i>
-		</div>
-	</div>
 </aside>
 
 {block:IfBackToTopButton}
