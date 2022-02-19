@@ -121,14 +121,15 @@ h1, h2 {
 	--size: 5em;
 	width: var(--size);
 	height: var(--size);
-	background-color: var(--accent);
+	background-color: var(--bg);
+	border: 0.15em solid var(--accent);
 }
 .planet .ring {
 	border-radius: 100%;
 	display: block;
 	width: 10em;
 	height: 2.5em;
-	border: 2px solid var(--accent);
+	border: 0.15em solid var(--accent);
 	position: absolute;
 	top: 25%;
 	transform: rotate(-15deg);
