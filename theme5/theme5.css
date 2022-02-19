@@ -3,8 +3,6 @@ html, body { height: 100% }
 body {
 	background: var(--bg);
 	color: var(--text);
-	display: grid;
-	grid-template-columns: 1fr var(--sidebar-width);
 }
 a {
 	color: var(--links);
@@ -85,20 +83,16 @@ h1, h2 {
 
 
 /***************************** MAIN CONTENT SECTION *****************************/
-#main {
-	display: grid;
-	grid-template-columns: 1fr auto;
-	column-gap: 2em;
-}
 .post {
 	max-width: var(--post-width);
+	margin: 5em 0;
 }
+.post:first-child { margin-top: 0 }
+.post:last-child { margin-bottom: 0 }
 /* Navigation */
 #pagination {
-	height: 100vh;
 	flex-direction: column;
 	row-gap: 0.6em;
-	justify-content: end;
 	padding: 1em 0;
 }
 #pagination hr {
@@ -106,8 +100,6 @@ h1, h2 {
 	border-width: 0.0625em;
 	border-color: rgba(var(--accent--rgb), 0.5);
 	position: absolute;
-	width: 0;
-	height: calc(100% - 2em);
 	z-index: -1;
 }
 #pagination .current-page {
@@ -127,8 +119,7 @@ h1, h2 {
 	display: flex;
 	flex-direction: column;
 	row-gap: 1em;
-	max-width: 25em;
-	align-self: center;
+	max-width: 28em;
 }
 /* Icon and important links section */
 #iconlinks { min-height: 7em }
@@ -277,17 +268,48 @@ form input {
 
 /******************************** MEDIA QUERIES ********************************/
 @media (min-width: 800px) {
+	#main { max-width: calc(100% - var(--sidebar-width) - 5em) }
+	
+	#pagination {
+		position: fixed;
+		top: 0;
+		right: var(--sidebar-width);
+		height: 100vh;
+		justify-content: end;
+	}
+	#pagination hr {
+		width: 0;
+		height: calc(100% - 2em);
+	}
 	#pagination .current-page i { display: none }
+	
+	#sidebar {
+		position: fixed;
+		top: 50%; transform: translateY(-50%);
+		left: calc(100% - var(--sidebar-width));
+	}
 }
 
 @media (max-width: 800px) {
-	/* Rearrange main/sidebar, and posts/navigation */
-	body, #main { grid-template-columns: 1fr }
-	#main { grid-row: 2 }
-	#sidebar { justify-self: center }
+	/* Rearrange main/sidebar/navigation */
+	body, #main {
+		display: grid;
+		justify-content: center;
+	}
+	#sidebar { grid-row: 1 }
 	
 	/* Reshape navigation */
-	#pagination .current-page span { display: none }
+	#pagination {
+		position: relative;
+		flex-direction: row;
+		width: fit-content;
+		justify-content: center;
+		margin-top: 1.5em;
+	}
+	#pagination hr { width: 100% }
+	#pagination .arrows { transform: rotate(270deg) }
+	#pagination .arrows:hover { transform: rotate(270deg) scale(1.15) }
+	#pagination span { display: none }
 }
 
 @media (max-width: 500px) {
