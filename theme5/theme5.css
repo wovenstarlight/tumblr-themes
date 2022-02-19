@@ -86,10 +86,37 @@ h1, h2 {
 
 /***************************** MAIN CONTENT SECTION *****************************/
 #main {
-	background:red; /* temporary */
+	display: grid;
+	grid-template-columns: 1fr auto;
+	column-gap: 2em;
 }
 .post {
 	max-width: var(--post-width);
+}
+/* Navigation */
+#pagination {
+	height: 100vh;
+	flex-direction: column;
+	row-gap: 0.6em;
+	justify-content: end;
+	padding: 1em 0;
+}
+#pagination hr {
+	margin: 0;
+	border-width: 0.0625em;
+	border-color: rgba(var(--accent--rgb), 0.5);
+	position: absolute;
+	width: 0;
+	height: calc(100% - 2em);
+	z-index: -1;
+}
+#pagination .current-page {
+	background: linear-gradient(0deg, rgba(var(--accent--rgb), 0.8), rgba(var(--accent--rgb), 0.8)), var(--post);
+	color: var(--bg);
+}
+#pagination .marker {
+	font-size: 1.25em;
+	color: var(--links);
 }
 
 
@@ -182,12 +209,15 @@ h1, h2 {
 	width: 100%;
 	z-index: -1;
 }
-#homelinks nav, #pages nav {
+#homelinks nav, #pages nav, #pagination {
 	display: flex;
 	align-items: center;
 	column-gap: 0.75em;
 }
-#homelinks nav a, #pages nav a, #buttons a {
+#homelinks nav a,
+#pages nav a,
+#buttons a,
+#pagination a, #pagination > span {
 	background-color: var(--post);
 	--size: 2em;
 	width: var(--size);
@@ -202,12 +232,14 @@ body:not(.light) .fa-moon,
 body.light .fa-sun { display: none }
 #homelinks nav a:hover,
 #pages nav a:hover,
-#buttons > a:hover {
+#buttons > a:hover,
+#pagination a:hover {
 	text-decoration: none;
 	transform: scale(1.15);
 }
 #homelinks nav::before, #homelinks nav::after,
-#pages nav::before, #pages nav::after {
+#pages nav::before, #pages nav::after,
+#pagination::before, #pagination::after{
 	content: "";
 	display: block;
 	background-color: var(--accent);
@@ -244,10 +276,18 @@ form input {
 
 
 /******************************** MEDIA QUERIES ********************************/
+@media (min-width: 800px) {
+	#pagination .current-page i { display: none }
+}
+
 @media (max-width: 800px) {
-	body { grid-template-columns: 1fr }
+	/* Rearrange main/sidebar, and posts/navigation */
+	body, #main { grid-template-columns: 1fr }
 	#main { grid-row: 2 }
 	#sidebar { justify-self: center }
+	
+	/* Reshape navigation */
+	#pagination .current-page span { display: none }
 }
 
 @media (max-width: 500px) {
