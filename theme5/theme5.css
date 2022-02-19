@@ -122,7 +122,10 @@ h1, h2 {
 	max-width: 28em;
 }
 /* Icon and important links section */
-#iconlinks { min-height: 7em }
+#iconlinks {
+	min-height: 7em;
+	--drift: 3.5em;
+}
 #iconlinks, .planet {
 	position: relative;
 	display: flex;
@@ -182,9 +185,9 @@ h1, h2 {
 	width: fit-content;
 }
 .planet, #btnctr { transition: .5s ease; transition-property: left, opacity }
-#sidebar:hover .planet { left: -15% }
+#sidebar:hover .planet { left: calc(0% - var(--drift)) }
 #sidebar:not(:hover) #btnctr { opacity: 0; }
-#sidebar:hover #btnctr { left: 80% }
+#sidebar:hover #btnctr { left: calc(60% + var(--drift)) }
 /* Blog and custom pages navigation */
 #homelinks, #pages {
 	position: relative;
