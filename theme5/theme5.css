@@ -143,14 +143,14 @@ h1, h2 {
 	width: var(--size);
 	height: var(--size);
 	background-color: var(--bg);
-	border: 0.15em solid var(--accent);
+	border: 0.125em solid var(--accent);
 }
 .planet .ring {
 	border-radius: 100%;
 	display: block;
 	width: 10em;
 	height: 2.5em;
-	border: 0.15em solid var(--accent);
+	border: 0.125em solid rgba(var(--accent--rgb), 0.7);
 	position: absolute;
 	top: 25%;
 	transform: rotate(-15deg);
@@ -271,8 +271,10 @@ form input {
 
 /******************************** MEDIA QUERIES ********************************/
 @media (min-width: 800px) {
+	/* Stop main from overlapping nav/sidebar */
 	#main { max-width: calc(100% - var(--sidebar-width) - 5em) }
 	
+	/* Position/resize page nav */
 	#pagination {
 		position: fixed;
 		top: 0;
@@ -286,6 +288,7 @@ form input {
 	}
 	#pagination .current-page i { display: none }
 	
+	/* Position sidebar */
 	#sidebar {
 		position: fixed;
 		top: 50%; transform: translateY(-50%);
@@ -294,7 +297,7 @@ form input {
 }
 
 @media (max-width: 800px) {
-	/* Rearrange main/sidebar/navigation */
+	/* Rearrange main/sidebar/navigation to be stacked */
 	body, #main {
 		display: grid;
 		justify-content: center;
