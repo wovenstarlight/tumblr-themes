@@ -41,7 +41,7 @@ h1, h2 {
 	content: "";
 	--displacement: -0.625em;
 	--size: 2em;
-	--color: #e8b201;
+	--color: var(--accent);
 	--thickness: 0.0625em;
 	display: inline-block;
 	width: var(--size);
