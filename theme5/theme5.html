@@ -224,6 +224,34 @@ body.light {
 
 	{/block:Posts}
 	</section>
+	
+	<!-- DIVIDER -->
+	<nav id="pagination">
+		<hr>
+		{block:Pagination}
+		<!-- PAGINATION -->
+		{block:PreviousPage}
+		<a href="{PreviousPage}"><i class="fas fa-chevron-up"></i></a>
+		{/block:PreviousPage}
+
+		{block:JumpPagination length="5"}
+		{block:CurrentPage}
+		<a class="current-page">
+			<span>{PageNumber}</span>
+			<i class="fas fa-{text:Main theme icon}"></i>
+		</a>
+		{/block:CurrentPage}
+		{block:JumpPage}
+		<a href="{URL}">{PageNumber}</a>
+		{/block:JumpPage}
+		{/block:JumpPagination}
+		
+		{block:NextPage}
+		<a href="{NextPage}"><i class="fas fa-chevron-down"></i></a>
+		{/block:NextPage}
+		{/block:Pagination}
+		<span class="marker"><i class="fas fa-{text:Main theme icon}"></i></span>
+	</nav>
 </main>
 
 
