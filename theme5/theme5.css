@@ -42,7 +42,7 @@ h1, h2 {
 	--displacement: -0.625em;
 	--size: 2em;
 	--color: var(--accent);
-	--thickness: 0.0625em;
+	--thickness: 0.0825em;
 	display: inline-block;
 	width: var(--size);
 	height: var(--size);
@@ -51,7 +51,7 @@ h1, h2 {
 		linear-gradient(var(--color) 0 0),
 		linear-gradient(var(--color) 0 0);
 	background-position: center;
-	background-size: 100% var(--thickness), var(--thickness) 100%; /*thickness = 2px, length = 50% (25px)*/
+	background-size: 100% var(--thickness), var(--thickness) 100%;
 	background-repeat: no-repeat;
 }
 .frame::before { top: var(--displacement); left: var(--displacement) }
@@ -87,15 +87,45 @@ h1, h2 {
 	max-width: var(--post-width);
 	width: 100%;
 }
-.post { margin: 5em 0 }
+.post { margin: 4em 0 }
 .post:first-child { margin-top: 0 }
 .post:last-child { margin-bottom: 0 }
+.post header, .post footer { font-size: 0.9em }
 .post header {
-	background-color: var(--bg);
 	font-variant: small-caps;
+	padding: 0 0 0.1em 0.9em;
 	display: flex;
 	justify-content: space-between;
-	color: var(--accent) !important;
+}
+.post footer { padding: 0.2em 0em 0 0 }
+.post footer .tags {
+	margin: 0;
+	padding: 0;
+}
+.post .tags a:not(:last-child)::after {
+	content: ",";
+	margin-right: 0.3em;
+}
+.likereblog {
+	margin-right: 0.9em;
+	float: right;
+	display: flex;
+	column-gap: 0.5em;
+	align-items: center;
+}
+.pinnedpost { color: var(--accent) }
+.customlike { position: relative }
+.customlike .like_button.liked + i { color: var(--like) }
+.customlike iframe {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	opacity: 0;
 }
 /* Navigation */
 #pagination {
@@ -111,7 +141,7 @@ h1, h2 {
 	z-index: -1;
 }
 #pagination .current-page {
-	background: linear-gradient(0deg, rgba(var(--accent--rgb), 0.8), rgba(var(--accent--rgb), 0.8)), var(--post);
+	background: linear-gradient(rgba(var(--accent--rgb), 0.8) 0 0), var(--post);
 	color: var(--bg);
 }
 #pagination .marker {
@@ -318,14 +348,18 @@ form input {
 	/* Rearrange main/sidebar/navigation to be stacked */
 	body {
 		display: grid;
-		justify-content: center;
+		justify-items: center;
 	}
 	#sidebar { grid-row: 1 }
+	/* Align posts and navigation to center */
 	#main {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
+		display: grid;
+		justify-items: center;
+		width: 100%;
 	}
+	
+	/* Stop page from scrolling sideways because of crosshairs */
+	.posts { padding: 0 1em }
 	
 	/* Reshape navigation */
 	#pagination {
