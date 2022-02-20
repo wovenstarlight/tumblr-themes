@@ -298,11 +298,16 @@ form input {
 
 @media (max-width: 800px) {
 	/* Rearrange main/sidebar/navigation to be stacked */
-	body, #main {
+	body {
 		display: grid;
 		justify-content: center;
 	}
 	#sidebar { grid-row: 1 }
+	#main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 	
 	/* Reshape navigation */
 	#pagination {
