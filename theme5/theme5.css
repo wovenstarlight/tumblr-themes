@@ -87,6 +87,7 @@ h1, h2 {
 	max-width: var(--post-width);
 	width: 100%;
 }
+/* Space out posts */
 .post { margin: 4em 0 }
 .post:first-child { margin-top: 0 }
 .post:last-child { margin-bottom: 0 }
@@ -97,7 +98,9 @@ h1, h2 {
 	display: flex;
 	justify-content: space-between;
 }
+.post header.nodates { justify-content: end }
 .post footer { padding: 0.2em 0em 0 0 }
+/* Tags section */
 .post footer .tags {
 	margin: 0;
 	padding: 0;
@@ -106,6 +109,20 @@ h1, h2 {
 	content: ",";
 	margin-right: 0.3em;
 }
+/* Show tags on click */
+.post footer .showtags {
+	text-transform: uppercase;
+	font-size: 0.9em;
+	display: flex;
+	align-items: center;
+}
+.post footer .showtags i {
+	margin: 0 0.75em;
+	font-size: 0.75em;
+	transition: 0.4s;
+}
+.post .showtags.active i { transform: rotate(90deg) }
+/* Like/reblog buttons and pinned post icon */
 .likereblog {
 	margin-right: 0.9em;
 	float: right;
