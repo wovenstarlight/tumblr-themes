@@ -83,12 +83,20 @@ h1, h2 {
 
 
 /***************************** MAIN CONTENT SECTION *****************************/
-.post {
+.posts {
 	max-width: var(--post-width);
-	margin: 5em 0;
+	width: 100%;
 }
+.post { margin: 5em 0 }
 .post:first-child { margin-top: 0 }
 .post:last-child { margin-bottom: 0 }
+.post header {
+	background-color: var(--bg);
+	font-variant: small-caps;
+	display: flex;
+	justify-content: space-between;
+	color: var(--accent) !important;
+}
 /* Navigation */
 #pagination {
 	flex-direction: column;
@@ -271,14 +279,24 @@ form input {
 
 /******************************** MEDIA QUERIES ********************************/
 @media (min-width: 800px) {
+	body { display: grid }
 	/* Stop main from overlapping nav/sidebar */
-	#main { max-width: calc(100% - var(--sidebar-width) - 5em) }
+	#main {
+		max-width: calc(100% - var(--sidebar-width) - 2.5em);
+		display: flex;
+		justify-content: end;
+		align-self: center;
+	}
+	.posts {
+		margin: 2em;
+		margin-right: 0;
+	}
 	
 	/* Position/resize page nav */
 	#pagination {
 		position: fixed;
 		top: 0;
-		right: var(--sidebar-width);
+		right: calc(var(--sidebar-width) - 2em);
 		height: 100vh;
 		justify-content: end;
 	}
@@ -292,7 +310,7 @@ form input {
 	#sidebar {
 		position: fixed;
 		top: 50%; transform: translateY(-50%);
-		left: calc(100% - var(--sidebar-width));
+		left: calc(100% - var(--sidebar-width) + 2em);
 	}
 }
 
