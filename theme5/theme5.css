@@ -144,11 +144,10 @@ h1, h2 {
 }
 .post .showtags.active i { transform: rotate(90deg) }
 /* Uppercase variants */
-.uppercase .post header, .uppercase .post .tags { font-variant: small-caps }
+.uppercase .post header, .uppercase .post .user, .uppercase .post .tags { font-variant: small-caps }
 .uppercase .post .showtags { text-transform: uppercase }
 /* Lowercase variants */
-.lowercase .post header { text-transform: lowercase }
-.lowercase .post .showtags { text-transform: lowercase }
+.lowercase .post header, .lowercase .post .user, .lowercase .post .showtags { text-transform: lowercase }
 .lowercase .post .showtags i { align-items: baseline }
 /* Like/reblog buttons and pinned post icon */
 .likereblog {
