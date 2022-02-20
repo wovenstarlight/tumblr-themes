@@ -329,7 +329,10 @@ body.light {
 				{block:Quote}
 					<div class="quote">
 						<h2>{Quote}</h2>
-						{block:Source}<p>— {Source}</p>{/block:Source}
+						{block:Source}
+						<div class="separator"><i class="fas fa-quote-right"></i></div>
+						<p>{Source}</p>
+						{/block:Source}
 					</div>
 				{/block:Quote}
 				
