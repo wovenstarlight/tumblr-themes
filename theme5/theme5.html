@@ -105,6 +105,7 @@
 	<meta name="if:Post dates" content="1">
 	<meta name="if:Post times" content="1">
 	<meta name="if:Dates formatted month first" content="0">
+	<meta name="if:Uppercase dates and tags" content="1">
 	<meta name="if:Like buttons" content="1">
 	<meta name="if:Reblog buttons" content="1">
 	<meta name="if:Post tags" content="1">
@@ -216,7 +217,7 @@ body.light {
 <!-- MAIN POSTS SECTION -->
 <main id="main">
 	<!-- POST WRAPPER -->
-	<section class="posts">
+	<section class="posts {block:IfUppercaseDatesAndTags}uppercase{/block:IfUppercaseDatesAndTags}{block:IfNotUppercaseDatesAndTags}lowercase{/block:IfNotUppercaseDatesAndTags}">
 	{block:Posts}
 
 		<article class="post">

@@ -79,6 +79,24 @@ h1, h2 {
 	color: var(--links-hover);
 	transform: scale(1.15);
 }
+/* Tooltips */
+.tippy-box[data-theme~="standard"] {
+	background-color: var(--post);
+	color: var(--text);
+	border: 0.1em solid rgba(var(--accent--rgb), 0.5);
+}
+.tippy-box[data-theme~="standard"][data-placement^="top"] > .tippy-arrow::before {
+	border-top-color: var(--post);
+	filter: drop-shadow(0 0.15em rgba(var(--accent--rgb), 0.5))
+}
+.tippy-box[data-theme~="standard"][data-placement^="bottom"] > .tippy-arrow::before {
+	border-bottom-color: var(--post);
+	filter: drop-shadow(0 -0.15em rgba(var(--accent--rgb), 0.5))
+}
+.tippy-box[data-theme~="standard"][data-placement^="left"] > .tippy-arrow::before {
+	border-left-color: var(--post);
+	filter: drop-shadow(0.15em 0 rgba(var(--accent--rgb), 0.5))
+}
 
 
 
@@ -93,7 +111,6 @@ h1, h2 {
 .post:last-child { margin-bottom: 0 }
 .post header, .post footer { font-size: 0.9em }
 .post header {
-	font-variant: small-caps;
 	padding: 0 0 0.1em 0.9em;
 	display: flex;
 	justify-content: space-between;
@@ -111,7 +128,6 @@ h1, h2 {
 }
 /* Show tags on click */
 .post footer .showtags {
-	text-transform: uppercase;
 	font-size: 0.9em;
 	display: flex;
 	align-items: center;
@@ -123,6 +139,13 @@ h1, h2 {
 	transition: 0.4s;
 }
 .post .showtags.active i { transform: rotate(90deg) }
+/* Uppercase variants */
+.uppercase .post header, .uppercase .post .tags { font-variant: small-caps }
+.uppercase .post .showtags { text-transform: uppercase }
+/* Lowercase variants */
+.lowercase .post header { text-transform: lowercase }
+.lowercase .post .showtags { text-transform: lowercase }
+.lowercase .post .showtags i { align-items: baseline }
 /* Like/reblog buttons and pinned post icon */
 .likereblog {
 	margin-right: 0.9em;
