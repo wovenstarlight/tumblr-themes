@@ -253,6 +253,28 @@ body.light {
 		<a class="arrows" href="{NextPage}"><i class="fas fa-chevron-down"></i></a>
 		{/block:NextPage}
 		{/block:Pagination}
+		
+		{block:PermalinkPagination}
+		<!-- PERMALINK PAGINATION -->
+		{block:PreviousPost}
+		<a class="arrows" href="{PreviousPost}"><i class="fas fa-chevron-up"></i></a>
+		{/block:PreviousPost}
+		
+		{block:NextPost}
+		<a class="arrows" href="{NextPost}"><i class="fas fa-chevron-down"></i></a>
+		{/block:NextPost}
+		{/block:PermalinkPagination}
+		
+		{block:DayPagination}
+		<!-- DAY PAGINATION -->
+		{block:PreviousDayPage}
+		<a class="arrows" href="{PreviousDayPage}"><i class="fas fa-chevron-up"></i></a>
+		{/block:PreviousDayPage}
+		
+		{block:NextDayPage}
+		<a class="arrows" href="{NextDayPage}"><i class="fas fa-chevron-down"></i></a>
+		{/block:NextDayPage}
+		{/block:DayPagination}
 		<span class="marker"><i class="fas fa-{text:Main theme icon}"></i></span>
 	</nav>
 </main>
