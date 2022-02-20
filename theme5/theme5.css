@@ -284,7 +284,7 @@ h1, h2 {
 }
 .photowrapper:not(:hover) .highres { opacity: 0 }
 /* Video posts */
-.videowrapper, .tumblr_video_container, .tumblr_video_iframe { width: 100% !important }
+.videowrapper, .videowrapper iframe, .tumblr_video_container, .tumblr_video_iframe { width: 100% !important }
 /* Quote posts */
 .quote { text-align: center }
 .quote h2 { margin: 0 }
@@ -317,6 +317,115 @@ h1, h2 {
 .chat li .label { font-size: 0.9em }
 .uppercase .chat .label { text-transform: uppercase }
 .lowercase .chat .label { text-transform: lowercase }
+/* Link posts */
+.link {
+	display: flex;
+	flex-direction: column;
+	border: 0.15em solid rgba(var(--accent--rgb), 0.5);
+	text-decoration: none;
+	transition: border-color .2s;
+}
+.link:hover { border-color: rgba(var(--accent--rgb), 0.7) }
+.link span {
+	padding: 0.5em;
+	background: rgba(var(--accent--rgb), 0.1);
+}
+.uppercase .link span { font-variant: small-caps }
+.lowercase .link span { text-transform: lowercase }
+.link span i {
+	float: right;
+	margin-right: 0.5em;
+	transition: margin-right .2s;
+}
+.link:hover span i { margin-right: 0.1em }
+.link .excerpt {
+	padding: 0.5rem;
+	font-size: 0.8em;
+	color: var(--text);
+}
+/* Audio posts */
+.audiowrapper {
+	--albumsize: 4.5em;
+	background: rgba(var(--accent--rgb), 0.1);
+	display: grid;
+	grid-template-columns: 1fr var(--albumsize);
+	margin: 1em 1em 0;
+}
+.audiowrapper > span { display: none } /* Bring the hidden player out of the grid */
+.audiowrapper .albumart { /* Album art and play/pause button section */
+	z-index: 0;
+	height: var(--albumsize);
+	background-color: var(--bg);
+	color: var(--links);
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+.audiowrapper .albumart img { /* Album art, if available */
+	z-index: -1;
+	position: absolute;
+	/* should auto-scale and auto-position, but just in case */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.audiowrapper .custom_audio_buttons { /* Play/pause buttons */
+	background: var(--bg);
+	font-size: 0.8em;
+	--size: 40%;
+	width: var(--size);
+	height: var(--size);
+	cursor: pointer;
+	transition: opacity .2s;
+}
+.post:not(:hover) img + .custom_audio_buttons { opacity: 0 }
+.audiowrapper .custom_audio_buttons > div {
+	width: 100%;
+	height: 100%;
+}
+.audiowrapper .custom_audio_buttons i {
+	padding: 10%;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.audiowrapper .custom_audio_error_icon i { color: red } /* If audio file errors */
+.audiowrapper .textinfo { /* General track information */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 0.2em 0.5em 0.3em;
+	row-gap: 0.1em;
+}
+/* Track info, uppercase variant */
+.uppercase .audiowrapper .trackname { font-variant: small-caps }
+.uppercase .audiowrapper .artist, .uppercase .audiowrapper .album { text-transform: uppercase }
+/* Track info, lowercase variant */
+.lowercase .audiowrapper .textinfo { text-transform: lowercase }
+.audiowrapper .trackname { /* Text info: track name */
+	color: var(--links);
+	font-size: 1.2em;
+}
+.audiowrapper .artist, .audiowrapper .album { font-size: 0.8em } /* Text info: artist and album */
+.audiowrapper .album { font-style: italic } /* Differentiate from artist */
+.audiowrapper .custom_audio_seekbar { /* Audio progress bar */
+	width: 100%;
+	grid-column: 1 / span 2;
+	background-color: rgba(var(--accent--rgb), 0.2);
+	height: 0.5em;
+	overflow: hidden;
+	cursor: pointer;
+}
+.audiowrapper .custom_audio_seekbar_progress { /* Audio progress bar, darkened bit */
+	width: 0;
+	height: 100%;
+	background: var(--links);
+}
 
 
 

@@ -343,7 +343,7 @@ body.light {
 					<div class="bodyitemcontent">
 						<a class="link" href="{URL}" {Target}>
 							{block:Thumbnail}<img src="{Thumbnail}">{/block:Thumbnail}
-							<span class="name">{Name}{block:Author} — {Author}{/block:Author}</span>
+							<span class="name">{Name}{block:Author} — {Author}{/block:Author}<i class="fas fa-arrow-right"></i></span>
 							{block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}
 						</a>
 						{Body}
@@ -387,23 +387,16 @@ body.light {
 					{block:AudioPlayer}
 					<div class="audiowrapper">
 						{AudioPlayer}
+						<div class="textinfo">
+							{block:TrackName}<span class="trackname">{TrackName}</span>{/block:TrackName}
+							{block:Artist}<span class="artist">{Artist}</span>{/block:Artist}
+							{block:Album}<span class="album">{Album}</span>{/block:Album}
+						</div>
 						<div class="albumart">
 							{block:AlbumArt}<img src="{AlbumArtURL}">{/block:AlbumArt}
 							<span class="custom_audio_buttons"></span>
 						</div>
-						<div class="trackinfo">
-							<div class="textinfo">
-								{block:TrackName}<span class="trackname">{TrackName}</span>{/block:TrackName}
-								<div class="making">
-									{block:Artist}<span class="artist">{Artist}</span>{/block:Artist}<span class="divider">, </span>{block:Album}<span class="album">{Album}</span>{/block:Album}
-								</div>
-							</div>
-							<div class="audio_player">
-								<span class="custom_audio_current_time"></span>
-								<div class="custom_audio_seekbar"></div>
-								<span class="custom_audio_time_left"></span>
-							</div>
-						</div>
+						<div class="custom_audio_seekbar"></div>
 					</div>
 					{/block:AudioPlayer}
 					
