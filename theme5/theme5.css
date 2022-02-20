@@ -97,6 +97,10 @@ h1, h2 {
 	border-left-color: var(--post);
 	filter: drop-shadow(0.15em 0 rgba(var(--accent--rgb), 0.5))
 }
+.tippy-box[data-theme~="standard"][data-placement^="right"] > .tippy-arrow::before {
+	border-right-color: var(--post);
+	filter: drop-shadow(-0.15em 0 rgba(var(--accent--rgb), 0.5))
+}
 
 
 
