@@ -115,6 +115,7 @@ h1, h2 {
 	font-size: 0.9em;
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 }
 .post footer .showtags i {
 	margin: 0 0.75em;
