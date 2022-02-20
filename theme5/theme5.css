@@ -154,7 +154,10 @@ h1, h2 {
 	column-gap: 0.5em;
 	align-items: center;
 }
-.pinnedpost { color: var(--accent) }
+.pinnedpost {
+	color: var(--accent);
+	cursor: help;
+}
 .customlike { position: relative }
 .customlike .like_button.liked + i { color: var(--like) }
 .customlike iframe {
