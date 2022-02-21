@@ -144,10 +144,18 @@ h1, h2 {
 }
 .post .showtags.active i { transform: rotate(90deg) }
 /* Uppercase variants */
-.uppercase .post header, .uppercase .post .user, .uppercase .post .tags { font-variant: small-caps }
+.uppercase .page.title,
+.uppercase .post header,
+.uppercase .post .user,
+.uppercase .post .tags,
+.uppercase #notes .title, .uppercase .notes .action a { font-variant: small-caps }
 .uppercase .post .showtags { text-transform: uppercase }
 /* Lowercase variants */
-.lowercase .post header, .lowercase .post .user, .lowercase .post .showtags { text-transform: lowercase }
+.lowercase .page.title,
+.lowercase .post header,
+.lowercase .post .user,
+.lowercase .post .showtags,
+.lowercase #notes .title, .lowercase .notes .action a { text-transform: lowercase }
 .lowercase .post .showtags i { align-items: baseline }
 /* Like/reblog buttons and pinned post icon */
 .likereblog {
@@ -207,43 +215,78 @@ h1, h2 {
 	content: " (deactivated)";
 	opacity: 0.75;
 }
-/* Post title, ask post question, and read more containers */
-.post .title { margin: 0 }
-.post .title a, .read_more {
+/* Containers for post title, ask post question, read more, notes buttons, and page titles */
+.page.title {
+	padding: 0.6em 1em;
+	margin: 0 1.5em;
+	text-align: center;
+}
+.page.title h2 { margin: 0 0 0.25rem }
+.page.title p, .post .title { margin: 0 }
+.post .title a, .read_more, .more_notes_link, .notes_loading {
 	display: block;
 	text-align: center;
 }
-.ask, .post .title a, .read_more {
+.page.title, .post .title a, .ask, .read_more, .more_notes_link, .notes_loading {
 	position: relative;
-	background-color: var(--bg);
-	padding: 0.5em 0.75em;
 	--color: rgba(var(--accent--rgb), 0.6);
 	--size: 1.5em;
 	--displacement: -0.075em;
+	padding: 0.5em 0.75em;
+}
+.post .title a, .ask, .more_notes_link, .notes_loading {
+	background-color: var(--bg);
 	margin-bottom: 0.5em;
 }
-.post .title a:hover, .read_more:hover { --size: 2em }
-.read_more { background-color: rgba(var(--accent--rgb), 0.15)}
-.ask::before, .ask::after,
+.post .title a:hover, .read_more:hover, .more_notes_link:hover, .notes_loading { --size: 2em }
+.page.title, .read_more, .more_notes_link, .notes_loading { background-color: rgba(var(--accent--rgb), 0.15)}
+.page.title::before, .page.title::after,
 .post .title a::before, .post .title a::after,
-.read_more::before, .read_more::after {
+.ask::before, .ask::after,
+.read_more::before, .read_more::after,
+.more_notes_link::before, .more_notes_link::after,
+.notes_loading::before, .notes_loading::after {
 	position: absolute;
-	content:"";
+	content: "";
 	display: block;
 	width: var(--size);
 	height: var(--size);
 	border: 0.15em solid transparent;
-	transition: .2s ease;
+	transition: .3s ease;
 	transition-property: width, height;
 }
-.ask::before, .post .title a::before, .read_more::before {
+.page.title::before, .post .title a::before, .ask::before, .read_more::before, .more_notes_link::before, .notes_loading::before {
 	top: var(--displacement); left: var(--displacement);
 	border-top-color: var(--color); border-left-color: var(--color);
 }
-.ask::after, .post .title a::after, .read_more::after {
+.page.title::after, .post .title a::after, .ask::after, .read_more::after, .more_notes_link::after, .notes_loading::after {
 	bottom: var(--displacement); right: var(--displacement);
 	border-bottom-color: var(--color); border-right-color: var(--color);
 }
+/* Notes section */
+#notes h2 {
+	text-align: center;
+	margin: 0;
+}
+.notes {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.notes .like, .notes .reblog {
+	padding: 0.5em 0;
+	display: flex;
+	align-items: center;
+}
+.notes .note:not(:nth-last-child(2), :last-child) { border-bottom: thin solid rgba(var(--accent--rgb), 0.5) }
+.note .avatar_frame {
+	--size: 2em;
+	width: var(--size);
+	height: var(--size);
+	margin-right: 0.5em;
+	flex-shrink: 0;
+}
+.note .avatar { border-radius: 100% }
 /* Navigation */
 #pagination {
 	flex-direction: column;
@@ -308,15 +351,29 @@ h1, h2 {
 	list-style: none;
 	margin: 0;
 	padding: 0;
+	display: flex;
+	flex-direction: column;
+	row-gap: 0.5em;
 }
-.chat li {
-	padding: 0.3em 0.5em;
+.chat li { 
+	display: flex;
+	flex-direction: column;
 }
-.chat li:nth-child(odd) { background-color: rgba(var(--accent--rgb), 0.07) }
-.chat li:nth-child(even) { background-color: rgba(var(--accent--rgb), 0.125) }
-.chat li .label { font-size: 0.9em }
-.uppercase .chat .label { text-transform: uppercase }
-.lowercase .chat .label { text-transform: lowercase }
+.chat li:nth-child(even) {
+	align-self: end;
+	text-align: right;
+	align-items: end;
+}
+.chat .label { margin-bottom: 0.1rem }
+.uppercase .chat .label { text-transform: uppercase; font-size: 0.75em }
+.lowercase .chat .label { text-transform: lowercase; font-size: 0.8em }
+.chat .line {
+	width: fit-content;
+	display: block;
+	padding: 0.25em 0.5em;
+}
+.chat li:nth-child(odd) .line { background-color: rgba(var(--accent--rgb), 0.1); margin-right: 2em; }
+.chat li:nth-child(even) .line { background-color: rgba(var(--accent--rgb), 0.2); margin-left: 2em; }
 /* Link posts */
 .link {
 	display: flex;
@@ -592,9 +649,11 @@ form input {
 	#main {
 		max-width: calc(100% - var(--sidebar-width) - 4.5em);
 		display: flex;
-		justify-content: end;
+		justify-content: center;
+		align-items: end;
 		align-self: center;
 		margin-left: 2em;
+		flex-direction: column;
 	}
 	.posts {
 		margin: 2em;
