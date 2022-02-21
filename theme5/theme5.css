@@ -84,6 +84,7 @@ h1, h2 {
 	background-color: var(--post);
 	color: var(--text);
 	border: 0.1em solid rgba(var(--accent--rgb), 0.5);
+	text-align: center;
 }
 .tippy-box[data-theme~="standard"][data-placement^="top"] > .tippy-arrow::before {
 	border-top-color: var(--post);
@@ -196,6 +197,7 @@ h1, h2 {
 .bodyitem:not(:last-child) { border-bottom: 0.07em solid rgba(var(--accent--rgb), 0.5) }
 .bodyitemcontent :first-child, .ask .question :first-child { margin-top: 0 }
 .bodyitemcontent :last-child, .ask .question :last-child { margin-bottom: 0 }
+.audiowrapper + .bodyitemcontent, .videowrapper + .bodyitemcontent { margin-top: 0.75em }
 /* Usernames */
 .user {
 	display: inline-flex;
@@ -316,7 +318,7 @@ h1, h2 {
 	color: var(--links);
 }
 /* For current page, both in page-wise navigation and custom blog page navigation */
-.current-page {
+.current-page, .current-page:hover {
 	background: linear-gradient(rgba(var(--accent--rgb), 0.8) 0 0), var(--post);
 	color: var(--bg);
 }
