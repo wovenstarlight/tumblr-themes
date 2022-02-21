@@ -21,8 +21,7 @@ $(".collapsible").each( function() {
 $(".collapsible > .clpbutton").click( function() {
 	var collapsible = $(this).parent();
 	var content = $(this).next();
-	if (collapsible.hasClass("active")) { content.slideUp() }
-	else { content.slideDown() }
+	content.slideToggle();
 	collapsible.toggleClass("active");
 });
 </script>
