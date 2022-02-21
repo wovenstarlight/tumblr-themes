@@ -2,14 +2,14 @@
 	THEME 5: JUPITER by starlightthemes
 
 	Credits:
-		Icons from Font Awesome: https://fontawesome.com
+		Cappuccicons by suiomi: https://cappuccicons.com/
 		Custom like buttons by Georgi Demirev: https://demirev.cubthemes.com/post/106345243051/changing-like-and-reblog-button-colors-revisited
 		NPF photosets plugin by codematurgy: https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin
 		Dark/light mode toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 		Custom audio posts by annasthms: https://annasthms.tumblr.com/more/js/customaudio/new
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 20 Feb 2022.
+	Last updated 21 Feb 2022.
 -->
 
 <!DOCTYPE html>
@@ -70,32 +70,32 @@
 	<meta name="color:LM Text highlight background" content="#f79ebf">
 
 	<!-- Icon/page link options -->
-	<meta name="text:Main theme icon" content="bolt">
+	<meta name="text:Main theme icon" content="flash-o">
 	<meta name="if:Standard page link icons" content="0">
 	<meta name="text:Page 1 link" content="/one">
 	<meta name="text:Page 1 label" content="Custom page 1">
-	<meta name="text:Page 1 icon" content="chain">
+	<meta name="text:Page 1 icon" content="link">
 	<meta name="text:Page 2 link" content="/two">
 	<meta name="text:Page 2 label" content="Custom page two">
 	<meta name="text:Page 2 icon" content="dragon">
 	<meta name="text:Page 3 link" content="/three">
 	<meta name="text:Page 3 label" content="Custom page tres">
-	<meta name="text:Page 3 icon" content="bullseye">
+	<meta name="text:Page 3 icon" content="bow-and-arrow-o">
 	<meta name="text:Page 4 link" content="">
 	<meta name="text:Page 4 label" content="">
-	<meta name="text:Page 4 icon" content="4">
+	<meta name="text:Page 4 icon" content="moon-o">
 	<meta name="text:Page 5 link" content="">
 	<meta name="text:Page 5 label" content="">
-	<meta name="text:Page 5 icon" content="5">
+	<meta name="text:Page 5 icon" content="watch-o">
 	<meta name="text:Page 6 link" content="">
 	<meta name="text:Page 6 label" content="">
-	<meta name="text:Page 6 icon" content="6">
+	<meta name="text:Page 6 icon" content="flower-alt-o">
 	<meta name="text:Page 7 link" content="">
 	<meta name="text:Page 7 label" content="">
-	<meta name="text:Page 7 icon" content="7">
+	<meta name="text:Page 7 icon" content="dreamcatcher">
 	<meta name="text:Page 8 link" content="">
 	<meta name="text:Page 8 label" content="">
-	<meta name="text:Page 8 icon" content="8">
+	<meta name="text:Page 8 icon" content="butterfly-o">
 
 	<!-- General theme options -->
 	<meta name="if:Back to top button" content="1">
@@ -118,8 +118,8 @@
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
 
 	<!-- Resource imports -->
-	<!-- Font Awesome icons -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+	<!-- Cappuccicons by suiomi -->
+	<script src="//pull.cappuccicons.com/cpf.js"></script> 
 	<!-- Google fonts import -->
 	{block:IfNotUseTumblrFontsForBody}<link href="https://fonts.googleapis.com/css2?family={text:Google font for body}" rel="stylesheet">{/block:IfNotUseTumblrFontsForBody}
 	{block:IfNotUseTumblrFontsForTitle}<link href="https://fonts.googleapis.com/css2?family={text:Google font for title}" rel="stylesheet">{/block:IfNotUseTumblrFontsForTitle}
@@ -253,7 +253,7 @@ body.light {
 		<article class="post">
 			{block:Date}<header {block:IfNotPostDates}class="nodates"{/block:IfNotPostDates}>
 				{block:IfPostDates}<a href="{Permalink}" {block:IfPostTimes}data-tippy-content="{lang:Posted TimeAgo}"{/block:IfPostTimes}>{DayOfWeek}, {block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}</a>{/block:IfPostDates}
-			    {block:NoteCount}<a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}
+				{block:NoteCount}<a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}
 			</header>{/block:Date}
 
 
@@ -360,7 +360,7 @@ body.light {
 					<div class="quote">
 						<h2>{Quote}</h2>
 						{block:Source}
-						<div class="separator"><i class="fas fa-quote-right"></i></div>
+						<div class="separator"><i class="cp cp-quote"></i></div>
 						<p>{Source}</p>
 						{/block:Source}
 					</div>
@@ -373,7 +373,7 @@ body.light {
 					<div class="bodyitemcontent">
 						<a class="link" href="{URL}" {Target}>
 							{block:Thumbnail}<img src="{Thumbnail}">{/block:Thumbnail}
-							<span class="name">{Name}{block:Author} — {Author}{/block:Author}<i class="fas fa-arrow-right"></i></span>
+							<span class="name">{Name}{block:Author} — {Author}{/block:Author}<i class="cp cp-arrow-right"></i></span>
 							{block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}
 						</a>
 						{Body}
@@ -508,23 +508,23 @@ body.light {
 
 			{block:Date}<footer>
 				<span class="likereblog">
-					{block:PinnedPostLabel}<i class="fas fa-thumbtack pinnedpost" data-tippy-content="{PinnedPostLabel}"></i>{/block:PinnedPostLabel}
+					{block:PinnedPostLabel}<i class="cp cp-pin-o pinnedpost" data-tippy-content="{PinnedPostLabel}"></i>{/block:PinnedPostLabel}
 
 					{block:IfLikeButtons}
 					<a href="#" class="customlike">
 						{LikeButton size="30"}
-						<i class="fas fa-heart"></i>
+						<i class="cp cp-heart-o"></i>
 					</a>
 					{/block:IfLikeButtons}
 					{block:IfReblogButtons}
-					<a href="{ReblogURL}" class="customreblog"><i class="fas fa-sync"></i></a>
+					<a href="{ReblogURL}" class="customreblog"><i class="cp cp-reblog"></i></a>
 					{/block:IfReblogButtons}
 				</span>
 
 				{block:IfPostTags}{block:HasTags}
-			    {block:IfShowTagsOnClick}
-			    <a class="showtags" tabindex="0">Show tags <i class="fas fa-chevron-right"></i></a>
-			    {/block:IfShowTagsOnClick}
+				{block:IfShowTagsOnClick}
+				<a class="showtags" tabindex="0">Show tags <i class="cp cp-chevron-right"></i></a>
+				{/block:IfShowTagsOnClick}
 				<p class="tags" {block:IfShowTagsOnClick}style="display: none;"{/block:IfShowTagsOnClick}>
 					<!-- TAGS SECTION -->
 					{block:Tags}<a href="{TagURL}">{Tag}</a>{block:Tags}
@@ -552,14 +552,14 @@ body.light {
 		{block:Pagination}
 		<!-- PAGINATION -->
 		{block:PreviousPage}
-		<a class="arrows" href="{PreviousPage}"><i class="fas fa-chevron-up"></i></a>
+		<a class="arrows" href="{PreviousPage}"><i class="cp cp-chevron-up"></i></a>
 		{/block:PreviousPage}
 
 		{block:JumpPagination length="5"}
 		{block:CurrentPage}
 		<a class="current-page">
 			<span>{PageNumber}</span>
-			<i class="fas fa-{text:Main theme icon}"></i>
+			<i class="cp cp-{text:Main theme icon}"></i>
 		</a>
 		{/block:CurrentPage}
 		{block:JumpPage}
@@ -568,32 +568,32 @@ body.light {
 		{/block:JumpPagination}
 		
 		{block:NextPage}
-		<a class="arrows" href="{NextPage}"><i class="fas fa-chevron-down"></i></a>
+		<a class="arrows" href="{NextPage}"><i class="cp cp-chevron-down"></i></a>
 		{/block:NextPage}
 		{/block:Pagination}
 		
 		{block:PermalinkPagination}
 		<!-- PERMALINK PAGINATION -->
 		{block:PreviousPost}
-		<a class="arrows" href="{PreviousPost}"><i class="fas fa-chevron-up"></i></a>
+		<a class="arrows" href="{PreviousPost}"><i class="cp cp-chevron-up"></i></a>
 		{/block:PreviousPost}
 		
 		{block:NextPost}
-		<a class="arrows" href="{NextPost}"><i class="fas fa-chevron-down"></i></a>
+		<a class="arrows" href="{NextPost}"><i class="cp cp-chevron-down"></i></a>
 		{/block:NextPost}
 		{/block:PermalinkPagination}
 		
 		{block:DayPagination}
 		<!-- DAY PAGINATION -->
 		{block:PreviousDayPage}
-		<a class="arrows" href="{PreviousDayPage}"><i class="fas fa-chevron-up"></i></a>
+		<a class="arrows" href="{PreviousDayPage}"><i class="cp cp-chevron-up"></i></a>
 		{/block:PreviousDayPage}
 		
 		{block:NextDayPage}
-		<a class="arrows" href="{NextDayPage}"><i class="fas fa-chevron-down"></i></a>
+		<a class="arrows" href="{NextDayPage}"><i class="cp cp-chevron-down"></i></a>
 		{/block:NextDayPage}
 		{/block:DayPagination}
-		<span class="marker"><i class="fas fa-{text:Main theme icon}"></i></span>
+		<span class="marker"><i class="cp cp-{text:Main theme icon}"></i></span>
 	</nav>
 </main>
 
@@ -612,20 +612,20 @@ body.light {
 				{block:IfColorModeToggle}
 				<!-- DARK/LIGHT MODE TOGGLE -->
 				<a id="darklight" tabindex="0" data-tippy-content="Toggle color mode" data-tippy-placement="right">
-					<i class="fas fa-moon"></i>
-					<i class="fas fa-sun"></i>
+					<i class="cp cp-moon-o"></i>
+					<i class="cp cp-sun"></i>
 				</a>
 				{/block:IfColorModeToggle}
 				{block:IfNotColorModeToggle}
-				<a><i class="fas fa-{text:Main theme icon}"></i></a>
+				<a><i class="cp cp-{text:Main theme icon}"></i></a>
 				{block:IfNotColorModeToggle}
 				
 				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
-				<a href="https://starlightthemes.tumblr.com/theme5" id="creditlink" data-tippy-content="{lang:Install this theme}" data-tippy-placement="right"><i class="fas fa-download"></i></a>
+				<a href="https://starlightthemes.tumblr.com/theme5" id="creditlink" data-tippy-content="{lang:Install this theme}" data-tippy-placement="right"><i class="cp cp-code"></i></a>
 				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
 
 				<!-- BLOG COPYRIGHT -->
-				<a data-tippy-content="{Name} {CopyrightYears}" data-tippy-placement="right" id="copyright"><i class="fas fa-copyright"></i></a>
+				<a data-tippy-content="{Name} {CopyrightYears}" data-tippy-placement="right" id="copyright"><i class="cp cp-clock-o"></i></a>
 			</div>
 			<svg height="100%" xmlns="http://www.w3.org/2000/svg" width="4.25em" viewBox="0 0 65 100">
 				<line x1="40" y1="10" x2="65" y2="50" />
@@ -640,11 +640,11 @@ body.light {
 	<div id="homelinks">
 		<hr>
 		<nav>
-			<a href="/" data-tippy-content="{lang:Home}"><i class="fas fa-home"></i></a>
-			{block:AskEnabled}<a href="/ask" id="asklink" data-tippy-content="{AskLabel}"><i class="fas fa-envelope"></i></a>{/block:AskEnabled}
-			{block:SubmissionsEnabled}<a href="/submit" id="submitlink" data-tippy-content="{SubmitLabel}"><i class="fas fa-inbox"></i></a>{/block:SubmissionsEnabled}
-			{block:IfRandomPostLink}<a href="/random" id="randomlink" data-tippy-content="{lang:Random}"><i class="fas fa-shuffle"></i></a>{/block:IfRandomPostLink}
-			{block:IfArchiveLink}<a href="/archive" id="archivelink" data-tippy-content="{lang:Archive}"><i class="fas fa-box-archive"></i></a>{/block:IfArchiveLink}
+			<a href="/" data-tippy-content="{lang:Home}"><i class="cp cp-home-o"></i></a>
+			{block:AskEnabled}<a href="/ask" id="asklink" data-tippy-content="{AskLabel}"><i class="cp cp-envelope-o"></i></a>{/block:AskEnabled}
+			{block:SubmissionsEnabled}<a href="/submit" id="submitlink" data-tippy-content="{SubmitLabel}"><i class="cp cp-pencil-o"></i></a>{/block:SubmissionsEnabled}
+			{block:IfRandomPostLink}<a href="/random" id="randomlink" data-tippy-content="{lang:Random}"><i class="cp cp-shuffle"></i></a>{/block:IfRandomPostLink}
+			{block:IfArchiveLink}<a href="/archive" id="archivelink" data-tippy-content="{lang:Archive}"><i class="cp cp-calendar-o"></i></a>{/block:IfArchiveLink}
 		</nav>
 	</div>
 
@@ -659,7 +659,7 @@ body.light {
 		{block:IfSearchBar}
 		<!-- SEARCH BAR -->
 		<form action="/search" method="get" id="search">
-			<i class="fas fa-search"></i>
+			<i class="cp cp-search"></i>
 			<label for="q">Search</label>
 			<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="Search"/>
 		</form>
@@ -671,7 +671,7 @@ body.light {
 	<div id="pages">
 		<hr>
 		<nav>
-			{block:Pages}<a href="{URL}" class="{CurrentState}" data-tippy-content="{Label}"><i class="fas fa-link"></i></a>{/block:Pages}
+			{block:Pages}<a href="{URL}" class="{CurrentState}" data-tippy-content="{Label}"><i class="cp cp-link"></i></a>{/block:Pages}
 		</nav>
 	</div>
 	{/block:HasPages}{/block:IfStandardPageLinkIcons}
@@ -698,7 +698,7 @@ body.light {
 <!-- BACK TO TOP BUTTON -->
 <div id="scrolltotop_parent" tabindex="0" style="display: none;" data-tippy-content="{lang:Back to top}" data-tippy-placement="left">
 	<div id="scrolltotop_arrow">
-		<i class="fas fa-chevron-up"></i>
+		<i class="cp cp-chevron-up"></i>
 	</div>
 </div>
 {block:IfBackToTopButton}

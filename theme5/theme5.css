@@ -11,7 +11,7 @@ a {
 a:not(:hover) { text-decoration: none }
 a:hover { color: var(--links-hover) }
 strong, b { color: var(--bold) }
-em, i:not(.fas, .far) { color: var(--italics) }
+em, i:not(.cp) { color: var(--italics) }
 h1, h2 {
 	color: var(--headings);
 	font-family: var(--title-font);
@@ -169,8 +169,15 @@ h1, h2 {
 	color: var(--accent);
 	cursor: help;
 }
+.likereblog a {
+	height: 1em; /* <a>s are too tall otherwise; shorten */
+	transition: .3s ease;
+	text-decoration: none;
+}
+.likereblog a:hover { transform: scale(1.2) }
 .customlike { position: relative }
-.customlike .like_button.liked + i { color: var(--like) }
+.customlike .like_button.liked + i { color: var(--like) } /* Pink heart */
+.customlike .like_button.liked + i::before { content: "\eb03" } /* Fill heart */
 .customlike iframe {
 	position: absolute;
 	width: 100%;
@@ -599,8 +606,8 @@ h1, h2 {
 	justify-content: center;
 	transition-property: color, transform;
 }
-body:not(.light) .fa-moon,
-body.light .fa-sun { display: none }
+body:not(.light) #darklight .cp-moon-o,
+body.light #darklight .cp-sun { display: none }
 #homelinks nav a:hover,
 #pages nav a:hover,
 #buttons > a:hover,
@@ -633,7 +640,7 @@ form {
 	background: var(--bg);
 	align-items: center;
 }
-form i.fa-search {
+form i {
 	color: var(--accent);
 	padding: 0.5em;
 }
