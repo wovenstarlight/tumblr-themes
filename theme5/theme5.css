@@ -287,6 +287,10 @@ h1, h2 {
 	flex-shrink: 0;
 }
 .note .avatar { border-radius: 100% }
+/* Ask page */
+.askwrapper:not(:empty) { margin-bottom: 1em }
+/* No posts */
+.no-posts { text-align: center }
 /* Navigation */
 #pagination {
 	flex-direction: column;
