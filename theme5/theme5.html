@@ -611,7 +611,7 @@ body.light {
 			<div id="buttons">
 				{block:IfColorModeToggle}
 				<!-- DARK/LIGHT MODE TOGGLE -->
-				<a id="darklight" tabindex="0" data-tippy-content="Toggle color mode">
+				<a id="darklight" tabindex="0" data-tippy-content="Toggle color mode" data-tippy-placement="right">
 					<i class="fas fa-moon"></i>
 					<i class="fas fa-sun"></i>
 				</a>
@@ -621,11 +621,11 @@ body.light {
 				{block:IfNotColorModeToggle}
 				
 				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
-				<a href="https://starlightthemes.tumblr.com/theme5" id="creditlink" data-tippy-content="{lang:Install this theme}"><i class="fas fa-download"></i></a>
+				<a href="https://starlightthemes.tumblr.com/theme5" id="creditlink" data-tippy-content="{lang:Install this theme}" data-tippy-placement="right"><i class="fas fa-download"></i></a>
 				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
 
 				<!-- BLOG COPYRIGHT -->
-				<a data-tippy-content="{Name} {CopyrightYears}" id="copyright"><i class="fas fa-copyright"></i></a>
+				<a data-tippy-content="{Name} {CopyrightYears}" data-tippy-placement="right" id="copyright"><i class="fas fa-copyright"></i></a>
 			</div>
 			<svg height="100%" xmlns="http://www.w3.org/2000/svg" width="4.25em" viewBox="0 0 65 100">
 				<line x1="40" y1="10" x2="65" y2="50" />
@@ -681,14 +681,14 @@ body.light {
 	<div id="pages">
 		<hr>
 		<nav>
-			{block:IfPage1Link}<a href="{text:Page 1 link}" data-tippy-content="{text:Page 1 label}"><i class="fas fa-{text:Page 1 icon}"></i></a>{block:IfPage1Link}
-			{block:IfPage2Link}<a href="{text:Page 2 link}" data-tippy-content="{text:Page 2 label}"><i class="fas fa-{text:Page 2 icon}"></i></a>{block:IfPage2Link}
-			{block:IfPage3Link}<a href="{text:Page 3 link}" data-tippy-content="{text:Page 3 label}"><i class="fas fa-{text:Page 3 icon}"></i></a>{block:IfPage3Link}
-			{block:IfPage4Link}<a href="{text:Page 4 link}" data-tippy-content="{text:Page 4 label}"><i class="fas fa-{text:Page 4 icon}"></i></a>{block:IfPage4Link}
-			{block:IfPage5Link}<a href="{text:Page 5 link}" data-tippy-content="{text:Page 5 label}"><i class="fas fa-{text:Page 5 icon}"></i></a>{block:IfPage5Link}
-			{block:IfPage6Link}<a href="{text:Page 6 link}" data-tippy-content="{text:Page 6 label}"><i class="fas fa-{text:Page 6 icon}"></i></a>{block:IfPage6Link}
-			{block:IfPage7Link}<a href="{text:Page 7 link}" data-tippy-content="{text:Page 7 label}"><i class="fas fa-{text:Page 7 icon}"></i></a>{block:IfPage7Link}
-			{block:IfPage8Link}<a href="{text:Page 8 link}" data-tippy-content="{text:Page 8 label}"><i class="fas fa-{text:Page 8 icon}"></i></a>{block:IfPage8Link}
+			{block:IfPage1Link}<a href="{text:Page 1 link}" {block:IfPage1Label}data-tippy-content="{text:Page 1 label}"{/block:IfPage1Label}><i class="fas fa-{text:Page 1 icon}"></i></a>{block:IfPage1Link}
+			{block:IfPage2Link}<a href="{text:Page 2 link}" {block:IfPage2Label}data-tippy-content="{text:Page 2 label}"{/block:IfPage2Label}><i class="fas fa-{text:Page 2 icon}"></i></a>{block:IfPage2Link}
+			{block:IfPage3Link}<a href="{text:Page 3 link}" {block:IfPage3Label}data-tippy-content="{text:Page 3 label}"{/block:IfPage3Label}><i class="fas fa-{text:Page 3 icon}"></i></a>{block:IfPage3Link}
+			{block:IfPage4Link}<a href="{text:Page 4 link}" {block:IfPage4Label}data-tippy-content="{text:Page 4 label}"{/block:IfPage4Label}><i class="fas fa-{text:Page 4 icon}"></i></a>{block:IfPage4Link}
+			{block:IfPage5Link}<a href="{text:Page 5 link}" {block:IfPage5Label}data-tippy-content="{text:Page 5 label}"{/block:IfPage5Label}><i class="fas fa-{text:Page 5 icon}"></i></a>{block:IfPage5Link}
+			{block:IfPage6Link}<a href="{text:Page 6 link}" {block:IfPage6Label}data-tippy-content="{text:Page 6 label}"{/block:IfPage6Label}><i class="fas fa-{text:Page 6 icon}"></i></a>{block:IfPage6Link}
+			{block:IfPage7Link}<a href="{text:Page 7 link}" {block:IfPage7Label}data-tippy-content="{text:Page 7 label}"{/block:IfPage7Label}><i class="fas fa-{text:Page 7 icon}"></i></a>{block:IfPage7Link}
+			{block:IfPage8Link}<a href="{text:Page 8 link}" {block:IfPage8Label}data-tippy-content="{text:Page 8 label}"{/block:IfPage8Label}><i class="fas fa-{text:Page 8 icon}"></i></a>{block:IfPage8Link}
 		</nav>
 	</div>
 	{/block:IfNotStandardPageLinkIcons}
