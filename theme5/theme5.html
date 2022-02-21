@@ -105,6 +105,7 @@
 	<meta name="if:Post dates" content="1">
 	<meta name="if:Post times" content="1">
 	<meta name="if:Dates formatted month first" content="0">
+	<meta name="if:24 hour times" content="0">
 	<meta name="if:Uppercase special post text" content="1">
 	<meta name="if:Like buttons" content="1">
 	<meta name="if:Reblog buttons" content="1">
@@ -252,7 +253,7 @@ body.light {
 
 		<article class="post">
 			{block:Date}<header {block:IfNotPostDates}class="nodates"{/block:IfNotPostDates}>
-				{block:IfPostDates}<a href="{Permalink}" {block:IfPostTimes}data-tippy-content="{lang:Posted TimeAgo}"{/block:IfPostTimes}>{DayOfWeek}, {block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}</a>{/block:IfPostDates}
+				{block:IfPostDates}<a href="{Permalink}" data-tippy-content="{lang:Posted TimeAgo}">{DayOfWeek}, {block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfPostTimes} @ {block:If24HourTimes}{24Hour}{/block:If24HourTimes}{block:IfNot24HourTimes}{12Hour}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes} {CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</a>{/block:IfPostDates}
 				{block:NoteCount}<a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}
 			</header>{/block:Date}
 
@@ -641,8 +642,8 @@ body.light {
 		<hr>
 		<nav>
 			<a href="/" data-tippy-content="{lang:Home}"><i class="cp cp-home-o"></i></a>
-			{block:AskEnabled}<a href="/ask" id="asklink" data-tippy-content="{AskLabel}"><i class="cp cp-envelope-o"></i></a>{/block:AskEnabled}
-			{block:SubmissionsEnabled}<a href="/submit" id="submitlink" data-tippy-content="{SubmitLabel}"><i class="cp cp-pencil-o"></i></a>{/block:SubmissionsEnabled}
+			{block:AskEnabled}<a href="/ask" id="asklink" {block:AskPage}class="current-page"{/block:AskPage} data-tippy-content="{AskLabel}"><i class="cp cp-envelope-o"></i></a>{/block:AskEnabled}
+			{block:SubmissionsEnabled}<a href="/submit" id="submitlink" {block:SubmitPage}class="current-page"{/block:SubmitPage} data-tippy-content="{SubmitLabel}"><i class="cp cp-pencil-o"></i></a>{/block:SubmissionsEnabled}
 			{block:IfRandomPostLink}<a href="/random" id="randomlink" data-tippy-content="{lang:Random}"><i class="cp cp-shuffle"></i></a>{/block:IfRandomPostLink}
 			{block:IfArchiveLink}<a href="/archive" id="archivelink" data-tippy-content="{lang:Archive}"><i class="cp cp-calendar-o"></i></a>{/block:IfArchiveLink}
 		</nav>
