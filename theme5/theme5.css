@@ -647,7 +647,7 @@ form input {
 
 
 /******************************** MEDIA QUERIES ********************************/
-@media (min-width: 800px) {
+@media (min-width: 50rem) {
 	body { display: grid }
 	/* Stop main from overlapping nav/sidebar */
 	#main {
@@ -686,7 +686,7 @@ form input {
 	}
 }
 
-@media (max-width: 800px) {
+@media (max-width: 50rem) {
 	/* Rearrange main/sidebar/navigation to be stacked */
 	body {
 		display: grid;
@@ -717,7 +717,7 @@ form input {
 	#pagination span { display: none }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 31.5rem) {
 	body { font-size: 90% }
 	#btnctr svg { right: 0.5em }
 }

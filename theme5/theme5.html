@@ -30,7 +30,7 @@
 	<meta name="text:Google font for body" content="Lora">
 	<meta name="font:Tumblr font for body" content="Gibson">
 	<meta name="text:Google font for title" content="Bitter">
-	<meta name="font:Tumblr font for title" content="Brutal Type">
+	<meta name="font:Tumblr font for title" content="Lorimer No 2">
 	<meta name="if:Use Tumblr fonts for body" content="0">
 	<meta name="if:Use Tumblr fonts for title" content="0">
 	<meta name="text:Font size" content="16px">
@@ -40,41 +40,41 @@
 	<meta name="select:Sidebar width" content="35%" title="Narrow">
 
 	<!-- Color options: Dark -->
-	<meta name="color:Text" content="#eeeeee">
-	<meta name="color:Headings" content="#ffcc52">
-	<meta name="color:Links" content="#f9a521">
+	<meta name="color:Text" content="#dddddd">
+	<meta name="color:Headings" content="#ffc436">
+	<meta name="color:Links" content="#f9ca21">
 	<meta name="color:Links hover" content="#ffe86d">
-	<meta name="color:Bold" content="#bbefe6">
-	<meta name="color:Italics" content="#b8d4f2">
-	<meta name="color:Posts" content="#00333d">
-	<meta name="color:Background" content="#020017">
-	<meta name="color:Accent" content="#003c59">
-	<meta name="color:Like button" content="#ff5400">
+	<meta name="color:Bold" content="#ff8cf7">
+	<meta name="color:Italics" content="#ff5fba">
+	<meta name="color:Posts" content="#3c1916">
+	<meta name="color:Background" content="#170903">
+	<meta name="color:Accent" content="#ffbf00">
+	<meta name="color:Like button" content="#ff0055">
 	<meta name="color:Text highlight" content="#ffeb9e">
-	<meta name="color:Text highlight background" content="#1c0037">
+	<meta name="color:Text highlight background" content="#230011">
 	<!-- Color options: Light -->
 	<meta name="if:Color mode toggle" content="1">
 	<meta name="select:Default color mode" content="" title="Dark">
 	<meta name="select:Default color mode" content="light" title="Light">
-	<meta name="color:LM Text" content="#080a19">
-	<meta name="color:LM Headings" content="#79055c">
-	<meta name="color:LM Links" content="#760000">
-	<meta name="color:LM Links hover" content="#d20023">
-	<meta name="color:LM Bold" content="#0b145b">
-	<meta name="color:LM Italics" content="#4b0969">
-	<meta name="color:LM Posts" content="#fcd0c7">
-	<meta name="color:LM Background" content="#080a19">
-	<meta name="color:LM Accent" content="#d88c7d">
-	<meta name="color:LM Like button" content="#592f8b">
+	<meta name="color:LM Text" content="#190809">
+	<meta name="color:LM Headings" content="#a90057">
+	<meta name="color:LM Links" content="#ab004d">
+	<meta name="color:LM Links hover" content="#ff007b">
+	<meta name="color:LM Bold" content="#a13600">
+	<meta name="color:LM Italics" content="#ae6200">
+	<meta name="color:LM Posts" content="#eadfb6">
+	<meta name="color:LM Background" content="#f7f5e8">
+	<meta name="color:LM Accent" content="#e661ac">
+	<meta name="color:LM Like button" content="#ee0000">
 	<meta name="color:LM Text highlight" content="#3c000a">
-	<meta name="color:LM Text highlight background" content="#f17ea9">
+	<meta name="color:LM Text highlight background" content="#f79ebf">
 
 	<!-- Icon/page link options -->
 	<meta name="text:Main theme icon" content="bolt">
 	<meta name="if:Standard page link icons" content="0">
 	<meta name="text:Page 1 link" content="/one">
 	<meta name="text:Page 1 label" content="Custom page 1">
-	<meta name="text:Page 1 icon" content="bolt">
+	<meta name="text:Page 1 icon" content="chain">
 	<meta name="text:Page 2 link" content="/two">
 	<meta name="text:Page 2 label" content="Custom page two">
 	<meta name="text:Page 2 icon" content="dragon">
@@ -126,6 +126,7 @@
 
 <style>
 /* DEFAULT VARIABLES */
+html { font-size: {text:Font size} }
 body {
 	--text: {color:Text};
 	--headings: {color:Headings};
@@ -143,7 +144,6 @@ body {
 	--post-width: {text:Post width};
 	--sidebar-width: {select:Sidebar width};
 	--title-font: {block:IfUseTumblrFontsForTitle}{font:Tumblr font for title}{/block:IfUseTumblrFontsForTitle}{block:IfNotUseTumblrFontsForTitle}{text:Google font for title}{/block:IfNotUseTumblrFontsForTitle}, serif;
-	font-size: {text:Font size};
 	font-family: {block:IfUseTumblrFontsForBody}{font:Tumblr font for body}{/block:IfUseTumblrFontsForBody}{block:IfNotUseTumblrFontsForBody}{text:Google font for body}{/block:IfNotUseTumblrFontsForBody}, serif;
 }
 body.light {
@@ -627,7 +627,7 @@ body.light {
 				<!-- BLOG COPYRIGHT -->
 				<a data-tippy-content="{Name} {CopyrightYears}" id="copyright"><i class="fas fa-copyright"></i></a>
 			</div>
-			<svg height="100%" xmlns="http://www.w3.org/2000/svg" width="65" viewBox="0 0 65 100">
+			<svg height="100%" xmlns="http://www.w3.org/2000/svg" width="4.25em" viewBox="0 0 65 100">
 				<line x1="40" y1="10" x2="65" y2="50" />
 				<line x1="65" y1="50" x2="40" y2="90" />
 				<line x1="0" y1="50" x2="65" y2="50" />
