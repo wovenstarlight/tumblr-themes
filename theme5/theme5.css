@@ -311,13 +311,14 @@ h1, h2 {
 	position: absolute;
 	z-index: -1;
 }
-#pagination .current-page {
-	background: linear-gradient(rgba(var(--accent--rgb), 0.8) 0 0), var(--post);
-	color: var(--bg);
-}
 #pagination .marker {
 	font-size: 1.25em;
 	color: var(--links);
+}
+/* For current page, both in page-wise navigation and custom blog page navigation */
+.current-page {
+	background: linear-gradient(rgba(var(--accent--rgb), 0.8) 0 0), var(--post);
+	color: var(--bg);
 }
 
 
