@@ -509,9 +509,9 @@ h1, h2 {
 			flex-direction: column;
 	border: 0.15em solid rgba(var(--accent--rgb), 0.5);
 	text-decoration: none;
-	-webkit-transition: border-color .2s;
-	-o-transition: border-color .2s;
-	transition: border-color .2s;
+	-webkit-transition: .2s;
+	-o-transition: .2s;
+	transition: .2s;
 }
 .link:hover { border-color: rgba(var(--accent--rgb), 0.7) }
 .link span {
