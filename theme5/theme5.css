@@ -660,7 +660,7 @@ h1, h2 {
 /* Icon and important links section */
 #iconlinks {
 	min-height: 7em;
-	--drift: 3.5em;
+	--drift: 3em;
 }
 #iconlinks, .planet {
 	position: relative;
@@ -676,7 +676,7 @@ h1, h2 {
 }
 /* Planet icon */
 .planet {
-	left: 0;
+	right: 0;
 	z-index: 1;
 }
 .planet img {
@@ -733,7 +733,8 @@ h1, h2 {
 }
 #btnctr {
 	position: absolute;
-	top: 50%; left: 60%;
+	top: 50%;
+	left: calc(50% + 1.25*var(--drift));
 	-webkit-transform: translate(-50%, -50%);
 		-ms-transform: translate(-50%, -50%);
 			transform: translate(-50%, -50%);
@@ -746,13 +747,14 @@ h1, h2 {
 	-webkit-transition: .5s ease;
 		-o-transition: .5s ease;
 			transition: .5s ease;
-	-webkit-transition-property: left, opacity;
-		-o-transition-property: left, opacity;
-			transition-property: left, opacity;
+	-webkit-transition-property: left, right, opacity;
+		-o-transition-property: left, right, opacity;
+			transition-property: left, right, opacity;
 }
-#sidebar:hover .planet { left: calc(0% - var(--drift)) }
+/* Reveal buttons on hover */
+#sidebar:hover .planet { right: var(--drift) }
 #sidebar:not(:hover) #btnctr { opacity: 0; }
-#sidebar:hover #btnctr { left: calc(60% + var(--drift)) }
+#sidebar:hover #btnctr { left: calc(50% + 2*var(--drift)) }
 /* Blog and custom pages navigation */
 #homelinks, #pages {
 	position: relative;
