@@ -7,9 +7,9 @@ $(document).ready( function() {
 
 	// audio post setup
 	customAudio({
-		playButton: "<i class='fas fa-play'></i>",
-		pauseButton: "<i class='fas fa-pause'></i>",
-		errorIcon: "<i class='fas fa-times'></i>",
+		playButton: "<i class='cp cp-volume'></i>",
+		pauseButton: "<i class='cp cp-mute'></i>",
+		errorIcon: "<i class='cp cp-cross'></i>",
 		callAfterLoad: null
 	});
 
