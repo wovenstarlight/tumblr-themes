@@ -72,9 +72,10 @@
 	<!-- Icon/page link options -->
 	<meta name="text:Main theme icon" content="flash-o">
 	<meta name="if:Standard page link icons" content="0">
+	<meta name="text:Standard page link icon" content="link">
 	<meta name="text:Page 1 link" content="/one">
 	<meta name="text:Page 1 label" content="Custom page 1">
-	<meta name="text:Page 1 icon" content="link">
+	<meta name="text:Page 1 icon" content="yarn">
 	<meta name="text:Page 2 link" content="/two">
 	<meta name="text:Page 2 label" content="Custom page two">
 	<meta name="text:Page 2 icon" content="dragon">
@@ -673,7 +674,7 @@ body.light {
 	<div id="pages">
 		<hr>
 		<nav>
-			{block:Pages}<a href="{URL}" class="{CurrentState}" data-tippy-content="{Label}"><i class="cp cp-link"></i></a>{/block:Pages}
+			{block:Pages}<a href="{URL}" class="{CurrentState}" data-tippy-content="{Label}"><i class="cp cp-{text:Standard page link icon}"></i></a>{/block:Pages}
 		</nav>
 	</div>
 	{/block:HasPages}{/block:IfStandardPageLinkIcons}
