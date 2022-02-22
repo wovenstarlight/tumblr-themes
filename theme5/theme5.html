@@ -217,31 +217,32 @@ body.light {
 
 <!-- MAIN POSTS SECTION -->
 <main id="main">
-	{block:TagPage}
-	<!-- SPECIAL PAGE HEADER: TAG -->
-	<div class="page title">
-		<h2>{lang:TagResultCount posts tagged Tag 2}</h2>
-		<p>Sort <a href="/tagged/{URLSafeTag}">newest first</a> or <a href="/tagged/{URLSafeTag}/chrono">oldest first</a></p>
-	</div>
-	{/block:TagPage}
-
-	{block:DayPage}
-	<!-- SPECIAL PAGE HEADER: DAY -->
-	<div class="page title"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
-	{/block:DayPage}
-
-	{block:SearchPage}
-	<!-- SPECIAL PAGE HEADER: SEARCH -->
-	<div class="page title">
-		<h2>
-			{lang:SearchResultCount results for SearchQuery 2}
-			{block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}
-		</h2>
-	</div>
-	{/block:SearchPage}
 
 	<!-- POST WRAPPER -->
 	<section class="posts {block:IfUppercaseSpecialPostText}uppercase{/block:IfUppercaseSpecialPostText}{block:IfNotUppercaseSpecialPostText}lowercase{/block:IfNotUppercaseSpecialPostText}">
+
+	{block:TagPage}
+		<!-- SPECIAL PAGE HEADER: TAG -->
+		<div class="page title">
+			<h2>{lang:TagResultCount posts tagged Tag 2}</h2>
+			<p>Sort <a href="/tagged/{URLSafeTag}">newest first</a> or <a href="/tagged/{URLSafeTag}/chrono">oldest first</a></p>
+		</div>
+	{/block:TagPage}
+	
+	{block:DayPage}
+		<!-- SPECIAL PAGE HEADER: DAY -->
+		<div class="page title"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
+	{/block:DayPage}
+	
+	{block:SearchPage}
+		<!-- SPECIAL PAGE HEADER: SEARCH -->
+		<div class="page title">
+			<h2>
+				{lang:SearchResultCount results for SearchQuery 2}
+				{block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}
+			</h2>
+		</div>
+	{/block:SearchPage}
 
 	{block:NoPosts}
 		<!-- SPECIAL MESSAGE: EMPTY BLOG -->
