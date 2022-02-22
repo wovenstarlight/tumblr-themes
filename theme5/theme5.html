@@ -9,7 +9,7 @@
 		Custom audio posts by annasthms: https://annasthms.tumblr.com/more/js/customaudio/new
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 21 Feb 2022.
+	Last updated 22 Feb 2022.
 -->
 
 <!DOCTYPE html>
@@ -71,8 +71,8 @@
 
 	<!-- Icon/page link options -->
 	<meta name="text:Main theme icon" content="flash-o">
-	<meta name="if:Standard page link icons" content="0">
-	<meta name="text:Standard page link icon" content="link">
+	<meta name="if:Standard navigation icons" content="0">
+	<meta name="text:Standard navigation icon" content="link">
 	<meta name="text:Page 1 link" content="/one">
 	<meta name="text:Page 1 label" content="Custom page 1">
 	<meta name="text:Page 1 icon" content="yarn-o">
@@ -669,17 +669,17 @@ body.light {
 		{/block:IfSearchBar}
 	</section>
 
-	{block:IfStandardPageLinkIcons}{block:HasPages}
+	{block:IfStandardNavigationIcons}{block:HasPages}
 	<!-- BLOG PLAGES -->
 	<div id="pages">
 		<hr>
 		<nav>
-			{block:Pages}<a href="{URL}" class="{CurrentState}" data-tippy-content="{Label}"><i class="cp cp-{text:Standard page link icon}"></i></a>{/block:Pages}
+			{block:Pages}<a href="{URL}" class="{CurrentState}" data-tippy-content="{Label}"><i class="cp cp-{text:Standard navigation icon}"></i></a>{/block:Pages}
 		</nav>
 	</div>
-	{/block:HasPages}{/block:IfStandardPageLinkIcons}
+	{/block:HasPages}{/block:IfStandardNavigationIcons}
 
-	{block:IfNotStandardPageLinkIcons}
+	{block:IfNotStandardNavigationIcons}
 	<!-- BLOG PAGES -->
 	<div id="pages">
 		<hr>
@@ -694,7 +694,7 @@ body.light {
 			{block:IfPage8Link}<a href="{text:Page 8 link}" {block:IfPage8Label}data-tippy-content="{text:Page 8 label}"{/block:IfPage8Label}><i class="cp cp-{text:Page 8 icon}"></i></a>{block:IfPage8Link}
 		</nav>
 	</div>
-	{/block:IfNotStandardPageLinkIcons}
+	{/block:IfNotStandardNavigationIcons}
 </aside>
 
 {block:IfBackToTopButton}
