@@ -111,7 +111,7 @@ h1, h2 {
 	width: 100%;
 }
 /* Space out posts */
-.post { margin: 4em 0 }
+.post { margin: 3em 0 }
 .post:first-child { margin-top: 0 }
 .post:last-child { margin-bottom: 0 }
 .post header, .post footer { font-size: 0.9em }
