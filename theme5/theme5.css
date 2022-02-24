@@ -25,6 +25,11 @@ h1, h2 {
 	color: var(--headings);
 	font-family: var(--title-font);
 }
+blockquote {
+	margin: 0.25em ;
+	border-left: 0.1em solid var(--accent);
+	padding-left: 0.5em;
+}
 /* Text highlighting */
 ::selection {
 	background-color: var(--highlight-bg);
@@ -361,23 +366,31 @@ h1, h2 {
 	margin: 0;
 }
 .notes .like, .notes .reblog {
-	padding: 0.5em 0;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
+	padding: 0.3em 0;
+	display: -ms-grid;
+	display: grid;
 	-webkit-box-align: center;
-		-ms-flex-align: center;
-			align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-ms-grid-columns: auto 0.5em 1fr;
+	grid-template-columns: auto 1fr;
+	-webkit-column-gap: 0.5em;
+	   -moz-column-gap: 0.5em;
+	        column-gap: 0.5em;
+	row-gap: 0.5em;
 }
-.notes .note:not(:nth-last-child(2), :last-child) { border-bottom: thin solid rgba(var(--accent--rgb), 0.5) }
 .note .avatar_frame {
 	--size: 2em;
 	width: var(--size);
 	height: var(--size);
-	margin-right: 0.5em;
-	-ms-flex-negative: 0;
-		flex-shrink: 0;
 }
+.notes .clear { display: none }
+.notes .action { -ms-grid-column: 3 }
+.notes blockquote {
+	-ms-grid-column: 3;
+		grid-column: 2;
+}
+.notes .note:not(:first-child, .more_notes_link_container:last-child) { border-top: thin solid rgba(var(--accent--rgb), 0.5) }
 .note .avatar { border-radius: 100% }
 /* Ask page */
 .askwrapper:not(:empty) { margin-bottom: 1em }
