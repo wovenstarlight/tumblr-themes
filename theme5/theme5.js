@@ -19,7 +19,7 @@ $(document).ready( function() {
 		photosetMargins:""
 	});
 
-	const body = $("body");
+	const body = $("body, html");
 
 	// Color mode on first load
 	const currTheme = localStorage.getItem("theme");

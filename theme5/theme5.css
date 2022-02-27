@@ -30,6 +30,28 @@ blockquote {
 	border-left: 0.1em solid var(--accent);
 	padding-left: 0.5em;
 }
+pre {
+	overflow-x: scroll;
+	border: thin solid var(--accent);
+	background-color: var(--bg);
+	padding: 0.5em 0.75em;
+}
+:not(pre) > code {
+	background-color: rgba(var(--accent--rgb), 0.2);
+	padding: 0.1em 0.2em;
+}
+/* Scrollbar */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--accent) rgba(var(--accent--rgb), 0.2);
+}
+::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+    background-color: rgba(var(--accent--rgb), 0.2);
+}
+::-webkit-scrollbar-corner { background-color: var(--bg) }
+::-webkit-scrollbar-thumb { background-color: var(--links) }
 /* Text highlighting */
 ::selection {
 	background-color: var(--highlight-bg);
@@ -76,7 +98,7 @@ blockquote {
 }
 .frame::before { top: var(--displacement); left: var(--displacement) }
 .frame::after { bottom: var(--displacement); right: var(--displacement) }
-.frame > :first-child { margin-top: 0; }
+.frame > :first-child { margin-top: 0 }
 .frame > :last-child { margin-bottom: 0 }
 /* Scroll to top button */
 #scrolltotop_parent {
