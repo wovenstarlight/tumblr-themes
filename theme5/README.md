@@ -1,4 +1,4 @@
-# Theme 4: Jupiter
+# Theme 5: Jupiter
 
 Inspired by Sung Hyunjae and Seseong Guild from *The S-Ranks That I Raised*.
 
