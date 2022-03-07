@@ -11,7 +11,7 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 ## Features
 ### Theme-specific
 - Customizable icons: 1 blog-wide icon, and up to 8 custom links
-	- Fill the "icon" fields with icon names selected from [Cappuccicons](https://cappuccicons.com/), such as `paw` or `fire-o`
+	- Fill the "icon" fields with icon names selected from [Cappuccicons](https://web.archive.org/web/20220109131551/https://cappuccicons.com/), such as `paw` or `fire-o`
 	- Manually add links/labels with individually customized icons, or use Tumblr's inbuilt pages to add links with a single standard icon
 - Text details: toggle between a formal uppercase or a casual lowercase
 - Customizable sidebar width
@@ -43,7 +43,7 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 
 ## Credits
 - [Tippy.js tooltips](https://atomiks.github.io/tippyjs) by atomiks
-- [Cappuccicons](https://cappuccicons.com/) by suiomi
+- [Cappuccicons](https://web.archive.org/web/20220109131551/https://cappuccicons.com/) by suiomi
 - [Custom like buttons](https://demirev.cubthemes.com/post/106345243051/changing-like-and-reblog-button-colors-revisited) by Georgi Demirev
 - [NPF photosets plugin](https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin) by codematurgy
 - [Dark/light mode toggle](https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a) by eggdesign
