@@ -1,0 +1,169 @@
+<!--
+	THEME 6: HORIZON by starlightthemes
+
+	Credits:
+		Style My Tooltips by malihu: http://manos.malihu.gr/style-my-tooltips-jquery-plugin
+		Cappuccicons by Suiomi: https://cappuccicons.com/
+		Custom like buttons by Georgi Demirev: https://demirev.cubthemes.com/post/106345243051/changing-like-and-reblog-button-colors-revisited
+		NPF photosets plugin by codematurgy: https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin
+		Dark/light mode toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
+		Custom audio posts by annasthms: https://annasthms.tumblr.com/more/js/customaudio/new
+		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
+
+	Last updated 8 Mar 2022.
+-->
+
+<!DOCTYPE html>
+<html lang="en" class="{select:Default color mode}">
+<head>
+	<!-- BASIC META TAGS -->
+	<meta charset="utf-8">
+	<title>{Title}{block:TagPage} ({lang:Posts tagged Tag}){/block:TagPage}{block:SearchPage} ({lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+	<meta name="description" content="{MetaDescription}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+	{block:Hidden}
+	<!-- THEME VARIABLES -->
+	<!-- Text and sizing -->
+	<meta name="text:Google font for body" content="Lora">
+	<meta name="font:Tumblr font for body" content="Gibson">
+	<meta name="text:Google font for title" content="Bitter">
+	<meta name="font:Tumblr font for title" content="Lorimer No 2">
+	<meta name="if:Use Tumblr fonts for body" content="0">
+	<meta name="if:Use Tumblr fonts for title" content="0">
+	<meta name="text:Font size" content="16px">
+	<meta name="text:Post width" content="540px">
+
+	<!-- Color options: Dark -->
+	<meta name="color:Text" content="#ffffff">
+	<meta name="color:Background" content="#000000">
+	<!-- Color options: Light -->
+	<meta name="if:Color mode toggle" content="1">
+	<meta name="select:Default color mode" content="dark" title="Dark">
+	<meta name="select:Default color mode" content="light" title="Light">
+	<meta name="color:LM Text" content="#000000">
+	<meta name="color:LM Background" content="#ffffff">
+
+	<!-- General theme options -->
+	<meta name="if:Back to top button" content="1">
+	<meta name="if:Random post link" content="1">
+	<meta name="if:Archive link" content="1">
+	<meta name="if:Search bar" content="1">
+	<meta name="if:Post dates" content="1">
+	<meta name="if:Post times" content="1">
+	<meta name="if:Dates formatted month first" content="0">
+	<meta name="if:24 hour times" content="0">
+	<meta name="if:Uppercase special text" content="1">
+	<meta name="if:Like buttons" content="1">
+	<meta name="if:Reblog buttons" content="1">
+	<meta name="if:Post tags" content="1">
+	<meta name="if:Show tags on click" content="0">
+	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
+	{/block:Hidden}
+
+	<!-- Theme styles -->
+	<!-- Standardization -->
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
+
+	<!-- Resource imports -->
+	<!-- Cappuccicons by suiomi -->
+	<link rel="stylesheet" href="https://static.tumblr.com/svdghan/wUSr83npl/tempcf.css">
+	<!-- Google fonts import -->
+	{block:IfNotUseTumblrFontsForBody}<link href="https://fonts.googleapis.com/css2?family={text:Google font for body}" rel="stylesheet">{/block:IfNotUseTumblrFontsForBody}
+	{block:IfNotUseTumblrFontsForTitle}<link href="https://fonts.googleapis.com/css2?family={text:Google font for title}" rel="stylesheet">{/block:IfNotUseTumblrFontsForTitle}
+
+<style>
+/* DEFAULT VARIABLES */
+html {
+	font-size: {text:Font size};
+	--title-font: {block:IfUseTumblrFontsForTitle}{font:Tumblr font for title}{/block:IfUseTumblrFontsForTitle}{block:IfNotUseTumblrFontsForTitle}{text:Google font for title}{/block:IfNotUseTumblrFontsForTitle}, serif;
+	font-family: {block:IfUseTumblrFontsForBody}{font:Tumblr font for body}{/block:IfUseTumblrFontsForBody}{block:IfNotUseTumblrFontsForBody}{text:Google font for body}{/block:IfNotUseTumblrFontsForBody}, serif;
+}
+html.dark {
+	--text: {color:Text};
+	--bg: {color:Background};
+}
+html.light {
+	--text: {color:LM Text};
+	--bg: {color:LM Background};
+}
+
+/* Custom CSS */
+{CustomCSS}
+</style>
+
+	<!-- Theme stylesheet -->
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme6/theme6.min.css">
+
+	<!-- jQuery CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script>
+	<!-- Style-my-tooltips by malihu -->
+	<script src="https://wovenstarlight.github.io/jquery-style-my-tooltips/minified/jquery.style-my-tooltips.min.js"></script>
+	<!--
+	NPF photosets plugin by @codematurgy
+	https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin
+	-->
+	<script src="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosets.js"></script>
+	<link href="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosetstyle.css" rel="stylesheet" type="text/css">
+	<!--
+	customaudio.js by @annasthms
+	https://annasthms.tumblr.com/more/js/customaudio/new
+	-->
+	<script src="https://cdn.jsdelivr.net/gh/annasthms/customaudio@latest/customaudio.min.js"></script>
+	{block:IfBackToTopButton}
+	<!-- Scroll to top button -->
+	<script src="https://wovenstarlight.github.io/tumblr-themes/scrolltotop.min.js"></script>
+	{/block:IfBackToTopButton}
+	{block:IfShowTagsOnClick}
+	<!-- Show tags on click -->
+	<script>
+	$(document).ready(function(){
+		$(".showtags").on("click keypress", function(){
+			$(this).next(".tags").slideToggle();
+			$(this).toggleClass('active');
+		});
+	});
+	</script>
+	{/block:IfShowTagsOnClick}
+	<script src="https://wovenstarlight.github.io/tumblr-themes/theme6/theme6.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- Accessibility: SKIP TO MAIN -->
+<a href="#main" id="skip">Skip to main content</a>
+
+{block:HideTitle}<h1 id="hiddentitle">{Title}</h1>{/block:HideTitle}
+
+<header>
+	<!-- TODO: page header and main nav -->
+</header>
+
+<aside>
+	<!-- TODO: description and custom links -->
+</aside>
+
+<!-- MAIN POSTS SECTION -->
+<main id="main">
+	<!-- TODO: main posts section -->
+</main>
+
+<footer>
+	<!-- TODO: blog copyright and theme credit -->
+</footer>
+
+{block:IfBackToTopButton}
+<!-- BACK TO TOP BUTTON -->
+<div id="scrolltotop_parent" tabindex="0" style="display: none;" title="{lang:Back to top}">
+	<div id="scrolltotop_arrow">
+		<i class="cp cp-chevron-up"></i>
+	</div>
+</div>
+{block:IfBackToTopButton}
+
+</body>
+</html>
