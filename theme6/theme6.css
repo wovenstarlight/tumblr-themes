@@ -81,6 +81,7 @@ header {
 	/* position */
 	position: sticky;
 	top: 0;
+	z-index: 1;
 }
 header.avatar { grid-template-columns: var(--avatar) 1fr }
 header.title { grid-template-columns: 1fr auto }
