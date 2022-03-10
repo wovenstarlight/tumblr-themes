@@ -155,14 +155,15 @@ header a:hover { text-shadow: 0 0 0.5em var(--bg) }
 /* Banner image */
 aside {
 	background-color: var(--bg2);
+	min-height: 20em;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	justify-content: center;
 	padding: 2em;
 }
-aside.left { justify-content: start }
-aside.center { justify-content: center }
-aside.right { justify-content: end }
+aside.left { align-items: start }
+aside.center { align-items: center }
+aside.right { align-items: end }
 /* Desc/pages */
 aside div {
 	/* layout */
