@@ -69,7 +69,7 @@ header a { background: none }
 /* Roundness: all */
 .rounded #s-m-t-tooltip,
 .rounded img.square,
-.rounded aside *,
+.rounded aside div, #search, #search input, #pages a,
 .rounded .post {
 	border-radius: 0.25rem;
 }
@@ -155,12 +155,12 @@ header a:hover { text-shadow: 0 0 0.5em var(--bg) }
 /* Banner image */
 aside {
 	background-color: var(--bg2);
-	min-height: 20em;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	padding: 2em;
 }
+aside.p1 { min-height: 20em }
 aside.left { justify-content: start }
 aside.center { justify-content: center }
 aside.right { justify-content: end }
