@@ -39,7 +39,7 @@ $(document).ready( function() {
 	});
 
 	$("#dropdown").on("click keypress", function() {
-        $(this).parent().toggleClass("active")
+        $("#blognav, .tmblr-iframe").toggleClass("active")
     })
 
 	// Remove stray paragraph tags
