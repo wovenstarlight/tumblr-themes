@@ -19,7 +19,7 @@ a {
 }
 a:hover { background-size: 0 var(--height), 100% var(--height) }
 /* Remove hover styling for special links */
-header a { background: none }
+header a, .post footer a { background: none }
 /* Scrollbar */
 * {
 	scrollbar-width: thin;
@@ -114,11 +114,11 @@ header a { background: none }
 #phead.avatar.title { grid-template-columns: var(--avatar) 1fr auto }
 #phead.avatar.title #title { grid-column: 2 }
 #phead.avatar.title #blognav { grid-column: 3 }
-header a {
+header a, .post footer a {
 	color: var(--text2);
 	text-decoration: none;
 }
-header a:hover { text-shadow: 0 0 0.5em var(--bg) }
+header a:hover, .post footer a:hover { text-shadow: 0 0 0.5em var(--bg) }
 /* Avatar */
 #avatar img {
 	border: 0.25em solid var(--bg2);
@@ -251,22 +251,22 @@ aside.desc.pages div {
 	box-shadow: 0 0 0.25em rgba(var(--bg2--rgb), 0.75);
 	margin: 2em 0;
 	overflow: hidden;
-	--hf-bg: rgba(var(--bg2--rgb), 0.85);
 }
-/* Post headers */
+/* Post headers and footers */
+.post header, .post footer {
+	padding: 0.6em;
+	background-color: rgba(var(--bg2--rgb), 0.85);
+	color: var(--text2);
+	font-size: 0.9em;
+}
+/* Post header */
 .post header {
 	/* layout */
 	display: grid;
 	grid-template-columns: auto 1fr auto;
 	align-items: center;
-	padding: 0.75em;
 	column-gap: 0.5em;
-	/* appearance */
-	background-color: var(--hf-bg);
-	color: var(--text2);
-	font-size: 0.9em;
 }
-.post header a { color: var(--text2) }
 /* Permalink */
 .post header > a {
 	/* layout */
@@ -336,6 +336,8 @@ aside.desc.pages div {
 	z-index: 1;
 	opacity: 0;
 }
+/* Post footers */
+.tags { margin: 0 }
 
 
 
