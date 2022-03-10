@@ -66,6 +66,10 @@ header a, .post footer a { background: none }
 	z-index: 5;
 	transform: scale(0.75);
 }
+/* Hide things */
+.light #darklight .cp-sun, .dark #darklight .cp-moon,
+aside div:empty,
+.pinnedpost ~ i { display: none }
 /* Roundness: all */
 .rounded #s-m-t-tooltip,
 .rounded img.square,
@@ -151,7 +155,6 @@ header a:hover, .post footer a:hover { text-shadow: 0 0 0.5em var(--bg) }
 #dropdown,
 /* Color mode toggle */
 #darklight { cursor: pointer }
-.light #darklight .cp-sun, .dark #darklight .cp-moon { display: none }
 /* Banner image */
 aside {
 	background-color: var(--bg2);
@@ -180,7 +183,6 @@ aside div {
 	text-align: center;
 	font-size: 0.9em;
 }
-aside div:empty { display: none }
 aside.desc.pages div {
 	width: 100%;
 	max-width: 35em;
@@ -284,7 +286,6 @@ aside.desc.pages div {
 	box-shadow: 0 0 0 var(--bg);
 	/* interaction */
 	text-decoration: none;
-	transition: .3s ease;
 }
 .post header > a:hover {
 	box-shadow: 0 0 0.3em rgba(var(--bg--rgb), 0.5);
@@ -321,7 +322,6 @@ aside.desc.pages div {
 	align-items: center;
 }
 .likereblog > * { margin: 0 0.4em }
-.pinnedpost ~ i { display: none }
 .customlike { position: relative }
 .customlike .like_button.liked + i { color: var(--links) }
 .customlike .like_button.liked + i::before { content: "\eb03" }
@@ -363,7 +363,6 @@ aside.desc.pages div {
 		/* position */
 		position: absolute;
 		top: 50%;
-		transition: .3s ease;
 		/* appearance */
 		background-color: var(--bg2);
 	}
@@ -383,9 +382,11 @@ aside.desc.pages div {
 		right: 1em;
 		transform: scale(0.9);
 		background: linear-gradient(to right, transparent, var(--bg2) 10%);
-		transition: .3s ease;
 	}
 	.tmblr-iframe.active { right: 1.5em }
+	/* Have blognav/iframe slide out together */
+	#blognav nav,
+	.tmblr-iframe.tmblr-iframe.tmblr-iframe--unified-controls { transition: .3s ease }
 	
 	/* Post headers */
 	.datenotes { font-size: 0.9em }
