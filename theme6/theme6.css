@@ -63,7 +63,7 @@ header a { background: none }
 }
 /* Tumblr controls */
 .tmblr-iframe.tmblr-iframe--unified-controls {
-	z-index: 20;
+	z-index: 5;
 	transform: scale(0.75);
 }
 /* Roundness: all */
@@ -106,7 +106,7 @@ header a { background: none }
 	/* position */
 	position: sticky;
 	top: 0;
-	z-index: 15;
+	z-index: 4;
 }
 #phead.avatar { grid-template-columns: var(--avatar) 1fr }
 #phead.title { grid-template-columns: 1fr auto }
@@ -146,6 +146,7 @@ header a:hover { text-shadow: 0 0 0.5em var(--bg) }
 	justify-content: center;
 }
 #blognav a { padding: 0 0.5em }
+#blognav a.current-page { color: var(--links) }
 #dropdown,
 /* Color mode toggle */
 #darklight { cursor: pointer }
