@@ -295,11 +295,9 @@ aside.desc.pages div {
 	flex-direction: column;
 }
 /* Date/notes */
-.datenotes .notes {
-	position: relative;
-	margin-left: 1em;
-}
-.datenotes .notes::before {
+.datenotes .notes { position: relative }
+.date + .notes { margin-left: 1em }
+.date + .notes::before {
 	content: "";
 	display: inline-block;
 	height: 100%;
