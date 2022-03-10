@@ -81,6 +81,7 @@ header a { background: none }
 /* Casing: lower */
 .lowercase #s-m-t-tooltip,
 .lowercase #title,
+.lowercase #pages a,
 .lowercase .post header { text-transform: lowercase }
 /* Casing: upper */
 .uppercase #title { text-transform: uppercase }
