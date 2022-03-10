@@ -304,6 +304,7 @@ aside.desc.pages div {
 	align-items: center;
 }
 .likereblog > * { margin: 0 0.4em }
+.pinnedpost ~ i { display: none }
 .customlike { position: relative }
 .customlike .like_button.liked + i { color: var(--links) }
 .customlike .like_button.liked + i::before { content: "\eb03" }

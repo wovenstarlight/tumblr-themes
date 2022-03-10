@@ -244,7 +244,13 @@ aside {
 		<article class="post">
 			{block:Date}
 			<header>
-				<a href="{Permalink}" title="{lang:Permalink}"><i class="cp cp-link"></i></a>
+				<a href="{Permalink}" title="{lang:Permalink}{block:PinnedPostLabel} ({PinnedPostLabel}){/block:PinnedPostLabel}">
+					{block:PinnedPostLabel}
+					<!-- PINNED POST -->
+					<i class="cp cp-pin-o pinnedpost"></i>
+					{/block:PinnedPostLabel}
+					<i class="cp cp-link"></i>
+				</a>
 				
 				<div>
 					<span class="datenotes">
@@ -258,11 +264,6 @@ aside {
 				</div>
 				
 				<span class="likereblog">
-					{block:PinnedPostLabel}
-					<!-- PINNED POST -->
-					<i class="cp cp-pin-o pinnedpost" title="{PinnedPostLabel}"></i>
-					{/block:PinnedPostLabel}
-	
 					{block:IfLikeButtons}
 					<a href="#" class="customlike">
 						{LikeButton size="30"}
