@@ -201,10 +201,12 @@ aside {
 			{block:SubmissionsEnabled}<a href="/submit" id="submitlink" {block:SubmitPage}class="current-page"{/block:SubmitPage} title="{SubmitLabel}"><i class="cp cp-gift"></i></a>{/block:SubmissionsEnabled}
 			{block:IfRandomPostLink}<a href="/random" id="randomlink" title="{lang:Random}"><i class="cp cp-shuffle"></i></a>{/block:IfRandomPostLink}
 			{block:IfArchiveLink}<a href="/archive" id="archivelink" title="{lang:Archive}"><i class="cp cp-calendar"></i></a>{/block:IfArchiveLink}
+			{block:IfColorModeToggle}
 			<a id="darklight" title="Toggle color mode">
 				<i class="cp cp-moon"></i>
 				<i class="cp cp-sun"></i>
 			</a>
+			{/block:IfColorModeToggle}
 		</nav>
 	</div>
 </header>
