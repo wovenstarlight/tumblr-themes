@@ -222,6 +222,15 @@ aside {
 		</nav>
 		{/block:HasPages}
 	</div>
+	
+	{block:IfSearchBar}
+	<!-- SEARCH BAR -->
+	<form action="/search" method="get" id="search">
+		<i class="cp cp-search"></i>
+		<label for="q">Search</label>
+		<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="Search"/>
+	</form>
+	{/block:IfSearchBar}
 </aside>
 
 <!-- MAIN POSTS SECTION -->

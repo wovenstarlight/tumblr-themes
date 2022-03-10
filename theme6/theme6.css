@@ -132,6 +132,7 @@ aside {
 	background-color: var(--bg2);
 	min-height: 20em;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	padding: 2em;
 }
@@ -189,6 +190,24 @@ aside.desc.pages div {
 }
 #pages a:hover { background-color: rgba(var(--bg--rgb), 0.4) }
 #pages a.current-page { background-color: var(--bg) }
+/* Search bar */
+#search {
+	background-color: rgba(var(--bg--rgb), 0.6);
+	padding: 0.5em 0.6em;
+	margin-top: 1em;
+	width: 20em;
+	max-width: 100%;
+	display: flex;
+	align-items: center;
+}
+#search input {
+	margin-left: 0.5em;
+	padding: 0.1em 0.4em;
+	background-color: var(--bg);
+	color: var(--text);
+	border: none;
+	flex-grow: 1;
+}
 
 
 
