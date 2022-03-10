@@ -46,6 +46,11 @@ a:not(:hover) { text-decoration: none }
 	line-height: 1.25em;
 	color: var(--text2);
 }
+/* Tumblr controls */
+.tmblr-iframe.tmblr-iframe--unified-controls {
+	z-index: 1;
+	transform: scale(0.75);
+}
 /* Roundness: all */
 .rounded #s-m-t-tooltip,
 .rounded img.square,
@@ -219,9 +224,8 @@ aside.desc.pages div {
 	
 	/* Tumblr controls */
 	.tmblr-iframe.tmblr-iframe--unified-controls {
-		top: 2.5em;
-		transform: scale(0.9);
-		right: -1em;
+		top: 2.25em;
+		right: -2.5em;
 	}
 }
 
