@@ -3,6 +3,8 @@ body {
 	background: var(--bg);
 	color: var(--text);
 }
+a { color: var(--links) }
+a:not(:hover) { text-decoration: none }
 /* Scrollbar */
 * {
 	scrollbar-width: thin;
