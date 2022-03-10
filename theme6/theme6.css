@@ -58,15 +58,14 @@ a:not(:hover) { text-decoration: none }
 	border-bottom-right-radius: 0.25rem;
 }
 /* Casing: lower */
-.lowercase #title,
-.lowercase #pages a { text-transform: lowercase }
+.lowercase #title { text-transform: lowercase }
 /* Casing: upper */
 .uppercase #title { text-transform: uppercase }
 .uppercase #pages a { font-variant: small-caps }
 
 
 
-/************************************ HEADER ************************************/
+/**************************** HEADER AND DESCRIPTION ****************************/
 /* General header */
 header {
 	/* layout */
@@ -128,6 +127,68 @@ header a:hover { text-shadow: 0 0 0.75em var(--bg) }
 /* Color mode toggle */
 #darklight { cursor: pointer }
 .light #darklight .cp-sun, .dark #darklight .cp-moon { display: none }
+/* Banner image */
+aside {
+	background-color: var(--bg2);
+	min-height: 20em;
+	display: flex;
+	align-items: center;
+	padding: 2em;
+}
+aside.left { justify-content: start }
+aside.center { justify-content: center }
+aside.right { justify-content: end }
+/* Desc/pages */
+aside div {
+	/* layout */
+	display: grid;
+	column-gap: 1em;
+	align-items: center;
+	padding: 1em;
+	width: 50%;
+	min-height: 8em;
+	/* position */
+	position: relative;
+	/* appearance */
+	background: rgba(var(--bg--rgb), 0.6);
+	text-align: center;
+	font-size: 0.9em;
+}
+aside div:empty { display: none }
+aside.desc.pages div {
+	width: 100%;
+	max-width: 35em;
+	grid-template-columns: 1fr 1fr;
+}
+#desc + #pages::before { /* divider */
+	content: "";
+	display: block;
+	height: 90%;
+	width: 0.05em;
+	position: absolute;
+	left: 50%;
+	top: 5%;
+	background-color: var(--text);
+	opacity: 0.25;
+}
+/* Description */
+#desc :first-child { margin-top: 0 }
+#desc :last-child { margin-bottom: 0 }
+/* Pages */
+#pages {
+	display: flex;
+	flex-wrap: wrap;
+}
+#pages a {
+	background-color: rgba(var(--bg--rgb), 0.2);
+	flex-grow: 1;
+	text-decoration: none;
+	padding: 0.1em 0.5em;
+	margin: 0.2em;
+	transition: background-color .3s ease;
+}
+#pages a:hover { background-color: rgba(var(--bg--rgb), 0.4) }
+#pages a.current-page { background-color: var(--bg) }
 
 
 
