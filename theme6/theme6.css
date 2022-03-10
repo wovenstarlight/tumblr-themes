@@ -49,7 +49,7 @@ a:not(:hover) { text-decoration: none }
 /* Roundness: all */
 .rounded #s-m-t-tooltip,
 .rounded img.square,
-#desc + #pages::before {
+.rounded aside * {
 	border-radius: 0.25rem;
 }
 /* Roundness: bottom */
