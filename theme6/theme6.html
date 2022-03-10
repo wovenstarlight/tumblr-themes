@@ -37,7 +37,10 @@
 	<meta name="if:Bold title" content="1">
 	<meta name="text:Font size" content="16px">
 	<meta name="text:Post width" content="540px">
-	<meta name="if:Rounded corners" content="1">
+
+	<!-- Image options -->
+	<meta name="image:Header" content="{HeaderImage}">
+	<meta name="if:Stretch header image" content="1">
 
 	<!-- Color options: Dark -->
 	<meta name="color:Text" content="#ffffff">
@@ -60,6 +63,10 @@
 	<meta name="color:LM Text highlight background" content="#f79ebf">
 
 	<!-- General theme options -->
+	<meta name="if:Rounded corners" content="1">
+	<meta name="select:Description position" content="center" title="Center">
+	<meta name="select:Description position" content="start" title="Left">
+	<meta name="select:Description position" content="end" title="Right">
 	<meta name="if:Back to top button" content="1">
 	<meta name="if:Random post link" content="1">
 	<meta name="if:Archive link" content="1">
@@ -116,6 +123,13 @@ html.light {
 	--highlight: {color:LM Text highlight};
 	--highlight-bg: {color:LM Text highlight background};
 }
+
+{block:IfHeaderImage}
+aside {
+	background: url("{image:Header}") no-repeat center;
+	background-size: {block:IfStretchHeaderImage}cover{/block:IfStretchHeaderImage}{block:IfNotStretchHeaderImage}contain{/block:IfNotStretchHeaderImage};
+}
+{/block:IfHeaderImage}
 
 /* Custom CSS */
 {CustomCSS}
@@ -195,8 +209,17 @@ html.light {
 	</div>
 </header>
 
-<aside>
-	<!-- TODO: description and custom links -->
+<aside class="{select:Description position} {block:ShowDescription}{block:Description}desc{/block:Description}{/block:ShowDescription} {block:HasPages}pages{/block:HasPages}">
+	<div>
+		{block:ShowDescription}{block:Description}<section id="desc">{Description}</section>{/block:Description}{/block:ShowDescription}
+		{block:HasPages}
+		<nav id="pages">
+			{block:Pages}
+			<a href="{URL}" class="{CurrentState}">{Label}</a>
+			{/block:Pages}
+		</nav>
+		{/block:HasPages}
+	</div>
 </aside>
 
 <!-- MAIN POSTS SECTION -->
