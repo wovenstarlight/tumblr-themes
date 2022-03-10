@@ -44,6 +44,9 @@
 	<meta name="color:Background" content="#000000">
 	<meta name="color:Alternate text" content="#ffffff">
 	<meta name="color:Alternate background" content="#000000">
+	<meta name="color:Links" content="#f9ca21">
+	<meta name="color:Text highlight" content="#ffeb9e">
+	<meta name="color:Text highlight background" content="#230011">
 	<!-- Color options: Light -->
 	<meta name="if:Color mode toggle" content="1">
 	<meta name="select:Default color mode" content="dark" title="Dark">
@@ -52,6 +55,9 @@
 	<meta name="color:LM Background" content="#ffffff">
 	<meta name="color:LM Alternate text" content="#ffffff">
 	<meta name="color:LM Alternate background" content="#000000">
+	<meta name="color:LM Links" content="#ab004d">
+	<meta name="color:LM Text highlight" content="#3c000a">
+	<meta name="color:LM Text highlight background" content="#f79ebf">
 
 	<!-- General theme options -->
 	<meta name="if:Back to top button" content="1">
@@ -91,14 +97,24 @@ html {
 html.dark {
 	--text: {color:Text};
 	--bg: {color:Background};
+	--bg--rgb: {RGBcolor:Background};
 	--bg2: {color:Alternate background};
+	--bg2--rgb: {RGBcolor:Alternate background};
 	--text2: {color:Alternate text};
+	--links: {color:Links};
+	--highlight: {color:Text highlight};
+	--highlight-bg: {color:Text highlight background};
 }
 html.light {
 	--text: {color:LM Text};
 	--bg: {color:LM Background};
+	--bg--rgb: {RGBcolor:LM Background};
 	--bg2: {color:LM Alternate background};
+	--bg2--rgb: {RGBcolor:LM Alternate background};
 	--text2: {color:LM Alternate text};
+	--links: {color:LM Links};
+	--highlight: {color:LM Text highlight};
+	--highlight-bg: {color:LM Text highlight background};
 }
 
 /* Custom CSS */
