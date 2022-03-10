@@ -236,6 +236,52 @@ aside {
 <!-- MAIN POSTS SECTION -->
 <main id="main">
 	<!-- TODO: main posts section -->
+	<section id="posts">
+
+		{block:Posts}
+
+		<article class="post">
+			{block:Date}
+			<header>
+				<a href="{Permalink}" title="{lang:Permalink}"><i class="cp cp-link"></i></a>
+				
+				<div>
+					<span class="datenotes">
+						{block:IfPostDates}<a href="{Permalink}" class="date" title="{lang:Posted TimeAgo}">{DayOfWeek}, {block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfPostTimes} @ {block:If24HourTimes}{24Hour}{/block:If24HourTimes}{block:IfNot24HourTimes}{12Hour}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes} {CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</a>{/block:IfPostDates}
+						{block:NoteCount}<a href="{Permalink}#notes" class="notes">{NoteCountWithLabel}</a>{/block:NoteCount}
+					</span>
+					
+					{block:RebloggedFrom}<span class="viasource">
+						<a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}">{ReblogParentName}</a> <i class="cp cp-reblog-alt"></i> <a href="{ReblogRootURL}" title="{lang:Originally from ReblogRootName}">{ReblogRootName}</a>
+					</span>{/block:RebloggedFrom}
+				</div>
+				
+				<span class="likereblog">
+					{block:PinnedPostLabel}
+					<!-- PINNED POST -->
+					<i class="cp cp-pin-o pinnedpost" title="{PinnedPostLabel}"></i>
+					{/block:PinnedPostLabel}
+	
+					{block:IfLikeButtons}
+					<a href="#" class="customlike">
+						{LikeButton size="30"}
+						<i class="cp cp-heart-o"></i>
+					</a>
+					{/block:IfLikeButtons}
+					{block:IfReblogButtons}
+					<a href="{ReblogURL}" class="customreblog"><i class="cp cp-reblog-alt"></i></a>
+					{/block:IfReblogButtons}
+				</span>
+			</header>
+			{/block:Date}
+	
+			<!-- TODO: post body and footer with tags -->
+			
+		</article>
+
+		{/block:Posts}
+
+	</section>
 </main>
 
 <footer>

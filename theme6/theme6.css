@@ -54,7 +54,8 @@ a:not(:hover) { text-decoration: none }
 /* Roundness: all */
 .rounded #s-m-t-tooltip,
 .rounded img.square,
-.rounded aside * {
+.rounded aside *,
+.rounded .post {
 	border-radius: 0.25rem;
 }
 /* Roundness: bottom */
@@ -63,10 +64,12 @@ a:not(:hover) { text-decoration: none }
 	border-bottom-right-radius: 0.25rem;
 }
 /* Casing: lower */
-.lowercase #title { text-transform: lowercase }
+.lowercase #title,
+.lowercase .post header { text-transform: lowercase }
 /* Casing: upper */
 .uppercase #title { text-transform: uppercase }
-.uppercase #pages a { font-variant: small-caps }
+.uppercase #pages a,
+.uppercase .post header { font-variant: small-caps }
 
 
 
@@ -93,11 +96,13 @@ a:not(:hover) { text-decoration: none }
 #phead.avatar.title { grid-template-columns: var(--avatar) 1fr auto }
 #phead.avatar.title #title { grid-column: 2 }
 #phead.avatar.title #blognav { grid-column: 3 }
-#phead a {
+#phead a, .likereblog a {
 	color: var(--text2);
 	text-decoration: none;
+	transition: .3s ease;
+	text-shadow: 0 0 0 transparent;
 }
-#phead a:hover { text-shadow: 0 0 0.75em var(--bg) }
+#phead a:hover, .likereblog a:hover { text-shadow: 0 0 0.5em var(--bg) }
 /* Avatar */
 #avatar img {
 	border: 0.25em solid var(--bg2);
@@ -125,10 +130,7 @@ a:not(:hover) { text-decoration: none }
 	align-items: center;
 	justify-content: center;
 }
-#blognav a {
-	padding: 0 0.5em;
-	transition: padding 0.3s ease;
-}
+#blognav a { padding: 0 0.5em }
 #dropdown,
 /* Color mode toggle */
 #darklight { cursor: pointer }
@@ -213,6 +215,108 @@ aside.desc.pages div {
 	color: var(--text);
 	border: none;
 	flex-grow: 1;
+}
+
+
+
+/******************************* POSTS: GENERAL *******************************/
+/* Post container */
+#posts {
+	margin: 2em auto;
+	padding: 0 1em;
+	width: 100%;
+	max-width: calc(var(--post-width) + 2em);
+}
+/* Individual posts */
+.post {
+	box-shadow: 0 0 0.25em rgba(var(--bg2--rgb), 0.75);
+	margin: 2em 0;
+	overflow: hidden;
+	--hf-bg: rgba(var(--bg2--rgb), 0.85);
+}
+/* Post headers */
+.post header {
+	/* layout */
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	padding: 0.75em;
+	column-gap: 0.5em;
+	/* appearance */
+	background-color: var(--hf-bg);
+	color: var(--text2);
+	font-size: 0.9em;
+}
+.post header a { color: var(--text2) }
+/* Permalink */
+.post header > a {
+	/* layout */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* appearance */
+	--size: 2em;
+	height: var(--size);
+	width: var(--size);
+	border-radius: 100%;
+	background: var(--links);
+	color: var(--bg);
+	font-size: 1.25em;
+	box-shadow: 0 0 0 var(--bg);
+	/* interaction */
+	text-decoration: none;
+	transition: .3s ease;
+}
+.post header > a:hover {
+	box-shadow: 0 0 0.3em rgba(var(--bg--rgb), 0.5);
+}
+/* Date/notes and via/source container */
+.post header div {
+	display: flex;
+	flex-direction: column;
+}
+/* Date/notes */
+.datenotes .notes {
+	position: relative;
+	margin-left: 1em;
+}
+.datenotes .notes::before {
+	content: "";
+	display: inline-block;
+	height: 100%;
+	width: 0.05em;
+	background-color: var(--bg);
+	opacity: 0.5;
+	position: absolute;
+	left: -.525em;
+}
+/* Via/source */
+.viasource {
+	font-size: 0.85em;
+	margin-top: 0.3em;
+	display: flex;
+	align-items: center;
+}
+.viasource i { margin: 0 0.5em }
+/* Like/reblog/pinned */
+.likereblog {
+	display: flex;
+	align-items: center;
+}
+.likereblog > * { margin: 0 0.4em }
+.customlike { position: relative }
+.customlike .like_button.liked + i { color: var(--links) }
+.customlike .like_button.liked + i::before { content: "\eb03" }
+.customlike iframe {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	opacity: 0;
 }
 
 
