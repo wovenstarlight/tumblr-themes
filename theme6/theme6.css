@@ -160,7 +160,6 @@ aside {
 	align-items: center;
 	padding: 2em;
 }
-aside.p1 { min-height: 20em }
 aside.left { justify-content: start }
 aside.center { justify-content: center }
 aside.right { justify-content: end }
