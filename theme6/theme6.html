@@ -100,6 +100,7 @@ html {
 	font-size: {text:Font size};
 	--title-font: {block:IfUseTumblrFontsForTitle}{font:Tumblr font for title}{/block:IfUseTumblrFontsForTitle}{block:IfNotUseTumblrFontsForTitle}{text:Google font for title}{/block:IfNotUseTumblrFontsForTitle}, serif;
 	font-family: {block:IfUseTumblrFontsForBody}{font:Tumblr font for body}{/block:IfUseTumblrFontsForBody}{block:IfNotUseTumblrFontsForBody}{text:Google font for body}{/block:IfNotUseTumblrFontsForBody}, serif;
+	--post-width: {text:Post width};
 }
 html.dark {
 	--text: {color:Text};
@@ -276,6 +277,21 @@ aside {
 			{/block:Date}
 	
 			<!-- TODO: post body and footer with tags -->
+			<p>body blah blah blah</p>
+	
+			{block:Date}
+			<footer>
+				{block:IfPostTags}{block:HasTags}
+					{block:IfShowTagsOnClick}
+					<a class="showtags" tabindex="0">Show tags <i class="cp cp-chevron-right"></i></a>
+					{/block:IfShowTagsOnClick}
+					<p class="tags" {block:IfShowTagsOnClick}style="display: none;"{/block:IfShowTagsOnClick}>
+						<!-- TAGS SECTION -->
+						{block:Tags}<a href="{TagURL}">{Tag}</a>{block:Tags}
+					</p>
+					{/block:HasTags}{/block:IfPostTags}
+			</footer>
+			{/block:Date}
 			
 		</article>
 
