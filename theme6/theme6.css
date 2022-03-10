@@ -3,8 +3,23 @@ body {
 	background: var(--bg);
 	color: var(--text);
 }
-a { color: var(--links) }
-a:not(:hover) { text-decoration: none }
+a {
+	color: var(--links);
+	transition: .3s ease;
+	text-decoration: none;
+	/* Hover styling */
+	--height: 0.3em;
+	--og: rgba(var(--links--rgb), 0.1);
+	--hover: rgba(var(--links--rgb), 0.3);
+	background-image: linear-gradient(var(--og), var(--og)),
+		linear-gradient(var(--hover), var(--hover));
+	background-size: 100% var(--height), 0 var(--height);
+	background-position: 100% 100%, 0 100%;
+	background-repeat: no-repeat;
+}
+a:hover { background-size: 0 var(--height), 100% var(--height) }
+/* Remove hover styling for special links */
+header a { background: none }
 /* Scrollbar */
 * {
 	scrollbar-width: thin;
@@ -98,13 +113,11 @@ a:not(:hover) { text-decoration: none }
 #phead.avatar.title { grid-template-columns: var(--avatar) 1fr auto }
 #phead.avatar.title #title { grid-column: 2 }
 #phead.avatar.title #blognav { grid-column: 3 }
-#phead a, .likereblog a {
+header a {
 	color: var(--text2);
 	text-decoration: none;
-	transition: .3s ease;
-	text-shadow: 0 0 0 transparent;
 }
-#phead a:hover, .likereblog a:hover { text-shadow: 0 0 0.5em var(--bg) }
+header a:hover { text-shadow: 0 0 0.5em var(--bg) }
 /* Avatar */
 #avatar img {
 	border: 0.25em solid var(--bg2);
@@ -196,9 +209,11 @@ aside.desc.pages div {
 	text-decoration: none;
 	padding: 0.1em 0.5em;
 	margin: 0.2em;
-	transition: background-color .3s ease;
+	transition-duration: .4s;
+	--height: 100%;
+	--og: transparent;
+	--hover: rgba(var(--bg--rgb), 0.4)
 }
-#pages a:hover { background-color: rgba(var(--bg--rgb), 0.4) }
 #pages a.current-page { background-color: var(--bg) }
 /* Search bar */
 #search {
