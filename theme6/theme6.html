@@ -14,7 +14,7 @@
 -->
 
 <!DOCTYPE html>
-<html lang="en" class="{select:Default color mode} {block:IfUppercaseSpecialText}uppercase{/block:IfUppercaseSpecialText}{block:IfNotUppercaseSpecialText}lowercase{/block:IfNotUppercaseSpecialText} {block:IfRoundedCorners}rounded{/block:IfRoundedCorners}">
+<html lang="en" class="{select:Default color mode} {select:Special text casing} {block:IfRoundedCorners}rounded{/block:IfRoundedCorners}">
 <head>
 	<!-- BASIC META TAGS -->
 	<meta charset="utf-8">
@@ -75,7 +75,9 @@
 	<meta name="if:Post times" content="1">
 	<meta name="if:Dates formatted month first" content="0">
 	<meta name="if:24 hour times" content="0">
-	<meta name="if:Uppercase special text" content="1">
+	<meta name="select:Special text casing" content="" title="Normal">
+	<meta name="select:Special text casing" content="uppercase" title="Uppercase">
+	<meta name="select:Special text casing" content="lowercase" title="Lowercase">
 	<meta name="if:Like buttons" content="1">
 	<meta name="if:Reblog buttons" content="1">
 	<meta name="if:Post tags" content="1">
@@ -199,7 +201,7 @@ aside {
 	<div id="blognav">
 		<a id="dropdown" title="{lang:Navigate}" tabindex="0"><i class="cp cp-menu"></i></a>
 		<nav>
-			<a href="/" title="{lang:Home}"><i class="cp cp-home"></i></a>
+			<a href="/" title="{lang:Home}" {block:HomePage}class="current-page"{/block:HomePage}><i class="cp cp-home"></i></a>
 			{block:AskEnabled}<a href="/ask" id="asklink" {block:AskPage}class="current-page"{/block:AskPage} title="{AskLabel}"><i class="cp cp-paper-plane"></i></a>{/block:AskEnabled}
 			{block:SubmissionsEnabled}<a href="/submit" id="submitlink" {block:SubmitPage}class="current-page"{/block:SubmitPage} title="{SubmitLabel}"><i class="cp cp-gift"></i></a>{/block:SubmissionsEnabled}
 			{block:IfRandomPostLink}<a href="/random" id="randomlink" title="{lang:Random}"><i class="cp cp-shuffle"></i></a>{/block:IfRandomPostLink}
