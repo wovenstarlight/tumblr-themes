@@ -70,6 +70,20 @@ header a, .post footer a, .pagination a { background: none }
 .light #darklight .cp-sun, .dark #darklight .cp-moon,
 aside div:empty,
 .pinnedpost ~ i { display: none }
+/* To top button */
+div#scrolltotop_parent {
+	position: fixed;
+	bottom: 0.5em;
+	right: 0.5em;
+	font-size: 0.9em;
+	transition: 0.3s ease;
+	transition-property: box-shadow, text-shadow;
+	cursor: pointer;
+}
+#scrolltotop_parent:hover {
+	box-shadow: 0 0 0.5em var(--links);
+	text-shadow: 0 0 0.5em var(--bg);
+}
 /* Roundness: all */
 .rounded #s-m-t-tooltip,
 .rounded img.square,
@@ -272,7 +286,7 @@ aside.desc.pages div {
 	column-gap: 0.5em;
 }
 /* Permalink */
-.post header > a, .pagination .arrows {
+.post header > a, .pagination .arrows, #scrolltotop_parent {
 	/* layout */
 	display: flex;
 	align-items: center;
