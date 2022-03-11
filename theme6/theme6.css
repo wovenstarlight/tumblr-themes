@@ -20,6 +20,12 @@ aside a[href], .postbody a[href] {
 	background-repeat: no-repeat;
 }
 aside a[href]:hover, .postbody a[href]:hover { background-size: 0 var(--height), 100% var(--height) }
+/* Blockquotes */
+blockquote {
+	margin-left: 0.75em;
+	border-left: 0.15em solid var(--bg2);
+	padding-left: 0.75em;
+}
 /* Scrollbar */
 * {
 	scrollbar-width: thin;
@@ -76,7 +82,7 @@ aside div:empty,
 	bottom: 0.5em;
 	right: 0.5em;
 }
-#buttons > *, .post header > a, .pagination .arrows {
+#buttons > *, .post header > a, .pagination .arrows, .post .quote i {
 	/* layout */
 	display: flex;
 	align-items: center;
@@ -106,6 +112,7 @@ img.square, .usericon,
 aside div, #search, #search input, #pages a,
 .pagination, .pagination .arrows,
 .post, .post header > a, .highres,
+.post .quote i, .quote .separator::before, .quote .separator::after,
 .bodyitem:last-child::after, .ask::after {
 	border-radius: var(--roundness);
 }
@@ -416,12 +423,15 @@ aside.desc.pages div {
 .audiowrapper + .bodyitem,
 .videowrapper + .bodyitem { margin-top: 0.75em }
 .bodyitem:last-child { margin-bottom: 1em }
-.bodyitem:last-child::after, .ask::after { /* Stopper */
+.bodyitem:last-child::after, .ask::after,
+.quote .separator::before, .quote .separator::after { /* Stopper */
 	content: "";
 	display: block;
 	height: 0.45em;
 	width: 0.45em;
 	background: var(--bg2);
+}
+.bodyitem:last-child::after, .ask::after {
 	position: absolute;
 	left: 0.9em;
 	bottom: -0.2em;
@@ -465,6 +475,23 @@ aside.desc.pages div {
 	padding: 0.4em 0.5em;
 }
 .photowrapper:not(:hover) .highres { opacity: 0 }
+/* Quote posts */
+.quote { text-align: center }
+.quote .separator {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 2em;
+	margin: 1em;
+}
+.quote .separator div {
+	background: var(--bg2);
+	display: block;
+	height: 0.15em;
+	width: 100%;
+}
+.quote .separator i { position: absolute }
 /* Video posts */
 .tumblr_video_container, .tumblr_video_iframe { width: 100% !important }
 /* Ask posts */
