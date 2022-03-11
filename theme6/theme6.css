@@ -127,10 +127,12 @@ aside div, #search, #search input, #pages a,
 .lowercase #pages a,
 .lowercase .post header,
 .lowercase .post footer,
-.lowercase .highres { text-transform: lowercase }
+.lowercase .highres,
+.lowercase .chat .label { text-transform: lowercase }
 /* Casing: upper */
 .uppercase #title,
-.uppercase .user { text-transform: uppercase }
+.uppercase .user,
+.uppercase .chat .label { text-transform: uppercase }
 .uppercase #s-m-t-tooltip,
 .uppercase #pages a,
 .uppercase .post header,
@@ -450,11 +452,17 @@ aside.desc.pages div {
 	width: var(--size);
 	margin-right: 0.5em
 }
+.bodyitem .user.deactivated .username::after,
+.ask .user.deactivated .username a::after {
+	content: " (deactivated)";
+	font-size: 0.8em;
+	opacity: 0.75;
+}
 .user + .bodyitemcontent, .question {
 	border-left: 0.15em solid var(--bg2);
 	margin: -0.2em 0 0 1.075em;
 }
-.bodyitemcontent, .question { padding: 0.75em 1em }
+.bodyitemcontent, .question { padding: 1em 1em 0.75em }
 .bodyitem:not(:last-child) .bodyitemcontent { padding-bottom: 1.5em }
 .bodyitemcontent > :first-child, .question > :first-child { margin-top: 0 }
 .bodyitemcontent > :last-child, .question > :last-child { margin-bottom: 0 }
@@ -492,6 +500,18 @@ aside.desc.pages div {
 	width: 100%;
 }
 .quote .separator i { position: absolute }
+/* Chat posts */
+.chat {
+	list-style: none;
+	margin: 0.5em 0;
+	padding: 0;
+}
+.chat li { padding: 0.25em 0.5em }
+.uppercase .chat .label { font-size: 0.9em }
+.chat li:nth-child(even) {
+	background-color: rgba(var(--bg2--rgb), 0.1);
+	padding-left: 1.5em;
+}
 /* Video posts */
 .tumblr_video_container, .tumblr_video_iframe { width: 100% !important }
 /* Ask posts */
