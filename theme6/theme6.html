@@ -244,8 +244,8 @@ aside {
 <!-- MAIN POSTS SECTION -->
 <main id="main">
 
-	{block:IfTopPagination}<nav class="pagination">
-		{block:Pagination}
+	{block:IfTopPagination}
+	{block:Pagination}<nav class="pagination">
 		<!-- PAGINATION -->
 		{block:PreviousPage}<a class="arrows prev" title="{lang:Previous page}" href="{PreviousPage}" title="{lang:Previous page}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousPage}
 
@@ -257,22 +257,22 @@ aside {
 		</span>
 		
 		{block:NextPage}<a class="arrows next" title="{lang:Next page}" href="{NextPage}"><i class="cp cp-chevron-right"></i></a>{/block:NextPage}
-		{/block:Pagination}
+	</nav>{/block:Pagination}
 		
-		{block:PermalinkPagination}
+	{block:PermalinkPagination}<nav class="pagination">
 		<!-- PERMALINK PAGINATION -->
 		{block:PreviousPost}<a class="arrows prev" title="{lang:Previous post}" href="{PreviousPost}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousPost}
 		
 		{block:NextPost}<a class="arrows next" title="{lang:Next post}" href="{NextPost}"><i class="cp cp-chevron-right"></i></a>{/block:NextPost}
-		{/block:PermalinkPagination}
+	</nav>{/block:PermalinkPagination}
 		
-		{block:DayPagination}
+	{block:DayPagination}<nav class="pagination">
 		<!-- DAY PAGINATION -->
 		{block:PreviousDayPage}<a class="arrows prev" title="{lang:Previous day}" href="{PreviousDayPage}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousDayPage}
 		
 		{block:NextDayPage}<a class="arrows next" title="{lang:Next day}" href="{NextDayPage}"><i class="cp cp-chevron-right"></i></a>{/block:NextDayPage}
-		{/block:DayPagination}
-	</nav>{/block:IfTopPagination}
+	</nav>{/block:DayPagination}
+	{/block:IfTopPagination}
 
 
 	<!-- TODO: main posts section -->
@@ -339,8 +339,7 @@ aside {
 
 	</section>
 
-	<nav class="pagination">
-		{block:Pagination}
+	{block:Pagination}<nav class="pagination">
 		<!-- PAGINATION -->
 		{block:PreviousPage}<a class="arrows prev" title="{lang:Previous page}" href="{PreviousPage}" title="{lang:Previous page}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousPage}
 
@@ -352,22 +351,21 @@ aside {
 		</span>
 		
 		{block:NextPage}<a class="arrows next" title="{lang:Next page}" href="{NextPage}"><i class="cp cp-chevron-right"></i></a>{/block:NextPage}
-		{/block:Pagination}
+	</nav>{/block:Pagination}
 		
-		{block:PermalinkPagination}
+	{block:PermalinkPagination}<nav class="pagination">
 		<!-- PERMALINK PAGINATION -->
 		{block:PreviousPost}<a class="arrows prev" title="{lang:Previous post}" href="{PreviousPost}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousPost}
 		
 		{block:NextPost}<a class="arrows next" title="{lang:Next post}" href="{NextPost}"><i class="cp cp-chevron-right"></i></a>{/block:NextPost}
-		{/block:PermalinkPagination}
+	</nav>{/block:PermalinkPagination}
 		
-		{block:DayPagination}
+	{block:DayPagination}<nav class="pagination">
 		<!-- DAY PAGINATION -->
 		{block:PreviousDayPage}<a class="arrows prev" title="{lang:Previous day}" href="{PreviousDayPage}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousDayPage}
 		
 		{block:NextDayPage}<a class="arrows next" title="{lang:Next day}" href="{NextDayPage}"><i class="cp cp-chevron-right"></i></a>{/block:NextDayPage}
-		{/block:DayPagination}
-	</nav>
+	</nav>{/block:DayPagination}
 
 </main>
 
