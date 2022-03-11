@@ -85,16 +85,18 @@ div#scrolltotop_parent {
 	text-shadow: 0 0 0.5em var(--bg);
 }
 /* Roundness: all */
-.rounded #s-m-t-tooltip,
-.rounded img.square,
-.rounded aside div, #search, #search input, #pages a,
-.rounded .post {
-	border-radius: 0.25rem;
+#s-m-t-tooltip, #scrolltotop_parent,
+img.square, .usericon,
+aside div, #search, #search input, #pages a,
+.pagination, .pagination .arrows,
+.post, .post header > a, .highres,
+.bodyitem:last-child::after, .ask::after {
+	border-radius: var(--roundness);
 }
 /* Roundness: bottom */
-.rounded #blognav nav {
-	border-bottom-left-radius: 0.25rem;
-	border-bottom-right-radius: 0.25rem;
+#blognav nav {
+	border-bottom-left-radius: var(--roundness);
+	border-bottom-right-radius: var(--roundness);
 }
 /* Casing: lower */
 .lowercase #s-m-t-tooltip,
@@ -298,7 +300,6 @@ aside.desc.pages div {
 	--size: 2em;
 	height: var(--size);
 	width: var(--size);
-	border-radius: 100%;
 	background: var(--links);
 	color: var(--bg);
 	font-size: 1.25em;
@@ -387,7 +388,6 @@ aside.desc.pages div {
 	column-gap: 1em;
 	align-items: center;
 	background: var(--bg2);
-	border-radius: 2em;
 }
 .pagination .prev { grid-column: 1 }
 .pagination .jump {
@@ -423,7 +423,6 @@ aside.desc.pages div {
 	height: 0.45em;
 	width: 0.45em;
 	background: var(--bg2);
-	border-radius: 100%;
 	position: absolute;
 	left: 0.8em;
 	bottom: -0.2em;
@@ -440,7 +439,6 @@ aside.desc.pages div {
 	position: absolute;
 	left: 0;
 	width: var(--size);
-	border-radius: 100%;
 	margin-right: 0.5em
 }
 .user + .bodyitemcontent, .question {

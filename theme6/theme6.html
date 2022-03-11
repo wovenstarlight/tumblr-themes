@@ -14,7 +14,7 @@
 -->
 
 <!DOCTYPE html>
-<html lang="en" class="{select:Default color mode} {select:Special text casing} {block:IfRoundedCorners}rounded{/block:IfRoundedCorners}">
+<html lang="en" class="{select:Default color mode} {select:Special text casing}">
 <head>
 	<!-- BASIC META TAGS -->
 	<meta charset="utf-8">
@@ -65,7 +65,12 @@
 	<meta name="color:LM Text highlight background" content="#78ecff">
 
 	<!-- General theme options -->
-	<meta name="if:Rounded corners" content="1">
+	<meta name="select:Corner roundness" content="0.25rem" title="Least">
+	<meta name="select:Corner roundness" content="0" title="None">
+	<meta name="select:Corner roundness" content="0.5rem" title="Less">
+	<meta name="select:Corner roundness" content="0.75rem" title="Medium">
+	<meta name="select:Corner roundness" content="1rem" title="More">
+	<meta name="select:Corner roundness" content="1.25rem" title="Most">
 	<meta name="select:Description position" content="center" title="Center">
 	<meta name="select:Description position" content="left" title="Left">
 	<meta name="select:Description position" content="right" title="Right">
@@ -106,6 +111,7 @@ html {
 	--title-font: {block:IfUseTumblrFontsForTitle}{font:Tumblr font for title}{/block:IfUseTumblrFontsForTitle}{block:IfNotUseTumblrFontsForTitle}{text:Google font for title}{/block:IfNotUseTumblrFontsForTitle}, serif;
 	font-family: {block:IfUseTumblrFontsForBody}{font:Tumblr font for body}{/block:IfUseTumblrFontsForBody}{block:IfNotUseTumblrFontsForBody}{text:Google font for body}{/block:IfNotUseTumblrFontsForBody}, serif;
 	--post-width: {text:Post width};
+	--roundness: {select:Corner roundness};
 }
 html.dark {
 	--text: {color:Text};
