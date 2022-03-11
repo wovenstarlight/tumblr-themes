@@ -19,7 +19,7 @@ a {
 }
 a:hover { background-size: 0 var(--height), 100% var(--height) }
 /* Remove hover styling for special links */
-header a, .post footer a, .pagination a { background: none }
+header a, .post footer a, .pagination a, #buttons > * { background: none }
 /* Scrollbar */
 * {
 	scrollbar-width: thin;
@@ -70,22 +70,38 @@ header a, .post footer a, .pagination a { background: none }
 .light #darklight .cp-sun, .dark #darklight .cp-moon,
 aside div:empty,
 .pinnedpost ~ i { display: none }
-/* To top button */
-div#scrolltotop_parent {
+/* To top and theme installation buttons */
+#buttons {
 	position: fixed;
 	bottom: 0.5em;
 	right: 0.5em;
+}
+#buttons > *, .post header > a, .pagination .arrows {
+	/* layout */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* appearance */
+	--size: 2em;
+	height: var(--size);
+	width: var(--size);
+	background: var(--links);
+	color: var(--bg);
+	box-shadow: 0 0 0 var(--bg);
+}
+#buttons > * {
 	font-size: 0.9em;
 	transition: 0.3s ease;
 	transition-property: box-shadow, text-shadow;
 	cursor: pointer;
+	margin-top: 0.75em;
 }
-#scrolltotop_parent:hover {
+#buttons > *:hover {
 	box-shadow: 0 0 0.5em var(--links);
 	text-shadow: 0 0 0.5em var(--bg);
 }
 /* Roundness: all */
-#s-m-t-tooltip, #scrolltotop_parent,
+#s-m-t-tooltip, #buttons > *,
 img.square, .usericon,
 aside div, #search, #search input, #pages a,
 .pagination, .pagination .arrows,
@@ -291,25 +307,8 @@ aside.desc.pages div {
 	column-gap: 0.5em;
 }
 /* Permalink */
-.post header > a, .pagination .arrows, #scrolltotop_parent {
-	/* layout */
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	/* appearance */
-	--size: 2em;
-	height: var(--size);
-	width: var(--size);
-	background: var(--links);
-	color: var(--bg);
-	font-size: 1.25em;
-	box-shadow: 0 0 0 var(--bg);
-	/* interaction */
-	text-decoration: none;
-}
-.post header > a:hover {
-	box-shadow: 0 0 0.3em rgba(var(--bg--rgb), 0.5);
-}
+.post header > a { font-size: 1.25em }
+.post header > a:hover { box-shadow: 0 0 0.3em rgba(var(--bg--rgb), 0.5) }
 /* Date/notes and via/source container */
 .post header div {
 	display: flex;
