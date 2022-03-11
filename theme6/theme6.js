@@ -14,7 +14,7 @@ $(document).ready( function() {
 	// photoset setup
 	npfPhotosets("article", {
 		includeCommonPhotosets: true,
-		photosetMargins:""
+		photosetMargins: ".75%"
 	});
 
 	const page = $("html");
