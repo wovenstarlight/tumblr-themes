@@ -423,7 +423,7 @@ aside.desc.pages div {
 	width: 0.45em;
 	background: var(--bg2);
 	position: absolute;
-	left: 0.8em;
+	left: 0.9em;
 	bottom: -0.2em;
 }
 .user {
@@ -431,7 +431,7 @@ aside.desc.pages div {
 	align-items: center;
 	height: 1.3em;
 	margin: 0.35em 0;
-	--size: 2em;
+	--size: 2.25em;
 	margin-left: calc(var(--size) + 0.5em);
 }
 .usericon {
@@ -442,7 +442,7 @@ aside.desc.pages div {
 }
 .user + .bodyitemcontent, .question {
 	border-left: 0.15em solid var(--bg2);
-	margin: -0.2em 0 0 0.95em;
+	margin: -0.2em 0 0 1.075em;
 }
 .bodyitemcontent, .question { padding: 0.75em 1em }
 .bodyitemcontent > :first-child, .question > :first-child { margin-top: 0 }
@@ -477,7 +477,7 @@ aside.desc.pages div {
 .ask::after {
 	background-color: var(--bg);
 	bottom: 0.7em;
-	left: 1.3em;
+	left: 1.4em;
 }
 .question { border-left-color: var(--bg) }
 .ask + .bodyitem { margin-top: 0.75em }
