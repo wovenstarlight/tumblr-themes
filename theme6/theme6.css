@@ -112,8 +112,10 @@ img.square, .usericon,
 aside div, #search, #search input, #pages a,
 .pagination, .pagination .arrows,
 .post, .post header > a, .highres,
+.bodyitem:last-child::after, .ask::after,
 .post .quote i, .quote .separator::before, .quote .separator::after,
-.bodyitem:last-child::after, .ask::after {
+.audiowrapper .custom_audio_buttons, .audiowrapper .albumart,
+.audiowrapper .custom_audio_seekbar, .audiowrapper .custom_audio_seekbar_progress, .audiowrapper .custom_audio_seekbar_progress::after {
 	border-radius: var(--roundness);
 }
 /* Roundness: bottom */
@@ -128,16 +130,19 @@ aside div, #search, #search input, #pages a,
 .lowercase .post header,
 .lowercase .post footer,
 .lowercase .highres,
-.lowercase .chat .label { text-transform: lowercase }
+.lowercase .chat .label,
+.lowercase .audiowrapper .textinfo { text-transform: lowercase }
 /* Casing: upper */
 .uppercase #title,
 .uppercase .user,
-.uppercase .chat .label { text-transform: uppercase }
+.uppercase .chat .label,
+.uppercase .audiowrapper .textinfo .trackname { text-transform: uppercase }
 .uppercase #s-m-t-tooltip,
 .uppercase #pages a,
 .uppercase .post header,
 .uppercase .post footer,
-.uppercase .highres  { font-variant: small-caps }
+.uppercase .highres,
+.uppercase .audiowrapper .textinfo .making { font-variant: small-caps }
 
 
 
@@ -426,11 +431,13 @@ aside.desc.pages div {
 .videowrapper + .bodyitem { margin-top: 0.75em }
 .bodyitem:last-child { margin-bottom: 1em }
 .bodyitem:last-child::after, .ask::after,
-.quote .separator::before, .quote .separator::after { /* Stopper */
+.quote .separator::before, .quote .separator::after,
+.audiowrapper .custom_audio_seekbar_progress::after { /* Stopper */
 	content: "";
 	display: block;
-	height: 0.45em;
-	width: 0.45em;
+	--size: 0.45em;
+	height: var(--size);
+	width: var(--size);
 	background: var(--bg2);
 }
 .bodyitem:last-child::after, .ask::after {
@@ -511,6 +518,53 @@ aside.desc.pages div {
 .chat li:nth-child(even) {
 	background-color: rgba(var(--bg2--rgb), 0.1);
 	padding-left: 1.5em;
+}
+/* Audio posts */
+.audiowrapper {
+	display: grid;
+	--size: 4rem;
+	grid-template-columns: var(--size) 1fr;
+	column-gap: 1em;
+	row-gap: 0.5em;
+	padding: 0.5em;
+	background: var(--bg2);
+	color: var(--text2);
+	text-align: center;
+	align-items: center;
+}
+.audiowrapper.hasart { grid-template-columns: var(--size) 1fr var(--size) }
+.audiowrapper span[id*='audio_player'] { display: none } /* Bring the hidden player out of the grid */
+.audiowrapper .custom_audio_buttons {
+	background-color: var(--links);
+	color: var(--bg);
+	font-size: 1.25em;
+	height: var(--size);
+}
+.audiowrapper .custom_audio_buttons div[style*='block'] {
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+}
+.audiowrapper .textinfo .making { font-size: 0.8em }
+.audiowrapper .custom_audio_seekbar {
+	height: 0.15em;
+	grid-column: 1/span 3;
+	margin: 0 0.225em;
+	background-color: var(--bg);
+}
+.audiowrapper .custom_audio_seekbar_progress {
+	position: relative;
+	height: 100%;
+	background-color: var(--links);
+	display: flex;
+	align-items: center;
+}
+.audiowrapper .custom_audio_seekbar_progress::after {
+	background: var(--links);
+	position: absolute;
+	right: calc(var(--size)/-2);
 }
 /* Video posts */
 .tumblr_video_container, .tumblr_video_iframe { width: 100% !important }
