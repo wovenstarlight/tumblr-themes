@@ -247,6 +247,7 @@ aside {
 
 		<article class="post">
 			{block:Date}
+			<!-- POST HEADER -->
 			<header>
 				<a href="{Permalink}" title="{lang:Permalink}{block:PinnedPostLabel} ({PinnedPostLabel}){/block:PinnedPostLabel}">
 					{block:PinnedPostLabel}
@@ -281,22 +282,21 @@ aside {
 			</header>
 			{/block:Date}
 	
-			<!-- TODO: post body and footer with tags -->
+			<!-- TODO: post body -->
 			<p>body blah blah blah</p>
 	
-			{block:Date}
+			{block:Date}{block:IfPostTags}{block:HasTags}
+			<!-- POST FOOTER -->
 			<footer>
-				{block:IfPostTags}{block:HasTags}
-					{block:IfShowTagsOnClick}
-					<a class="showtags" tabindex="0">Show tags <i class="cp cp-chevron-right"></i></a>
-					{/block:IfShowTagsOnClick}
-					<p class="tags" {block:IfShowTagsOnClick}style="display: none;"{/block:IfShowTagsOnClick}>
-						<!-- TAGS SECTION -->
-						{block:Tags}<a href="{TagURL}">{Tag}</a>{block:Tags}
-					</p>
-					{/block:HasTags}{/block:IfPostTags}
+				{block:IfShowTagsOnClick}
+				<a class="showtags" tabindex="0">Show tags <i class="cp cp-chevron-right"></i></a>
+				{/block:IfShowTagsOnClick}
+				<p class="tags" {block:IfShowTagsOnClick}style="display: none;"{/block:IfShowTagsOnClick}>
+					<!-- TAGS SECTION -->
+					{block:Tags}<a href="{TagURL}">{Tag}</a>{block:Tags}
+				</p>
 			</footer>
-			{/block:Date}
+			{/block:HasTags}{/block:IfPostTags}{/block:Date}
 			
 		</article>
 

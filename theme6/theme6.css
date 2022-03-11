@@ -86,12 +86,14 @@ aside div:empty,
 .lowercase #s-m-t-tooltip,
 .lowercase #title,
 .lowercase #pages a,
-.lowercase .post header { text-transform: lowercase }
+.lowercase .post header,
+.lowercase .post footer { text-transform: lowercase }
 /* Casing: upper */
 .uppercase #title { text-transform: uppercase }
 .uppercase #s-m-t-tooltip,
 .uppercase #pages a,
-.uppercase .post header { font-variant: small-caps }
+.uppercase .post header,
+.uppercase .post footer { font-variant: small-caps }
 
 
 
@@ -337,7 +339,25 @@ aside.desc.pages div {
 	opacity: 0;
 }
 /* Post footers */
+.post footer { text-align: center }
+/* Showtags button */
+.showtags {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+.showtags i {
+	font-size: 0.75em;
+	margin: 0 0.5em;
+	transition: .4s ease;
+}
+.showtags.active i { transform: rotate(90deg) }
+/* Tags section */
 .tags { margin: 0 }
+.showtags + .tags { margin-top: 0.5em }
+/* Individual tags */
+.tags a:not(:last-child)::after { content: ", " }
 
 
 
