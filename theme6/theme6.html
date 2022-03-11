@@ -71,6 +71,7 @@
 	<meta name="if:Random post link" content="1">
 	<meta name="if:Archive link" content="1">
 	<meta name="if:Search bar" content="1">
+	<meta name="if:Top pagination" content="1">
 	<meta name="if:Post dates" content="1">
 	<meta name="if:Post times" content="1">
 	<meta name="if:Dates formatted month first" content="0">
@@ -240,6 +241,38 @@ aside {
 
 <!-- MAIN POSTS SECTION -->
 <main id="main">
+
+	{block:IfTopPagination}<nav class="pagination">
+        {block:Pagination}
+		<!-- PAGINATION -->
+		{block:PreviousPage}<a class="arrows prev" title="{lang:Previous page}" href="{PreviousPage}" title="{lang:Previous page}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousPage}
+
+		<span class="jump">
+		{block:JumpPagination length="7"}
+		{block:CurrentPage}<a class="current-page">{PageNumber}</a>{/block:CurrentPage}
+		{block:JumpPage}<a href="{URL}">{PageNumber}</a>{/block:JumpPage}
+		{/block:JumpPagination}
+		</span>
+		
+		{block:NextPage}<a class="arrows next" title="{lang:Next page}" href="{NextPage}"><i class="cp cp-chevron-right"></i></a>{/block:NextPage}
+		{/block:Pagination}
+		
+		{block:PermalinkPagination}
+		<!-- PERMALINK PAGINATION -->
+		{block:PreviousPost}<a class="arrows prev" title="{lang:Previous post}" href="{PreviousPost}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousPost}
+		
+		{block:NextPost}<a class="arrows next" title="{lang:Next post}" href="{NextPost}"><i class="cp cp-chevron-right"></i></a>{/block:NextPost}
+		{/block:PermalinkPagination}
+		
+		{block:DayPagination}
+		<!-- DAY PAGINATION -->
+		{block:PreviousDayPage}<a class="arrows prev" title="{lang:Previous day}" href="{PreviousDayPage}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousDayPage}
+		
+		{block:NextDayPage}<a class="arrows next" title="{lang:Next day}" href="{NextDayPage}"><i class="cp cp-chevron-right"></i></a>{/block:NextDayPage}
+		{/block:DayPagination}
+    </nav>{/block:IfTopPagination}
+
+
 	<!-- TODO: main posts section -->
 	<section id="posts">
 
@@ -303,6 +336,37 @@ aside {
 		{/block:Posts}
 
 	</section>
+
+	<nav class="pagination">
+        {block:Pagination}
+		<!-- PAGINATION -->
+		{block:PreviousPage}<a class="arrows prev" title="{lang:Previous page}" href="{PreviousPage}" title="{lang:Previous page}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousPage}
+
+		<span class="jump">
+		{block:JumpPagination length="7"}
+		{block:CurrentPage}<a class="current-page">{PageNumber}</a>{/block:CurrentPage}
+		{block:JumpPage}<a href="{URL}">{PageNumber}</a>{/block:JumpPage}
+		{/block:JumpPagination}
+		</span>
+		
+		{block:NextPage}<a class="arrows next" title="{lang:Next page}" href="{NextPage}"><i class="cp cp-chevron-right"></i></a>{/block:NextPage}
+		{/block:Pagination}
+		
+		{block:PermalinkPagination}
+		<!-- PERMALINK PAGINATION -->
+		{block:PreviousPost}<a class="arrows prev" title="{lang:Previous post}" href="{PreviousPost}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousPost}
+		
+		{block:NextPost}<a class="arrows next" title="{lang:Next post}" href="{NextPost}"><i class="cp cp-chevron-right"></i></a>{/block:NextPost}
+		{/block:PermalinkPagination}
+		
+		{block:DayPagination}
+		<!-- DAY PAGINATION -->
+		{block:PreviousDayPage}<a class="arrows prev" title="{lang:Previous day}" href="{PreviousDayPage}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousDayPage}
+		
+		{block:NextDayPage}<a class="arrows next" title="{lang:Next day}" href="{NextDayPage}"><i class="cp cp-chevron-right"></i></a>{/block:NextDayPage}
+		{/block:DayPagination}
+    </nav>
+
 </main>
 
 <footer>

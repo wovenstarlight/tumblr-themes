@@ -19,7 +19,7 @@ a {
 }
 a:hover { background-size: 0 var(--height), 100% var(--height) }
 /* Remove hover styling for special links */
-header a, .post footer a { background: none }
+header a, .post footer a, .pagination a { background: none }
 /* Scrollbar */
 * {
 	scrollbar-width: thin;
@@ -120,11 +120,11 @@ aside div:empty,
 #phead.avatar.title { grid-template-columns: var(--avatar) 1fr auto }
 #phead.avatar.title #title { grid-column: 2 }
 #phead.avatar.title #blognav { grid-column: 3 }
-header a, .post footer a {
+header a, .post footer a, .pagination a {
 	color: var(--text2);
 	text-decoration: none;
 }
-header a:hover, .post footer a:hover { text-shadow: 0 0 0.5em var(--bg) }
+header a:hover, .post footer a:hover, .pagination a:hover { text-shadow: 0 0 0.5em var(--bg) }
 /* Avatar */
 #avatar img {
 	border: 0.25em solid var(--bg2);
@@ -243,10 +243,10 @@ aside.desc.pages div {
 
 
 /******************************* POSTS: GENERAL *******************************/
+#main { padding: 0 1em }
 /* Post container */
 #posts {
 	margin: 2em auto;
-	padding: 0 1em;
 	width: 100%;
 	max-width: calc(var(--post-width) + 2em);
 }
@@ -272,7 +272,7 @@ aside.desc.pages div {
 	column-gap: 0.5em;
 }
 /* Permalink */
-.post header > a {
+.post header > a, .pagination .arrows {
 	/* layout */
 	display: flex;
 	align-items: center;
@@ -316,6 +316,7 @@ aside.desc.pages div {
 	margin-top: 0.3em;
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap;
 }
 .viasource i { margin: 0 0.5em }
 /* Like/reblog/pinned */
@@ -358,6 +359,32 @@ aside.desc.pages div {
 .showtags + .tags { margin-top: 0.5em }
 /* Individual tags */
 .tags a:not(:last-child)::after { content: ", " }
+/* Pagination */
+.pagination {
+	max-width: var(--post-width);
+	margin: 1em auto;
+	padding: 0.5em;
+	--arrow: 1.6em;
+	display: grid;
+	grid-template-columns: var(--arrow) 1fr var(--arrow);
+	column-gap: 1em;
+	align-items: center;
+	background: var(--bg2);
+	border-radius: 2em;
+}
+.pagination .prev { grid-column: 1 }
+.pagination .jump {
+	grid-column: 2;
+	text-align: center;
+}
+.pagination .jump a {
+	margin: 0 4%;
+	font-weight: bold;
+}
+.pagination .current-page { color: var(--links) }
+.pagination .next { grid-column: 3 }
+.pagination .arrows { font-size: 0.8em }
+.pagination .arrows:hover { box-shadow: 0 0 0.5em rgba(var(--bg--rgb), 0.75) }
 
 
 
