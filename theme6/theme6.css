@@ -540,7 +540,7 @@ aside.desc.pages div {
 	font-size: 1.25em;
 	height: var(--size);
 }
-.audiowrapper .custom_audio_buttons div[style*='block'] {
+.audiowrapper .custom_audio_buttons div:not([style*='none']) {
 	display: flex !important;
 	align-items: center;
 	justify-content: center;
