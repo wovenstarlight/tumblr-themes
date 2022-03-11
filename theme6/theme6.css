@@ -103,7 +103,8 @@ div#scrolltotop_parent {
 .lowercase .post header,
 .lowercase .post footer { text-transform: lowercase }
 /* Casing: upper */
-.uppercase #title { text-transform: uppercase }
+.uppercase #title,
+.uppercase .user { text-transform: uppercase }
 .uppercase #s-m-t-tooltip,
 .uppercase #pages a,
 .uppercase .post header,
@@ -399,6 +400,55 @@ aside.desc.pages div {
 .pagination .next { grid-column: 3 }
 .pagination .arrows { font-size: 0.8em }
 .pagination .arrows:hover { box-shadow: 0 0 0.5em rgba(var(--bg--rgb), 0.75) }
+
+
+
+/********************************* POST STYLES *********************************/
+/* General */
+.bodyitem {
+	margin: 0 0.5em;
+	position: relative;
+}
+.bodyitem:first-child { margin-top: 0.75em; }
+.bodyitem:last-child { margin-bottom: 1em; }
+.bodyitem:last-child::after { /* Stopper */
+	content: "";
+	display: block;
+	height: 0.45em;
+	width: 0.45em;
+	background: var(--bg2);
+	border-radius: 100%;
+	position: absolute;
+	left: 0.8em;
+	bottom: -0.2em;
+}
+.user {
+	display: inline-flex;
+	align-items: center;
+	height: 1.3em;
+	margin: 0.35em 0;
+	--size: 2em;
+	margin-left: calc(var(--size) + 0.5em);
+}
+.usericon {
+	position: absolute;
+	left: 0;
+	width: var(--size);
+	border-radius: 100%;
+	margin-right: 0.5em
+}
+.user + .bodyitemcontent {
+	border-left: 0.15em solid var(--bg2);
+	margin: -0.2em 0 0 0.95em;
+}
+.bodyitemcontent { padding: 0.75em 1em }
+.bodyitemcontent > :first-child { margin-top: 0 }
+.bodyitemcontent > :last-child { margin-bottom: 0 }
+.tmblr-attribution {
+	margin: 0.1em 0 0;
+	font-size: 0.75em;
+	font-style: italic;
+}
 
 
 
