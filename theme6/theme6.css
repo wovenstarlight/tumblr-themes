@@ -7,7 +7,9 @@ a {
 	color: var(--links);
 	transition: .3s ease;
 	text-decoration: none;
-	/* Hover styling */
+}
+/* Link hover styling */
+aside a[href], .postbody a[href] {
 	--height: 0.3em;
 	--og: rgba(var(--links--rgb), 0.1);
 	--hover: rgba(var(--links--rgb), 0.3);
@@ -17,13 +19,11 @@ a {
 	background-position: 100% 100%, 0 100%;
 	background-repeat: no-repeat;
 }
-a:hover { background-size: 0 var(--height), 100% var(--height) }
-/* Remove hover styling for special links */
-header a, .post footer a, .pagination a, #buttons > * { background: none }
+aside a[href]:hover, .postbody a[href]:hover { background-size: 0 var(--height), 100% var(--height) }
 /* Scrollbar */
 * {
 	scrollbar-width: thin;
-	scrollbar-color: var(--bg2) var(--text2);
+	scrollbar-color: rgba(var(--bg2--rgb), 0.8) var(--text2);
 }
 ::-webkit-scrollbar {
 	width: 0.5em;
@@ -31,7 +31,7 @@ header a, .post footer a, .pagination a, #buttons > * { background: none }
 	background-color: var(--text2);
 }
 ::-webkit-scrollbar-corner { background-color: var(--bg2) }
-::-webkit-scrollbar-thumb { background-color: var(--text2) }
+::-webkit-scrollbar-thumb { background-color: rgba(var(--bg2--rgb), 0.8) }
 /* Text highlighting */
 ::selection {
 	background-color: var(--highlight-bg);
