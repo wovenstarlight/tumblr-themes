@@ -159,7 +159,7 @@ header a:hover, .post footer a:hover, .pagination a:hover { text-shadow: 0 0 0.5
 #darklight { cursor: pointer }
 /* Banner image */
 aside {
-	background-color: var(--bg2);
+	background-color: var(--header);
 	min-height: 20em;
 	display: flex;
 	flex-direction: column;
