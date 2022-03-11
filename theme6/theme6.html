@@ -245,7 +245,7 @@ aside {
 <main id="main">
 
 	{block:IfTopPagination}<nav class="pagination">
-        {block:Pagination}
+		{block:Pagination}
 		<!-- PAGINATION -->
 		{block:PreviousPage}<a class="arrows prev" title="{lang:Previous page}" href="{PreviousPage}" title="{lang:Previous page}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousPage}
 
@@ -272,7 +272,7 @@ aside {
 		
 		{block:NextDayPage}<a class="arrows next" title="{lang:Next day}" href="{NextDayPage}"><i class="cp cp-chevron-right"></i></a>{/block:NextDayPage}
 		{/block:DayPagination}
-    </nav>{/block:IfTopPagination}
+	</nav>{/block:IfTopPagination}
 
 
 	<!-- TODO: main posts section -->
@@ -294,7 +294,7 @@ aside {
 				
 				<div>
 					<span class="datenotes">
-						{block:IfPostDates}<a href="{Permalink}" class="date" title="{lang:Posted TimeAgo}">{DayOfWeek}, {block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfPostTimes} @ {block:If24HourTimes}{24Hour}{/block:If24HourTimes}{block:IfNot24HourTimes}{12Hour}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes} {CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</a>{/block:IfPostDates}
+						{block:IfPostDates}<a href="{Permalink}" class="date" title="{lang:Posted TimeAgo}">{block:IfDatesFormattedMonthFirst}{MonthNumberWithZero}.{DayOfMonthWithZero}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonthWithZero}.{MonthNumberWithZero}{/block:IfNotDatesFormattedMonthFirst}.{Year}{block:IfPostTimes} @ {block:If24HourTimes}{24Hour}{/block:If24HourTimes}{block:IfNot24HourTimes}{12Hour}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes} {CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</a>{/block:IfPostDates}
 						{block:NoteCount}<a href="{Permalink}#notes" class="notes">{NoteCountWithLabel}</a>{/block:NoteCount}
 					</span>
 					
@@ -340,7 +340,7 @@ aside {
 	</section>
 
 	<nav class="pagination">
-        {block:Pagination}
+		{block:Pagination}
 		<!-- PAGINATION -->
 		{block:PreviousPage}<a class="arrows prev" title="{lang:Previous page}" href="{PreviousPage}" title="{lang:Previous page}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousPage}
 
@@ -367,7 +367,7 @@ aside {
 		
 		{block:NextDayPage}<a class="arrows next" title="{lang:Next day}" href="{NextDayPage}"><i class="cp cp-chevron-right"></i></a>{/block:NextDayPage}
 		{/block:DayPagination}
-    </nav>
+	</nav>
 
 </main>
 
