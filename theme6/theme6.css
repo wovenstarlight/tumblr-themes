@@ -101,14 +101,16 @@ div#scrolltotop_parent {
 .lowercase #title,
 .lowercase #pages a,
 .lowercase .post header,
-.lowercase .post footer { text-transform: lowercase }
+.lowercase .post footer,
+.lowercase .highres { text-transform: lowercase }
 /* Casing: upper */
 .uppercase #title,
 .uppercase .user { text-transform: uppercase }
 .uppercase #s-m-t-tooltip,
 .uppercase #pages a,
 .uppercase .post header,
-.uppercase .post footer { font-variant: small-caps }
+.uppercase .post footer,
+.uppercase .highres  { font-variant: small-caps }
 
 
 
@@ -409,9 +411,13 @@ aside.desc.pages div {
 	margin: 0 0.5em;
 	position: relative;
 }
-.bodyitem:first-child { margin-top: 0.75em; }
-.bodyitem:last-child { margin-bottom: 1em; }
-.bodyitem:last-child::after { /* Stopper */
+.bodyitem:first-child,
+.photowrapper + .bodyitem,
+.npf_photoset + .bodyitem,
+.audiowrapper + .bodyitem,
+.videowrapper + .bodyitem { margin-top: 0.75em }
+.bodyitem:last-child { margin-bottom: 1em }
+.bodyitem:last-child::after, .ask::after { /* Stopper */
 	content: "";
 	display: block;
 	height: 0.45em;
@@ -437,18 +443,47 @@ aside.desc.pages div {
 	border-radius: 100%;
 	margin-right: 0.5em
 }
-.user + .bodyitemcontent {
+.user + .bodyitemcontent, .question {
 	border-left: 0.15em solid var(--bg2);
 	margin: -0.2em 0 0 0.95em;
 }
-.bodyitemcontent { padding: 0.75em 1em }
-.bodyitemcontent > :first-child { margin-top: 0 }
-.bodyitemcontent > :last-child { margin-bottom: 0 }
+.bodyitemcontent, .question { padding: 0.75em 1em }
+.bodyitemcontent > :first-child, .question > :first-child { margin-top: 0 }
+.bodyitemcontent > :last-child, .question > :last-child { margin-bottom: 0 }
 .tmblr-attribution {
 	margin: 0.1em 0 0;
 	font-size: 0.75em;
 	font-style: italic;
 }
+/* Photo posts */
+.photowrapper { position: relative }
+.photowrapper a[href*="image"], .photopost { display: flex }
+.photopost { width: 100% }
+.photowrapper .highres {
+	position: absolute;
+	bottom: 1em;
+	left: 1em;
+	background-color: var(--bg);
+	padding: 0.4em 0.5em;
+}
+.photowrapper:not(:hover) .highres { opacity: 0 }
+/* Video posts */
+.tumblr_video_container, .tumblr_video_iframe { width: 100% !important }
+/* Ask posts */
+.ask {
+	position: relative;
+	background: var(--bg2);
+	color: var(--text2);
+	padding: 0.5em 0.5em 0.75em;
+}
+.ask .usericon { left: 0.55em }
+.ask::after {
+	background-color: var(--bg);
+	bottom: 0.7em;
+	left: 1.3em;
+}
+.question { border-left-color: var(--bg) }
+.ask + .bodyitem { margin-top: 0.75em }
 
 
 
