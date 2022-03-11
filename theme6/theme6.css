@@ -498,6 +498,8 @@ aside.desc.pages div {
 }
 
 @media (max-width: 35em) {
+	body { font-size: 0.9em }
+
 	/* Avatar sizing */
 	#phead { --avatar: 2.75em }
 	/* Blog navigation */
