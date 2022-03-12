@@ -114,6 +114,7 @@ aside div, #search, #search input, #pages a,
 .post, .post header > a, .highres,
 .bodyitem:last-child::after, .ask::after,
 .post .quote i, .quote .separator::before, .quote .separator::after,
+.postbody .link[href],
 .audiowrapper .custom_audio_buttons, .audiowrapper .albumart, .audiowrapper .custom_audio_seekbar_progress::after {
 	border-radius: var(--roundness);
 }
@@ -130,6 +131,7 @@ aside div, #search, #search input, #pages a,
 .lowercase .post footer,
 .lowercase .highres,
 .lowercase .chat .label,
+.lowercase .link .name,
 .lowercase .audiowrapper .textinfo { text-transform: lowercase }
 /* Casing: upper */
 .uppercase #title,
@@ -141,6 +143,7 @@ aside div, #search, #search input, #pages a,
 .uppercase .post header,
 .uppercase .post footer,
 .uppercase .highres,
+.uppercase .link .name
 .uppercase .audiowrapper .textinfo .making { font-variant: small-caps }
 
 
@@ -506,6 +509,27 @@ aside.desc.pages div {
 	width: 100%;
 }
 .quote .separator i { position: absolute }
+/* Link posts */
+.postbody .link[href] {
+	display: flex;
+	flex-direction: column;
+	background-color: rgba(var(--bg2--rgb), 0.8);
+	color: var(--text2);
+	--og: rgba(var(--links--rgb), 0.5);
+	--hover: var(--links);
+	--height: 0.75em;
+	padding-bottom: var(--height);
+	text-align: center;
+	overflow: hidden
+}
+.link .name {
+	background: var(--bg2);
+	padding: 0.5em;
+}
+.link .excerpt {
+	font-size: 0.85em;
+	padding: 0.5em 1em;
+}
 /* Chat posts */
 .chat {
 	list-style: none;
