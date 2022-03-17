@@ -333,6 +333,9 @@ pre {
 }
 .page.title h2 { margin: 0 0 0.25rem }
 .page.title p, .post .title { margin: 0 }
+.page.title .tag::before { content: "#" }
+.page.title .search_query::before { content: "\201C" }
+.page.title .search_query::after { content: "\201D" }
 .post .title a, .read_more, .more_notes_link, .notes_loading {
 	display: block;
 	text-align: center;
