@@ -9,7 +9,8 @@ a {
 	text-decoration: none;
 }
 /* Link hover styling */
-aside a[href], .postbody a[href], .title a[href] {
+aside a[href], .postbody a[href], .page.title a[href], .post .title a[href],
+#notes a, .notes_loading {
 	--height: 0.3em;
 	--og: rgba(var(--links--rgb), 0.1);
 	--hover: rgba(var(--links--rgb), 0.3);
@@ -19,7 +20,10 @@ aside a[href], .postbody a[href], .title a[href] {
 	background-position: 100% 100%, 0 100%;
 	background-repeat: no-repeat;
 }
-aside a[href]:hover, .postbody a[href]:hover, .title a[href]:hover { background-size: 0 var(--height), 100% var(--height) }
+aside a[href]:hover, .postbody a[href]:hover, .page.title a[href]:hover, .post .title a[href]:hover,
+#notes a:hover, .notes_loading:hover {
+	background-size: 0 var(--height), 100% var(--height);
+}
 /* Blockquotes */
 blockquote {
 	margin-left: 0.75em;
@@ -114,7 +118,7 @@ aside div, #search, #search input, #pages a,
 .post, .post header > a, .highres,
 .bodyitem:last-child::after, .ask::after,
 .post .quote i, .quote .separator::before, .quote .separator::after,
-.postbody .link[href], .read_more,
+.postbody .link[href], .read_more, .more_notes_link, .notes_loading,
 .audiowrapper .custom_audio_buttons, .audiowrapper .albumart, .audiowrapper .custom_audio_seekbar_progress::after {
 	border-radius: var(--roundness);
 }
@@ -125,26 +129,22 @@ aside div, #search, #search input, #pages a,
 }
 /* Casing: lower */
 .lowercase #s-m-t-tooltip,
-.lowercase #title,
+.lowercase #title, .lowercase .title,
 .lowercase #pages a,
-.lowercase .post header,
-.lowercase .post footer,
-.lowercase .highres,
-.lowercase .chat .label,
-.lowercase .link .name,
-.lowercase .audiowrapper .textinfo { text-transform: lowercase }
+.lowercase .post header, .lowercase .post footer,
+.lowercase .highres, .lowercase .chat .label, .lowercase .link .name, .lowercase .audiowrapper .textinfo,
+.lowercase .read_more, .lowercase .jump, .lowercase .more_notes_link_container { text-transform: lowercase }
 /* Casing: upper */
 .uppercase #title,
 .uppercase .user,
-.uppercase .chat .label,
-.uppercase .audiowrapper .textinfo .trackname { text-transform: uppercase }
+.uppercase .chat .label, .uppercase .audiowrapper .textinfo .trackname,
+.uppercase .read_more, .uppercase #notes .action > a { text-transform: uppercase }
 .uppercase #s-m-t-tooltip,
+.uppercase .title,
 .uppercase #pages a,
-.uppercase .post header,
-.uppercase .post footer,
-.uppercase .highres,
-.uppercase .link .name
-.uppercase .audiowrapper .textinfo .making { font-variant: small-caps }
+.uppercase .post header, .uppercase .post footer,
+.uppercase .highres, .uppercase .link .name, .uppercase .audiowrapper .textinfo .making,
+.uppercase .jump, .uppercase .more_notes_link_container { font-variant: small-caps }
 
 
 
@@ -312,7 +312,7 @@ aside.desc.pages div {
 	margin: 0;
 	font-size: 1.75em;
 }
-.post h2.title a, .postbody .read_more[href] {
+.post h2.title a[href], .postbody .read_more[href], #notes .more_notes_link, .notes_loading {
 	text-align: center;
 	display: block;
 	padding: 0.25em 0 0.5em;
@@ -421,6 +421,28 @@ aside.desc.pages div {
 .showtags + .tags { margin-top: 0.5em }
 /* Individual tags */
 .tags a:not(:last-child)::after { content: ", " }
+/* Notes section */
+#notes h2.title {
+	font-size: 1.5em;
+	text-align: center;
+	padding: 0.25em;
+}
+#notes .notes {
+	list-style: none;
+	margin: 0;
+	padding: 0 1.5em 0.5em;
+}
+.notes .reblog, .notes .like, .notes .reply {
+	padding: 0.3em 0.5em;
+	border-left: 0.15em solid;
+}
+.notes .note blockquote { margin: 0.5em 0.75em 0.25em }
+.notes .avatar_frame { display: none }
+.notes .reblog { border-left-color: #42b742cc }
+.notes .like { border-left-color: #d75f45cc }
+.notes .reply { border-left-color: #00b8ffcc }
+.notes .original_post { border-left-color: var(--links) }
+.notes .more_notes_link_container { margin-top: 1em }
 /* Pagination */
 .pagination {
 	max-width: var(--post-width);
@@ -437,6 +459,7 @@ aside.desc.pages div {
 .pagination .jump {
 	grid-column: 2;
 	text-align: center;
+	color: var(--text2);
 }
 .pagination .jump a {
 	margin: 0 4%;

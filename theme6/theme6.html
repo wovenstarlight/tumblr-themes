@@ -268,14 +268,14 @@ aside {
 	{block:PermalinkPagination}<nav class="pagination">
 		<!-- PERMALINK PAGINATION -->
 		{block:PreviousPost}<a class="arrows prev" title="{lang:Previous post}" href="{PreviousPost}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousPost}
-		
+		<span class="jump">{lang:See more posts}</span>
 		{block:NextPost}<a class="arrows next" title="{lang:Next post}" href="{NextPost}"><i class="cp cp-chevron-right"></i></a>{/block:NextPost}
 	</nav>{/block:PermalinkPagination}
 		
 	{block:DayPagination}<nav class="pagination">
 		<!-- DAY PAGINATION -->
 		{block:PreviousDayPage}<a class="arrows prev" title="{lang:Previous day}" href="{PreviousDayPage}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousDayPage}
-		
+		<span class="jump">{lang:See more posts}</span>
 		{block:NextDayPage}<a class="arrows next" title="{lang:Next day}" href="{NextDayPage}"><i class="cp cp-chevron-right"></i></a>{/block:NextDayPage}
 	</nav>{/block:DayPagination}
 	{/block:IfTopPagination}
@@ -610,6 +610,15 @@ aside {
 
 		{/block:Posts}
 
+
+		{block:PostNotes}
+			<!-- NOTES SECTION -->
+			<section id="notes" class="post">
+				<h2 class="title">{lang:Notes}</h2>
+				{PostNotes-64}
+			</section>
+		{/block:PostNotes}
+
 	</section>
 
 	{block:Pagination}<nav class="pagination">
@@ -629,14 +638,14 @@ aside {
 	{block:PermalinkPagination}<nav class="pagination">
 		<!-- PERMALINK PAGINATION -->
 		{block:PreviousPost}<a class="arrows prev" title="{lang:Previous post}" href="{PreviousPost}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousPost}
-		
+		<span class="jump">{lang:See more posts}</span>
 		{block:NextPost}<a class="arrows next" title="{lang:Next post}" href="{NextPost}"><i class="cp cp-chevron-right"></i></a>{/block:NextPost}
 	</nav>{/block:PermalinkPagination}
 		
 	{block:DayPagination}<nav class="pagination">
 		<!-- DAY PAGINATION -->
 		{block:PreviousDayPage}<a class="arrows prev" title="{lang:Previous day}" href="{PreviousDayPage}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousDayPage}
-		
+		<span class="jump">{lang:See more posts}</span>
 		{block:NextDayPage}<a class="arrows next" title="{lang:Next day}" href="{NextDayPage}"><i class="cp cp-chevron-right"></i></a>{/block:NextDayPage}
 	</nav>{/block:DayPagination}
 
