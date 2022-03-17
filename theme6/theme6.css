@@ -9,7 +9,7 @@ a {
 	text-decoration: none;
 }
 /* Link hover styling */
-aside a[href], .postbody a[href], .page.title a[href] {
+aside a[href], .postbody a[href], .title a[href] {
 	--height: 0.3em;
 	--og: rgba(var(--links--rgb), 0.1);
 	--hover: rgba(var(--links--rgb), 0.3);
@@ -19,7 +19,7 @@ aside a[href], .postbody a[href], .page.title a[href] {
 	background-position: 100% 100%, 0 100%;
 	background-repeat: no-repeat;
 }
-aside a[href]:hover, .postbody a[href]:hover, .page.title a[href]:hover { background-size: 0 var(--height), 100% var(--height) }
+aside a[href]:hover, .postbody a[href]:hover, .title a[href]:hover { background-size: 0 var(--height), 100% var(--height) }
 /* Blockquotes */
 blockquote {
 	margin-left: 0.75em;
@@ -114,7 +114,7 @@ aside div, #search, #search input, #pages a,
 .post, .post header > a, .highres,
 .bodyitem:last-child::after, .ask::after,
 .post .quote i, .quote .separator::before, .quote .separator::after,
-.postbody .link[href],
+.postbody .link[href], .read_more,
 .audiowrapper .custom_audio_buttons, .audiowrapper .albumart, .audiowrapper .custom_audio_seekbar_progress::after {
 	border-radius: var(--roundness);
 }
@@ -307,6 +307,23 @@ aside.desc.pages div {
 .page.title .tag::before { content: "#" }
 .page.title .search_query::before { content: "\201C" }
 .page.title .search_query::after { content: "\201D" }
+/* Post titles and headings */
+.post h2.title {
+	margin: 0;
+	font-size: 1.75em;
+}
+.post h2.title a, .postbody .read_more[href] {
+	text-align: center;
+	display: block;
+	padding: 0.25em 0 0.5em;
+	background-color: var(--bg2);
+	color: var(--text2);
+	--og: rgba(var(--links--rgb), 0.6);
+	--hover: var(--links);
+	--height: 0.35em;
+}
+.postbody h1 { font-size: 1.5em }
+.postbody h2 { font-size: 1.25em }
 /* Post container */
 #posts {
 	margin: 2em auto;
