@@ -99,7 +99,7 @@
 
 	<!-- Resource imports -->
 	<!-- Cappuccicons by suiomi -->
-	<link rel="stylesheet" href="https://static.tumblr.com/svdghan/wUSr83npl/tempcf.css">
+	<script src="//pull.cappuccicons.com/cpf.js"></script>
 	<!-- Google fonts import -->
 	{block:IfNotUseTumblrFontsForBody}<link href="https://fonts.googleapis.com/css2?family={text:Google font for body}" rel="stylesheet">{/block:IfNotUseTumblrFontsForBody}
 	{block:IfNotUseTumblrFontsForTitle}<link href="https://fonts.googleapis.com/css2?family={text:Google font for title}" rel="stylesheet">{/block:IfNotUseTumblrFontsForTitle}
@@ -280,10 +280,35 @@ aside {
 	</nav>{/block:DayPagination}
 	{/block:IfTopPagination}
 
-
-	<!-- TODO: page type-specific headers -->
-
 	<section id="posts">
+
+		{block:TagPage}
+			<!-- SPECIAL PAGE HEADER: TAG -->
+			<div class="page title">
+				<h2>{lang:TagResultCount posts tagged Tag 2}</h2>
+				<p>Sort <a href="/tagged/{URLSafeTag}">newest first</a> or <a href="/tagged/{URLSafeTag}/chrono">oldest first</a></p>
+			</div>
+		{/block:TagPage}
+		
+		{block:DayPage}
+			<!-- SPECIAL PAGE HEADER: DAY -->
+			<div class="page title"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
+		{/block:DayPage}
+		
+		{block:SearchPage}
+			<!-- SPECIAL PAGE HEADER: SEARCH -->
+			<div class="page title">
+				<h2>
+					{lang:SearchResultCount results for SearchQuery 2}
+					{block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}
+				</h2>
+			</div>
+		{/block:SearchPage}
+
+		{block:NoPosts}
+			<!-- SPECIAL MESSAGE: EMPTY BLOG -->
+			<section id="no-posts"><p>{lang:This Tumblr hasnt posted anything}</p></section>
+		{/block:NoPosts}
 
 		{block:Posts}
 
