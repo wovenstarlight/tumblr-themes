@@ -616,6 +616,7 @@ aside.desc.pages div {
 	color: var(--bg);
 	font-size: 1.25em;
 	height: var(--size);
+	cursor: pointer;
 }
 .audiowrapper .custom_audio_buttons div:not([style*='none']) {
 	display: flex !important;
