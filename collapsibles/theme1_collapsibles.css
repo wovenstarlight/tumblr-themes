@@ -1,11 +1,11 @@
 .collapsible { margin-bottom: 1em }
 .collapsible > .clpbutton {
-    color: var(--link);
+	color: var(--link);
 	display: flex;
-    align-items: center;
-    column-gap: 0.5em;
-    cursor: pointer;
-    transition: color .2s;
+	align-items: center;
+	column-gap: 0.5em;
+	cursor: pointer;
+	transition: color .2s;
 	margin-bottom: 0.25em;
 }
 .collapsible > .clpbutton:hover { color: var(--header) }
@@ -13,21 +13,21 @@
 .collapsible.active > .clpbutton::before { transform: rotate(90deg) }
 
 .collapsible > .clpcontent {
-  padding: 0.3em 1em;
-  transition: max-height 0.4s ease;
-  background-color: var(--sidebar);
-  border: 1px solid var(--bg-dark);
-  border-radius: 0.25em;
+	padding: 0.3em 1em;
+	transition: max-height 0.4s ease;
+	background-color: var(--sidebar);
+	border: 1px solid var(--bg-dark);
+	border-radius: 0.25em;
 }
 .collapsible.even > .clpcontent {
 	background-color: var(--bg-dark);
-    border-color: var(--blogname)
+	border-color: var(--blogname)
 }
 .clpcontent :not(ul, ol, li) { margin: 0.5em 0 }
 
 .clpcontent hr {
-    color: var(--header);
-    opacity: .25;
-    width: 33%;
-    margin: 1em auto;
+	color: var(--header);
+	opacity: .25;
+	width: 33%;
+	margin: 1em auto;
 }
