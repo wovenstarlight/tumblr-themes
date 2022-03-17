@@ -438,9 +438,9 @@ aside.desc.pages div {
 }
 .notes .note blockquote { margin: 0.5em 0.75em 0.25em }
 .notes .avatar_frame { display: none }
-.notes .reblog { border-left-color: #42b742cc }
-.notes .like { border-left-color: #d75f45cc }
-.notes .reply { border-left-color: #00b8ffcc }
+.notes .reblog { border-left-color: #56bc8acc }
+.notes .like { border-left-color: #d95e40cc }
+.notes .reply { border-left-color: #529ecccc }
 .notes .original_post { border-left-color: var(--links) }
 .notes .more_notes_link_container { margin-top: 1em }
 /* Pagination */
