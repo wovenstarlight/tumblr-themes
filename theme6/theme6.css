@@ -645,7 +645,7 @@ aside.desc.pages div {
 	right: calc(var(--size)/-2);
 }
 /* Video posts */
-.tumblr_video_container, .tumblr_video_iframe { width: 100% !important }
+.videowrapper iframe, .tumblr_video_container, .tumblr_video_iframe { width: 100% !important }
 /* Ask posts */
 .ask {
 	position: relative;
