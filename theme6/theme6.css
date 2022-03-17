@@ -178,6 +178,7 @@ aside div, #search, #search input, #pages a,
 #phead a:hover, .post header a:hover, .post footer a:hover, .pagination a:hover { text-shadow: 0 0 0.5em var(--bg) }
 /* Avatar */
 #avatar img {
+	background: var(--bg2);
 	border: 0.25em solid var(--bg2);
 	position: absolute;
 	width: var(--avatar);
@@ -672,11 +673,23 @@ aside.desc.pages div {
 	#blognav nav,
 	.tmblr-iframe.tmblr-iframe.tmblr-iframe--unified-controls { transition: .3s ease }
 	
+	/* Reorder description/pages to stop squishing */
+	aside.desc.pages div {
+		grid-template-columns: 1fr;
+		row-gap: 1em;
+	}
+	#desc + #pages::before {
+		width: 90%;
+		height: 0.05em;
+		position: relative;
+		left: 5%;
+		top: -0.5em;
+	}
+	
 	/* Post headers */
 	.datenotes { font-size: 0.9em }
 	.likereblog {
 		flex-direction: column;
 		position: relative;
 	}
-	.likereblog a { margin: 0.2em 0.4em }
 }
