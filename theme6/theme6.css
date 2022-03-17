@@ -352,7 +352,10 @@ aside.desc.pages div {
 	column-gap: 0.5em;
 }
 /* Permalink */
-.post header > a { font-size: 1.25em }
+.post header > a {
+	font-size: 1.25em;
+	color: var(--bg);
+}
 .post header > a:hover { box-shadow: 0 0 0.3em rgba(var(--bg--rgb), 0.5) }
 /* Date/notes and via/source container */
 .post header div {
