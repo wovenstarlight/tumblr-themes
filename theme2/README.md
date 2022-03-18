@@ -13,15 +13,8 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 ## Features
 ### Theme-specific
 - *All* colors customizable
-	- Dark/light modes - choose two distinct color themes!
-		- Set your default mode
-		- Optional mode toggle
-- Font options
-	- Choice between Tumblr and Google fonts
-	- Custom font size
 - Optional banner images for background and each individual sidebar
 	- Customizable positioning and sizing
-- Customizable post width
 - Optional features: choose whether to show or hide
 	- Avatar/Title/Description
 	- Search bar
@@ -29,19 +22,26 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 	- Tags
 	- Random post/Archive buttons
 	- Timestamps on posts
+- Unlimited custom links
 - Date/time options
 	- MM/DD or DD/MM format
 	- Times in 24-hour or 12-hour AM/PM format
-- [Collapsible sections](https://wovenstarlight.github.io/tumblr-themes/collapsibles/) for use on custom blog pages
-	- [Preview here](https://starlightpreviews.tumblr.com/theme2/collapsibles)
 - Choose between jump pagination or infinite scroll
 	- Jump pagination: Use [glenthemes' spoiler tag plugin](https://glenthemes.tumblr.com/spoilertags) to filter posts on your blog
 	- Infinite scroll: Choose between automatic or manual load
 - Supports group blogs (show/hide list of blog members)
 
 ### Standard
+- Dark/light modes - choose two distinct color themes!
+	- Set your default mode
+	- Optional mode toggle
+- Font options for general text and title
+	- Choice between Tumblr and Google fonts
+	- Custom font size
+- Customizable post width
+- [Collapsible sections](https://wovenstarlight.github.io/tumblr-themes/collapsibles/) for use on custom blog pages
+	- [Preview here](https://starlightpreviews.tumblr.com/theme2/collapsibles)
 - Responsive
-- Unlimited custom links
 - Supports new post types (NPF) and pinned posts
 - Unnested captions
 - Optional FAQ/submission guidelines for Ask/Submit pages

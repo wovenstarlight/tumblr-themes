@@ -13,7 +13,9 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 - Customizable icons: 1 blog-wide icon, and up to 8 custom links
 	- Fill the "icon" fields with icon names selected from [Cappuccicons](https://web.archive.org/web/20220109131551/https://cappuccicons.com/), such as `paw` or `fire-o`
 	- Manually add links/labels with individually customized icons, or use Tumblr's inbuilt pages to add links with a single standard icon
-- Text details: toggle between a formal uppercase or a casual lowercase
+- Text details
+	- Custom colors for special text/links
+	- Toggle special casing for important text: choose between a formal uppercase or a casual lowercase
 - Customizable sidebar width
 - Optional features: choose whether to show or hide
 	- Avatar/Title/Description
@@ -24,22 +26,21 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 - Date/time options
 	- Show/hide dates (MM/DD or DD/MM format)
 	- Show/hide times (12-hour or 24-hour format)
-- [Collapsible sections](https://wovenstarlight.github.io/tumblr-themes/collapsibles/) for use on custom blog pages
-	- [Preview here](https://starlightpreviews.tumblr.com/theme5/collapsibles)
 
 ### Standard
-- Responsive
-- Supports new post types (NPF) and pinned posts
-- Unnested captions
-- Optional FAQ/submission guidelines for Ask page
-- Custom colors for special text/links
 - Dark/light modes - choose two distinct color themes!
 	- Set your default mode
-	- Optional mode toggle (disable for a single color scheme)
+	- Optional mode toggle
 - Font options for general text and title
 	- Choice between Tumblr and Google fonts
 	- Custom font size
 - Customizable post width
+- [Collapsible sections](https://wovenstarlight.github.io/tumblr-themes/collapsibles/) for use on custom blog pages
+	- [Preview here](https://starlightpreviews.tumblr.com/theme5/collapsibles)
+- Responsive
+- Supports new post types (NPF) and pinned posts
+- Unnested captions
+- Optional FAQ/submission guidelines for Ask/Submit pages
 
 ## Credits
 - [Tippy.js tooltips](https://atomiks.github.io/tippyjs) by atomiks

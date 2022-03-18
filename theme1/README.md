@@ -10,15 +10,9 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 
 ## Features
 ### Theme-specific
-- Dark/light modes
-	- Set your default mode
-	- Optional mode toggle
 - Custom Discord tag (username#1234)
 - Custom colors for bold/italic text, links, and page accents
-- Font options
-	- Choose from Tumblr fonts
-	- Custom font size
-	- Optional: Use default Discord fonts if viewer has them downloaded
+- (Optional) Use default Discord fonts if viewer has them downloaded
 - Optional header image with customizable positioning and sizing
 - Full-width posts
 - Optional features: choose whether to show or hide
@@ -28,17 +22,23 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 	- Tags
 	- Random post/Archive buttons
 	- Date/timestamps on posts
+- Unlimited custom links
 - Date/time options
 	- MM/DD or DD/MM format
 	- Times in 24-hour or 12-hour AM/PM format
-- [Collapsible sections](https://wovenstarlight.github.io/tumblr-themes/collapsibles/) for use on custom blog pages
-	- [Preview here](https://starlightpreviews.tumblr.com/theme1/collapsibles)
 - Choose between jump pagination or infinite scroll
 	- Infinite scroll: Choose between automatic or manual load
 
 ### Standard
+- Dark/light modes
+	- Set your default mode
+	- Optional mode toggle
+- Font options for general text and title
+	- Choice between Tumblr and Google fonts
+	- Custom font size
+- [Collapsible sections](https://wovenstarlight.github.io/tumblr-themes/collapsibles/) for use on custom blog pages
+	- [Preview here](https://starlightpreviews.tumblr.com/theme1/collapsibles)
 - Responsive
-- Unlimited custom links
 - Supports new post types (NPF) and pinned posts
 - Unnested captions
 - Optional FAQ/submission guidelines for Ask/Submit pages

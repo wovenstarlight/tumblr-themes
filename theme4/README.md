@@ -21,20 +21,14 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 	- Like/Reblog buttons (individually toggleable)
 	- Tags (choose whether to show by default or on click)
 	- Random post/Archive buttons
+- Unlimited custom links
+- Custom colors for special text/links
 - Date options
 	- Show/hide dates
 	- MM/DD or DD/MM format
 	- Dates in text format (7 Oct 2021) or number format (7/10/2021)
-- [Collapsible sections](https://wovenstarlight.github.io/tumblr-themes/collapsibles/) for use on custom blog pages
-	- [Preview here](https://starlightpreviews.tumblr.com/theme4/collapsibles)
 
 ### Standard
-- Responsive
-- Unlimited custom links
-- Supports new post types (NPF) and pinned posts
-- Unnested captions
-- Optional FAQ/submission guidelines for Ask page
-- Custom colors for special text/links
 - Dark/light modes - choose two distinct color themes!
 	- Set your default mode
 	- Optional mode toggle
@@ -42,6 +36,12 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 	- Choice between Tumblr and Google fonts
 	- Custom font size
 - Customizable post width
+- [Collapsible sections](https://wovenstarlight.github.io/tumblr-themes/collapsibles/) for use on custom blog pages
+	- [Preview here](https://starlightpreviews.tumblr.com/theme4/collapsibles)
+- Responsive
+- Supports new post types (NPF) and pinned posts
+- Unnested captions
+- Optional FAQ/submission guidelines for Ask/Submit pages
 
 ## Credits
 - Original design concept by [kernelbastard](https://kernelbastard.tumblr.com)
