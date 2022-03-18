@@ -711,14 +711,14 @@ aside.desc.pages div {
 	/* Tumblr controls */
 	.tmblr-iframe.tmblr-iframe--unified-controls {
 		top: -0.5em;
-		right: 1em;
-		transform: scale(0.9);
-		background: linear-gradient(to right, transparent, var(--bg2) 10%);
+		right: -1em;
+		transform: scale(0.75);
+		background: linear-gradient(to right, transparent, var(--bg2) 0.8em);
 	}
-	.tmblr-iframe.active { right: 1.5em }
+	.tmblr-iframe.active { right: 0 }
 	/* Have blognav/iframe slide out together */
 	#blognav nav,
-	.tmblr-iframe.tmblr-iframe.tmblr-iframe--unified-controls { transition: .3s ease }
+	.tmblr-iframe.tmblr-iframe--unified-controls { transition: .3s ease }
 	
 	/* Reorder description/pages to stop squishing */
 	aside.desc.pages div {
