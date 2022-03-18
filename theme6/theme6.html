@@ -227,7 +227,7 @@ aside {
 	</div>
 </header>
 
-<aside class="{select:Description position} {block:ShowDescription}{block:Description}desc{/block:Description}{/block:ShowDescription} {block:HasPages}pages{/block:HasPages}">
+<aside class="{select:Description position} {block:ShowDescription}{block:Description}desc{/block:Description}{/block:ShowDescription} {block:HasPages}pages{/block:HasPages} {block:IfNotSearchBar}nosearch{/block:IfNotSearchBar}">
 	<div>
 		{block:ShowDescription}{block:Description}<section id="desc">{Description}</section>{/block:Description}{/block:ShowDescription}
 		{block:HasPages}

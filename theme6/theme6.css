@@ -77,9 +77,7 @@ blockquote {
 	transform: scale(0.75);
 }
 /* Hide things */
-.light #darklight .cp-sun, .dark #darklight .cp-moon,
-aside div:empty,
-.pinnedpost ~ i { display: none }
+.light #darklight .cp-sun, .dark #darklight .cp-moon, aside div:empty, .pinnedpost ~ i { display: none }
 /* To top and theme installation buttons */
 #buttons {
 	position: fixed;
@@ -209,7 +207,7 @@ aside div, #search, #search input, #pages a,
 #dropdown,
 /* Color mode toggle */
 #darklight { cursor: pointer }
-/* Banner image */
+/* Header image */
 aside {
 	background-color: var(--header);
 	min-height: 20em;
@@ -221,6 +219,11 @@ aside {
 aside.left { align-items: start }
 aside.center { align-items: center }
 aside.right { align-items: end }
+aside.nosearch:not(.desc, .pages) {
+	min-height: 0;
+	padding: 0;
+	margin-bottom: 2.5em;
+}
 /* Desc/pages */
 aside div {
 	/* layout */
