@@ -318,7 +318,7 @@ aside.desc.pages div {
 .post h2.title a[href], .postbody .read_more[href], #notes .more_notes_link, .notes_loading {
 	text-align: center;
 	display: block;
-	padding: 0.25em 0 0.5em;
+	padding: 0.25em 0.5em 0.5em;
 	background-color: var(--bg2);
 	color: var(--text2);
 	--og: rgba(var(--links--rgb), 0.6);
@@ -552,6 +552,7 @@ aside.desc.pages div {
 .photowrapper:not(:hover) .highres { opacity: 0 }
 /* Quote posts */
 .quote { text-align: center }
+.quote h2 { padding: 0 1em }
 .quote .separator {
 	position: relative;
 	display: flex;
