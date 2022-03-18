@@ -41,6 +41,11 @@
 	<!-- Image options -->
 	<meta name="image:Header" content="{HeaderImage}">
 	<meta name="if:Stretch header image" content="1">
+	<meta name="select:Header image focus area" content="center" title="Center">
+	<meta name="select:Header image focus area" content="top" title="Top">
+	<meta name="select:Header image focus area" content="bottom" title="Bottom">
+	<meta name="select:Header image focus area" content="left" title="Left">
+	<meta name="select:Header image focus area" content="right" title="Right">
 
 	<!-- Color options: Dark -->
 	<meta name="color:Text" content="#f1ebe4">
@@ -142,7 +147,7 @@ html.light {
 
 {block:IfHeaderImage}
 aside {
-	background: url("{image:Header}") no-repeat center;
+	background: url("{image:Header}") no-repeat {select:Header image focus area};
 	background-size: {block:IfStretchHeaderImage}cover{/block:IfStretchHeaderImage}{block:IfNotStretchHeaderImage}contain{/block:IfNotStretchHeaderImage};
 }
 {/block:IfHeaderImage}
