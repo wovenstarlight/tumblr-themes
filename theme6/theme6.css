@@ -236,7 +236,7 @@ aside div {
 	/* position */
 	position: relative;
 	/* appearance */
-	background: rgba(var(--bg--rgb), 0.6);
+	background: rgba(var(--bg--rgb), 0.8);
 	text-align: center;
 	font-size: 0.9em;
 }
@@ -278,7 +278,7 @@ aside.desc.pages div {
 #pages a.current-page { background-color: var(--bg) }
 /* Search bar */
 #search {
-	background-color: rgba(var(--bg--rgb), 0.6);
+	background-color: rgba(var(--bg--rgb), 0.8);
 	padding: 0.5em 0.6em;
 	margin-top: 1em;
 	width: 20em;
