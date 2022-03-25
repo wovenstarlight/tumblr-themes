@@ -195,6 +195,8 @@ pre {
 .post footer .tags {
 	margin: 0;
 	padding: 0;
+	overflow-wrap: break-word;
+	hyphens: auto;
 }
 .post .tags a:not(:last-child)::after {
 	content: ",";
