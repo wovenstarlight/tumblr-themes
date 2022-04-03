@@ -1,0 +1,46 @@
+/* General styles */
+* {
+	scrollbar-color: var(--accent) var(--bg);
+	scrollbar-width: thin;
+}
+::-webkit-scrollbar {
+	width: 0.5em;
+	height: 0.5em;
+	background-color: var(--bg);
+}
+::-webkit-scrollbar-corner { background-color: var(--accent) }
+::-webkit-scrollbar-thumb { background-color: var(--accent) }
+html {
+	--lighten: #9994;
+	background: var(--bg) linear-gradient(var(--lighten), var(--lighten));
+	color: var(--text);
+}
+a {
+	color: var(--accent);
+}
+/* Accessibility */
+#skip, #hiddentitle {
+	position: fixed;
+	font-size: 1px;
+	top: -100px;
+}
+/* Content/sidebar layout */
+body {
+	display: grid;
+	grid-template-columns: auto 20em;
+	column-gap: 1.25em;
+	justify-content: center;
+	align-items: start;
+}
+
+/* Main content section */
+#center {
+	background-color: var(--bg);
+	width: 100%;
+	max-width: var(--post-width);
+}
+
+/* Sidebar sections */
+#right section {
+	background-color: var(--bg);
+}
