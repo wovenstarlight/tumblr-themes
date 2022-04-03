@@ -36,6 +36,16 @@ body {
 	align-items: start;
 	padding: 1.25em;
 }
+/* Tooltips */
+#s-m-t-tooltip {
+	margin: 1em;
+	padding: 0.5em;
+	border-radius: 0.25rem;
+	background: var(--bg);
+	box-shadow: inset 0 0 0 2px rgba(255,255,255,.15);
+	color: var(--text);
+	font-size: 0.9rem;
+}
 
 
 
@@ -81,19 +91,15 @@ body {
 }
 #blognav > *:not(:last-child) { margin-right: 0.5em } /* column-gap replacement */
 #blognav > a[href] { padding: 0 0.9em } /* Text padding */
-#blognav > a, #blognav #palette.alt, #blognav .active .dots { /* Default link colors */
+#blognav #palette:hover, #blognav .dots:hover { background-color: rgba(var(--accent--rgb), 0.15) }
+#blognav > a[href], #blognav #palette.alt, #blognav .active .dots { /* Default link colors */
 	background: var(--accent);
 	color: var(--bg);
 }
 #blognav #palette, #blognav .dots { /* Icon link styles */
-	background: transparent;
 	color: var(--accent);
 	cursor: pointer;
 	width: 2.5em;
-}
-#blognav #palette:hover, #blognav #palette:focus,
-#blognav .dots:hover, #blognav .dots:focus { /* Hover link colors */
-	background-color: rgba(var(--accent--rgb), 0.15);
 }
 #blognav > a, #blognav .dots { /* All link styles */
 	border-radius: 1.25em;
@@ -126,9 +132,7 @@ body {
 	padding: 0.5em 0.75em;
 	font-weight: 600;
 }
-#blognav .menu a:hover { /* ...highlight on hover */
-	background: rgba(var(--bg--rgb), 0.15);
-}
+#blognav .menu a:hover,	#blognav .menu a:focus { background: rgba(var(--bg--rgb), 0.15) }
 
 
 
