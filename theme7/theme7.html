@@ -116,7 +116,21 @@ html {
 
 <section id="center">
 	<header id="bloghead">
-		<!-- TODO: header, avatar, description, and ask/submit/etc -->
+		{block:ShowHeaderImage}
+		<a href="/" id="headerimg"><img src="{HeaderImage}" /></a>
+		{/block:ShowHeaderImage}
+		<a href="/" id="avtrttl">
+			{block:ShowAvatar}<img src="{PortraitURL-128}" class="{AvatarShape}" />{/block:ShowAvatar}
+			{block:ShowTitle}<h2>{Title}</h2>{/block:ShowTitle}
+		</a>
+
+		<p class="blogurl">
+			<a href="/blog/view/{Name}">@{Name}</a> / <a href="//{Name}.tumblr.com"><svg viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 14a6 6 0 01-5.6-8.158c.158-.411.682-.484.994-.172l2.41 2.411A.667.667 0 016 8.552v2.115c0 .177.07.339.183.458l.001.001.014.015.002.001 1.605 1.606a.667.667 0 01.195.471v.78zm3.678-1.26c-.46.358-.995-.116-.8-.664l.436-1.22c0-.003 0-.005-.002-.006a.004.004 0 01-.003-.005.668.668 0 00.024-.178V10a2.668 2.668 0 00-2.666-2.667h-1A.333.333 0 017.333 7v-.332l.001-.001a2.654 2.654 0 001.74-.647A2.66 2.66 0 0010 4v-.667c0-.44.397-.853.787-.648a6 6 0 01.89 10.056zM4.02 3.51c-.267.237-.255.645-.003.897l.65.65.804.805a.31.31 0 00.53-.219.31.31 0 01.309-.31h1.023c.737 0 1.334-.597 1.334-1.333v-.667C8.667 2.965 8.368 2 8 2h-.045A5.977 5.977 0 004.02 3.51zM15.333 8A7.333 7.333 0 11.667 8a7.333 7.333 0 0114.666 0zm-6 4.394c0-.002 0-.004-.002-.006l-1.233-1.233a.006.006 0 010-.008.006.006 0 000-.009l-.565-.555a.667.667 0 01-.2-.476v-.774c0-.368.299-.666.667-.666h.667C9.403 8.667 10 9.264 10 10v.512a.334.334 0 01-.02.112l-.631 1.772c-.003.009-.016.007-.016-.002z"></path></svg> {Name}.tumblr.com</a>
+		</p>
+
+		{block:Description}{block:ShowDescription}<p id="desc">{Description}</p>{/block:ShowDescription}{/block:Description}
+
+		<!-- TODO: blog nav -->
 	</header>
 
 	<main id="main">
