@@ -209,7 +209,7 @@ html.alt {
 		</div>
 	-->
 	<section id="updates">
-		<h1>Latest updates</h1>
+		<h2>Latest updates</h2>
 
 		<!-- all updates below this line -->
 
@@ -254,7 +254,7 @@ html.alt {
 	-->
 	
 	<section id="members">
-		<h1>Blog members</h1>
+		<h2>Blog members</h2>
 
 		<!-- all members below this line -->
 
@@ -285,7 +285,7 @@ html.alt {
 
 	{block:IfNotCustomMembersList}{block:GroupMembers}
 	<section id="members">
-		<h1>{lang:Group members}</h1>
+		<h2>{lang:Group members}</h2>
 
 		{block:GroupMember}
 		<div class="member">
@@ -304,7 +304,7 @@ html.alt {
 	<!-- CUSTOM PAGES -->
 	{block:HasPages}
 	<section id="pages">
-		<h1>{lang:Navigate}</h1>
+		<h2>{lang:Navigate}</h2>
 		<nav>{block:Pages}<a href="{URL}">{Label}</a>{/block:Pages}</nav>
 	</section>
 	{/block:HasPages}
