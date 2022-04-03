@@ -14,10 +14,13 @@ html {
 	--lighten: #9994;
 	background: var(--bg) linear-gradient(var(--lighten), var(--lighten));
 	color: var(--text);
+	--roundness: 0.5rem;
 }
 a {
 	color: var(--accent);
+	text-decoration: none
 }
+#highlight:hover, #desc a:hover, #main a:hover { text-decoration: underline }
 /* Accessibility */
 #skip, #hiddentitle {
 	position: fixed;
@@ -27,20 +30,55 @@ a {
 /* Content/sidebar layout */
 body {
 	display: grid;
-	grid-template-columns: auto 20em;
+	grid-template-columns: auto auto;
 	column-gap: 1.25em;
 	justify-content: center;
 	align-items: start;
+	padding: 1.25em;
 }
+
+
 
 /* Main content section */
 #center {
 	background-color: var(--bg);
 	width: 100%;
 	max-width: var(--post-width);
+	border-radius: var(--roundness);
 }
+
+
+
+/* Blog header */
+#bloghead {
+	text-align: center;
+}
+#avatartitle {
+	font-size: 1.625em;
+}
+#avatartitle h1 {
+	color: var(--text);
+	font-family: var(--tfont);
+	font-weight: var(--tweight);
+	margin: 0.5em 0.5em 0.25rem;
+	font-size: 1em;
+}
+#avatartitle h1:first-child { margin-top: 1.25em }
+#highlight {
+	margin: 0.5em 1em;
+	display: inline-flex;
+	align-items: center;
+	font-weight: 700;
+}
+#highlight svg { margin-right: 0.25em; }
+#desc { margin: 0 1em; }
+
+
 
 /* Sidebar sections */
 #right section {
 	background-color: var(--bg);
+	border-radius: var(--roundness);
+	max-width: 20em;
 }
+#right section h2 { margin: 0 }
