@@ -34,6 +34,12 @@
 	<meta name="text:Highlighted URL label" content="Your link here!">
 	<meta name="if:Custom members list" content="1">
 
+	<!-- Color options -->
+	<meta name="if:Alternate palette" content="1">
+	<meta name="color:Alt background color" content="#000000">
+	<meta name="color:Alt title color" content="#9e78e5">
+	<meta name="color:Alt accent color" content="#cf43ed">
+
 	<!-- General theme options -->
 	<meta name="if:Back to top button" content="1">
 	<meta name="if:Random post link" content="1">
@@ -71,6 +77,15 @@ html {
 	--accent--rgb: {RGBAccentColor};
 	--header: {HeaderImage};
 	font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+}
+
+html.alt {
+	--text: {color:Alt title color};
+	--text--rgb: {RGBcolor:Alt title color};
+	--bg: {color:Alt background color};
+	--bg--rgb: {RGBcolor:Alt background color};
+	--accent: {color:Alt accent color};
+	--accent--rgb: {RGBcolor:Alt accent color};
 }
 
 /* Custom CSS */
@@ -145,6 +160,9 @@ html {
 		<nav id="blognav">
 			{block:AskEnabled}<a id="asklink" href="/ask">{AskLabel}</a>{/block:AskEnabled}
 			{block:SubmissionsEnabled}<a id="submitlink" href="/submit">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+			{block:IfAlternatePalette}
+			<a id="palette" title="Change palette"><svg width="1.25em" height="1.25em" viewBox="0 0 24 24" fill="currentColor"><path d="M11.933 0C5.326 0 0 5.356 0 12s5.326 12 11.933 12a2.034 2.034 0 0 0 2.022-2.034c0-.542-.202-1.017-.54-1.356-.336-.339-.471-.813-.471-1.356 0-1.085.876-2.034 2.022-2.034h2.36c3.64 0 6.674-2.983 6.674-6.712C23.933 4.814 18.54 0 11.933 0zM4.652 12a2.034 2.034 0 0 1-2.023-2.034c0-1.085.877-2.034 2.023-2.034a2.034 2.034 0 0 1 0 4.068zm3.977-5.288a2.034 2.034 0 0 1-2.022-2.034c0-1.085.876-2.034 2.022-2.034s2.023.881 2.023 2.034c0 1.085-.877 2.034-2.023 2.034zm6.674 0a2.034 2.034 0 0 1-2.022-2.034c0-1.085.876-2.034 2.022-2.034 1.079 0 2.023.881 2.023 2.034-.068 1.085-.944 2.034-2.023 2.034zM19.281 12a2.034 2.034 0 0 1-2.023-2.034c0-1.085.877-2.034 2.023-2.034 1.079 0 2.022.882 2.022 2.034C21.236 11.12 20.36 12 19.281 12z"></path></svg></a>
+			{block:IfAlternatePalette}
 			<span class="dropdown">
 				<span class="dots" tabindex="0">
 					<svg viewBox="0 0 17.5 3.9" style="transform: rotate(0deg);" width="1.125em" height="0.625em" fill="currentColor"><path d="M17.5 1.9c0 1.1-.9 1.9-1.9 1.9-1.1 0-1.9-.9-1.9-1.9S14.5 0 15.6 0c1 0 1.9.9 1.9 1.9m-6.8 0c0 1.1-.9 1.9-1.9 1.9-1.1.1-2-.8-2-1.9 0-1 .9-1.9 2-1.9s1.9.9 1.9 1.9m-6.8 0c0 1.1-.9 2-2 2-1 0-1.9-.9-1.9-2S.9 0 1.9 0c1.1 0 2 .9 2 1.9"></path></svg>
