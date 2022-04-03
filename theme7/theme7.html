@@ -44,6 +44,7 @@
 	<meta name="if:Show tags on click" content="0">
 	<meta name="text:Highlighted URL" content="https://tumblr.com">
 	<meta name="text:Highlighted URL label" content="Your link here!">
+	<meta name="if:Custom members list" content="1">
 	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
 	{/block:Hidden}
 
@@ -210,7 +211,73 @@ html {
 
 	</section>
 
-	<!-- TODO: members list -->
+	{block:IfCustomMembersList}
+	<!-- EDIT HERE: MEMBERS LIST
+	
+		this is for if you're not a group blog, or if you want to add custom labels/descriptions to your members.
+		if not, turn OFF "Custom members list" in the Tumblr options.
+
+		to add a group member, copy and paste the following.
+		replace everything in UPPERCASE:
+		
+		<div class="member">
+			<a href="//BLOGNAME.tumblr.com">
+				<img src="//api.tumblr.com/v2/blog/BLOGNAME.tumblr.com/avatar" />
+				<div class="mtext">
+					<span class="mname">MEMBER NAME</span>
+					<span class="mdesc">MEMBER DESCRIPTION</span>
+				</div>
+			</a>
+		</div>
+	-->
+	
+	<section id="members">
+		<h2>Blog members</h2>
+
+		<!-- all members below this line -->
+
+		<div class="member">
+			<a href="//starlightthemes.tumblr.com">
+				<img src="//api.tumblr.com/v2/blog/starlightthemes.tumblr.com/avatar" />
+				<div class="mtext">
+					<span class="mname">Star T.</span>
+					<span class="mdesc">daily 100htmL code intake</span>
+				</div>
+			</a>
+		</div>
+		
+		<div class="member">
+			<a href="//starlightpreviews.tumblr.com">
+				<img src="//api.tumblr.com/v2/blog/starlightpreviews.tumblr.com/avatar" />
+				<div class="mtext">
+					<span class="mname">Light P.</span>
+					<span class="mdesc">big wardrobe</span>
+				</div>
+			</a>
+		</div>
+
+		<!-- all members above this line -->
+
+	</section>
+	{/block:IfCustomMembersList}
+
+	{block:IfNotCustomMembersList}{block:GroupMembers}
+	<section id="members">
+		<h2>{lang:Group members}</h2>
+
+		{block:GroupMember}
+		<div class="member">
+			<a href="{GroupMemberURL}">
+				<img src="{GroupMemberPortraitURL-64}" />
+				<div class="mtext">
+					<span class="mname">{GroupMemberName}</span>
+					<span class="mdesc">{GroupMemberTitle}</span>
+				</div>
+			</a>
+		</div>
+		{/block:GroupMember}
+	</section>
+	{/block:GroupMembers}{/block:IfNotCustomMembersList}
 
 	<!-- TODO: blog pages -->
 </aside>
