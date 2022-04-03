@@ -56,31 +56,45 @@ body {
 	max-width: var(--post-width);
 	border-radius: var(--roundness);
 }
+#headerimg img { border-radius: var(--roundness) var(--roundness) 0 0 }
 
 
 
 /************************************ HEADER ************************************/
-#bloghead { text-align: center }
+#bloghead {
+	text-align: center;
+	 margin: 1em;
+}
+#headerimg + #bloghead { margin-top: -1em; }
 #avatartitle { font-size: 1.625em }
+/* Blog avatar */
+#avatartitle img {
+	width: 6.5rem;
+	height: 6.5rem;
+	border: 0.25rem solid var(--bg);
+	background-color: var(--bg);
+	margin-top: -3rem;
+}
+#avatartitle img.square { border-radius: 0.375rem }
 /* Blog title */
 #avatartitle h1 {
 	color: var(--text);
 	font-family: var(--tfont);
 	font-weight: var(--tweight);
-	margin: 0.5em 0.5em 0.25rem;
+	margin: 0.5em 0 0.25rem;
 	font-size: 1em;
 }
-#avatartitle h1:first-child { margin-top: 1.25em }
+#avatartitle h1:first-child { margin-top: 1.25em;}
 /* Highlighted link */
 #highlight {
-	margin: 0.5em 1em;
+	margin: 0.5em 0;
 	display: inline-flex;
 	align-items: center;
 	font-weight: 700;
 }
 #highlight svg { margin-right: 0.25em }
 /* Description */
-#desc { margin: 0 1em }
+#desc { margin: 0 }
 /* Navigation (ask/submit/etc) */
 #blognav {
 	display: flex;
