@@ -39,7 +39,7 @@ body {
 
 
 
-/* Main content section */
+/***************************** MAIN CONTENT SECTION *****************************/
 #center {
 	background-color: var(--bg);
 	width: 100%;
@@ -49,13 +49,10 @@ body {
 
 
 
-/* Blog header */
-#bloghead {
-	text-align: center;
-}
-#avatartitle {
-	font-size: 1.625em;
-}
+/************************************ HEADER ************************************/
+#bloghead { text-align: center }
+#avatartitle { font-size: 1.625em }
+/* Blog title */
 #avatartitle h1 {
 	color: var(--text);
 	font-family: var(--tfont);
@@ -64,18 +61,78 @@ body {
 	font-size: 1em;
 }
 #avatartitle h1:first-child { margin-top: 1.25em }
+/* Highlighted link */
 #highlight {
 	margin: 0.5em 1em;
 	display: inline-flex;
 	align-items: center;
 	font-weight: 700;
 }
-#highlight svg { margin-right: 0.25em; }
-#desc { margin: 0 1em; }
+#highlight svg { margin-right: 0.25em }
+/* Description */
+#desc { margin: 0 1em }
+/* Navigation (ask/submit/etc) */
+#blognav {
+	display: flex;
+	flex-direction: row wrap;
+	align-items: center;
+	justify-content: center;
+	margin-top: 1em;
+}
+#blognav > *:not(:last-child) { margin-right: 0.5em } /* column-gap replacement */
+#blognav > a[href] { padding: 0 0.9em } /* Text padding */
+#blognav > a, #blognav #palette.alt, #blognav .active .dots { /* Default link colors */
+	background: var(--accent);
+	color: var(--bg);
+}
+#blognav #palette, #blognav .dots { /* Icon link styles */
+	background: transparent;
+	color: var(--accent);
+	cursor: pointer;
+	width: 2.5em;
+}
+#blognav #palette:hover, #blognav #palette:focus,
+#blognav .dots:hover, #blognav .dots:focus { /* Hover link colors */
+	background-color: rgba(var(--accent--rgb), 0.15);
+}
+#blognav > a, #blognav .dots { /* All link styles */
+	border-radius: 1.25em;
+	border: 0.125em solid var(--accent);
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 2.5em;
+}
+/* Dropdown menu */
+#blognav .dropdown { position: relative }
+#blognav .menu { /* Actual menu */
+	/* positioning */
+	position: absolute;
+	top: 3em;
+	left: 50%;
+	transform: translateX(-50%);
+	/* appearance */
+	border-radius: 0.25rem;
+	width: max-content;
+	background-color: var(--accent);
+	overflow: hidden;
+	/* layout */
+	display: flex;
+	flex-direction: column;
+}
+#blognav .menu a { /* Dropdown links... */
+	color: var(--bg);
+	padding: 0.5em 0.75em;
+	font-weight: 600;
+}
+#blognav .menu a:hover { /* ...highlight on hover */
+	background: rgba(var(--bg--rgb), 0.15);
+}
 
 
 
-/* Sidebar sections */
+/*********************************** SIDEBAR ***********************************/
 #right section {
 	background-color: var(--bg);
 	border-radius: var(--roundness);
