@@ -137,11 +137,12 @@ html.alt {
 {/block:HideTitle}
 
 <section id="center">
+	{block:ShowHeaderImage}
+	<!-- HEADER IMAGE -->
+	<a href="/" id="headerimg"><img src="{HeaderImage}" /></a>
+	{/block:ShowHeaderImage}
+	
 	<header id="bloghead">
-		{block:ShowHeaderImage}
-		<!-- HEADER IMAGE -->
-		<a href="/" id="headerimg"><img src="{HeaderImage}" /></a>
-		{/block:ShowHeaderImage}
 		<a href="/" id="avatartitle">
 			<!-- AVATAR/TITLE -->
 			{block:ShowAvatar}<img src="{PortraitURL-128}" class="{AvatarShape}" />{/block:ShowAvatar}
