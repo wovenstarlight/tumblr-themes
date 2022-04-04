@@ -43,6 +43,10 @@ $(document).ready( function() {
 		form.hide();
 	});
 
+	$("#showright").on("click keypress", function() {
+		$('body, #showright').toggleClass('showright')
+	});
+
 	// Remove stray paragraph tags
 	$(".bodyitemcontent p:first-child:empty").remove();
 
