@@ -38,6 +38,7 @@ body {
 }
 /* Tooltips */
 #s-m-t-tooltip {
+	z-index: 10!important;
 	margin: 1em;
 	padding: 0.5em;
 	border-radius: 0.25rem;
@@ -145,6 +146,7 @@ body {
 	top: 3em;
 	left: 50%;
 	transform: translateX(-50%);
+	z-index: 2;
 	/* appearance */
 	border-radius: 0.25rem;
 	width: max-content;
@@ -163,6 +165,47 @@ body {
 #blognav .active.dots:hover, #blognav .active.dots:focus,
 #blognav .menu a:hover,	#blognav .menu a:focus,
 #pages a.current-page:hover, #pages a.current-page:focus { background-image: linear-gradient(rgba(var(--bg--rgb), 0.15), rgba(var(--bg--rgb), 0.15)) }
+/* Search menu */
+#divider {
+	position: relative;
+	display: flex;
+	align-items: center;
+	margin: 0 1.25em 1.25em;
+	border-bottom: 0.0625em solid var(--accent);
+	color: var(--accent);
+}
+#searcher, #close {
+	background: transparent;
+	border: none;
+	color: inherit;
+	height: 2.25em;
+	width: 2.5em;
+	cursor: pointer;
+}
+#searcher:hover { color: var(--text) }
+#divider a {
+	display: block;
+	padding: 0.5em 0.75em;
+	font-weight: 700;
+	box-shadow: inset 0 -0.125rem var(--accent);
+}
+#search {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	border-radius: 0.25rem;
+	background: #fff linear-gradient(rgba(var(--bg--rgb), 0.5), rgba(var(--bg--rgb), 0.5));
+	color: #000;
+	box-shadow: 0 0.25em var(--bg);
+}
+#search input {
+	background: transparent;
+	border: none;
+	flex-grow: 1;
+}
 
 
 
