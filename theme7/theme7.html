@@ -243,15 +243,13 @@ html.alt {
 		to add a group member, copy and paste the following.
 		replace everything in UPPERCASE:
 		
-		<div class="member">
-			<a href="//BLOGNAME.tumblr.com">
-				<img src="//api.tumblr.com/v2/blog/BLOGNAME.tumblr.com/avatar" />
-				<div class="mtext">
-					<span class="mname">MEMBER NAME</span>
-					<span class="mdesc">MEMBER DESCRIPTION</span>
-				</div>
-			</a>
-		</div>
+		<a class="member" href="//BLOGNAME.tumblr.com">
+			<img src="//api.tumblr.com/v2/blog/BLOGNAME.tumblr.com/avatar" />
+			<div class="mtext">
+				<span class="mname">MEMBER NAME</span>
+				<span class="mdesc">MEMBER DESCRIPTION</span>
+			</div>
+		</a>
 	-->
 	
 	<section id="members">
@@ -259,25 +257,21 @@ html.alt {
 
 		<!-- all members below this line -->
 
-		<div class="member">
-			<a href="//starlightthemes.tumblr.com">
-				<img src="//api.tumblr.com/v2/blog/starlightthemes.tumblr.com/avatar" />
-				<div class="mtext">
-					<span class="mname">Star T.</span>
-					<span class="mdesc">daily 100htmL code intake</span>
-				</div>
-			</a>
-		</div>
+		<a class="member" href="//starlightthemes.tumblr.com">
+			<img src="//api.tumblr.com/v2/blog/starlightthemes.tumblr.com/avatar" />
+			<div class="mtext">
+				<span class="mname">Star T.</span>
+				<span class="mdesc">daily 100htmL code intake</span>
+			</div>
+		</a>
 		
-		<div class="member">
-			<a href="//starlightpreviews.tumblr.com">
-				<img src="//api.tumblr.com/v2/blog/starlightpreviews.tumblr.com/avatar" />
-				<div class="mtext">
-					<span class="mname">Light P.</span>
-					<span class="mdesc">big wardrobe</span>
-				</div>
-			</a>
-		</div>
+		<a class="member" href="//starlightpreviews.tumblr.com">
+			<img src="//api.tumblr.com/v2/blog/starlightpreviews.tumblr.com/avatar" />
+			<div class="mtext">
+				<span class="mname">Light P.</span>
+				<span class="mdesc">big wardrobe</span>
+			</div>
+		</a>
 
 		<!-- all members above this line -->
 
@@ -289,15 +283,13 @@ html.alt {
 		<h2>{lang:Group members}</h2>
 
 		{block:GroupMember}
-		<div class="member">
-			<a href="{GroupMemberURL}">
-				<img src="{GroupMemberPortraitURL-64}" />
-				<div class="mtext">
-					<span class="mname">{GroupMemberName}</span>
-					<span class="mdesc">{GroupMemberTitle}</span>
-				</div>
-			</a>
-		</div>
+		<a class="member" href="{GroupMemberURL}">
+			<img src="{GroupMemberPortraitURL-64}" />
+			<div class="mtext">
+				<span class="mname">{GroupMemberName}</span>
+				<span class="mdesc">{GroupMemberTitle}</span>
+			</div>
+		</a>
 		{/block:GroupMember}
 	</section>
 	{/block:GroupMembers}{/block:IfNotCustomMembersList}
