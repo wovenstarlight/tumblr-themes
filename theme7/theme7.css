@@ -324,7 +324,7 @@ body {
 		top: 0;
 		bottom: 0;
 		overflow-y: scroll;
-		padding: 2em 1em 4em;
+		padding: 4em 1em;
 	}
 	
 	#scrolltotop_parent { bottom: 3.75em }
