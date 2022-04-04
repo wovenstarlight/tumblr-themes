@@ -69,7 +69,7 @@
 html {
 	--tfont: {TitleFont};
 	--tweight: {TitleFontWeight};
-	--post-width: {text: Post width};
+	--post-width: {text:Post width};
 	--header: {HeaderImage};
 	font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
 	/* Palette */
@@ -139,9 +139,9 @@ html.alt {
 <section id="center">
 	{block:ShowHeaderImage}
 	<!-- HEADER IMAGE -->
-	<a href="/" id="headerimg"><img src="{HeaderImage}" /></a>
+	<a href="/" id="headerimg" {block:StretchHeaderImage}class="cover"{/block:StretchHeaderImage}><img src="{HeaderImage}" /></a>
 	{/block:ShowHeaderImage}
-	
+
 	<header id="bloghead">
 		<a href="/" id="avatartitle">
 			<!-- AVATAR/TITLE -->
