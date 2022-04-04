@@ -165,6 +165,7 @@ body {
 	background-color: var(--bg);
 	border-radius: var(--roundness);
 	max-width: 20em;
+	padding-bottom: 0.5em
 }
 #right > section + section { margin-top: 1.25em }
 /* Headings */
@@ -207,10 +208,20 @@ body {
 }
 #updates .ud-month { font-size: 0.8rem }
 /* Members section-specific */
-#members { overflow: hidden }
 #members .mtext {
 	font-size: 0.875rem;
 	line-height: 1.5;
 }
 #members .mname { font-weight: 700 }
-#members .member:hover { background-color: rgba(var(--accent--rgb), 0.05) }
+#members .member:hover, #pages a:hover { background-color: rgba(var(--accent--rgb), 0.05) }
+/* Custom pages */
+#pages nav {
+	display: flex;
+	flex-direction: column;
+}
+#pages a { padding: 0.5em 1em }
+#pages a.current-page {
+	background: var(--accent);
+	color: var(--bg);
+	font-weight: 700;
+}
