@@ -33,7 +33,15 @@ $(document).ready( function() {
 	$(".dots").on("click keypress", function() {
         $(this).toggleClass("active");
 		$(this).next().fadeToggle(150);
-    })
+    });
+
+	var form = $("#search");
+	$("#searcher").on("click keypress", function() {
+		form.show();
+	});
+	$("#close").on("click keypress", function() {
+		form.hide();
+	});
 
 	// Remove stray paragraph tags
 	$(".bodyitemcontent p:first-child:empty").remove();
