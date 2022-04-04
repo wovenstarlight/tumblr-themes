@@ -166,4 +166,37 @@ body {
 	border-radius: var(--roundness);
 	max-width: 20em;
 }
-#right section h2 { margin: 0 }
+#right > section + section { margin-top: 1.25em }
+/* Headings */
+#right section h2 {
+	margin: 0;
+	font-size: 1.125rem;
+	font-weight: 700;
+	line-height: 1.333;
+	padding: 0.9375rem;
+	border-bottom: 0.0625rem solid #9994;
+}
+/* Updates section */
+#updates .update {
+	display: grid;
+	--lsize: 2.3125em;
+	grid-template-columns: var(--lsize) 1fr;
+	align-items: center;
+	padding: 0.5em 0.625em;
+	column-gap: 0.6875em;
+}
+#updates .ud-time {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--accent);
+	color: var(--bg);
+	font-weight: 700;
+	border-radius: 0.25rem;
+	height: var(--lsize);
+	width: var(--lsize);
+	text-transform: uppercase;
+	line-height: 1;
+}
+#updates .ud-month { font-size: 0.8rem }
