@@ -169,34 +169,48 @@ body {
 #right > section + section { margin-top: 1.25em }
 /* Headings */
 #right section h2 {
-	margin: 0;
+	margin: 0 0 0.625em;
 	font-size: 1.125rem;
 	font-weight: 700;
 	line-height: 1.333;
 	padding: 0.9375rem;
 	border-bottom: 0.0625rem solid #9994;
 }
-/* Updates section */
-#updates .update {
+/* Combined styles: updates section, members section */
+#updates .update, #members .member {
 	display: grid;
 	--lsize: 2.3125em;
 	grid-template-columns: var(--lsize) 1fr;
 	align-items: center;
 	padding: 0.5em 0.625em;
 	column-gap: 0.6875em;
+	color: var(--text);
 }
-#updates .ud-time {
+#updates .ud-time, #members .member img {
+	border-radius: 0.25rem;
+	height: var(--lsize);
+	width: var(--lsize);
+}
+#updates .ud-time, #members .mtext {
 	display: flex;
 	flex-direction: column;
+}
+/* Updates section-specific */
+#updates .ud-time {
 	align-items: center;
 	justify-content: center;
 	background-color: var(--accent);
 	color: var(--bg);
 	font-weight: 700;
-	border-radius: 0.25rem;
-	height: var(--lsize);
-	width: var(--lsize);
 	text-transform: uppercase;
 	line-height: 1;
 }
 #updates .ud-month { font-size: 0.8rem }
+/* Members section-specific */
+#members { overflow: hidden }
+#members .mtext {
+	font-size: 0.875rem;
+	line-height: 1.5;
+}
+#members .mname { font-weight: 700 }
+#members .member:hover { background-color: rgba(var(--accent--rgb), 0.05) }
