@@ -11,8 +11,7 @@
 ::-webkit-scrollbar-corner { background-color: var(--accent) }
 ::-webkit-scrollbar-thumb { background-color: var(--accent) }
 html {
-	--lighten: #9994;
-	background: var(--bg) linear-gradient(var(--lighten), var(--lighten));
+	background: var(--bg) linear-gradient(rgba(var(--accent--rgb), 0.2), rgba(var(--accent--rgb), 0.2));
 	color: var(--text);
 	--roundness: 0.5rem;
 }
@@ -245,7 +244,7 @@ body {
 	font-weight: 700;
 	line-height: 1.333;
 	padding: 0.9375rem;
-	border-bottom: 0.0625rem solid #9994;
+	border-bottom: 0.0625rem solid rgba(var(--accent--rgb), 0.2);
 }
 /* Featured posts */
 #right #featured {
@@ -255,7 +254,7 @@ body {
 	height: 6.5625em;
 	overflow: hidden;
 	padding-bottom: 0;
-	background-color: #9994;
+	background-image: linear-gradient(rgba(var(--accent--rgb), 0.2), rgba(var(--accent--rgb), 0.2));
 }
 #featured > div, #featured .feature {
 	background-color: var(--bg);
