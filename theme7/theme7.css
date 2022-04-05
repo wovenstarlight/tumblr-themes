@@ -132,21 +132,21 @@ body {
 	justify-content: center;
 	margin-top: 1em;
 }
-#blognav > a[href] { padding: 0 0.9em } /* Text padding */
-#blognav #palette:hover, #blognav .dots:hover {
+#blognav .texts { padding: 0 0.9em } /* Text padding */
+#blognav .rounds:hover {
 	background-color: rgba(var(--accent--rgb), 0.15);
 	border-color: var(--accent);
 }
-#blognav > a[href], #blognav #palette.alt, #blognav .active.dots { /* Default link colors */
+#blognav .texts, #blognav #palette.alt, #blognav .active.dots { /* Default link colors */
 	background: var(--accent);
 	color: var(--bg);
 }
-#blognav #palette, #blognav .dots { /* Icon link styles */
+#blognav .rounds { /* Icon link styles */
 	color: var(--accent);
 	cursor: pointer;
 	width: 2.5em;
 }
-#blognav > a, #blognav .dots { /* All link styles */
+#blognav .texts, #blognav .rounds { /* All link styles */
 	border-radius: 1.25em;
 	border: 0.125em solid rgba(var(--accent--rgb), 0.4);
 	font-weight: 700;

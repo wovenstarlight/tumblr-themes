@@ -43,6 +43,7 @@
 
 	<!-- General theme options -->
 	<meta name="if:Back to top button" content="1">
+	<meta name="if:Message link" content="1">
 	<meta name="if:Random post link" content="1">
 	<meta name="if:Archive link" content="1">
 	<meta name="if:Search bar" content="1">
@@ -162,13 +163,14 @@ html.alt {
 
 		<!-- BLOG NAV -->
 		<nav id="blognav">
-			{block:AskEnabled}<a id="asklink" href="/ask">{AskLabel}</a>{/block:AskEnabled}
-			{block:SubmissionsEnabled}<a id="submitlink" href="/submit">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+			{block:AskEnabled}<a id="asklink" class="texts" href="/ask">{AskLabel}</a>{/block:AskEnabled}
+			{block:SubmissionsEnabled}<a id="submitlink" class="texts" href="/submit">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+			{block:IfMessageLink}<a id="messagelink" class="rounds" href="//tumblr.com/message/{Name}"><svg viewBox="0 0 24 24" width="1.5em" height="1.5em" fill="currentColor"><path d="M4.27 17.436l.102-.38a1 1 0 00-.081-.727l-.184-.347a8.768 8.768 0 01-1.012-4.106C3.095 6.987 7.09 3 12.047 3 17.005 3 21 6.987 21 11.876c0 4.889-3.995 8.876-8.953 8.876a8.972 8.972 0 01-3.944-.905l-.335-.164a1 1 0 00-.696-.067l-.36.096-1.62.43a1 1 0 01-1.222-1.226l.4-1.48zm7.777 5.316c6.05 0 10.953-4.87 10.953-10.876C23 5.869 18.096 1 12.047 1 5.998 1 1.095 5.87 1.095 11.876c0 1.679.383 3.268 1.066 4.688.11.227.14.486.075.73l-1.2 4.45c-.2.741.482 1.42 1.228 1.22l4.602-1.224c.232-.062.478-.036.698.062 1.368.61 2.886.95 4.483.95zM12 7a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 110 2h-2a1 1 0 00-1 1v2a1 1 0 11-2 0v-2a1 1 0 00-1-1H8a1 1 0 110-2h2a1 1 0 001-1V8a1 1 0 011-1z"></path></svg></a>{/block:IfMessageLink}
 			{block:IfAlternatePalette}
-			<a id="palette" title="Change palette" tabindex="0"><svg width="1.25em" height="1.25em" viewBox="0 0 24 24" fill="currentColor"><path d="M11.933 0C5.326 0 0 5.356 0 12s5.326 12 11.933 12a2.034 2.034 0 0 0 2.022-2.034c0-.542-.202-1.017-.54-1.356-.336-.339-.471-.813-.471-1.356 0-1.085.876-2.034 2.022-2.034h2.36c3.64 0 6.674-2.983 6.674-6.712C23.933 4.814 18.54 0 11.933 0zM4.652 12a2.034 2.034 0 0 1-2.023-2.034c0-1.085.877-2.034 2.023-2.034a2.034 2.034 0 0 1 0 4.068zm3.977-5.288a2.034 2.034 0 0 1-2.022-2.034c0-1.085.876-2.034 2.022-2.034s2.023.881 2.023 2.034c0 1.085-.877 2.034-2.023 2.034zm6.674 0a2.034 2.034 0 0 1-2.022-2.034c0-1.085.876-2.034 2.022-2.034 1.079 0 2.023.881 2.023 2.034-.068 1.085-.944 2.034-2.023 2.034zM19.281 12a2.034 2.034 0 0 1-2.023-2.034c0-1.085.877-2.034 2.023-2.034 1.079 0 2.022.882 2.022 2.034C21.236 11.12 20.36 12 19.281 12z"></path></svg></a>
+			<a id="palette" title="Change palette" tabindex="0" class="rounds"><svg width="1.25em" height="1.25em" viewBox="0 0 24 24" fill="currentColor"><path d="M11.933 0C5.326 0 0 5.356 0 12s5.326 12 11.933 12a2.034 2.034 0 0 0 2.022-2.034c0-.542-.202-1.017-.54-1.356-.336-.339-.471-.813-.471-1.356 0-1.085.876-2.034 2.022-2.034h2.36c3.64 0 6.674-2.983 6.674-6.712C23.933 4.814 18.54 0 11.933 0zM4.652 12a2.034 2.034 0 0 1-2.023-2.034c0-1.085.877-2.034 2.023-2.034a2.034 2.034 0 0 1 0 4.068zm3.977-5.288a2.034 2.034 0 0 1-2.022-2.034c0-1.085.876-2.034 2.022-2.034s2.023.881 2.023 2.034c0 1.085-.877 2.034-2.023 2.034zm6.674 0a2.034 2.034 0 0 1-2.022-2.034c0-1.085.876-2.034 2.022-2.034 1.079 0 2.023.881 2.023 2.034-.068 1.085-.944 2.034-2.023 2.034zM19.281 12a2.034 2.034 0 0 1-2.023-2.034c0-1.085.877-2.034 2.023-2.034 1.079 0 2.022.882 2.022 2.034C21.236 11.12 20.36 12 19.281 12z"></path></svg></a>
 			{block:IfAlternatePalette}
 			<span class="dropdown">
-				<span class="dots" tabindex="0">
+				<span class="dots rounds" tabindex="0">
 					<svg viewBox="0 0 17.5 3.9" style="transform: rotate(0deg);" width="1.125em" height="0.625em" fill="currentColor"><path d="M17.5 1.9c0 1.1-.9 1.9-1.9 1.9-1.1 0-1.9-.9-1.9-1.9S14.5 0 15.6 0c1 0 1.9.9 1.9 1.9m-6.8 0c0 1.1-.9 1.9-1.9 1.9-1.1.1-2-.8-2-1.9 0-1 .9-1.9 2-1.9s1.9.9 1.9 1.9m-6.8 0c0 1.1-.9 2-2 2-1 0-1.9-.9-1.9-2S.9 0 1.9 0c1.1 0 2 .9 2 1.9"></path></svg>
 				</span>
 				<div class="menu" style="display: none;">
