@@ -33,7 +33,11 @@
 	<!-- Features -->
 	<meta name="text:Highlighted URL" content="https://tumblr.com">
 	<meta name="text:Highlighted URL label" content="Your link here!">
+	<meta name="if:Featured posts" content="1">
+	<meta name="if:Updates section" content="1">
+	<meta name="if:Members list" content="1">
 	<meta name="if:Custom members list" content="1">
+	<meta name="if:Message link" content="1">
 
 	<!-- Color options -->
 	<meta name="if:Alternate palette" content="1">
@@ -43,7 +47,6 @@
 
 	<!-- General theme options -->
 	<meta name="if:Back to top button" content="1">
-	<meta name="if:Message link" content="1">
 	<meta name="if:Random post link" content="1">
 	<meta name="if:Archive link" content="1">
 	<meta name="if:Search bar" content="1">
@@ -200,6 +203,7 @@ html.alt {
 </section>
 
 <aside id="right">
+    {block:IfFeaturedPosts}
 	<!-- EDIT HERE: FEATURED POSTS
 	
 		retrieves the latest three posts of a selected tag. by default, this is #featured.
@@ -289,7 +293,9 @@ html.alt {
 	<section id="featured">
 		<h2>Featured posts</h2>
 	</section>
+	{/block:IfFeaturedPosts}
 
+	{block:IfUpdatesSection}
 	<!-- EDIT HERE: UPDATES
 	
 		to add an update, copy and paste the following:
@@ -326,7 +332,9 @@ html.alt {
 		<!-- all updates above this line -->
 
 	</section>
+	{/block:IfUpdatesSection}
 
+	{block:IfMembersList}
 	{block:IfCustomMembersList}
 	<!-- EDIT HERE: MEMBERS LIST
 	
@@ -386,6 +394,7 @@ html.alt {
 		{/block:GroupMember}
 	</section>
 	{/block:GroupMembers}{/block:IfNotCustomMembersList}
+	{block:IfMembersList}
 
 	<!-- CUSTOM PAGES -->
 	{block:HasPages}
