@@ -22,10 +22,10 @@ a {
 }
 #highlight:hover, #desc a:hover, #main a:hover { text-decoration: underline }
 /* Accessibility */
-#skip, #hiddentitle {
+#skip, #hiddentitle, #featured h2 {
 	position: fixed;
 	font-size: 1px;
-	top: -100px;
+	top: -100rem;
 }
 /* Content/sidebar layout */
 body {
@@ -246,6 +246,48 @@ body {
 	line-height: 1.333;
 	padding: 0.9375rem;
 	border-bottom: 0.0625rem solid #9994;
+}
+/* Featured posts */
+#right #featured {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	column-gap: 0.125em;
+	height: 6.5625em;
+	overflow: hidden;
+	padding-bottom: 0;
+	background-color: #9994;
+}
+#featured div, #featured .feature {
+	background-color: var(--bg);
+	color: var(--text);
+	display: block;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	font-size: 0.875rem;
+	position: relative;
+	line-height: 1.5;
+}
+.feature > *:not(img) {
+	font-size: 1em;
+	margin: 0;
+	padding: 0.625rem;
+}
+#featured div:not(.hasimg) .feature::after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 50%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 2;
+	background: linear-gradient(to bottom,rgba(var(--bg--rgb),0) 0,rgba(var(--bg--rgb),.7) 50%,rgba(var(--bg--rgb),1) 100%);
+}
+#featured .feature img {
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
 }
 /* Combined styles: updates section, members section */
 #updates .update, #members .member {

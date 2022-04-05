@@ -5,10 +5,11 @@
 		Style My Tooltips by malihu: http://manos.malihu.gr/style-my-tooltips-jquery-plugin
 		Custom like buttons by Georgi Demirev: https://demirev.cubthemes.com/post/106345243051/changing-like-and-reblog-button-colors-revisited
 		NPF photosets plugin by codematurgy: https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin
+		Featured posts by Fukuo: https://fukuo.site/post/182468748665/how-to-make-a-featured-post-using-tumblr-api-as/amp
 		Dark/light mode toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 3 Apr 2022.
+	Last updated 5 Apr 2022.
 -->
 
 <!DOCTYPE html>
@@ -197,6 +198,68 @@ html.alt {
 </section>
 
 <aside id="right">
+	<!-- EDIT HERE: FEATURED POSTS
+	
+		retrieves the latest three posts of a selected tag. by default, this is #featured.
+		to customize the tag, find the line that ends "tagged=featured"
+		(marked "EDIT YOUR TAG HERE") and change it to "tagged=YOURTAGHERE".
+
+		optional (CAREFUL!): if you want to fetch tagged posts from a DIFFERENT blog,
+		replace "{Name}.tumblr.com" with the different blog's URL, like "CHOSEN-URL-HERE.tumblr.com".
+		if the target blog changes their URL, you'll have to manually update this theme!
+		it won't update on its own.
+	-->
+	<script>
+	$(document).ready(function() {
+		var readData, insert, html;
+		var url = "https://{Name}.tumblr.com/api/read/json?&tagged=featured"; // EDIT YOUR TAG HERE
+		$.getScript(url, function() {
+			readData = tumblr_api_read;
+			console.log(readData);
+			
+			for (var i = 0; i < 3; i++) {
+				var posts = readData.posts[i]; // the post itself
+				
+				var img = posts["photo-url-500"]; // image URL for photo posts
+				var link = posts["url"];
+
+				var titleText = posts["regular-title"]; // post title, if any
+				var captionText = posts["regular-body"]; // post text
+				
+				insert = "<div";
+				
+				// non-image posts
+				if (img == null) {
+					insert += ">";
+					if (titleText != "") {
+						insert += '<h3>' + titleText + '</h3>';
+					}
+					
+					insert += captionText;
+					
+				} else { // image posts
+					insert += 'class="hasimg"><img src="' + img + '">';
+				}
+				
+				insert += '</div>';
+				
+				html = $.parseHTML(insert, document);
+				$.each(html, function() {
+					$(this).find(".tumblr_blog").parent().remove();
+					$(this).find(":not(:first-child)").remove();
+					$(this).find("blockquote > *, a").unwrap();
+					$(this).children().wrap('<a class="feature" href="' + posts["url"] + '"></a>');
+				});
+				
+				$('#featured').append(html);
+			}
+		});
+	});
+	</script>
+	<section id="featured">
+		<h2>Featured posts</h2>
+	</section>
+
 	<!-- EDIT HERE: UPDATES
 	
 		to add an update, copy and paste the following:
