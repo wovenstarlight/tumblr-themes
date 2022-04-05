@@ -83,6 +83,57 @@ body {
 	object-fit: contain;
 }
 #headerimg.cover img { object-fit: cover }
+#main {
+	margin: 0 1.25em 1.25em;
+}
+.post {
+	border: 0.0625rem solid rgba(var(--accent--rgb), 0.2);
+	border-radius: var(--half-roundness);
+	margin-bottom: 1.25rem;
+	--spacing: 1.25rem;
+	--vspacing: 1rem;
+}
+/* Post headers and footers */
+.post header {
+	padding: var(--spacing) var(--spacing) 0;
+	margin-bottom: var(--vspacing);
+	font-size: 0.875rem;
+	display: grid;
+	grid-template-columns: auto auto;
+	align-items: center;
+	column-gap: 1rem;
+	position: relative;
+}
+.post header a { color: var(--text) }
+.viasource {
+	display: grid;
+	align-items: center;
+	grid-template-columns: auto auto auto;
+	column-gap: 0.25rem;
+	width: fit-content;
+}
+.viasource a {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-weight: 700;
+}
+.post header .date {
+	justify-self: end;
+	text-align: right;
+}
+.cornerlink {
+	position: absolute;
+	top: -0.0625em;
+	right: -0.0625em;
+	border: 0em solid var(--bg);
+	border-bottom-left-radius: var(--half-roundness);
+	transition: border ease .15s;
+}
+.post header:hover .cornerlink {
+	border-width: 0.5em;
+	border-color: var(--bg) var(--bg) var(--accent) var(--accent);
+}
 
 
 
