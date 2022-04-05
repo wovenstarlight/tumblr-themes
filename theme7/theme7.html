@@ -220,25 +220,52 @@ html.alt {
 			for (var i = 0; i < 3; i++) {
 				var posts = readData.posts[i]; // the post itself
 				
-				var img = posts["photo-url-500"]; // image URL for photo posts
-				var link = posts["url"];
-
-				var titleText = posts["regular-title"]; // post title, if any
-				var captionText = posts["regular-body"]; // post text
+				var img = posts["photo-url-500"],
+					question = posts["question"],
+					quote = posts["quote-text"],
+					link = posts["link-text"],
+					audio = posts["audio-caption"],
+					video = posts["video-caption"],
+					chatTitle = posts["conversation-title"],
+					chatBody = posts["conversation-text"],
+					textTitle = posts["regular-title"],
+				    textBody = posts["regular-body"],
+					posturl = posts["url"];
 				
 				insert = "<div";
 				
-				// non-image posts
-				if (img == null) {
-					insert += ">";
-					if (titleText != "") {
-						insert += '<h3>' + titleText + '</h3>';
-					}
-					
-					insert += captionText;
-					
-				} else { // image posts
+				if (img != null) { // photo posts
 					insert += 'class="hasimg"><img src="' + img + '">';
+				}
+				else if (question != null) { // ask posts
+				    insert += ">" + question;
+				}
+				else if (quote != null) { // quote posts
+					insert += ">" + quote;
+				}
+				else if (link != null) { // link posts
+					insert += ">" + link;
+				}
+				else if (audio != null) { // audio posts
+				    insert += ">" + audio;
+				}
+				else if (video != null) { // video posts
+				    insert += ">" + video;
+				    if (video == "") { insert += "<p>[Video]</p>" }
+				}
+				else if (chatBody != null) { // chat posts
+				    insert += ">";
+				    if (chatTitle != "" && chatTitle != null) {
+						insert += '<h3>' + chatTitle + '</h3>';
+					}
+					insert += chatBody;
+				}
+				else { // text posts
+					insert += ">";
+					if (textTitle != "" && textTitle != null) {
+						insert += '<h3>' + textTitle + '</h3>';
+					}
+					insert += textBody;
 				}
 				
 				insert += '</div>';
@@ -246,9 +273,9 @@ html.alt {
 				html = $.parseHTML(insert, document);
 				$.each(html, function() {
 					$(this).find(".tumblr_blog").parent().remove();
-					$(this).find(":not(:first-child)").remove();
-					$(this).find("blockquote > *, a").unwrap();
-					$(this).children().wrap('<a class="feature" href="' + posts["url"] + '"></a>');
+					$(this).find("blockquote > *, > a").unwrap();
+					$(this).find("> :not(:first-child)").remove();
+					$(this).children().wrap('<a class="feature" href="' + posturl + '"></a>');
 				});
 				
 				$('#featured').append(html);

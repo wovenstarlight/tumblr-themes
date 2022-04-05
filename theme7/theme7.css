@@ -22,7 +22,7 @@ a {
 }
 #highlight:hover, #desc a:hover, #main a:hover { text-decoration: underline }
 /* Accessibility */
-#skip, #hiddentitle, #featured h2 {
+#skip, #hiddentitle, #featured > h2 {
 	position: fixed;
 	font-size: 1px;
 	top: -100rem;
@@ -239,7 +239,7 @@ body {
 }
 #right > section + section { margin-top: 1.25em }
 /* Headings */
-#right section h2 {
+#right section > h2 {
 	margin: 0 0 0.625em;
 	font-size: 1.125rem;
 	font-weight: 700;
@@ -257,7 +257,7 @@ body {
 	padding-bottom: 0;
 	background-color: #9994;
 }
-#featured div, #featured .feature {
+#featured > div, #featured .feature {
 	background-color: var(--bg);
 	color: var(--text);
 	display: block;
@@ -268,12 +268,12 @@ body {
 	position: relative;
 	line-height: 1.5;
 }
-.feature > *:not(img) {
+.feature > :not(img, figure) {
 	font-size: 1em;
 	margin: 0;
 	padding: 0.625rem;
 }
-#featured div:not(.hasimg) .feature::after {
+div:not(.hasimg) .feature::after {
 	content: "";
 	display: block;
 	width: 100%;
@@ -281,14 +281,20 @@ body {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	z-index: 2;
-	background: linear-gradient(to bottom,rgba(var(--bg--rgb),0) 0,rgba(var(--bg--rgb),.7) 50%,rgba(var(--bg--rgb),1) 100%);
+	background: linear-gradient(to bottom, rgba(var(--bg--rgb), 0) 0, rgba(var(--bg--rgb), 0.7) 50%, var(--bg) 100%);
 }
-#featured .feature img {
-	object-fit: cover;
-	height: 100%;
-	width: 100%;
+/* For figure-images */
+div:not(.hasimg) .feature img {
+	position: relative;
+	z-index: 1;
 }
+.feature [class*="npf"], .feature [class*="npf"] *, .feature figure, .feature iframe, .feature img {
+	height: 100% !important;
+	width: 100% !important;
+	padding: 0;
+	margin: 0;
+}
+.feature img { object-fit: cover }
 /* Combined styles: updates section, members section */
 #updates .update, #members .member {
 	display: grid;
