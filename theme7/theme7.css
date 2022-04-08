@@ -147,8 +147,8 @@ body {
 	display: inline-flex;
 	align-items: baseline;
 	color: var(--accent);
-	margin-left: -0.375rem;
 }
+#pinnedpost, .tags:first-child a:first-child { margin-left: -0.375rem }
 #pinnedpost, .notes { font-weight: 700 }
 #pinnedpost svg { margin-right: 0.375em }
 #pinnedpost, .tags a { padding: 0.125em 0.375em }
