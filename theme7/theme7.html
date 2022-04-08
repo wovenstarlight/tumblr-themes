@@ -219,9 +219,28 @@ html.alt {
 			
 			
 			<section class="body">
-		    
-		    <!-- TODO: POST BODY -->
-		    
+			
+			{block:Text}
+					
+				{block:NotReblog}
+				<div class="bodyitemcontent">
+					{block:AskPage}<div class="askwrapper">{text:FAQ}</div>{/block:AskPage}
+					{Body}
+				</div>
+				{/block:NotReblog}
+				
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+						<img src="{PortraitURL-64}" class="usericon"/>
+						<span class="username">{Username}</span>
+					</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+				
+			{/block:Text}
+			
 			</section>
 			
 			
