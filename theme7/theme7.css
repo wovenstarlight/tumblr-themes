@@ -267,7 +267,9 @@ body {
 /************************************* POSTS *************************************/
 /* Photo posts */
 a[href*='image'], .photopost { display: flex }
-a[href*='image'] ~ .bodyitem, .photopost ~ .bodyitem { border-top: none }
+a[href*='image'] + .bodyitem,
+.photopost + .bodyitem,
+.audiowrapper + .bodyitem { border-top: none }
 .bodyitemcontent .npf_photoset { margin-left: var(--unspacing); margin-right: var(--unspacing) }
 img.npf_image {
 	object-fit: cover;
@@ -281,6 +283,44 @@ img.npf_image {
 /* Link posts */
 .npf-link-block .title,
 .npf-link-block.no-poster .title { padding: 1rem 0.75rem 0 }
+/* Audio posts */
+span[id*='audio_player'] { display: none }
+.audiowrapper {
+	background-color: var(--accent);
+	color: var(--bg);
+	display: grid;
+	grid-template-columns: 1fr 5.3125rem;
+}
+.audiowrapper .left {
+	position: relative;
+	display: grid;
+	grid-template-columns: 4.625em 1fr;
+	align-items: center;
+}
+.custom_audio_buttons,
+.textinfo {
+	position: relative;
+	z-index: 5;
+	width: fit-content;
+	display: flex;
+	flex-direction: column;
+}
+.custom_audio_buttons { justify-self: center }
+.custom_audio_buttons, .custom_audio_seekbar { cursor: pointer }
+.textinfo { line-height: 1.5 }
+.trackname { font-weight: 700 }
+.artist, .album { font-size: 0.875rem }
+.custom_audio_seekbar {
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 5.3125rem;
+}
+.custom_audio_seekbar_progress {
+	background-color: rgba(var(--bg--rgb), 0.15);
+	display: block;
+	height: 100%;
+}
 /* Ask posts */
 .ask {
 	display: flex;
@@ -322,7 +362,7 @@ img.npf_image {
 	text-align: center;
 	 margin: 1em;
 }
-#headerimg + #bloghead { margin-top: -1em; }
+#headerimg + #bloghead { margin-top: -1em }
 #avatartitle {
 	font-size: 1.625em;
 	display: block;
