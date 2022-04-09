@@ -220,8 +220,10 @@ html.alt {
 			
 			<section class="body">
 			
-			{block:Text}
-					
+			{block:Title}<h1 class="title">{Title}</h1>{/block:Title}
+		    
+		    {block:Text}
+		    
 				{block:NotReblog}
 				<div class="bodyitemcontent">
 					{block:AskPage}<div class="askwrapper">{text:FAQ}</div>{/block:AskPage}
@@ -241,6 +243,40 @@ html.alt {
 				
 			{/block:Text}
 			
+			
+		    {block:Answer}
+		        
+		        <div class="ask">
+						<div class="question">
+						<p class="asker">{lang:Asker asked 2}:</p>
+						{Question}
+						</div>
+						<img src="{AskerPortraitURL-64}" class="usericon">
+					</div>
+					
+					{block:RebloggedFrom}<div class="bodyitem">
+						{block:Answerer}
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" href="{ReblogRootURL}">
+							<img src="{AnswererPortraitURL-64}" class="usericon"/>
+							<span class="username">{ReblogRootName}</span>
+						</a>
+						{/block:Answerer}{/block:RebloggedFrom}
+						
+						<div class="bodyitemcontent">{Answer}</div>
+					{block:RebloggedFrom}</div>
+					
+					{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<img src="{PortraitURL-64}" class="usericon"/>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">{Body}</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+		    {/block:Answer}
+		    
 			</section>
 			
 			
