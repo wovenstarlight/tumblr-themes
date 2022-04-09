@@ -2,11 +2,13 @@
 	THEME 7: [unnamed] by starlightthemes
 
 	Credits:
+		Site design by Tumblr
 		Style My Tooltips by malihu: http://manos.malihu.gr/style-my-tooltips-jquery-plugin
 		Custom like buttons by Georgi Demirev: https://demirev.cubthemes.com/post/106345243051/changing-like-and-reblog-button-colors-revisited
 		NPF photosets plugin by codematurgy: https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin
 		Featured posts by Fukuo: https://fukuo.site/post/182468748665/how-to-make-a-featured-post-using-tumblr-api-as/amp
-		Dark/light mode toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
+		Palette toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
+		Custom audio posts by annasthms: https://annasthms.tumblr.com/more/js/customaudio/new
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
 	Last updated 5 Apr 2022.
@@ -113,6 +115,11 @@ html.alt {
 	-->
 	<script src="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosets.js"></script>
 	<link href="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosetstyle.css" rel="stylesheet" type="text/css">
+	<!--
+	customaudio.js by @annasthms
+	https://annasthms.tumblr.com/more/js/customaudio/new
+	-->
+	<script src="https://cdn.jsdelivr.net/gh/annasthms/customaudio@latest/customaudio.min.js"></script>
 	{block:IfBackToTopButton}
 	<!-- Scroll to top button -->
 	<script src="https://wovenstarlight.github.io/tumblr-themes/scrolltotop.min.js"></script>
@@ -379,8 +386,43 @@ html.alt {
 				</div>
 				{block:RebloggedFrom}</div>{/block:RebloggedFrom}
 			{/block:Chat}
+
+
+			{block:Audio}
 			
+				{block:AudioPlayer}
+					<div class="audiowrapper {block:AlbumArt}hasart{/block:AlbumArt}">
+						{AudioPlayer}
+						<div class="left">
+							<span class="custom_audio_buttons"></span>
+							<div class="textinfo">
+							{block:TrackName}<span class="trackname">{TrackName}</span>{/block:TrackName}
+							{block:Artist}<span class="artist">{Artist}</span>{/block:Artist}
+							{block:Album}<span class="album">{Album}</span>{/block:Album}
+							</div>
+							<div class="custom_audio_seekbar"></div>
+						</div>
+						{block:AlbumArt}<img class="albumart" src="{AlbumArtURL}">{/block:AlbumArt}
+					</div>
+				{/block:AudioPlayer}
+				
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Body}</div>
+				{/block:NotReblog}
+				
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+						<img src="{PortraitURL-64}" class="usericon"/>
+						<span class="username">{Username}</span>
+					</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
 			
+			{/block:Audio}
+
+
 			{block:Answer}
 				
 				<div class="ask">
