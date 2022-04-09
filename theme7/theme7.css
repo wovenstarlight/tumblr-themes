@@ -93,6 +93,7 @@ body {
 	border-radius: var(--half-roundness);
 	margin-bottom: 1.25rem;
 	--spacing: 1.25rem;
+	--unspacing: -1.25rem;
 	--vspacing: 1rem;
 }
 /* Post headers */
@@ -170,8 +171,6 @@ body {
 	font-size: 1.25rem;
 	line-height: 1.625rem;
 }
-/* NPF quotes */
-.bodyitemcontent .npf_quote { font-size: 2.125rem }
 /* Blockquotes */
 .bodyitemcontent blockquote {
 	border-left: 0.1875rem solid rgba(var(--accent--rgb), 0.2);
@@ -266,6 +265,16 @@ body {
 
 
 /************************************* POSTS *************************************/
+/* Photo posts */
+a[href*='image'], .photopost { display: flex }
+a[href*='image'] ~ .bodyitem, .photopost ~ .bodyitem { border-top: none }
+.bodyitemcontent .npf_photoset { margin-left: var(--unspacing); margin-right: var(--unspacing) }
+img.npf_image {
+	object-fit: cover;
+	cursor: pointer;
+}
+/* Quote posts */
+.bodyitemcontent .npf_quote { font-size: 2.125rem }
 /* Ask posts */
 .ask {
 	display: flex;

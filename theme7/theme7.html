@@ -242,6 +242,75 @@ html.alt {
 				{/block:Reblogs}{/block:RebloggedFrom}
 				
 			{/block:Text}
+
+
+			{block:Photo}
+				
+				{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+				
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Caption}</div>
+				{/block:NotReblog}
+				
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+						<img src="{PortraitURL-64}" class="usericon"/>
+						<span class="username">{Username}</span>
+					</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+				
+			{/block:Photo}
+
+
+			{block:Panorama}
+				
+				{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+				
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Caption}</div>
+				{/block:NotReblog}
+				
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+						<img src="{PortraitURL-64}" class="usericon"/>
+						<span class="username">{Username}</span>
+					</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+				
+			{/block:Panorama}
+
+
+			{block:Photoset}
+
+				<div class="npf_photoset" data-layout="{PhotosetLayout}">
+					{block:Photos}
+						<figure class="tmblr-full"> 
+							<img class="npf_image" alt="{PhotoAlt}" src="{PhotoURL-500}" data-orig-width="{PhotoWidth-HighRes}" data-orig-height="{PhotoHeight-HighRes}" data-highres="{PhotoURL-HighRes}">
+						</figure>
+					{/block:Photos}
+				</div>
+				
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Caption}</div>
+				{/block:NotReblog}
+				
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+						<img src="{PortraitURL-64}" class="usericon"/>
+						<span class="username">{Username}</span>
+					</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+			
+			{/block:Photoset}
 			
 			
 			{block:Answer}
