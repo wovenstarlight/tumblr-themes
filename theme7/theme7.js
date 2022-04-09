@@ -6,7 +6,7 @@ $(document).ready( function() {
 	// photoset setup
 	npfPhotosets("article", {
 		includeCommonPhotosets: true,
-		photosetMargins: "2"
+		photosetMargins: "4"
 	});
 
 	const page = $("html");
@@ -31,9 +31,9 @@ $(document).ready( function() {
 	});
 
 	$(".dots").on("click keypress", function() {
-        $(this).toggleClass("active");
+		$(this).toggleClass("active");
 		$(this).next().fadeToggle(150);
-    });
+	});
 
 	var form = $("#search");
 	$("#searcher").on("click keypress", function() {
