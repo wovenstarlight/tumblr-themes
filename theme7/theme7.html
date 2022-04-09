@@ -311,8 +311,65 @@ html.alt {
 				{/block:Reblogs}{/block:RebloggedFrom}
 			
 			{/block:Photoset}
-			
-			
+
+
+			{block:Quote}
+				{block:RebloggedFrom}<div class="bodyitem">{/block:RebloggedFrom}
+				<div class="bodyitemcontent">
+					<p class="npf_quote quote">{Quote}</p>
+					{block:Source}<p class="quotesource">{Source}</p>{/block:Source}
+				</div>
+				{block:RebloggedFrom}</div>{/block:RebloggedFrom}
+			{/block:Quote}
+
+
+			{block:Link}
+
+				{block:NotReblog}
+				<div class="bodyitemcontent">
+					<div class="npf-link-block{block:Thumbnail} has-poster{/block:Thumbnail}">
+						<a href="{URL}" {Target}>
+							{block:Thumbnail}<div class="poster" style="background-image: url('{Thumbnail}')">{/block:Thumbnail}
+							<div class="title">{Name}</div>
+							{block:Thumbnail}</div>{/block:Thumbnail}
+							<div class="bottom">
+								{block:Excerpt}<div class="description">{Excerpt}</div>{/block:Excerpt}
+								{block:Host}<div class="site-name">{Host}</div>{/block:Host}
+							</div>
+						</a>
+					</div>
+					{Body}
+				</div>
+				{/block:NotReblog}
+
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+						<img src="{PortraitURL-64}" class="usericon"/>
+						<span class="username">{Username}</span>
+					</a>
+					<div class="bodyitemcontent">
+						{block:IsOriginalEntry}
+						<div class="npf-link-block{block:Thumbnail} has-poster{/block:Thumbnail}">
+							<a href="{URL}" {Target}>
+								{block:Thumbnail}<div class="poster" style="background-image: url('{Thumbnail}')">{/block:Thumbnail}
+								<div class="title">{Name}</div>
+								{block:Thumbnail}</div>{/block:Thumbnail}
+								<div class="bottom">
+									{block:Excerpt}<div class="description">{Excerpt}</div>{/block:Excerpt}
+									{block:Host}<div class="site-name">{Host}</div>{/block:Host}
+								</div>
+							</a>
+						</div>
+						{/block:IsOriginalEntry}
+						{Body}
+					</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+
+			{/block:Link}
+
+
 			{block:Answer}
 				
 				<div class="ask">
