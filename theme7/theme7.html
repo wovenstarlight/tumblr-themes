@@ -374,7 +374,7 @@ html.alt {
 				insert = "<div";
 				
 				if (img != null) { // photo posts
-					insert += 'class="hasimg"><img src="' + img + '">';
+					insert += ' class="hasimg"><img src="' + img + '">';
 				}
 				else if (question != null) { // ask posts
 				    insert += ">" + question;
@@ -412,7 +412,7 @@ html.alt {
 				html = $.parseHTML(insert, document);
 				$.each(html, function() {
 					$(this).find(".tumblr_blog").parent().remove();
-					$(this).find("blockquote > *, > a").unwrap();
+					$(this).find("blockquote > *, > a, .npf_row, figure").unwrap();
 					$(this).find("p:empty").remove();
 					$(this).find("> :not(:first-child)").remove();
 					$(this).children().wrap('<a class="feature" href="' + posturl + '"></a>');
