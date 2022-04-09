@@ -480,8 +480,10 @@ html.alt {
 			{/block:Answer}
 			
 			</section>
-			
-			
+
+
+			{block:ContentSource}<p class="source">{lang:Source}: <a href="{SourceURL}">{SourceTitle}</a></p>{/block:ContentSource}
+
 
 			{block:Date}<footer>
 				<p class="pintags">
@@ -553,7 +555,7 @@ html.alt {
 	<script>
 	$(document).ready(function() {
 		var readData, insert, html;
-		var url = "https://{Name}.tumblr.com/api/read/json?&tagged=photo"; // EDIT YOUR TAG HERE
+		var url = "https://{Name}.tumblr.com/api/read/json?&tagged=featured"; // EDIT YOUR TAG HERE
 		$.getScript(url, function() {
 			readData = tumblr_api_read;
 			console.log(readData);
