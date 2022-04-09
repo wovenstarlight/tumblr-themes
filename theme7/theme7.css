@@ -634,6 +634,10 @@ div:not(.hasimg) .feature img {
 @media (min-width: 50em) {
 	body { grid-template-columns: auto auto }
 	#showright { display: none }
+	#right {
+		position: sticky;
+		top: 1.25em;
+	}
 }
 
 @media (max-width: 50em) {
