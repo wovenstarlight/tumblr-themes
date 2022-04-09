@@ -199,6 +199,12 @@ body {
 	padding: 0 var(--spacing);
 	margin: 0.75em 0 0;
 }
+.source {
+	margin: 0 var(--spacing);
+}
+.source + footer { margin-top: 0 }
+.source a, .tags a { color: var(--text) }
+.source, .tags a:not(:hover), .notes { opacity: 0.8 }
 #pinnedpost {
 	display: inline-flex;
 	align-items: baseline;
@@ -209,7 +215,6 @@ body {
 #pinnedpost svg { margin-right: 0.375em }
 #pinnedpost, .tags a { padding: 0.125em 0.375em }
 .tags a::before{ content: "#" }
-.tags a:not(:hover), .notes { opacity: 0.8 }
 .post .buttons {
 	display: flex;
 	margin: 0.75rem var(--spacing) 0;
