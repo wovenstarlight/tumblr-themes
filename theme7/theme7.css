@@ -89,7 +89,7 @@ body {
 #headerimg.cover img { object-fit: cover }
 #main, #pagination { margin: 0 1.25em 1.25em }
 .post {
-	border: 0.0625rem solid rgba(var(--accent--rgb), 0.2);
+	border: 0.0625rem solid rgba(var(--accent--rgb), 0.25);
 	border-radius: var(--half-roundness);
 	margin-bottom: 1.25rem;
 	--spacing: 1.25rem;
@@ -140,7 +140,7 @@ body {
 }
 /* Post body */
 .bodyitem {
-	border-top: 0.0625em solid rgba(var(--accent--rgb), 0.2);
+	border-top: 0.0625em solid rgba(var(--accent--rgb), 0.25);
 	padding-top: var(--vspacing);
 }
 .bodyitemcontent, .user, .post .title { padding: 0 var(--spacing) }
@@ -212,7 +212,7 @@ body {
 .post .buttons {
 	display: flex;
 	margin: 0.75rem var(--spacing) 0;
-	border-top: 0.0625em solid rgba(var(--accent--rgb), 0.2);
+	border-top: 0.0625em solid rgba(var(--accent--rgb), 0.25);
 }
 .post .buttons a {
 	flex-grow: 1;
@@ -470,7 +470,7 @@ img.npf_image {
 	font-weight: 700;
 	line-height: 1.333;
 	padding: 0.9375rem;
-	border-bottom: 0.0625rem solid rgba(var(--accent--rgb), 0.2);
+	border-bottom: 0.0625rem solid rgba(var(--accent--rgb), 0.25);
 }
 /* Featured posts */
 #right #featured {
