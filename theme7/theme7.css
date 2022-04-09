@@ -67,7 +67,7 @@ body {
 	width: 1.0625em;
 	height: 1.0625em;
 }
-#scrolltotop_parent:hover {
+#scrolltotop_parent:hover, #showright:hover {
 	background-color: rgba(var(--bg--rgb), 0.75);
 	border-color: var(--text);
 }
@@ -262,6 +262,43 @@ body {
 	border-radius: 100%;
 	width: 2.5em;
 }
+
+
+
+/************************************* POSTS *************************************/
+/* Ask posts */
+.ask {
+	display: flex;
+	padding: 0 var(--spacing) 0.675em;
+}
+.ask .question {
+	position: relative;
+	background: rgba(var(--accent--rgb), 0.15);
+	flex-grow: 1;
+	border-radius: var(--half-roundness);
+	padding: 1em var(--spacing) 1.2rem;
+}
+.ask .question::after {
+	content: "";
+	position: absolute;
+	display: block;
+	--width: 0.5rem;
+	border: 0.5rem solid transparent;
+	border-left-color: rgba(var(--accent--rgb), 0.15);
+	top: 0.675rem;
+	right: -1rem;
+}
+.asker {
+	margin: 0 0 1.25rem;
+	font-size: 0.875rem;
+}
+.asker a { font-weight: 700 }
+.question > :not(.asker):last-child { margin-bottom: 0 }
+.ask .usericon {
+	--size: 2.5em;
+	margin-left: 1.125rem;
+}
+.ask + .bodyitem { border-top: none }
 
 
 
@@ -573,10 +610,6 @@ div:not(.hasimg) .feature img {
 		border: 0.125em solid rgba(var(--text--rgb), 0.4);
 		cursor: pointer;
 		transform: rotate(45deg);
-	}
-	#showright:hover {
-		background-color: rgba(var(--bg--rgb), 0.75);
-		border-color: var(--text);
 	}
 	body.showright #showright { left: calc(50vw - 1.375em); transform: unset }
 }
