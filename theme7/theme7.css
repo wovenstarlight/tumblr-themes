@@ -238,7 +238,7 @@ body {
 	height: 100%;
 	opacity: 0;
 }
-.pintags:empty,
+.pintags:empty, .buttons:empty,
 .customlike .like_button:not(.liked) ~ .liked,
 .customlike .like_button.liked ~ .unliked { display: none }
 .showtags { cursor: pointer }
