@@ -636,7 +636,7 @@ div:not(.hasimg) .feature img {
 	#showright { display: none }
 	#right {
 		position: sticky;
-		top: 1.25em;
+		top: var(--top);
 	}
 }
 
