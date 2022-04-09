@@ -284,8 +284,8 @@ img.npf_image {
 }
 /* Quote posts */
 .bodyitemcontent .npf_quote { font-size: 2.125rem }
-.quote.npf_quote::before { content: "\201C" }
-.quote.npf_quote::after { content: "\201D" }
+.quote.npf_quote::before, .search_query::before { content: "\201C" }
+.quote.npf_quote::after, .search_query::after { content: "\201D" }
 .quotesource::before { content: "\2014\0020" }
 /* Link posts */
 .npf-link-block .title,
@@ -505,6 +505,12 @@ span[id*='audio_player'] { display: none }
 	flex-grow: 1;
 	color: var(--text);
 }
+#pagehead, #no-posts {
+	text-align: center;
+	margin: 1.5em 0;
+}
+#pagehead > * { margin: 0 }
+#pagehead .tag::before { content: "#" }
 
 
 
@@ -517,12 +523,15 @@ span[id*='audio_player'] { display: none }
 }
 #right > section + section { margin-top: 1.25em }
 /* Headings */
+#pagehead h2,
 #right section > h2 {
-	margin: 0 0 0.625em;
 	font-size: 1.125rem;
 	font-weight: 700;
 	line-height: 1.333;
+}
+#right section > h2 {
 	padding: 0.9375rem;
+	margin: 0 0 0.625em;
 	border-bottom: 0.0625rem solid rgba(var(--accent--rgb), 0.25);
 }
 /* Featured posts */
