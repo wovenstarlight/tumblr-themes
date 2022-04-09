@@ -370,6 +370,17 @@ html.alt {
 			{/block:Link}
 
 
+			{block:Chat}
+				{block:RebloggedFrom}<div class="bodyitem">{/block:RebloggedFrom}
+				<div class="bodyitemcontent">
+				{block:Lines}
+				<p class="npf_chat">{block:Label}<b>{Label}</b> {/block:Label}{Line}</p>
+				{/block:Lines}
+				</div>
+				{block:RebloggedFrom}</div>{/block:RebloggedFrom}
+			{/block:Chat}
+			
+			
 			{block:Answer}
 				
 				<div class="ask">
@@ -477,7 +488,7 @@ html.alt {
 	<script>
 	$(document).ready(function() {
 		var readData, insert, html;
-		var url = "https://{Name}.tumblr.com/api/read/json?&tagged=featured"; // EDIT YOUR TAG HERE
+		var url = "https://{Name}.tumblr.com/api/read/json?&tagged=photo"; // EDIT YOUR TAG HERE
 		$.getScript(url, function() {
 			readData = tumblr_api_read;
 			console.log(readData);
