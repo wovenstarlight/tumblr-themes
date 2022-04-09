@@ -130,8 +130,8 @@ html.alt {
 	$(document).ready(function(){
 		$(".showtags").on("click keypress", function(){
 			$(this).parent() //buttons
-			        .parent() //footer
-			        .find(".tags").toggle();
+					.parent() //footer
+					.find(".tags").toggle();
 			$(this).toggleClass('active');
 		});
 	});
@@ -208,7 +208,36 @@ html.alt {
 	</section>{/block:IfSearchBar}
 
 	<main id="main">
-		<!-- TODO: page headers, posts (WIP), and page navigation -->
+		{block:TagPage}
+			<!-- SPECIAL PAGE HEADER: TAG -->
+			<div id="pagehead">
+				<h2>{lang:TagResultCount posts tagged Tag 2}</h2>
+				<p>Sort <a href="/tagged/{URLSafeTag}">newest first</a> or <a href="/tagged/{URLSafeTag}/chrono">oldest first</a></p>
+			</div>
+		{/block:TagPage}
+		
+		{block:DayPage}
+			<!-- SPECIAL PAGE HEADER: DAY -->
+			<div id="pagehead"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
+		{/block:DayPage}
+		
+		{block:SearchPage}
+			<!-- SPECIAL PAGE HEADER: SEARCH -->
+			<div id="pagehead">
+				<h2>
+					{lang:SearchResultCount results for SearchQuery 2}
+					{block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}
+				</h2>
+			</div>
+			<script>$(document).ready(function() {$("#searcher").click()})</script>
+		{/block:SearchPage}
+
+		{block:NoPosts}
+			<!-- SPECIAL MESSAGE: EMPTY BLOG -->
+			<section id="no-posts"><p>{lang:This Tumblr hasnt posted anything}</p></section>
+		{/block:NoPosts}
+
+
 
 		{block:Posts}
 		<article class="post">
