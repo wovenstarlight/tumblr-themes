@@ -129,7 +129,9 @@ html.alt {
 	<script>
 	$(document).ready(function(){
 		$(".showtags").on("click keypress", function(){
-			$(this).next(".tags").slideToggle();
+			$(this).parent() //buttons
+			        .parent() //footer
+			        .find(".tags").toggle();
 			$(this).toggleClass('active');
 		});
 	});
@@ -492,7 +494,7 @@ html.alt {
 						{PinnedPostLabel}
 					</span>{/block:PinnedPostLabel}
 
-					{block:IfPostTags}{block:HasTags}<span class="tags">
+					{block:IfPostTags}{block:HasTags}<span class="tags" {block:IfShowTagsOnClick}style="display: none"{/block:IfShowTagsOnClick}>
 						{block:Tags}<a href="{TagURL}">{Tag}</a>{block:Tags}{/block:HasTags}{/block:IfPostTags}
 					</span>
 				</p>
