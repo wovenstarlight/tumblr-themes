@@ -221,9 +221,9 @@ html.alt {
 			<section class="body">
 			
 			{block:Title}<h1 class="title">{Title}</h1>{/block:Title}
-		    
-		    {block:Text}
-		    
+			
+			{block:Text}
+			
 				{block:NotReblog}
 				<div class="bodyitemcontent">
 					{block:AskPage}<div class="askwrapper">{text:FAQ}</div>{/block:AskPage}
@@ -244,9 +244,9 @@ html.alt {
 			{/block:Text}
 			
 			
-		    {block:Answer}
-		        
-		        <div class="ask">
+			{block:Answer}
+				
+				<div class="ask">
 						<div class="question">
 						<p class="asker">{lang:Asker asked 2}:</p>
 						{Question}
@@ -275,8 +275,8 @@ html.alt {
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
 					
-		    {/block:Answer}
-		    
+			{/block:Answer}
+			
 			</section>
 			
 			
@@ -336,7 +336,7 @@ html.alt {
 </section>
 
 <aside id="right">
-    {block:IfFeaturedPosts}
+	{block:IfFeaturedPosts}
 	<!-- EDIT HERE: FEATURED POSTS
 	
 		retrieves the latest three posts of a selected tag. by default, this is #featured.
@@ -368,7 +368,7 @@ html.alt {
 					chatTitle = posts["conversation-title"],
 					chatBody = posts["conversation-text"],
 					textTitle = posts["regular-title"],
-				    textBody = posts["regular-body"],
+					textBody = posts["regular-body"],
 					posturl = posts["url"];
 				
 				insert = "<div";
@@ -377,7 +377,7 @@ html.alt {
 					insert += ' class="hasimg"><img src="' + img + '">';
 				}
 				else if (question != null) { // ask posts
-				    insert += ">" + question;
+					insert += ">" + question;
 				}
 				else if (quote != null) { // quote posts
 					insert += ">" + quote;
@@ -386,15 +386,15 @@ html.alt {
 					insert += ">" + link;
 				}
 				else if (audio != null) { // audio posts
-				    insert += ">" + audio;
+					insert += ">" + audio;
 				}
 				else if (video != null) { // video posts
-				    insert += ">" + video;
-				    if (video == "") { insert += "<p>[Video]</p>" }
+					insert += ">" + video;
+					if (video == "") { insert += "<p>[Video]</p>" }
 				}
 				else if (chatBody != null) { // chat posts
-				    insert += ">";
-				    if (chatTitle != "" && chatTitle != null) {
+					insert += ">";
+					if (chatTitle != "" && chatTitle != null) {
 						insert += '<h3>' + chatTitle + '</h3>';
 					}
 					insert += chatBody;
