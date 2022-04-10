@@ -191,14 +191,14 @@ body {
 }
 /* Post footers */
 .post footer { margin-top: 0.75rem }
-.pintags, .notes {
+.pintags, .notecount {
 	padding: 0 var(--spacing);
 	margin: 0.75em 0 0;
 }
 .source, .sublabel { margin: 0.625em var(--spacing) }
 .source + footer, .sublabel + footer { margin-top: 0 }
 .source a, .sublabel a, .tags a { color: var(--text) }
-.source, .sublabel, .tags a:not(:hover), .notes { opacity: 0.8 }
+.source, .sublabel, .tags a:not(:hover), .notecount { opacity: 0.8 }
 .sublabel a { font-weight: 700 }
 #pinnedpost {
 	display: inline-flex;
@@ -206,11 +206,11 @@ body {
 	color: var(--accent);
 }
 #pinnedpost, .tags:first-child a:first-child { margin-left: -0.375rem }
-#pinnedpost, .notes { font-weight: 700 }
+#pinnedpost, .notecount { font-weight: 700 }
 #pinnedpost svg { margin-right: 0.375em }
 #pinnedpost, .tags a { padding: 0.125em 0.375em }
 .tags a::before{ content: "#" }
-.notes { display: block }
+.notecount { display: block }
 .post .buttons {
 	display: flex;
 	margin: 1em var(--spacing) 0;
