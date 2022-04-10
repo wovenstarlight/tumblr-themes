@@ -520,10 +520,10 @@ html.alt {
 			<p class="sublabel {PostID}">{lang:Submitted By}</p>
 			<script>
 			if ("{SubmitterURL}".length > 0) {
-			    var label = $(".sublabel.{PostID}");
-			    var labeltext = label.html();
-			    labeltext = labeltext.replace("{Submitter}", "<a href=\"{SubmitterURL}\">{Submitter}</a>");
-			    label.html(labeltext);
+				var label = $(".sublabel.{PostID}");
+				var labeltext = label.html();
+				labeltext = labeltext.replace("{Submitter}", "<a href=\"{SubmitterURL}\">{Submitter}</a>");
+				label.html(labeltext);
 			}
 			</script>
 			{/block:Submission}
@@ -580,6 +580,24 @@ html.alt {
 		<span id="curr">{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst}, {Year}</span>
 		{block:NextDayPage}<a href="{NextDayPage}" id="next" title="{lang:Next day}"><svg viewBox="0 0 20 17" width="1.0625em" height="1.0625em" fill="currentColor" style="transform: rotate(180deg)"><path d="M5.7 10.009l4.8 4.527c.2.2.2.603 0 .804L9 16.85c-.2.2-.6.2-.8 0L0 8.901v-.804L8.2.15c.2-.201.6-.201.8 0l1.5 1.509c.2.2.2.603 0 .804L5.7 6.991h13.4s.9.905.9 1.006v.905l-1 1.107H5.7z"></path></svg></a>{/block:NextDayPage}
 	</nav>{/block:DayPagination}{/block:DayPage}
+
+
+	{block:PostNotes}<section class="post" id="notes">
+		<h2>{lang:Notes}</h2>
+		{PostNotes-64}
+	</section>
+	<script>
+		function cleanNotes() {
+		$("#notes li:not(.original_post) .action").each( function() {
+			$(this).html($(this).html().replace(" reblogged this from ", "<svg role=\"img\" height=\"0.875em\" width=\"0.875em\" viewBox=\"0 0 12.3 13.7\" fill=\"currentColor\"><path d=\"M9.2.2C8.7-.2 8 .2 8 .8v1.1H3.1c-2 0-3.1 1-3.1 2.6v1.9c0 .5.4.9.9.9.1 0 .2 0 .3-.1.3-.1.6-.5.6-.8V5.2c0-1.4.3-1.5 1.3-1.5H8v1.1c0 .6.7 1 1.2.6l3.1-2.6L9.2.2zM12 7.4c0-.5-.4-.9-.9-.9s-.9.4-.9.9v1.2c0 1.4-.3 1.5-1.3 1.5H4.3V9c0-.6-.7-.9-1.2-.5L0 11l3.1 2.6c.5.4 1.2.1 1.2-.5v-1.2h4.6c2 0 3.1-1 3.1-2.6V7.4z\"></path></svg>"));
+			$(this).html($(this).html().replace(" liked this", ""));
+			$(this).html($(this).html().replace(" and added:", ""));
+		});
+		}
+		cleanNotes();
+		function tumblrNotesInserted() { cleanNotes(); }
+	</script>
+	{/block:PostNotes}
 
 </section>
 
