@@ -516,6 +516,19 @@ html.alt {
 			{block:ContentSource}<p class="source">{lang:Source}: <a href="{SourceURL}">{SourceTitle}</a></p>{/block:ContentSource}
 
 
+			{block:Submission}
+			<p class="sublabel {PostID}">{lang:Submitted By}</p>
+			<script>
+			if ("{SubmitterURL}".length > 0) {
+			    var label = $(".sublabel.{PostID}");
+			    var labeltext = label.html();
+			    labeltext = labeltext.replace("{Submitter}", "<a href=\"{SubmitterURL}\">{Submitter}</a>");
+			    label.html(labeltext);
+			}
+			</script>
+			{/block:Submission}
+
+
 			{block:Date}<footer>
 				<p class="pintags">
 					{block:PinnedPostLabel}<span id="pinnedpost">
