@@ -1,0 +1,30 @@
+.collapsible { margin-bottom: 1em }
+.collapsible > .clpbutton {
+	color: var(--accent);
+	display: flex;
+	align-items: center;
+	column-gap: 0.5em;
+	cursor: pointer;
+	transition: text-shadow .2s;
+	margin-bottom: 0.25em;
+}
+.collapsible > .clpbutton:hover { text-shadow: 0 0 0.5em rgba(var(--accent--rgb), 0.4) }
+.collapsible > .clpbutton::before { content: "▶"; transition: transform 0.4s; }
+.collapsible.active > .clpbutton::before { transform: rotate(90deg) }
+
+.collapsible > .clpcontent {
+	padding: 0.5em 1em 0.3em;
+	transition: max-height 0.4s ease;
+	background-color: rgba(var(--accent--rgb), 0.1);
+	border: thin solid rgba(var(--accent--rgb), 0.25);
+	border-radius: var(--roundness);
+}
+.even > .clpcontent { background-color: var(--bg) }
+.clpcontent :not(ul, ol, li) { margin: 0.5em 0 }
+
+.clpcontent hr {
+	opacity: .75;
+	width: 33%;
+	margin: 1em auto;
+	border-color: var(--accent);
+}

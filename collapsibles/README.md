@@ -35,6 +35,7 @@ No. | Name | Collapsibles CSS file | Preview
 4 | Sans Comic | [theme4.css](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/collapsibles/theme4_collapsibles.css) | [Preview link](https://starlightpreviews.tumblr.com/theme4/collapsibles)
 5 | Jupiter | [theme5.css](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/collapsibles/theme5_collapsibles.css) | [Preview link](https://starlightpreviews.tumblr.com/theme5/collapsibles)
 6 | Horizon | [theme6.css](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/collapsibles/theme6_collapsibles.css) | [Preview link](https://starlightpreviews.tumblr.com/theme6/collapsibles)
+7 | Unite | [theme7.css](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/collapsibles/theme7_collapsibles.css) | [Preview link](https://starlightpreviews.tumblr.com/theme7/collapsibles)
 
 Once you've copied the CSS as instructed above and saved it, you're ready to start making collapsible sections!
 
