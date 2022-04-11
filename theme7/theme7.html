@@ -635,7 +635,6 @@ html.alt {
 		var url = "https://{Name}.tumblr.com/api/read/json?&tagged=featured"; // EDIT YOUR TAG HERE
 		$.getScript(url, function() {
 			readData = tumblr_api_read;
-			console.log(readData);
 			
 			for (var i = 0; i < 3; i++) {
 				var posts = readData.posts[i]; // the post itself
