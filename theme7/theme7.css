@@ -95,6 +95,7 @@ body {
 #headerimg img {
 	border-radius: var(--roundness) var(--roundness) 0 0;
 	height: 15em;
+	width: 100%;
 	object-fit: contain;
 }
 #headerimg.cover img { object-fit: cover }
