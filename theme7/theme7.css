@@ -21,7 +21,7 @@ a {
 	text-decoration: none
 }
 #highlight:hover, #desc a:hover, #main a:hover { text-decoration: underline }
-iframe { width: 100% }
+iframe, .tumblr_video_container { width: 100% !important }
 /* Blockquotes */
 blockquote {
 	border-left: 0.1875rem solid rgba(var(--accent--rgb), 0.2);
@@ -720,4 +720,20 @@ div:not(.hasimg) .feature img {
 		transform: rotate(45deg);
 	}
 	body.showright #showright { left: calc(50vw - 1.375em); transform: unset }
+}
+
+@media (max-width: 30em) {
+	html { font-size: 90% }
+	body { padding: 0.5em }
+	#main { margin: 0 0.5em 1.25em }
+	.post {
+		--spacing: 1rem;
+		--unspacing: -1rem;
+		--vspacing: 0.75rem;
+	}
+	.post header {
+		grid-template-columns: 1fr;
+		row-gap: 0.5rem;
+	}
+	.post header .date { justify-self: start }
 }
