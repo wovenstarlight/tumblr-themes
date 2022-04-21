@@ -13,7 +13,7 @@
 		NPF photosets fix by glenthemes: https://glenthemes.tumblr.com/post/659034084446748672/npf-images-v3
 		Dark/light mode toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 
-	Last updated 15 Oct 2021.
+	Last updated 21 April 2022.
 -->
 
 <!DOCTYPE html>
@@ -428,22 +428,25 @@ body.light em, body.light i { color: {color:Light mode italics} }
 			</a>
 			{/block:More}
 			{/block:NotReblog}
-			{block:Reblogs}
+			{block:RebloggedFrom}
 			<div class="bodyitem">
-				<a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="circle"/></a>
-				<a class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>{Username}</a>
+				<a href="{ReblogRootURL}" class="circle usericon"><img src="{ReblogRootPortraitURL-64}" class="circle"/></a>
+				<a class="username" href="{ReblogRootURL}">{ReblogRootName}</a>
 				<div class="content">
 				
-					{block:isOriginalEntry}
 					<div class="photo-wrapper">
 					{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}"/>{LinkCloseTag}
 					{block:HighRes}<a class="highres" href="{PhotoURL-HighRes}">{lang:View high resolution}</a>{/block:HighRes}
 					</div>
-					{/block:isOriginalEntry}
-					
-					{Body}
-					
+			{block:Reblogs}
+			{block:IsOriginalEntry}{Body}{/block:IsOriginalEntry}
+			{block:IsNotOriginalEntry}
 				</div>
+			</div>
+			<div class="bodyitem">
+				<a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="circle"/></a>
+				<a class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>{Username}</a>
+				<div class="content">{Body}</div>
 			</div>
 			{block:More}
 			<a class="system" href="{Permalink}">
@@ -451,7 +454,11 @@ body.light em, body.light i { color: {color:Light mode italics} }
 				<p>{lang:Keep reading}</p>
 			</a>
 			{/block:More}
+			{/block:IsNotOriginalEntry}
 			{/block:Reblogs}
+				</div>
+			</div>
+			{/block:RebloggedFrom}
 		{/block:Photo}
 		
 		{block:Panorama}
@@ -475,22 +482,25 @@ body.light em, body.light i { color: {color:Light mode italics} }
 			</a>
 			{/block:More}
 			{/block:NotReblog}
-			{block:Reblogs}
+			{block:RebloggedFrom}
 			<div class="bodyitem">
-				<a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="circle"/></a>
-				<a class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>{Username}</a>
+				<a href="{ReblogRootURL}" class="circle usericon"><img src="{ReblogRootPortraitURL-64}" class="circle"/></a>
+				<a class="username" href="{ReblogRootURL}">{ReblogRootName}</a>
 				<div class="content">
 				
-					{block:isOriginalEntry}
 					<div class="photo-wrapper">
 					{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}"/>{LinkCloseTag}
 					{block:HighRes}<a class="highres" href="{PhotoURL-Panorama}">{lang:View high resolution}</a>{/block:HighRes}
 					</div>
-					{/block:isOriginalEntry}
-					
-					{Body}
-					
+			{block:Reblogs}
+			{block:IsOriginalEntry}{Body}{/block:IsOriginalEntry}
+			{block:IsNotOriginalEntry}
 				</div>
+			</div>
+			<div class="bodyitem">
+				<a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="circle"/></a>
+				<a class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>{Username}</a>
+				<div class="content">{Body}</div>
 			</div>
 			{block:More}
 			<a class="system" href="{Permalink}">
@@ -498,7 +508,11 @@ body.light em, body.light i { color: {color:Light mode italics} }
 				<p>{lang:Keep reading}</p>
 			</a>
 			{/block:More}
+			{/block:IsNotOriginalEntry}
 			{/block:Reblogs}
+				</div>
+			</div>
+			{/block:RebloggedFrom}
 		{/block:Panorama}
 		
 		{block:Photoset}
@@ -522,21 +536,23 @@ body.light em, body.light i { color: {color:Light mode italics} }
 			{/block:More}
 			{/block:NotReblog}
 			{block:RebloggedFrom}
-			{block:Reblogs}
 			<div class="bodyitem">
-				<a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="circle"/></a>
-				<a class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>{Username}</a>
+				<a href="{ReblogRootURL}" class="circle usericon"><img src="{ReblogRootPortraitURL-64}" class="circle"/></a>
+				<a class="username" href="{ReblogRootURL}">{ReblogRootName}</a>
 				<div class="content">
 				
-					{block:isOriginalEntry}
 					<div class="photo-wrapper">
 					{Photoset}
 					</div>
-					{/block:isOriginalEntry}
-					
-					{Body}
-					
+			{block:Reblogs}
+			{block:IsOriginalEntry}{Body}{/block:IsOriginalEntry}
+			{block:IsNotOriginalEntry}
 				</div>
+			</div>
+			<div class="bodyitem">
+				<a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="circle"/></a>
+				<a class="username{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:IsActive}href="{Permalink}"{/block:IsActive}>{Username}</a>
+				<div class="content">{Body}</div>
 			</div>
 			{block:More}
 			<a class="system" href="{Permalink}">
@@ -544,7 +560,10 @@ body.light em, body.light i { color: {color:Light mode italics} }
 				<p>{lang:Keep reading}</p>
 			</a>
 			{/block:More}
+			{/block:IsNotOriginalEntry}
 			{/block:Reblogs}
+				</div>
+			</div>
 			{/block:RebloggedFrom}
 		{/block:Photoset}
 		
