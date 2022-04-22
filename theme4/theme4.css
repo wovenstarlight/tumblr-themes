@@ -218,7 +218,8 @@ main {
 }
 .user,
 #notes li.like a,
-#notes li.reblog span > a { text-transform: uppercase }
+#notes li.reblog span > a,
+#notes li.reply a { text-transform: uppercase }
 :not(.ask) > .user.deactivated .username::after,
 .postbody .ask .user.deactivated .username a::after {
 	content: " (deactivated)";
