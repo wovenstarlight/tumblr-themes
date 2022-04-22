@@ -392,7 +392,7 @@ pre {
 	padding: 0;
 	margin: 0;
 }
-.notes .like, .notes .reblog {
+.notes .like, .notes .reblog, .notes .reply {
 	padding: 0.3em 0;
 	display: -ms-grid;
 	display: grid;
@@ -418,6 +418,7 @@ pre {
 		grid-column: 2;
 }
 .notes .note:not(:first-child, .more_notes_link_container:last-child) { border-top: thin solid rgba(var(--accent--rgb), 0.5) }
+.note .avatar_frame { align-self: start }
 .note .avatar { border-radius: 100% }
 /* Ask page */
 .askwrapper:not(:empty) { margin-bottom: 1em }
