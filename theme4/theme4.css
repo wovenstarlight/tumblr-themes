@@ -699,6 +699,7 @@ form input {
 	bottom: 0;
 	top: unset;
 	right: 3em;
+	height: 3.25em;
 }
 .tmblr-iframe.tmblr-iframe--unified-controls:not(.active) { display: none }
 body:not(.light) .fa-moon, body.light .fa-sun { display: none }
