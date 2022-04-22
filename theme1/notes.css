@@ -39,10 +39,13 @@
 	flex-direction: column;
 }
 #notes .action, #notes .action a { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#notes .action a { font-size: 1rem }
+#notes .reply .action a { padding: 0.5em 0 }
 #notes a.source_tumblelog {
 	color: var(--secondary);
 	font-size: 0.75rem;
 }
+#notes .reply .avatar_frame { align-self: start }
 #notes .avatar_frame { position: relative }
 #notes .avatar_frame::after {
 	content: "";
@@ -56,11 +59,29 @@
 	width: 1.25em;
 	border-radius: 100%;
 }
-#notes .like .avatar_frame::after { background-image: url("https://wovenstarlight.github.io/tumblr-themes/theme1/like.svg") }
-#notes .reblog .avatar_frame::after { background-image: url("https://wovenstarlight.github.io/tumblr-themes/theme1/reblog.svg") }
-#notes .original_post .avatar_frame::after { background-image: url("https://wovenstarlight.github.io/tumblr-themes/theme1/star.svg") }
-#notes .with_commentary blockquote { font-size: 0.75em }
-#notes .with_commentary blockquote a { color: var(--text-muted) }
+#notes .like .avatar_frame::after {  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 40 40'%3E%3Cpath d='M35.885 11.833c0-5.45-4.418-9.868-9.867-9.868-3.308 0-6.227 1.633-8.018 4.129-1.791-2.496-4.71-4.129-8.017-4.129-5.45 0-9.868 4.417-9.868 9.868 0 .772.098 1.52.266 2.241C1.751 22.587 11.216 31.568 18 34.034c6.783-2.466 16.249-11.447 17.617-19.959.17-.721.268-1.469.268-2.242z' fill='%23ff4930'/%3E%3C/svg%3E") }
+#notes .reblog .avatar_frame::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='3 3 30 30'%3E%3Cpath d='M30.2 10L23 4v4h-8C9.477 8 5 12.477 5 18c0 1.414.297 2.758.827 3.978l3.3-2.75C9.044 18.831 9 18.421 9 18c0-3.314 2.686-6 6-6h8v4l7.2-6zm-.026 4.023l-3.301 2.75c.083.396.127.806.127 1.227 0 3.313-2.687 6-6 6h-8v-4l-7.2 6 7.2 6v-4h8c5.522 0 10-4.478 10-10 0-1.414-.297-2.758-.826-3.977z' fill='%2300cf35'/%3E%3C/svg%3E") }
+#notes .reply .avatar_frame::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 40 40'%3E%3Cpath d='M18 1c9.941 0 18 6.268 18 14 0 4.368-2.574 8.268-6.604 10.835C29.92 28.144 31.141 31.569 34 35c-5.758-.96-9.44-3.761-11.716-6.416-1.376.262-2.805.416-4.284.416-9.941 0-18-6.268-18-14S8.059 1 18 1z' fill='%2300b8ff'/%3E%3C/svg%3E") }
+#notes .original_post .avatar_frame::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Cpath fill='%23FFAC33' d='M27.287 34.627c-.404 0-.806-.124-1.152-.371L18 28.422l-8.135 5.834c-.693.496-1.623.496-2.312-.008-.689-.499-.979-1.385-.721-2.194l3.034-9.792-8.062-5.681c-.685-.505-.97-1.393-.708-2.203.264-.808 1.016-1.357 1.866-1.363L12.947 13l3.179-9.549c.268-.809 1.023-1.353 1.874-1.353.851 0 1.606.545 1.875 1.353L23 13l10.036.015c.853.006 1.606.556 1.867 1.363.263.81-.022 1.698-.708 2.203l-8.062 5.681 3.034 9.792c.26.809-.033 1.695-.72 2.194-.347.254-.753.379-1.16.379z'/%3E%3C/svg%3E") }
+#notes .with_commentary blockquote, #notes .answer_content { font-size: 0.75rem }
+#notes .with_commentary blockquote a, #notes .answer_content { color: var(--text-muted) }
+#notes .answer_content {
+	padding-right: .5em;
+	padding-left: .875em;
+	margin: .5em 0;
+	position: relative;
+	white-space: initial;
+}
+#notes .answer_content::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	border: 0.125em solid var(--text-normal);
+	opacity: 0.25;
+	border-radius: 0.25em;
+}
 #notes .more_notes_link_container { margin: 1em }
 #notes .more_notes_link, #notes .notes_loading {
 	display: block;
