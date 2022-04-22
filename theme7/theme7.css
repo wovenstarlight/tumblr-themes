@@ -282,6 +282,7 @@ body {
 .avatar_frame {
 	position: relative;
 	display: flex;
+	align-self: start;
 }
 .avatar_frame svg {
 	position: absolute;
