@@ -555,7 +555,9 @@ span[id*='audio_player'] { display: none }
 	background-color: var(--bg);
 	border-radius: var(--roundness);
 	max-width: 20em;
-	padding-bottom: 0.5em
+	padding-bottom: 0.5em;
+	min-width: 15em;
+	height: fit-content;
 }
 #right > section + section { margin-top: 1.25em }
 /* Headings */
