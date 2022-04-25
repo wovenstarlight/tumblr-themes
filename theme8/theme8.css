@@ -95,6 +95,7 @@ a { text-decoration: none }
 	text-transform: uppercase;
 	font-weight: var(--tweight);
 }
+.tape.active { background-image: conic-gradient(at 50% var(--start), var(--background) 15%, transparent 15% 85%, var(--background) 85%), conic-gradient(at 50% calc(var(--start) + 1%), var(--color) 15%, transparent 15% 85%, var(--color) 85%), var(--image) }
 button.tape {
 	writing-mode: vertical-rl;
 	cursor: pointer;
