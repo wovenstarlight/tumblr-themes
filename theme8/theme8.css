@@ -12,6 +12,7 @@
 html {
 	background-color: var(--bg);
 	color: var(--text);
+	font-family: var(--bfont);
 }
 a { text-decoration: none }
 /* Accessibility */
