@@ -187,15 +187,42 @@ html {
 </nav>
 
 <main id="main">
-	
-	<!-- TODO: posts -->
-	
-	
-	<!-- TODO: about section with description and blog links -->
+
+	<section id="posts">
+		<!-- TODO: posts -->
+	</section>
 
 
-	<!-- TODO: navigation with search and custom pages -->
-	
+	{block:ShowDescription}{block:Description}<section id="about" style="display: none">
+		<div id="desc">{Description}</div>
+		<nav id="blognav">
+			{block:AskEnabled}<a href="/ask" id="asklink" {block:AskPage}class="current-page"{/block:AskPage}>{AskLabel}</a>{/block:AskEnabled}
+			{block:SubmissionsEnabled}<a href="/submit" id="submitlink" {block:SubmitPage}class="current-page"{/block:SubmitPage}>{SubmitLabel}</a>{/block:SubmissionsEnabled}
+			{block:IfRandomPostLink}<a href="/random" id="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
+			{block:IfArchiveLink}<a href="/archive" id="archivelink">{lang:Archive}</a>{/block:IfArchiveLink}
+		</nav>
+	</section>
+	{/block:Description}{/block:ShowDescription}
+
+
+	<section id="nav" style="display: none">
+		{block:IfSearchBar}
+		<!-- SEARCH BAR -->
+		<form action="/search" method="get" id="search">
+			<i class="cp cp-search"></i>
+			<label for="q">Search</label>
+			<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="Search"/>
+		</form>
+		{/block:IfSearchBar}
+		
+		{block:HasPages}
+		<!-- CUSTOM PAGES -->
+		<nav id="pages">
+			{block:Pages}<a href="{URL}">{Label}</a>{/block:Pages}
+		</nav>
+		{/block:HasPages}
+	</section>
+
 </main>
 
 </body>
