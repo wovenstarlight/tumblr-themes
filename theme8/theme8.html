@@ -62,6 +62,7 @@
 	<meta name="color:Tape 3 text" content="#fff">
 	<meta name="select:Tape 3 image fit" title="Repeat" content="repeat; background-size: contain">
 	<meta name="select:Tape 3 image fit" title="Cover" content="no-repeat; background-size: cover">
+	<meta name="image:Sticker" content="">
 
 	<!-- General theme options -->
 	<meta name="if:Highlight avatar" content="1">
@@ -184,6 +185,8 @@ html {
 	</span>
 	
 	<button class="tape {block:HasPages}pages{/block:HasPages} {block:IfSearchBar}search{/block:IfSearchBar}" data-page="nav">{lang:Navigate}</button>
+	
+	{block:IfStickerImage}<img id="sticker" src="{image:Sticker}">{/block:IfStickerImage}
 </nav>
 
 <main id="main">
