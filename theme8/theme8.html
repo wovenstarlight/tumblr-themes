@@ -112,5 +112,9 @@ html {
 <h1 id="hiddentitle">{Title}</h1>
 {/block:HideTitle}
 
+<header id="left">
+{block:ShowTitle}<a href="/" id="title"><h1>{Title}</h1></a>{/block:ShowTitle}
+{block:ShowAvatar}<a href="/" id="avatar" class="{AvatarShape} {block:IfHighlightAvatar}highlight{/block:IfHighlightAvatar}"><img src="{PortraitURL-128}" /></a>{/block:ShowAvatar}
+</header>
 </body>
 </html>
