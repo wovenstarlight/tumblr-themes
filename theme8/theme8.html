@@ -37,6 +37,17 @@
 	<meta name="text:Font size" content="16px">
 	<meta name="text:Post width" content="540px">
 
+	<!-- General colors -->
+	<meta name="color:Background" content="#eee">
+	<meta name="color:Text" content="#000">
+
+	<!-- Tapes -->
+	<meta name="image:Title tape" content="{HeaderImage}">
+	<meta name="color:Title tape" content="#000">
+	<meta name="color:Title tape text" content="#fff">
+	<meta name="select:Title tape image fit" title="Repeat" content="repeat; background-size: contain">
+	<meta name="select:Title tape image fit" title="Cover" content="no-repeat; background-size: cover">
+
 	<!-- General theme options -->
 	<meta name="if:Highlight avatar" content="1">
 	<meta name="if:Back to top button" content="1">
@@ -73,7 +84,15 @@ html {
 	--post-width: {text:Post width};
 	--name: "{Name}";
 	font-size: {text:Font size};
+	/* Regular palette */
+	--bg: {color:Background};
+	--text: {color:Text};
+	/* Tapes */
+	--tt-image: url("{image:Title tape}");
+	--tt-bg: {color:Title tape};
+	--tt-text: {color:Title tape text};
 }
+#left { background-repeat: {select:Title tape image fit}; }
 </style>
 <link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme8/theme8.min.css">
 <style>{CustomCSS}</style>
