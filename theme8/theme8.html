@@ -9,7 +9,7 @@
 		Custom audio posts by annasthms: https://annasthms.tumblr.com/more/js/customaudio/new
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 23 Apr 2022.
+	Last updated 25 Apr 2022.
 -->
 
 <!DOCTYPE html>
@@ -47,6 +47,21 @@
 	<meta name="color:Title tape text" content="#fff">
 	<meta name="select:Title tape image fit" title="Repeat" content="repeat; background-size: contain">
 	<meta name="select:Title tape image fit" title="Cover" content="no-repeat; background-size: cover">
+	<meta name="image:Tape 1" content="">
+	<meta name="color:Tape 1" content="#000">
+	<meta name="color:Tape 1 text" content="#fff">
+	<meta name="select:Tape 1 image fit" title="Repeat" content="repeat; background-size: contain">
+	<meta name="select:Tape 1 image fit" title="Cover" content="no-repeat; background-size: cover">
+	<meta name="image:Tape 2" content="">
+	<meta name="color:Tape 2" content="#000">
+	<meta name="color:Tape 2 text" content="#fff">
+	<meta name="select:Tape 2 image fit" title="Repeat" content="repeat; background-size: contain">
+	<meta name="select:Tape 2 image fit" title="Cover" content="no-repeat; background-size: cover">
+	<meta name="image:Tape 3" content="">
+	<meta name="color:Tape 3" content="#000">
+	<meta name="color:Tape 3 text" content="#fff">
+	<meta name="select:Tape 3 image fit" title="Repeat" content="repeat; background-size: contain">
+	<meta name="select:Tape 3 image fit" title="Cover" content="no-repeat; background-size: cover">
 
 	<!-- General theme options -->
 	<meta name="if:Highlight avatar" content="1">
@@ -91,8 +106,20 @@ html {
 	--tt-image: url("{image:Title tape}");
 	--tt-bg: {color:Title tape};
 	--tt-text: {color:Title tape text};
+	--t1-image: url("{image:Tape 1}");
+	--t1-bg: {color:Tape 1};
+	--t1-text: {color:Tape 1 text};
+	--t2-image: url("{image:Tape 2}");
+	--t2-bg: {color:Tape 2};
+	--t2-text: {color:Tape 2 text};
+	--t3-image: url("{image:Tape 3}");
+	--t3-bg: {color:Tape 3};
+	--t3-text: {color:Tape 3 text};
 }
 #left { background-repeat: {select:Title tape image fit}; }
+.tape['data-page'*='posts'] { background-repeat: {select:Tape 1 image fit}; }
+.tape['data-page'*='about'] { background-repeat: {select:Tape 2 image fit}; }
+.tape['data-page'*='nav'] { background-repeat: {select:Tape 3 image fit}; }
 </style>
 <link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme8/theme8.min.css">
 <style>{CustomCSS}</style>
@@ -144,5 +171,32 @@ html {
 {block:ShowTitle}<a href="/" id="title"><h1>{Title}</h1></a>{/block:ShowTitle}
 {block:ShowAvatar}<a href="/" id="avatar" class="{AvatarShape} {block:IfHighlightAvatar}highlight{/block:IfHighlightAvatar}"><img src="{PortraitURL-128}" /></a>{/block:ShowAvatar}
 </header>
+
+<nav id="tapes">
+	<button class="tape" data-page="posts">{lang:Posts}</button>
+	
+	{block:ShowDescription}{block:Description}<button class="tape" data-page="about">{lang:About}</button>{/block:Description}{/block:ShowDescription}
+	<span class="tape"> <!-- for if description is missing or hidden -->
+		{block:AskEnabled}<a href="/ask" id="asklink" {block:AskPage}class="current-page"{/block:AskPage} title="{AskLabel}"><i class="cp cp-paper-plane"></i></a>{/block:AskEnabled}
+		{block:SubmissionsEnabled}<a href="/submit" id="submitlink" {block:SubmitPage}class="current-page"{/block:SubmitPage} title="{SubmitLabel}"><i class="cp cp-gift"></i></a>{/block:SubmissionsEnabled}
+		{block:IfRandomPostLink}<a href="/random" id="randomlink" title="{lang:Random}"><i class="cp cp-shuffle"></i></a>{/block:IfRandomPostLink}
+		{block:IfArchiveLink}<a href="/archive" id="archivelink" title="{lang:Archive}"><i class="cp cp-calendar"></i></a>{/block:IfArchiveLink}
+	</span>
+	
+	<button class="tape {block:HasPages}pages{/block:HasPages} {block:IfSearchBar}search{/block:IfSearchBar}" data-page="nav">{lang:Navigate}</button>
+</nav>
+
+<main id="main">
+	
+	<!-- TODO: posts -->
+	
+	
+	<!-- TODO: about section with description and blog links -->
+
+
+	<!-- TODO: navigation with search and custom pages -->
+	
+</main>
+
 </body>
 </html>
