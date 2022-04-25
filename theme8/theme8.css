@@ -28,7 +28,7 @@ a { text-decoration: none }
 #left {
 	position: fixed;
 	top: 0;
-	left: 0.5em;
+	left: 1.5em;
 	background-color: var(--tt-bg);
 	background-image: var(--tt-image);
 	height: 100vh;
@@ -69,3 +69,57 @@ a { text-decoration: none }
 	border-radius: 100%;
 	overflow: hidden;
 }
+
+
+
+/*********************************** TAPES ***********************************/
+#tapes {
+	position: fixed;
+	bottom: 0;
+	right: 1.5em;
+	display: flex;
+	flex-direction: row-reverse;
+}
+.tape {
+	border: none;
+	position: relative;
+	padding: 1em 0.5em;
+	margin: 0 0 0 0.75em;
+	display: block;
+	height: 70vh;
+	width: 4em;
+	text-align: left;
+}
+button.tape {
+	writing-mode: vertical-rl;
+	cursor: pointer;
+}
+.tape[data-page*='posts'] {
+	background-color: var(--t1-bg);
+	background-image: var(--t1-image);
+	color: var(--t1-text);
+}
+.tape[data-page*='about'], span.tape {
+	background-color: var(--t2-bg);
+	background-image: var(--t2-image);
+	color: var(--t2-text);
+	top: 3em;
+}
+.tape[data-page*='about'] + span.tape { display: none }
+span.tape {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+span.tape a {
+	color: var(--t2-text);
+	margin-bottom: 1em;
+}
+.tape[data-page*='nav'] {
+	background-color: var(--t3-bg);
+	background-image: var(--t3-image);
+	color: var(--t3-text);
+	top: 6em;
+}
+.tape[data-page*='about'] + span.tape,
+.tape[data-page*='nav']:not(.pages, .search) { display: none }
