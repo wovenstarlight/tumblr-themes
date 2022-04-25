@@ -75,7 +75,7 @@ a { text-decoration: none }
 /*********************************** TAPES ***********************************/
 #tapes {
 	position: fixed;
-	bottom: 0;
+	bottom: -1em;
 	right: 1.5em;
 	display: flex;
 	flex-direction: row-reverse;
@@ -86,26 +86,36 @@ a { text-decoration: none }
 	padding: 1em 0.5em;
 	margin: 0 0 0 0.75em;
 	display: block;
-	height: 70vh;
+	height: 80vh;
 	width: 4em;
 	text-align: left;
+	background: conic-gradient(at 50% var(--start), var(--background) 15%, transparent 15% 85%, var(--background) 85%), var(--image);
+	background-color: var(--background);
+	color: var(--color);
+	text-transform: uppercase;
+	font-weight: var(--tweight);
 }
 button.tape {
 	writing-mode: vertical-rl;
 	cursor: pointer;
+	transition: transform .2s;
+}
+button.tape:hover {
+	transform: translateY(-1em);
 }
 .tape[data-page*='posts'] {
-	background-color: var(--t1-bg);
-	background-image: var(--t1-image);
-	color: var(--t1-text);
+	--background: var(--t1-bg);
+	--image: var(--t1-image);
+	--color: var(--t1-text);
+	--start: 21%;
 }
 .tape[data-page*='about'], span.tape {
-	background-color: var(--t2-bg);
-	background-image: var(--t2-image);
-	color: var(--t2-text);
-	top: 3em;
+	--background: var(--t2-bg);
+	--image: var(--t2-image);
+	--color: var(--t2-text);
+	--start: 21.5%;
+	top: 5em;
 }
-.tape[data-page*='about'] + span.tape { display: none }
 span.tape {
 	display: flex;
 	flex-direction: column;
@@ -116,10 +126,18 @@ span.tape a {
 	margin-bottom: 1em;
 }
 .tape[data-page*='nav'] {
-	background-color: var(--t3-bg);
-	background-image: var(--t3-image);
-	color: var(--t3-text);
-	top: 6em;
+	--background: var(--t3-bg);
+	--image: var(--t3-image);
+	--color: var(--t3-text);
+	--start: 27%;
+	top: 10em;
 }
 .tape[data-page*='about'] + span.tape,
 .tape[data-page*='nav']:not(.pages, .search) { display: none }
+#sticker {
+	position: absolute;
+	bottom: 3em;
+	left: -5.5em;
+	max-height: 10em;
+	max-width: 10em;
+}
