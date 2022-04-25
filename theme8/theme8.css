@@ -136,7 +136,7 @@ span.tape a {
 .tape[data-page*='nav']:not(.pages, .search) { display: none }
 #sticker {
 	position: absolute;
-	bottom: 3em;
+	bottom: 2em;
 	left: -5.5em;
 	max-height: 10em;
 	max-width: 10em;
