@@ -202,14 +202,14 @@ html {
 	<button class="tape active" data-page="posts">{lang:Posts}</button>
 	
 	{block:ShowDescription}{block:Description}<button class="tape" data-page="about">{lang:About}</button>{/block:Description}{/block:ShowDescription}
-	<span class="tape"> <!-- for if description is missing or hidden -->
+	<span class="tape {block:AskEnabled}a{/block:AskEnabled} {block:SubmissionsEnabled}s{/block:SubmissionsEnabled} {block:IfRandomPostLink}r{/block:IfRandomPostLink} {block:IfArchiveLink}c{/block:IfArchiveLink}"> <!-- for if description is missing or hidden -->
 		{block:AskEnabled}<a href="/ask" id="asklink" {block:AskPage}class="current-page"{/block:AskPage} title="{AskLabel}"><i class="cp cp-paper-plane"></i></a>{/block:AskEnabled}
 		{block:SubmissionsEnabled}<a href="/submit" id="submitlink" {block:SubmitPage}class="current-page"{/block:SubmitPage} title="{SubmitLabel}"><i class="cp cp-gift"></i></a>{/block:SubmissionsEnabled}
 		{block:IfRandomPostLink}<a href="/random" id="randomlink" title="{lang:Random}"><i class="cp cp-shuffle"></i></a>{/block:IfRandomPostLink}
 		{block:IfArchiveLink}<a href="/archive" id="archivelink" title="{lang:Archive}"><i class="cp cp-calendar"></i></a>{/block:IfArchiveLink}
 	</span>
 	
-	<button class="tape {block:HasPages}pages{/block:HasPages} {block:IfSearchBar}search{/block:IfSearchBar}" data-page="nav">{lang:Navigate}</button>
+	<button class="tape {block:HasPages}pages{/block:HasPages} {block:IfSearchBar}search{/block:IfSearchBar}" {block:HasPages}data-page="nav"{/block:HasPages} {block:IfSearchBar}data-page="nav"{/block:IfSearchBar}>{lang:Navigate}</button>
 	
 	{block:IfStickerImage}<img id="sticker" src="{image:Sticker}">{/block:IfStickerImage}
 </nav>
