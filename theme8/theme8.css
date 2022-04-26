@@ -1,6 +1,7 @@
 * {
 	scrollbar-color: var(--tt-text) var(--tt-bg);
 	scrollbar-width: thin;
+	background-position: center !important;
 }
 ::-webkit-scrollbar {
 	width: 0.5em;
@@ -109,12 +110,10 @@ a { text-decoration: none }
 .tape.active { background-image: conic-gradient(at 50% var(--start), var(--background) 15%, transparent 15% 85%, var(--background) 85%), conic-gradient(at 50% calc(var(--start) + 1%), var(--color) 15%, transparent 15% 85%, var(--color) 85%), var(--image) }
 button.tape {
 	writing-mode: vertical-rl;
-	cursor: pointer;
 	transition: transform .2s;
 }
-button.tape:hover {
-	transform: translateY(-1em);
-}
+.tape[data-page] { cursor: pointer }
+.tape[data-page]:hover { transform: translateY(-1em) }
 .tape[data-page*='posts'] {
 	--background: var(--t1-bg);
 	--image: var(--t1-image);
@@ -136,13 +135,17 @@ span.tape {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	--start: 38%;
+	--start: 0%;
 }
+span.tape.a, span.tape.s, span.tape.r, span.tape.c { --start: 14% }
+span.tape.a.s, span.tape.a.r, span.tape.a.c, span.tape.s.r, span.tape.s.c, span.tape.r.c { --start: 22% }
+span.tape.s.r.c, span.tape.a.r.c, span.tape.a.s.c, span.tape.a.s.r { --start: 30% }
+span.tape.a.s.r.c { --start: 38% }
 span.tape a {
 	color: var(--t2-text);
 	margin-bottom: 1em;
 }
-.tape[data-page*='nav'] {
+.tape:nth-child(4) {
 	--background: var(--t3-bg);
 	--image: var(--t3-image);
 	--color: var(--t3-text);
@@ -151,8 +154,14 @@ span.tape a {
 	--start: 27%;
 	top: 10em;
 }
-.tape[data-page*='about'] + span.tape,
-.tape[data-page*='nav']:not(.pages, .search) { display: none }
+/* Special cases */
+.tape[data-page*='about'] + span.tape { display: none }
+.tape:nth-child(4):not(.pages, .search) {
+	color: transparent;
+	background: var(--t3-image) var(--t3-repeat);
+	background-color: var(--t3-bg);
+	background-size: var(--t3-size);
+}
 #sticker {
 	position: absolute;
 	bottom: 2em;
