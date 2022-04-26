@@ -25,6 +25,8 @@ a { text-decoration: none }
 	margin: 1em;
 	background-color: var(--tt-bg);
 	background-image: var(--tt-image);
+	background-repeat: var(--tt-repeat);
+	background-size: var(--tt-size);
 	color: var(--tt-text);
 	padding: 0.25em 0.5em;
 }
@@ -38,6 +40,8 @@ a { text-decoration: none }
 	left: 1.5em;
 	background-color: var(--tt-bg);
 	background-image: var(--tt-image);
+	background-repeat: var(--tt-repeat);
+	background-size: var(--tt-size);
 	height: 100vh;
 	width: 7em;
 }
@@ -93,7 +97,7 @@ a { text-decoration: none }
 	padding: 1em 0.5em;
 	margin: 0 0 0 0.75em;
 	display: block;
-	height: 80vh;
+	height: 30em;
 	width: 4em;
 	text-align: left;
 	background: conic-gradient(at 50% var(--start), var(--background) 15%, transparent 15% 85%, var(--background) 85%), var(--image);
@@ -115,12 +119,16 @@ button.tape:hover {
 	--background: var(--t1-bg);
 	--image: var(--t1-image);
 	--color: var(--t1-text);
+	background-repeat: var(--t1-repeat);
+	background-size: var(--t1-size);
 	--start: 21%;
 }
 .tape[data-page*='about'], span.tape {
 	--background: var(--t2-bg);
 	--image: var(--t2-image);
 	--color: var(--t2-text);
+	background-repeat: var(--t2-repeat);
+	background-size: var(--t2-size);
 	--start: 21.5%;
 	top: 5em;
 }
@@ -138,6 +146,8 @@ span.tape a {
 	--background: var(--t3-bg);
 	--image: var(--t3-image);
 	--color: var(--t3-text);
+	background-repeat: var(--t3-repeat);
+	background-size: var(--t3-size);
 	--start: 27%;
 	top: 10em;
 }

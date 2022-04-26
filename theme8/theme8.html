@@ -46,23 +46,19 @@
 	<meta name="image:Title tape" content="{HeaderImage}">
 	<meta name="color:Title tape" content="#000">
 	<meta name="color:Title tape text" content="#fff">
-	<meta name="select:Title tape image fit" title="Repeat" content="repeat; background-size: contain">
-	<meta name="select:Title tape image fit" title="Cover" content="no-repeat; background-size: cover">
+	<meta name="if:Title tape image tiling" content="1">
 	<meta name="image:Tape 1" content="">
 	<meta name="color:Tape 1" content="#000">
 	<meta name="color:Tape 1 text" content="#fff">
-	<meta name="select:Tape 1 image fit" title="Repeat" content="repeat; background-size: contain">
-	<meta name="select:Tape 1 image fit" title="Cover" content="no-repeat; background-size: cover">
+	<meta name="if:Tape 1 image tiling" content="1">
 	<meta name="image:Tape 2" content="">
 	<meta name="color:Tape 2" content="#000">
 	<meta name="color:Tape 2 text" content="#fff">
-	<meta name="select:Tape 2 image fit" title="Repeat" content="repeat; background-size: contain">
-	<meta name="select:Tape 2 image fit" title="Cover" content="no-repeat; background-size: cover">
+	<meta name="if:Tape 2 image tiling" content="1">
 	<meta name="image:Tape 3" content="">
 	<meta name="color:Tape 3" content="#000">
 	<meta name="color:Tape 3 text" content="#fff">
-	<meta name="select:Tape 3 image fit" title="Repeat" content="repeat; background-size: contain">
-	<meta name="select:Tape 3 image fit" title="Cover" content="no-repeat; background-size: cover">
+	<meta name="if:Tape 3 image tiling" content="1">
 	<meta name="image:Sticker" content="">
 
 	<!-- General theme options -->
@@ -108,20 +104,48 @@ html {
 	--tt-image: url("{image:Title tape}");
 	--tt-bg: {color:Title tape};
 	--tt-text: {color:Title tape text};
+	{block:IfTitleTapeImageTiling}
+	--tt-repeat: repeat;
+	--tt-size: contain;
+	{/block:IfTitleTapeImageTiling}
+	{block:IfNotTitleTapeImageTiling}
+	--tt-repeat: no-repeat;
+	--tt-size: cover;
+	{/block:IfNotTitleTapeImageTiling}
 	--t1-image: url("{image:Tape 1}");
 	--t1-bg: {color:Tape 1};
 	--t1-text: {color:Tape 1 text};
+	{block:IfTape1ImageTiling}
+	--t1-repeat: repeat;
+	--t1-size: contain;
+	{/block:IfTape1ImageTiling}
+	{block:IfNotTape1ImageTiling}
+	--t1-repeat: no-repeat;
+	--t1-size: cover;
+	{/block:IfNotTape1ImageTiling}
 	--t2-image: url("{image:Tape 2}");
 	--t2-bg: {color:Tape 2};
 	--t2-text: {color:Tape 2 text};
+	{block:IfTape2ImageTiling}
+	--t2-repeat: repeat;
+	--t2-size: contain;
+	{/block:IfTape2ImageTiling}
+	{block:IfNotTape2ImageTiling}
+	--t2-repeat: no-repeat;
+	--t2-size: cover;
+	{/block:IfNotTape2ImageTiling}
 	--t3-image: url("{image:Tape 3}");
 	--t3-bg: {color:Tape 3};
 	--t3-text: {color:Tape 3 text};
+	{block:IfTape3ImageTiling}
+	--t3-repeat: repeat;
+	--t3-size: contain;
+	{/block:IfTape3ImageTiling}
+	{block:IfNotTape3ImageTiling}
+	--t3-repeat: no-repeat;
+	--t3-size: cover;
+	{/block:IfNotTape3ImageTiling}
 }
-#left, #s-m-t-tooltip { background-repeat: {select:Title tape image fit}; }
-.tape[data-page*='posts'] { background-repeat: {select:Tape 1 image fit}; }
-.tape[data-page*='about'], span.tape { background-repeat: {select:Tape 2 image fit}; }
-.tape[data-page*='nav'] { background-repeat: {select:Tape 3 image fit}; }
 </style>
 <link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme8/theme8.min.css">
 <style>{CustomCSS}</style>
