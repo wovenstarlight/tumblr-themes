@@ -1,8 +1,8 @@
 $(document).ready( function() {
 
 	// switch between tabs
-	$("#tapes button").click( function() {
-		$("#tapes button").removeClass("active");
+	$("#tapes [data-page]").click( function() {
+		$("#tapes [data-page]").removeClass("active");
 		$(this).addClass("active");
 		$("#main section").fadeOut();
 		$("#" + $(this).attr("data-page")).fadeIn();
