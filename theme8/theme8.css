@@ -21,6 +21,13 @@ a { text-decoration: none }
 	font-size: 1px;
 	top: -100rem;
 }
+#s-m-t-tooltip {
+	margin: 1em;
+	background-color: var(--tt-bg);
+	background-image: var(--tt-image);
+	color: var(--tt-text);
+	padding: 0.25em 0.5em;
+}
 
 
 
@@ -121,6 +128,7 @@ span.tape {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	--start: 38%;
 }
 span.tape a {
 	color: var(--t2-text);
