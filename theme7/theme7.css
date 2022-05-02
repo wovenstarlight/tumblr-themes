@@ -688,7 +688,7 @@ div:not(.hasimg) .feature img {
 }
 
 @media (max-width: 50em) {
-	body #right { display: none }
+	body #right, #right:empty ~ #showright { display: none }
 	
 	body.showright { overflow: hidden }	
 	body.showright #right {
