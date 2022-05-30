@@ -7,7 +7,7 @@ PREVIEWS: [Index page](https://starlightpreviews.tumblr.com/theme5), [permalink]
 [INSTALL (standard)](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme5/theme5.html)
 
 INSTALL (background image):
-* [Single image/Same image on both color modes](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme5/theme5-bgimg-double.html)
+* [Single image/Same image on both color modes](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme5/theme5-bgimg-single.html)
 * [Different images on light/dark modes](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme5/theme5-bgimg-double.html)
 
 If you like this theme or plan to use it, please [reblog it](https://starlightthemes.tumblr.com/post/676897196701024256/theme-5-jupiter) on Tumblr!
