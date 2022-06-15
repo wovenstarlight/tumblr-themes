@@ -410,6 +410,7 @@ span[id*='audio_player'] { display: none }
 	font-size: 1.625em;
 	display: block;
 }
+#avatartitle:empty { margin-bottom: 0.85em }
 /* Blog avatar */
 #avatartitle img {
 	width: 6.5rem;
@@ -447,7 +448,7 @@ span[id*='audio_player'] { display: none }
 	justify-content: center;
 	margin-top: 1em;
 }
-#blognav .texts { padding: 0 0.9em } /* Text padding */
+#blognav .texts { padding: 0.475em 0.9em } /* Text padding */
 #pagination a:hover, #blognav .rounds:hover {
 	background-color: rgba(var(--accent--rgb), 0.15);
 	border-color: var(--accent);
@@ -460,6 +461,7 @@ span[id*='audio_player'] { display: none }
 	color: var(--accent);
 	cursor: pointer;
 	width: 2.5em;
+	height: 2.5em;
 }
 #blognav .texts, #blognav .rounds { /* All link styles */
 	border-radius: 1.25em;
@@ -468,8 +470,6 @@ span[id*='audio_player'] { display: none }
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 2.5em;
-	flex-shrink: 0;
 	margin: 0 0.25em 0.5em;
 }
 /* Dropdown menu */
