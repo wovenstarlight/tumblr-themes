@@ -613,7 +613,7 @@ div:not(.hasimg) .feature img {
 	position: relative;
 	z-index: 1;
 }
-.feature [class*="npf"], .feature [class*="npf"] *, .feature figure, .feature iframe, .feature img {
+.feature [class*="npf"]:not(p), .feature [class*="npf"] *, .feature figure, .feature iframe, .feature img {
 	height: 100% !important;
 	width: 100% !important;
 	padding: 0;
