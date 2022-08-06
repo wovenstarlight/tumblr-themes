@@ -190,6 +190,7 @@ body {
 #main > section {
 	position: absolute;
 	max-height: 100vh;
+	max-width: var(--post-width);
 }
 #desc, #blognav, #search, #pages { max-width: var(--post-width) }
 #desc {
