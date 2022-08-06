@@ -14,6 +14,7 @@ html {
 	background-color: var(--bg);
 	color: var(--text);
 	font-family: var(--bfont);
+	height: 100%;
 }
 a { text-decoration: none }
 /* Accessibility */
@@ -173,15 +174,22 @@ span.tape a {
 
 
 /*********************************** MIDDLE **********************************/
+body {
+	height: 100%;
+	display: grid;
+	justify-items: center;
+	align-items: center;
+	width: calc(100% - 14em - 22em);
+	margin-left: 14em;
+}
+#main {
+	display: grid;
+	justify-items: center;
+	align-items: center;
+}
 #main section {
 	position: absolute;
-	left: 14em;
-	width: calc(100% - 14em - 22em);
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	max-height: 100vh;
 }
 #desc, #blognav, #search, #pages { max-width: var(--post-width) }
 #desc {
