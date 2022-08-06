@@ -4,7 +4,7 @@ $(document).ready( function() {
 	$("#tapes [data-page]").click( function() {
 		$("#tapes [data-page]").removeClass("active");
 		$(this).addClass("active");
-		$("#main section").fadeOut();
+		$("#main > section").fadeOut();
 		$("#" + $(this).attr("data-page")).fadeIn();
 	});
 
