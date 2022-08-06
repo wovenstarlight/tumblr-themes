@@ -145,7 +145,7 @@ span.tape a {
 	color: var(--t2-text);
 	margin-bottom: 1em;
 }
-.tape:nth-child(4) {
+.tape.nav {
 	--background: var(--t3-bg);
 	--image: var(--t3-image);
 	--color: var(--t3-text);
@@ -156,7 +156,7 @@ span.tape a {
 }
 /* Special cases */
 .tape[data-page*='about'] + span.tape { display: none }
-.tape:nth-child(4):not(.pages, .search) {
+.tape.nav:not(.pages, .search) {
 	color: transparent;
 	background: var(--t3-image) var(--t3-repeat);
 	background-color: var(--t3-bg);

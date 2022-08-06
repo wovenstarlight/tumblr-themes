@@ -209,7 +209,7 @@ html {
 		{block:IfArchiveLink}<a href="/archive" id="archivelink" title="{lang:Archive}"><i class="cp cp-calendar"></i></a>{/block:IfArchiveLink}
 	</span>
 	
-	<button class="tape {block:HasPages}pages{/block:HasPages} {block:IfSearchBar}search{/block:IfSearchBar}" {block:HasPages}data-page="nav"{/block:HasPages} {block:IfSearchBar}data-page="nav"{/block:IfSearchBar}>{lang:Navigate}</button>
+	<button class="tape nav {block:HasPages}pages{/block:HasPages} {block:IfSearchBar}search{/block:IfSearchBar}" {block:HasPages}data-page="nav"{/block:HasPages} {block:IfSearchBar}data-page="nav"{/block:IfSearchBar}>{lang:Navigate}</button>
 	
 	{block:IfStickerImage}<img id="sticker" src="{image:Sticker}">{/block:IfStickerImage}
 </nav>
