@@ -187,7 +187,7 @@ body {
 	justify-items: center;
 	align-items: center;
 }
-#main section {
+#main > section {
 	position: absolute;
 	max-height: 100vh;
 }
