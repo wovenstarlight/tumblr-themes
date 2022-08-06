@@ -275,3 +275,62 @@ body {
 	padding: 0.25em 0.5em;
 }
 #search + #pages { margin-top: 1em }
+
+
+
+/*********************************** POSTS ***********************************/
+#posts { padding: 3em 0 }
+.post { margin-bottom: 3.5em } /* Post spacing */
+.post .body, .post .tags {
+	background-color: rgba(var(--tt-bg--rgb), 0.1);
+	padding: 1.25em 0.5em;
+}
+/* Stickies general */
+.stickies, .likereblog a {
+	display: flex;
+	justify-content: center;
+}
+.stickies > * {
+	background-color: var(--tt-bg);
+	background-image: var(--tt-image);
+	background-repeat: var(--tt-repeat);
+	background-size: var(--tt-size);
+	color: var(--tt-text);
+}
+.stickies a {
+	color: var(--tt-text);
+	padding: 0.5em;
+}
+.stickies > * + * { margin-left: 2em }
+header.stickies { margin-bottom: -0.75em }
+footer .stickies, .tags { margin-top: -0.75em }
+/* Footer stickies */
+.viasource, .viasource a { display: flex; align-items: center }
+.viasource a { padding: 0.3em 0.5em }
+.viasource img {
+	--size: 1.75em;
+	width: var(--size);
+	height: var(--size);
+	border-radius: 100%;
+}
+.likereblog {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.likereblog a { padding: 0.75em }
+/* Like button */
+.customlike { position: relative }
+.customlike .like_button.liked + i { color: var(--links) }
+.customlike .like_button.liked + i::before { content: "\eb03" }
+.customlike iframe {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	opacity: 0;
+}
