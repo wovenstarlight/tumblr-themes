@@ -50,11 +50,11 @@
 	<!-- General colors -->
 	<meta name="color:Background" content="#e9e7db">
 	<meta name="color:Text" content="#000">
+	<meta name="color:Links" content="#008346">
 
 	<!-- Tapes -->
 	<meta name="image:Title tape" content="{HeaderImage}">
 	<meta name="color:Title tape" content="#046802">
-	<meta name="color:Links" content="#000">
 	<meta name="color:Title tape text" content="#f2ffd8">
 	<meta name="if:Title tape image tiling" content="1">
 	<meta name="image:Tape 1" content="">
@@ -83,12 +83,12 @@
 	<meta name="color:ALT Title tape text" content="#ffcd8e">
 	<meta name="if:ALT Title tape image tiling" content="1">
 	<meta name="image:ALT Tape 1" content="">
-	<meta name="color:ALT Tape 1" content="#63085d">
-	<meta name="color:ALT Tape 1 text" content="#e3af80">
+	<meta name="color:ALT Tape 1" content="#72003b">
+	<meta name="color:ALT Tape 1 text" content="#eba4a4">
 	<meta name="if:ALT Tape 1 image tiling" content="1">
 	<meta name="image:ALT Tape 2" content="">
-	<meta name="color:ALT Tape 2" content="#72003b">
-	<meta name="color:ALT Tape 2 text" content="#eba4a4">
+	<meta name="color:ALT Tape 2" content="#63085d">
+	<meta name="color:ALT Tape 2 text" content="#e3af80">
 	<meta name="if:ALT Tape 2 image tiling" content="1">
 	<meta name="image:ALT Tape 3" content="">
 	<meta name="color:ALT Tape 3" content="#221e4b">
@@ -138,6 +138,7 @@ html {
 html:not(.alt) { /* REGULAR PALETTE */
 	--bg: {color:Background};
 	--text: {color:Text};
+	--links: {color:Links};
 	/* Tapes */
 	--tt-image: url("{image:Title tape}");
 	--tt-bg: {color:Title tape};
@@ -190,6 +191,7 @@ html:not(.alt) { /* REGULAR PALETTE */
 html.alt { /* ALTERNATE PALETTE */
 	--bg: {color:ALT Background};
 	--text: {color:ALT Text};
+	--links: {color:ALT Links};
 	/* Tapes */
 	--tt-image: url("{image:ALT Title tape}");
 	--tt-bg: {color:ALT Title tape};
