@@ -167,6 +167,7 @@ body.lower .tape { font-variant: normal }
 	left: 1.5em;
 	height: 100vh;
 	width: 7em;
+	z-index: 5;
 }
 #title {
 	width: 100vh;
@@ -215,6 +216,7 @@ body.lower .tape { font-variant: normal }
 	flex-direction: row-reverse;
 	align-items: end;
 	font-size: 1.2em;
+	z-index: 5;
 }
 .tape {
 	border: none;
@@ -360,6 +362,7 @@ body {
 	position: fixed;
 	bottom: 1em;
 	left: 7.5em;
+	z-index: 6;
 }
 #buttons a, #scrolltotop_arrow {
 	display: flex;
