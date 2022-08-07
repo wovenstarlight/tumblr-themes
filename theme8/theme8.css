@@ -40,6 +40,7 @@ body.lower .stickies,
 body.lower .tags {
 	text-transform: lowercase;
 }
+body.lower .tape { font-variant: normal }
 /* Roundness */
 #s-m-t-tooltip,
 #avatar img,
