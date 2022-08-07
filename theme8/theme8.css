@@ -173,12 +173,14 @@ a { text-decoration: none }
 	padding: 0;
 	margin: 0 0 0 0.75em;
 	display: block;
-	height: 30em;
-	width: 4em;
+	height: 25em;
+	width: 3em;
+	font-size: 1.2em;
 	text-align: left;
 	background-color: var(--background);
+	font-variant: small-caps;
 	color: var(--color);
-	text-transform: uppercase;
+	font-family: var(--tfont);
 	font-weight: var(--tweight);
 }
 button.tape, button.tape span {
@@ -188,13 +190,13 @@ button.tape, button.tape span {
 .tape[data-page] { cursor: pointer }
 .tape[data-page]:hover { transform: translateY(-1em) }
 /* Step down */
-.tape[data-page*='about'], nav.tape { top: 5em }
-.tape.nav { top: 10em }
+.tape[data-page*='about'], nav.tape { top: 4.25em }
+.tape.nav { top: 8.5em }
 /* Tape labels */
 .tape span {
 	display: block;
-	width: 4em;
-	padding: 1em 0.5em;
+	width: 100%;
+	padding: 1em 0.5em 0.5em;
 	display: flex;
 	align-items: center;
 	height: fit-content;
