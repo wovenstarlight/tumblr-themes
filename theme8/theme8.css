@@ -48,11 +48,11 @@ a { text-decoration: none }
 	color: var(--t1-text);
 }
 /* Accent tape 1 bands */
-#blognav a:nth-child(3n+1), #pages a:nth-child(3n+1) {
+#blognav a:nth-child(3n+1), #pages a:nth-child(3n+1), .post .tags a:nth-child(3n+1) {
 	background-color: var(--t1-bg);
 	color: var(--t1-text);
 }
-#blognav a:nth-child(3n+1)::before, #pages a:nth-child(3n+1)::before {
+#blognav a:nth-child(3n+1)::before, #pages a:nth-child(3n+1)::before, .post .tags a:nth-child(3n+1)::before {
 	background: var(--t1-image) var(--t1-repeat);
 	background-size: var(--t1-size);
 }
@@ -64,11 +64,11 @@ a { text-decoration: none }
 	color: var(--t2-text);
 }
 /* Accent tape 2 bands */
-#blognav a:nth-child(3n+2), #pages a:nth-child(3n+2) {
+#blognav a:nth-child(3n+2), #pages a:nth-child(3n+2), .post .tags a:nth-child(3n+2) {
 	background-color: var(--t2-bg);
 	color: var(--t2-text);
 }
-#blognav a:nth-child(3n+2)::before, #pages a:nth-child(3n+2)::before {
+#blognav a:nth-child(3n+2)::before, #pages a:nth-child(3n+2)::before, .post .tags a:nth-child(3n+2)::before {
 	background: var(--t2-image) var(--t2-repeat);
 	background-size: var(--t2-size);
 }
@@ -80,13 +80,35 @@ a { text-decoration: none }
 	color: var(--t3-text);
 }
 /* Accent tape 3 bands */
-#blognav a:nth-child(3n), #pages a:nth-child(3n) {
+#blognav a:nth-child(3n), #pages a:nth-child(3n), .post .tags a:nth-child(3n) {
 	background-color: var(--t3-bg);
 	color: var(--t3-text);
 }
-#blognav a:nth-child(3n)::before, #pages a:nth-child(3n)::before {
+#blognav a:nth-child(3n)::before, #pages a:nth-child(3n)::before, .post .tags a:nth-child(3n)::before {
 	background: var(--t3-image) var(--t3-repeat);
 	background-size: var(--t3-size);
+}
+/* Accent tape bands, general */
+#blognav, #pages, .post .tags {
+	display: flex;
+	flex-flow: row wrap;
+}
+#blognav a, #pages a, .post .tags a {
+	flex-grow: 1;
+	padding: 0.5em 1em;
+	margin: 0.25em;
+	text-align: center;
+	position: relative;
+}
+#blognav a::before, #pages a::before, .post .tags a::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.2;
 }
 
 
@@ -263,27 +285,6 @@ body {
 	bottom: 100%;
 	margin-bottom: 0.75em;
 }
-#blognav, #pages {
-	display: flex;
-	flex-flow: row wrap;
-}
-#blognav a, #pages a {
-	flex-grow: 1;
-	padding: 0.5em 1em;
-	margin: 0.25em;
-	text-align: center;
-	position: relative;
-}
-#blognav a::before, #pages a::before {
-	content: "";
-	display: block;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	opacity: 0.175;
-}
 #search {
 	width: 100%;
 	padding: 0.5em 0.5em;
@@ -308,10 +309,11 @@ body {
 	margin-bottom: 3.5em;
 	position: relative;
 }
-.post .body, .post .tags {
+.post .body {
 	background-color: rgba(var(--tt-bg--rgb), 0.1);
 	padding: 1.25em 0.5em;
 }
+.post .tags { margin-top: 0.25em }
 /* Stickies general */
 .stickies, .likereblog a {
 	display: flex;
@@ -323,7 +325,7 @@ body {
 }
 .stickies > * + * { margin-left: 2em }
 header.stickies { margin-bottom: -0.75em }
-footer .stickies, .tags { margin-top: -0.75em }
+footer .stickies { margin-top: -0.75em }
 /* Pinned post label */
 .pinnedpost {
 	position: absolute;
