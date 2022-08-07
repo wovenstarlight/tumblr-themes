@@ -16,7 +16,10 @@ html {
 	font-family: var(--bfont);
 	height: 100%;
 }
-a { text-decoration: none }
+a {
+	color: var(--links);
+	text-decoration: none;
+}
 /* Accessibility */
 #skip, #hiddentitle, #search label {
 	position: fixed;
@@ -411,7 +414,6 @@ footer .stickies { margin-top: -0.75em }
 .showtags { cursor: pointer }
 /* Like button */
 .customlike { position: relative }
-.customlike .like_button.liked + i { color: var(--links) }
 .customlike .like_button.liked + i::before { content: "\eb03" }
 .customlike iframe {
 	position: absolute;
