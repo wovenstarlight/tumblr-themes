@@ -56,7 +56,7 @@ body.lower .tape { font-variant: normal }
 .tape, .tape span { /* Top */
 	border-radius: var(--roundness) var(--roundness) 0 0
 }
-.pinnedpost { /* Right */
+#pinnedpost { /* Right */
 	border-radius: 0 var(--roundness) var(--roundness) 0
 }
 
@@ -66,7 +66,7 @@ body.lower .tape { font-variant: normal }
 #left,
 #s-m-t-tooltip,
 #desc::before, #search,
-.stickies > *, .pinnedpost {
+.stickies > * {
 	background: var(--tt-image) var(--tt-repeat);
 	background-size: var(--tt-size);
 	background-color: var(--tt-bg);
@@ -395,12 +395,13 @@ footer .stickies { margin-top: -0.75em }
 /* Header stickies */
 .submitted { padding: 0 0.5em }
 /* Pinned post label */
-.pinnedpost {
+#pinnedpost {
+	margin: 0;
+	cursor: help;
 	position: absolute;
 	left: 100%;
 	top: 2.5em;
 	padding: 0.6em 0.75em;
-	cursor: help;
 }
 /* Footer stickies */
 .source { padding-left: 0.5em }
