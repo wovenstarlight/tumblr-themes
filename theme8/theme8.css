@@ -83,12 +83,14 @@ body.lower .tape { font-variant: normal }
 }
 /* Accent tape 1 bands */
 #blognav a:nth-child(3n+1), #pages a:nth-child(3n+1), .post .tags a:nth-child(3n+1),
-#scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow {
+#scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow,
+.post .bodyitem:nth-of-type(3n+1) .username {
 	background-color: var(--t1-bg);
 	color: var(--t1-text);
 }
 #blognav a:nth-child(3n+1)::before, #pages a:nth-child(3n+1)::before, .post .tags a:nth-child(3n+1)::before,
-#scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow::before {
+#scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow::before,
+.post .bodyitem:nth-of-type(3n+1) .user {
 	background: var(--t1-image) var(--t1-repeat);
 	background-size: var(--t1-size);
 }
@@ -101,12 +103,14 @@ body.lower .tape { font-variant: normal }
 }
 /* Accent tape 2 bands */
 #blognav a:nth-child(3n+2), #pages a:nth-child(3n+2), .post .tags a:nth-child(3n+2),
-#scrolltotop_parent:nth-last-child(2) #scrolltotop_arrow, #darklight {
+#scrolltotop_parent:nth-last-child(2) #scrolltotop_arrow, #darklight,
+.post .bodyitem:nth-of-type(3n+2) .username {
 	background-color: var(--t2-bg);
 	color: var(--t2-text);
 }
 #blognav a:nth-child(3n+2)::before, #pages a:nth-child(3n+2)::before, .post .tags a:nth-child(3n+2)::before,
-#scrolltotop_parent:nth-last-child(2) #scrolltotop_arrow::before, #darklight::before {
+#scrolltotop_parent:nth-last-child(2) #scrolltotop_arrow::before, #darklight::before,
+.post .bodyitem:nth-of-type(3n+2) .user {
 	background: var(--t2-image) var(--t2-repeat);
 	background-size: var(--t2-size);
 }
@@ -119,12 +123,14 @@ body.lower .tape { font-variant: normal }
 }
 /* Accent tape 3 bands */
 #blognav a:nth-child(3n), #pages a:nth-child(3n), .post .tags a:nth-child(3n),
-#credit {
+#credit,
+.post .bodyitem:nth-of-type(3n) .username {
 	background-color: var(--t3-bg);
 	color: var(--t3-text);
 }
 #blognav a:nth-child(3n)::before, #pages a:nth-child(3n)::before, .post .tags a:nth-child(3n)::before,
-#credit::before {
+#credit::before,
+.post .bodyitem:nth-of-type(3n) .user {
 	background: var(--t3-image) var(--t3-repeat);
 	background-size: var(--t3-size);
 }
@@ -377,10 +383,53 @@ body {
 	margin-bottom: 3.5em;
 	position: relative;
 }
+/* Reblogs */
 .post .body {
 	background-color: rgba(var(--tt-bg--rgb), 0.1);
-	padding: 1.25em 0.5em;
+	padding: 1.25em 0;
 }
+/* Post titles */
+.post .title {
+	margin: 0 -0.75em;
+	padding: 0;
+}
+.post .title a {
+	display: block;
+	text-align: center;
+	font-size: 1.5em;
+	padding: 0.2em 0.6em;
+}
+/* Post usernames */
+.post .user, .post .username {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.post .user { height: 2em }
+.post .username {
+	height: 100%;
+	position: relative;
+	padding: 0 0.25em;
+}
+.post .username::before,
+.post .username::after {
+	content: "";
+	display: block;
+	position: absolute;
+	border: solid transparent;
+	border-width: 1em 0.7em;
+}
+.post .username::before { right: 100% }
+.post .username::after { left: 100% }
+.post .bodyitem:nth-of-type(3n+1) .username::before { border-right-color: var(--t1-bg) }
+.post .bodyitem:nth-of-type(3n+1) .username::after { border-left-color: var(--t1-bg) }
+.post .bodyitem:nth-of-type(3n+2) .username::before { border-right-color: var(--t2-bg) }
+.post .bodyitem:nth-of-type(3n+2) .username::after { border-left-color: var(--t2-bg) }
+.post .bodyitem:nth-of-type(3n) .username::before { border-right-color: var(--t3-bg) }
+.post .bodyitem:nth-of-type(3n) .username::after { border-left-color: var(--t3-bg) }
+/* Body content */
+.post .bodyitemcontent { margin: 0 1em }
+/* Post tags */
 .post .tags { margin-top: 0.25em }
 /* Stickies general */
 .stickies, .likereblog a {
@@ -434,17 +483,6 @@ footer .stickies { margin-top: -0.75em }
 	bottom: 0;
 	z-index: 1;
 	opacity: 0;
-}
-/* Post titles */
-.post .title {
-	margin: 0 -0.75em;
-	padding: 0;
-}
-.post .title a {
-	display: block;
-	text-align: center;
-	font-size: 1.5em;
-	padding: 0.2em 0.6em;
 }
 
 
