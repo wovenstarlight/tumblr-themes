@@ -309,6 +309,7 @@ body {
 	display: grid;
 	justify-items: center;
 	align-items: center;
+	grid-template-columns: var(--post-width);
 }
 #main > section {
 	position: absolute;
@@ -366,7 +367,10 @@ body {
 
 
 /*********************************** POSTS ***********************************/
-#posts { padding: 3em 0 }
+#posts {
+	width: 100%;
+	padding: 3em 0;
+}
 .post {
 	margin-bottom: 3.5em;
 	position: relative;
