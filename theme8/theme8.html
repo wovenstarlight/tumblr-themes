@@ -130,8 +130,9 @@ html {
 	--name: "{Name}";
 	font-size: {text:Font size};
 	--roundness: {select:Corner roundness};
+}
 
-	/* REGULAR PALETTE */
+html:not(.alt) { /* REGULAR PALETTE */
 	--bg: {color:Background};
 	--text: {color:Text};
 	/* Tapes */
@@ -183,16 +184,15 @@ html {
 	{/block:IfNotTape3ImageTiling}
 }
 
-html.alt {
-	/* ALTERNATE PALETTE */
+html.alt { /* ALTERNATE PALETTE */
 	--bg: {color:Alt tackground};
 	--text: {color:Alt text};
 	/* Tapes */
 	--tt-image: url("{image:Alt title tape}");
 	--tt-bg: {color:Alt title tape};
 	--tt-text: {color:Alt title tape text};
-	--tt-bg2--rgb: {RGBcolor:Alt title tape};
-	--tt-text2--rgb: {RGBcolor:Alt title tape text};
+	--tt-bg--rgb: {RGBcolor:Alt title tape};
+	--tt-text--rgb: {RGBcolor:Alt title tape text};
 	{block:IfAltTitleTapeImageTiling}
 	--tt-repeat: repeat;
 	--tt-size: contain;
