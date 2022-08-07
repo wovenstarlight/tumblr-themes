@@ -40,6 +40,12 @@
 	<meta name="select:Special text casing" content="" title="Regular">
 	<meta name="select:Special text casing" content="lowercase" title="Lowercase">
 	<meta name="select:Special text casing" content="uppercase" title="Uppercase">
+	<meta name="select:Corner roundness" content="0" title="None">
+	<meta name="select:Corner roundness" content="0.25rem" title="Least">
+	<meta name="select:Corner roundness" content="0.5rem" title="Less">
+	<meta name="select:Corner roundness" content="0.75rem" title="Medium">
+	<meta name="select:Corner roundness" content="1rem" title="More">
+	<meta name="select:Corner roundness" content="1.25rem" title="Most">
 
 	<!-- General colors -->
 	<meta name="color:Background" content="#e9e7db">
@@ -150,6 +156,7 @@ html {
 	--t3-repeat: no-repeat;
 	--t3-size: cover;
 	{/block:IfNotTape3ImageTiling}
+	--roundness: {select: Corner roundness};
 }
 </style>
 <link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme8/theme8.min.css">

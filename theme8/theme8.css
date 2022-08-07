@@ -40,6 +40,20 @@ body.lower .stickies,
 body.lower .tags {
 	text-transform: lowercase;
 }
+/* Roundness */
+#s-m-t-tooltip,
+#avatar img,
+.post .body, .stickies > *, .viasource img, .tags a,
+#desc::before, #blognav a, #blognav a::before,
+#search, #search input, #pages a, #pages a::before {
+	border-radius: var(--roundness)
+}
+.tape, .tape span { /* Top */
+	border-radius: var(--roundness) var(--roundness) 0 0
+}
+.pinnedpost { /* Right */
+	border-radius: 0 var(--roundness) var(--roundness) 0
+}
 
 
 /******************************** TAPE STYLES ********************************/
@@ -161,11 +175,11 @@ body.lower .tags {
 	width: var(--size);
 	height: var(--size);
 }
-#avatar.highlight {
+#avatar.highlight img {
 	border: medium solid var(--tt-bg);
 	background: var(--tt-text);
 }
-#avatar.circle {
+#avatar.circle img {
 	border-radius: 100%;
 	overflow: hidden;
 }
@@ -357,7 +371,6 @@ footer .stickies { margin-top: -0.75em }
 	--size: 1.75em;
 	width: var(--size);
 	height: var(--size);
-	border-radius: 100%;
 }
 .likereblog {
 	display: flex;
