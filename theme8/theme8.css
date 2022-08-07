@@ -330,9 +330,11 @@ footer .stickies, .tags { margin-top: -0.75em }
 	left: 100%;
 	top: 2.5em;
 	padding: 0.5em;
+	cursor: help;
 }
 /* Footer stickies */
-.viasource, .viasource a { display: flex; align-items: center }
+.source { padding-left: 0.5em }
+.source, .viasource, .viasource a { display: flex; align-items: center }
 .viasource a { padding: 0.3em 0.5em }
 .viasource img {
 	--size: 1.75em;
@@ -346,6 +348,7 @@ footer .stickies, .tags { margin-top: -0.75em }
 	justify-content: center;
 }
 .likereblog a { padding: 0.75em }
+.showtags { cursor: pointer }
 /* Like button */
 .customlike { position: relative }
 .customlike .like_button.liked + i { color: var(--links) }

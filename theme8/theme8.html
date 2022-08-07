@@ -240,6 +240,8 @@ html {
 		
 		<footer>{block:Date}
 			<section class="stickies">
+				{block:ContentSource}<span class="source">{lang:Source}: <a href="{SourceURL}">{SourceTitle}</a></span>{/block:ContentSource}
+			
 				{block:RebloggedFrom}<span class="viasource">
 					<!-- VIA/SOURCE -->
 					<a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}"><img src="{ReblogParentPortraitURL-48}" /></a>
@@ -258,7 +260,7 @@ html {
 					<a href="{ReblogURL}" class="customreblog"><i class="cp cp-reblog-alt"></i></a>
 					{/block:IfReblogButtons}
 					{block:IfPostTags}{block:HasTags}{block:IfShowTagsOnClick}
-					<a class="showtags" tabindex="0"><i class="cp cp-hashtag"></i></a>
+					<a class="showtags" title="{lang:Tags}" tabindex="0"><i class="cp cp-tags-o"></i></a>
 					{/block:IfShowTagsOnClick}{/block:HasTags}{/block:IfPostTags}
 				</span>
 			</section>
