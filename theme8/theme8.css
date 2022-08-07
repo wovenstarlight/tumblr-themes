@@ -202,6 +202,8 @@ body.lower .tape { font-variant: normal }
 	right: 1.5em;
 	display: flex;
 	flex-direction: row-reverse;
+	align-items: end;
+	font-size: 1.2em;
 }
 .tape {
 	border: none;
@@ -209,9 +211,7 @@ body.lower .tape { font-variant: normal }
 	padding: 0;
 	margin: 0 0 0 0.75em;
 	display: block;
-	height: 25em;
 	width: 3em;
-	font-size: 1.2em;
 	text-align: left;
 	background-color: var(--background);
 	font-variant: small-caps;
@@ -226,13 +226,14 @@ button.tape, button.tape span {
 .tape[data-page] { cursor: pointer }
 .tape[data-page]:hover { transform: translateY(-1em) }
 /* Step down */
-.tape[data-page*='about'], nav.tape { top: 4.25em }
-.tape.nav { top: 8.5em }
+.tape[data-page*='posts'] { height: 25em } 
+.tape[data-page*='about'], nav.tape { height: 21em }
+.tape.nav { height: 17em }
 /* Tape labels */
 .tape span {
 	display: block;
 	width: 100%;
-	padding: 1em 0.5em 0.5em;
+	padding: 1em 0.5em 0;
 	display: flex;
 	align-items: center;
 	height: fit-content;
@@ -270,7 +271,7 @@ button.tape, button.tape span {
 /* Icon about */
 nav.tape span {
 	flex-direction: column;
-	padding: 0.5em 0.5em 0;
+	padding-top: 0.5em;
 }
 nav.tape a {
 	color: var(--t2-text);
