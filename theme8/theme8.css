@@ -44,7 +44,7 @@ body.lower .tape { font-variant: normal }
 /* Roundness */
 #s-m-t-tooltip,
 #avatar img,
-.post .body, .stickies > *, .viasource img, .tags a,
+.post .body, .stickies > *, .viasource img, .tags a, .tags a::before,
 #desc::before, #blognav a, #blognav a::before,
 #search, #search input, #pages a, #pages a::before {
 	border-radius: var(--roundness)
