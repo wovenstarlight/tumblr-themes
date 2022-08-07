@@ -27,6 +27,19 @@ a { text-decoration: none }
 	margin: 1em;
 	padding: 0.25em 0.5em;
 }
+/* Casing */
+body.upper #left, body.upper .tape,
+body.upper #s-m-t-tooltip,
+body.upper .stickies,
+body.upper .tags {
+	text-transform: uppercase;
+}
+body.lower #left, body.lower .tape,
+body.lower #s-m-t-tooltip,
+body.lower .stickies,
+body.lower .tags {
+	text-transform: lowercase;
+}
 
 
 /******************************** TAPE STYLES ********************************/
