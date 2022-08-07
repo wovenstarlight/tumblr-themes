@@ -1,5 +1,26 @@
 $(document).ready( function() {
 
+	const page = $("html");
+
+	// Color mode on first load
+	const currPalette = localStorage.getItem("palette");
+	if ( currPalette == "alt" ) {
+		page.addClass("alt");
+	} else if ( currPalette == "normal") {
+		page.removeClass("alt");
+	} // else palette is unset; use default
+
+	// Color mode button click
+	$("#darklight").on("click keypress", function() {
+		page.toggleClass("alt");
+		
+		var newPalette = "normal";
+		if (page.hasClass("alt")) {
+			newPalette = "alt";
+		}
+		localStorage.setItem("palette", newPalette);
+	});
+
 	// switch between tabs
 	$("#tapes [data-page]").click( function() {
 		$("#tapes [data-page]").removeClass("active");
