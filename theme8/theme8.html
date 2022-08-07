@@ -10,7 +10,7 @@
 		Custom audio posts by annasthms: https://annasthms.tumblr.com/more/js/customaudio/new
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 26 Apr 2022.
+	Last updated 7 Aug 2022.
 -->
 
 <!DOCTYPE html>
@@ -56,7 +56,7 @@
 	<meta name="color:Tape 2 text" content="#ffd1b5">
 	<meta name="if:Tape 2 image tiling" content="1">
 	<meta name="image:Tape 3" content="">
-	<meta name="color:Tape 3" content="#7ba5bf">
+	<meta name="color:Tape 3" content="#2f688c">
 	<meta name="color:Tape 3 text" content="#ffdc9f">
 	<meta name="if:Tape 3 image tiling" content="1">
 	<meta name="image:Sticker" content="">
@@ -204,17 +204,17 @@ html {
 </header>
 
 <nav id="tapes">
-	<button class="tape active" data-page="posts">{lang:Posts}</button>
+	<button class="tape active" data-page="posts"><span>{lang:Posts}</span></button>
 	
-	{block:ShowDescription}{block:Description}<button class="tape" data-page="about">{lang:About}</button>{/block:Description}{/block:ShowDescription}
-	<span class="tape {block:AskEnabled}a{/block:AskEnabled} {block:SubmissionsEnabled}s{/block:SubmissionsEnabled} {block:IfRandomPostLink}r{/block:IfRandomPostLink} {block:IfArchiveLink}c{/block:IfArchiveLink}"> <!-- for if description is missing or hidden -->
+	{block:ShowDescription}{block:Description}<button class="tape" data-page="about"><span>{lang:About}</span></button>{/block:Description}{/block:ShowDescription}
+	<nav class="tape"><span> <!-- for if description is missing or hidden -->
 		{block:AskEnabled}<a href="/ask" id="asklink" {block:AskPage}class="current-page"{/block:AskPage} title="{AskLabel}"><i class="cp cp-paper-plane"></i></a>{/block:AskEnabled}
 		{block:SubmissionsEnabled}<a href="/submit" id="submitlink" {block:SubmitPage}class="current-page"{/block:SubmitPage} title="{SubmitLabel}"><i class="cp cp-gift"></i></a>{/block:SubmissionsEnabled}
 		{block:IfRandomPostLink}<a href="/random" id="randomlink" title="{lang:Random}"><i class="cp cp-shuffle"></i></a>{/block:IfRandomPostLink}
 		{block:IfArchiveLink}<a href="/archive" id="archivelink" title="{lang:Archive}"><i class="cp cp-calendar"></i></a>{/block:IfArchiveLink}
-	</span>
+	</span></nav>
 	
-	<button class="tape nav {block:HasPages}pages{/block:HasPages} {block:IfSearchBar}search{/block:IfSearchBar}" {block:HasPages}data-page="nav"{/block:HasPages} {block:IfSearchBar}data-page="nav"{/block:IfSearchBar}>{lang:Navigate}</button>
+	<button class="tape nav {block:HasPages}pages{/block:HasPages} {block:IfSearchBar}search{/block:IfSearchBar}" {block:HasPages}data-page="nav"{/block:HasPages} {block:IfSearchBar}data-page="nav"{/block:IfSearchBar}><span>{lang:Navigate}</span></button>
 	
 	{block:IfStickerImage}<img id="sticker" src="{image:Sticker}">{/block:IfStickerImage}
 </nav>

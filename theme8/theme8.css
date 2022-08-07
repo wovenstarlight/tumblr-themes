@@ -25,12 +25,68 @@ a { text-decoration: none }
 }
 #s-m-t-tooltip {
 	margin: 1em;
-	background-color: var(--tt-bg);
-	background-image: var(--tt-image);
-	background-repeat: var(--tt-repeat);
-	background-size: var(--tt-size);
-	color: var(--tt-text);
 	padding: 0.25em 0.5em;
+}
+
+
+/******************************** TAPE STYLES ********************************/
+/* Title tape */
+#left,
+#s-m-t-tooltip,
+#desc::before, #search,
+.stickies > * {
+	background: var(--tt-image) var(--tt-repeat);
+	background-size: var(--tt-size);
+	background-color: var(--tt-bg);
+	color: var(--tt-text);
+}
+/* Accent tape 1 */
+.tape[data-page*='posts'] {
+	background: var(--t1-image) var(--t1-repeat);
+	background-size: var(--t1-size);
+	background-color: var(--t1-bg);
+	color: var(--t1-text);
+}
+/* Accent tape 1 bands */
+#blognav a:nth-child(3n+1), #pages a:nth-child(3n+1) {
+	background-color: var(--t1-bg);
+	color: var(--t1-text);
+}
+#blognav a:nth-child(3n+1)::before, #pages a:nth-child(3n+1)::before {
+	background: var(--t1-image) var(--t1-repeat);
+	background-size: var(--t1-size);
+}
+/* Accent tape 2 */
+.tape[data-page*='about'], nav.tape {
+	background: var(--t2-image) var(--t2-repeat);
+	background-size: var(--t2-size);
+	background-color: var(--t2-bg);
+	color: var(--t2-text);
+}
+/* Accent tape 2 bands */
+#blognav a:nth-child(3n+2), #pages a:nth-child(3n+2) {
+	background-color: var(--t2-bg);
+	color: var(--t2-text);
+}
+#blognav a:nth-child(3n+2)::before, #pages a:nth-child(3n+2)::before {
+	background: var(--t2-image) var(--t2-repeat);
+	background-size: var(--t2-size);
+}
+/* Accent tape 3 */
+.tape.nav {
+	background: var(--t3-image) var(--t3-repeat);
+	background-size: var(--t3-size);
+	background-color: var(--t3-bg);
+	color: var(--t3-text);
+}
+/* Accent tape 3 bands */
+#blognav a:nth-child(3n), #pages a:nth-child(3n) {
+	background-color: var(--t3-bg);
+	color: var(--t3-text);
+}
+#blognav a:nth-child(3n)::before, #pages a:nth-child(3n)::before {
+	background: var(--t3-image) var(--t3-repeat);
+	background-size: var(--t3-size);
 }
 
 
@@ -40,10 +96,6 @@ a { text-decoration: none }
 	position: fixed;
 	top: 0;
 	left: 1.5em;
-	background-color: var(--tt-bg);
-	background-image: var(--tt-image);
-	background-repeat: var(--tt-repeat);
-	background-size: var(--tt-size);
 	height: 100vh;
 	width: 7em;
 }
@@ -96,73 +148,76 @@ a { text-decoration: none }
 .tape {
 	border: none;
 	position: relative;
-	padding: 1em 0.5em;
+	padding: 0;
 	margin: 0 0 0 0.75em;
 	display: block;
 	height: 30em;
 	width: 4em;
 	text-align: left;
-	background: conic-gradient(at 50% var(--start), var(--background) 15%, transparent 15% 85%, var(--background) 85%), var(--image);
 	background-color: var(--background);
 	color: var(--color);
 	text-transform: uppercase;
 	font-weight: var(--tweight);
 }
-.tape.active { background-image: conic-gradient(at 50% var(--start), var(--background) 15%, transparent 15% 85%, var(--background) 85%), conic-gradient(at 50% calc(var(--start) + 1%), var(--color) 15%, transparent 15% 85%, var(--color) 85%), var(--image) }
-button.tape {
+button.tape, button.tape span {
 	writing-mode: vertical-rl;
 	transition: transform .2s;
 }
 .tape[data-page] { cursor: pointer }
 .tape[data-page]:hover { transform: translateY(-1em) }
-.tape[data-page*='posts'] {
-	--background: var(--t1-bg);
-	--image: var(--t1-image);
-	--color: var(--t1-text);
-	background-repeat: var(--t1-repeat);
-	background-size: var(--t1-size);
-	--start: 21%;
-}
-.tape[data-page*='about'], span.tape {
-	--background: var(--t2-bg);
-	--image: var(--t2-image);
-	--color: var(--t2-text);
-	background-repeat: var(--t2-repeat);
-	background-size: var(--t2-size);
-	--start: 21.5%;
-	top: 5em;
-}
-span.tape {
+/* Step down */
+.tape[data-page*='about'], nav.tape { top: 5em }
+.tape.nav { top: 10em }
+/* Tape labels */
+.tape span {
+	display: block;
+	width: 4em;
+	padding: 1em 0.5em;
 	display: flex;
-	flex-direction: column;
 	align-items: center;
-	--start: 0%;
+	height: fit-content;
+	position: relative;
 }
-span.tape.a, span.tape.s, span.tape.r, span.tape.c { --start: 14% }
-span.tape.a.s, span.tape.a.r, span.tape.a.c, span.tape.s.r, span.tape.s.c, span.tape.r.c { --start: 22% }
-span.tape.s.r.c, span.tape.a.r.c, span.tape.a.s.c, span.tape.a.s.r { --start: 30% }
-span.tape.a.s.r.c { --start: 38% }
-span.tape a {
-	color: var(--t2-text);
-	margin-bottom: 1em;
+.tape[data-page*='posts'] span {
+	background-color: var(--t1-bg);
+	--color: var(--t1-bg);
+	--highlight: var(--t1-text);
 }
-.tape.nav {
-	--background: var(--t3-bg);
-	--image: var(--t3-image);
-	--color: var(--t3-text);
-	background-repeat: var(--t3-repeat);
-	background-size: var(--t3-size);
-	--start: 27%;
-	top: 10em;
+.tape[data-page*='about'] span, nav.tape span {
+	background-color: var(--t2-bg);
+	--color: var(--t2-bg);
+	--highlight: var(--t2-text);
 }
-/* Special cases */
-.tape[data-page*='about'] + span.tape { display: none }
-.tape.nav:not(.pages, .search) {
-	color: transparent;
-	background: var(--t3-image) var(--t3-repeat);
+.tape.nav span {
 	background-color: var(--t3-bg);
-	background-size: var(--t3-size);
+	--color: var(--t3-bg);
+	--highlight: var(--t3-text);
 }
+/* Arrows and highlights */
+.tape span::after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 1.75em;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background-image: conic-gradient(at 50% 85%, var(--color) 15%, transparent 15% 85%, var(--color) 85%);
+}
+.tape.active span::after {
+	background-image: conic-gradient(at 50% 85%, var(--color) 15%, transparent 15% 85%, var(--color) 85%), conic-gradient(at 50% 100%, var(--highlight) 15%, transparent 15% 85%, var(--highlight) 85%);
+}
+/* Icon about */
+nav.tape span {
+	flex-direction: column;
+	padding: 0.5em 0.5em 0;
+}
+nav.tape a {
+	color: var(--t2-text);
+	padding: 0.5em;
+}
+/* Description enabled OR pages/search disabled */
+.tape[data-page*='about'] + nav.tape, .tape.nav:not(.pages, .search) span { display: none }
 #sticker {
 	position: absolute;
 	bottom: 2em;
@@ -204,9 +259,6 @@ body {
 	width: 100%;
 	height: 2em;
 	display: block;
-	background: var(--tt-image) var(--tt-repeat);
-	background-size: var(--tt-size);
-	background-color: var(--tt-bg);
 	position: absolute;
 	bottom: 100%;
 	margin-bottom: 0.75em;
@@ -232,35 +284,7 @@ body {
 	left: 0;
 	opacity: 0.175;
 }
-#blognav a:nth-child(3n+1), #pages a:nth-child(3n+1) {
-	background-color: var(--t1-bg);
-	color: var(--t1-text);
-}
-#blognav a:nth-child(3n+1)::before, #pages a:nth-child(3n+1)::before {
-	background: var(--t1-image) var(--t1-repeat);
-	background-size: var(--t1-size);
-}
-#blognav a:nth-child(3n+2), #pages a:nth-child(3n+2) {
-	background-color: var(--t2-bg);
-	color: var(--t2-text);
-}
-#blognav a:nth-child(3n+2)::before, #pages a:nth-child(3n+2)::before {
-	background: var(--t2-image) var(--t2-repeat);
-	background-size: var(--t2-size);
-}
-#blognav a:nth-child(3n), #pages a:nth-child(3n) {
-	background-color: var(--t3-bg);
-	color: var(--t3-text);
-}
-#blognav a:nth-child(3n)::before, #pages a:nth-child(3n)::before {
-	background: var(--t3-image) var(--t3-repeat);
-	background-size: var(--t3-size);
-}
 #search {
-	background: var(--tt-image) var(--tt-repeat);
-	background-size: var(--tt-size);
-	background-color: var(--tt-bg);
-	color: var(--tt-text);
 	width: 100%;
 	padding: 0.5em 0.5em;
 	display: flex;
@@ -280,7 +304,10 @@ body {
 
 /*********************************** POSTS ***********************************/
 #posts { padding: 3em 0 }
-.post { margin-bottom: 3.5em } /* Post spacing */
+.post {
+	margin-bottom: 3.5em;
+	position: relative;
+}
 .post .body, .post .tags {
 	background-color: rgba(var(--tt-bg--rgb), 0.1);
 	padding: 1.25em 0.5em;
@@ -289,13 +316,6 @@ body {
 .stickies, .likereblog a {
 	display: flex;
 	justify-content: center;
-}
-.stickies > * {
-	background-color: var(--tt-bg);
-	background-image: var(--tt-image);
-	background-repeat: var(--tt-repeat);
-	background-size: var(--tt-size);
-	color: var(--tt-text);
 }
 .stickies a {
 	color: var(--tt-text);
