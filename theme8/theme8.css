@@ -388,6 +388,8 @@ body {
 .stickies > * + * { margin-left: 2em }
 header.stickies { margin-bottom: -0.75em }
 footer .stickies { margin-top: -0.75em }
+/* Header stickies */
+.submitted { padding: 0 0.5em }
 /* Pinned post label */
 .pinnedpost {
 	position: absolute;
@@ -398,7 +400,7 @@ footer .stickies { margin-top: -0.75em }
 }
 /* Footer stickies */
 .source { padding-left: 0.5em }
-.source, .viasource, .viasource a { display: flex; align-items: center }
+.submitted, .source, .viasource, .viasource a { display: flex; align-items: center }
 .viasource a { padding: 0.3em 0.5em }
 .viasource img {
 	--size: 1.75em;
