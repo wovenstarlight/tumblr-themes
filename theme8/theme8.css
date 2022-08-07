@@ -34,7 +34,7 @@ a { text-decoration: none }
 #left,
 #s-m-t-tooltip,
 #desc::before, #search,
-.stickies > * {
+.stickies > *, .pinnedpost {
 	background: var(--tt-image) var(--tt-repeat);
 	background-size: var(--tt-size);
 	background-color: var(--tt-bg);
@@ -324,6 +324,13 @@ body {
 .stickies > * + * { margin-left: 2em }
 header.stickies { margin-bottom: -0.75em }
 footer .stickies, .tags { margin-top: -0.75em }
+/* Pinned post label */
+.pinnedpost {
+	position: absolute;
+	left: 100%;
+	top: 2.5em;
+	padding: 0.5em;
+}
 /* Footer stickies */
 .viasource, .viasource a { display: flex; align-items: center }
 .viasource a { padding: 0.3em 0.5em }
