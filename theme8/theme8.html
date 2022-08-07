@@ -54,6 +54,7 @@
 	<!-- Tapes -->
 	<meta name="image:Title tape" content="{HeaderImage}">
 	<meta name="color:Title tape" content="#046802">
+	<meta name="color:Links" content="#000">
 	<meta name="color:Title tape text" content="#f2ffd8">
 	<meta name="if:Title tape image tiling" content="1">
 	<meta name="image:Tape 1" content="">
@@ -74,24 +75,26 @@
 	<meta name="if:Alternate palette" content="1">
 	<meta name="select:Default palette" content="" title="Original">
 	<meta name="select:Default palette" content="alt" title="Alternate">
-	<meta name="color:Alt background" content="#e9e7db">
-	<meta name="color:Alt text" content="#000">
-	<meta name="image:Alt title tape" content="{HeaderImage}">
-	<meta name="color:Alt title tape" content="#046802">
-	<meta name="color:Alt title tape text" content="#f2ffd8">
-	<meta name="if:Alt title tape image tiling" content="1">
-	<meta name="image:Alt tape 1" content="">
-	<meta name="color:Alt tape 1" content="#b5966e">
-	<meta name="color:Alt tape 1 text" content="#fffde5">
-	<meta name="if:Alt tape 1 image tiling" content="1">
-	<meta name="image:Alt tape 2" content="">
-	<meta name="color:Alt tape 2" content="#5a2c00">
-	<meta name="color:Alt tape 2 text" content="#ffd1b5">
-	<meta name="if:Alt tape 2 image tiling" content="1">
-	<meta name="image:Alt tape 3" content="">
-	<meta name="color:Alt tape 3" content="#2f688c">
-	<meta name="color:Alt tape 3 text" content="#ffdc9f">
-	<meta name="if:Alt tape 3 image tiling" content="1">
+	<meta name="color:ALT Background" content="#3c0e3c">
+	<meta name="color:ALT Text" content="#ddd9ba">
+	<meta name="color:ALT Links" content="#ffa532">
+	<meta name="image:ALT Title tape" content="{HeaderImage}">
+	<meta name="color:ALT Title tape" content="#280029">
+	<meta name="color:ALT Title tape text" content="#ffcd8e">
+	<meta name="if:ALT Title tape image tiling" content="1">
+	<meta name="image:ALT Tape 1" content="">
+	<meta name="color:ALT Tape 1" content="#63085d">
+	<meta name="color:ALT Tape 1 text" content="#e3af80">
+	<meta name="if:ALT Tape 1 image tiling" content="1">
+	<meta name="image:ALT Tape 2" content="">
+	<meta name="color:ALT Tape 2" content="#72003b">
+	<meta name="color:ALT Tape 2 text" content="#eba4a4">
+	<meta name="if:ALT Tape 2 image tiling" content="1">
+	<meta name="image:ALT Tape 3" content="">
+	<meta name="color:ALT Tape 3" content="#221e4b">
+	<meta name="color:ALT Tape 3 text" content="#e9ab4c">
+	<meta name="if:ALT Tape 3 image tiling" content="1">
+	<meta name="image:ALT Sticker" content="">
 
 	<!-- General theme options -->
 	<meta name="if:Highlight avatar" content="1">
@@ -185,14 +188,14 @@ html:not(.alt) { /* REGULAR PALETTE */
 }
 
 html.alt { /* ALTERNATE PALETTE */
-	--bg: {color:Alt tackground};
-	--text: {color:Alt text};
+	--bg: {color:ALT Background};
+	--text: {color:ALT Text};
 	/* Tapes */
-	--tt-image: url("{image:Alt title tape}");
-	--tt-bg: {color:Alt title tape};
-	--tt-text: {color:Alt title tape text};
-	--tt-bg--rgb: {RGBcolor:Alt title tape};
-	--tt-text--rgb: {RGBcolor:Alt title tape text};
+	--tt-image: url("{image:ALT Title tape}");
+	--tt-bg: {color:ALT Title tape};
+	--tt-text: {color:ALT Title tape text};
+	--tt-bg--rgb: {RGBcolor:ALT Title tape};
+	--tt-text--rgb: {RGBcolor:ALT Title tape text};
 	{block:IfAltTitleTapeImageTiling}
 	--tt-repeat: repeat;
 	--tt-size: contain;
@@ -201,9 +204,9 @@ html.alt { /* ALTERNATE PALETTE */
 	--tt-repeat: no-repeat;
 	--tt-size: cover;
 	{/block:IfNotAltTitleTapeImageTiling}
-	--t1-image: url("{image:Alt tape 1}");
-	--t1-bg: {color:Alt tape 1};
-	--t1-text: {color:Alt tape 1 text};
+	--t1-image: url("{image:ALT Tape 1}");
+	--t1-bg: {color:ALT Tape 1};
+	--t1-text: {color:ALT Tape 1 text};
 	{block:IfAltTape1ImageTiling}
 	--t1-repeat: repeat;
 	--t1-size: contain;
@@ -212,9 +215,9 @@ html.alt { /* ALTERNATE PALETTE */
 	--t1-repeat: no-repeat;
 	--t1-size: cover;
 	{/block:IfNotAltTape1ImageTiling}
-	--t2-image: url("{image:Alt tape 2}");
-	--t2-bg: {color:Alt tape 2};
-	--t2-text: {color:Alt tape 2 text};
+	--t2-image: url("{image:ALT Tape 2}");
+	--t2-bg: {color:ALT Tape 2};
+	--t2-text: {color:ALT Tape 2 text};
 	{block:IfAltTape2ImageTiling}
 	--t2-repeat: repeat;
 	--t2-size: contain;
@@ -223,9 +226,9 @@ html.alt { /* ALTERNATE PALETTE */
 	--t2-repeat: no-repeat;
 	--t2-size: cover;
 	{/block:IfNotAltTape2ImageTiling}
-	--t3-image: url("{image:Alt tape 3}");
-	--t3-bg: {color:Alt tape 3};
-	--t3-text: {color:Alt tape 3 text};
+	--t3-image: url("{image:ALT Tape 3}");
+	--t3-bg: {color:ALT Tape 3};
+	--t3-text: {color:ALT Tape 3 text};
 	{block:IfAltTape3ImageTiling}
 	--t3-repeat: repeat;
 	--t3-size: contain;
@@ -303,7 +306,8 @@ html.alt { /* ALTERNATE PALETTE */
 	
 	<button class="tape nav {block:HasPages}pages{/block:HasPages} {block:IfSearchBar}search{/block:IfSearchBar}" {block:HasPages}data-page="nav"{/block:HasPages} {block:IfSearchBar}data-page="nav"{/block:IfSearchBar}><span>{lang:Navigate}</span></button>
 	
-	{block:IfStickerImage}<img id="sticker" src="{image:Sticker}">{/block:IfStickerImage}
+	{block:IfStickerImage}<img class="og sticker" src="{image:Sticker}">{/block:IfStickerImage}
+	{block:IfAltStickerImage}<img class="alt sticker" src="{image:ALT Sticker}">{/block:IfAltStickerImage}
 </nav>
 
 <main id="main">

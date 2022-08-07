@@ -278,8 +278,12 @@ nav.tape a {
 	padding: 0.5em;
 }
 /* Description enabled OR pages/search disabled */
-.tape[data-page*='about'] + nav.tape, .tape.nav:not(.pages, .search) span { display: none }
-#sticker {
+.tape[data-page*='about'] + nav.tape, .tape.nav:not(.pages, .search) span,
+/* Palette swapper */
+html:not(.alt) #darklight .cp-sun, html.alt #darklight .cp-moon-o,
+/* Sticker on bottom right */
+html:not(.alt) .alt.sticker, html.alt .og.sticker { display: none }
+.sticker {
 	position: absolute;
 	bottom: 2em;
 	left: -5.5em;
@@ -355,7 +359,6 @@ body {
 	position: relative;
 	cursor: pointer;
 }
-body:not(.alt) #darklight .cp-sun, body.alt #darklight .cp-moon-o { display: none }
 
 
 
