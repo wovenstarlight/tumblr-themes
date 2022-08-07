@@ -68,14 +68,16 @@ body.lower .tape { font-variant: normal }
 #s-m-t-tooltip,
 #desc::before, #search,
 .stickies > *,
-.post .title a {
+.post .title a, .read_more {
 	background: var(--tt-image) var(--tt-repeat);
 	background-size: var(--tt-size);
 	background-color: var(--tt-bg);
 	color: var(--tt-text);
 }
 /* Accent tape 1 */
-.tape[data-page*='posts'] {
+.tape[data-page*='posts'],
+.post .bodyitem:nth-of-type(3n+1) .user,
+blockquote:nth-of-type(3n+1)::before {
 	background: var(--t1-image) var(--t1-repeat);
 	background-size: var(--t1-size);
 	background-color: var(--t1-bg);
@@ -89,13 +91,14 @@ body.lower .tape { font-variant: normal }
 	color: var(--t1-text);
 }
 #blognav a:nth-child(3n+1)::before, #pages a:nth-child(3n+1)::before, .post .tags a:nth-child(3n+1)::before,
-#scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow::before,
-.post .bodyitem:nth-of-type(3n+1) .user {
+#scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow::before {
 	background: var(--t1-image) var(--t1-repeat);
 	background-size: var(--t1-size);
 }
 /* Accent tape 2 */
-.tape[data-page*='about'], nav.tape {
+.tape[data-page*='about'], nav.tape,
+.post .bodyitem:nth-of-type(3n+2) .user,
+blockquote:nth-of-type(3n+2)::before {
 	background: var(--t2-image) var(--t2-repeat);
 	background-size: var(--t2-size);
 	background-color: var(--t2-bg);
@@ -109,13 +112,14 @@ body.lower .tape { font-variant: normal }
 	color: var(--t2-text);
 }
 #blognav a:nth-child(3n+2)::before, #pages a:nth-child(3n+2)::before, .post .tags a:nth-child(3n+2)::before,
-#scrolltotop_parent:nth-last-child(2) #scrolltotop_arrow::before, #darklight::before,
-.post .bodyitem:nth-of-type(3n+2) .user {
+#scrolltotop_parent:nth-last-child(2) #scrolltotop_arrow::before, #darklight::before {
 	background: var(--t2-image) var(--t2-repeat);
 	background-size: var(--t2-size);
 }
 /* Accent tape 3 */
-.tape.nav {
+.tape.nav,
+.post .bodyitem:nth-of-type(3n) .user,
+blockquote:nth-of-type(3n)::before {
 	background: var(--t3-image) var(--t3-repeat);
 	background-size: var(--t3-size);
 	background-color: var(--t3-bg);
@@ -129,8 +133,7 @@ body.lower .tape { font-variant: normal }
 	color: var(--t3-text);
 }
 #blognav a:nth-child(3n)::before, #pages a:nth-child(3n)::before, .post .tags a:nth-child(3n)::before,
-#credit::before,
-.post .bodyitem:nth-of-type(3n) .user {
+#credit::before {
 	background: var(--t3-image) var(--t3-repeat);
 	background-size: var(--t3-size);
 }
@@ -403,7 +406,7 @@ body {
 	padding: 0.2em 0.6em;
 }
 /* Post usernames */
-.post .user, .post .username {
+.post .user, .post .username, .read_more {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -432,6 +435,20 @@ body {
 .post .bodyitem:nth-of-type(3n) .username::after { border-left-color: var(--t3-bg) }
 /* Body content */
 .post .bodyitemcontent { margin: 0 1em }
+blockquote {
+	position: relative;
+	margin-left: 0;
+	padding-left: 2.5em;
+}
+blockquote::before {
+	content: "";
+	display: block;
+	height: 100%;
+	width: 1em;
+	position: absolute;
+	left: 0.5em;
+}
+.read_more { padding: 0.5em 1em }
 /* Post tags */
 .post .tags { margin-top: 0.25em }
 /* Stickies general */
