@@ -291,8 +291,8 @@ html.alt { /* ALTERNATE PALETTE */
 {/block:HideTitle}
 
 <header id="left">
-{block:ShowTitle}<a href="/" id="title"><h1>{Title}</h1></a>{/block:ShowTitle}
-{block:ShowAvatar}<a href="/" id="avatar" class="{AvatarShape} {block:IfHighlightAvatar}highlight{/block:IfHighlightAvatar}"><img src="{PortraitURL-128}" /></a>{/block:ShowAvatar}
+	{block:ShowTitle}<a href="/" id="title"><h1>{Title}</h1></a>{/block:ShowTitle}
+	{block:ShowAvatar}<a href="/" id="avatar" class="{AvatarShape} {block:IfHighlightAvatar}highlight{/block:IfHighlightAvatar}"><img src="{PortraitURL-128}" /></a>{/block:ShowAvatar}
 </header>
 
 <nav id="tapes">
@@ -317,52 +317,52 @@ html.alt { /* ALTERNATE PALETTE */
 	<section id="posts">
 		{block:Posts}
 		<article class="post">
-			<header class="stickies">{block:Date}
-			{block:IfPostDates}<a href="{Permalink}" class="date" title="{lang:Posted TimeAgo}">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst}, {Year}{block:IfPostTimes}, {block:If24HourTimes}{24HourWithZero}{/block:If24HourTimes}{block:IfNot24HourTimes}{12Hour}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes} {CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</a>{/block:IfPostDates}
-			{block:NoteCount}<a href="{Permalink}#notes" class="notecount">{NoteCountWithLabel}</a>{/block:NoteCount}
-		{/block:Date}</header>
-		
-		
-		{block:PinnedPostLabel}<span id="pinnedpost" title="{PinnedPostLabel}"><i class="cp cp-pin-o pinnedpost"></i></span>{/block:PinnedPostLabel}
-
-
-		<section class="body">
-			<!-- TODO: post body -->
-		</section>
-		
-		
-		<footer>{block:Date}
-			<section class="stickies">
-				{block:ContentSource}<span class="source">{lang:Source}: <a href="{SourceURL}">{SourceTitle}</a></span>{/block:ContentSource}
+			{block:Date}<header class="stickies">
+				{block:IfPostDates}<a href="{Permalink}" class="date" title="{lang:Posted TimeAgo}">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst}, {Year}{block:IfPostTimes}, {block:If24HourTimes}{24HourWithZero}{/block:If24HourTimes}{block:IfNot24HourTimes}{12Hour}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes} {CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</a>{/block:IfPostDates}
+				{block:NoteCount}<a href="{Permalink}#notes" class="notecount">{NoteCountWithLabel}</a>{/block:NoteCount}
+			</header>{/block:Date}
 			
-				{block:RebloggedFrom}<span class="viasource">
-					<!-- VIA/SOURCE -->
-					<a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}"><img src="{ReblogParentPortraitURL-48}" /></a>
-					<a href="{ReblogRootURL}" title="{lang:Originally from ReblogRootName}"><img src="{ReblogRootPortraitURL-48}" /></a>
-				</span>{/block:RebloggedFrom}
-				
-				<span class="likereblog">
-					<!-- LIKE/REBLOG/SHOW TAGS -->
-					{block:IfLikeButtons}
-					<a href="#" class="customlike">
-					{LikeButton size="30"}
-					<i class="cp cp-heart-o"></i>
-					</a>
-					{/block:IfLikeButtons}
-					{block:IfReblogButtons}
-					<a href="{ReblogURL}" class="customreblog"><i class="cp cp-reblog-alt"></i></a>
-					{/block:IfReblogButtons}
-					{block:IfPostTags}{block:HasTags}{block:IfShowTagsOnClick}
-					<a class="showtags" title="{lang:Tags}" tabindex="0"><i class="cp cp-tags-o"></i></a>
-					{/block:IfShowTagsOnClick}{/block:HasTags}{/block:IfPostTags}
-				</span>
+			
+			{block:PinnedPostLabel}<span id="pinnedpost" title="{PinnedPostLabel}"><i class="cp cp-pin-o pinnedpost"></i></span>{/block:PinnedPostLabel}
+
+
+			<section class="body">
+				<!-- TODO: post body -->
 			</section>
 			
-			{block:IfPostTags}{block:HasTags}<section class="tags" {block:IfShowTagsOnClick}style="display: none;"{/block:IfShowTagsOnClick}>
-				<!-- TAGS SECTION -->
-				{block:Tags}<a href="{TagURL}">{Tag}</a>{/block:Tags}
-			</section>{/block:HasTags}{/block:IfPostTags}
-		{/block:Date}</footer>
+			
+			{block:Date}<footer>
+				<section class="stickies">
+					{block:ContentSource}<span class="source">{lang:Source}: <a href="{SourceURL}">{SourceTitle}</a></span>{/block:ContentSource}
+				
+					{block:RebloggedFrom}<span class="viasource">
+						<!-- VIA/SOURCE -->
+						<a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}"><img src="{ReblogParentPortraitURL-48}" /></a>
+						<a href="{ReblogRootURL}" title="{lang:Originally from ReblogRootName}"><img src="{ReblogRootPortraitURL-48}" /></a>
+					</span>{/block:RebloggedFrom}
+					
+					<span class="likereblog">
+						<!-- LIKE/REBLOG/SHOW TAGS -->
+						{block:IfLikeButtons}
+						<a href="#" class="customlike">
+						{LikeButton size="30"}
+						<i class="cp cp-heart-o"></i>
+						</a>
+						{/block:IfLikeButtons}
+						{block:IfReblogButtons}
+						<a href="{ReblogURL}" class="customreblog"><i class="cp cp-reblog-alt"></i></a>
+						{/block:IfReblogButtons}
+						{block:IfPostTags}{block:HasTags}{block:IfShowTagsOnClick}
+						<a class="showtags" title="{lang:Tags}" tabindex="0"><i class="cp cp-tags-o"></i></a>
+						{/block:IfShowTagsOnClick}{/block:HasTags}{/block:IfPostTags}
+					</span>
+				</section>
+				
+				{block:IfPostTags}{block:HasTags}<section class="tags" {block:IfShowTagsOnClick}style="display: none;"{/block:IfShowTagsOnClick}>
+					<!-- TAGS SECTION -->
+					{block:Tags}<a href="{TagURL}">{Tag}</a>{/block:Tags}
+				</section>{/block:HasTags}{/block:IfPostTags}
+			</footer>{/block:Date}
 		</article>
 		{/block:Posts}
 	</section>
@@ -376,8 +376,7 @@ html.alt { /* ALTERNATE PALETTE */
 			{block:IfRandomPostLink}<a href="/random" id="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
 			{block:IfArchiveLink}<a href="/archive" id="archivelink">{lang:Archive}</a>{/block:IfArchiveLink}
 		</nav>
-	</section>
-	{/block:Description}{/block:ShowDescription}
+	</section>{/block:Description}{/block:ShowDescription}
 
 
 	<section id="nav" style="display: none">
