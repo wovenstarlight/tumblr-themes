@@ -48,6 +48,7 @@ body.lower .tape { font-variant: normal }
 #s-m-t-tooltip,
 #avatar img,
 .post .body, .stickies > *, .viasource img, .tags a, .tags a::before,
+.post .title a,
 #desc::before, #blognav a, #blognav a::before,
 #search, #search input, #pages a, #pages a::before,
 #buttons a, #buttons a::before, #scrolltotop_arrow, #scrolltotop_arrow::before {
@@ -66,7 +67,8 @@ body.lower .tape { font-variant: normal }
 #left,
 #s-m-t-tooltip,
 #desc::before, #search,
-.stickies > * {
+.stickies > *,
+.post .title a {
 	background: var(--tt-image) var(--tt-repeat);
 	background-size: var(--tt-size);
 	background-color: var(--tt-bg);
@@ -433,3 +435,18 @@ footer .stickies { margin-top: -0.75em }
 	z-index: 1;
 	opacity: 0;
 }
+/* Post titles */
+.post .title {
+	margin: 0 -0.75em;
+	padding: 0;
+}
+.post .title a {
+	display: block;
+	text-align: center;
+	font-size: 1.5em;
+	padding: 0.2em 0.6em;
+}
+
+
+
+/********************************* POST TYPES ********************************/
