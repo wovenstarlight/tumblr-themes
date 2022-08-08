@@ -541,9 +541,10 @@ footer .stickies { margin-top: -0.75em }
 	}
 	#tapes {
 		position: relative;
-		right: -1em;
+		overflow: hidden;
 		flex-direction: column;
 	}
+	.tape[data-page] { margin-right: -1em }
 	.tape[data-page]:hover { transform: translateX(-1em) }
 	/* Step down */
 	.tape { height: 3em }
