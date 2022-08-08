@@ -349,7 +349,28 @@ html.alt { /* ALTERNATE PALETTE */
 				{/block:Text}
 
 
-				<!-- TODO: Photo -->
+				{block:Photo}
+				
+					<div class="photowrapper">
+						{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+						<a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
+					</div>
+					
+					{block:NotReblog}
+					<div class="bodyitemcontent">{Caption}</div>
+					{/block:NotReblog}
+					
+					{block:RebloggedFrom}{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<img src="{PortraitURL-64}" class="usericon"/>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">{Body}</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+				{/block:Photo}
 
 
 				<!-- TODO: Panorama -->

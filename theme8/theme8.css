@@ -50,7 +50,7 @@ body.lower .tape { font-variant: normal }
 #s-m-t-tooltip,
 #avatar img,
 .post .body, .stickies > *, .viasource img, .tags a, .tags a::before,
-.post .title a,
+.post .title a, .photowrapper .highres,
 #desc::before, #blognav a, #blognav a::before,
 #search, #search input, #pages a, #pages a::before,
 #buttons a, #buttons a::before, #scrolltotop_arrow, #scrolltotop_arrow::before {
@@ -431,7 +431,19 @@ footer .stickies { margin-top: -0.75em }
 
 
 /********************************* POST TYPES ********************************/
-/* TODO */
+/* Photo posts */
+.photowrapper { position: relative }
+.photowrapper a[href*="image"], .photopost { display: flex }
+.photopost { width: 100% }
+.photowrapper .highres {
+	position: absolute;
+	bottom: 1em;
+	left: 1em;
+	background-color: var(--bg);
+	padding: 0.4em 0.5em;
+	transition: opacity .2s;
+}
+.photowrapper:not(:hover) .highres { opacity: 0 }
 
 
 
