@@ -57,9 +57,6 @@ body.lower .tape { font-variant: normal }
 .tape, .tape span { /* Top */
 	border-radius: var(--roundness) var(--roundness) 0 0
 }
-#pinnedpost { /* Right */
-	border-radius: 0 var(--roundness) var(--roundness) 0
-}
 
 
 /******************************** TAPE STYLES ********************************/
@@ -68,7 +65,8 @@ body.lower .tape { font-variant: normal }
 #s-m-t-tooltip,
 #desc::before, #search,
 .stickies > *,
-.post .title a, .read_more {
+.post .title a,
+.read_more {
 	background: var(--tt-image) var(--tt-repeat);
 	background-size: var(--tt-size);
 	background-color: var(--tt-bg);
@@ -164,26 +162,7 @@ blockquote:nth-of-type(3n)::before {
 
 
 /********************************* TITLE BAR *********************************/
-#left {
-	position: fixed;
-	top: 0;
-	left: 1.5em;
-	height: 100vh;
-	width: 7em;
-	z-index: 5;
-}
-#title {
-	width: 100vh;
-	transform: rotate(-90deg);
-	transform-origin: bottom left;
-	position: absolute;
-	bottom: 1em;
-	left: calc(50% + 1em);
-	transition: transform .5s;
-	color: var(--tt-text);
-	overflow: hidden;
-	white-space: nowrap;
-}
+#title { color: var(--tt-text) }
 #title h1 {
 	font-family: var(--tfont);
 	font-weight: var(--tweight);
@@ -194,7 +173,6 @@ blockquote:nth-of-type(3n)::before {
 #avatar {
 	position: absolute;
 	top: 2em;
-	left: 65%;
 	--size: 6em;
 	width: var(--size);
 	height: var(--size);
@@ -212,22 +190,14 @@ blockquote:nth-of-type(3n)::before {
 
 /*********************************** TAPES ***********************************/
 #tapes {
-	position: fixed;
-	bottom: -1em;
-	right: 1.5em;
 	display: flex;
-	flex-direction: row-reverse;
 	align-items: end;
 	font-size: 1.2em;
-	z-index: 5;
 }
 .tape {
 	border: none;
-	position: relative;
 	padding: 0;
-	margin-left: 0.75em;
 	display: block;
-	width: 3em;
 	text-align: left;
 	background-color: var(--background);
 	font-variant: small-caps;
@@ -235,24 +205,12 @@ blockquote:nth-of-type(3n)::before {
 	font-family: var(--tfont);
 	font-weight: var(--tweight);
 }
-button.tape, button.tape span {
-	writing-mode: vertical-rl;
-	transition: transform .2s;
-}
+button.tape { transition: transform .2s }
 .tape[data-page] { cursor: pointer }
-.tape[data-page]:hover { transform: translateY(-1em) }
-/* Step down */
-.tape[data-page*='posts'] { height: 25em } 
-.tape[data-page*='about'], nav.tape { height: 21em }
-.tape.nav { height: 17em }
 /* Tape labels */
 .tape span {
-	display: block;
-	width: 100%;
-	padding: 1em 0.5em 0;
 	display: flex;
 	align-items: center;
-	height: fit-content;
 	position: relative;
 }
 .tape[data-page*='posts'] span {
@@ -274,21 +232,9 @@ button.tape, button.tape span {
 .tape span::after {
 	content: "";
 	display: block;
-	width: 100%;
-	height: 1.75em;
 	position: absolute;
-	top: 100%;
-	left: 0;
-	background-image: conic-gradient(at 50% 85%, var(--color) 15%, transparent 15% 85%, var(--color) 85%);
-}
-.tape.active span::after {
-	background-image: conic-gradient(at 50% 85%, var(--color) 15%, transparent 15% 85%, var(--color) 85%), conic-gradient(at 50% 100%, var(--highlight) 15%, transparent 15% 85%, var(--highlight) 85%);
 }
 /* Icon about */
-nav.tape span {
-	flex-direction: column;
-	padding-top: 0.5em;
-}
 nav.tape a {
 	color: var(--t2-text);
 	padding: 0.5em;
@@ -299,36 +245,11 @@ nav.tape a {
 html:not(.alt) #darklight .cp-sun, html.alt #darklight .cp-moon-o,
 /* Sticker on bottom right */
 html:not(.alt) .alt.sticker, html.alt .og.sticker { display: none }
-.sticker {
-	position: absolute;
-	bottom: 2em;
-	left: -5.5em;
-	max-height: 10em;
-	max-width: 10em;
-}
+.sticker { position: absolute }
 
 
 
 /*********************************** MIDDLE **********************************/
-body {
-	height: 100%;
-	display: grid;
-	justify-items: center;
-	align-items: center;
-	width: calc(100% - 14em - 22em);
-	margin-left: 14em;
-}
-#main {
-	display: grid;
-	justify-items: center;
-	align-items: center;
-	grid-template-columns: var(--post-width);
-}
-#main > section {
-	position: absolute;
-	max-height: 100vh;
-	max-width: var(--post-width);
-}
 #desc, #blognav, #search, #pages { max-width: var(--post-width) }
 #desc {
 	text-align: center;
@@ -360,11 +281,9 @@ body {
 	padding: 0.25em 0.5em;
 }
 #search + #pages { margin-top: 1em }
-/* Buttons */
+/* Scroll to top/palette toggle/credit buttons */
 #buttons {
 	position: fixed;
-	bottom: 1em;
-	left: 7.5em;
 	z-index: 6;
 }
 #buttons a, #scrolltotop_arrow {
@@ -467,12 +386,8 @@ footer .stickies { margin-top: -0.75em }
 .submitted { padding: 0 0.5em }
 /* Pinned post label */
 #pinnedpost {
-	margin: 0;
 	cursor: help;
-	position: absolute;
-	left: 100%;
-	top: 2.5em;
-	padding: 0.6em 0.75em;
+	padding: 0.5em 0.75em;
 }
 /* Footer stickies */
 .source { padding-left: 0.5em }
@@ -508,3 +423,168 @@ footer .stickies { margin-top: -0.75em }
 
 
 /********************************* POST TYPES ********************************/
+/* TODO */
+
+
+
+/******************************* MEDIA QUERIES *******************************/
+@media (min-width: 70em) {
+	/* Layout */
+	body {
+		height: 100%;
+		display: grid;
+		justify-items: center;
+		align-items: center;
+		width: calc(100% - 14em - 22em);
+		margin-left: 14em;
+	}
+	#main {
+		display: grid;
+		justify-items: center;
+		align-items: center;
+		grid-template-columns: var(--post-width);
+	}
+	#main > section {
+		position: absolute;
+		max-height: 100vh;
+		max-width: var(--post-width);
+	}
+	
+	/* Tapes (title, nav) */
+	#left {
+		position: fixed;
+		top: 0;
+		left: 1.5em;
+		height: 100vh;
+		width: 7em;
+		z-index: 5;
+	}
+	#title {
+		width: 100vh;
+		transform: rotate(-90deg);
+		transform-origin: bottom left;
+		position: absolute; 
+		bottom: 1em;
+		left: calc(50% + 1em);
+		overflow: hidden;
+		white-space: nowrap;
+	}
+	#avatar { left: 65% }
+	#tapes {
+		position: fixed;
+		bottom: -1em;
+		right: 1.5em;
+		flex-direction: row-reverse;
+		z-index: 5;
+	}
+	.tape { margin-left: 0.75em; width: 3em; }
+	button.tape { writing-mode: vertical-rl }
+	.tape[data-page]:hover { transform: translateY(-1em) }
+	/* Step down */
+	.tape[data-page*='posts'] { height: 85vh }
+	.tape[data-page*='about'], nav.tape { height: 71vh }
+	.tape.nav { height: 57vh }
+	/* Labels */
+	.tape span {
+		width: 100%;
+		height: fit-content;
+		padding: 1em 0.5em 0;
+	}
+	.tape span::after {
+		width: 100%;
+		height: 1.75em;
+		top: 100%;
+		left: 0;
+		background-image: conic-gradient(at 50% 85%, var(--color) 15%, transparent 15% 85%, var(--color) 85%);
+	}
+	.tape.active span::after {
+		background-image: conic-gradient(at 50% 85%, var(--color) 15%, transparent 15% 85%, var(--color) 85%), conic-gradient(at 50% 100%, var(--highlight) 15%, transparent 15% 85%, var(--highlight) 85%);
+	}
+	/* Icon about */
+	nav.tape span {
+		flex-direction: column;
+		padding-top: 0.5em;
+	}
+	/* Sticker */
+	.sticker {
+		bottom: 2em;
+		left: -5.5em;
+		max-height: 10rem;
+		max-width: 10rem;
+	}
+	
+	/* Scroll to top/palette toggle/credit buttons */
+	#buttons {
+		bottom: 1em;
+		left: 7.5em;
+	}
+	
+	/* Pinned post label */
+	#pinnedpost {
+		margin: 0;
+		position: absolute;
+		left: 100%;
+		top: 2.5em;
+		border-radius: 0 var(--roundness) var(--roundness) 0;
+	}
+}
+@media (max-width: 70em) {
+	/* Tapes (title, nav) */
+	#left {
+		position: relative;
+		margin: 1em 0;
+	}
+	#title {
+		display: block;
+		padding: 0.5em 6.5em 0.5em 1em;
+	}
+	#avatar {
+		right: 1em;
+		top: 50%;
+		transform: translateY(-50%);
+		--size: 4.5em;
+	}
+	#tapes {
+		position: relative;
+		right: -1em;
+		flex-direction: column;
+	}
+	.tape[data-page]:hover { transform: translateX(-1em) }
+	/* Step down */
+	.tape { height: 3em }
+	.tape + .tape { margin-top: 0.75em }
+	.tape[data-page*='posts'] { width: 85vw }
+	.tape[data-page*='about'], nav.tape { width: 71vw }
+	.tape.nav { width: 57vw }
+	/* Labels */
+	.tape span {
+		width: fit-content;
+		height: 100%;
+		padding: 0.5em 0 0.5em 1em;
+	}
+	.tape span::after {
+		width: 1.75em;
+		height: 100%;
+		top: 0;
+		left: 100%;
+		background-image: conic-gradient(at 85% 50%, transparent 60%, var(--color) 60% 90%, transparent 90%);
+	}
+	.tape.active span::after {
+		background-image: conic-gradient(at 85% 50%, transparent 60%, var(--color) 60% 90%, transparent 90%), conic-gradient(at 100% 50%, transparent 60%, var(--highlight) 60% 90%, transparent 90%);
+	}
+	/* Icon about */
+	nav.tape span { padding-left: 0.5em }
+	/* Sticker */
+	.sticker {
+		bottom: 0;
+		left: 0;
+		max-height: 7em;
+		max-width: 23vw;
+	}
+	
+	/* Scroll to top/palette toggle/credit buttons */
+	#buttons {
+		left: 0.5em;
+		bottom: 0.5em;
+	}
+}
