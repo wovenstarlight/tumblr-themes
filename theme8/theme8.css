@@ -319,8 +319,9 @@ html:not(.alt) .alt.sticker, html.alt .og.sticker { display: none }
 /* Reblogs */
 .post .body {
 	background-color: rgba(var(--tt-bg--rgb), 0.1);
-	padding: 1.25em 0;
+	padding: 1.25em 0 1.5em;
 }
+.post .bodyitem + .bodyitem { margin-top: 1em }
 /* Post titles */
 .post .title a {
 	display: block;
@@ -334,7 +335,10 @@ html:not(.alt) .alt.sticker, html.alt .og.sticker { display: none }
 	align-items: center;
 	justify-content: center;
 }
-.post .user { height: 2em }
+.post .user {
+	height: 2em;
+	margin-bottom: 0.5em;
+}
 .post .username {
 	height: 100%;
 	position: relative;
@@ -362,6 +366,8 @@ html:not(.alt) .alt.sticker, html.alt .og.sticker { display: none }
 .post .bodyitem:nth-of-type(3n) .user::after { border-left-color: var(--t3-bg) }
 /* Body content */
 .post .bodyitemcontent { margin: 0 1em }
+.bodyitemcontent > :first-child { margin-top: 0 }
+.bodyitemcontent > :last-child { margin-bottom: 0 }
 blockquote {
 	position: relative;
 	margin-left: 0;
