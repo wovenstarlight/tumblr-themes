@@ -573,7 +573,7 @@ footer .stickies { margin-top: -0.75em }
 	/* Sticker */
 	.sticker {
 		bottom: 0;
-		left: 0;
+		left: 0.75em;
 		max-height: 7em;
 		max-width: 23vw;
 	}
