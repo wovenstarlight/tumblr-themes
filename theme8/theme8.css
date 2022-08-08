@@ -328,6 +328,7 @@ html:not(.alt) .alt.sticker, html.alt .og.sticker { display: none }
 	text-align: center;
 	font-size: 1.5em;
 	padding: 0.2em 0.6em;
+	margin-bottom: 0.5em;
 }
 /* Post usernames */
 .post .user, .post .username, .read_more {
