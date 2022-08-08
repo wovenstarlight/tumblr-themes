@@ -451,6 +451,9 @@ footer .stickies { margin-top: -0.75em }
 	transition: opacity .2s;
 }
 .photowrapper:not(:hover) .highres { opacity: 0 }
+/* Photoset posts */
+.bodyitem .npf_photoset { margin: 0 -1em }
+.npf_photoset .npf_image { object-fit: cover }
 
 
 
