@@ -33,12 +33,14 @@ a {
 /* Casing */
 body.upper #left, body.upper .tape,
 body.upper #s-m-t-tooltip,
+body.upper .post .username,
 body.upper .stickies,
 body.upper .tags {
 	text-transform: uppercase;
 }
 body.lower #left, body.lower .tape,
 body.lower #s-m-t-tooltip,
+body.lower .post .username,
 body.lower .stickies,
 body.lower .tags {
 	text-transform: lowercase;
@@ -54,9 +56,7 @@ body.lower .tape { font-variant: normal }
 #buttons a, #buttons a::before, #scrolltotop_arrow, #scrolltotop_arrow::before {
 	border-radius: var(--roundness)
 }
-.tape, .tape span { /* Top */
-	border-radius: var(--roundness) var(--roundness) 0 0
-}
+
 
 
 /******************************** TAPE STYLES ********************************/
@@ -339,23 +339,27 @@ html:not(.alt) .alt.sticker, html.alt .og.sticker { display: none }
 	height: 100%;
 	position: relative;
 	padding: 0 0.25em;
+	transition: padding .2s;
 }
-.post .username::before,
-.post .username::after {
+.post .user[href]:hover .username { padding: 0 0.75em }
+.post .user::before,
+.post .user::after {
 	content: "";
-	display: block;
-	position: absolute;
 	border: solid transparent;
 	border-width: 1em 0.7em;
 }
-.post .username::before { right: 100% }
-.post .username::after { left: 100% }
-.post .bodyitem:nth-of-type(3n+1) .username::before { border-right-color: var(--t1-bg) }
-.post .bodyitem:nth-of-type(3n+1) .username::after { border-left-color: var(--t1-bg) }
-.post .bodyitem:nth-of-type(3n+2) .username::before { border-right-color: var(--t2-bg) }
-.post .bodyitem:nth-of-type(3n+2) .username::after { border-left-color: var(--t2-bg) }
-.post .bodyitem:nth-of-type(3n) .username::before { border-right-color: var(--t3-bg) }
-.post .bodyitem:nth-of-type(3n) .username::after { border-left-color: var(--t3-bg) }
+.deactivated.user .username::after {
+	content: "(deactivated)";
+	margin-left: 0.2em;
+	font-size: 0.95em;
+	opacity: 0.6;
+}
+.post .bodyitem:nth-of-type(3n+1) .user::before { border-right-color: var(--t1-bg) }
+.post .bodyitem:nth-of-type(3n+1) .user::after { border-left-color: var(--t1-bg) }
+.post .bodyitem:nth-of-type(3n+2) .user::before { border-right-color: var(--t2-bg) }
+.post .bodyitem:nth-of-type(3n+2) .user::after { border-left-color: var(--t2-bg) }
+.post .bodyitem:nth-of-type(3n) .user::before { border-right-color: var(--t3-bg) }
+.post .bodyitem:nth-of-type(3n) .user::after { border-left-color: var(--t3-bg) }
 /* Body content */
 .post .bodyitemcontent { margin: 0 1em }
 blockquote {
@@ -463,6 +467,7 @@ footer .stickies { margin-top: -0.75em }
 	.tape { margin-left: 0.75em; width: 3em; }
 	button.tape { writing-mode: vertical-rl }
 	.tape[data-page]:hover { transform: translateY(-1em) }
+	.tape, .tape span { border-radius: var(--roundness) var(--roundness) 0 0 }
 	/* Step down */
 	.tape[data-page*='posts'] { height: 85vh }
 	.tape[data-page*='about'], nav.tape { height: 71vh }
@@ -546,9 +551,10 @@ footer .stickies { margin-top: -0.75em }
 	}
 	.tape[data-page] { margin-right: -1em }
 	.tape[data-page]:hover { transform: translateX(-1em) }
-	/* Step down */
+	.tape, .tape span { border-radius: var(--roundness) 0 0 var(--roundness) }
 	.tape { height: 3em }
 	.tape + .tape { margin-top: 0.75em }
+	/* Step down */
 	.tape[data-page*='posts'] { width: 85vw }
 	.tape[data-page*='about'], nav.tape { width: 71vw }
 	.tape.nav { width: 57vw }
