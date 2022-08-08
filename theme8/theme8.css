@@ -75,7 +75,7 @@ body.lower .tape { font-variant: normal }
 /* Accent tape 1 */
 .tape[data-page*='posts'],
 .post .bodyitem:nth-of-type(3n+1) .user,
-blockquote:nth-of-type(3n+1)::before {
+blockquote:nth-of-type(3n+1)::before, .post:nth-child(3n+1) .quote .separator {
 	background: var(--t1-image) var(--t1-repeat);
 	background-size: var(--t1-size);
 	background-color: var(--t1-bg);
@@ -84,7 +84,7 @@ blockquote:nth-of-type(3n+1)::before {
 /* Accent tape 1 bands */
 #blognav a:nth-child(3n+1), #pages a:nth-child(3n+1), .post .tags a:nth-child(3n+1),
 #scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow,
-.post .bodyitem:nth-of-type(3n+1) .username {
+.post .bodyitem:nth-of-type(3n+1) .username, .post:nth-child(3n+1) .quote .separator i {
 	background-color: var(--t1-bg);
 	color: var(--t1-text);
 }
@@ -96,7 +96,7 @@ blockquote:nth-of-type(3n+1)::before {
 /* Accent tape 2 */
 .tape[data-page*='about'], nav.tape,
 .post .bodyitem:nth-of-type(3n+2) .user,
-blockquote:nth-of-type(3n+2)::before {
+blockquote:nth-of-type(3n+2)::before, .post:nth-child(3n+2) .quote .separator {
 	background: var(--t2-image) var(--t2-repeat);
 	background-size: var(--t2-size);
 	background-color: var(--t2-bg);
@@ -105,7 +105,7 @@ blockquote:nth-of-type(3n+2)::before {
 /* Accent tape 2 bands */
 #blognav a:nth-child(3n+2), #pages a:nth-child(3n+2), .post .tags a:nth-child(3n+2),
 #scrolltotop_parent:nth-last-child(2) #scrolltotop_arrow, #darklight,
-.post .bodyitem:nth-of-type(3n+2) .username {
+.post .bodyitem:nth-of-type(3n+2) .username, .post:nth-child(3n+2) .quote .separator i {
 	background-color: var(--t2-bg);
 	color: var(--t2-text);
 }
@@ -117,7 +117,8 @@ blockquote:nth-of-type(3n+2)::before {
 /* Accent tape 3 */
 .tape.nav,
 .post .bodyitem:nth-of-type(3n) .user,
-blockquote:nth-of-type(3n)::before {
+blockquote:nth-of-type(3n)::before,
+.post:nth-child(3n) .quote .separator {
 	background: var(--t3-image) var(--t3-repeat);
 	background-size: var(--t3-size);
 	background-color: var(--t3-bg);
@@ -126,7 +127,7 @@ blockquote:nth-of-type(3n)::before {
 /* Accent tape 3 bands */
 #blognav a:nth-child(3n), #pages a:nth-child(3n), .post .tags a:nth-child(3n),
 #credit,
-.post .bodyitem:nth-of-type(3n) .username {
+.post .bodyitem:nth-of-type(3n) .username, .post:nth-child(3n) .quote .separator i {
 	background-color: var(--t3-bg);
 	color: var(--t3-text);
 }
@@ -454,6 +455,16 @@ footer .stickies { margin-top: -0.75em }
 /* Photoset posts */
 .bodyitem .npf_photoset { margin: 0 -1em }
 .npf_photoset .npf_image { object-fit: cover }
+/* Quote posts */
+.body .quote { text-align: center }
+.quote h2 { margin: 0 }
+.quote .separator {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0.5em 0;
+}
+.quote .separator i { padding: 0.5em}
 
 
 

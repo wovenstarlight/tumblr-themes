@@ -419,7 +419,13 @@ html.alt { /* ALTERNATE PALETTE */
 				{/block:Photoset}
 
 
-				<!-- TODO: Quote -->
+				{block:Quote}
+					<div class="quote">
+						<h2>{Quote}</h2>
+						<div class="separator"><i class="cp cp-quote"></i></div>
+						{block:Source}<p>{Source}</p>{/block:Source}
+					</div>
+				{/block:Quote}
 
 
 				<!-- TODO: Link -->
