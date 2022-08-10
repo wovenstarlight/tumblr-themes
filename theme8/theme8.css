@@ -66,83 +66,86 @@ body.lower .tape { font-variant: normal }
 /******************************** TAPE STYLES ********************************/
 /* Title tape */
 #left,
+body.alltapes #s-m-t-tooltip,
+body.alltapes #desc::before, body.alltapes #search,
+body.alltapes .stickies > *,
+body.alltapes .post .title a,
+body.alltapes .read_more {
+	background-image: var(--tt-image);
+	background-repeat: var(--tt-repeat);
+	background-size: var(--tt-size);
+}
+#left,
 #s-m-t-tooltip,
 #desc::before, #search,
 .stickies > *,
 .post .title a,
 .read_more {
-	background: var(--tt-image) var(--tt-repeat);
-	background-size: var(--tt-size);
 	background-color: var(--tt-bg);
 	color: var(--tt-text);
 }
 /* Accent tape 1 */
 .tape[data-page*='posts'],
-.post .bodyitem:nth-of-type(3n+1) .user,
-blockquote:nth-of-type(3n+1)::before, .post:nth-child(3n+1) .quote .separator {
-	background: var(--t1-image) var(--t1-repeat);
-	background-size: var(--t1-size);
-	background-color: var(--t1-bg);
-	color: var(--t1-text);
-}
-/* Accent tape 1 bands */
-#blognav a:nth-child(3n+1), #pages a:nth-child(3n+1), .post .tags a:nth-child(3n+1),
-#scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow,
-.post .bodyitem:nth-of-type(3n+1) .username, .post:nth-child(3n+1) .quote .separator i {
-	background-color: var(--t1-bg);
-	color: var(--t1-text);
-}
-#blognav a:nth-child(3n+1)::before, #pages a:nth-child(3n+1)::before, .post .tags a:nth-child(3n+1)::before,
+#blognav a:nth-child(3n+1)::before, #pages a:nth-child(3n+1)::before,
+.post .tags a:nth-child(3n+1)::before,
+body.alltapes .post .bodyitem:nth-of-type(3n+1) .user,
+blockquote:nth-of-type(3n+1)::before, body.alltapes .post:nth-child(3n+1) .quote .separator,
 #scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow::before {
-	background: var(--t1-image) var(--t1-repeat);
+	background-image: var(--t1-image);
+	background-repeat: var(--t1-repeat);
 	background-size: var(--t1-size);
+}
+.tape[data-page*='posts'],
+#blognav a:nth-child(3n+1), #pages a:nth-child(3n+1), .post .tags a:nth-child(3n+1),
+.post .bodyitem:nth-of-type(3n+1) .user, .post .bodyitem:nth-of-type(3n+1) .username,
+blockquote:nth-of-type(3n+1)::before, .post:nth-child(3n+1) .quote .separator,
+.post:nth-child(3n+1) .quote .separator i,
+#scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow {
+	background-color: var(--t1-bg);
+	color: var(--t1-text);
 }
 /* Accent tape 2 */
 .tape[data-page*='about'], nav.tape,
-.post .bodyitem:nth-of-type(3n+2) .user,
-blockquote:nth-of-type(3n+2)::before, .post:nth-child(3n+2) .quote .separator {
-	background: var(--t2-image) var(--t2-repeat);
+#blognav a:nth-child(3n+2)::before, #pages a:nth-child(3n+2)::before,
+.post .tags a:nth-child(3n+2)::before,
+#scrolltotop_parent:nth-last-child(2) #scrolltotop_arrow::before, #darklight::before,
+body.alltapes .post .bodyitem:nth-of-type(3n+2) .user,
+blockquote:nth-of-type(3n+2)::before, body.alltapes .post:nth-child(3n+2) .quote .separator,
+.link .name::before, .chat li:nth-child(odd)::before {
+	background-image: var(--t2-image);
+	background-repeat: var(--t2-repeat);
 	background-size: var(--t2-size);
-	background-color: var(--t2-bg);
-	color: var(--t2-text);
 }
-/* Accent tape 2 bands */
+.tape[data-page*='about'], nav.tape,
 #blognav a:nth-child(3n+2), #pages a:nth-child(3n+2), .post .tags a:nth-child(3n+2),
 #scrolltotop_parent:nth-last-child(2) #scrolltotop_arrow, #darklight,
-.post .bodyitem:nth-of-type(3n+2) .username,
+.post .bodyitem:nth-of-type(3n+2) .user, .post .bodyitem:nth-of-type(3n+2) .username,
+blockquote:nth-of-type(3n+2)::before, .post:nth-child(3n+2) .quote .separator,
 .post:nth-child(3n+2) .quote .separator i, .link .name, .chat li:nth-child(odd) {
 	background-color: var(--t2-bg);
 	color: var(--t2-text);
 }
-#blognav a:nth-child(3n+2)::before, #pages a:nth-child(3n+2)::before, .post .tags a:nth-child(3n+2)::before,
-#scrolltotop_parent:nth-last-child(2) #scrolltotop_arrow::before, #darklight::before,
-.link .name::before, .chat li:nth-child(odd)::before {
-	background: var(--t2-image) var(--t2-repeat);
-	background-size: var(--t2-size);
-}
 /* Accent tape 3 */
 .tape.nav,
-.post .bodyitem:nth-of-type(3n) .user,
+#blognav a:nth-child(3n)::before, #pages a:nth-child(3n)::before,
+.post .tags a:nth-child(3n)::before, #credit::before,
+body.alltapes .post .bodyitem:nth-of-type(3n) .user,
 blockquote:nth-of-type(3n)::before,
-.post:nth-child(3n) .quote .separator {
-	background: var(--t3-image) var(--t3-repeat);
-	background-size: var(--t3-size);
-	background-color: var(--t3-bg);
-	color: var(--t3-text);
-}
-/* Accent tape 3 bands */
-#blognav a:nth-child(3n), #pages a:nth-child(3n), .post .tags a:nth-child(3n),
-#credit,
-.post .bodyitem:nth-of-type(3n) .username,
-.post:nth-child(3n) .quote .separator i, .link .excerpt, .chat li:nth-child(even) {
-	background-color: var(--t3-bg);
-	color: var(--t3-text);
-}
-#blognav a:nth-child(3n)::before, #pages a:nth-child(3n)::before, .post .tags a:nth-child(3n)::before,
-#credit::before,
+body.alltapes .post:nth-child(3n) .quote .separator,
 .link .excerpt::before, .chat li:nth-child(even)::before {
-	background: var(--t3-image) var(--t3-repeat);
+	background-image: var(--t3-image);
+	background-repeat: var(--t3-repeat);
 	background-size: var(--t3-size);
+}
+.tape.nav,
+#blognav a:nth-child(3n), #pages a:nth-child(3n),
+.post .tags a:nth-child(3n), #credit,
+.post .bodyitem:nth-of-type(3n) .user, .post .bodyitem:nth-of-type(3n) .username,
+blockquote:nth-of-type(3n)::before,
+.post:nth-child(3n) .quote .separator, .post:nth-child(3n) .quote .separator i,
+.link .excerpt, .chat li:nth-child(even) {
+	background-color: var(--t3-bg);
+	color: var(--t3-text);
 }
 /* Accent tape bands, general */
 #blognav, #pages, .post .tags {
@@ -169,6 +172,36 @@ blockquote:nth-of-type(3n)::before,
 	left: 0;
 	opacity: 0.2;
 }
+/* Showing images on main tapes only, or no images */
+body.maintapes #blognav a::before, body.maintapes #pages a::before, body.maintapes .post .tags a::before,
+body.maintapes #buttons a::before, body.maintapes #scrolltotop_arrow::before,
+body.maintapes .link .name::before, body.maintapes .link .excerpt::before,
+body.maintapes .chat li::before { content: none }
+body.maintapes blockquote::before { background-image: none }
+body.maintapes .user::before,
+html:not(.alt) body.noimg1 .bodyitem:nth-of-type(3n+1) .user::before,
+html:not(.alt) body.noimg2 .bodyitem:nth-of-type(3n+2) .user::before,
+html:not(.alt) body.noimg3 .bodyitem:nth-of-type(3n) .user::before,
+html.alt body.noaimg1 .bodyitem:nth-of-type(3n+1) .user::before,
+html.alt body.noaimg2 .bodyitem:nth-of-type(3n+2) .user::before,
+html.alt body.noaimg3 .bodyitem:nth-of-type(3n) .user::before { filter: drop-shadow(-0.1em 0 0em) }
+body.maintapes .user::after,
+html:not(.alt) body.noimg1 .bodyitem:nth-of-type(3n+1) .user::after,
+html:not(.alt) body.noimg2 .bodyitem:nth-of-type(3n+2) .user::after,
+html:not(.alt) body.noimg3 .bodyitem:nth-of-type(3n) .user::after,
+html.alt body.noaimg1 .bodyitem:nth-of-type(3n+1) .user::after,
+html.alt body.noaimg2 .bodyitem:nth-of-type(3n+2) .user::after,
+html.alt body.noaimg3 .bodyitem:nth-of-type(3n) .user::after { filter: drop-shadow(0.1em 0 0em) }
+body.maintapes .quote .separator i,
+html:not(.alt) body.noimg1 .post:nth-child(3n+1) .quote .separator i,
+html:not(.alt) body.noimg2 .post:nth-child(3n+2) .quote .separator i,
+html:not(.alt) body.noimg3 .post:nth-child(3n) .quote .separator i,
+html.alt body.noaimg1 .post:nth-child(3n+1) .quote .separator i,
+html.alt body.noaimg2 .post:nth-child(3n+2) .quote .separator i,
+html.alt body.noaimg3 .post:nth-child(3n) .quote .separator i { border: double; border-width: 0 0.3em }
+body.maintapes #search input,
+html:not(.alt) body.noimgt #search input,
+html.alt body.noaimgt #search input { background-color: rgba(var(--tt-text--rgb), 0.1) }
 
 
 
