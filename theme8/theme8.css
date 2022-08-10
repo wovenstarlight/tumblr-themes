@@ -36,6 +36,7 @@ a:hover { text-shadow: 0 0 1em }
 body.upper #left, body.upper .tape,
 body.upper #s-m-t-tooltip,
 body.upper .post .username,
+body.upper .link .name,
 body.upper .stickies,
 body.upper .tags {
 	text-transform: uppercase;
@@ -43,6 +44,7 @@ body.upper .tags {
 body.lower #left, body.lower .tape,
 body.lower #s-m-t-tooltip,
 body.lower .post .username,
+body.lower .link .name,
 body.lower .stickies,
 body.lower .tags {
 	text-transform: lowercase;
@@ -52,7 +54,7 @@ body.lower .tape { font-variant: normal }
 #s-m-t-tooltip,
 #avatar img,
 .post .body, .stickies > *, .viasource img, .tags a, .tags a::before,
-.post .title a, .read_more, .photowrapper .highres,
+.post .title a, .read_more, .photowrapper .highres, .link,
 #desc::before, #blognav a, #blognav a::before,
 #search, #search input, #pages a, #pages a::before,
 #buttons a, #buttons a::before, #scrolltotop_arrow, #scrolltotop_arrow::before {
@@ -107,12 +109,14 @@ blockquote:nth-of-type(3n+2)::before, .post:nth-child(3n+2) .quote .separator {
 /* Accent tape 2 bands */
 #blognav a:nth-child(3n+2), #pages a:nth-child(3n+2), .post .tags a:nth-child(3n+2),
 #scrolltotop_parent:nth-last-child(2) #scrolltotop_arrow, #darklight,
-.post .bodyitem:nth-of-type(3n+2) .username, .post:nth-child(3n+2) .quote .separator i {
+.post .bodyitem:nth-of-type(3n+2) .username,
+.post:nth-child(3n+2) .quote .separator i, .link .name {
 	background-color: var(--t2-bg);
 	color: var(--t2-text);
 }
 #blognav a:nth-child(3n+2)::before, #pages a:nth-child(3n+2)::before, .post .tags a:nth-child(3n+2)::before,
-#scrolltotop_parent:nth-last-child(2) #scrolltotop_arrow::before, #darklight::before {
+#scrolltotop_parent:nth-last-child(2) #scrolltotop_arrow::before, #darklight::before,
+.link .name::before {
 	background: var(--t2-image) var(--t2-repeat);
 	background-size: var(--t2-size);
 }
@@ -129,12 +133,14 @@ blockquote:nth-of-type(3n)::before,
 /* Accent tape 3 bands */
 #blognav a:nth-child(3n), #pages a:nth-child(3n), .post .tags a:nth-child(3n),
 #credit,
-.post .bodyitem:nth-of-type(3n) .username, .post:nth-child(3n) .quote .separator i {
+.post .bodyitem:nth-of-type(3n) .username,
+.post:nth-child(3n) .quote .separator i, .link .excerpt {
 	background-color: var(--t3-bg);
 	color: var(--t3-text);
 }
 #blognav a:nth-child(3n)::before, #pages a:nth-child(3n)::before, .post .tags a:nth-child(3n)::before,
-#credit::before {
+#credit::before,
+.link .excerpt::before {
 	background: var(--t3-image) var(--t3-repeat);
 	background-size: var(--t3-size);
 }
@@ -151,7 +157,8 @@ blockquote:nth-of-type(3n)::before,
 	position: relative;
 }
 #blognav a::before, #pages a::before, .post .tags a::before,
-#buttons a::before, #scrolltotop_arrow::before {
+#buttons a::before, #scrolltotop_arrow::before,
+.link .name::before, .link .excerpt::before {
 	content: "";
 	display: block;
 	width: 100%;
@@ -470,7 +477,27 @@ footer .stickies { margin-top: -0.75em }
 	justify-content: center;
 	margin: 0.5em 0;
 }
-.quote .separator i { padding: 0.5em}
+.quote .separator i { padding: 0.5em }
+/* Link posts */
+.link {
+	display: flex;
+	flex-direction: column;
+	text-shadow: none;
+	transition: box-shadow .2s;
+	overflow: hidden;
+}
+.link:hover { box-shadow: 0 0 0.25em var(--links) }
+.link img {
+	width: 100%;
+	height: 10em;
+	object-fit: cover;
+}
+.link .name, .link .excerpt {
+	position: relative;
+	padding: 0.3em 0.75rem;
+	text-shadow: none;
+}
+.link .name { font-size: 1.2em }
 
 
 
