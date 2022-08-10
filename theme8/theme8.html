@@ -462,7 +462,13 @@ html.alt { /* ALTERNATE PALETTE */
 				{/block:Link}
 
 
-				<!-- TODO: Chat -->
+				{block:Chat}
+					<ol class="chat">
+						{block:Lines}
+						<li>{block:Label}<strong class="label">{Label}</strong> {/block:Label}{Line}</li>
+						{/block:Lines}
+					</ol>
+				{/block:Chat}
 
 
 				<!-- TODO: Audio -->

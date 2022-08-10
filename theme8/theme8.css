@@ -110,13 +110,13 @@ blockquote:nth-of-type(3n+2)::before, .post:nth-child(3n+2) .quote .separator {
 #blognav a:nth-child(3n+2), #pages a:nth-child(3n+2), .post .tags a:nth-child(3n+2),
 #scrolltotop_parent:nth-last-child(2) #scrolltotop_arrow, #darklight,
 .post .bodyitem:nth-of-type(3n+2) .username,
-.post:nth-child(3n+2) .quote .separator i, .link .name {
+.post:nth-child(3n+2) .quote .separator i, .link .name, .chat li:nth-child(odd) {
 	background-color: var(--t2-bg);
 	color: var(--t2-text);
 }
 #blognav a:nth-child(3n+2)::before, #pages a:nth-child(3n+2)::before, .post .tags a:nth-child(3n+2)::before,
 #scrolltotop_parent:nth-last-child(2) #scrolltotop_arrow::before, #darklight::before,
-.link .name::before {
+.link .name::before, .chat li:nth-child(odd)::before {
 	background: var(--t2-image) var(--t2-repeat);
 	background-size: var(--t2-size);
 }
@@ -134,13 +134,13 @@ blockquote:nth-of-type(3n)::before,
 #blognav a:nth-child(3n), #pages a:nth-child(3n), .post .tags a:nth-child(3n),
 #credit,
 .post .bodyitem:nth-of-type(3n) .username,
-.post:nth-child(3n) .quote .separator i, .link .excerpt {
+.post:nth-child(3n) .quote .separator i, .link .excerpt, .chat li:nth-child(even) {
 	background-color: var(--t3-bg);
 	color: var(--t3-text);
 }
 #blognav a:nth-child(3n)::before, #pages a:nth-child(3n)::before, .post .tags a:nth-child(3n)::before,
 #credit::before,
-.link .excerpt::before {
+.link .excerpt::before, .chat li:nth-child(even)::before {
 	background: var(--t3-image) var(--t3-repeat);
 	background-size: var(--t3-size);
 }
@@ -158,7 +158,8 @@ blockquote:nth-of-type(3n)::before,
 }
 #blognav a::before, #pages a::before, .post .tags a::before,
 #buttons a::before, #scrolltotop_arrow::before,
-.link .name::before, .link .excerpt::before {
+.link .name::before, .link .excerpt::before,
+.chat li::before {
 	content: "";
 	display: block;
 	width: 100%;
@@ -498,6 +499,17 @@ footer .stickies { margin-top: -0.75em }
 	text-shadow: none;
 }
 .link .name { font-size: 1.2em }
+/* Chat posts */
+.chat {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.chat li {
+	position: relative;
+	padding: 0.2em 0.5em;
+}
+.chat li:nth-child(even) { padding-left: 1em }
 
 
 
