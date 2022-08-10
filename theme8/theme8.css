@@ -282,13 +282,11 @@ button.tape { transition: transform .2s }
 nav.tape a {
 	color: var(--t2-text);
 	padding: 0.5em;
+	display: flex;
+	align-items: center;
 }
 /* Description enabled OR pages/search disabled */
-.tape[data-page*='about'] + nav.tape, .tape.nav:not(.pages, .search) span,
-/* Palette swapper */
-html:not(.alt) #darklight .cp-sun, html.alt #darklight .cp-moon-o,
-/* Sticker on bottom right */
-html:not(.alt) .alt.sticker, html.alt .og.sticker { display: none }
+.tape[data-page*="about"] + nav.tape, .tape.nav:not(.pages, .search) span, html:not(.alt) #darklight .ph-sun, html.alt #darklight .ph-moon, html:not(.alt) .alt.sticker, html.alt .og.sticker { display: none; }
 .sticker { position: absolute }
 
 
@@ -448,7 +446,8 @@ footer .stickies { margin-top: -0.75em }
 /* Pinned post label */
 #pinnedpost {
 	cursor: help;
-	padding: 0.5em 0.75em;
+	display: flex;
+	align-items: center;
 }
 /* Footer stickies */
 .source { padding-left: 0.5em }
@@ -466,11 +465,12 @@ footer .stickies { margin-top: -0.75em }
 	align-items: center;
 	justify-content: center;
 }
-.likereblog a { padding: 0.75em }
+#pinnedpost, .likereblog a { padding: 0.5em 0.6em }
+#pinnedpost i, .likereblog i, #buttons i { font-size: 1.15em }
 .showtags { cursor: pointer }
 /* Like button */
 .customlike { position: relative }
-.customlike .like_button.liked + i::before { content: "\eb03" }
+.customlike .like_button.liked + i::before { content: "\fc8f"; }
 .customlike iframe {
 	position: absolute;
 	width: 100%;
@@ -660,7 +660,7 @@ footer .stickies { margin-top: -0.75em }
 		overflow: hidden;
 		flex-direction: column;
 	}
-	.tape[data-page] { margin-right: -1em }
+	.tape { margin-right: -1em }
 	.tape[data-page]:hover { transform: translateX(-1em) }
 	.tape, .tape span { border-radius: var(--roundness) 0 0 var(--roundness) }
 	.tape { height: 3em }
