@@ -19,7 +19,9 @@ html {
 a {
 	color: var(--links);
 	text-decoration: none;
+	transition: text-shadow .2s;
 }
+a:hover { text-shadow: 0 0 1em }
 /* Accessibility */
 #skip, #hiddentitle, #search label {
 	position: fixed;
@@ -50,7 +52,7 @@ body.lower .tape { font-variant: normal }
 #s-m-t-tooltip,
 #avatar img,
 .post .body, .stickies > *, .viasource img, .tags a, .tags a::before,
-.post .title a, .photowrapper .highres,
+.post .title a, .read_more, .photowrapper .highres,
 #desc::before, #blognav a, #blognav a::before,
 #search, #search input, #pages a, #pages a::before,
 #buttons a, #buttons a::before, #scrolltotop_arrow, #scrolltotop_arrow::before {
@@ -346,6 +348,7 @@ html:not(.alt) .alt.sticker, html.alt .og.sticker { display: none }
 	position: relative;
 	padding: 0 0.25em;
 	transition: padding .2s;
+	text-shadow: none;
 }
 .post .user[href]:hover .username { padding: 0 0.75em }
 .post .user::before,
@@ -397,6 +400,7 @@ blockquote::before {
 	color: var(--tt-text);
 	padding: 0.5em;
 }
+.stickies a:hover { text-shadow: 0 0 0.2em }
 .stickies { row-gap: 0.25em; column-gap: 1.5em }
 header.stickies { margin-bottom: -0.75em }
 footer .stickies { margin-top: -0.75em }
@@ -413,7 +417,9 @@ footer .stickies { margin-top: -0.75em }
 	--size: 1.75em;
 	width: var(--size);
 	height: var(--size);
+	transition: box-shadow .2s;
 }
+.viasource a:hover img { box-shadow: 0 0 0.5em }
 .likereblog {
 	display: flex;
 	align-items: center;
