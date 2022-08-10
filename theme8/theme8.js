@@ -34,9 +34,9 @@ $(document).ready( function() {
 
 	// audio post setup
 	customAudio({
-		playButton: "<i class='cp cp-volume'></i>",
-		pauseButton: "<i class='cp cp-mute'></i>",
-		errorIcon: "<i class='cp cp-cross'></i>",
+		playButton: "<i class='ph-play'></i>",
+		pauseButton: "<i class='ph-pause'></i>",
+		errorIcon: "<i class='ph-speaker-x'></i>",
 		callAfterLoad: null
 	});
 

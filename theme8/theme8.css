@@ -55,6 +55,7 @@ body.lower .tape { font-variant: normal }
 #avatar img,
 .post .body, .stickies > *, .viasource img, .tags a, .tags a::before,
 .post .title a, .read_more, .photowrapper .highres, .link,
+.audiowrapper .custom_audio_buttons, .audiowrapper .albumart, .custom_audio_seekbar, .seekbar span,
 #desc::before, #blognav a, #blognav a::before,
 #search, #search input, #pages a, #pages a::before,
 #buttons a, #buttons a::before, #scrolltotop_arrow, #scrolltotop_arrow::before {
@@ -70,7 +71,8 @@ body.alltapes #s-m-t-tooltip,
 body.alltapes #desc::before, body.alltapes #search,
 body.alltapes .stickies > *,
 body.alltapes .post .title a,
-body.alltapes .read_more {
+body.alltapes .read_more,
+body.alltapes .custom_audio_buttons div {
 	background-image: var(--tt-image);
 	background-repeat: var(--tt-repeat);
 	background-size: var(--tt-size);
@@ -80,7 +82,8 @@ body.alltapes .read_more {
 #desc::before, #search,
 .stickies > *,
 .post .title a,
-.read_more {
+.read_more,
+.custom_audio_buttons div {
 	background-color: var(--tt-bg);
 	color: var(--tt-text);
 }
@@ -90,6 +93,7 @@ body.alltapes .read_more {
 .post .tags a:nth-child(3n+1)::before,
 body.alltapes .post .bodyitem:nth-of-type(3n+1) .user,
 blockquote:nth-of-type(3n+1)::before, body.alltapes .post:nth-child(3n+1) .quote .separator,
+.seekbar span::after,
 #scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow::before {
 	background-image: var(--t1-image);
 	background-repeat: var(--t1-repeat);
@@ -99,7 +103,7 @@ blockquote:nth-of-type(3n+1)::before, body.alltapes .post:nth-child(3n+1) .quote
 #blognav a:nth-child(3n+1), #pages a:nth-child(3n+1), .post .tags a:nth-child(3n+1),
 .post .bodyitem:nth-of-type(3n+1) .user, .post .bodyitem:nth-of-type(3n+1) .username,
 blockquote:nth-of-type(3n+1)::before, .post:nth-child(3n+1) .quote .separator,
-.post:nth-child(3n+1) .quote .separator i,
+.post:nth-child(3n+1) .quote .separator i, .seekbar span,
 #scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow {
 	background-color: var(--t1-bg);
 	color: var(--t1-text);
@@ -132,7 +136,8 @@ blockquote:nth-of-type(3n+2)::before, .post:nth-child(3n+2) .quote .separator,
 body.alltapes .post .bodyitem:nth-of-type(3n) .user,
 blockquote:nth-of-type(3n)::before,
 body.alltapes .post:nth-child(3n) .quote .separator,
-.link .excerpt::before, .chat li:nth-child(even)::before {
+.link .excerpt::before, .chat li:nth-child(even)::before,
+body.alltapes .custom_audio_seekbar_progress {
 	background-image: var(--t3-image);
 	background-repeat: var(--t3-repeat);
 	background-size: var(--t3-size);
@@ -143,7 +148,8 @@ body.alltapes .post:nth-child(3n) .quote .separator,
 .post .bodyitem:nth-of-type(3n) .user, .post .bodyitem:nth-of-type(3n) .username,
 blockquote:nth-of-type(3n)::before,
 .post:nth-child(3n) .quote .separator, .post:nth-child(3n) .quote .separator i,
-.link .excerpt, .chat li:nth-child(even) {
+.link .excerpt, .chat li:nth-child(even),
+.custom_audio_seekbar {
 	background-color: var(--t3-bg);
 	color: var(--t3-text);
 }
@@ -162,7 +168,7 @@ blockquote:nth-of-type(3n)::before,
 #blognav a::before, #pages a::before, .post .tags a::before,
 #buttons a::before, #scrolltotop_arrow::before,
 .link .name::before, .link .excerpt::before,
-.chat li::before {
+.chat li::before, .seekbar span::after {
 	content: "";
 	display: block;
 	width: 100%;
@@ -176,7 +182,7 @@ blockquote:nth-of-type(3n)::before,
 body.maintapes #blognav a::before, body.maintapes #pages a::before, body.maintapes .post .tags a::before,
 body.maintapes #buttons a::before, body.maintapes #scrolltotop_arrow::before,
 body.maintapes .link .name::before, body.maintapes .link .excerpt::before,
-body.maintapes .chat li::before { content: none }
+body.maintapes .chat li::before, body.maintapes .seekbar span::after { content: none }
 body.maintapes blockquote::before { background-image: none }
 body.maintapes .user::before,
 html:not(.alt) body.noimg1 .bodyitem:nth-of-type(3n+1) .user::before,
@@ -543,6 +549,62 @@ footer .stickies { margin-top: -0.75em }
 	padding: 0.2em 0.5em;
 }
 .chat li:nth-child(even) { padding-left: 1em }
+/* Audio posts */
+.audiowrapper {
+	display: grid;
+	grid-template-columns: 4em 1fr auto;
+	column-gap: 1em;
+	background: rgba(var(--tt-bg--rgb), 0.1);
+	padding: 0.5em;
+}
+.audiowrapper span[id*='audio_player'] { display: none }
+.audiowrapper .custom_audio_buttons, .custom_audio_buttons div,
+.seekbar span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+.custom_audio_buttons div {
+	height: 4em;
+	width: 100%;
+	cursor: pointer;
+}
+.custom_audio_buttons .custom_audio_error_icon { color: red }
+.audiowrapper .textinfo {
+	display: flex;
+	flex-direction: column;
+}
+.textinfo .trackname { font-size: 1.1em }
+.textinfo .artist, .textinfo .album { font-size: 0.8em }
+.textinfo .album { font-style: italic }
+.audiowrapper .albumart { height: 4em }
+.audiowrapper .seekbar {
+	grid-column: 1 / span 3;
+	height: 1.2em;
+	display: grid;
+	align-items: center;
+	text-align: center;
+	grid-template-columns: 4em 1fr 4em;
+	column-gap: 1em;
+	margin-top: 0.5em;
+}
+.custom_audio_seekbar { overflow: hidden }
+.seekbar span, .custom_audio_seekbar,
+.custom_audio_seekbar_progress { height: 100% }
+body.maintapes .custom_audio_seekbar_progress,
+html:not(.alt) body.noimg3 .custom_audio_seekbar_progress,
+html.alt body.noaimg3 .custom_audio_seekbar_progress {
+	box-shadow: inset -0.05em 0 0, 0.05em 0 0;
+}
+.seekbar span {
+	position: relative;
+	font-size: 0.8em;
+}
+.custom_audio_time_left::before {
+	content: "-";
+	padding-right: 0.2em;
+}
 
 
 
