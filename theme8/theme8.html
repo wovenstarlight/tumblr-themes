@@ -10,7 +10,7 @@
 		Custom audio posts by annasthms: https://annasthms.tumblr.com/more/js/customaudio/new
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 10 Aug 2022.
+	Last updated 11 Aug 2022.
 -->
 
 <!DOCTYPE html>
@@ -298,7 +298,7 @@ html.alt { /* ALTERNATE PALETTE */
 </header>
 
 <nav id="tapes">
-	<button class="tape active" data-page="posts"><span>{lang:Posts}</span></button>
+	<button class="tape active" data-page="posts"><span>{block:IndexPage}{lang:Posts}{/block:IndexPage}{block:AskPage}{AskLabel}{/block:AskPage}{block:SubmitPage}{SubmitLabel}{/block:SubmitPage}</span></button>
 	
 	{block:ShowDescription}{block:Description}<button class="tape" data-page="about"><span>{lang:About}</span></button>{/block:Description}{/block:ShowDescription}
 	<nav class="tape"><span> <!-- for if description is missing or hidden -->
@@ -531,7 +531,50 @@ html.alt { /* ALTERNATE PALETTE */
 				{/block:Video}
 
 
-				<!-- TODO: Answer -->
+				{block:Answer}
+				
+					<div class="ask {PostID}">
+					
+						<div class="user">
+							<span class="username"><i class="ph-envelope-open"></i>{Asker}</span>
+						</div>
+						
+						<script>
+							asker = $(".{PostID} .asker");
+							if ( asker.length ) {
+								$(".{PostID} .username i").remove();
+								asker.unwrap().unwrap()
+									.toggleClass("asker user")
+									.wrapInner("<span class='username'></span>");
+							asker.children(".username").prepend('<i class="ph-envelope-open"></i>');
+							}
+						</script>
+						
+						<div class="question">{Question}</div>
+						
+					</div>
+					
+					{block:RebloggedFrom}<div class="bodyitem">
+						{block:Answerer}
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" href="{ReblogRootURL}">
+							<span class="username">{ReblogRootName}</span>
+						</a>
+						{/block:Answerer}{/block:RebloggedFrom}
+						
+						<div class="bodyitemcontent">{Answer}</div>
+					{block:RebloggedFrom}</div>
+					
+					{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">{Body}</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+				{/block:Answer}
+
 			</section>
 			
 			

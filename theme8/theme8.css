@@ -55,7 +55,8 @@ body.lower .tape { font-variant: normal }
 #avatar img,
 .post .body, .stickies > *, .viasource img, .tags a, .tags a::before,
 .post .title a, .read_more, .photowrapper .highres, .link,
-.audiowrapper .custom_audio_buttons, .audiowrapper .albumart, .custom_audio_seekbar, .seekbar span,
+.audiowrapper .custom_audio_buttons, .audiowrapper .albumart, .custom_audio_seekbar,
+.seekbar span, .ask,
 #desc::before, #blognav a, #blognav a::before,
 #search, #search input, #pages a, #pages a::before,
 #buttons a, #buttons a::before, #scrolltotop_arrow, #scrolltotop_arrow::before {
@@ -93,7 +94,7 @@ body.alltapes .custom_audio_buttons div {
 .post .tags a:nth-child(3n+1)::before,
 body.alltapes .post .bodyitem:nth-of-type(3n+1) .user,
 blockquote:nth-of-type(3n+1)::before, body.alltapes .post:nth-child(3n+1) .quote .separator,
-.seekbar span::after,
+.seekbar span::after, body.alltapes .ask .user,
 #scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow::before {
 	background-image: var(--t1-image);
 	background-repeat: var(--t1-repeat);
@@ -103,7 +104,7 @@ blockquote:nth-of-type(3n+1)::before, body.alltapes .post:nth-child(3n+1) .quote
 #blognav a:nth-child(3n+1), #pages a:nth-child(3n+1), .post .tags a:nth-child(3n+1),
 .post .bodyitem:nth-of-type(3n+1) .user, .post .bodyitem:nth-of-type(3n+1) .username,
 blockquote:nth-of-type(3n+1)::before, .post:nth-child(3n+1) .quote .separator,
-.post:nth-child(3n+1) .quote .separator i, .seekbar span,
+.post:nth-child(3n+1) .quote .separator i, .seekbar span, .ask .user, .ask .username,
 #scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow {
 	background-color: var(--t1-bg);
 	color: var(--t1-text);
@@ -186,6 +187,7 @@ body.maintapes .chat li::before, body.maintapes .seekbar span::after { content: 
 body.maintapes blockquote::before { background-image: none }
 body.maintapes .user::before,
 html:not(.alt) body.noimg1 .bodyitem:nth-of-type(3n+1) .user::before,
+html:not(.alt) body.noimg1 .ask .user::before,
 html:not(.alt) body.noimg2 .bodyitem:nth-of-type(3n+2) .user::before,
 html:not(.alt) body.noimg3 .bodyitem:nth-of-type(3n) .user::before,
 html.alt body.noaimg1 .bodyitem:nth-of-type(3n+1) .user::before,
@@ -193,6 +195,7 @@ html.alt body.noaimg2 .bodyitem:nth-of-type(3n+2) .user::before,
 html.alt body.noaimg3 .bodyitem:nth-of-type(3n) .user::before { filter: drop-shadow(-0.1em 0 0em) }
 body.maintapes .user::after,
 html:not(.alt) body.noimg1 .bodyitem:nth-of-type(3n+1) .user::after,
+html:not(.alt) body.noimg1 .ask .user::after,
 html:not(.alt) body.noimg2 .bodyitem:nth-of-type(3n+2) .user::after,
 html:not(.alt) body.noimg3 .bodyitem:nth-of-type(3n) .user::after,
 html.alt body.noaimg1 .bodyitem:nth-of-type(3n+1) .user::after,
@@ -408,16 +411,16 @@ nav.tape a {
 	font-size: 0.95em;
 	opacity: 0.6;
 }
-.post .bodyitem:nth-of-type(3n+1) .user::before { border-right-color: var(--t1-bg) }
-.post .bodyitem:nth-of-type(3n+1) .user::after { border-left-color: var(--t1-bg) }
-.post .bodyitem:nth-of-type(3n+2) .user::before { border-right-color: var(--t2-bg) }
-.post .bodyitem:nth-of-type(3n+2) .user::after { border-left-color: var(--t2-bg) }
-.post .bodyitem:nth-of-type(3n) .user::before { border-right-color: var(--t3-bg) }
-.post .bodyitem:nth-of-type(3n) .user::after { border-left-color: var(--t3-bg) }
+.bodyitem:nth-of-type(3n+1) .user::before, .ask .user::before { border-right-color: var(--t1-bg) }
+.bodyitem:nth-of-type(3n+1) .user::after, .ask .user::after { border-left-color: var(--t1-bg) }
+.bodyitem:nth-of-type(3n+2) .user::before { border-right-color: var(--t2-bg) }
+.bodyitem:nth-of-type(3n+2) .user::after { border-left-color: var(--t2-bg) }
+.bodyitem:nth-of-type(3n) .user::before { border-right-color: var(--t3-bg) }
+.bodyitem:nth-of-type(3n) .user::after { border-left-color: var(--t3-bg) }
 /* Body content */
 .post .bodyitemcontent { margin: 0 1em }
-.bodyitemcontent > :first-child { margin-top: 0 }
-.bodyitemcontent > :last-child { margin-bottom: 0 }
+.bodyitemcontent > :first-child, .ask .question > :first-child { margin-top: 0 }
+.bodyitemcontent > :last-child, .ask .question > :last-child { margin-bottom: 0 }
 blockquote {
 	position: relative;
 	margin-left: 0;
@@ -489,6 +492,7 @@ footer .stickies { margin-top: -0.75em }
 	z-index: 1;
 	opacity: 0;
 }
+.askwrapper { margin-bottom: 1em }
 
 
 
@@ -609,6 +613,14 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 .bodyitem iframe { max-width: 100% }
 /* Video posts */
 .videowrapper div, .videowrapper iframe { width: 100% !important }
+/* Ask posts */
+.ask {
+	margin: 0 1em 0.75em;
+	background-color: rgba(var(--tt-bg--rgb), 0.1);
+	overflow: hidden;
+}
+.ask .user i { margin-right: 0.5em }
+.ask .question { padding: 0 1em 0.75em }
 
 
 
