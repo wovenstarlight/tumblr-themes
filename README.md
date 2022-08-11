@@ -18,6 +18,7 @@ No. | Name | Status | Last Updated | Previews | Install
 5 | [Jupiter](https://wovenstarlight.github.io/tumblr-themes/theme5) | Complete | 27 Feb 2022 | [Index page](https://starlightpreviews.tumblr.com/theme5), [permalink](https://starlightpreviews.tumblr.com/theme5/permalink) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme5/theme5.html)
 6 | [Horizon](https://wovenstarlight.github.io/tumblr-themes/theme6) | Complete | 6 August 2022 | [Index page](https://starlightpreviews.tumblr.com/theme6), [permalink](https://starlightpreviews.tumblr.com/theme6/permalink) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme6/theme6.html)
 7 | [Unite](https://wovenstarlight.github.io/tumblr-themes/theme7) | Complete | 7 Aug 2022 | [Index page](https://starlightpreviews.tumblr.com/theme7), [permalink](https://starlightpreviews.tumblr.com/theme7/permalink) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme7/theme7.html)
+8 | Washi (1) | WIP | 11 Aug 2022 | N/A | N/A
 
 ## Collapsible sections
 I've made a guide to adding collapsible sections to your blogs if they're using my themes. As a tie-in to my themes, they have associated styling to make them look good based on whatever colors you've chosen for your blog.
