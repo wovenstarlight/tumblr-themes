@@ -74,7 +74,7 @@
 	<meta name="select:Tape images usage" content="maintapes" title="Only on main tapes">
 
 	<!-- Alternate palette -->
-	<meta name="if:Alternate palette" content="1">
+	<meta name="if:Palette toggle" content="1">
 	<meta name="select:Default palette" content="" title="Original">
 	<meta name="select:Default palette" content="alt" title="Alternate">
 	<meta name="color:ALT Background" content="#3c0e3c">
@@ -715,12 +715,12 @@ html.alt { /* ALTERNATE PALETTE */
 		</div>
 		{block:IfBackToTopButton}
 	
-		{block:IfAlternatePalette}
+		{block:IfPaletteToggle}
 		<a id="darklight" tabindex="0" title="Toggle palette">
 			<i class="ph-moon"></i>
 			<i class="ph-sun"></i>
 		</a>
-		{/block:IfAlternatePalette}
+		{/block:IfPaletteToggle}
 	
 		<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
 		<a id="credit" href="https://starlightthemes.tumblr.com/theme6" title="{lang:Install this theme}"><i class="ph-download-simple"></i></a>
