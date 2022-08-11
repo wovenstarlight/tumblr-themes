@@ -34,22 +34,23 @@ a:hover { text-shadow: 0 0 1em }
 }
 /* Casing */
 body.upper #left, body.upper .tape,
+body.upper #blognav a, body.upper #pages a,
 body.upper #s-m-t-tooltip,
-body.upper .post .username,
+body.upper .post .username, body.upper .post .title,
 body.upper .link .name,
 body.upper .stickies,
 body.upper .tags {
 	text-transform: uppercase;
 }
 body.lower #left, body.lower .tape,
+body.lower #blognav a, body.lower #pages a,
 body.lower #s-m-t-tooltip,
-body.lower .post .username,
+body.lower .post .username, body.lower .post .title,
 body.lower .link .name,
 body.lower .stickies,
 body.lower .tags {
 	text-transform: lowercase;
 }
-body.lower .tape { font-variant: normal }
 /* Roundness */
 #s-m-t-tooltip,
 #avatar img,
@@ -253,11 +254,11 @@ html.alt body.noaimgt #search input { background-color: rgba(var(--tt-text--rgb)
 	display: block;
 	text-align: left;
 	background-color: var(--background);
-	font-variant: small-caps;
 	color: var(--color);
 	font-family: var(--tfont);
 	font-weight: var(--tweight);
 }
+body:not(.lower) .tape { font-variant: small-caps }
 button.tape { transition: transform .2s }
 .tape[data-page] { cursor: pointer }
 /* Tape labels */
