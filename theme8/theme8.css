@@ -403,7 +403,7 @@ nav.tape a {
 /* Reblogs */
 .post .body {
 	background-color: rgba(var(--tt-bg--rgb), 0.1);
-	padding: 1.25em 0 1.5em;
+	padding: 1.75em 0 2em;
 }
 .post .bodyitem + .bodyitem { margin-top: 1em }
 /* Post titles */

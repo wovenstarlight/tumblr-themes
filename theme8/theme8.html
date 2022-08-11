@@ -28,10 +28,10 @@
 	{block:Hidden}
 	<!-- THEME VARIABLES -->
 	<!-- Text and sizing -->
-	<meta name="text:Google font for body" content="Lora">
-	<meta name="font:Tumblr font for body" content="Gibson">
-	<meta name="text:Google font for title" content="Bitter">
-	<meta name="font:Tumblr font for title" content="Lorimer No 2">
+	<meta name="text:Google font for body" content="Nunito">
+	<meta name="font:Tumblr font for body" content="Brutal Type">
+	<meta name="text:Google font for title" content="Kalam">
+	<meta name="font:Tumblr font for title" content="Avalon">
 	<meta name="if:Use Tumblr fonts for body" content="0">
 	<meta name="if:Use Tumblr fonts for title" content="0">
 	<meta name="if:Bold title" content="1">
@@ -132,7 +132,6 @@ html {
 	--tweight: {block:IfBoldTitle}bold{/block:IfBoldTitle}{block:IfNotBoldTitle}normal{/block:IfNotBoldTitle};
 	--bfont: {block:IfNotUseTumblrFontsForBody}{text:Google font for body}{/block:IfNotUseTumblrFontsForBody}{block:IfUseTumblrFontsForBody}{font:Tumblr font for body}{/block:IfUseTumblrFontsForBody};
 	--post-width: {text:Post width};
-	--name: "{Name}";
 	font-size: {text:Font size};
 	--roundness: {select:Corner roundness};
 }
