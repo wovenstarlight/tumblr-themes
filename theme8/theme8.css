@@ -185,7 +185,8 @@ blockquote:nth-of-type(3n)::before,
 #buttons a::before, #scrolltotop_arrow::before,
 .link .name::before, .link .excerpt::before,
 .chat li::before, .seekbar span::after,
-.page.title a::before, #pagination > *::before {
+.page.title a::before, #pagination > *::before,
+.post.titled.pinned #pinnedpost::before {
 	content: "";
 	display: block;
 	width: 100%;
@@ -793,6 +794,18 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		left: 100%;
 		top: 2.5em;
 		border-radius: 0 var(--roundness) var(--roundness) 0;
+	}
+	.post.titled.pinned #pinnedpost {
+		top: 4.1em;
+		left: calc(100% + 1.1em);
+		background-color: var(--t2-bg);
+		background-image: none;
+		color: var(--t2-text);
+	}
+	.post.titled.pinned #pinnedpost::before {
+		background-image: var(--t2-image);
+		background-repeat: var(--t2-repeat);
+		background-size: var(--t2-size);
 	}
 }
 @media (max-width: 70em) {
