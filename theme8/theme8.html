@@ -507,9 +507,28 @@ html.alt { /* ALTERNATE PALETTE */
 					{/block:Reblogs}{/block:RebloggedFrom}
 					
 				{/block:Audio}
-
-
-				<!-- TODO: Video -->
+				
+				
+				{block:Video}
+				
+					<div class="videowrapper">
+						{Video-500}
+					</div>
+					
+					{block:NotReblog}
+					<div class="bodyitemcontent">{Caption}</div>
+					{/block:NotReblog}
+					
+					{block:RebloggedFrom}{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">{Body}</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+				{/block:Video}
 
 
 				<!-- TODO: Answer -->

@@ -474,6 +474,7 @@ footer .stickies { margin-top: -0.75em }
 #pinnedpost, .likereblog a { padding: 0.5em 0.6em }
 #pinnedpost i, .likereblog i, #buttons i { font-size: 1.15em }
 .showtags { cursor: pointer }
+.showtags.active i::before { content: "\f873" }
 /* Like button */
 .customlike { position: relative }
 .customlike .like_button.liked + i::before { content: "\fc8f"; }
@@ -558,9 +559,9 @@ footer .stickies { margin-top: -0.75em }
 	padding: 0.5em;
 }
 .audiowrapper span[id*='audio_player'] { display: none }
-.audiowrapper .custom_audio_buttons, .custom_audio_buttons div,
-.seekbar span {
-	display: flex;
+.audiowrapper .custom_audio_buttons, .custom_audio_buttons div:not([style]),
+.custom_audio_buttons div[style*='block'],.seekbar span {
+	display: flex !important;
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
@@ -605,6 +606,9 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 	content: "-";
 	padding-right: 0.2em;
 }
+.bodyitem iframe { max-width: 100% }
+/* Video posts */
+.videowrapper div, .videowrapper iframe { width: 100% !important }
 
 
 
