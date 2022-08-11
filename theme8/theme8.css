@@ -727,6 +727,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 	#title {
 		display: block;
 		padding: 0.5em 6.5em 0.5em 1em;
+		min-height: 3.6em;
 	}
 	#avatar {
 		right: 1em;
