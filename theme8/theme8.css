@@ -593,7 +593,7 @@ footer .stickies { margin-top: -0.75em }
 .npf_photoset .npf_image { object-fit: cover }
 /* Quote posts */
 .body .quote { text-align: center }
-.quote h2 { margin: 0 }
+.quote h2 { font-weight: normal; margin: 0 0.5em }
 .quote .separator {
 	display: flex;
 	align-items: center;
