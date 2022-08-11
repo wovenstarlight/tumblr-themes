@@ -361,6 +361,7 @@ nav.tape a {
 	padding: 0.25em 0.5em;
 }
 #search + #pages { margin-top: 1em }
+#pages .current-page { font-weight: bold }
 /* Scroll to top/palette toggle/credit buttons */
 #buttons {
 	position: fixed;
