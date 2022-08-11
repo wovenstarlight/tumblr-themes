@@ -327,7 +327,6 @@ html.alt { /* ALTERNATE PALETTE */
 			</header>{/block:Date}
 
 
-			<!-- POST BODY -->
 			<section class="body">
 				{block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
 
@@ -612,6 +611,17 @@ html.alt { /* ALTERNATE PALETTE */
 			</footer>{/block:Date}
 		</article>
 		{/block:Posts}
+
+
+		{block:PostNotes}
+		<!-- NOTES SECTION ON PERMALINK PAGES -->
+		<section class="post notes">
+			<section class="body">
+				<h2 class="title">{lang:Notes}</h2>
+				{PostNotes-64}
+			</section>
+		</section>
+		{/block:PostNotes}
 	</section>
 
 
