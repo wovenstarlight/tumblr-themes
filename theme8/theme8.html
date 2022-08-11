@@ -298,7 +298,7 @@ html.alt { /* ALTERNATE PALETTE */
 </header>
 
 <nav id="tapes">
-	<button class="tape active" data-page="posts"><span>{block:IndexPage}{lang:Posts}{/block:IndexPage}{block:AskPage}{AskLabel}{/block:AskPage}{block:SubmitPage}{SubmitLabel}{/block:SubmitPage}</span></button>
+	<button class="tape active" data-page="posts"><span>{block:IndexPage}{lang:Posts}{/block:IndexPage}{block:PermalinkPage}{lang:Posts}{/block:PermalinkPage}{block:AskPage}{AskLabel}{/block:AskPage}{block:SubmitPage}{SubmitLabel}{/block:SubmitPage}</span></button>
 	
 	{block:ShowDescription}{block:Description}<button class="tape" data-page="about"><span>{lang:About}</span></button>{/block:Description}{/block:ShowDescription}
 	<nav class="tape"><span> <!-- for if description is missing or hidden -->
@@ -598,6 +598,7 @@ html.alt { /* ALTERNATE PALETTE */
 						{block:IfReblogButtons}
 						<a href="{ReblogURL}" class="customreblog"><i class="ph-repeat"></i></a>
 						{/block:IfReblogButtons}
+						<a title="{lang:Show all posts made on this day}" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/"><i class="ph-clock"></i></a>
 						{block:IfPostTags}{block:HasTags}{block:IfShowTagsOnClick}
 						<a class="showtags" title="{lang:Tags}" tabindex="0"><i class="ph-hash-straight"></i></a>
 						{/block:IfShowTagsOnClick}{/block:HasTags}{/block:IfPostTags}
@@ -613,6 +614,25 @@ html.alt { /* ALTERNATE PALETTE */
 		{/block:Posts}
 
 
+		{block:Pagination}<nav id="pagination">
+			{block:PreviousPage}<a href="{PreviousPage}" id="prev" title="{lang:Previous page}"><i class="ph-arrow-left"></i></a>{/block:PreviousPage}
+			<span id="curr">{lang:CurrentPage of TotalPages}</span>
+			{block:NextPage}<a href="{NextPage}" id="next" title="{lang:Next page}"><i class="ph-arrow-right"></i></a>{/block:NextPage}
+		</nav>{/block:Pagination}
+		
+		{block:PermalinkPagination}<nav id="pagination">
+			{block:PreviousPost}<a href="{PreviousPost}" id="prev" title="{lang:Previous post}"><i class="ph-arrow-left"></i></a>{/block:PreviousPost}
+			<span id="curr">{lang:See more posts}</span>
+			{block:NextPost}<a href="{NextPost}" id="next" title="{lang:Next post}"><i class="ph-arrow-right"></i></a>{/block:NextPost}
+		</nav>{/block:PermalinkPagination}
+		
+		{block:DayPage}{block:DayPagination}<nav id="pagination">
+			{block:PreviousDayPage}<a href="{PreviousDayPage}" id="prev" title="{lang:Previous day}"><i class="ph-arrow-left"></i></a>{/block:PreviousDayPage}
+			<span id="curr">{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst}, {Year}</span>
+			{block:NextDayPage}<a href="{NextDayPage}" id="next" title="{lang:Next day}"><i class="ph-arrow-right"></i></a>{/block:NextDayPage}
+		</nav>{/block:DayPagination}{/block:DayPage}
+
+
 		{block:PostNotes}
 		<!-- NOTES SECTION ON PERMALINK PAGES -->
 		<section class="post notes">
@@ -622,6 +642,7 @@ html.alt { /* ALTERNATE PALETTE */
 			</section>
 		</section>
 		{/block:PostNotes}
+		
 	</section>
 
 

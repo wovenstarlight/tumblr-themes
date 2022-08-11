@@ -40,7 +40,8 @@ body.upper .post .username, body.upper .post .title,
 body.upper .post.notes .action > a,
 body.upper .link .name,
 body.upper .stickies,
-body.upper .tags {
+body.upper .tags,
+body.upper #curr {
 	text-transform: uppercase;
 }
 body.lower #left, body.lower .tape,
@@ -49,7 +50,8 @@ body.lower #s-m-t-tooltip,
 body.lower .post .username, body.lower .post .title,
 body.lower .link .name,
 body.lower .stickies,
-body.lower .tags {
+body.lower .tags,
+body.lower #curr {
 	text-transform: lowercase;
 }
 /* Roundness */
@@ -59,7 +61,7 @@ body.lower .tags {
 .post .title a, .post.notes .title, .read_more, .photowrapper .highres, .link,
 .audiowrapper .custom_audio_buttons, .audiowrapper .albumart, .custom_audio_seekbar,
 .seekbar span, .ask,
-.post.notes .more_notes_link_container > *,
+#pagination > *, .post.notes .more_notes_link_container > *,
 #desc::before, #blognav a, #blognav a::before,
 #search, #search input, #pages a, #pages a::before,
 #buttons a, #buttons a::before, #scrolltotop_arrow, #scrolltotop_arrow::before {
@@ -100,7 +102,7 @@ body.alltapes .custom_audio_buttons div {
 body.alltapes .post .bodyitem:nth-of-type(3n+1) .user,
 blockquote:nth-of-type(3n+1)::before, body.alltapes .post:nth-child(3n+1) .quote .separator,
 .seekbar span::after, body.alltapes .ask .user,
-body.alltapes .post.notes li:nth-of-type(3n+1)::before,
+body.alltapes #prev::before, body.alltapes .post.notes li:nth-of-type(3n+1)::before,
 #scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow::before {
 	background-image: var(--t1-image);
 	background-repeat: var(--t1-repeat);
@@ -111,7 +113,7 @@ body.alltapes .post.notes li:nth-of-type(3n+1)::before,
 .post .bodyitem:nth-of-type(3n+1) .user, .post .bodyitem:nth-of-type(3n+1) .username,
 blockquote:nth-of-type(3n+1)::before, .post:nth-child(3n+1) .quote .separator,
 .post:nth-child(3n+1) .quote .separator i, .seekbar span, .ask .user, .ask .username,
-.post.notes li:nth-of-type(3n+1)::before,
+#prev, .post.notes li:nth-of-type(3n+1)::before,
 #scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow {
 	background-color: var(--t1-bg);
 	color: var(--t1-text);
@@ -124,7 +126,7 @@ blockquote:nth-of-type(3n+1)::before, .post:nth-child(3n+1) .quote .separator,
 body.alltapes .post .bodyitem:nth-of-type(3n+2) .user,
 blockquote:nth-of-type(3n+2)::before, body.alltapes .post:nth-child(3n+2) .quote .separator,
 .link .name::before, .chat li:nth-child(odd)::before,
-body.alltapes .post.notes li:nth-of-type(3n+2)::before {
+body.alltapes #curr::before, body.alltapes .post.notes li:nth-of-type(3n+2)::before {
 	background-image: var(--t2-image);
 	background-repeat: var(--t2-repeat);
 	background-size: var(--t2-size);
@@ -135,7 +137,7 @@ body.alltapes .post.notes li:nth-of-type(3n+2)::before {
 .post .bodyitem:nth-of-type(3n+2) .user, .post .bodyitem:nth-of-type(3n+2) .username,
 blockquote:nth-of-type(3n+2)::before, .post:nth-child(3n+2) .quote .separator,
 .post:nth-child(3n+2) .quote .separator i, .link .name, .chat li:nth-child(odd),
-.post.notes li:nth-of-type(3n+2)::before {
+#curr, .post.notes li:nth-of-type(3n+2)::before {
 	background-color: var(--t2-bg);
 	color: var(--t2-text);
 }
@@ -148,7 +150,7 @@ blockquote:nth-of-type(3n)::before,
 body.alltapes .post:nth-child(3n) .quote .separator,
 .link .excerpt::before, .chat li:nth-child(even)::before,
 body.alltapes .custom_audio_seekbar_progress,
-body.alltapes .post.notes li:nth-of-type(3n)::before {
+body.alltapes #next::before, body.alltapes .post.notes li:nth-of-type(3n)::before {
 	background-image: var(--t3-image);
 	background-repeat: var(--t3-repeat);
 	background-size: var(--t3-size);
@@ -161,7 +163,7 @@ blockquote:nth-of-type(3n)::before,
 .post:nth-child(3n) .quote .separator, .post:nth-child(3n) .quote .separator i,
 .link .excerpt, .chat li:nth-child(even),
 .custom_audio_seekbar,
-.post.notes li:nth-of-type(3n)::before {
+body.alltapes #next, .post.notes li:nth-of-type(3n)::before {
 	background-color: var(--t3-bg);
 	color: var(--t3-text);
 }
@@ -180,7 +182,8 @@ blockquote:nth-of-type(3n)::before,
 #blognav a::before, #pages a::before, .post .tags a::before,
 #buttons a::before, #scrolltotop_arrow::before,
 .link .name::before, .link .excerpt::before,
-.chat li::before, .seekbar span::after {
+.chat li::before, .seekbar span::after,
+#pagination > *::before {
 	content: "";
 	display: block;
 	width: 100%;
@@ -459,7 +462,7 @@ blockquote::before {
 	color: var(--tt-text);
 	padding: 0.5em;
 }
-.stickies a:hover { text-shadow: 0 0 0.2em }
+.stickies a:hover, #pagination a:hover { text-shadow: 0 0 0.2em }
 .stickies { row-gap: 0.25em; column-gap: 1.5em }
 header.stickies { margin-bottom: -0.75em }
 footer .stickies { margin-top: -0.75em }
@@ -533,6 +536,23 @@ footer .stickies { margin-top: -0.75em }
 	margin: 0.25em -1.25em 0;
 	padding: 0.5em;
 }
+/* Pagination */
+#pagination {
+	display: flex;
+	margin: -1em 0 2em;
+}
+#pagination > * {
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 2em;
+}
+#pagination a { width: 2em }
+#prev { margin-right: 0.5em }
+#curr { flex-grow: 1 }
+#next { margin-left: 0.5em }
 
 
 
