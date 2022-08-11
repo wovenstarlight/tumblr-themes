@@ -41,7 +41,7 @@ body.upper .post.notes .action > a,
 body.upper .link .name,
 body.upper .stickies,
 body.upper .tags,
-body.upper #curr {
+body.upper .page.title a, body.upper #curr {
 	text-transform: uppercase;
 }
 body.lower #left, body.lower .tape,
@@ -51,7 +51,7 @@ body.lower .post .username, body.lower .post .title,
 body.lower .link .name,
 body.lower .stickies,
 body.lower .tags,
-body.lower #curr {
+body.lower .page.title a, body.lower #curr {
 	text-transform: lowercase;
 }
 /* Roundness */
@@ -61,7 +61,7 @@ body.lower #curr {
 .post .title a, .post.notes .title, .read_more, .photowrapper .highres, .link,
 .audiowrapper .custom_audio_buttons, .audiowrapper .albumart, .custom_audio_seekbar,
 .seekbar span, .ask,
-#pagination > *, .post.notes .more_notes_link_container > *,
+.page.title a, #pagination > *, .post.notes .more_notes_link_container > *,
 #desc::before, #blognav a, #blognav a::before,
 #search, #search input, #pages a, #pages a::before,
 #buttons a, #buttons a::before, #scrolltotop_arrow, #scrolltotop_arrow::before {
@@ -126,6 +126,7 @@ blockquote:nth-of-type(3n+1)::before, .post:nth-child(3n+1) .quote .separator,
 body.alltapes .post .bodyitem:nth-of-type(3n+2) .user,
 blockquote:nth-of-type(3n+2)::before, body.alltapes .post:nth-child(3n+2) .quote .separator,
 .link .name::before, .chat li:nth-child(odd)::before,
+body.alltapes .page.title a:first-child::before,
 body.alltapes #curr::before, body.alltapes .post.notes li:nth-of-type(3n+2)::before {
 	background-image: var(--t2-image);
 	background-repeat: var(--t2-repeat);
@@ -137,7 +138,7 @@ body.alltapes #curr::before, body.alltapes .post.notes li:nth-of-type(3n+2)::bef
 .post .bodyitem:nth-of-type(3n+2) .user, .post .bodyitem:nth-of-type(3n+2) .username,
 blockquote:nth-of-type(3n+2)::before, .post:nth-child(3n+2) .quote .separator,
 .post:nth-child(3n+2) .quote .separator i, .link .name, .chat li:nth-child(odd),
-#curr, .post.notes li:nth-of-type(3n+2)::before {
+.page.title a:first-child, #curr, .post.notes li:nth-of-type(3n+2)::before {
 	background-color: var(--t2-bg);
 	color: var(--t2-text);
 }
@@ -150,6 +151,7 @@ blockquote:nth-of-type(3n)::before,
 body.alltapes .post:nth-child(3n) .quote .separator,
 .link .excerpt::before, .chat li:nth-child(even)::before,
 body.alltapes .custom_audio_seekbar_progress,
+body.alltapes .page.title a:last-child::before,
 body.alltapes #next::before, body.alltapes .post.notes li:nth-of-type(3n)::before {
 	background-image: var(--t3-image);
 	background-repeat: var(--t3-repeat);
@@ -163,7 +165,7 @@ blockquote:nth-of-type(3n)::before,
 .post:nth-child(3n) .quote .separator, .post:nth-child(3n) .quote .separator i,
 .link .excerpt, .chat li:nth-child(even),
 .custom_audio_seekbar,
-body.alltapes #next, .post.notes li:nth-of-type(3n)::before {
+.page.title a:last-child, #next, .post.notes li:nth-of-type(3n)::before {
 	background-color: var(--t3-bg);
 	color: var(--t3-text);
 }
@@ -183,7 +185,7 @@ body.alltapes #next, .post.notes li:nth-of-type(3n)::before {
 #buttons a::before, #scrolltotop_arrow::before,
 .link .name::before, .link .excerpt::before,
 .chat li::before, .seekbar span::after,
-#pagination > *::before {
+.page.title a::before, #pagination > *::before {
 	content: "";
 	display: block;
 	width: 100%;
@@ -192,6 +194,7 @@ body.alltapes #next, .post.notes li:nth-of-type(3n)::before {
 	top: 0;
 	left: 0;
 	opacity: 0.2;
+	border-radius: inherit;
 }
 /* Showing images on main tapes only, or no images */
 body.maintapes #blognav a::before, body.maintapes #pages a::before, body.maintapes .post .tags a::before,
@@ -381,6 +384,22 @@ nav.tape a {
 	margin-bottom: 3.5em;
 	position: relative;
 }
+/* Page titles */
+.page.title {
+	text-align: center;
+	margin-bottom: 2em;
+}
+.page.title a {
+	padding: 0.5em;
+	margin: 0 0.5em;
+	position: relative;
+}
+.page.title .tag::before { content: "#" }
+.search_query::before { content: "\201C" }
+.search_query::after { content: "\201D" }
+/* No posts */
+#no-posts { margin-bottom: 0 }
+#no-posts .body { padding: 0.25em 1em; text-align: center }
 /* Reblogs */
 .post .body {
 	background-color: rgba(var(--tt-bg--rgb), 0.1);
@@ -543,7 +562,6 @@ footer .stickies { margin-top: -0.75em }
 }
 #pagination > * {
 	position: relative;
-	overflow: hidden;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -624,7 +642,7 @@ footer .stickies { margin-top: -0.75em }
 }
 .audiowrapper span[id*='audio_player'] { display: none }
 .audiowrapper .custom_audio_buttons, .custom_audio_buttons div:not([style]),
-.custom_audio_buttons div[style*='block'],.seekbar span {
+.custom_audio_buttons div[style*='block'], .seekbar span {
 	display: flex !important;
 	align-items: center;
 	justify-content: center;
@@ -654,7 +672,7 @@ footer .stickies { margin-top: -0.75em }
 	column-gap: 1em;
 	margin-top: 0.5em;
 }
-.custom_audio_seekbar { overflow: hidden }
+.custom_audio_seekbar { cursor: pointer; overflow: hidden }
 .seekbar span, .custom_audio_seekbar,
 .custom_audio_seekbar_progress { height: 100% }
 body.maintapes .custom_audio_seekbar_progress,
