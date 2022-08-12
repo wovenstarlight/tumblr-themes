@@ -357,7 +357,7 @@ html.alt { /* ALTERNATE PALETTE */
 	<button class="tape active" data-page="posts"><span>{lang:Posts}</span></button>
 	
 	{block:ShowDescription}{block:Description}<button class="tape" data-page="about"><span>{lang:About}</span></button>{/block:Description}{/block:ShowDescription}
-	<nav class="tape {block:AskEnabled}a{//block:AskEnabled} {block:SubmissionsEnabled}s{/block:SubmissionsEnabled} {block:IfRandomPostLink}r{/block:IfRandomPostLink} {block:IfArchiveLink}c{/block:IfArchiveLink}"><span> <!-- for if description is missing or hidden -->
+	<nav class="tape {block:AskEnabled}a{/block:AskEnabled} {block:SubmissionsEnabled}s{/block:SubmissionsEnabled} {block:IfRandomPostLink}r{/block:IfRandomPostLink} {block:IfArchiveLink}c{/block:IfArchiveLink}"><span> <!-- for if description is missing or hidden -->
 		{block:AskEnabled}<a href="/ask" class="asklink" {block:AskPage}class="current-page"{/block:AskPage} title="{AskLabel}"><i class="ph-envelope"></i></a>{/block:AskEnabled}
 		{block:SubmissionsEnabled}<a href="/submit" class="submitlink" {block:SubmitPage}class="current-page"{/block:SubmitPage} title="{SubmitLabel}"><i class="ph-gift"></i></a>{/block:SubmissionsEnabled}
 		{block:IfRandomPostLink}<a href="/random" class="randomlink" title="{lang:Random}"><i class="ph-shuffle"></i></a>{/block:IfRandomPostLink}
@@ -772,7 +772,7 @@ html.alt { /* ALTERNATE PALETTE */
 				<i class="ph-arrow-line-up"></i>
 			</div>
 		</div>
-		{block:IfBackToTopButton}
+		{/block:IfBackToTopButton}
 	
 		{block:IfPaletteToggle}
 		<a id="darklight" tabindex="0" title="Toggle palette">
