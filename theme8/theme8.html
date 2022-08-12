@@ -294,19 +294,20 @@ html.alt { /* ALTERNATE PALETTE */
 		--ViewPost-Button-Padding: 0.7em;
 		--ViewPost-Button-Border: none;
 		--ViewPost-Button-Roundness: var(--roundness);
-		--ViewPost-Button-Background: var(--tt-bg) var(--tt-image) var(--tt-repeat);
+		--ViewPost-Button-Background: var(--tt-bg) var(--tt-repeat);
 		--ViewPost-Button-FontSize: 90%;
 		--ViewPost-Button-Text-Color: var(--tt-text);
 		
 		--ViewPost-Button-HOVER-Border: none;
-		--ViewPost-Button-HOVER-Background: var(--tt-bg) var(--tt-image) var(--tt-repeat);
+		--ViewPost-Button-HOVER-Background: var(--tt-bg) var(--tt-repeat);
 		--ViewPost-Button-HOVER-Text-Color: var(--tt-text);
 		
 		--ShrinkPost-Transition-Speed: 699ms; /* can be in ms or s */
 	}
-		
+
 	body:not(.lower, .upper) { text-transform: unset }
 	body.lower .view-button { text-transform: lowercase }
+	body.alltapes .view-button { background-image: var(--tt-image) }
 	.view-button, .view-button:hover { background-size: var(--tt-size); transition: text-shadow .2s }
 	.view-button:hover { text-shadow: 0 0 0.2em; cursor: pointer }
 	[posts-selector][style*='overflow-y: hidden'] { overflow-x: hidden }
