@@ -36,7 +36,7 @@ $(document).ready( function() {
 	customAudio({
 		playButton: "<i class='ph-play'></i>",
 		pauseButton: "<i class='ph-pause'></i>",
-		errorIcon: "<i class='ph-speaker-x'></i>",
+		errorIcon: "<i class='ph-x'></i>",
 		callAfterLoad: null
 	});
 
