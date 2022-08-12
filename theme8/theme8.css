@@ -299,6 +299,7 @@ button.tape { transition: transform .2s }
 	--color: var(--t3-bg);
 	--highlight: var(--t3-text);
 }
+nav.tape:not(.a, .s, .r, .c) span { display: none }
 /* Arrows and highlights */
 .tape span::after {
 	content: "";
