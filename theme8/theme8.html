@@ -357,10 +357,10 @@ html.alt { /* ALTERNATE PALETTE */
 	
 	{block:ShowDescription}{block:Description}<button class="tape" data-page="about"><span>{lang:About}</span></button>{/block:Description}{/block:ShowDescription}
 	<nav class="tape"><span> <!-- for if description is missing or hidden -->
-		{block:AskEnabled}<a href="/ask" id="asklink" {block:AskPage}class="current-page"{/block:AskPage} title="{AskLabel}"><i class="ph-envelope"></i></a>{/block:AskEnabled}
-		{block:SubmissionsEnabled}<a href="/submit" id="submitlink" {block:SubmitPage}class="current-page"{/block:SubmitPage} title="{SubmitLabel}"><i class="ph-gift"></i></a>{/block:SubmissionsEnabled}
-		{block:IfRandomPostLink}<a href="/random" id="randomlink" title="{lang:Random}"><i class="ph-shuffle"></i></a>{/block:IfRandomPostLink}
-		{block:IfArchiveLink}<a href="/archive" id="archivelink" title="{lang:Archive}"><i class="ph-archive"></i></a>{/block:IfArchiveLink}
+		{block:AskEnabled}<a href="/ask" class="asklink" {block:AskPage}class="current-page"{/block:AskPage} title="{AskLabel}"><i class="ph-envelope"></i></a>{/block:AskEnabled}
+		{block:SubmissionsEnabled}<a href="/submit" class="submitlink" {block:SubmitPage}class="current-page"{/block:SubmitPage} title="{SubmitLabel}"><i class="ph-gift"></i></a>{/block:SubmissionsEnabled}
+		{block:IfRandomPostLink}<a href="/random" class="randomlink" title="{lang:Random}"><i class="ph-shuffle"></i></a>{/block:IfRandomPostLink}
+		{block:IfArchiveLink}<a href="/archive" class="archivelink" title="{lang:Archive}"><i class="ph-archive"></i></a>{/block:IfArchiveLink}
 	</span></nav>
 	
 	<button class="tape nav {block:HasPages}pages{/block:HasPages} {block:IfSearchBar}search{/block:IfSearchBar}" {block:HasPages}data-page="nav"{/block:HasPages} {block:IfSearchBar}data-page="nav"{/block:IfSearchBar}><span>{lang:Navigate}</span></button>
@@ -737,10 +737,10 @@ html.alt { /* ALTERNATE PALETTE */
 	{block:ShowDescription}{block:Description}<section id="about" style="display: none">
 		<div id="desc">{Description}</div>
 		<nav id="blognav">
-			{block:AskEnabled}<a href="/ask" id="asklink" {block:AskPage}class="current-page"{/block:AskPage}>{AskLabel}</a>{/block:AskEnabled}
-			{block:SubmissionsEnabled}<a href="/submit" id="submitlink" {block:SubmitPage}class="current-page"{/block:SubmitPage}>{SubmitLabel}</a>{/block:SubmissionsEnabled}
-			{block:IfRandomPostLink}<a href="/random" id="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
-			{block:IfArchiveLink}<a href="/archive" id="archivelink">{lang:Archive}</a>{/block:IfArchiveLink}
+			{block:AskEnabled}<a href="/ask" class="asklink" {block:AskPage}class="current-page"{/block:AskPage}>{AskLabel}</a>{/block:AskEnabled}
+			{block:SubmissionsEnabled}<a href="/submit" class="submitlink" {block:SubmitPage}class="current-page"{/block:SubmitPage}>{SubmitLabel}</a>{/block:SubmissionsEnabled}
+			{block:IfRandomPostLink}<a href="/random" class="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
+			{block:IfArchiveLink}<a href="/archive" class="archivelink">{lang:Archive}</a>{/block:IfArchiveLink}
 		</nav>
 	</section>{/block:Description}{/block:ShowDescription}
 
