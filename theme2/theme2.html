@@ -9,7 +9,7 @@
 		NPF photosets fix by glenthemes: https://glenthemes.tumblr.com/post/659034084446748672/npf-images-v3
 		Dark/light mode toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 
-	Last updated 7 Nov 2021.
+	Last updated 13 Aug 2022.
 -->
 
 <!DOCTYPE html>
@@ -283,7 +283,7 @@ body.light {
 	<section class="post" post-type="{PostType}">
 		{block:PinnedPostLabel}<span id="pinnedpost" data-tippy-content="{PinnedPostLabel}"><i data-feather="star"></i></span>{/block:PinnedPostLabel}
 		{block:Date}
-		<div class="right actions {block:IfNotShowLikeButtons}nolike{block:IfNotShowLikeButtons} {block:IfNotShowReblogButtons}noreblog{block:IfNotShowReblogButtons}">
+		<div class="right actions {block:IfNotShowLikeButtons}nolike{/block:IfNotShowLikeButtons} {block:IfNotShowReblogButtons}noreblog{/block:IfNotShowReblogButtons}">
 			{block:IfShowLikeButtons}
 			<a data-tippy-content="Like" href="#" class="customlike">
 				{LikeButton size="30"}
@@ -296,7 +296,7 @@ body.light {
 			<a data-tippy-content="{lang:Permalink}" href="{Permalink}"><i data-feather="link"></i></a>
 		</div>
 		{block:RebloggedFrom}
-		<div class="left actions {block:IfNotShowLikeButtons}nolike{block:IfNotShowLikeButtons} {block:IfNotShowReblogButtons}noreblog{block:IfNotShowReblogButtons}">
+		<div class="left actions {block:IfNotShowLikeButtons}nolike{/block:IfNotShowLikeButtons} {block:IfNotShowReblogButtons}noreblog{/block:IfNotShowReblogButtons}">
 			<a data-tippy-content="{lang:Reblogged from ReblogParentName}" href="{ReblogParentURL}"><img src="{ReblogParentPortraitURL-40}" class="circle"></a>
 			<a data-tippy-content="{lang:Originally from ReblogRootName}" href="{ReblogRootURL}"><img src="{ReblogRootPortraitURL-40}" class="circle"></a>
 		</div>
@@ -446,8 +446,7 @@ body.light {
 		{block:Chat}
 			<ol class="chat">
 				{block:Lines}
-				{block:Label}
-				<li><strong>{Label}</strong> {/block:Label}{Line}</li>
+				<li>{block:Label}<strong>{Label}</strong> {/block:Label}{Line}</li>
 				{/block:Lines}
 			</ol>
 		{/block:Chat}

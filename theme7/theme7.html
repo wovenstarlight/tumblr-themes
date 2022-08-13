@@ -10,7 +10,7 @@
 		Custom audio posts by annasthms: https://annasthms.tumblr.com/more/js/customaudio/new
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 12 Aug 2022.
+	Last updated 13 Aug 2022.
 -->
 
 <!DOCTYPE html>
@@ -533,14 +533,14 @@ html.alt {
 					</span>{/block:PinnedPostLabel}
 
 					{block:IfPostTags}{block:HasTags}<span class="tags" {block:IfShowTagsOnClick}style="display: none"{/block:IfShowTagsOnClick}>
-						{block:Tags}<a href="{TagURL}">{Tag}</a>{block:Tags}{/block:HasTags}{/block:IfPostTags}
-					</span>
+						{block:Tags}<a href="{TagURL}">{Tag}</a>{/block:Tags}
+					</span>{/block:HasTags}{/block:IfPostTags}
 				</p>
 				
 				{block:NoteCount}<a href="{Permalink}#notes" class="notecount">{NoteCountWithLabel}</a>{/block:NoteCount}
 
 				<span class="buttons">
-					{block:IfReblogButtons}<a href="{ReblogURL}" class="customreblog"><svg role="img" viewBox="0 0 17 18.1" width="1.3125em" height="1.3125em" fill="currentColor"><path d="M12.8.2c-.4-.4-.8-.2-.8.4v2H2c-2 0-2 2-2 2v5s0 1 1 1 1-1 1-1v-4c0-1 .5-1 1-1h9v2c0 .6.3.7.8.4L17 3.6 12.8.2zM4.2 17.9c.5.4.8.2.8-.3v-2h10c2 0 2-2 2-2v-5s0-1-1-1-1 1-1 1v4c0 1-.5 1-1 1H5v-2c0-.6-.3-.7-.8-.4L0 14.6l4.2 3.3z"></path></svg></a>{block:IfReblogButtons}
+					{block:IfReblogButtons}<a href="{ReblogURL}" class="customreblog"><svg role="img" viewBox="0 0 17 18.1" width="1.3125em" height="1.3125em" fill="currentColor"><path d="M12.8.2c-.4-.4-.8-.2-.8.4v2H2c-2 0-2 2-2 2v5s0 1 1 1 1-1 1-1v-4c0-1 .5-1 1-1h9v2c0 .6.3.7.8.4L17 3.6 12.8.2zM4.2 17.9c.5.4.8.2.8-.3v-2h10c2 0 2-2 2-2v-5s0-1-1-1-1 1-1 1v4c0 1-.5 1-1 1H5v-2c0-.6-.3-.7-.8-.4L0 14.6l4.2 3.3z"></path></svg></a>{/block:IfReblogButtons}
 
 					{block:IfLikeButtons}<a href="#" class="customlike">
 						{LikeButton size="30"}
@@ -807,7 +807,7 @@ html.alt {
 		{/block:GroupMember}
 	</section>
 	{/block:GroupMembers}{/block:IfNotCustomMembersList}
-	{block:IfMembersList}
+	{/block:IfMembersList}
 
 	{block:HasPages}
 	<!-- CUSTOM PAGES -->
