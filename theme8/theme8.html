@@ -11,7 +11,7 @@
 		Tag filtering by glenthemes: https://glenthemes.tumblr.com/spoilertags
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 12 Aug 2022.
+	Last updated 19 Aug 2022.
 -->
 
 <!DOCTYPE html>
@@ -738,8 +738,8 @@ html.alt { /* ALTERNATE PALETTE */
 	{block:ShowDescription}{block:Description}<section id="about" style="display: none">
 		<div id="desc">{Description}</div>
 		<nav id="blognav">
-			{block:AskEnabled}<a href="/ask" class="asklink" {block:AskPage}class="current-page"{/block:AskPage}>{AskLabel}</a>{/block:AskEnabled}
-			{block:SubmissionsEnabled}<a href="/submit" class="submitlink" {block:SubmitPage}class="current-page"{/block:SubmitPage}>{SubmitLabel}</a>{/block:SubmissionsEnabled}
+			{block:AskEnabled}<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}">{AskLabel}</a>{/block:AskEnabled}
+			{block:SubmissionsEnabled}<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
 			{block:IfRandomPostLink}<a href="/random" class="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
 			{block:IfArchiveLink}<a href="/archive" class="archivelink">{lang:Archive}</a>{/block:IfArchiveLink}
 		</nav>
