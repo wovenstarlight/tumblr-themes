@@ -8,7 +8,9 @@
 /******************************** GENERAL STYLES ********************************/
 html, body { height: 100% }
 body {
-	background: var(--bg);
+	background: var(--bg) no-repeat center;
+	background-attachment: fixed;
+	background-size: cover;
 	color: var(--text);
 }
 a {
