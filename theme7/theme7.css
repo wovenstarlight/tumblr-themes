@@ -326,6 +326,7 @@ img.npf_image {
 /* Link posts */
 .npf-link-block .title,
 .npf-link-block.no-poster .title { padding: 1rem 0.75rem 0 }
+.has-poster .bottom:empty { display: none }
 /* Audio posts */
 span[id*='audio_player'] { display: none }
 .audiowrapper {
