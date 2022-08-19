@@ -702,6 +702,7 @@ div:not(.hasimg) .feature img {
 		bottom: 0;
 		overflow-y: scroll;
 		padding: 4em 1em;
+		z-index: 6;
 	}
 	
 	#scrolltotop_parent { bottom: 3.75em }
