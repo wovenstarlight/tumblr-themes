@@ -804,7 +804,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		background-image: none;
 		color: var(--t2-text);
 	}
-	.post.titled.pinned #pinnedpost::before {
+	body.alltapes .post.titled.pinned #pinnedpost::before {
 		background-image: var(--t2-image);
 		background-repeat: var(--t2-repeat);
 		background-size: var(--t2-size);
