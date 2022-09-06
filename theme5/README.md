@@ -52,6 +52,7 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 - [Custom like buttons](https://demirev.cubthemes.com/post/106345243051/changing-like-and-reblog-button-colors-revisited) by Georgi Demirev
 - [NPF photosets plugin](https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin) by codematurgy
 - [Dark/light mode toggle](https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a) by eggdesign
+- [Tag filtering](https://glenthemes.tumblr.com/spoilertags) by glenthemes
 - [Custom audio posts](https://annasthms.tumblr.com/more/js/customaudio/new) by annasthms
 - [Scroll to top script](https://github.com/FabianLins/scrolltotop_arrow_jquery) by Fabian Lins
 

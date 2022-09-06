@@ -7,6 +7,7 @@
 		Custom like buttons by Georgi Demirev: https://demirev.cubthemes.com/post/106345243051/changing-like-and-reblog-button-colors-revisited
 		NPF photosets plugin by codematurgy: https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin
 		Dark/light mode toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
+		Tag filtering by glenthemes: https://glenthemes.tumblr.com/spoilertags
 		Custom audio posts by annasthms: https://annasthms.tumblr.com/more/js/customaudio/new
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
@@ -105,6 +106,7 @@
 	<meta name="text:Page 8 icon" content="butterfly-o">
 
 	<!-- General theme options -->
+	<meta name="text:Filtered tags" content="spoiler, spoilers">
 	<meta name="if:Back to top button" content="1">
 	<meta name="if:Random post link" content="1">
 	<meta name="if:Archive link" content="1">
@@ -201,6 +203,63 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 	https://annasthms.tumblr.com/more/js/customaudio/new
 	-->
 	<script src="https://cdn.jsdelivr.net/gh/annasthms/customaudio@latest/customaudio.min.js"></script>
+	{block:IfFilteredTags}
+	<!--------- HIDE POSTS WITH SPOILER TAGS | @glenthemes -------->
+	<script src="//spoilertags.glitch.me/filter.js"></script>
+	<link href="//spoilertags.glitch.me/style.css" rel="stylesheet">
+	<script>
+	let tagsArray = "{text:Filtered tags}";
+	tagsArray = tagsArray.split(", ");
+	tagsArray.forEach(function(curr, i, arr) { arr[i] = "#" + curr } );
+	$(function(){
+		$("[init-tags]").spoilerTags({
+			filter: tagsArray,
+			message: "This post contains filtered tags",
+			includeHashtag: "yes",
+			tagSeparator: ",",
+			viewPostText: "View post",
+			shrinkPosts: "yes"
+		});
+	});
+	</script>
+		
+	<style>
+	:root {
+		--Spoiler-Overlay-Color: var(--post);
+		--Spoiler-Overlay-Transparency: 0%; /* MUST be in % */
+		
+		--Warning-Text-Size: 0.8em;
+		--Warning-Text-Color: var(--text);
+		--Spoiler-Tags-Color: var(--links);
+		
+		--ViewPost-Button-Padding: 0.75em;
+		--ViewPost-Button-Border: none;
+		--ViewPost-Button-Roundness: 0;
+		--ViewPost-Button-Background: rgba(var(--accent--rgb), 0.2);
+		--ViewPost-Button-FontSize: 100%;
+		--ViewPost-Button-Text-Color: var(--links);
+		
+		--ViewPost-Button-HOVER-Border: none;
+		--ViewPost-Button-HOVER-Background: var(--links);
+		--ViewPost-Button-HOVER-Text-Color: var(--post);
+		
+		--ShrinkPost-Transition-Speed: 699ms; /* can be in ms or s */
+	}
+	.post[style*="max-height"] .frame::before,
+	.post[style*="max-height"] .frame::after {
+		display: none;
+	}
+	.post:not([style*="max-height"]) { overflow-y: visible !important }
+	.lowercase .warning-text, .lowercase .view-button {
+		text-transform: lowercase;
+		letter-spacing: initial;
+	}
+	.uppercase .warning-text {
+		font-variant: small-caps;
+		--ViewPost-Button-FontSize: 80%;
+	}
+	</style>
+	{/block:IfFilteredTags}
 	{block:IfBackToTopButton}
 	<!-- Scroll to top button -->
 	<script src="https://wovenstarlight.github.io/tumblr-themes/scrolltotop.min.js"></script>
@@ -266,7 +325,7 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 
 	{block:Posts}
 
-		<article class="post">
+		<article class="post" posts-selector>
 			{block:Date}<header {block:IfNotPostDates}class="nodates"{/block:IfNotPostDates}>
 				{block:IfPostDates}<a href="{Permalink}" data-tippy-content="{lang:Posted TimeAgo}">{DayOfWeek}, {block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfPostTimes} @ {block:If24HourTimes}{24Hour}{/block:If24HourTimes}{block:IfNot24HourTimes}{12Hour}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes} {CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</a>{/block:IfPostDates}
 				<div>{block:RebloggedFrom}<a href="{ReblogParentURL}" data-tippy-content="{lang:Reblogged from ReblogParentName}">via</a> ∙ <a href="{ReblogRootURL}" data-tippy-content="{lang:Originally from ReblogRootName}">source</a> ∙ {/block:RebloggedFrom}{block:NoteCount}<a href="{Permalink}#notes">{NoteCountWithLabel}</a>{/block:NoteCount}</div>
@@ -545,7 +604,7 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 				{/block:IfShowTagsOnClick}
 				<p class="tags" {block:IfShowTagsOnClick}style="display: none;"{/block:IfShowTagsOnClick}>
 					<!-- TAGS SECTION -->
-					{block:Tags}<a href="{TagURL}">{Tag}</a>{/block:Tags}
+					{block:Tags}<a href="{TagURL}" init-tags>{Tag}</a>{block:Tags}
 				</p>
 				{/block:HasTags}{/block:IfPostTags}
 			</footer>{/block:Date}
