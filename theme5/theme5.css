@@ -238,7 +238,7 @@ pre {
 .lowercase .page.title,
 .lowercase .post header,
 .lowercase .post .user,
-.lowercase .post .showtags,
+.lowercase .post .tags,
 .lowercase #notes .title, .lowercase .notes .action a { text-transform: lowercase }
 .lowercase .post .showtags i {
 	-webkit-box-align: baseline;
