@@ -49,6 +49,12 @@
 	<meta name="color:Background" content="{BackgroundColor}">
 	<meta name="color:Text" content="{TitleColor}">
 	<meta name="color:Accent" content="{AccentColor}">
+	<meta name="color:Tape 1" content="{AccentColor}">
+	<meta name="color:Tape 1 text" content="{BackgroundColor}">
+	<meta name="color:Tape 2" content="{AccentColor}">
+	<meta name="color:Tape 2 text" content="{BackgroundColor}">
+	<meta name="color:Tape 3" content="{AccentColor}">
+	<meta name="color:Tape 3 text" content="{BackgroundColor}">
 	<!-- Alternate palette -->
 	<meta name="if:Palette toggle" content="1">
 	<meta name="select:Default palette" content="" title="Original">
@@ -56,6 +62,12 @@
 	<meta name="color:ALT Background" content="{BackgroundColor}">
 	<meta name="color:ALT Text" content="{TitleColor}">
 	<meta name="color:ALT Accent" content="{AccentColor}">
+	<meta name="color:ALT Tape 1" content="{AccentColor}">
+	<meta name="color:ALT Tape 1 text" content="{BackgroundColor}">
+	<meta name="color:ALT Tape 2" content="{AccentColor}">
+	<meta name="color:ALT Tape 2 text" content="{BackgroundColor}">
+	<meta name="color:ALT Tape 3" content="{AccentColor}">
+	<meta name="color:ALT Tape 3 text" content="{BackgroundColor}">
 
 	<!-- General theme options -->
 	<meta name="text:Subtitle" content="">
@@ -102,12 +114,28 @@
 		--bg: {color:Background};
 		--text: {color:Text};
 		--accent: {color:Accent};
+
+		/* Tapes */
+		--t1-bg: {color:Tape 1};
+		--t1-text: {color:Tape 1 text};
+		--t2-bg: {color:Tape 2};
+		--t2-text: {color:Tape 2 text};
+		--t3-bg: {color:Tape 3};
+		--t3-text: {color:Tape 3 text};
 	}
 
 	html.alt { /* ALTERNATE PALETTE */
 		--bg: {color:ALT Background};
 		--text: {color:ALT Text};
 		--accent: {color:ALT Accent};
+
+		/* Tapes */
+		--t1-bg: {color:ALT Tape 1};
+		--t1-text: {color:ALT Tape 1 text};
+		--t2-bg: {color:ALT Tape 2};
+		--t2-text: {color:ALT Tape 2 text};
+		--t3-bg: {color:ALT Tape 3};
+		--t3-text: {color:ALT Tape 3 text};
 	}
 	</style>
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme9/theme9.min.css">
@@ -212,6 +240,25 @@
 <!-- Accessibility: HIDDEN TITLE -->
 <h1 id="hiddentitle">{Title}</h1>
 {/block:HideTitle}
+
+
+<!-- BLOG HEADER -->
+<header>
+	<a href="/" id="title">
+		{block:ShowTitle}<h1>{Title}</h1>{/block:ShowTitle}
+		{block:HideTitle}<!--Visuals: TOP TAPE--><span id="h1"></span>{/block:HideTitle}
+		<h2>{block:ShowTitle}{text:Subtitle}{/block:ShowTitle}</h2>
+		{block:ShowAvatar}<img src="{PortraitURL-128}" id="avatar" class="{AvatarShape}" />{/block:ShowAvatar}
+	</a>
+</header>
+
+<!-- BLOG NAVIGATION -->
+<nav id="blognav">
+	{block:AskEnabled}<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}">{AskLabel}</a>{/block:AskEnabled}
+	{block:SubmissionsEnabled}<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+	{block:IfRandomPostLink}<a href="/random" class="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
+	{block:IfArchiveLink}<a href="/archive" class="archivelink">{lang:Archive}</a>{/block:IfArchiveLink}
+</nav>
 
 </body>
 </html>
