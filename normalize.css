@@ -370,3 +370,10 @@ img {
 img.circle {
 	border-radius: 100%;
 }
+
+/**
+* Stop SMTooltips from blocking access to elements behind it when invisible.
+*/
+#s-m-t-tooltip[style*='opacity: 0'] {
+	pointer-events: none;
+}
