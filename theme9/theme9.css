@@ -84,51 +84,81 @@ aside:not(.hasdesc) #search, #desc { /* Bottom */
 /* #region Main tape 1 */
 #title h1, #h1, #blognav,
 #pages a:nth-child(3n+1),
+.bodyitem:nth-child(3n+1) .user, .bodyitem:nth-child(3n+1) .username, .ask .user, .ask .username,
+blockquote:nth-of-type(3n+1)::before,
+.post:nth-child(3n+1) .quote .separator, .post:nth-child(3n+1) .quote .separator i,
+.tags a:nth-child(3n+1),
 #scrolltotop_arrow {
 	background-color: var(--t1-bg);
 	color: var(--t1-text);
 }
 #title h1, #h1, #blognav,
 body.alltapes #pages a:nth-child(3n+1),
+body.alltapes .bodyitem:nth-child(3n+1) .user, .ask .user,
+body.alltapes blockquote:nth-of-type(3n+1)::before,
+body.alltapes .post:nth-child(3n+1) .quote .separator,
+body.alltapes .tags a:nth-child(3n+1),
 body.alltapes #scrolltotop_arrow {
 	background-image: var(--t1-img);
 	background-repeat: var(--t1-repeat);
 	background-size: var(--t1-size);
+	background-position: top right;
 }
 /* #endregion */
 /* #region Main tape 2 */
 #title h2, header::after,
 #pages a:nth-child(3n+2),
+.bodyitem:nth-child(3n+2) .user, .bodyitem:nth-child(3n+2) .username,
+blockquote:nth-of-type(3n+2)::before,
+.post:nth-child(3n+2) .quote .separator, .post:nth-child(3n+2) .quote .separator i,
+.tags a:nth-child(3n+2),
 #scrolltotop_arrow.noplt, #palette {
 	background-color: var(--t2-bg);
 	color: var(--t2-text);
 }
 #title h2, header::after,
 body.alltapes #pages a:nth-child(3n+2),
+body.alltapes .bodyitem:nth-child(3n+2) .user,
+body.alltapes blockquote:nth-of-type(3n+2)::before,
+body.alltapes .post:nth-child(3n+2) .quote .separator,
+body.alltapes .tags a:nth-child(3n+2),
 body.alltapes #scrolltotop_arrow.noplt, body.alltapes #palette {
 	background-image: var(--t2-img);
 	background-repeat: var(--t2-repeat);
 	background-size: var(--t2-size);
+	background-position: top right;
 }
 /* #endregion */
 /* #region Main tape 3 */
 #title::before,
 #pages a:nth-child(3n),
+.bodyitem:nth-child(3n) .user, .bodyitem:nth-child(3n) .username,
+blockquote:nth-of-type(3n)::before,
+.post:nth-child(3n) .quote .separator, .post:nth-child(3n) .quote .separator i,
+.tags a:nth-child(3n),
 #credit {
 	background-color: var(--t3-bg);
 	color: var(--t3-text);
 }
 #title::before,
 body.alltapes #pages a:nth-child(3n),
+body.alltapes .bodyitem:nth-child(3n) .user,
+body.alltapes blockquote:nth-of-type(3n)::before,
+body.alltapes .post:nth-child(3n) .quote .separator,
+body.alltapes .tags a:nth-child(3n),
 body.alltapes #credit {
 	background-image: var(--t3-img);
 	background-repeat: var(--t3-repeat);
 	background-size: var(--t3-size);
+	background-position: bottom left;
 }
 /* #endregion */
 /* #region Accent tape */
 #s-m-t-tooltip,
-#search {
+#search, .stickies > *, .read_more,
+.post .title a, .post.notes .title,
+.post.notes .more_notes_link_container > *,
+.highres, .custom_audio_buttons div {
 	background-color: var(--ta-bg);
 	color: var(--ta-text);
 	background-image: var(--ta-img);
@@ -136,11 +166,46 @@ body.alltapes #credit {
 	background-size: var(--ta-size);
 }
 /* #endregion */
+/* #region General tape bands */
+#pages, .tags {
+	display: flex;
+	flex-flow: row wrap;
+	text-align: center;
+}
+#pages a, .tags a {
+	flex-grow: 1;
+	padding: 0.5em 1em;
+	margin: 0.25em;
+}
+/* #endregion */
 /* #region No-image alternatives */
 html:not(.alt) body.noimga #search input,
 html.alt body.noaimga #search input {
 	background-color: rgba(var(--ta-text--rgb), 0.1);
 }
+body.maintapes .user::before,
+html:not(.alt) body.noimg1 .bodyitem:nth-of-type(3n+1) .user::before,
+html:not(.alt) body.noimg1 .ask .user::before,
+html:not(.alt) body.noimg2 .bodyitem:nth-of-type(3n+2) .user::before,
+html:not(.alt) body.noimg3 .bodyitem:nth-of-type(3n) .user::before,
+html.alt body.noaimg1 .bodyitem:nth-of-type(3n+1) .user::before,
+html.alt body.noaimg2 .bodyitem:nth-of-type(3n+2) .user::before,
+html.alt body.noaimg3 .bodyitem:nth-of-type(3n) .user::before { filter: drop-shadow(-0.1em 0 0em) }
+body.maintapes .user::after,
+html:not(.alt) body.noimg1 .bodyitem:nth-of-type(3n+1) .user::after,
+html:not(.alt) body.noimg1 .ask .user::after,
+html:not(.alt) body.noimg2 .bodyitem:nth-of-type(3n+2) .user::after,
+html:not(.alt) body.noimg3 .bodyitem:nth-of-type(3n) .user::after,
+html.alt body.noaimg1 .bodyitem:nth-of-type(3n+1) .user::after,
+html.alt body.noaimg2 .bodyitem:nth-of-type(3n+2) .user::after,
+html.alt body.noaimg3 .bodyitem:nth-of-type(3n) .user::after { filter: drop-shadow(0.1em 0 0em) }
+body.maintapes .quote .separator i,
+html:not(.alt) body.noimg1 .post:nth-child(3n+1) .quote .separator i,
+html:not(.alt) body.noimg2 .post:nth-child(3n+2) .quote .separator i,
+html:not(.alt) body.noimg3 .post:nth-child(3n) .quote .separator i,
+html.alt body.noaimg1 .post:nth-child(3n+1) .quote .separator i,
+html.alt body.noaimg2 .post:nth-child(3n+2) .quote .separator i,
+html.alt body.noaimg3 .post:nth-child(3n) .quote .separator i { border: double; border-width: 0 0.3em }
 /* #endregion */
 /* #endregion */
 
@@ -277,19 +342,9 @@ aside:empty { display: none }
 #desc:first-child { padding-top: 1em }
 #desc:last-child { padding-bottom: 1em }
 /* Custom pages */
-#pages {
-	padding: 0 .75em;
-	display: flex;
-	flex-flow: row wrap;
-	text-align: center;
-}
+#pages { padding: 0 .75em }
 #desc + #pages { margin-top: -1.25em }
 #search + #pages { margin-top: 0.5em }
-#pages a {
-	flex-grow: 1;
-	padding: 0.5em 1em;
-	margin: 0.25em;
-}
 #pages a.current-page { font-weight: bold }
 /* #endregion */
 
