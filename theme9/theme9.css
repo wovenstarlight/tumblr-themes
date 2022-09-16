@@ -291,11 +291,310 @@ html.alt .og.sticker, html:not(.alt) .alt.sticker { display: none }
 
 
 /* #region POSTS */
+#posts { width: 100% }
+.post {
+	margin-bottom: 3.5em;
+	position: relative;
+}
+/* Page titles */
+.page.title {
+	text-align: center;
+	margin-bottom: 2em;
+}
+.page.title a {
+	padding: 0.5em;
+	margin: 0 0.5em;
+	position: relative;
+}
+.page.title .tag::before { content: "#" }
+.search_query::before { content: "\201C" }
+.search_query::after { content: "\201D" }
+/* No posts */
+#no-posts { margin-bottom: 0 }
+#no-posts .body { padding: 0.25em 1em; text-align: center }
+/* Reblogs */
+.post .body {
+	background-color: rgba(var(--ta-bg--rgb), 0.1);
+	padding: 1.75em 0 2em;
+}
+.post .bodyitem + .bodyitem { margin-top: 1em }
+/* Post titles */
+.post .title a, .post.notes .title {
+	display: block;
+	text-align: center;
+	font-size: 1.5em;
+	padding: 0.2em 0.6em;
+	margin-bottom: 0.5em;
+}
+/* Post usernames */
+.post .user, .post .username, .read_more {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.post .user {
+	height: 2em;
+	margin-bottom: 0.5em;
+}
+.post .username {
+	height: 100%;
+	position: relative;
+	padding: 0 0.25em;
+	transition: padding .2s;
+	text-shadow: none;
+}
+.post .user[href]:hover .username { padding: 0 0.75em }
+.post .user::before,
+.post .user::after {
+	content: "";
+	border: solid transparent;
+	border-width: 1em 0.7em;
+}
+.deactivated.user .username::after {
+	content: "(deactivated)";
+	margin-left: 0.2em;
+	font-size: 0.95em;
+	opacity: 0.6;
+}
+.bodyitem:nth-of-type(3n+1) .user::before, .ask .user::before { border-right-color: var(--t1-bg) }
+.bodyitem:nth-of-type(3n+1) .user::after, .ask .user::after { border-left-color: var(--t1-bg) }
+.bodyitem:nth-of-type(3n+2) .user::before { border-right-color: var(--t2-bg) }
+.bodyitem:nth-of-type(3n+2) .user::after { border-left-color: var(--t2-bg) }
+.bodyitem:nth-of-type(3n) .user::before { border-right-color: var(--t3-bg) }
+.bodyitem:nth-of-type(3n) .user::after { border-left-color: var(--t3-bg) }
+/* Body content */
+.post .bodyitemcontent { margin: 0 1em }
+.bodyitemcontent > :first-child, .ask .question > :first-child { margin-top: 0 }
+.bodyitemcontent > :last-child, .ask .question > :last-child { margin-bottom: 0 }
+blockquote {
+	position: relative;
+	margin-left: 0;
+	padding-left: 2.5em;
+}
+blockquote::before {
+	content: "";
+	display: block;
+	height: 100%;
+	width: 1em;
+	position: absolute;
+	left: 0.5em;
+}
+.read_more { padding: 0.5em 1em }
+/* Post tags */
+.post .tags { margin-top: 0.25em }
+/* Stickies general */
+.stickies, .likereblog a {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	text-align: center;
+}
+.stickies a, .submitted {
+	color: var(--ta-text);
+	padding: 0.5em;
+}
+.stickies a:hover, #pagination a:hover { text-shadow: 0 0 0.2em }
+.stickies { row-gap: 0.25em; column-gap: 1.5em }
+header.stickies { margin-bottom: -0.75em }
+footer .stickies { margin-top: -0.75em }
+/* Pinned post label */
+#pinnedpost {
+	cursor: help;
+	display: flex;
+	align-items: center;
+}
+/* Footer stickies */
+.source { padding-left: 0.5em }
+.submitted, .source, .viasource, .viasource a { display: flex; align-items: center }
+.viasource a { padding: 0.3em 0.5em }
+.viasource img {
+	--size: 1.75em;
+	width: var(--size);
+	height: var(--size);
+	transition: box-shadow .2s;
+}
+.viasource a:hover img { box-shadow: 0 0 0.5em }
+.likereblog {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#pinnedpost, .likereblog a { padding: 0.5em 0.6em }
+#pinnedpost i, .likereblog i, #buttons i { font-size: 1.15em }
+.showtags { cursor: pointer }
+.showtags.active i::before { content: "\f873" }
+/* Like button */
+.customlike { position: relative }
+.customlike .like_button.liked + i::before { content: "\fc8f"; }
+.customlike iframe {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+	opacity: 0;
+}
+/* Ask page FAQ wrapper */
+.askwrapper { margin-bottom: 1em }
+/* Post notes */
+.post.notes .title { margin-top: -0.5em }
+.post.notes .notes {
+	margin: 0;
+	padding: 0 1em;
+	list-style: none;
+}
+.post.notes .notes .avatar_frame { display: none }
+.post.notes li {
+	position: relative;
+	padding: 0.25em 1.25em;
+}
+.post.notes li::before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0.75em;
+	height: 100%;
+}
+.post.notes li blockquote { margin: 0.5em 0 0 }
+.post.notes .more_notes_link_container::before { content: none }
+.post.notes .more_notes_link_container > * {
+	display: block;
+	margin: 0.25em -1.25em 0;
+	padding: 0.5em;
+}
 /* #endregion */
 
 
 
 /* #region POST TYPES */
+/* Photo posts */
+.photowrapper { position: relative }
+.photowrapper a[href*="image"], .photopost { display: flex }
+.photopost { width: 100% }
+.photowrapper .highres {
+	position: absolute;
+	bottom: 1em;
+	left: 1em;
+	padding: 0.4em 0.5em;
+	transition: opacity .2s, text-shadow .2s;
+}
+.photowrapper:not(:hover) .highres { opacity: 0 }
+/* Photoset posts */
+.bodyitem .npf_photoset { margin: 0 -1em }
+.npf_photoset .npf_image { object-fit: cover }
+/* Quote posts */
+.body .quote { text-align: center }
+.quote h2 { font-weight: normal; margin: 0 0.5em }
+.quote .separator {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0.5em 0;
+}
+.quote .separator i { padding: 0.5em }
+/* Link posts */
+.link {
+	display: flex;
+	flex-direction: column;
+	text-shadow: none;
+	transition: box-shadow .2s;
+	overflow: hidden;
+}
+.link:hover { box-shadow: 0 0 0.25em var(--links) }
+.link img {
+	width: 100%;
+	height: 10em;
+	object-fit: cover;
+}
+.link .name, .link .excerpt {
+	position: relative;
+	padding: 0.3em 0.75rem;
+	text-shadow: none;
+}
+.link .name { font-size: 1.2em }
+/* Chat posts */
+.chat {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.chat li {
+	position: relative;
+	padding: 0.2em 0.5em;
+}
+.chat li:nth-child(even) { padding-left: 1em }
+/* Audio posts */
+.audiowrapper {
+	display: grid;
+	grid-template-columns: 4em 1fr auto;
+	column-gap: 1em;
+	background: rgba(var(--ta-bg--rgb), 0.1);
+	padding: 0.5em;
+}
+.audiowrapper span[id*='audio_player'] { display: none }
+.audiowrapper .custom_audio_buttons, .custom_audio_buttons div:not([style]),
+.custom_audio_buttons div[style*='block'], .seekbar span {
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+.custom_audio_buttons div {
+	height: 4em;
+	width: 100%;
+	cursor: pointer;
+}
+.custom_audio_buttons .custom_audio_error_icon { color: red }
+.audiowrapper .textinfo {
+	display: flex;
+	flex-direction: column;
+}
+.textinfo .trackname { font-size: 1.1em }
+.textinfo .artist, .textinfo .album { font-size: 0.8em }
+.textinfo .album { font-style: italic }
+.audiowrapper .albumart { height: 4em }
+.audiowrapper .seekbar {
+	grid-column: 1 / span 3;
+	height: 1.2em;
+	display: grid;
+	align-items: center;
+	text-align: center;
+	grid-template-columns: 4em 1fr 4em;
+	column-gap: 1em;
+	margin-top: 0.5em;
+}
+.custom_audio_seekbar { cursor: pointer; overflow: hidden }
+.seekbar span, .custom_audio_seekbar,
+.custom_audio_seekbar_progress { height: 100% }
+body.maintapes .custom_audio_seekbar_progress,
+html:not(.alt) body.noimg3 .custom_audio_seekbar_progress,
+html.alt body.noaimg3 .custom_audio_seekbar_progress {
+	box-shadow: inset -0.05em 0 0, 0.05em 0 0;
+}
+.seekbar span {
+	position: relative;
+	font-size: 0.8em;
+}
+.custom_audio_time_left::before {
+	content: "-";
+	padding-right: 0.2em;
+}
+.bodyitem iframe { max-width: 100% }
+/* Video posts */
+.videowrapper div, .videowrapper iframe { width: 100% !important }
+/* Ask posts */
+.ask {
+	margin: 0 1em 0.75em;
+	background-color: rgba(var(--ta-bg--rgb), 0.1);
+	overflow: hidden;
+}
+.ask .user i { margin-right: 0.5em }
+.ask .question { padding: 0 1em 0.75em }
 /* #endregion */
 
 
