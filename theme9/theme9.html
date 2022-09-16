@@ -10,7 +10,7 @@
 		Palette toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 15 Sep 2022.
+	Last updated 16 Sep 2022.
 -->
 
 <!DOCTYPE html>
@@ -61,6 +61,10 @@
 	<meta name="color:Tape 3 text" content="{BackgroundColor}">
 	<meta name="image:Tape 3" content="{HeaderImage}">
 	<meta name="if:Tape 3 image tiling" content="1">
+	<meta name="color:Accent tape" content="{AccentColor}">
+	<meta name="color:Accent tape text" content="{BackgroundColor}">
+	<meta name="image:Accent tape" content="{HeaderImage}">
+	<meta name="if:Accent tape image tiling" content="1">
 	<meta name="image:Sticker" content="">
 	<!-- Alternate palette -->
 	<meta name="if:Palette toggle" content="1">
@@ -81,6 +85,10 @@
 	<meta name="color:ALT Tape 3 text" content="{BackgroundColor}">
 	<meta name="image:ALT Tape 3" content="{HeaderImage}">
 	<meta name="if:ALT Tape 3 image tiling" content="1">
+	<meta name="color:ALT Accent tape" content="{AccentColor}">
+	<meta name="color:ALT Accent tape text" content="{BackgroundColor}">
+	<meta name="image:ALT Accent tape" content="{HeaderImage}">
+	<meta name="if:ALT Accent tape image tiling" content="1">
 	<meta name="image:ALT Sticker" content="">
 	<meta name="select:Tape images usage" content="alltapes" title="Everywhere">
 	<meta name="select:Tape images usage" content="maintapes" title="Only on main tapes">
@@ -149,6 +157,13 @@
 		--t3-img: url("{image:Tape 3}");
 		--t3-repeat: {block:IfNotTape3ImageTiling}no-{/block:IfNotTape3ImageTiling}repeat;
 		--t3-size: {block:IfTape3ImageTiling}contain{/block:IfTape3ImageTiling}{block:IfNotTape3ImageTiling}cover{/block:IfNotTape3ImageTiling};
+		--ta-bg: {color:Accent tape};
+		--ta-bg--rgb: {RGBcolor:Accent tape};
+		--ta-text: {color:Accent tape text};
+		--ta-text--rgb: {RGBcolor:Accent tape text};
+		--ta-img: url("{image:Accent tape}");
+		--ta-repeat: {block:IfNotAccentTapeImageTiling}no-{/block:IfNotAccentTapeImageTiling}repeat;
+		--ta-size: {block:IfAccentTapeImageTiling}contain{/block:IfAccentTapeImageTiling}{block:IfNotAccentTapeImageTiling}cover{/block:IfNotAccentTapeImageTiling};
 	}
 
 	html.alt { /* ALTERNATE PALETTE */
@@ -174,6 +189,13 @@
 		--t3-img: url("{image:ALT Tape 3}");
 		--t3-repeat: {block:IfNotAltTape3ImageTiling}no-{/block:IfNotAltTape3ImageTiling}repeat;
 		--t3-size: {block:IfAltTape3ImageTiling}contain{/block:IfAltTape3ImageTiling}{block:IfNotAltTape3ImageTiling}cover{/block:IfNotAltTape3ImageTiling};
+		--ta-bg: {color:ALT Accent tape};
+		--ta-bg--rgb: {RGBcolor:ALT Accent tape};
+		--ta-text: {color:ALT Accent tape text};
+		--ta-text--rgb: {RGBcolor:ALT Accent tape text};
+		--ta-img: url("{image:ALT Accent tape}");
+		--ta-repeat: {block:IfNotAltAccentTapeImageTiling}no-{/block:IfNotAltAccentTapeImageTiling}repeat;
+		--ta-size: {block:IfAltAccentTapeImageTiling}contain{/block:IfAltAccentTapeImageTiling}{block:IfNotAltAccentTapeImageTiling}cover{/block:IfNotAltAccentTapeImageTiling};
 	}
 	</style>
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme9/theme9.min.css">
@@ -269,7 +291,7 @@
 	<script src="https://wovenstarlight.github.io/tumblr-themes/theme9/theme9.min.js"></script>
 </head>
 
-<body class="{select:Special text casing} {select:Tape images usage} {block:IfNotTape1Image}noimg1{/block:IfNotTape1Image} {block:IfNotTape2Image}noimg2{/block:IfNotTape2Image} {block:IfNotTape3Image}noimg3{/block:IfNotTape3Image} {block:IfNotAltTape1Image}noaimg1{/block:IfNotAltTape1Image} {block:IfNotAltTape2Image}noaimg2{/block:IfNotAltTape2Image} {block:IfNotAltTape3Image}noaimg3{/block:IfNotAltTape3Image}">
+<body class="{select:Special text casing} {select:Tape images usage} {block:IfNotTape1Image}noimg1{/block:IfNotTape1Image} {block:IfNotTape2Image}noimg2{/block:IfNotTape2Image} {block:IfNotTape3Image}noimg3{/block:IfNotTape3Image} {block:IfNotAccentTapeImage}noimga{/block:IfNotAccentTapeImage} {block:IfNotAltTape1Image}noaimg1{/block:IfNotAltTape1Image} {block:IfNotAltTape2Image}noaimg2{/block:IfNotAltTape2Image} {block:IfNotAltTape3Image}noaimg3{/block:IfNotAltTape3Image} {block:IfNotAltAccentTapeImage}noaimga{/block:IfNotAltAccentTapeImage}">
 
 <!-- Accessibility: SKIP TO MAIN -->
 <a href="#main" id="skip">Skip to main content</a>
