@@ -41,15 +41,53 @@ body.lower #blognav, body.upper #pagination {
 	text-transform: lowercase;
 }
 /* #endregion */
-/* Roundness */
-#avatar {
-	border-radius: var(--roundness)
+/* #region Roundness */
+#avatar, #s-m-t-tooltip { /* All */
+	border-radius: var(--roundness);
+}
+/* #endregion */
+/* #endregion */
+
+
+
+/* #region TAPE STYLES */
+/* Accent tape 1 */
+#s-m-t-tooltip,
+#title h1, #h1, #blognav,
+#search input {
+	background-color: var(--t1-bg);
+	color: var(--t1-text);
+}
+#title h1, #h1, #blognav {
+	background-image: var(--t1-img);
+	background-repeat: var(--t1-repeat);
+	background-size: var(--t1-size);
+}
+/* Accent tape 2 */
+#title h2, header::after {
+	background-color: var(--t2-bg);
+	color: var(--t2-text);
+}
+#title h2, header::after {
+	background-image: var(--t2-img);
+	background-repeat: var(--t2-repeat);
+	background-size: var(--t2-size);
+}
+/* Accent tape 3 */
+#title::before {
+	background-color: var(--t3-bg);
+	color: var(--t3-text);
+}
+#title::before {
+	background-image: var(--t3-img);
+	background-repeat: var(--t3-repeat);
+	background-size: var(--t3-size);
 }
 /* #endregion */
 
 
 
-/* #region HEADER TAPES */
+/* #region HEADER */
 #title {
 	text-decoration: none;
 	text-align: right;
@@ -60,16 +98,6 @@ body.lower #blognav, body.upper #pagination {
 #blognav, #pagination, header::after {
 	position: fixed;
 	margin: 0; padding: 0; /* reset */
-}
-#title h1, #h1, #blognav {
-	background: var(--t1-bg) var(--t1-img) var(--t1-repeat) var(--t1-position);
-	background-size: var(--t1-size);
-	color: var(--t1-text);
-}
-#title h2, header::after {
-	background: var(--t2-bg) var(--t2-img) var(--t2-repeat) var(--t2-position);
-	background-size: var(--t2-size);
-	color: var(--t2-text);
 }
 #title h1, #h1 { /* Title */
 	top: 3rem;
@@ -98,8 +126,6 @@ body.lower #blognav, body.upper #pagination {
 }
 #title::before {
 	--size: 12em;
-	background: var(--t3-bg) var(--t3-img) var(--t3-repeat) var(--t3-position);
-	background-size: var(--t3-size);
 }
 #title::after {
 	--size: 10em;
