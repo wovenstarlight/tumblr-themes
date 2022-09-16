@@ -61,6 +61,7 @@
 	<meta name="color:Tape 3 text" content="{BackgroundColor}">
 	<meta name="image:Tape 3" content="{HeaderImage}">
 	<meta name="if:Tape 3 image tiling" content="1">
+	<meta name="image:Sticker" content="">
 	<!-- Alternate palette -->
 	<meta name="if:Palette toggle" content="1">
 	<meta name="select:Default palette" content="" title="Original">
@@ -80,6 +81,7 @@
 	<meta name="color:ALT Tape 3 text" content="{BackgroundColor}">
 	<meta name="image:ALT Tape 3" content="{HeaderImage}">
 	<meta name="if:ALT Tape 3 image tiling" content="1">
+	<meta name="image:ALT Sticker" content="">
 	<meta name="select:Tape images usage" content="alltapes" title="Everywhere">
 	<meta name="select:Tape images usage" content="maintapes" title="Only on main tapes">
 
@@ -323,6 +325,31 @@
 		{block:NextDayPage}<a href="{NextDayPage}" id="next" title="{lang:Next day}"><i class="ph-arrow-down"></i></a>{/block:NextDayPage}
 	</nav>{/block:DayPagination}{/block:DayPage}
 </main>
+
+
+<footer>
+	{block:IfBackToTopButton}
+	<!-- BACK TO TOP BUTTON -->
+	<div id="scrolltotop_parent" tabindex="0" style="display: none;" title="{lang:Back to top}">
+		<div id="scrolltotop_arrow" {block:IfNotPaletteToggle}class="noplt"{/block:IfNotPaletteToggle}>
+			<i class="ph-arrow-line-up"></i>
+		</div>
+	</div>
+	{/block:IfBackToTopButton}
+
+	{block:IfPaletteToggle}
+	<a id="palette" tabindex="0" title="Toggle palette">
+		<i class="ph-circle-half-fill"></i>
+	</a>
+	{/block:IfPaletteToggle}
+
+	<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+	<a id="credit" href="https://starlightthemes.tumblr.com/theme#" title="{lang:Install this theme}"><i class="ph-code"></i></a>
+	<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+
+	{block:IfStickerImage}<img class="og sticker" src="{image:Sticker}">{/block:IfStickerImage}
+	{block:IfAltStickerImage}<img class="alt sticker" src="{image:ALT Sticker}">{/block:IfAltStickerImage}
+</footer>
 
 </body>
 </html>

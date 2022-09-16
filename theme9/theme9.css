@@ -42,7 +42,8 @@ body.lower #blognav, body.upper #pagination {
 }
 /* #endregion */
 /* #region Roundness */
-#avatar, #s-m-t-tooltip { /* All */
+#avatar, #s-m-t-tooltip,
+#scrolltotop_arrow, footer a { /* All */
 	border-radius: var(--roundness);
 }
 /* #endregion */
@@ -54,31 +55,37 @@ body.lower #blognav, body.upper #pagination {
 /* Accent tape 1 */
 #s-m-t-tooltip,
 #title h1, #h1, #blognav,
-#search input {
+#search input,
+#scrolltotop_arrow {
 	background-color: var(--t1-bg);
 	color: var(--t1-text);
 }
-#title h1, #h1, #blognav {
+#title h1, #h1, #blognav,
+body.alltapes #scrolltotop_arrow {
 	background-image: var(--t1-img);
 	background-repeat: var(--t1-repeat);
 	background-size: var(--t1-size);
 }
 /* Accent tape 2 */
-#title h2, header::after {
+#title h2, header::after,
+#scrolltotop_arrow.noplt, #palette {
 	background-color: var(--t2-bg);
 	color: var(--t2-text);
 }
-#title h2, header::after {
+#title h2, header::after,
+body.alltapes #scrolltotop_arrow.noplt, body.alltapes #palette {
 	background-image: var(--t2-img);
 	background-repeat: var(--t2-repeat);
 	background-size: var(--t2-size);
 }
 /* Accent tape 3 */
-#title::before {
+#title::before,
+#credit {
 	background-color: var(--t3-bg);
 	color: var(--t3-text);
 }
-#title::before {
+#title::before,
+body.alltapes #credit {
 	background-image: var(--t3-img);
 	background-repeat: var(--t3-repeat);
 	background-size: var(--t3-size);
@@ -145,6 +152,7 @@ body.lower #blognav, body.upper #pagination {
 	display: flex;
 	align-items: center;
 	white-space: nowrap;
+	font-weight: var(--tweight);
 }
 #blognav a, #pagination a {
 	text-decoration: none;
@@ -175,6 +183,34 @@ header::after {
 	content: "";
 	z-index: -1;
 }
+/* #endregion */
+
+
+
+/* #region FOOTER */
+footer {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	bottom: 0.5em;
+	left: 0.5em;
+}
+footer > * { margin-top: 0.5em }
+#scrolltotop_arrow, footer a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	--size: 2em;
+	width: var(--size);
+	height: var(--size);
+	text-decoration: none;
+	cursor: pointer;
+}
+.sticker {
+	max-height: 10em;
+	max-width: 10em;
+}
+html.alt .og.sticker, html:not(.alt) .alt.sticker { display: none }
 /* #endregion */
 
 
