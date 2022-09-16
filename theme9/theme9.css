@@ -32,12 +32,12 @@ a:not(:hover) { text-decoration: none }
 	padding: 0.25em 0.5em;
 }
 /* #region Casing */
-html.upper #title,
-html.upper #blognav {
+body.upper #title,
+body.upper #blognav, body.upper #pagination {
 	text-transform: uppercase;
 }
-html.lower #title,
-html.lower #blognav {
+body.lower #title,
+body.lower #blognav, body.upper #pagination {
 	text-transform: lowercase;
 }
 /* #endregion */
