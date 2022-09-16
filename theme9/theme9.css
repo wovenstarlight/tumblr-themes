@@ -62,11 +62,13 @@ html.lower #blognav {
 	margin: 0; padding: 0; /* reset */
 }
 #title h1, #h1, #blognav {
-	background: var(--t1-bg);
+	background: var(--t1-bg) var(--t1-img) var(--t1-repeat) var(--t1-position);
+	background-size: var(--t1-size);
 	color: var(--t1-text);
 }
 #title h2, header::after {
-	background: var(--t2-bg);
+	background: var(--t2-bg) var(--t2-img) var(--t2-repeat) var(--t2-position);
+	background-size: var(--t2-size);
 	color: var(--t2-text);
 }
 #title h1, #h1 { /* Title */
@@ -96,7 +98,8 @@ html.lower #blognav {
 }
 #title::before {
 	--size: 12em;
-	background: var(--t3-bg);
+	background: var(--t3-bg) var(--t3-img) var(--t3-repeat) var(--t3-position);
+	background-size: var(--t3-size);
 }
 #title::after {
 	--size: 10em;
