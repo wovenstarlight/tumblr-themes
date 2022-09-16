@@ -42,7 +42,7 @@ html.lower #blognav {
 }
 /* #endregion */
 /* Roundness */
-#avatar img {
+#avatar {
 	border-radius: var(--roundness)
 }
 /* #endregion */
