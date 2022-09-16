@@ -80,6 +80,8 @@
 	<meta name="color:ALT Tape 3 text" content="{BackgroundColor}">
 	<meta name="image:ALT Tape 3" content="{HeaderImage}">
 	<meta name="if:ALT Tape 3 image tiling" content="1">
+	<meta name="select:Tape images usage" content="alltapes" title="Everywhere">
+	<meta name="select:Tape images usage" content="maintapes" title="Only on main tapes">
 
 	<!-- General theme options -->
 	<meta name="text:Subtitle" content="">
@@ -263,7 +265,7 @@
 	<script src="https://wovenstarlight.github.io/tumblr-themes/theme9/theme9.min.js"></script>
 </head>
 
-<body class="{select:Special text casing}">
+<body class="{select:Special text casing} {select:Tape images usage} {block:IfNotTape1Image}noimg1{/block:IfNotTape1Image} {block:IfNotTape2Image}noimg2{/block:IfNotTape2Image} {block:IfNotTape3Image}noimg3{/block:IfNotTape3Image} {block:IfNotAltTape1Image}noaimg1{/block:IfNotAltTape1Image} {block:IfNotAltTape2Image}noaimg2{/block:IfNotAltTape2Image} {block:IfNotAltTape3Image}noaimg3{/block:IfNotAltTape3Image}">
 
 <!-- Accessibility: SKIP TO MAIN -->
 <a href="#main" id="skip">Skip to main content</a>
