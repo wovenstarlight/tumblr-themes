@@ -33,18 +33,29 @@ a:not(:hover) { text-decoration: none }
 }
 /* #region Casing */
 body.upper #title,
-body.upper #blognav, body.upper #pagination {
+body.upper #blognav, body.upper #pagination,
+body.upper #search label {
 	text-transform: uppercase;
 }
 body.lower #title,
-body.lower #blognav, body.upper #pagination {
+body.lower #blognav, body.upper #pagination,
+body.lower #search label {
 	text-transform: lowercase;
 }
 /* #endregion */
 /* #region Roundness */
-#avatar, #s-m-t-tooltip,
+#s-m-t-tooltip, #avatar,
+aside, #search input, #pages a,
 #scrolltotop_arrow, footer a { /* All */
 	border-radius: var(--roundness);
+}
+#search, #desc:first-child { /* Top */
+	border-top-left-radius: var(--roundness);
+	border-top-right-radius: var(--roundness);
+}
+aside:not(.hasdesc) #search, #desc { /* Bottom */
+	border-bottom-left-radius: var(--roundness);
+	border-bottom-right-radius: var(--roundness);
 }
 /* #endregion */
 /* #endregion */
@@ -55,12 +66,13 @@ body.lower #blognav, body.upper #pagination {
 /* Accent tape 1 */
 #s-m-t-tooltip,
 #title h1, #h1, #blognav,
-#search input,
+#search, #search input, #pages a:nth-child(3n+1),
 #scrolltotop_arrow {
 	background-color: var(--t1-bg);
 	color: var(--t1-text);
 }
 #title h1, #h1, #blognav,
+body.alltapes #search, body.alltapes #pages a:nth-child(3n+1),
 body.alltapes #scrolltotop_arrow {
 	background-image: var(--t1-img);
 	background-repeat: var(--t1-repeat);
@@ -68,11 +80,13 @@ body.alltapes #scrolltotop_arrow {
 }
 /* Accent tape 2 */
 #title h2, header::after,
+#pages a:nth-child(3n+2),
 #scrolltotop_arrow.noplt, #palette {
 	background-color: var(--t2-bg);
 	color: var(--t2-text);
 }
 #title h2, header::after,
+body.alltapes #pages a:nth-child(3n+2),
 body.alltapes #scrolltotop_arrow.noplt, body.alltapes #palette {
 	background-image: var(--t2-img);
 	background-repeat: var(--t2-repeat);
@@ -80,11 +94,13 @@ body.alltapes #scrolltotop_arrow.noplt, body.alltapes #palette {
 }
 /* Accent tape 3 */
 #title::before,
+#pages a:nth-child(3n),
 #credit {
 	background-color: var(--t3-bg);
 	color: var(--t3-text);
 }
 #title::before,
+body.alltapes #pages a:nth-child(3n),
 body.alltapes #credit {
 	background-image: var(--t3-img);
 	background-repeat: var(--t3-repeat);
@@ -183,6 +199,65 @@ header::after {
 	content: "";
 	z-index: -1;
 }
+/* #endregion */
+
+
+
+/* #region CENTER */
+body {
+	display: grid;
+	justify-items: center;
+	margin-right: 9.25em;
+}
+main {
+	max-width: var(--post-width);
+	margin: 13em 1em 10em;
+	display: grid;
+	row-gap: 2em;
+}
+/* About section */
+aside:empty { display: none }
+/* Search bar */
+#search {
+	width: 100%;
+	padding: 0.5em 0.75em;
+	display: flex;
+	align-items: center;
+}
+#search input {
+	border: none;
+	margin-left: 0.75em;
+	flex-grow: 1;
+	padding: 0.25em 0.5em;
+}
+body.maintapes #search input,
+html:not(.alt) body.noimg1 #search input,
+html.alt body.noaimg1 #search input {
+	background-color: rgba(var(--t1-text--rgb), 0.1);
+}
+/* Description */
+#desc {
+	background-color: rgba(var(--t1-bg--rgb), 0.1);
+  padding: 0.75em 1em 2em;
+  text-align: center;
+}
+#desc:first-child { padding-top: 1em }
+#desc:last-child { padding-bottom: 1em }
+/* Custom pages */
+#pages {
+  padding: 0 .75em;
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+}
+#desc + #pages { margin-top: -1.25em }
+#search + #pages { margin-top: 0.5em }
+#pages a {
+  flex-grow: 1;
+  padding: 0.5em 1em;
+  margin: 0.25em;
+}
+#pages a.current-page { font-weight: bold }
 /* #endregion */
 
 

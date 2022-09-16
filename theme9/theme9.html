@@ -300,7 +300,28 @@
 
 <!-- CENTRAL SECTION -->
 <main>
-	<!-- TODO: ABOUT/LINKS/SEARCH SECTION -->
+	{block:IndexPage}<aside class="{block:ShowDescription}{block:Description}hasdesc{/block:Description}{/block:ShowDescription} {block:HasPages}haspages{/block:HasPages}">
+		{block:IfSearchBar}
+		<!-- SEARCH BAR -->
+		<form action="/search" method="get" id="search">
+			<i class="ph-magnifying-glass"></i>
+			<label for="q">{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
+			<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}"/>
+		</form>
+		{/block:IfSearchBar}
+
+		{block:ShowDescription}{block:Description}
+		<!-- BLOG DESCRIPTION -->
+		<div id="desc">{Description}</div>
+		{/block:Description}{/block:ShowDescription}
+		
+		{block:HasPages}
+		<!-- CUSTOM PAGES -->
+		<nav id="pages">
+			{block:Pages}<a href="{URL}" class="{CurrentState}">{Label}</a>{/block:Pages}
+		</nav>
+		{/block:HasPages}
+	</aside>{/block:IndexPage}
 
 
 	<!-- TODO: POSTS#main with headers and notes -->
