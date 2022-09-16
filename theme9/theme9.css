@@ -81,22 +81,22 @@ aside:not(.hasdesc) #search, #desc { /* Bottom */
 
 
 /* #region TAPE STYLES */
-/* Accent tape 1 */
-#s-m-t-tooltip,
+/* #region Main tape 1 */
 #title h1, #h1, #blognav,
-#search, #search input, #pages a:nth-child(3n+1),
+#pages a:nth-child(3n+1),
 #scrolltotop_arrow {
 	background-color: var(--t1-bg);
 	color: var(--t1-text);
 }
 #title h1, #h1, #blognav,
-body.alltapes #search, body.alltapes #pages a:nth-child(3n+1),
+body.alltapes #pages a:nth-child(3n+1),
 body.alltapes #scrolltotop_arrow {
 	background-image: var(--t1-img);
 	background-repeat: var(--t1-repeat);
 	background-size: var(--t1-size);
 }
-/* Accent tape 2 */
+/* #endregion */
+/* #region Main tape 2 */
 #title h2, header::after,
 #pages a:nth-child(3n+2),
 #scrolltotop_arrow.noplt, #palette {
@@ -110,7 +110,8 @@ body.alltapes #scrolltotop_arrow.noplt, body.alltapes #palette {
 	background-repeat: var(--t2-repeat);
 	background-size: var(--t2-size);
 }
-/* Accent tape 3 */
+/* #endregion */
+/* #region Main tape 3 */
 #title::before,
 #pages a:nth-child(3n),
 #credit {
@@ -124,6 +125,23 @@ body.alltapes #credit {
 	background-repeat: var(--t3-repeat);
 	background-size: var(--t3-size);
 }
+/* #endregion */
+/* #region Accent tape */
+#s-m-t-tooltip,
+#search {
+	background-color: var(--ta-bg);
+	color: var(--ta-text);
+	background-image: var(--ta-img);
+	background-repeat: var(--ta-repeat);
+	background-size: var(--ta-size);
+}
+/* #endregion */
+/* #region No-image alternatives */
+html:not(.alt) body.noimga #search input,
+html.alt body.noaimga #search input {
+	background-color: rgba(var(--ta-text--rgb), 0.1);
+}
+/* #endregion */
 /* #endregion */
 
 
@@ -247,11 +265,8 @@ aside:empty { display: none }
 	margin-left: 0.75em;
 	flex-grow: 1;
 	padding: 0.25em 0.5em;
-}
-body.maintapes #search input,
-html:not(.alt) body.noimg1 #search input,
-html.alt body.noaimg1 #search input {
-	background-color: rgba(var(--t1-text--rgb), 0.1);
+	background-color: var(--ta-bg);
+	color: var(--ta-text);
 }
 /* Description */
 #desc {
