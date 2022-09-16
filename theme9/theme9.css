@@ -46,7 +46,7 @@ body.lower #search label {
 /* #region Roundness */
 #s-m-t-tooltip, #avatar,
 aside, #search input, #pages a,
-#scrolltotop_arrow, footer a { /* All */
+#scrolltotop_arrow, #buttons a { /* All */
 	border-radius: var(--roundness);
 }
 #search, #desc:first-child { /* Top */
@@ -238,24 +238,24 @@ html.alt body.noaimg1 #search input {
 /* Description */
 #desc {
 	background-color: rgba(var(--t1-bg--rgb), 0.1);
-  padding: 0.75em 1em 2em;
-  text-align: center;
+	padding: 0.75em 1em 2em;
+	text-align: center;
 }
 #desc:first-child { padding-top: 1em }
 #desc:last-child { padding-bottom: 1em }
 /* Custom pages */
 #pages {
-  padding: 0 .75em;
-  display: flex;
-  flex-flow: row wrap;
-  text-align: center;
+	padding: 0 .75em;
+	display: flex;
+	flex-flow: row wrap;
+	text-align: center;
 }
 #desc + #pages { margin-top: -1.25em }
 #search + #pages { margin-top: 0.5em }
 #pages a {
-  flex-grow: 1;
-  padding: 0.5em 1em;
-  margin: 0.25em;
+	flex-grow: 1;
+	padding: 0.5em 1em;
+	margin: 0.25em;
 }
 #pages a.current-page { font-weight: bold }
 /* #endregion */
@@ -263,15 +263,15 @@ html.alt body.noaimg1 #search input {
 
 
 /* #region FOOTER */
-footer {
+#buttons {
 	display: flex;
 	flex-direction: column;
 	position: fixed;
 	bottom: 0.5em;
 	left: 0.5em;
 }
-footer > * { margin-top: 0.5em }
-#scrolltotop_arrow, footer a {
+#buttons > * { margin-top: 0.5em }
+#scrolltotop_arrow, #buttons a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
