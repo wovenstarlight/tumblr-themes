@@ -360,21 +360,21 @@
 
 	<!-- PAGINATION -->
 	{block:Pagination}<nav id="pagination">
-		{block:PreviousPage}<a href="{PreviousPage}" id="prev" title="{lang:Previous page}"><i class="ph-arrow-left"></i></a>{/block:PreviousPage}
+		{block:PreviousPage}<a href="{PreviousPage}" id="prev" title="{lang:Previous page}"><i class="ph-arrow-up"></i></a>{/block:PreviousPage}
 		<span id="curr">{lang:CurrentPage of TotalPages}</span>
-		{block:NextPage}<a href="{NextPage}" id="next" title="{lang:Next page}"><i class="ph-arrow-right"></i></a>{/block:NextPage}
+		{block:NextPage}<a href="{NextPage}" id="next" title="{lang:Next page}"><i class="ph-arrow-down"></i></a>{/block:NextPage}
 	</nav>{/block:Pagination}
 	
 	{block:PermalinkPagination}<nav id="pagination">
-		{block:PreviousPost}<a href="{PreviousPost}" id="prev" title="{lang:Previous post}"><i class="ph-arrow-left"></i></a>{/block:PreviousPost}
+		{block:PreviousPost}<a href="{PreviousPost}" id="prev" title="{lang:Previous post}"><i class="ph-arrow-up"></i></a>{/block:PreviousPost}
 		<span id="curr">{lang:See more posts}</span>
-		{block:NextPost}<a href="{NextPost}" id="next" title="{lang:Next post}"><i class="ph-arrow-right"></i></a>{/block:NextPost}
+		{block:NextPost}<a href="{NextPost}" id="next" title="{lang:Next post}"><i class="ph-arrow-down"></i></a>{/block:NextPost}
 	</nav>{/block:PermalinkPagination}
 	
 	{block:DayPage}{block:DayPagination}<nav id="pagination">
-		{block:PreviousDayPage}<a href="{PreviousDayPage}" id="prev" title="{lang:Previous day}"><i class="ph-arrow-left"></i></a>{/block:PreviousDayPage}
+		{block:PreviousDayPage}<a href="{PreviousDayPage}" id="prev" title="{lang:Previous day}"><i class="ph-arrow-up"></i></a>{/block:PreviousDayPage}
 		<span id="curr">{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst}, {Year}</span>
-		{block:NextDayPage}<a href="{NextDayPage}" id="next" title="{lang:Next day}"><i class="ph-arrow-right"></i></a>{/block:NextDayPage}
+		{block:NextDayPage}<a href="{NextDayPage}" id="next" title="{lang:Next day}"><i class="ph-arrow-down"></i></a>{/block:NextDayPage}
 	</nav>{/block:DayPagination}{/block:DayPage}
 </main>
 
