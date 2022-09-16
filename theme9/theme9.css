@@ -270,7 +270,6 @@ html.alt body.noaimg3 .post:nth-child(3n) .quote .separator i { border: double; 
 	display: flex;
 	align-items: center;
 	white-space: nowrap;
-	font-weight: var(--tweight);
 }
 #blognav a, #pagination a {
 	padding: 0.75em 0.25em;
@@ -335,7 +334,7 @@ aside:empty { display: none }
 }
 /* Description */
 #desc {
-	background-color: rgba(var(--t1-bg--rgb), 0.1);
+	background-color: rgba(var(--ta-bg--rgb), 0.1);
 	padding: 0.75em 1em 2em;
 	text-align: center;
 }
