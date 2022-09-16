@@ -57,7 +57,7 @@ html.lower #blognav {
 	font-weight: var(--tweight);
 }
 #title h1, #h1, #title h2,
-#blognav, header::after {
+#blognav, #pagination, header::after {
 	position: fixed;
 	margin: 0; padding: 0; /* reset */
 }
@@ -113,30 +113,37 @@ html.lower #blognav {
 	width: var(--size);
 	height: var(--size);
 }
-#blognav {
+#blognav, #pagination { /* Right side */
 	position: fixed;
 	writing-mode: vertical-lr;
 	display: flex;
 	align-items: center;
 	white-space: nowrap;
+}
+#blognav a, #pagination a {
+	text-decoration: none;
+	padding: 0.75em 0.25em;
+	color: var(--t2-text);
+}
+#blognav a:first-child, #pagination a:first-child { margin-top: -0.75em }
+#blognav a:last-child, #pagination a:last-child { margin-bottom: -0.75em }
+#blognav {
 	right: 3rem;
 	bottom: 0;
 	height: calc(100% - 12em);
 	min-width: 3rem;
 	padding: 1rem 0.1em;
 }
-#blognav a {
-	text-decoration: none;
-	padding: 0.75em 0.25em;
-	color: var(--t2-text);
-}
-#blognav a:first-child { margin-top: -0.75em }
-#blognav a:last-child { margin-bottom: -0.75em }
-header::after {
+#pagination, header::after {
 	right: 7em;
 	bottom: 0;
 	height: calc(100% - 7em);
 	min-width: 2.25rem;
+}
+#pagination {
+	color: var(--t2-text);
+	padding: 6.05rem 0.1em 0.5em 0.1em;
+	z-index: 1;
 }
 header::after {
 	content: "";
