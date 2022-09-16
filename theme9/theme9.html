@@ -294,7 +294,7 @@
 <body class="{select:Special text casing} {select:Tape images usage} {block:IfNotTape1Image}noimg1{/block:IfNotTape1Image} {block:IfNotTape2Image}noimg2{/block:IfNotTape2Image} {block:IfNotTape3Image}noimg3{/block:IfNotTape3Image} {block:IfNotAccentTapeImage}noimga{/block:IfNotAccentTapeImage} {block:IfNotAltTape1Image}noaimg1{/block:IfNotAltTape1Image} {block:IfNotAltTape2Image}noaimg2{/block:IfNotAltTape2Image} {block:IfNotAltTape3Image}noaimg3{/block:IfNotAltTape3Image} {block:IfNotAltAccentTapeImage}noaimga{/block:IfNotAltAccentTapeImage}">
 
 <!-- Accessibility: SKIP TO MAIN -->
-<a href="#main" id="skip">Skip to main content</a>
+<a href="#posts" id="skip">Skip to main content</a>
 
 {block:HideTitle}
 <!-- Accessibility: HIDDEN TITLE -->
@@ -346,7 +346,348 @@
 	</aside>{/block:IndexPage}
 
 
-	<!-- TODO: POSTS#main with headers and notes -->
+	<section id="posts">
+
+		{block:TagPage}
+			<!-- SPECIAL PAGE HEADER: TAG -->
+			<div class="page title">
+				<h2>{lang:TagResultCount posts tagged Tag 2}</h2>
+				<p>
+					<a href="/tagged/{URLSafeTag}">Newest first</a>
+					<a href="/tagged/{URLSafeTag}/chrono">Oldest first</a>
+				</p>
+			</div>
+		{/block:TagPage}
+		
+		{block:DayPage}
+			<!-- SPECIAL PAGE HEADER: DAY -->
+			<div class="page title"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
+		{/block:DayPage}
+		
+		{block:SearchPage}
+			<!-- SPECIAL PAGE HEADER: SEARCH -->
+			<div class="page title">
+				<h2>
+					{lang:SearchResultCount results for SearchQuery 2}
+					{block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}
+				</h2>
+			</div>
+		{/block:SearchPage}
+
+		{block:NoPosts}
+			<!-- SPECIAL MESSAGE: EMPTY BLOG -->
+			<section id="no-posts"><p>{lang:This Tumblr hasnt posted anything}</p></section>
+		{/block:NoPosts}
+
+
+		{block:Posts}
+		<article class="post {block:Title}titled{/block:Title} {block:PinnedPostLabel}pinned{/block:PinnedPostLabel}" posts-selector>
+			{block:Date}<header class="stickies">
+				{block:Submission}<span class="submitted">{lang:Submitted By}</span>{/block:Submission}
+				{block:IfPostDates}<a href="{Permalink}" class="date" title="{lang:Posted TimeAgo}">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst}, {Year}{block:IfPostTimes}, {block:If24HourTimes}{24HourWithZero}{/block:If24HourTimes}{block:IfNot24HourTimes}{12Hour}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes} {CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</a>{/block:IfPostDates}
+				{block:NoteCount}<a href="{Permalink}#notes" class="notecount">{NoteCountWithLabel}</a>{/block:NoteCount}
+				{block:PinnedPostLabel}<span id="pinnedpost" title="{PinnedPostLabel}"><i class="ph-push-pin"></i></span>{/block:PinnedPostLabel}
+			</header>{/block:Date}
+
+
+			<section class="body">
+				{block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+
+
+				{block:Text}
+					
+					{block:NotReblog}
+					<div class="bodyitemcontent">
+						{block:AskPage}<div class="askwrapper">{text:FAQ}</div>{/block:AskPage}
+						{Body}
+					</div>
+					{/block:NotReblog}
+					
+					{block:RebloggedFrom}{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}><span class="username">{Username}</span></a>
+						<div class="bodyitemcontent">{Body}</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+				{/block:Text}
+
+
+				{block:Photo}
+				
+					<div class="photowrapper">
+						{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+						<a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
+					</div>
+					
+					{block:NotReblog}
+					<div class="bodyitemcontent">{Caption}</div>
+					{/block:NotReblog}
+					
+					{block:RebloggedFrom}{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">{Body}</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+				{/block:Photo}
+
+
+				{block:Panorama}
+				
+					<div class="photowrapper">
+						{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+						<a class="highres" href="{PhotoURL-Panorama}">{lang:View high resolution}</a>
+					</div>
+					
+					{block:NotReblog}
+					<div class="bodyitemcontent">{Caption}</div>
+					{/block:NotReblog}
+					
+					{block:RebloggedFrom}{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">{Body}</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+				{/block:Panorama}
+
+
+				{block:Photoset}
+					<div class="npf_photoset" data-layout="{PhotosetLayout}">
+						{block:Photos}
+							<figure class="tmblr-full"> 
+								<img class="npf_image" alt="{PhotoAlt}" src="{PhotoURL-500}" data-orig-width="{PhotoWidth-HighRes}" data-orig-height="{PhotoHeight-HighRes}" data-highres="{PhotoURL-HighRes}">
+							</figure>
+						{/block:Photos}
+					</div>
+					
+					{block:NotReblog}
+					<div class="bodyitemcontent">{Caption}</div>
+					{/block:NotReblog}
+					
+					{block:RebloggedFrom}{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">{Body}</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+				{/block:Photoset}
+
+
+				{block:Quote}
+					<div class="quote">
+						<h2>{Quote}</h2>
+						<div class="separator"><i class="ph-quotes"></i></div>
+						{block:Source}<p>{Source}</p>{/block:Source}
+					</div>
+				{/block:Quote}
+
+
+				{block:Link}
+					
+					{block:NotReblog}
+					<div class="bodyitemcontent">
+						<a class="link" href="{URL}" {Target}>
+							{block:Thumbnail}<img src="{Thumbnail}">{/block:Thumbnail}
+							<span class="name">{Name}{block:Author} — {Author}{/block:Author}</span>
+							{block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}
+						</a>
+						{Body}
+					</div>
+					{/block:NotReblog}
+					
+					{block:RebloggedFrom}{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">
+							{block:IsOriginalEntry}
+							<a class="link" href="{URL}" {Target}>
+								{block:Thumbnail}<img src="{Thumbnail}">{/block:Thumbnail}
+								<span class="name">{Name}{block:Author} — {Author}{/block:Author}</span>
+								{block:Excerpt}<div class="excerpt">{Excerpt}</div>{/block:Excerpt}
+							</a>
+							{/block:IsOriginalEntry}
+							{Body}
+						</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+				{/block:Link}
+
+
+				{block:Chat}
+					<ol class="chat">
+						{block:Lines}
+						<li>{block:Label}<strong class="label">{Label}</strong> {/block:Label}{Line}</li>
+						{/block:Lines}
+					</ol>
+				{/block:Chat}
+
+
+				{block:Audio}
+				
+					{block:AudioPlayer}
+					<div class="audiowrapper">
+						{AudioPlayer}
+						<span class="custom_audio_buttons"></span>
+						<div class="textinfo">
+							{block:TrackName}<span class="trackname">{TrackName}</span>{/block:TrackName}
+							{block:Artist}<span class="artist">{Artist}</span>{/block:Artist}
+							{block:Album}<span class="album">{Album}</span>{/block:Album}
+						</div>
+						{block:AlbumArt}<img class="albumart" src="{AlbumArtURL}">{/block:AlbumArt}
+						<div class="seekbar">
+							<span class="custom_audio_current_time"></span>
+							<div class="custom_audio_seekbar"></div>
+							<span class="custom_audio_time_left"></span>
+						</div>
+					</div>
+					{/block:AudioPlayer}
+					
+					{block:NotReblog}
+					<div class="bodyitemcontent">{Caption}</div>
+					{/block:NotReblog}
+					
+					{block:RebloggedFrom}{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">{Body}</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+				{/block:Audio}
+				
+				
+				{block:Video}
+				
+					<div class="videowrapper">
+						{Video-500}
+					</div>
+					
+					{block:NotReblog}
+					<div class="bodyitemcontent">{Caption}</div>
+					{/block:NotReblog}
+					
+					{block:RebloggedFrom}{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">{Body}</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+				{/block:Video}
+
+
+				{block:Answer}
+				
+					<div class="ask {PostID}">
+					
+						<div class="user">
+							<span class="username"><i class="ph-envelope-open"></i>{Asker}</span>
+						</div>
+						
+						<script>
+							asker = $(".{PostID} .asker");
+							if ( asker.length ) {
+								$(".{PostID} .username i").remove();
+								asker.unwrap().unwrap()
+									.toggleClass("asker user")
+									.wrapInner("<span class='username'></span>");
+							asker.children(".username").prepend('<i class="ph-envelope-open"></i>');
+							}
+						</script>
+						
+						<div class="question">{Question}</div>
+						
+					</div>
+					
+					{block:RebloggedFrom}<div class="bodyitem">
+						{block:Answerer}
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" href="{ReblogRootURL}">
+							<span class="username">{ReblogRootName}</span>
+						</a>
+						{/block:Answerer}{/block:RebloggedFrom}
+						
+						<div class="bodyitemcontent">{Answer}</div>
+					{block:RebloggedFrom}</div>
+					
+					{block:Reblogs}
+					<div class="bodyitem">
+						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
+							<span class="username">{Username}</span>
+						</a>
+						<div class="bodyitemcontent">{Body}</div>
+					</div>
+					{/block:Reblogs}{/block:RebloggedFrom}
+					
+				{/block:Answer}
+
+			</section>
+			
+			
+			{block:Date}<footer>
+				<section class="stickies">
+					{block:ContentSource}<span class="source">{lang:Source}: <a href="{SourceURL}">{SourceTitle}</a></span>{/block:ContentSource}
+				
+					{block:RebloggedFrom}<span class="viasource">
+						<!-- VIA/SOURCE -->
+						<a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}"><img src="{ReblogParentPortraitURL-48}" /></a>
+						<a href="{ReblogRootURL}" title="{lang:Originally from ReblogRootName}"><img src="{ReblogRootPortraitURL-48}" /></a>
+					</span>{/block:RebloggedFrom}
+					
+					<span class="likereblog">
+						<!-- LIKE/REBLOG/SHOW TAGS -->
+						{block:IfLikeButtons}
+						<a href="#" class="customlike">
+						{LikeButton size="30"}
+						<i class="ph-heart"></i>
+						</a>
+						{/block:IfLikeButtons}
+						{block:IfReblogButtons}
+						<a href="{ReblogURL}" class="customreblog"><i class="ph-repeat"></i></a>
+						{/block:IfReblogButtons}
+						<a title="{lang:Show all posts made on this day}" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/"><i class="ph-clock"></i></a>
+						{block:IfPostTags}{block:HasTags}{block:IfShowTagsOnClick}
+						<a class="showtags" title="{lang:Tags}" tabindex="0"><i class="ph-hash-straight"></i></a>
+						{/block:IfShowTagsOnClick}{/block:HasTags}{/block:IfPostTags}
+					</span>
+				</section>
+				
+				{block:IfPostTags}{block:HasTags}<section class="tags" {block:IfShowTagsOnClick}style="display: none;"{/block:IfShowTagsOnClick}>
+					<!-- TAGS SECTION -->
+					{block:Tags}<a href="{TagURL}" init-tags>{Tag}</a>{/block:Tags}
+				</section>{/block:HasTags}{/block:IfPostTags}
+			</footer>{/block:Date}
+		</article>
+		{/block:Posts}
+
+
+		{block:PostNotes}
+		<!-- NOTES SECTION ON PERMALINK PAGES -->
+		<section class="post notes">
+			<section class="body">
+				<h2 class="title">{lang:Notes}</h2>
+				{PostNotes-64}
+			</section>
+		</section>
+		{/block:PostNotes}
+		
+	</section>
 
 
 	<!-- PAGINATION -->
