@@ -18,8 +18,15 @@ html {
 	color: var(--text);
 	font-family: var(--bfont);
 }
-a { color: var(--accent) }
-a:not(:hover) { text-decoration: none }
+a {
+	color: var(--accent);
+	text-decoration: none;
+	transition: text-shadow .2s;
+}
+a:hover { text-shadow: 0 0 1em }
+#title:hover, #blognav a:hover, #pagination a:hover,
+#pages a:hover, .stickies a:hover, .tags a:hover,
+.highres:hover { text-shadow: 0 0 0.2em }
 /* Accessibility */
 #skip, #hiddentitle, #search label {
 	position: fixed;
@@ -30,6 +37,7 @@ a:not(:hover) { text-decoration: none }
 #s-m-t-tooltip {
 	margin: 1em;
 	padding: 0.25em 0.5em;
+	z-index: 3 !important;
 }
 /* #region Casing */
 body.upper #title,
@@ -112,7 +120,6 @@ body.alltapes #credit {
 
 /* #region HEADER */
 #title {
-	text-decoration: none;
 	text-align: right;
 	font-family: var(--tfont);
 	font-weight: var(--tweight);
@@ -121,6 +128,7 @@ body.alltapes #credit {
 #blognav, #pagination, header::after {
 	position: fixed;
 	margin: 0; padding: 0; /* reset */
+	z-index: 2;
 }
 #title h1, #h1 { /* Title */
 	top: 3rem;
@@ -161,6 +169,7 @@ body.alltapes #credit {
 	--size: 6em;
 	width: var(--size);
 	height: var(--size);
+	z-index: 4;
 }
 #blognav, #pagination { /* Right side */
 	position: fixed;
@@ -171,7 +180,6 @@ body.alltapes #credit {
 	font-weight: var(--tweight);
 }
 #blognav a, #pagination a {
-	text-decoration: none;
 	padding: 0.75em 0.25em;
 	color: var(--t2-text);
 }
@@ -278,7 +286,6 @@ html.alt body.noaimg1 #search input {
 	--size: 2em;
 	width: var(--size);
 	height: var(--size);
-	text-decoration: none;
 	cursor: pointer;
 }
 .sticker {
