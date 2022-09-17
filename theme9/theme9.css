@@ -89,7 +89,7 @@ aside:not(.hasdesc) #search, #desc { /* Bottom */
 blockquote:nth-of-type(3n+1)::before,
 .post:nth-child(3n+1) .quote .separator, .post:nth-child(3n+1) .quote .separator i,
 .seekbar > span, .tags a:nth-child(3n+1),
-#scrolltotop_arrow {
+.note:nth-child(3n+1)::before, #scrolltotop_arrow {
 	background-color: var(--t1-bg);
 	color: var(--t1-text);
 }
@@ -99,7 +99,7 @@ body.alltapes .bodyitem:nth-child(3n+1) .user, .ask .user,
 body.alltapes blockquote:nth-of-type(3n+1)::before,
 body.alltapes .post:nth-child(3n+1) .quote .separator,
 body.alltapes .seekbar > span, body.alltapes .tags a:nth-child(3n+1),
-body.alltapes #scrolltotop_arrow {
+body.alltapes .note:nth-child(3n+1)::before, body.alltapes #scrolltotop_arrow {
 	background-image: var(--t1-img);
 	background-repeat: var(--t1-repeat);
 	background-size: var(--t1-size);
@@ -113,7 +113,7 @@ body.alltapes #scrolltotop_arrow {
 blockquote:nth-of-type(3n+2)::before, .link .name, .chat li:nth-child(odd),
 .post:nth-child(3n+2) .quote .separator, .post:nth-child(3n+2) .quote .separator i,
 .tags a:nth-child(3n+2), .page.title a:first-child,
-#scrolltotop_arrow.noplt, #palette {
+.note:nth-child(3n+2)::before, #scrolltotop_arrow.noplt, #palette {
 	background-color: var(--t2-bg);
 	color: var(--t2-text);
 }
@@ -123,7 +123,7 @@ body.alltapes .bodyitem:nth-child(3n+2) .user,
 body.alltapes blockquote:nth-of-type(3n+2)::before, body.alltapes .link .name,
 body.alltapes .chat li:nth-child(odd), body.alltapes .post:nth-child(3n+2) .quote .separator,
 body.alltapes .tags a:nth-child(3n+2), body.alltapes .page.title a:first-child,
-body.alltapes #scrolltotop_arrow.noplt, body.alltapes #palette {
+body.alltapes .note:nth-child(3n+2)::before, body.alltapes #scrolltotop_arrow.noplt, body.alltapes #palette {
 	background-image: var(--t2-img);
 	background-repeat: var(--t2-repeat);
 	background-size: var(--t2-size);
@@ -138,7 +138,7 @@ blockquote:nth-of-type(3n)::before, .link .excerpt, .chat li:nth-child(even),
 .post:nth-child(3n) .quote .separator, .post:nth-child(3n) .quote .separator i,
 .custom_audio_seekbar, .custom_audio_seekbar_progress,
 .tags a:nth-child(3n), .page.title a:last-child,
-#credit {
+.note:nth-child(3n)::before, #credit {
 	background-color: var(--t3-bg);
 	color: var(--t3-text);
 }
@@ -149,7 +149,7 @@ body.alltapes blockquote:nth-of-type(3n)::before, body.alltapes .link .excerpt,
 body.alltapes .chat li:nth-child(even), body.alltapes .post:nth-child(3n) .quote .separator,
 body.alltapes .custom_audio_seekbar_progress,
 body.alltapes .tags a:nth-child(3n), body.alltapes .page.title a:last-child,
-body.alltapes #credit {
+body.alltapes .note:nth-child(3n)::before, body.alltapes #credit {
 	background-image: var(--t3-img);
 	background-repeat: var(--t3-repeat);
 	background-size: var(--t3-size);
