@@ -271,10 +271,9 @@ html.alt body.noaimg3 .post:nth-child(3n) .quote .separator i { border: double; 
 	align-items: center;
 	white-space: nowrap;
 }
-#blognav a, #pagination a {
-	padding: 0.75em 0.25em;
-	color: var(--t2-text);
-}
+#blognav a, #pagination a { padding: 0.75em 0.25em }
+#blognav a { color: var(--t1-text) }
+#pagination a { color: var(--t2-text) }
 #blognav a:first-child, #pagination a:first-child { margin-top: -0.75em }
 #blognav a:last-child, #pagination a:last-child { margin-bottom: -0.75em }
 #blognav {
@@ -314,6 +313,7 @@ main {
 	margin: 13em 1em 10em;
 	display: grid;
 	row-gap: 2em;
+	width: 100%;
 }
 /* About section */
 aside:empty { display: none }
@@ -483,7 +483,8 @@ blockquote::before {
 .stickies { row-gap: 0.25em; column-gap: 1.5em }
 header.stickies { margin-bottom: -0.75em }
 footer .stickies { margin-top: -0.75em }
-/* Pinned post label */
+/* Header stickies */
+.submitted a { margin: -0.5em; margin-left: -0.2em }
 #pinnedpost {
 	cursor: help;
 	display: flex;
