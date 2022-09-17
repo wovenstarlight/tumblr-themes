@@ -307,7 +307,8 @@ body {
 	margin-right: 9.25em;
 }
 main {
-	max-width: var(--post-width);
+	max-width: calc(var(--post-width) + 2em);
+	padding: 0 1em;
 	margin: 13em 1em 10em;
 	display: grid;
 	row-gap: 2em;
