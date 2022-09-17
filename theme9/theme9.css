@@ -110,7 +110,7 @@ body.alltapes #scrolltotop_arrow {
 #title h2, header::after,
 #pages a:nth-child(3n+2),
 .bodyitem:nth-child(3n+2) .user, .bodyitem:nth-child(3n+2) .username,
-blockquote:nth-of-type(3n+2)::before,
+blockquote:nth-of-type(3n+2)::before, .link .name, .chat li:nth-child(odd),
 .post:nth-child(3n+2) .quote .separator, .post:nth-child(3n+2) .quote .separator i,
 .tags a:nth-child(3n+2), .page.title a:first-child,
 #scrolltotop_arrow.noplt, #palette {
@@ -120,8 +120,8 @@ blockquote:nth-of-type(3n+2)::before,
 #title h2, header::after,
 body.alltapes #pages a:nth-child(3n+2),
 body.alltapes .bodyitem:nth-child(3n+2) .user,
-body.alltapes blockquote:nth-of-type(3n+2)::before,
-body.alltapes .post:nth-child(3n+2) .quote .separator,
+body.alltapes blockquote:nth-of-type(3n+2)::before, body.alltapes .link .name,
+body.alltapes .chat li:nth-child(odd), body.alltapes .post:nth-child(3n+2) .quote .separator,
 body.alltapes .tags a:nth-child(3n+2), body.alltapes .page.title a:first-child,
 body.alltapes #scrolltotop_arrow.noplt, body.alltapes #palette {
 	background-image: var(--t2-img);
@@ -134,7 +134,7 @@ body.alltapes #scrolltotop_arrow.noplt, body.alltapes #palette {
 #title::before,
 #pages a:nth-child(3n),
 .bodyitem:nth-child(3n) .user, .bodyitem:nth-child(3n) .username,
-blockquote:nth-of-type(3n)::before,
+blockquote:nth-of-type(3n)::before, .link .excerpt,  .chat li:nth-child(even),
 .post:nth-child(3n) .quote .separator, .post:nth-child(3n) .quote .separator i,
 .tags a:nth-child(3n), .page.title a:last-child,
 #credit {
@@ -144,8 +144,8 @@ blockquote:nth-of-type(3n)::before,
 #title::before,
 body.alltapes #pages a:nth-child(3n),
 body.alltapes .bodyitem:nth-child(3n) .user,
-body.alltapes blockquote:nth-of-type(3n)::before,
-body.alltapes .post:nth-child(3n) .quote .separator,
+body.alltapes blockquote:nth-of-type(3n)::before, body.alltapes .link .excerpt,
+body.alltapes .chat li:nth-child(even), body.alltapes .post:nth-child(3n) .quote .separator,
 body.alltapes .tags a:nth-child(3n), body.alltapes .page.title a:last-child,
 body.alltapes #credit {
 	background-image: var(--t3-img);
@@ -590,7 +590,7 @@ footer .stickies { margin-top: -0.75em }
 	transition: box-shadow .2s;
 	overflow: hidden;
 }
-.link:hover { box-shadow: 0 0 0.25em var(--links) }
+.link:hover { box-shadow: 0 0 0.25em var(--accent) }
 .link img {
 	width: 100%;
 	height: 10em;
