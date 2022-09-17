@@ -309,7 +309,7 @@ body {
 main {
 	max-width: calc(var(--post-width) + 2em);
 	padding: 0 1em;
-	margin: 13em 1em 10em;
+	margin: 13em 1em 4em;
 	display: grid;
 	row-gap: 2em;
 	width: 100%;
@@ -377,16 +377,14 @@ html.alt .og.sticker, html:not(.alt) .alt.sticker { display: none }
 
 
 /* #region POSTS */
-#posts { width: 100% }
-.post {
-	margin-bottom: 3.5em;
-	position: relative;
+#posts {
+	width: 100%;
+	display: grid;
+	row-gap: 3em;
 }
+.post { position: relative }
 /* Page titles */
-.page.title {
-	text-align: center;
-	margin-bottom: 2em;
-}
+.page.title { text-align: center }
 .page.title a {
 	padding: 0.5em;
 	margin: 0 0.5em;
