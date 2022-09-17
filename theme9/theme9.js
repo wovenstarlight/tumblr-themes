@@ -21,6 +21,28 @@ $(document).ready( function() {
 		localStorage.setItem("palette", newPalette);
 	});
 
+	// Nesting ask links correctly
+	$(".ask").each(function() {
+		asker = $(this).find(".asker");
+		if ( asker.length ) {
+			$(this).find("i").remove();
+			asker.unwrap().unwrap()
+				.toggleClass("asker user")
+				.wrapInner("<span class='username'></span>");
+		asker.children(".username").prepend('<i class="ph-envelope-open"></i>');
+		}
+	});
+	
+	// Displaying links on "Submitted by" labels
+	$(".submitted").each(function() {
+		if ( $(this).attr("data-url").length ) {
+			let label = $(this).html().split(" "),
+				url = $(this).attr("data-url");
+			label[label.length - 1] = "<a href=\'"+url+"\'>"+label[label.length - 1]+"</a>";
+			$(this).html(label.join(" "));
+		}
+	});
+
 	// set up tooltips
 	$("[title]").style_my_tooltips();
 

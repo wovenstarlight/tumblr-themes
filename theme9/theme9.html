@@ -383,7 +383,7 @@
 		{block:Posts}
 		<article class="post {block:Title}titled{/block:Title} {block:PinnedPostLabel}pinned{/block:PinnedPostLabel}" posts-selector>
 			{block:Date}<header class="stickies">
-				{block:Submission}<span class="submitted">{lang:Submitted By}</span>{/block:Submission}
+				{block:Submission}<span class="submitted" data-url="{SubmitterURL}">{lang:Submitted By}</span>{/block:Submission}
 				{block:IfPostDates}<a href="{Permalink}" class="date" title="{lang:Posted TimeAgo}">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst}, {Year}{block:IfPostTimes}, {block:If24HourTimes}{24HourWithZero}{/block:If24HourTimes}{block:IfNot24HourTimes}{12Hour}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes} {CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</a>{/block:IfPostDates}
 				{block:NoteCount}<a href="{Permalink}#notes" class="notecount">{NoteCountWithLabel}</a>{/block:NoteCount}
 				{block:PinnedPostLabel}<span id="pinnedpost" title="{PinnedPostLabel}"><i class="ph-push-pin"></i></span>{/block:PinnedPostLabel}
@@ -595,22 +595,11 @@
 
 				{block:Answer}
 				
-					<div class="ask {PostID}">
+					<div class="ask">
 					
 						<div class="user">
 							<span class="username"><i class="ph-envelope-open"></i>{Asker}</span>
 						</div>
-						
-						<script>
-							asker = $(".{PostID} .asker");
-							if ( asker.length ) {
-								$(".{PostID} .username i").remove();
-								asker.unwrap().unwrap()
-									.toggleClass("asker user")
-									.wrapInner("<span class='username'></span>");
-							asker.children(".username").prepend('<i class="ph-envelope-open"></i>');
-							}
-						</script>
 						
 						<div class="question">{Question}</div>
 						
