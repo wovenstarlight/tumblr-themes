@@ -37,7 +37,7 @@ a:hover { text-shadow: 0 0 1em }
 #s-m-t-tooltip {
 	margin: 1em;
 	padding: 0.25em 0.5em;
-	z-index: 3 !important;
+	z-index: 5 !important;
 }
 /* #region Casing */
 body.upper #s-m-t-tooltip, body.upper #title,
@@ -221,7 +221,7 @@ html.alt body.noaimg3 .post:nth-child(3n) .quote .separator i { border: double; 
 #blognav, #pagination, header::after {
 	position: fixed;
 	margin: 0; padding: 0; /* reset */
-	z-index: 2;
+	z-index: 4;
 }
 #title h1, #h1 { /* Title */
 	top: 3rem;
@@ -288,16 +288,13 @@ html.alt body.noaimg3 .post:nth-child(3n) .quote .separator i { border: double; 
 	bottom: 0;
 	height: calc(100% - 7em);
 	min-width: 2.25rem;
+	z-index: 3;
 }
 #pagination {
 	color: var(--t2-text);
 	padding: 6.05rem 0.1em 0.5em 0.1em;
-	z-index: 1;
 }
-header::after {
-	content: "";
-	z-index: -1;
-}
+header::after { content: "" }
 /* #endregion */
 
 
@@ -356,6 +353,7 @@ aside:empty { display: none }
 	position: fixed;
 	bottom: 0.5em;
 	left: 0.5em;
+	z-index: 4;
 }
 #buttons > * { margin-top: 0.5em }
 #scrolltotop_arrow, #buttons a {
