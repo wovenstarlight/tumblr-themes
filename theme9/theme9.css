@@ -687,4 +687,11 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 
 
 /* #region RESPONSIVENESS */
+@media (min-width: 60em) {
+  .post .title { margin: 0 -0.75em }
+}
+
+@media (max-width: 60em) {
+  .post .title { margin: 0 -0.2em }
+}
 /* #endregion */
