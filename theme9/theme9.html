@@ -266,8 +266,12 @@
 	/* In case of elements/accents with horizontal overflow */
 	[posts-selector][style*='max-height'] { overflow-x: hidden }
 	[posts-selector]:not([style*='max-height']) { overflow: visible !important }
-	/* Match corner roundness */
-	.sp { background-color: rgba(var(--ta-bg--rgb), 0.1); border-radius: var(--roundness) }
+	/* Spoiler overlay */
+	.sp {
+		background-color: rgba(var(--ta-bg--rgb), 0.1);
+		border-radius: var(--roundness);
+		z-index: 2 !important;
+	}
 	/* Spacing */
 	.warning-text { padding: 1em }
 	.warning-text p { margin: 0 }
@@ -727,6 +731,15 @@
 	{block:IfStickerImage}<img class="og sticker" src="{image:Sticker}">{/block:IfStickerImage}
 	{block:IfAltStickerImage}<img class="alt sticker" src="{image:ALT Sticker}">{/block:IfAltStickerImage}
 </footer>
+
+<svg height="0" width="0">
+	<defs>
+		<clipPath id="cross">
+			<rect y="0" x="0" width="2em" height="12em"></rect>
+			<rect x="0" y="10em" width="12em" height="2em"></rect>
+		</clipPath>
+	</defs>
+</svg>
 
 </body>
 </html>

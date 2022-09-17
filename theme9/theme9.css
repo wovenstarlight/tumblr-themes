@@ -246,22 +246,17 @@ html:not(.alt) body.noimg3 .custom_audio_seekbar_progress {
 	min-height: 2.25rem;
 	padding: 0.1em 6.05rem 0.1em 0.5em;
 }
-#title::before, #title::after { /* Avatar background */
+#title::before { /* Avatar background */
 	content: "";
 	display: block;
 	position: fixed;
 	top: 0;
 	right: 0;
+	--size: 12em;
 	width: var(--size);
 	height: var(--size);
-	z-index: -1;
-}
-#title::before {
-	--size: 12em;
-}
-#title::after {
-	--size: 10em;
-	background: var(--bg);
+	z-index: 3;
+	clip-path: url(#cross);
 }
 #avatar { /* Avatar */
 	position: fixed;
