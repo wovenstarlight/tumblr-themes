@@ -18,7 +18,7 @@ html {
 	color: var(--text);
 	font-family: var(--bfont);
 }
-.tmblr-iframe { transform-origin: top right; transform: scale(70%) }
+.tmblr-iframe.tmblr-iframe--unified-controls { transform-origin: top right; transform: scale(70%) }
 a {
 	color: var(--accent);
 	text-decoration: none;
