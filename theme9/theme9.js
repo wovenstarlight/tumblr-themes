@@ -43,10 +43,10 @@ $(document).ready( function() {
 		}
 	});
 
-	// set up tooltips
+	// Tooltip setup
 	$("[title]").style_my_tooltips();
 
-	// audio post setup
+	// Audio post setup
 	customAudio({
 		playButton: "<i class='ph-play'></i>",
 		pauseButton: "<i class='ph-pause'></i>",
@@ -54,7 +54,7 @@ $(document).ready( function() {
 		callAfterLoad: null
 	});
 
-	// photoset setup
+	// Photoset setup
 	npfPhotosets("article", {
 		includeCommonPhotosets: true,
 		photosetMargins: "2"
