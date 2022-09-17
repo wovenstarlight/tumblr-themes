@@ -10,7 +10,7 @@
 		Palette toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 16 Sep 2022.
+	Last updated 17 Sep 2022.
 -->
 
 <!DOCTYPE html>
@@ -285,7 +285,10 @@
 	<script>
 	$(document).ready(function(){
 		$(".showtags").on("click keypress", function(){
-			$(this).parent().toggle(); // edit to select .tags
+			$(this).parent() //likereblog
+				.parent() //section
+				.next() //tags
+				.toggle();
 			$(this).toggleClass('active');
 		});
 	});
