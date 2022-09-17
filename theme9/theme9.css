@@ -88,7 +88,7 @@ aside:not(.hasdesc) #search, #desc { /* Bottom */
 .bodyitem:nth-child(3n+1) .user, .bodyitem:nth-child(3n+1) .username, .ask .user, .ask .username,
 blockquote:nth-of-type(3n+1)::before,
 .post:nth-child(3n+1) .quote .separator, .post:nth-child(3n+1) .quote .separator i,
-.tags a:nth-child(3n+1),
+.seekbar > span, .tags a:nth-child(3n+1),
 #scrolltotop_arrow {
 	background-color: var(--t1-bg);
 	color: var(--t1-text);
@@ -98,7 +98,7 @@ body.alltapes #pages a:nth-child(3n+1),
 body.alltapes .bodyitem:nth-child(3n+1) .user, .ask .user,
 body.alltapes blockquote:nth-of-type(3n+1)::before,
 body.alltapes .post:nth-child(3n+1) .quote .separator,
-body.alltapes .tags a:nth-child(3n+1),
+body.alltapes .seekbar > span, body.alltapes .tags a:nth-child(3n+1),
 body.alltapes #scrolltotop_arrow {
 	background-image: var(--t1-img);
 	background-repeat: var(--t1-repeat);
@@ -136,6 +136,7 @@ body.alltapes #scrolltotop_arrow.noplt, body.alltapes #palette {
 .bodyitem:nth-child(3n) .user, .bodyitem:nth-child(3n) .username,
 blockquote:nth-of-type(3n)::before, .link .excerpt,  .chat li:nth-child(even),
 .post:nth-child(3n) .quote .separator, .post:nth-child(3n) .quote .separator i,
+.custom_audio_seekbar, .custom_audio_seekbar_progress,
 .tags a:nth-child(3n), .page.title a:last-child,
 #credit {
 	background-color: var(--t3-bg);
@@ -146,6 +147,7 @@ body.alltapes #pages a:nth-child(3n),
 body.alltapes .bodyitem:nth-child(3n) .user,
 body.alltapes blockquote:nth-of-type(3n)::before, body.alltapes .link .excerpt,
 body.alltapes .chat li:nth-child(even), body.alltapes .post:nth-child(3n) .quote .separator,
+body.alltapes .custom_audio_seekbar_progress,
 body.alltapes .tags a:nth-child(3n), body.alltapes .page.title a:last-child,
 body.alltapes #credit {
 	background-image: var(--t3-img);
@@ -207,6 +209,11 @@ html:not(.alt) body.noimg3 .post:nth-child(3n) .quote .separator i,
 html.alt body.noaimg1 .post:nth-child(3n+1) .quote .separator i,
 html.alt body.noaimg2 .post:nth-child(3n+2) .quote .separator i,
 html.alt body.noaimg3 .post:nth-child(3n) .quote .separator i { border: double; border-width: 0 0.3em }
+body.maintapes .custom_audio_seekbar_progress,
+html.alt body.noaimg3 .custom_audio_seekbar_progress,
+html:not(.alt) body.noimg3 .custom_audio_seekbar_progress {
+  box-shadow: inset -.05em 0 0,.05em 0 0;
+}
 /* #endregion */
 /* #endregion */
 
@@ -380,7 +387,7 @@ html.alt .og.sticker, html:not(.alt) .alt.sticker { display: none }
 #posts {
 	width: 100%;
 	display: grid;
-	row-gap: 3em;
+	row-gap: 2em;
 }
 .post { position: relative }
 /* Page titles */
