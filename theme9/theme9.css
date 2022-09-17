@@ -112,7 +112,7 @@ body.alltapes #scrolltotop_arrow {
 .bodyitem:nth-child(3n+2) .user, .bodyitem:nth-child(3n+2) .username,
 blockquote:nth-of-type(3n+2)::before,
 .post:nth-child(3n+2) .quote .separator, .post:nth-child(3n+2) .quote .separator i,
-.tags a:nth-child(3n+2),
+.tags a:nth-child(3n+2), .page.title a:first-child,
 #scrolltotop_arrow.noplt, #palette {
 	background-color: var(--t2-bg);
 	color: var(--t2-text);
@@ -122,7 +122,7 @@ body.alltapes #pages a:nth-child(3n+2),
 body.alltapes .bodyitem:nth-child(3n+2) .user,
 body.alltapes blockquote:nth-of-type(3n+2)::before,
 body.alltapes .post:nth-child(3n+2) .quote .separator,
-body.alltapes .tags a:nth-child(3n+2),
+body.alltapes .tags a:nth-child(3n+2), body.alltapes .page.title a:first-child,
 body.alltapes #scrolltotop_arrow.noplt, body.alltapes #palette {
 	background-image: var(--t2-img);
 	background-repeat: var(--t2-repeat);
@@ -136,7 +136,7 @@ body.alltapes #scrolltotop_arrow.noplt, body.alltapes #palette {
 .bodyitem:nth-child(3n) .user, .bodyitem:nth-child(3n) .username,
 blockquote:nth-of-type(3n)::before,
 .post:nth-child(3n) .quote .separator, .post:nth-child(3n) .quote .separator i,
-.tags a:nth-child(3n),
+.tags a:nth-child(3n), .page.title a:last-child,
 #credit {
 	background-color: var(--t3-bg);
 	color: var(--t3-text);
@@ -146,7 +146,7 @@ body.alltapes #pages a:nth-child(3n),
 body.alltapes .bodyitem:nth-child(3n) .user,
 body.alltapes blockquote:nth-of-type(3n)::before,
 body.alltapes .post:nth-child(3n) .quote .separator,
-body.alltapes .tags a:nth-child(3n),
+body.alltapes .tags a:nth-child(3n), body.alltapes .page.title a:last-child,
 body.alltapes #credit {
 	background-image: var(--t3-img);
 	background-repeat: var(--t3-repeat);
