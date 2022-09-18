@@ -212,7 +212,7 @@ html.alt body.noaimg3 .post:nth-child(3n) .quote .separator i { border: double; 
 body.maintapes .custom_audio_seekbar_progress,
 html.alt body.noaimg3 .custom_audio_seekbar_progress,
 html:not(.alt) body.noimg3 .custom_audio_seekbar_progress {
-  box-shadow: inset -.05em 0 0,.05em 0 0;
+	box-shadow: inset -.05em 0 0,.05em 0 0;
 }
 /* #endregion */
 /* #endregion */
@@ -687,34 +687,34 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 
 /* #region RESPONSIVENESS */
 @media (min-width: 60em) {
-  /* Stop body from overlapping navigation */
-  body { margin-right: 9.25em }
-  
-  /* Pinned post marker */
-  #pinnedpost {
-    margin: 0;
-    position: absolute;
-    left: 100%;
-    top: 3em;
-    border-radius: 0 var(--roundness) var(--roundness) 0;
-  }
-  .post.titled.pinned #pinnedpost {
-    top: 4.1em;
-    left: calc(100% + 1.1em);
-    z-index: -1;
-    background-color: var(--t1-bg);
-    background-image: var(--t1-img);
-    background-repeat: var(--t1-repeat);
-    background-size: var(--t1-size);
-    background-position: top right;
-    color: var(--t1-text);
-  }
-  
-  /* Post title */
-  .post .title { margin: 0 -0.75em }
+	/* Stop body from overlapping navigation */
+	body { margin-right: 9.25em }
+	
+	/* Pinned post marker */
+	#pinnedpost {
+		margin: 0;
+		position: absolute;
+		left: 100%;
+		top: 3em;
+		border-radius: 0 var(--roundness) var(--roundness) 0;
+	}
+	.post.titled.pinned #pinnedpost {
+		top: 4.1em;
+		left: calc(100% + 1.1em);
+		z-index: -1;
+		background-color: var(--t1-bg);
+		background-image: var(--t1-img);
+		background-repeat: var(--t1-repeat);
+		background-size: var(--t1-size);
+		background-position: top right;
+		color: var(--t1-text);
+	}
+	
+	/* Post title */
+	.post .title { margin: 0 -0.75em }
 }
 
 @media (max-width: 60em) {
-  .post .title { margin: 0 -0.2em }
+	.post .title { margin: 0 -0.2em }
 }
 /* #endregion */
