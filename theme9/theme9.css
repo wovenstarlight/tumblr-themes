@@ -220,7 +220,7 @@ html:not(.alt) body.noimg3 .custom_audio_seekbar_progress {
 
 
 /* #region HEADER */
-#title {
+#title h1, #title h2 {
 	text-align: right;
 	font-family: var(--tfont);
 	font-weight: var(--tweight);
