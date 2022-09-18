@@ -1,0 +1,56 @@
+.collapsible { margin-bottom: 1em }
+.collapsible > .clpbutton {
+	color: var(--accent);
+	display: flex;
+	align-items: center;
+	column-gap: 0.5em;
+	cursor: pointer;
+	transition: text-shadow .2s;
+	margin-bottom: 0.25em;
+}
+.collapsible > .clpbutton:hover { text-shadow: 0 0 1em }
+.collapsible > .clpbutton::before { content: "▶"; transition: transform 0.4s; }
+.collapsible.active > .clpbutton::before { transform: rotate(90deg) }
+
+.collapsible > .clpcontent {
+	padding: 0.5em 1em 0.3em 2em;
+	transition: max-height 0.4s ease;
+	background-color: var(--bg);
+	border-radius: var(--roundness);
+	position: relative;
+	overflow: hidden;
+}
+.clpcontent::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1em;
+	height: 100%;
+}
+.clpcontent::before {
+	background: var(--t1-bg) var(--t1-repeat);
+	background-size: var(--t1-size);
+}
+body.alltapes .clpcontent::before { background-image: var(--t1-img) }
+.clpcontent > .collapsible > .clpcontent::before {
+	background: var(--t2-bg) var(--t2-repeat);
+	background-size: var(--t2-size);
+}
+body.alltapes .clpcontent > .collapsible > .clpcontent::before { background-image: var(--t2-img) }
+.clpcontent > .collapsible > .clpcontent > .collapsible > .clpcontent::before {
+	background: var(--t3-bg) var(--t3-repeat);
+	background-size: var(--t3-size);
+}
+body.alltapes .clpcontent > .collapsible > .clpcontent > .collapsible > .clpcontent::before { background-image: var(--t3-img) }
+.even > .clpcontent { background-color: rgba(var(--ta-bg--rgb), 0.1) }
+.clpcontent :not(ul, ol, li) { margin: 0.5em 0 }
+
+.clpcontent hr {
+	opacity: .75;
+	width: 33%;
+	margin: 1em auto;
+	border-color: var(--accent);
+}
+.clpcontent blockquote::before { background: var(--ta-bg) var(--ta-repeat); background-size: var(--ta-size); }
+body.alltapes .clpcontent blockquote::before { background-image: var(--ta-img) }
