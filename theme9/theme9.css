@@ -266,6 +266,7 @@ header::after {
 	height: var(--size);
 	z-index: 4;
 }
+#avatar.circle { border-radius: 100% }
 header svg { position: fixed; top: -100em; left: 0 }
 #blognav, #pagination { /* Right side */
 	display: flex;
