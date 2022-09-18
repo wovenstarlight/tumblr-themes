@@ -18,6 +18,7 @@
 	background-color: var(--bg);
 	border-radius: var(--roundness);
 	position: relative;
+	overflow: hidden;
 }
 .clpcontent::before {
 	content: "";
