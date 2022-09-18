@@ -330,8 +330,8 @@ aside:empty { display: none }
 	display: flex;
 	flex-direction: column;
 	position: fixed;
-	bottom: 0.5em;
-	left: 0.5em;
+	bottom: 0;
+	left: 0;
 	z-index: 4;
 }
 #buttons > * { margin-top: 0.5em }
@@ -343,7 +343,9 @@ aside:empty { display: none }
 	width: var(--size);
 	height: var(--size);
 	cursor: pointer;
+	margin-left: 0.5em;
 }
+#credit { margin-bottom: 0.5em }
 .sticker {
 	max-height: 10em;
 	max-width: 10em;
