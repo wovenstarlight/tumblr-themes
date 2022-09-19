@@ -66,6 +66,14 @@
 	<meta name="image:Accent tape" content="{HeaderImage}">
 	<meta name="if:Accent tape image tiling" content="1">
 	<meta name="image:Sticker" content="">
+	<meta name="image:Header" content="{HeaderImage}">
+	<meta name="select:Header image size" content="cover" title="Cover">
+	<meta name="select:Header image size" content="contain" title="Contain">
+	<meta name="select:Header image focus area" content="center" title="Center">
+	<meta name="select:Header image focus area" content="top" title="Top">
+	<meta name="select:Header image focus area" content="bottom" title="Bottom">
+	<meta name="select:Header image focus area" content="left" title="Left">
+	<meta name="select:Header image focus area" content="right" title="Right">
 	<!-- Alternate palette -->
 	<meta name="if:Palette toggle" content="1">
 	<meta name="select:Default palette" content="" title="Original">
@@ -90,6 +98,14 @@
 	<meta name="image:ALT Accent tape" content="{HeaderImage}">
 	<meta name="if:ALT Accent tape image tiling" content="1">
 	<meta name="image:ALT Sticker" content="">
+	<meta name="image:ALT Header" content="{HeaderImage}">
+	<meta name="select:ALT Header image size" content="cover" title="Cover">
+	<meta name="select:ALT Header image size" content="contain" title="Contain">
+	<meta name="select:ALT Header image focus area" content="center" title="Center">
+	<meta name="select:ALT Header image focus area" content="top" title="Top">
+	<meta name="select:ALT Header image focus area" content="bottom" title="Bottom">
+	<meta name="select:ALT Header image focus area" content="left" title="Left">
+	<meta name="select:ALT Header image focus area" content="right" title="Right">
 	<meta name="select:Tape images usage" content="alltapes" title="Everywhere">
 	<meta name="select:Tape images usage" content="maintapes" title="Only on main tapes">
 
@@ -160,6 +176,8 @@
 		--ta-img: url("{image:Accent tape}");
 		--ta-repeat: {block:IfNotAccentTapeImageTiling}no-{/block:IfNotAccentTapeImageTiling}repeat;
 		--ta-size: {block:IfAccentTapeImageTiling}contain{/block:IfAccentTapeImageTiling}{block:IfNotAccentTapeImageTiling}cover{/block:IfNotAccentTapeImageTiling};
+		--h-size: {select:Header image size};
+		--h-position: {select:Header image focus area};
 	}
 
 	html.alt { /* ALTERNATE PALETTE */
@@ -190,6 +208,8 @@
 		--ta-img: url("{image:ALT Accent tape}");
 		--ta-repeat: {block:IfNotAltAccentTapeImageTiling}no-{/block:IfNotAltAccentTapeImageTiling}repeat;
 		--ta-size: {block:IfAltAccentTapeImageTiling}contain{/block:IfAltAccentTapeImageTiling}{block:IfNotAltAccentTapeImageTiling}cover{/block:IfNotAltAccentTapeImageTiling};
+		--h-size: {select:ALT Header image size};
+		--h-position: {select:ALT Header image focus area};
 	}
 	</style>
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme9/theme9.min.css">
@@ -335,6 +355,8 @@
 <!-- CENTRAL SECTION -->
 <main>
 	{block:IndexPage}<aside class="{block:ShowDescription}{block:Description}hasdesc{/block:Description}{/block:ShowDescription} {block:HasPages}haspages{/block:HasPages}">
+		{block:IfHeaderImage}<img class="og header" src="{image:Header}">{/block:IfHeaderImage}
+		{block:IfAltHeaderImage}<img class="alt header" src="{image:ALT Header}">{/block:IfAltHeaderImage}
 		{block:IfSearchBar}
 		<!-- SEARCH BAR -->
 		<form action="/search" method="get" id="search">

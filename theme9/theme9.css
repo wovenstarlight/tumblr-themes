@@ -68,7 +68,7 @@ aside, #search input, #pages a,
 #scrolltotop_arrow, #buttons a { /* All */
 	border-radius: var(--roundness);
 }
-#search, #desc:first-child { /* Top */
+aside { /* Top */
 	border-top-left-radius: var(--roundness);
 	border-top-right-radius: var(--roundness);
 }
@@ -293,7 +293,14 @@ main {
 	width: 100%;
 }
 /* About section */
+aside { display: flex; flex-direction: column; overflow: hidden }
 aside:empty { display: none }
+#header {
+	max-height: 13em;
+	background-color: rgba(var(--ta-bg--rgb), 0.1);
+	object-fit: var(--h-size);
+	object-position: var(--h-position);
+}
 /* Search bar */
 #search {
 	width: 100%;
@@ -351,7 +358,7 @@ aside:empty { display: none }
 	max-height: 10em;
 	max-width: 10em;
 }
-html.alt .og.sticker, html:not(.alt) .alt.sticker { display: none }
+html.alt .og, html:not(.alt) .alt { display: none }
 /* #endregion */
 
 
