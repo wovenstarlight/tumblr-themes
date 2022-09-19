@@ -29,10 +29,9 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 	- Show/hide times (12-hour or 24-hour format)
 
 ### Standard
-- Alternate palette toggle
+- Alternate palette toggle (optional)
 	- Choose a second color theme, complete with different tape colors/images
 	- Select which theme to default to
-	- Optional mode toggle
 - Font options for general text and title
 	- Choice between Tumblr and Google fonts
 	- Custom font size
