@@ -295,7 +295,7 @@ main {
 /* About section */
 aside { display: flex; flex-direction: column; overflow: hidden }
 aside:empty { display: none }
-#header {
+.header {
 	max-height: 13em;
 	background-color: rgba(var(--ta-bg--rgb), 0.1);
 	object-fit: var(--h-size);
