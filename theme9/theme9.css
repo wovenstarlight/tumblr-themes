@@ -287,7 +287,7 @@ body {
 main {
 	max-width: calc(var(--post-width) + 2em);
 	padding: 0 1em;
-	margin: 13em 1em 4em;
+	margin: 11em 1em 4em;
 	display: grid;
 	row-gap: 2em;
 	width: 100%;
