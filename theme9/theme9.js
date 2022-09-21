@@ -21,6 +21,11 @@ $(document).ready( function() {
 		localStorage.setItem("palette", newPalette);
 	});
 
+	// About section show/hide toggle
+	$("#toggle").on("click keypress", function() {
+		$("aside").toggleClass("collapsed");
+	});
+
 	// Nesting ask links correctly
 	$(".ask").each(function() {
 		asker = $(this).find(".asker");

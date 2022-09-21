@@ -291,6 +291,31 @@ html.alt aside:not(.altheader, .search, .desc, .pages),
 	display: flex; flex-direction: column; /* remove spacing */
 	overflow: hidden; /* curve corners */
 }
+/* Show/hide toggle */
+#toggle {
+	background-color: var(--ta-bg);
+	color: var(--ta-text);
+	background-image: var(--ta-img);
+	background-repeat: var(--ta-repeat);
+	background-size: var(--ta-size);
+	width: 100%;
+	border: none;
+	border-radius: var(--roundness);
+	padding: 0.5em 1em;
+	margin-top: 0.5em;
+	cursor: pointer;
+	transition: text-shadow .2s;
+}
+#toggle:hover { text-shadow: 0 0 0.5em }
+#toggle span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+aside:not(.collapsed) #toggle .show,
+aside.collapsed #toggle .hide { display: none; }
+aside.collapsed #top, aside.collapsed #pages { display: none !important }
+/* Header image */
 .header {
 	max-height: 13em;
 	background-color: rgba(var(--ta-bg--rgb), 0.1);
