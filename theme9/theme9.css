@@ -43,7 +43,7 @@ a:hover { text-shadow: 0 0 1em }
 /* #region Casing */
 body.upper #s-m-t-tooltip, body.upper #title,
 body.upper #blognav, body.upper #pagination,
-body.upper #search label, body.upper #pages,
+body.upper #search label, body.upper #pages, body.upper #toggle,
 body.upper .username, body.upper .title,
 body.upper .post.notes .action > a,
 body.upper .stickies, body.upper .tags, body.upper .link .name {
@@ -51,7 +51,7 @@ body.upper .stickies, body.upper .tags, body.upper .link .name {
 }
 body.lower #s-m-t-tooltip, body.lower #title,
 body.lower #blognav, body.lower #pagination,
-body.lower #search label, body.lower #pages,
+body.lower #search label, body.lower #pages, body.lower #toggle,
 body.lower .username, body.lower .title,
 body.lower .stickies, body.lower .tags, body.lower .link .name {
 	text-transform: lowercase;
@@ -59,7 +59,7 @@ body.lower .stickies, body.lower .tags, body.lower .link .name {
 /* #endregion */
 /* Roundness */
 #s-m-t-tooltip, #avatar,
-#top, #search input, #pages a,
+#top, #search input, #pages a, #toggle,
 .post .body, .stickies > *, .tags a,
 .post .title a, .post.notes .title,
 .read_more, .viasource img, .highres, .link, .ask, .seekbar span,
@@ -148,7 +148,7 @@ body.alltapes .note:nth-child(3n)::before, body.alltapes #credit {
 }
 /* #endregion */
 /* #region Accent tape */
-#s-m-t-tooltip,
+#s-m-t-tooltip, #toggle,
 #search, .stickies > *, .read_more,
 .post .title a, .post.notes .title,
 .post.notes .more_notes_link_container > *,
@@ -293,14 +293,8 @@ html.alt aside:not(.altheader, .search, .desc, .pages),
 }
 /* Show/hide toggle */
 #toggle {
-	background-color: var(--ta-bg);
-	color: var(--ta-text);
-	background-image: var(--ta-img);
-	background-repeat: var(--ta-repeat);
-	background-size: var(--ta-size);
 	width: 100%;
 	border: none;
-	border-radius: var(--roundness);
 	padding: 0.5em 1em;
 	margin-top: 0.5em;
 	cursor: pointer;
