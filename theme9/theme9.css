@@ -57,9 +57,9 @@ body.lower .stickies, body.lower .tags, body.lower .link .name {
 	text-transform: lowercase;
 }
 /* #endregion */
-/* #region Roundness */
+/* Roundness */
 #s-m-t-tooltip, #avatar,
-aside, #search input, #pages a,
+#top, #search input, #pages a,
 .post .body, .stickies > *, .tags a,
 .post .title a, .post.notes .title,
 .read_more, .viasource img, .highres, .link, .ask, .seekbar span,
@@ -68,15 +68,6 @@ aside, #search input, #pages a,
 #scrolltotop_arrow, #buttons a { /* All */
 	border-radius: var(--roundness);
 }
-aside { /* Top */
-	border-top-left-radius: var(--roundness);
-	border-top-right-radius: var(--roundness);
-}
-aside:not(.hasdesc) #search, #desc { /* Bottom */
-	border-bottom-left-radius: var(--roundness);
-	border-bottom-right-radius: var(--roundness);
-}
-/* #endregion */
 /* #endregion */
 
 
@@ -293,8 +284,13 @@ main {
 	width: 100%;
 }
 /* About section */
-aside { display: flex; flex-direction: column; overflow: hidden }
-aside:empty { display: none }
+html:not(.alt) aside:not(.ogheader, .search, .desc, .pages),
+html.alt aside:not(.altheader, .search, .desc, .pages),
+#top:empty { display: none }
+#top {
+	display: flex; flex-direction: column; /* remove spacing */
+	overflow: hidden; /* curve corners */
+}
 .header {
 	max-height: 13em;
 	background-color: rgba(var(--ta-bg--rgb), 0.1);
@@ -323,11 +319,11 @@ aside:empty { display: none }
 	text-align: center;
 }
 #desc:first-child { padding-top: 1em }
-#desc:last-child { padding-bottom: 1em }
+aside:not(.pages) #desc { padding-bottom: 1em }
 /* Custom pages */
-#pages { padding: 0 .75em }
-#desc + #pages { margin-top: -1.25em }
-#search + #pages { margin-top: 0.5em }
+#pages { padding: 0 .75em; margin-top: .25em }
+aside.desc #pages { margin-top: -1.25em }
+#top:empty + #pages { margin-top: 0 }
 #pages a.current-page { font-weight: bold }
 /* #endregion */
 

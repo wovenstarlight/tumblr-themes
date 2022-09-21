@@ -354,22 +354,24 @@
 
 <!-- CENTRAL SECTION -->
 <main>
-	{block:IndexPage}<aside class="{block:ShowDescription}{block:Description}hasdesc{/block:Description}{/block:ShowDescription} {block:HasPages}haspages{/block:HasPages}">
-		{block:IfHeaderImage}<img class="og header" src="{image:Header}">{/block:IfHeaderImage}
-		{block:IfAltHeaderImage}<img class="alt header" src="{image:ALT Header}">{/block:IfAltHeaderImage}
-		{block:IfSearchBar}
-		<!-- SEARCH BAR -->
-		<form action="/search" method="get" id="search">
-			<i class="ph-magnifying-glass"></i>
-			<label for="q">{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
-			<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}"/>
-		</form>
-		{/block:IfSearchBar}
+	{block:IndexPage}<aside class="{block:IfHeaderImage}ogheader{/block:IfHeaderImage} {block:IfAltHeaderImage}altheader{/block:IfAltHeaderImage} {block:IfSearchBar}search{/block:IfSearchBar} {block:ShowDescription}{block:Description}desc{/block:Description}{/block:ShowDescription} {block:HasPages}pages{/block:HasPages}">
+		<div id="top">
+			{block:IfHeaderImage}<img class="og header" src="{image:Header}">{/block:IfHeaderImage}
+			{block:IfAltHeaderImage}<img class="alt header" src="{image:ALT Header}">{/block:IfAltHeaderImage}
+			{block:IfSearchBar}
+			<!-- SEARCH BAR -->
+			<form action="/search" method="get" id="search">
+				<i class="ph-magnifying-glass"></i>
+				<label for="q">{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
+				<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}"/>
+			</form>
+			{/block:IfSearchBar}
 
-		{block:ShowDescription}{block:Description}
-		<!-- BLOG DESCRIPTION -->
-		<div id="desc">{Description}</div>
-		{/block:Description}{/block:ShowDescription}
+			{block:ShowDescription}{block:Description}
+			<!-- BLOG DESCRIPTION -->
+			<div id="desc">{Description}</div>
+			{/block:Description}{/block:ShowDescription}
+		</div>
 		
 		{block:HasPages}
 		<!-- CUSTOM PAGES -->
