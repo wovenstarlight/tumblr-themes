@@ -118,6 +118,7 @@ body.light {
 	background-color: var(--bg-standard);
 	color: var(--green);
 	margin: 0.5em 0.75em;
+	position: relative;
 }
 #servers a:first-child {
 	color: var(--text-normal);
@@ -143,9 +144,10 @@ body.light {
 }
 #servers a::before {
 	content: "";
-	position: relative;
-	margin-right: -0.5em;
-	left: -1.75em;
+	position: absolute;
+	left: -1em;
+	top: 50%;
+	transform: translateY(-50%);
 	display: block;
 	border: 0.25em solid var(--header);
 	border-radius: 0.25em;
@@ -153,8 +155,8 @@ body.light {
 	transition-property: height, opacity;
 	opacity: 0;
 	height: 0;
+	width: 0;
 }
-#servers a:first-child::before { left: -1.625em; }
 #servers a:hover::before {
 	opacity: 1;
 	height: 1.25em;
