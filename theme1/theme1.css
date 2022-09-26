@@ -119,6 +119,7 @@ body.light {
 	color: var(--green);
 	margin: 0.5em 0.75em;
 	position: relative;
+	text-decoration: none;
 }
 #servers a:first-child {
 	color: var(--text-normal);
