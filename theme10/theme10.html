@@ -343,5 +343,47 @@
 	{block:IfCustomPagesOnSidebar}{block:HasPages}{block:Pages}<a href="{URL}" class="{CurrentState}">{Label}</a>{/block:Pages}{/block:HasPages}{/block:IfCustomPagesOnSidebar}
 </nav>
 
+<!-- CENTRAL SECTION -->
+<main>
+	<aside class="{block:IfHeaderImage}ogheader{/block:IfHeaderImage} {block:IfAltHeaderImage}altheader{/block:IfAltHeaderImage} {block:IfSearchBar}search{/block:IfSearchBar} {block:ShowDescription}{block:Description}desc{/block:Description}{/block:ShowDescription} {block:IfNotCustomPagesOnSidebar}{block:HasPages}pages{/block:HasPages}{/block:IfNotCustomPagesOnSidebar} {block:PermalinkPage}collapsed{/block:PermalinkPage}">
+		<div id="top">
+			{block:IfHeaderImage}<img class="og header" src="{image:Header}">{/block:IfHeaderImage}
+			{block:IfAltHeaderImage}<img class="alt header" src="{image:ALT Header}">{/block:IfAltHeaderImage}
+			{block:IfSearchBar}
+			<!-- SEARCH BAR -->
+			<form action="/search" method="get" id="search">
+				<i class="ph-magnifying-glass"></i>
+				<label for="q">{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
+				<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}"/>
+			</form>
+			{/block:IfSearchBar}
+
+			{block:ShowDescription}{block:Description}
+			<!-- BLOG DESCRIPTION -->
+			<div id="desc">{Description}</div>
+			{/block:Description}{/block:ShowDescription}
+		</div>
+		
+		{block:IfNotCustomPagesOnSidebar}{block:HasPages}
+		<!-- CUSTOM PAGES -->
+		<nav id="pages">
+			{block:Pages}<a href="{URL}" class="{CurrentState}">{Label}</a>{/block:Pages}
+		</nav>
+		{/block:HasPages}{block:IfNotCustomPagesOnSidebar}
+		
+		<!-- SHOW/HIDE ABOUT -->
+		<button id="toggle">
+			<span class="show">{block:IfShowAboutLabel}{text:Show About label}{/block:IfShowAboutLabel}{block:IfNotShowAboutLabel}<i class="ph-arrow-down" style="margin-right: .5em"></i> About me <i class="ph-arrow-down" style="margin-left: .5em"></i>{/block:IfNotShowAboutLabel}</span>
+			<span class="hide">{block:IfHideAboutLabel}{text:Hide About label}{/block:IfHideAboutLabel}{block:IfNotHideAboutLabel}<i class="ph-arrow-up" style="margin-right: .5em"></i> Collapse <i class="ph-arrow-up" style="margin-left: .5em"></i>{/block:IfNotHideAboutLabel}</span>
+		</button>
+	</aside>
+
+
+	<!-- TODO: POSTS -->
+
+
+	<!-- TODO: PAGINATION -->
+</main>
+
 </body>
 </html>
