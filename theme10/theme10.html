@@ -325,5 +325,12 @@
 <h1 id="hiddentitle">{Title}</h1>
 {/block:HideTitle}
 
+<header>
+	<a href="/">
+		{block:ShowTitle}<h1 id="title">{Title}</h1>{/block:ShowTitle}
+		{block:ShowAvatar}<img src="{PortraitURL-128}" id="avatar" class="{AvatarShape}" />{/block:ShowAvatar}
+	</a>
+</header>
+
 </body>
 </html>
