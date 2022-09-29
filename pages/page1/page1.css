@@ -1,3 +1,4 @@
+.post .title a::before, .post .title a::after { transition: .3s }
 ul.links {
 	display: flex;
 	flex-wrap: wrap;
