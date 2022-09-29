@@ -49,11 +49,11 @@ body.lower .TODO {
 
 /* #region TAPE STYLES */
 /* #region Main tape 1 */
-#title {
+#title, #h1 {
 	background-color: var(--t1-bg);
 	color: var(--t1-text);
 }
-#title {
+#title, #h1 {
 	background-image: var(--t1-img);
 	background-repeat: var(--t1-repeat);
 	background-size: var(--t1-size);
