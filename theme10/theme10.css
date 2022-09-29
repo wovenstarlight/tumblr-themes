@@ -24,7 +24,7 @@ a {
 	transition: .2s;
 }
 a:hover { text-shadow: 0 0 1em }
-header a:hover, #blognav a:hover,
+#phead a:hover, #blognav a:hover,
 #pages a:hover { text-shadow: 0 0 0.2em }
 /* Accessibility */
 #skip, #hiddentitle, #search label {
@@ -75,13 +75,13 @@ body.lower #toggle {
 }
 /* #endregion */
 /* #region Main tape 2 */
-header a::after,
+#phead a::after,
 #blognav a:nth-last-child(odd),
 #pages a:nth-child(3n+2) {
 	background-color: var(--t2-bg);
 	color: var(--t2-text);
 }
-header a::after,
+#phead a::after,
 #blognav a:nth-last-child(odd),
 .alltapes #pages a:nth-child(3n+2) {
 	background-image: var(--t2-img);
@@ -91,13 +91,13 @@ header a::after,
 }
 /* #endregion */
 /* #region Main tape 3 */
-header::before,
+#phead::before,
 #blognav a:nth-last-child(even),
 #pages a:nth-child(3n) {
 	background-color: var(--t3-bg);
 	color: var(--t3-text);
 }
-header::before,
+#phead::before,
 #blognav a:nth-last-child(even),
 .alltapes #pages a:nth-child(3n) {
 	background-image: var(--t3-img);
@@ -166,7 +166,7 @@ html.alt body.noaimga #search input {
 	transform-origin: bottom left;
 	z-index: 4;
 }
-header::before, header a::after {
+#phead::before, #phead a::after {
 	content: "";
 	display: block;
 	height: 3em;
@@ -175,11 +175,11 @@ header::before, header a::after {
 	transform: rotate(10deg);
 	transform-origin: bottom left;
 }
-header::before {
+#phead::before {
 	width: 110vw;
 	bottom: 10.5em;
 }
-header a::after {
+#phead a::after {
 	width: 40em;
 	bottom: 3em;
 	z-index: 3;
@@ -289,10 +289,6 @@ aside.desc #pages { margin-top: -1.25em }
 #top:empty + #pages { margin-top: 0 }
 #pages a.current-page { font-weight: bold }
 /* #endregion */
-
-
-
-
 
 
 
