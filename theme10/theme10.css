@@ -58,7 +58,7 @@ body.lower .stickies, body.lower .tags, body.lower .link .name {
 /* #endregion */
 /* Roundness */
 #s-m-t-tooltip,
-#avatar, #top, #search input, #pages a, #toggle,
+#avatar.square, #top, #search input, #pages a, #toggle,
 .post .body, .stickies > *, .tags a,
 .post .title a, .post.notes .title,
 .read_more, .viasource img, .highres, .link, .ask, .seekbar span,
