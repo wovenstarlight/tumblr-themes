@@ -220,50 +220,23 @@ html:not(.alt) body.noimg3 .custom_audio_seekbar_progress {
 	height: 4rem;
 	display: flex;
 	align-items: center;
-	width: calc(100vh + 10rem);
-	transform: rotate(-80deg);
-	transform-origin: top left;
-	position: fixed;
-	left: 2rem;
-	bottom: -4rem;
 	margin: 0;
-	padding: 1rem 10rem 1rem 14rem;
 	z-index: 3;
 }
 #avatar {
-	position: fixed;
-	--size: 6em;
 	width: var(--size);
 	height: var(--size);
-	bottom: 4.25em;
-	left: 5em;
-	transform: rotate(10deg);
-	transform-origin: bottom left;
-	z-index: 4;
 }
-#phead::before, #phead a::after, #pagination {
+#phead a::after, #pagination {
 	content: "";
 	display: block;
 	height: 3em;
-	position: fixed;
-	left: -1em;
-	transform: rotate(10deg);
-	transform-origin: bottom left;
-	z-index: 3;
-}
-#phead::before, #pagination {
-	width: 110vw;
-	bottom: 10.5em;
-}
-#phead a::after {
-	width: 40em;
-	bottom: 3em;
 }
 #pagination {
 	display: flex;
 	align-items: center;
 	color: var(--t3-text);
-	padding-left: 40em;
+	justify-content: center;
 }
 #pagination a {
 	color: var(--t3-text);
@@ -277,31 +250,12 @@ html:not(.alt) body.noimg3 .custom_audio_seekbar_progress {
 
 
 /* #region NAV */
-#blognav {
-	display: flex;
-	flex-direction: column;
-	position: fixed;
-	bottom: 13.5em;
-	left: 7.5em;
-	transform: rotate(10deg);
-	transform-origin: bottom left;
-	z-index: 1;
-}
+#blognav { display: flex }
 #blognav a {
 	display: block;
-	margin-top: 1em;
-	padding: 0.5em 1em 0.5em 2em;
-	width: fit-content;
-	max-width: 15em;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
 	text-decoration: none;
-	position: relative;
-	left: 0;
 	transition-property: text-shadow, left;
 }
-#blognav a:hover { left: .5em }
 /* #endregion */
 
 
@@ -310,7 +264,6 @@ html:not(.alt) body.noimg3 .custom_audio_seekbar_progress {
 body {
 	display: grid;
 	justify-content: center;
-	margin: 3.5em 0 6em 20em;
 }
 main {
 	max-width: var(--post-width);
@@ -386,15 +339,7 @@ a.current-page { font-weight: bold }
 #buttons {
 	display: flex;
 	position: fixed;
-	bottom: 5.6em;
-	left: 8.25em;
-	transform: rotate(10deg);
-	transform-origin: bottom left;
 	z-index: 4;
-}
-#buttons.avatar {
-	bottom: 4.85em;
-	left: 12.4em;
 }
 #scrolltotop_arrow, #buttons a {
 	display: flex;
@@ -405,14 +350,11 @@ a.current-page { font-weight: bold }
 	height: var(--size);
 	cursor: pointer;
 }
-#buttons a { margin-right: 1em }
 .sticker {
 	position: fixed;
 	top: 0;
 	left: 0;
 	z-index: 5;
-	max-height: 15em;
-	max-width: 10em;
 }
 /* #endregion */
 
@@ -734,6 +676,89 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 
 /* #region RESPONSIVENESS */
 @media (min-width: 60em) { /* Desktop */
+	/* Center */
+	body { margin: 3.5em 0 6em 20em }
+	/* Header */
+	#title, #h1 {
+		width: calc(100vh + 10rem);
+		padding: 1rem 10rem 1rem 14rem;
+		transform: rotate(-80deg);
+		transform-origin: top left;
+		position: fixed;
+		left: 2rem;
+		bottom: -4rem;
+	}
+	#avatar {
+		--size: 6em;
+		position: fixed;
+		bottom: 4.25em;
+		left: 5em;
+		transform: rotate(10deg);
+		transform-origin: bottom left;
+		z-index: 4;
+	}
+	#phead::before {
+		content: "";
+		display: block;
+		height: 3em;
+	}
+	#phead::before, #phead a::after, #pagination {
+		position: fixed;
+		left: -1em;
+		transform: rotate(10deg);
+		transform-origin: bottom left;
+		z-index: 3;
+	}
+	#phead::before, #pagination {
+		width: 110vw;
+		bottom: 10.5em;
+	}
+	#phead a::after {
+		width: 40em;
+		bottom: 3em;
+	}
+	#pagination { padding-left: 40em }
+	
+	/* Navigation */
+	#blognav {
+		flex-direction: column;
+		position: fixed;
+		bottom: 13.5em;
+		left: 7.5em;
+		transform: rotate(10deg);
+		transform-origin: bottom left;
+		z-index: 1;
+	}
+	#blognav a {
+		width: fit-content;
+		padding: 0.5em 1em 0.5em 2em;
+		margin-top: 1em;
+		max-width: 15em;
+		position: relative;
+		left: 0;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	#blognav a:hover { left: .5em }
+	
+	/* Footer */
+	#buttons {
+		gap: 1em;
+		bottom: 5.6em;
+		left: 8.25em;
+		transform: rotate(10deg);
+		transform-origin: bottom left;
+	}
+	#buttons.avatar {
+		bottom: 4.85em;
+		left: 12.4em;
+	}
+	.sticker {
+		max-height: 15em;
+		max-width: 10em;
+	}
+	
 	/* Pinned post marker */
 	#pinnedpost {
 		margin: 0;
