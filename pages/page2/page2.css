@@ -258,7 +258,7 @@ html.light #darklight .cp-sun { display: none }
 	background-color: var(--bg);
 	margin-bottom: 0.5em;
 }
-.post .title a:hover { --size: 2em }
+.post .title a:hover { --size: 2em; --color: var(--links-hover) }
 /* Actual link lists */
 ul.links {
 	display: flex;

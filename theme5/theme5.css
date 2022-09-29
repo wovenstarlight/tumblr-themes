@@ -356,7 +356,7 @@ pre {
 	background-color: var(--bg);
 	margin-bottom: 0.5em;
 }
-.post .title a:hover, .read_more:hover, .more_notes_link:hover, .notes_loading { --size: 2em }
+.post .title a:hover, .read_more:hover, .more_notes_link:hover, .notes_loading { --size: 2em; --color: var(--links-hover) }
 .page.title, .read_more, .more_notes_link, .notes_loading { background-color: rgba(var(--accent--rgb), 0.15)}
 .page.title::before, .page.title::after,
 .post .title a::before, .post .title a::after,
