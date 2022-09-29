@@ -25,7 +25,7 @@ a {
 }
 a:hover { text-shadow: 0 0 1em }
 #phead a:hover, #blognav a:hover,
-#pages a:hover { text-shadow: 0 0 0.2em }
+#pages a:hover, #pagination a:hover { text-shadow: 0 0 0.2em }
 /* Accessibility */
 #skip, #hiddentitle, #search label {
 	position: fixed;
@@ -38,12 +38,12 @@ a:hover { text-shadow: 0 0 1em }
 	padding: 0.25em 0.5em;
 }
 /* #region Casing */
-body.upper #title, body.upper #blognav a,
-body.upper #toggle {
+body.upper #title, body.upper #blognav,
+body.upper #toggle, body.upper #pages {
 	text-transform: uppercase;
 }
-body.lower #title, body.lower #blognav a,
-body.lower #toggle {
+body.lower #title, body.lower #blognav,
+body.lower #toggle, body.lower #pages {
 	text-transform: lowercase;
 }
 /* #endregion */
@@ -153,7 +153,7 @@ html.alt body.noaimga #search input {
 	bottom: -4rem;
 	margin: 0;
 	padding: 1rem 10rem 1rem 14rem;
-	z-index: 2;
+	z-index: 3;
 }
 #avatar {
 	position: fixed;
@@ -166,7 +166,7 @@ html.alt body.noaimga #search input {
 	transform-origin: bottom left;
 	z-index: 4;
 }
-#phead::before, #phead a::after {
+#phead::before, #phead a::after, #pagination {
 	content: "";
 	display: block;
 	height: 3em;
@@ -174,16 +174,29 @@ html.alt body.noaimga #search input {
 	left: -1em;
 	transform: rotate(10deg);
 	transform-origin: bottom left;
+	z-index: 3;
 }
-#phead::before {
+#phead::before, #pagination {
 	width: 110vw;
 	bottom: 10.5em;
 }
 #phead a::after {
 	width: 40em;
 	bottom: 3em;
-	z-index: 3;
 }
+#pagination {
+	display: flex;
+	align-items: center;
+	color: var(--t3-text);
+	padding-left: 40em;
+}
+#pagination a {
+	color: var(--t3-text);
+	display: inline-flex;
+	padding: .75em;
+}
+#prev { margin-left: -.75em }
+#next { margin-right: -.75em }
 /* #endregion */
 
 
