@@ -377,7 +377,7 @@ aside:not(.pages) #desc { padding-bottom: 1em }
 #pages { padding: 0 .75em; margin-top: .25em }
 aside.desc #pages { margin-top: -1.25em }
 #top:empty + #pages { margin-top: 0 }
-#pages a.current-page { font-weight: bold }
+a.current-page { font-weight: bold }
 /* #endregion */
 
 
