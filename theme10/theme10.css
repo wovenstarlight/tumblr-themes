@@ -24,7 +24,7 @@ a {
 	transition: .2s;
 }
 a:hover { text-shadow: 0 0 1em }
-header a:hover { text-shadow: 0 0 0.2em }
+header a:hover, #blognav a:hover { text-shadow: 0 0 0.2em }
 /* Accessibility */
 #skip, #hiddentitle, #search label {
 	position: fixed;
@@ -48,6 +48,10 @@ body.lower #title {
 #avatar {
 	border-radius: var(--roundness)
 }
+#blognav a {
+	border-top-right-radius: var(--roundness);
+	border-bottom-right-radius: var(--roundness);
+}
 /* #endregion */
 
 
@@ -66,11 +70,13 @@ body.lower #title {
 }
 /* #endregion */
 /* #region Main tape 2 */
-header a::after {
+header a::after,
+#blognav a:nth-last-child(odd) {
 	background-color: var(--t2-bg);
 	color: var(--t2-text);
 }
-header a::after {
+header a::after,
+#blognav a:nth-last-child(odd) {
 	background-image: var(--t2-img);
 	background-repeat: var(--t2-repeat);
 	background-size: var(--t2-size);
@@ -78,11 +84,13 @@ header a::after {
 }
 /* #endregion */
 /* #region Main tape 3 */
-header::before {
+header::before,
+#blognav a:nth-last-child(even) {
 	background-color: var(--t3-bg);
 	color: var(--t3-text);
 }
-header::before {
+header::before,
+#blognav a:nth-last-child(even) {
 	background-image: var(--t3-img);
 	background-repeat: var(--t3-repeat);
 	background-size: var(--t3-size);
@@ -161,6 +169,34 @@ header a::after {
 	bottom: 3em;
 	z-index: 3;
 }
+/* #endregion */
+
+
+
+/* #region NAV */
+#blognav {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	bottom: 13.5em;
+	left: 7.5em;
+	transform: rotate(10deg);
+	transform-origin: bottom left;
+}
+#blognav a {
+	display: block;
+	margin-top: 1em;
+	padding: 0.5em 1em 0.5em 2em;
+	width: fit-content;
+	max-width: 15em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-decoration: none;
+	position: relative;
+	left: 0;
+}
+#blognav a:hover { left: .5em }
 /* #endregion */
 
 
