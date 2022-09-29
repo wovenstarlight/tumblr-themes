@@ -310,11 +310,11 @@ html:not(.alt) body.noimg3 .custom_audio_seekbar_progress {
 body {
 	display: grid;
 	justify-content: center;
+	margin: 3.5em 0 5em 20em;
 }
 main {
 	max-width: var(--post-width);
 	width: 100%;
-	margin: 3.5em 0 5em 20em;
 }
 /* Central about */
 html:not(.alt) aside:not(.ogheader, .search, .desc, .pages),
@@ -435,6 +435,11 @@ a.current-page { font-weight: bold }
 .page.title .tag::before { content: "#" }
 .search_query::before { content: "\201C" }
 .search_query::after { content: "\201D" }
+/* Post titles */
+.post .title {
+	margin: 0;
+	position: relative;
+}
 /* No posts */
 #no-posts { margin-bottom: 0 }
 #no-posts .body { padding: 0.25em 1em; text-align: center }
@@ -750,11 +755,17 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 	}
 	
 	/* Post title */
-	.post .title { margin: 0 -0.75em }
+	.post .title {
+		width: calc(100% + 1.5em);
+		left: -.75em;
+	}
 }
 
 @media (max-width: 60em) { /* Mobile */
 	/* Post title */
-	.post .title { margin: 0 -0.2em }
+	.post .title {
+		width: calc(100% + .4em);
+		left: -.2em;
+	}
 }
 /* #endregion */
