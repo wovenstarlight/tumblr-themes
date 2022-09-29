@@ -99,7 +99,7 @@ blockquote:nth-of-type(3n+1)::before,
 }
 /* #endregion */
 /* #region Main tape 2 */
-#phead a::after, #blognav a:nth-last-child(odd), #pages a:nth-child(3n+2),
+#phead a::after, #pages a:nth-child(3n+2),
 .bodyitem:nth-child(3n+2) .user, .bodyitem:nth-child(3n+2) .username,
 blockquote:nth-of-type(3n+2)::before, .link .name, .chat li:nth-child(odd),
 .post:nth-child(3n+2) .quote .separator, .post:nth-child(3n+2) .quote .separator i,
@@ -108,7 +108,7 @@ blockquote:nth-of-type(3n+2)::before, .link .name, .chat li:nth-child(odd),
 	background-color: var(--t2-bg);
 	color: var(--t2-text);
 }
-#phead a::after, .alltapes #blognav a:nth-last-child(odd), .alltapes #pages a:nth-child(3n+2),
+#phead a::after, .alltapes #pages a:nth-child(3n+2),
 .alltapes .bodyitem:nth-child(3n+2) .user,
 .alltapes blockquote:nth-of-type(3n+2)::before, .alltapes .link .name,
 .alltapes .chat li:nth-child(odd), .alltapes .post:nth-child(3n+2) .quote .separator,
@@ -121,9 +121,7 @@ blockquote:nth-of-type(3n+2)::before, .link .name, .chat li:nth-child(odd),
 }
 /* #endregion */
 /* #region Main tape 3 */
-#phead::before,
-#blognav a:nth-last-child(even),
-#pages a:nth-child(3n),
+#phead::before, #pages a:nth-child(3n),
 .bodyitem:nth-child(3n) .user, .bodyitem:nth-child(3n) .username,
 blockquote:nth-of-type(3n)::before, .link .excerpt, .chat li:nth-child(even),
 .post:nth-child(3n) .quote .separator, .post:nth-child(3n) .quote .separator i,
@@ -133,9 +131,7 @@ blockquote:nth-of-type(3n)::before, .link .excerpt, .chat li:nth-child(even),
 	background-color: var(--t3-bg);
 	color: var(--t3-text);
 }
-#phead::before,
-.alltapes #blognav a:nth-last-child(even),
-.alltapes #pages a:nth-child(3n),
+#phead::before, .alltapes #pages a:nth-child(3n),
 .alltapes .bodyitem:nth-child(3n) .user,
 .alltapes blockquote:nth-of-type(3n)::before, .alltapes .link .excerpt,
 .alltapes .chat li:nth-child(even), .alltapes .post:nth-child(3n) .quote .separator,
@@ -742,6 +738,26 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		text-overflow: ellipsis;
 	}
 	#blognav a:hover { left: .5em }
+	#blognav a:nth-last-child(odd) {
+		background-color: var(--t2-bg);
+		color: var(--t2-text);
+	}
+	#blognav a:nth-last-child(odd) {
+		background-image: var(--t2-img);
+		background-repeat: var(--t2-repeat);
+		background-size: var(--t2-size);
+		background-position: top right;
+	}
+	#blognav a:nth-last-child(even) {
+		background-color: var(--t3-bg);
+		color: var(--t3-text);
+	}
+	.alltapes #blognav a:nth-last-child(even) {
+		background-image: var(--t3-img);
+		background-repeat: var(--t3-repeat);
+		background-size: var(--t3-size);
+		background-position: bottom left;
+	}
 	
 	/* Footer */
 	#buttons {
@@ -828,6 +844,36 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		padding: 0.25em .75em;
 		flex-grow: 1;
 		text-align: center;
+	}
+	#blognav a:nth-last-child(3n) {
+		background-color: var(--t1-bg);
+		color: var(--t1-text);
+	}
+	.alltapes #blognav a:nth-last-child(3n) {
+		background-image: var(--t1-img);
+		background-repeat: var(--t1-repeat);
+		background-size: var(--t1-size);
+		background-position: top right;
+	}
+	#blognav a:nth-last-child(3n+2) {
+		background-color: var(--t2-bg);
+		color: var(--t2-text);
+	}
+	.alltapes #blognav a:nth-last-child(3n+2) {
+		background-image: var(--t2-img);
+		background-repeat: var(--t2-repeat);
+		background-size: var(--t2-size);
+		background-position: top right;
+	}
+	#blognav a:nth-last-child(3n+1) {
+		background-color: var(--t3-bg);
+		color: var(--t3-text);
+	}
+	.alltapes #blognav a:nth-last-child(3n+1) {
+		background-image: var(--t3-img);
+		background-repeat: var(--t3-repeat);
+		background-size: var(--t3-size);
+		background-position: bottom left;
 	}
 	#pagination {
 		justify-content: center;
