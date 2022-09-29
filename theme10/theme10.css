@@ -127,17 +127,17 @@ header::before,
 	font-family: var(--tfont);
 	font-weight: var(--tweight);
 	display: block;
-	height: 2em;
+	height: 4rem;
 	display: flex;
 	align-items: center;
-	width: calc(100vh + 5em);
+	width: calc(100vh + 10rem);
 	transform: rotate(-80deg);
 	transform-origin: top left;
 	position: fixed;
-	left: 1em;
-	bottom: -2em;
+	left: 2rem;
+	bottom: -4rem;
 	margin: 0;
-	padding: 0.5em 5em 0.5em 7em;
+	padding: 1rem 10rem 1rem 14rem;
 	z-index: 2;
 }
 #avatar {
