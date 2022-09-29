@@ -402,5 +402,29 @@
 	</nav>{/block:DayPagination}{/block:DayPage}
 </main>
 
+<footer id="buttons">
+	<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+	<a id="credit" href="https://starlightthemes.tumblr.com/theme9" title="{lang:Install this theme}"><i class="ph-code"></i></a>
+	<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+
+	{block:IfPaletteToggle}
+	<a id="palette" tabindex="0" title="Toggle palette">
+		<i class="ph-circle-half-fill"></i>
+	</a>
+	{/block:IfPaletteToggle}
+
+	{block:IfBackToTopButton}
+	<!-- BACK TO TOP BUTTON -->
+	<div id="scrolltotop_parent" tabindex="0" style="display: none;" title="{lang:Back to top}">
+		<div id="scrolltotop_arrow" {block:IfNotPaletteToggle}class="noplt"{/block:IfNotPaletteToggle}>
+			<i class="ph-arrow-line-up"></i>
+		</div>
+	</div>
+	{/block:IfBackToTopButton}
+</footer>
+
+{block:IfStickerImage}<img class="og sticker" src="{image:Sticker}">{/block:IfStickerImage}
+{block:IfAltStickerImage}<img class="alt sticker" src="{image:ALT Sticker}">{/block:IfAltStickerImage}
+
 </body>
 </html>

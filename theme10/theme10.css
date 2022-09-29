@@ -48,7 +48,8 @@ body.lower #toggle, body.lower #pages {
 }
 /* #endregion */
 /* Roundness */
-#avatar, #top, #search input, #pages a, #toggle {
+#avatar, #top, #search input, #pages a, #toggle,
+#scrolltotop_arrow, #buttons a {
 	border-radius: var(--roundness)
 }
 #blognav a {
@@ -107,7 +108,8 @@ body.lower #toggle, body.lower #pages {
 }
 /* #endregion */
 /* #region Accent tape */
-#search {
+#search,
+#scrolltotop_arrow, #buttons a {
 	background-color: var(--ta-bg);
 	color: var(--ta-text);
 	background-image: var(--ta-img);
@@ -301,6 +303,42 @@ aside:not(.pages) #desc { padding-bottom: 1em }
 aside.desc #pages { margin-top: -1.25em }
 #top:empty + #pages { margin-top: 0 }
 #pages a.current-page { font-weight: bold }
+/* #endregion */
+
+
+
+/* #region FOOTER */
+#buttons {
+	display: flex;
+	position: fixed;
+	bottom: 5.6em;
+	left: 8.25em;
+	transform: rotate(10deg);
+	transform-origin: bottom left;
+	z-index: 4;
+}
+#buttons.avatar {
+	bottom: 4.85em;
+	left: 12.4em;
+}
+#scrolltotop_arrow, #buttons a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	--size: 2em;
+	width: var(--size);
+	height: var(--size);
+	cursor: pointer;
+	margin-right: 1em;
+}
+.sticker {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	max-height: 15em;
+	max-width: 10em;
+}
 /* #endregion */
 
 
