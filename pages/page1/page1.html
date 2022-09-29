@@ -1,0 +1,341 @@
+<!--
+	PAGE 1: EUROPA by starlightthemes
+
+	A navigation page meant to go with Theme 5: Jupiter.
+	Search "CUSTOMIZE" to jump to editable sections.
+
+	Credits:
+		Tippy.js tooltips by atomiks: https://atomiks.github.io/tippyjs
+		Cappuccicons by Suiomi: https://cappuccicons.com/
+		Dark/light mode toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
+		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
+
+	Last updated 28 Sep 2022.
+-->
+
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+	<!-- BASIC META TAGS -->
+	<meta charset="utf-8">
+	<title>{Title}</title>
+	<meta name="description" content="{MetaDescription}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+	<!-- Theme styles -->
+	<!-- Standardization -->
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
+
+	<!-- Resource imports -->
+	<!-- Cappuccicons by suiomi -->
+	<script src="//pull.cappuccicons.com/cpf.js"></script>
+	<!-- Google fonts import -->
+	<link href="//fonts.googleapis.com/css2?family=Lora&family=Bitter" rel="stylesheet">
+
+<style>
+/** CUSTOMIZE: GENERAL APPEARANCE
+	1. Replace the main theme icon
+		- Ctrl+H to open the Find/Replace menu
+		- Search for "flash-o"
+		- Replace All with icon name of your choice from the Cappuccicons page
+		Example: When replacing the theme icon with the icon "yarn", this: <i class="cp cp-flash-o"></i>
+		...should have changed to this: <i class="cp cp-yarn"></i>
+	
+	2. Replace fonts
+		- Body font: Search/Replace All "Bitter"
+		- Title/headings font: Search/Replace All "Lora"
+		You can check "font-family" and "--title-font" below to see if these were correctly replaced.
+	
+	3. Edit other layout/color options just below this
+		- font-size, post-width: Self-explanatory. Measured in px values.
+		- sidebar-width: Options are 50% (wide), 42% (medium), and 35% (narrow).
+*/
+html {
+	font-size: 16px;
+	--post-width: 540px;
+	--sidebar-width: 42%;
+	font-family: "Bitter", serif; /* General */
+	--title-font: "Lora", serif; /* Headings */
+	
+	
+	/** COLORS SECTION 1
+		Dark mode colors (if you choose to have two color palettes), OR
+		General page colors (if not).
+		Choose in hex values (#123abc) or RGB values (rgb(255, 255, 255)).
+	*/
+	--text: #dddddd;
+	--headings: #ffc436; /* Page title and section headings */
+	--links: #f9ca21;
+	--links-hover: #ffe86d;
+	--bold: #ff8cf7;
+	--italics: #ff5fba;
+	--post: #3c1916; /* Content background */
+	--bg: #170903; /* Page background */
+	--accent: #ffbf00; /* Hex equivalent of rgb(255, 191, 0) */
+	--accent--rgb: 255,191,0; /* The three digits for your accent color, without brackets. See above for comparison */
+	--highlight: #ffeb9e; /* Highlighted text */
+	--highlight-bg: #230011; /* Highlighted text background */
+}
+html.light {
+	/** COLORS SECTION 2
+		Light mode colors (if you chose to have two color palettes; ignore otherwise.)
+		Same annotations as above apply.
+	*/
+	--text: #190809;
+	--headings: #a90057;
+	--links: #ab004d;
+	--links-hover: #ff007b;
+	--bold: #a13600;
+	--italics: #ae6200;
+	--post: #eadfb6;
+	--bg: #f7f5e8;
+	--accent: #e661ac;
+	--accent--rgb: 230,97,172;
+	--like: #ee0000;
+	--highlight: #3c000a;
+	--highlight-bg: #f79ebf;
+}
+
+/* Custom CSS */
+{CustomCSS}
+</style>
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme5/theme5.min.css">
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/pages/page1/page1.min.css">
+
+<style>
+/** CUSTOMIZE: GENERAL APPEARANCE (contd.)
+	4. Add background images
+		- If you want 1 background image on both color palettes (or if you want a background image and no color palette option), replace {HeaderImage} for "html body" and delete the line with "html.light body".
+		- If you want 1 background image on only one color palette, and a flat color background on the other, replace {HeaderImage} for "html.light body" and delete the line with "html body".
+		- If you want 2 separate images for each color palette, replace both {HeaderImage} instances, putting the Light mode image in front of "html.light body".
+		- If you don't want background images at all, delete both lines below.
+*/
+html body { background-image: url("{HeaderImage}") }
+html.light body { background-image: url("{HeaderImage}") }
+</style>
+
+	<!-- jQuery CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+	<!-- Tippy.js tooltips by atomiks -->
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
+	<!-- Scroll to top button -->
+	<script src="https://wovenstarlight.github.io/tumblr-themes/scrolltotop.min.js"></script>
+	<script src="https://wovenstarlight.github.io/tumblr-themes/theme5/theme5.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- Accessibility: SKIP TO MAIN -->
+<a href="#main" id="skip">Skip to main content</a>
+	
+{block:HideTitle}<h1 id="hiddentitle">{Title}</h1>{/block:HideTitle}
+
+
+<main id="main">
+	<section class="posts">
+
+		<!-- CUSTOMIZE: LINK SECTIONS
+			To add more sections, copy the "article" below (START and END markers are provided).
+			You can add sections in any order; just make sure they aren't overlapping (i.e. each section's "END" marker should be BEFORE the next one's "START" marker, and vice versa).
+		-->
+
+
+		<!-- START OF SECTION -->
+		<article class="post"><section class="frame">
+			
+			<h2 class="title"><a>
+				<!-- SECTION TITLE
+				Add your title on the next line!
+				If you don't want a title, delete everything from <h2 ...> on the line above to </h2> three lines below.
+				And if you want the section title to link to a page, too:
+					- change the <a> just above to read <a href="/">
+					- replace the / with your URL.
+				-->
+				Category one
+			</a></h2>
+			
+			<ul class="links">
+				<!-- LINKS LIST
+				To add a link, copy/paste the following line:
+				<li><a href="/">ABC</a></li>
+				Then replace "ABC" with the link text,
+				and "/" with the URL of the page you want this to link to.
+				
+				Add your links AFTER this line! -->
+			
+				<li><a href="https://starlightpreviews.tumblr.com"><i class="cp cp-link"></i>Link one</a></li>
+				<li><a href="/"><i class="cp cp-link"></i>Link two</li>
+				<li><a href="/"><i class="cp cp-link"></i>Link three</li>
+				<li><a href="/"><i class="cp cp-link"></i>Link four</li>
+				<li><a href="/"><i class="cp cp-link"></i>Link five</li>
+				<li><a href="/"><i class="cp cp-link"></i>Link six</li>
+			</ul>
+		
+		</section></article>
+		<!-- END OF SECTION -->
+
+
+
+		<!-- START OF SECTION -->
+		<article class="post"><section class="frame">
+			
+			<h2 class="title"><a href="/">
+				Category two
+			</a></h2>
+			
+			<ul class="links">
+				<li><a href="/">Link one</a></li>
+				<li><a href="/">Link two</a></li>
+				<li><a href="/">Link three</a></li>
+				<li><a href="/">Link four</a></li>
+			</ul>
+		
+		</section></article>
+		<!-- END OF SECTION -->
+
+
+
+		<!-- START OF SECTION -->
+		<article class="post"><section class="frame">
+			
+			<h2 class="title"><a>
+				<i class="cp cp-yarn-o"></i> Category three
+			</a></h2>
+			
+			<ul class="links">
+				<li><a href="/"><i class="cp cp-dragon"></i>Link one</a></li>
+				<li><a href="/"><i class="cp cp-bow-and-arrow-o"></i>Link two</a></li>
+				<li><a href="/"><i class="cp cp-moon-o"></i>Link three</a></li>
+				<li><a href="/"><i class="cp cp-watch-o"></i>Link four</a></li>
+				<li><a href="/"><i class="cp cp-butterfly-o"></i>Link five</a></li>
+				<li><a href="/"><i class="cp cp-paw"></i>Link six</a></li>
+			</ul>
+		
+		</section></article>
+		<!-- END OF SECTION -->
+
+
+
+		<!-- START OF SECTION -->
+		<article class="post"><section class="frame">
+			
+			<ul class="links">
+				<li><a href="/">Link one</a></li>
+				<li><a href="/">Link two</a></li>
+				<li><a href="/">Link three</a></li>
+				<li><a href="/">Link four</a></li>
+				<li><a href="/">Link five</a></li>
+				<li><a href="/">Link six</a></li>
+				<li><a href="/">Link seven</a></li>
+				<li><a href="/">Link eight</a></li>
+			</ul>
+		
+		</section></article>
+		<!-- END OF SECTION -->
+
+
+	</section>
+	
+	<!-- DIVIDER -->
+	<nav id="pagination">
+		<hr>
+		<span class="marker"><i class="cp cp-flash-o"></i></span>
+	</nav>
+</main>
+
+
+<!-- SIDEBAR -->
+<aside id="sidebar">
+	<div id="iconlinks">
+		<div class="planet">
+			<div class="ring"></div>
+			<img src="{PortraitURL-128}"/>
+		</div>
+		
+		<div id="btnctr">
+			<!-- SPECIAL BUTTONS -->
+			<div id="buttons">
+			
+			
+				<!-- CUSTOMIZE: DARK/LIGHT MODE TOGGLE
+					If you want two color palettes, leave this part as is.
+					If you only want one color palette, delete everything from START HERE to END HERE and replace it with the following line:
+					<a><i class="cp cp-flash-o"></i></a>
+				-->
+				<!-- START HERE -->
+				<a id="darklight" tabindex="0" data-tippy-content="Toggle color mode" data-tippy-placement="right">
+					<i class="cp cp-moon-o"></i>
+					<i class="cp cp-sun"></i>
+				</a>
+				<!-- END HERE -->
+				
+				
+				
+				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+				<a href="https://starlightthemes.tumblr.com/page1" id="creditlink" data-tippy-content="Page by starlightthemes" data-tippy-placement="right"><i class="cp cp-code"></i></a>
+				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+
+				<!-- BLOG COPYRIGHT -->
+				<a data-tippy-content="{Name} {CopyrightYears}" data-tippy-placement="right" id="copyright"><i class="cp cp-info-alt"></i></a>
+			</div>
+			<svg height="100%" xmlns="http://www.w3.org/2000/svg" width="4.25em" viewBox="0 0 65 100">
+				<line x1="40" y1="10" x2="65" y2="50" />
+				<line x1="65" y1="50" x2="40" y2="90" />
+				<line x1="0" y1="50" x2="65" y2="50" />
+				<circle r="0.2rem" cx="0.2rem" cy="50" fill="var(--accent)" />
+			</svg>
+		</div>
+	</div>
+
+	<!-- BLOG NAVIGATION -->
+	<div id="homelinks">
+		<hr>
+		<nav>
+			<a href="/" data-tippy-content="{lang:Home}"><i class="cp cp-home-o"></i></a>
+			{block:AskEnabled}<a href="/ask" id="asklink" {block:AskPage}class="current-page"{/block:AskPage} data-tippy-content="{AskLabel}"><i class="cp cp-envelope-o"></i></a>{/block:AskEnabled}
+			{block:SubmissionsEnabled}<a href="/submit" id="submitlink" {block:SubmitPage}class="current-page"{/block:SubmitPage} data-tippy-content="{SubmitLabel}"><i class="cp cp-gift-o"></i></a>{/block:SubmissionsEnabled}
+		</nav>
+	</div>
+
+	<section id="sidebartext" class="frame">
+		
+		<!-- CUSTOMIZE: TITLE/DESCRIPTION
+			Generally, this will inherit the settings of your blog, including what your title/description actually are and if you've set them to show or not.
+			However, if you'd like, you can replace this text and add an About or other text! You can even delete it altogether.
+			
+			To replace the TITLE, delete everything from {block:ShowTitle} to {/block:ShowTitle} and replace it with the following line:
+			<a id="title"><h1>YOUR TEXT HERE</h1></a>
+			
+			To replace the DESCRIPTION, delete everything from {block:ShowDescription} to {/block:ShowDescription} and replace it with the following line:
+			<div id="description">YOUR TEXT HERE</div>
+		-->
+
+
+		{block:ShowTitle}<a href="/" id="title"><h1>{Title}</h1></a>{/block:ShowTitle}
+
+
+		{block:ShowDescription}{block:Description}
+		<!-- DESCRIPTION -->
+		<div id="description">{Description}</div>
+		{/block:Description}{/block:ShowDescription}
+		
+		
+	</section>
+</aside>
+
+<!-- BACK TO TOP BUTTON -->
+<div id="scrolltotop_parent" tabindex="0" style="display: none;" data-tippy-content="{lang:Back to top}" data-tippy-placement="left">
+	<div id="scrolltotop_arrow">
+		<i class="cp cp-chevron-up"></i>
+	</div>
+</div>
+
+</body>
+</html>
