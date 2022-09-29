@@ -37,10 +37,10 @@ header a:hover { text-shadow: 0 0 0.2em }
 	padding: 0.25em 0.5em;
 }
 /* #region Casing */
-body.upper .TODO {
+body.upper #title {
 	text-transform: uppercase;
 }
-body.lower .TODO {
+body.lower #title {
 	text-transform: lowercase;
 }
 /* #endregion */
