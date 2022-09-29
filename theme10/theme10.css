@@ -114,8 +114,8 @@ header::before {
 
 
 
-/* #region HEADER/TITLE/WHATEVER */
-#title {
+/* #region HEADER */
+#title, #h1 {
 	font-family: var(--tfont);
 	font-weight: var(--tweight);
 	display: block;
@@ -130,6 +130,7 @@ header::before {
 	bottom: -2em;
 	margin: 0;
 	padding: 0.5em 5em 0.5em 7em;
+	z-index: 2;
 }
 #avatar {
 	position: fixed;
@@ -152,12 +153,13 @@ header::before, header a::after {
 	transform-origin: bottom left;
 }
 header::before {
-	bottom: 10.5em;
 	width: 110vw;
+	bottom: 10.5em;
 }
 header a::after {
 	width: 40em;
 	bottom: 3em;
+	z-index: 3;
 }
 /* #endregion */
 
