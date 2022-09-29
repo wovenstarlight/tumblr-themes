@@ -18,8 +18,13 @@ html {
 	color: var(--text);
 	font-family: var(--bfont);
 }
-a { color: var(--links) }
-a:not(:hover) { text-decoration: none }
+a {
+	color: var(--links);
+	text-decoration: none;
+	transition: .2s;
+}
+a:hover { text-shadow: 0 0 1em }
+header a:hover { text-shadow: 0 0 0.2em }
 /* Accessibility */
 #skip, #hiddentitle, #search label {
 	position: fixed;
@@ -40,7 +45,7 @@ body.lower .TODO {
 }
 /* #endregion */
 /* Roundness */
-.TODO {
+#avatar {
 	border-radius: var(--roundness)
 }
 /* #endregion */
