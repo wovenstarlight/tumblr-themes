@@ -21,7 +21,7 @@ html {
 a {
 	color: var(--links);
 	text-decoration: none;
-	transition: .2s;
+	transition: text-shadow .2s;
 }
 a:hover { text-shadow: 0 0 1em }
 #phead a:hover, #blognav a:hover,
@@ -108,7 +108,7 @@ body.lower #toggle, body.lower #pages {
 }
 /* #endregion */
 /* #region Accent tape */
-#search,
+#search, #toggle,
 #scrolltotop_arrow, #buttons a {
 	background-color: var(--ta-bg);
 	color: var(--ta-text);
@@ -256,7 +256,7 @@ html.alt aside:not(.altheader, .search, .desc, .pages),
 	padding: 0.5em 1em;
 	margin: 0.5em 0 2em;
 	cursor: pointer;
-	transition: .2s;
+	transition: text-shadow .2s;
 }
 #toggle:hover { text-shadow: 0 0 0.5em }
 #toggle span {
