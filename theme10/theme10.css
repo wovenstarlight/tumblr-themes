@@ -1,0 +1,70 @@
+/* #region GENERAL STYLES */
+/* #region Scroll bar */
+* {
+	scrollbar-color: var(--links) var(--text);
+	scrollbar-width: thin;
+	background-position: center !important;
+}
+::-webkit-scrollbar {
+	width: 0.5em;
+	height: 0.5em;
+	background-color: var(--text);
+}
+::-webkit-scrollbar-corner { background-color: var(--links) }
+::-webkit-scrollbar-thumb { background-color: var(--links) }
+/* #endregion */
+html {
+	background-color: var(--bg);
+	color: var(--text);
+	font-family: var(--bfont);
+}
+a { color: var(--links) }
+a:not(:hover) { text-decoration: none }
+/* Accessibility */
+#skip, #hiddentitle, #search label {
+	position: fixed;
+	font-size: 1px;
+	top: -100rem;
+}
+/* Tooltips */
+#s-m-t-tooltip {
+	margin: 1em;
+	padding: 0.25em 0.5em;
+}
+/* #region Casing */
+body.upper .TODO {
+	text-transform: uppercase;
+}
+body.lower .TODO {
+	text-transform: lowercase;
+}
+/* #endregion */
+/* Roundness */
+.TODO {
+	border-radius: var(--roundness)
+}
+/* #endregion */
+
+
+
+/* #region HEADER/TITLE/WHATEVER */
+#title {
+	font-family: var(--tfont);
+	font-weight: var(--tweight);
+}
+/* #endregion */
+
+
+
+/* #region POSTS */
+/* #endregion */
+
+
+
+/* #region POST TYPES */
+/* #endregion */
+
+
+
+/* #region RESPONSIVENESS */
+/* #endregion */
