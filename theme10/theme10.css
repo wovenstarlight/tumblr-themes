@@ -3,7 +3,7 @@
 * {
 	scrollbar-color: var(--links) var(--text);
 	scrollbar-width: thin;
-	background-position: center !important;
+	background-position: center;
 }
 ::-webkit-scrollbar {
 	width: 0.5em;
@@ -95,7 +95,6 @@ blockquote:nth-of-type(3n+1)::before,
 	background-image: var(--t1-img);
 	background-repeat: var(--t1-repeat);
 	background-size: var(--t1-size);
-	background-position: top right;
 }
 /* #endregion */
 /* #region Main tape 2 */
@@ -117,7 +116,6 @@ blockquote:nth-of-type(3n+2)::before, .link .name, .chat li:nth-child(odd),
 	background-image: var(--t2-img);
 	background-repeat: var(--t2-repeat);
 	background-size: var(--t2-size);
-	background-position: top right;
 }
 /* #endregion */
 /* #region Main tape 3 */
@@ -141,7 +139,6 @@ blockquote:nth-of-type(3n)::before, .link .excerpt, .chat li:nth-child(even),
 	background-image: var(--t3-img);
 	background-repeat: var(--t3-repeat);
 	background-size: var(--t3-size);
-	background-position: bottom left;
 }
 /* #endregion */
 /* #region Accent tape */
@@ -746,7 +743,6 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		background-image: var(--t2-img);
 		background-repeat: var(--t2-repeat);
 		background-size: var(--t2-size);
-		background-position: top right;
 	}
 	#blognav a:nth-last-child(even) {
 		background-color: var(--t3-bg);
@@ -756,7 +752,6 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		background-image: var(--t3-img);
 		background-repeat: var(--t3-repeat);
 		background-size: var(--t3-size);
-		background-position: bottom left;
 	}
 	
 	/* Footer */
@@ -792,7 +787,6 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		background-image: var(--t1-img);
 		background-repeat: var(--t1-repeat);
 		background-size: var(--t1-size);
-		background-position: top right;
 		color: var(--t1-text);
 	}
 	
@@ -853,7 +847,6 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		background-image: var(--t1-img);
 		background-repeat: var(--t1-repeat);
 		background-size: var(--t1-size);
-		background-position: top right;
 	}
 	#blognav a:nth-last-child(3n+2) {
 		background-color: var(--t2-bg);
@@ -863,7 +856,6 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		background-image: var(--t2-img);
 		background-repeat: var(--t2-repeat);
 		background-size: var(--t2-size);
-		background-position: top right;
 	}
 	#blognav a:nth-last-child(3n+1) {
 		background-color: var(--t3-bg);
@@ -873,7 +865,6 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		background-image: var(--t3-img);
 		background-repeat: var(--t3-repeat);
 		background-size: var(--t3-size);
-		background-position: bottom left;
 	}
 	#pagination {
 		justify-content: center;
@@ -882,7 +873,6 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		background-image: var(--t3-img);
 		background-repeat: var(--t3-repeat);
 		background-size: var(--t3-size);
-		background-position: bottom left;
 		margin: 2em calc(-1 * ((100vw - 100%) / 2)) 0;
 	}
 	
