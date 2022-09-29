@@ -23,7 +23,7 @@ $(document).ready( function() {
 
 	// About section show/hide toggle
 	$("#toggle").on("click keypress", function() {
-		$("aside").toggleClass("collapsed");
+		$("aside").toggleClass("page1");
 	});
 
 	// Nesting ask links correctly

@@ -339,9 +339,9 @@ html.alt aside:not(.altheader, .search, .desc, .pages),
 	align-items: center;
 	justify-content: center;
 }
-aside:not(.collapsed) #toggle .show,
-aside.collapsed #toggle .hide { display: none }
-aside.collapsed #top, aside.collapsed #pages { display: none !important }
+aside.page1 #toggle .show,
+aside:not(.page1) #toggle .hide { display: none }
+aside:not(.page1) #top, aside:not(.page1) #pages { display: none !important }
 /* Header image */
 .header {
 	max-height: 13em;
@@ -680,6 +680,7 @@ footer .stickies { margin-top: -0.75em }
 .audiowrapper .textinfo {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 }
 .textinfo .trackname { font-size: 1.1em }
 .textinfo .artist, .textinfo .album { font-size: 0.8em }
