@@ -125,7 +125,34 @@ html.light body { background-image: url("{HeaderImage}") }
 	<script src="https://unpkg.com/tippy.js@6"></script>
 	<!-- Scroll to top button -->
 	<script src="https://wovenstarlight.github.io/tumblr-themes/scrolltotop.min.js"></script>
-	<script src="https://wovenstarlight.github.io/tumblr-themes/theme5/theme5.min.js"></script>
+	<script>
+		$(document).ready( function() {
+		
+			// set up tooltips
+			tippy("[data-tippy-content]", {
+				theme: 'standard'
+			});
+			
+			const body = $("body, html");
+		
+			// Color mode on first load
+			const currTheme = localStorage.getItem("theme");
+			if ( currTheme == "light" ) {
+				body.addClass("light");
+			}
+			// Color mode button click
+			$("#darklight").on("click keypress", function() {
+				body.toggleClass("light");
+				
+				var newTheme = "dark";
+				if (body.hasClass("light")) {
+					newTheme = "light";
+				}
+				localStorage.setItem("theme", newTheme);
+			});
+		
+		});
+	</script>
 
 </head>
 
