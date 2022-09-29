@@ -264,6 +264,8 @@ html:not(.alt) body.noimg3 .custom_audio_seekbar_progress {
 body {
 	display: grid;
 	justify-content: center;
+	justify-items: center;
+	overflow-x: hidden;
 }
 main {
 	max-width: var(--post-width);
@@ -787,6 +789,76 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 }
 
 @media (max-width: 60em) { /* Mobile */
+	/* Center */
+	body { margin: 1.5em 0 }
+	/* Header */
+	header { position: relative }
+	#title, #h1 {
+		width: calc(100vw + 1em);
+		transform: rotate(-2.5deg);
+		position: relative;
+		top: 0;
+		padding: 1rem 2rem;
+	}
+	#phead a::after {
+		position: relative;
+		top: -.5em;
+		transform: rotate(2.5deg);
+	}
+	#avatar {
+		--size: 4em;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 1.5em;
+		z-index: 3;
+	}
+	
+	/* Navigation */
+	#blognav {
+		margin: 1em 0;
+		padding: 0 1.25em;
+		gap: 0.5em;
+		flex-flow: row wrap;
+		justify-content: center;
+		width: 100%;
+		max-width: var(--post-width);
+	}
+	#blognav a {
+		border-radius: var(--roundness);
+		padding: 0.25em .75em;
+		flex-grow: 1;
+		text-align: center;
+	}
+	#pagination {
+		background-color: var(--t3-bg);
+		color: var(--t3-text);
+		background-image: var(--t3-img);
+		background-repeat: var(--t3-repeat);
+		background-size: var(--t3-size);
+		background-position: bottom left;
+		margin: 2em calc(-1 * ((100vw - 100%) / 2)) 0;
+	}
+	
+	main { padding: 0 1.5em }
+	
+	/* Footer */
+	#buttons {
+		gap: .5em;
+		bottom: .5em;
+		left: .5em;
+		flex-direction: column-reverse;
+	}
+	.sticker {
+		max-height: 8em;
+		max-width: 6em;
+		transition: opacity .5s;
+	}
+	.sticker:not(.low) {
+		opacity: 0;
+		pointer-events: none;
+	}
+	
 	/* Post title */
 	.post .title {
 		width: calc(100% + .4em);
