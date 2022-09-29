@@ -236,7 +236,6 @@ html:not(.alt) body.noimg3 .custom_audio_seekbar_progress {
 	display: flex;
 	align-items: center;
 	color: var(--t3-text);
-	justify-content: center;
 }
 #pagination a {
 	color: var(--t3-text);
@@ -831,6 +830,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		text-align: center;
 	}
 	#pagination {
+		justify-content: center;
 		background-color: var(--t3-bg);
 		color: var(--t3-text);
 		background-image: var(--t3-img);
