@@ -404,8 +404,8 @@ aside.desc #pages { margin-top: -1.25em }
 	width: var(--size);
 	height: var(--size);
 	cursor: pointer;
-	margin-right: 1em;
 }
+#buttons a { margin-right: 1em }
 .sticker {
 	position: fixed;
 	top: 0;
