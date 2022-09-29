@@ -309,7 +309,8 @@ tippy("[data-tippy-content]", {
 });
 
 // Color mode on first load
-const currTheme = localStorage.getItem("theme");
+let currTheme = localStorage.getItem("theme"),
+	body = $("html");
 if ( currTheme == "light" ) {
 	body.addClass("light");
 }

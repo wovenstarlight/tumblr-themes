@@ -232,8 +232,8 @@ nav a:hover {
 }
 #darklight { cursor: pointer }
 #creditlink { margin: 0 }
-body:not(.light) #darklight .cp-moon-o,
-body.light #darklight .cp-sun { display: none }
+html:not(.light) #darklight .cp-moon-o,
+html.light #darklight .cp-sun { display: none }
 
 /* Links section */
 #main { margin: 2em 1.5em 1em }
