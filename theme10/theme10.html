@@ -336,10 +336,10 @@
 
 <!-- BLOG NAVIGATION -->
 <nav id="blognav">
-	{block:AskEnabled}<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}">{AskLabel}</a>{/block:AskEnabled}
-	{block:SubmissionsEnabled}<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
-	{block:IfRandomPostLink}<a href="/random" class="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
-	{block:IfArchiveLink}<a href="/archive" class="archivelink">{lang:Archive}</a>{/block:IfArchiveLink}
+	{block:AskEnabled}<a href="/ask" id="asklink" {block:AskPage}class="current-page"{/block:AskPage}>{AskLabel}</a>{/block:AskEnabled}
+	{block:SubmissionsEnabled}<a href="/submit" id="submitlink" {block:SubmitPage}class="current-page"{/block:SubmitPage}>{SubmitLabel}</a>{/block:SubmissionsEnabled}
+	{block:IfRandomPostLink}<a href="/random" id="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
+	{block:IfArchiveLink}<a href="/archive" id="archivelink">{lang:Archive}</a>{/block:IfArchiveLink}
 	{block:IfCustomPagesOnSidebar}{block:HasPages}{block:Pages}<a href="{URL}" class="{CurrentState}">{Label}</a>{/block:Pages}{/block:HasPages}{/block:IfCustomPagesOnSidebar}
 </nav>
 
