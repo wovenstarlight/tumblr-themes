@@ -48,6 +48,16 @@ $(document).ready( function() {
 		}
 	});
 
+	// Fade in stickers on mobile
+	$(window).scroll(function () {
+		if (window.pageYOffset >= 200) {
+			$(".sticker").addClass("low");
+		}
+		else {
+			$(".sticker").removeClass("low");
+		}
+	});
+
 	// Tooltip setup
 	$("[title]").style_my_tooltips();
 
