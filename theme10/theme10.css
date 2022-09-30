@@ -280,6 +280,7 @@ html.alt aside:not(.altheader, .search, .desc, .pages),
 	cursor: pointer;
 	transition: text-shadow .2s;
 }
+aside:not(.page1) #toggle { margin-top: 0 }
 #toggle:hover { text-shadow: 0 0 0.5em }
 #toggle span {
 	display: flex;
@@ -368,6 +369,7 @@ a.current-page { font-weight: bold }
 	margin: 0 0.5em;
 	position: relative;
 }
+.page.title h2:nth-last-child(2) { margin-top: 0 }
 .page.title .tag::before { content: "#" }
 .search_query::before { content: "\201C" }
 .search_query::after { content: "\201D" }
