@@ -172,7 +172,7 @@ html:not(.alt) body.noimga #search input,
 html.alt body.noaimga #search input {
 	background-color: rgba(var(--ta-text--rgb), 0.1);
 }
-body.maintapes .user::before,
+.maintapes .user::before,
 html:not(.alt) body.noimg1 .bodyitem:nth-of-type(3n+1) .user::before,
 html:not(.alt) body.noimg1 .ask .user::before,
 html:not(.alt) body.noimg2 .bodyitem:nth-of-type(3n+2) .user::before,
@@ -180,7 +180,7 @@ html:not(.alt) body.noimg3 .bodyitem:nth-of-type(3n) .user::before,
 html.alt body.noaimg1 .bodyitem:nth-of-type(3n+1) .user::before,
 html.alt body.noaimg2 .bodyitem:nth-of-type(3n+2) .user::before,
 html.alt body.noaimg3 .bodyitem:nth-of-type(3n) .user::before { filter: drop-shadow(-0.1em 0 0em) }
-body.maintapes .user::after,
+.maintapes .user::after,
 html:not(.alt) body.noimg1 .bodyitem:nth-of-type(3n+1) .user::after,
 html:not(.alt) body.noimg1 .ask .user::after,
 html:not(.alt) body.noimg2 .bodyitem:nth-of-type(3n+2) .user::after,
@@ -188,14 +188,14 @@ html:not(.alt) body.noimg3 .bodyitem:nth-of-type(3n) .user::after,
 html.alt body.noaimg1 .bodyitem:nth-of-type(3n+1) .user::after,
 html.alt body.noaimg2 .bodyitem:nth-of-type(3n+2) .user::after,
 html.alt body.noaimg3 .bodyitem:nth-of-type(3n) .user::after { filter: drop-shadow(0.1em 0 0em) }
-body.maintapes .quote .separator i,
+.maintapes .quote .separator i,
 html:not(.alt) body.noimg1 .post:nth-child(3n+1) .quote .separator i,
 html:not(.alt) body.noimg2 .post:nth-child(3n+2) .quote .separator i,
 html:not(.alt) body.noimg3 .post:nth-child(3n) .quote .separator i,
 html.alt body.noaimg1 .post:nth-child(3n+1) .quote .separator i,
 html.alt body.noaimg2 .post:nth-child(3n+2) .quote .separator i,
 html.alt body.noaimg3 .post:nth-child(3n) .quote .separator i { border: double; border-width: 0 0.3em }
-body.maintapes .custom_audio_seekbar_progress,
+.maintapes .custom_audio_seekbar_progress,
 html.alt body.noaimg3 .custom_audio_seekbar_progress,
 html:not(.alt) body.noimg3 .custom_audio_seekbar_progress {
 	box-shadow: inset -0.05em 0 0, 0.05em 0 0;
@@ -640,7 +640,7 @@ footer .stickies { margin-top: -0.75em }
 .custom_audio_seekbar { cursor: pointer; overflow: hidden }
 .seekbar span, .custom_audio_seekbar,
 .custom_audio_seekbar_progress { height: 100% }
-body.maintapes .custom_audio_seekbar_progress,
+.maintapes .custom_audio_seekbar_progress,
 html:not(.alt) body.noimg3 .custom_audio_seekbar_progress,
 html.alt body.noaimg3 .custom_audio_seekbar_progress {
 	box-shadow: inset -0.05em 0 0, 0.05em 0 0;
