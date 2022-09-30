@@ -64,7 +64,7 @@ body.lower .stickies, body.lower .tags, body.lower .link .name {
 .read_more, .viasource img, .highres, .link, .ask, .seekbar span,
 .audiowrapper .custom_audio_buttons, .audiowrapper .albumart, .custom_audio_seekbar,
 .page.title a, .post.notes .more_notes_link_container > *,
-#scrolltotop_arrow, #buttons a {
+#scrolltotop_arrow, #buttons>a {
 	border-radius: var(--roundness)
 }
 #blognav a {
@@ -147,7 +147,7 @@ blockquote:nth-of-type(3n)::before, .link .excerpt, .chat li:nth-child(even),
 .post .title a, .post.notes .title,
 .post.notes .more_notes_link_container > *,
 .highres, .custom_audio_buttons div,
-#scrolltotop_arrow, #buttons a {
+#scrolltotop_arrow, #buttons>a {
 	background-color: var(--ta-bg);
 	color: var(--ta-text);
 	background-image: var(--ta-img);
@@ -336,7 +336,7 @@ a.current-page { font-weight: bold }
 	position: fixed;
 	z-index: 4;
 }
-#scrolltotop_arrow, #buttons a {
+#scrolltotop_arrow, #buttons>a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
