@@ -43,6 +43,9 @@
 	<meta name="select:Corner roundness" content="1rem" title="More">
 	<meta name="select:Corner roundness" content="1.25rem" title="Most">
 
+	<!-- Image options -->
+	<meta name="image:Logo" content="">
+
 	<!-- Color options -->
 	<meta name="color:Background" content="{BackgroundColor}">
 	<meta name="color:Text" content="{TitleColor}">
@@ -212,6 +215,45 @@
 <!-- Accessibility: HIDDEN TITLE -->
 <h1 id="hiddentitle">{Title}</h1>
 {/block:HideTitle}
+
+
+<header id="header">
+
+	<a href="/" id="title">
+		{block:ShowAvatar}<img src="{PortraitURL-128}" id="avatar" class="{AvatarShape}" />{/block:ShowAvatar}
+		{block:IfLogoImage}<img src="{image:Logo}" id="logo"/>{/block:IfLogoImage}
+		{block:ShowTitle}<h1>{Title}</h1>{/block:ShowTitle}
+	</a>
+	
+	<section id="links-search">
+		<!-- BLOG NAVIGATION -->
+		<nav id="links">
+			{block:AskEnabled}<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}">{AskLabel}</a>{/block:AskEnabled}
+			{block:SubmissionsEnabled}<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+			{block:IfRandomPostLink}<a href="/random" class="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
+			{block:IfArchiveLink}<a href="/archive" class="archivelink">{lang:Archive}</a>{/block:IfArchiveLink}
+			
+			{block:HasPages}
+			<!-- CUSTOM PAGES -->
+			<div id="pages">
+				<span>{block:IfCustomLinksTitle}{text:Custom links title}{/block:IfCustomLinksTitle}{block:IfNotCustomLinksTitle}{lang:Navigate}{/block:IfNotCustomLinksTitle}</span>
+				<div id="pages-dropdown">{block:Pages}<a href="{URL}" class="{CurrentState}">{Label}</a>{/block:Pages}</div>
+			</div>
+			{/block:HasPages}
+		</nav>
+		
+		{block:IfSearchBar}
+		<!-- SEARCH BAR -->
+		<form action="/search" method="get" id="search">
+			<label for="q">{lang:Search}</label>
+			<input id="q" type="text" name="q" value="{SearchQuery}"/>
+			<input class="button" type="submit" value="{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}">
+		</form>
+		{/block:IfSearchBar}
+
+	</section>
+
+</header>
 
 </body>
 </html>
