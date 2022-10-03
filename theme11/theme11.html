@@ -1,0 +1,217 @@
+<!--
+	THEME 11: UNTITLED by starlightthemes
+
+	Credits:
+		Tippy.js tooltips by atomiks: https://atomiks.github.io/tippyjs
+		NPF photosets plugin by codematurgy: https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin
+		Custom audio posts by annasthms: https://annasthms.tumblr.com/more/js/customaudio/new
+		Tag filtering by glenthemes: https://glenthemes.tumblr.com/spoilertags
+		Palette toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
+		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
+
+	Last updated 3 Oct 2022.
+-->
+
+<!DOCTYPE html>
+<html lang="en" class="{select:Default color palette}">
+<head>
+	<meta charset="UTF-8">
+	<title>{Title}{block:TagPage} ({lang:TagResultCount posts tagged Tag}){/block:TagPage}{block:SearchPage} ({lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+	<meta name="description" content="{MetaDescription}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+	{block:Hidden}
+	<!-- THEME VARIABLES -->
+	<!-- Text and sizing -->
+	<meta name="text:Font size" content="16px">
+	<meta name="text:Post width" content="540px">
+	<meta name="text:Google font for title" content="Kalam">
+	<meta name="if:Use Tumblr fonts for title" content="0">
+	<meta name="text:Google font for body" content="Nunito">
+	<meta name="if:Use Tumblr fonts for body" content="0">
+	<meta name="font:Tumblr font for body" content="Brutal Type">
+	<meta name="select:Special text casing" content="" title="Regular">
+	<meta name="select:Special text casing" content="lower" title="Lowercase">
+	<meta name="select:Special text casing" content="upper" title="Uppercase">
+	<meta name="select:Corner roundness" content="0" title="None">
+	<meta name="select:Corner roundness" content="0.25rem" title="Least">
+	<meta name="select:Corner roundness" content="0.5rem" title="Less">
+	<meta name="select:Corner roundness" content="0.75rem" title="Medium">
+	<meta name="select:Corner roundness" content="1rem" title="More">
+	<meta name="select:Corner roundness" content="1.25rem" title="Most">
+
+	<!-- Color options -->
+	<meta name="color:Background" content="{BackgroundColor}">
+	<meta name="color:Text" content="{TitleColor}">
+	<meta name="color:Accent" content="{AccentColor}">
+	<!-- Alternate palette -->
+	<meta name="if:Palette toggle" content="1">
+	<meta name="select:Default palette" content="" title="Original">
+	<meta name="select:Default palette" content="alt" title="Alternate">
+	<meta name="color:ALT Background" content="{BackgroundColor}">
+	<meta name="color:ALT Text" content="{TitleColor}">
+	<meta name="color:ALT Accent" content="{AccentColor}">
+
+	<!-- General theme options -->
+	<meta name="text:Filtered tags" content="spoiler, spoilers">
+	<meta name="if:Back to top button" content="1">
+	<meta name="if:Random post link" content="1">
+	<meta name="if:Archive link" content="1">
+	<meta name="if:Search bar" content="1">
+	<meta name="text:Search bar title" content="Search">
+	<meta name="if:Post dates" content="1">
+	<meta name="if:Post times" content="1">
+	<meta name="if:Dates formatted month first" content="0">
+	<meta name="if:24 hour times" content="0">
+	<meta name="if:Like buttons" content="1">
+	<meta name="if:Reblog buttons" content="1">
+	<meta name="if:Post tags" content="1">
+	<meta name="if:Show tags on click" content="0">
+	<meta name="text:Custom links title" content="Navigate">
+	<meta name="if:Show group blog members" content="0">
+	<meta name="text:Group blog members title" content="Group members">
+	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
+	{/block:Hidden}
+
+	<!-- Standardization of theme styles -->
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
+
+	<!-- Resource imports -->
+	<!-- Google fonts import -->
+	<link href="https://fonts.googleapis.com/css2?family={text:Google font for body}&family={text:Google font for title}" rel="stylesheet">
+
+	<!-- Custom theme styles -->
+	<style>
+	html {
+		font-size: {text:Font size};
+		--post-width: {text:Post width};
+		--tfont: {block:IfNotUseTumblrFontsForTitle}'{text:Google font for title}', 'Lucida Grande', 'Lucida Sans Unicode', 'GNU Unifont', Verdana, Helvetica, sans-serif{/block:IfNotUseTumblrFontsForTitle}{block:IfUseTumblrFontsForTitle}{TitleFont}{/block:IfUseTumblrFontsForTitle};
+		--tweight: {TitleFontWeight};
+		--bfont: {block:IfNotUseTumblrFontsForBody}'{text:Google font for body}', 'Lucida Grande', 'Lucida Sans Unicode', 'GNU Unifont', Verdana, Helvetica, sans-serif{/block:IfNotUseTumblrFontsForBody}{block:IfUseTumblrFontsForBody}{font:Tumblr font for body}{/block:IfUseTumblrFontsForBody};
+		--roundness: {select:Corner roundness};
+	}
+
+	html:not(.alt) { /* REGULAR PALETTE */
+		--bg: {color:Background};
+		--text: {color:Text};
+		--text--rgb: {RGBcolor:Text};
+		--accent: {color:Accent};
+		--accent--rgb: {RGBcolor:Accent};
+	}
+
+	html.alt { /* ALTERNATE PALETTE */
+		--bg: {color:ALT Background};
+		--text: {color:ALT Text};
+		--text--rgb: {RGBcolor:ALT Text};
+		--accent: {color:ALT Accent};
+		--accent--rgb: {RGBcolor:ALT Accent};
+	}
+	</style>
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme11/theme11.min.css">
+	<style>{CustomCSS}</style>
+
+	<!-- jQuery CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+	<!-- Style-my-tooltips by malihu -->
+	<script src="https://wovenstarlight.github.io/jquery-style-my-tooltips/minified/jquery.style-my-tooltips.min.js"></script>
+	<!--
+	NPF photosets plugin by @codematurgy
+	https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin
+	-->
+	<script src="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosets.js"></script>
+	<link href="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosetstyle.css" rel="stylesheet" type="text/css">
+	<!--
+	customaudio.js by @annasthms
+	https://annasthms.tumblr.com/more/js/customaudio/new
+	-->
+	<script src="https://cdn.jsdelivr.net/gh/annasthms/customaudio@latest/customaudio.min.js"></script>
+	{block:IfFilteredTags}
+	<!--------- HIDE POSTS WITH SPOILER TAGS | @glenthemes -------->
+	<script src="//spoilertags.glitch.me/filter.js"></script>
+	<link href="//spoilertags.glitch.me/style.css" rel="stylesheet">
+	<script>
+	let tagsArray = "{text:Filtered tags}";
+	tagsArray = tagsArray.split(", ");
+	tagsArray.forEach(function(curr, i, arr) { arr[i] = "#" + curr } );
+	$(function(){
+		$("[init-tags]").spoilerTags({
+			filter: tagsArray,
+			message: "This post contains filtered tags",
+			includeHashtag: "yes",
+			tagSeparator: ",",
+			viewPostText: "View post",
+			shrinkPosts: "yes"
+		});
+	});
+	</script>
+		
+	<style>
+	:root {
+		/* TODO: EDIT */
+		--Spoiler-Overlay-Color: #fcfcfc;
+		--Spoiler-Overlay-Transparency: 0%; /* MUST be in % */
+		
+		--Warning-Text-Size: 12px;
+		--Warning-Text-Color: #222;
+		--Spoiler-Tags-Color: #222;
+		
+		--ViewPost-Button-Padding: 10px;
+		--ViewPost-Button-Border: #eee;
+		--ViewPost-Button-Roundness: 3px;
+		--ViewPost-Button-Background: #fefefe;
+		--ViewPost-Button-FontSize: 80%;
+		--ViewPost-Button-Text-Color: #222;
+		
+		--ViewPost-Button-HOVER-Border: #222;
+		--ViewPost-Button-HOVER-Background: #222;
+		--ViewPost-Button-HOVER-Text-Color: #eee;
+		
+		--ShrinkPost-Transition-Speed: 699ms; /* can be in ms or s */
+	}
+
+	/* Match special text casing */
+	body:not(.lower, .upper) { text-transform: unset }
+	body.lower .view-button { text-transform: lowercase }
+	/* In case of elements/accents with horizontal overflow */
+	[posts-selector][style*='overflow-y: hidden'] { overflow-x: hidden }
+	/* Match corner roundness */
+	.sp { border-radius: var(--roundness) }
+	/* Spacing */
+	.warning-text { padding: 1em }
+	.warning-text p { margin: 0 }
+	.warning-text .sp-tags { margin: 0.5em 0 }
+	</style>
+	{/block:IfFilteredTags}
+	{block:IfBackToTopButton}
+	<!-- Scroll to top button -->
+	<script src="https://wovenstarlight.github.io/tumblr-themes/scrolltotop.min.js"></script>
+	{/block:IfBackToTopButton}
+	{block:IfShowTagsOnClick}
+	<!-- Show tags on click -->
+	<script>
+	$(document).ready(function(){
+		$(".showtags").on("click keypress", function(){
+			$(this).parent().toggle(); // edit to select .tags
+			$(this).toggleClass('active');
+		});
+	});
+	</script>
+	{/block:IfShowTagsOnClick}
+	<script src="https://wovenstarlight.github.io/tumblr-themes/theme11/theme11.min.js"></script>
+</head>
+
+<body class="{select:Special text casing}">
+
+<!-- Accessibility: SKIP TO MAIN -->
+<a href="#main" id="skip">Skip to main content</a>
+
+{block:HideTitle}
+<!-- Accessibility: HIDDEN TITLE -->
+<h1 id="hiddentitle">{Title}</h1>
+{/block:HideTitle}
+
+</body>
+</html>
