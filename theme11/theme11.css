@@ -92,6 +92,7 @@ body.lower .TODO {
 	background-color: var(--bg);
 	background-image: linear-gradient(rgba(var(--shadows--rgb), 0.4), rgba(var(--shadows--rgb), 0.4));
 	padding: 0.25rem;
+	box-shadow: 0.1em 0.1em 0.25em -0.1em rgba(var(--text--rgb), 0.75);
 }
 #pages span { cursor: help }
 #pages-dropdown a {
