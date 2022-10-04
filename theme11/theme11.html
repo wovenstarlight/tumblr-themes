@@ -47,16 +47,18 @@
 	<meta name="image:Logo" content="">
 
 	<!-- Color options -->
-	<meta name="color:Background" content="{BackgroundColor}">
-	<meta name="color:Text" content="{TitleColor}">
-	<meta name="color:Accent" content="{AccentColor}">
+	<meta name="color:Background" content="#ffffff">
+	<meta name="color:Text" content="#2a2a2a">
+	<meta name="color:Accent" content="#990000">
+	<meta name="color:Shadows" content="#999999">
 	<!-- Alternate palette -->
 	<meta name="if:Palette toggle" content="1">
 	<meta name="select:Default palette" content="" title="Original">
 	<meta name="select:Default palette" content="alt" title="Alternate">
-	<meta name="color:ALT Background" content="{BackgroundColor}">
-	<meta name="color:ALT Text" content="{TitleColor}">
-	<meta name="color:ALT Accent" content="{AccentColor}">
+	<meta name="color:ALT Background" content="#333333">
+	<meta name="color:ALT Text" content="#eeeeee">
+	<meta name="color:Accent" content="#5998d6">
+	<meta name="color:Shadows" content="#eeeeee">
 
 	<!-- General theme options -->
 	<meta name="text:Filtered tags" content="spoiler, spoilers">
@@ -91,7 +93,7 @@
 	html {
 		font-size: {text:Font size};
 		--post-width: {text:Post width};
-		--tfont: {block:IfNotUseTumblrFontsForTitle}'{text:Google font for title}', 'Lucida Grande', 'Lucida Sans Unicode', 'GNU Unifont', Verdana, Helvetica, sans-serif{/block:IfNotUseTumblrFontsForTitle}{block:IfUseTumblrFontsForTitle}{TitleFont}{/block:IfUseTumblrFontsForTitle};
+		--tfont: {block:IfNotUseTumblrFontsForTitle}'{text:Google font for title}', Georgia, serif{/block:IfNotUseTumblrFontsForTitle}{block:IfUseTumblrFontsForTitle}{TitleFont}{/block:IfUseTumblrFontsForTitle};
 		--tweight: {TitleFontWeight};
 		--bfont: {block:IfNotUseTumblrFontsForBody}'{text:Google font for body}', 'Lucida Grande', 'Lucida Sans Unicode', 'GNU Unifont', Verdana, Helvetica, sans-serif{/block:IfNotUseTumblrFontsForBody}{block:IfUseTumblrFontsForBody}{font:Tumblr font for body}{/block:IfUseTumblrFontsForBody};
 		--roundness: {select:Corner roundness};
@@ -100,17 +102,23 @@
 	html:not(.alt) { /* REGULAR PALETTE */
 		--bg: {color:Background};
 		--text: {color:Text};
-		--text--rgb: {RGBcolor:Text};
 		--accent: {color:Accent};
+		--shadows: {color:Shadows};
+		--bg--rgb: {RGBcolor:Background};
+		--text--rgb: {RGBcolor:Text};
 		--accent--rgb: {RGBcolor:Accent};
+		--shadows--rgb: {RGBcolor:Shadows};
 	}
 
 	html.alt { /* ALTERNATE PALETTE */
 		--bg: {color:ALT Background};
 		--text: {color:ALT Text};
-		--text--rgb: {RGBcolor:ALT Text};
 		--accent: {color:ALT Accent};
+		--shadows: {color:ALT Shadows};
+		--bg--rgb: {RGBcolor:ALT Background};
+		--text--rgb: {RGBcolor:ALT Text};
 		--accent--rgb: {RGBcolor:ALT Accent};
+		--shadows--rgb: {RGBcolor:ALT Shadows};
 	}
 	</style>
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme11/theme11.min.css">
