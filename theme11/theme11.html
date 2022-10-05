@@ -86,7 +86,8 @@
 
 	<!-- Resource imports -->
 	<!-- Google fonts import -->
-	<link href="https://fonts.googleapis.com/css2?family={text:Google font for body}&family={text:Google font for title}" rel="stylesheet">
+	{block:IfGoogleFontForBody}<link href="https://fonts.googleapis.com/css2?family={text:Google font for body}" rel="stylesheet">{/block:IfGoogleFontForBody}
+	{block:IfGoogleFontForTitle}<link href="https://fonts.googleapis.com/css2?family={text:Google font for title}" rel="stylesheet">{/block:IfGoogleFontForTitle}
 
 	<!-- Custom theme styles -->
 	<style>
