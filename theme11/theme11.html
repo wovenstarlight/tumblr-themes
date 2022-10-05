@@ -61,6 +61,7 @@
 	<meta name="color:ALT Accent" content="#5998d6">
 
 	<!-- General theme options -->
+	<meta name="text:Secondary title" content="">
 	<meta name="text:Filtered tags" content="spoiler, spoilers">
 	<meta name="if:Back to top button" content="1">
 	<meta name="if:Random post link" content="1">
@@ -268,7 +269,13 @@
 
 <section id="page">
 
-	<!-- TODO: Subtitle (# works in name) -->
+	<h2 id="secondary">{block:IfSecondaryTitle}{/block:IfSecondaryTitle}{block:IfNotSecondaryTitle} Works in <a href="/">{Name}</a>
+		<script>
+			$.getJSON("https://{Name}.tumblr.com/api/read/json?num=1&callback=?").done(function (a) {
+			$("#secondary").prepend(a["posts-total"]);
+		});
+		</script>{/block:IfNotSecondaryTitle}
+	</h2>
 
 
 	<!-- TODO: dark mode/to top -->
@@ -298,7 +305,7 @@
 <footer id="footer">
 	<!-- TODO: "Contact". ask/submit again; optional email? -->
 
-	<!-- TODO: Find me on/other such titlel. Social links/custom website/RSS? -->
+	<!-- TODO: Find me on/other such title. Social links/custom website/RSS? -->
 
 	<!-- TODO: "Development". blog and theme credit -->
 </footer>

@@ -12,6 +12,7 @@ a {
 }
 a:hover { color: var(--bg2) }
 .button { cursor: pointer }
+h1, h2, h3 { font-family: var(--tfont) }
 /* Accessibility */
 #skip, #hiddentitle, #search label {
 	position: fixed;
@@ -36,6 +37,7 @@ body.lower .TODO {
 
 
 /* #region HEADER */
+#header { margin: 0 0 1em }
 #title {
 	display: flex;
 	border: none;
@@ -45,7 +47,6 @@ body.lower .TODO {
 	padding-right: 1em;
 }
 #title h1 {
-	font-family: var(--tfont);
 	font-weight: var(--tweight);
 	font-size: 1.714em;
 	margin: 0 0 0 0.2em;
@@ -121,6 +122,30 @@ body.lower .TODO {
 	margin: 0.25em 0;
 }
 #search input.button:hover { color: var(--accent) }
+/* #endregion */
+
+
+
+/* #region CENTER */
+#page {
+	padding: 0.5em 2.5em 3.5em;
+}
+/* Subtitle */
+#secondary {
+	font-weight: var(--tweight);
+	font-size: 1.875em;
+	margin: .5em 0;
+	display: inline;
+}
+#secondary a {
+	color: inherit;
+	line-height: 1.5;
+	border-bottom: 1px dotted;
+}
+#secondary a:hover {
+	background-color: var(--accent);
+	color: var(--bg);
+}
 /* #endregion */
 
 
