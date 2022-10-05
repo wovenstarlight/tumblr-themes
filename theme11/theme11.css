@@ -163,9 +163,32 @@ body.lower .TODO {
 	position: sticky;
 	top: 0.25em;
 }
-.button.active { background-image: unset }
+.button.active, a.curr {
+	box-shadow: inset 0.125rem 0.125rem 0.125rem rgba(var(--text--rgb), 0.2);
+	background: var(--bg2);
+}
 #scrolltotop_parent { display: inline-block }
 #page:not(.desc) #sidebar, #page:not(.desc) #right { display: none }
+/* Pagination */
+.pagination {
+	text-align: center;
+	margin-bottom: 0.5em;
+}
+.pagination a { margin: 0 0.3em }
+#prev:not([href]), #next:not([href]) {
+	background: none;
+	border: none;
+	padding: 0;
+}
+.pagination a:not([href]):hover {
+	color: inherit;
+	box-shadow: none;
+	cursor: initial;
+}
+span.curr {
+	font-size: 0.875rem;
+	margin: 0 0.75em;
+}
 /* Sidebar: RIGHT */
 #right {
 	background-color: var(--bg2);

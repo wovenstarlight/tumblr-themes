@@ -57,7 +57,7 @@
 	<meta name="select:Default palette" content="alt" title="Alternate">
 	<meta name="color:ALT Text" content="#eeeeee">
 	<meta name="color:ALT Background" content="#333333">
-	<meta name="color:ALT Secondary background" content="#000000">
+	<meta name="color:ALT Secondary background" content="#1e1e1e">
 	<meta name="color:ALT Accent" content="#5998d6">
 
 	<!-- General theme options -->
@@ -295,13 +295,55 @@
 	</div>
 
 
-	<!-- TODO: Pagination (top) -->
+	<!-- PAGINATION (top) -->
+	{block:Pagination}<nav class="top pagination">
+		<a {block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage} id="prev" class="button">← {lang:Previous}</a>
+		{block:JumpPagination length="5"}
+		{block:CurrentPage}<a class="button curr active">{PageNumber}</a>{/block:CurrentPage}
+		{block:JumpPage}<a href="{URL}" class="button">{PageNumber}</a>{/block:JumpPage}
+		{/block:JumpPagination}
+		<a {block:NextPage}href="{NextPage}"{/block:NextPage} id="next" class="button">{lang:Next} →</a>
+	</nav>{/block:Pagination}
+	
+	{block:PermalinkPagination}<nav class="top pagination">
+		<a {block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost} id="prev" class="button">← {lang:Previous}</a>
+		<span class="curr">{lang:See more posts}</span>
+		<a {block:NextPost}href="{NextPost}"{/block:NextPost} id="next" class="button">{lang:Next} →</a>
+	</nav>{/block:PermalinkPagination}
+	
+	{block:DayPage}{block:DayPagination}<nav class="top pagination">
+		<a {block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage} id="prev" class="button">← {lang:Previous}</a>
+		<span class="curr">{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst}, {Year}</span>
+		<a {block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage} id="next" class="button">{lang:Next} →</a>
+	</nav>{/block:DayPagination}{/block:DayPage}
+
 
 	<main id="main">
 		<!-- TODO: posts as "works" -->
 	</main>
 
-	<!-- TODO: Pagination (end) -->
+
+	<!-- PAGINATION (bottom) -->
+	{block:Pagination}<nav class="bottom pagination">
+		<a {block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage} id="prev" class="button">← {lang:Previous}</a>
+		{block:JumpPagination length="5"}
+		{block:CurrentPage}<a class="button curr active">{PageNumber}</a>{/block:CurrentPage}
+		{block:JumpPage}<a href="{URL}" class="button">{PageNumber}</a>{/block:JumpPage}
+		{/block:JumpPagination}
+		<a {block:NextPage}href="{NextPage}"{/block:NextPage} id="next" class="button">{lang:Next} →</a>
+	</nav>{/block:Pagination}
+	
+	{block:PermalinkPagination}<nav class="bottom pagination">
+		<a {block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost} id="prev" class="button">← {lang:Previous}</a>
+		<span class="curr">{lang:See more posts}</span>
+		<a {block:NextPost}href="{NextPost}"{/block:NextPost} id="next" class="button">{lang:Next} →</a>
+	</nav>{/block:PermalinkPagination}
+	
+	{block:DayPage}{block:DayPagination}<nav class="bottom pagination">
+		<a {block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage} id="prev" class="button">← {lang:Previous}</a>
+		<span class="curr">{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst}, {Year}</span>
+		<a {block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage} id="next" class="button">{lang:Next} →</a>
+	</nav>{/block:DayPagination}{/block:DayPage}
 
 
 	<aside id="right">
