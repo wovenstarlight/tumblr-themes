@@ -102,7 +102,8 @@ body.lower .TODO {
 /* Search bar */
 #search input {
 	border: none;
-	background: var(--shadows) linear-gradient(var(--bg), var(--shadows) 300%);
+	color: var(--text);
+	background: var(--bg) linear-gradient(var(--bg), rgba(var(--shadows--rgb), 0.3));
 }
 #search input#q {
 	height: 1.586em;
