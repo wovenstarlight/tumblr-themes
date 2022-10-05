@@ -191,6 +191,7 @@ body.lower .TODO {
 	}
 	
 	
+	#page { grid-template-columns: auto 1fr auto }
 	#secondary, #actions, .pagination { grid-column: 2 / span 2 }
 	.top.pagination { grid-row: 3 }
 	.bottom.pagination { grid-row: 5 }
