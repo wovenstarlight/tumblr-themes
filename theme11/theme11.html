@@ -47,18 +47,18 @@
 	<meta name="image:Logo" content="">
 
 	<!-- Color options -->
-	<meta name="color:Background" content="#ffffff">
 	<meta name="color:Text" content="#2a2a2a">
+	<meta name="color:Background" content="#ffffff">
+	<meta name="color:Secondary background" content="#999999">
 	<meta name="color:Accent" content="#990000">
-	<meta name="color:Shadows" content="#999999">
 	<!-- Alternate palette -->
 	<meta name="if:Palette toggle" content="1">
 	<meta name="select:Default palette" content="" title="Original">
 	<meta name="select:Default palette" content="alt" title="Alternate">
-	<meta name="color:ALT Background" content="#333333">
 	<meta name="color:ALT Text" content="#eeeeee">
+	<meta name="color:ALT Background" content="#333333">
+	<meta name="color:ALT Secondary background" content="#000000">
 	<meta name="color:ALT Accent" content="#5998d6">
-	<meta name="color:ALT Shadows" content="#eeeeee">
 
 	<!-- General theme options -->
 	<meta name="text:Filtered tags" content="spoiler, spoilers">
@@ -100,25 +100,25 @@
 	}
 
 	html:not(.alt) { /* REGULAR PALETTE */
-		--bg: {color:Background};
 		--text: {color:Text};
+		--bg: {color:Background};
+		--bg2: {color:Secondary background};
 		--accent: {color:Accent};
-		--shadows: {color:Shadows};
-		--bg--rgb: {RGBcolor:Background};
 		--text--rgb: {RGBcolor:Text};
+		--bg--rgb: {RGBcolor:Background};
+		--bg2--rgb: {RGBcolor:Secondary background};
 		--accent--rgb: {RGBcolor:Accent};
-		--shadows--rgb: {RGBcolor:Shadows};
 	}
 
 	html.alt { /* ALTERNATE PALETTE */
-		--bg: {color:ALT Background};
 		--text: {color:ALT Text};
+		--bg: {color:ALT Background};
+		--bg2: {color:ALT Secondary background};
 		--accent: {color:ALT Accent};
-		--shadows: {color:ALT Shadows};
-		--bg--rgb: {RGBcolor:ALT Background};
 		--text--rgb: {RGBcolor:ALT Text};
+		--bg--rgb: {RGBcolor:ALT Background};
+		--bg2--rgb: {RGBcolor:ALT Secondary background};
 		--accent--rgb: {RGBcolor:ALT Accent};
-		--shadows--rgb: {RGBcolor:ALT Shadows};
 	}
 	</style>
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme11/theme11.min.css">

@@ -10,7 +10,7 @@ a {
 	text-decoration: none;
 	border-bottom: 1px solid;
 }
-a:hover { color: var(--shadows) }
+a:hover { color: var(--bg2) }
 .button { cursor: pointer }
 /* Accessibility */
 #skip, #hiddentitle, #search label {
@@ -74,7 +74,7 @@ body.lower .TODO {
 #links > a:hover, #pages:hover span {
 	color: var(--text);
 	background-color: var(--bg);
-	background-image: linear-gradient(rgba(var(--shadows--rgb), 0.4), rgba(var(--shadows--rgb), 0.4));
+	background-image: linear-gradient(rgba(var(--bg2--rgb), 0.4), rgba(var(--bg2--rgb), 0.4));
 }
 /* Custom pages */
 #pages { display: inline-block }
@@ -85,7 +85,7 @@ body.lower .TODO {
 	display: flex;
 	flex-direction: column;
 	background-color: var(--bg);
-	background-image: linear-gradient(rgba(var(--shadows--rgb), 0.4), rgba(var(--shadows--rgb), 0.4));
+	background-image: linear-gradient(rgba(var(--bg2--rgb), 0.4), rgba(var(--bg2--rgb), 0.4));
 	padding: 0.25rem;
 	box-shadow: 0.1em 0.1em 0.25em -0.1em rgba(var(--text--rgb), 0.75);
 }
@@ -103,7 +103,7 @@ body.lower .TODO {
 #search input {
 	border: none;
 	color: var(--text);
-	background: var(--bg) linear-gradient(var(--bg), rgba(var(--shadows--rgb), 0.3));
+	background: var(--bg) linear-gradient(var(--bg), rgba(var(--bg2--rgb), 0.3));
 }
 #search input#q {
 	height: 1.586em;
@@ -112,7 +112,7 @@ body.lower .TODO {
 	margin: 0 0.7em;
 }
 #search input:hover, #search input:focus {
-	box-shadow: inset 0.125rem 0.125rem 0.125rem rgba(var(--shadows--rgb), 0.5)
+	box-shadow: inset 0.125rem 0.125rem 0.125rem rgba(var(--bg2--rgb), 0.5)
 }
 #search input.button {
 	height: 1.5625rem;
