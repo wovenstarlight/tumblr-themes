@@ -195,14 +195,61 @@ span.curr {
 	padding: 1em 2%;
 	border: 0.1em solid rgba(var(--text--rgb), 0.1);
 	box-shadow: inset 0.1em 0 0.25em rgba(var(--text--rgb), 0.1);
+	line-height: 1.3
 }
-#right a { display: inline-block }
+#right a {
+	display: inline-block;
+	padding-bottom: 0.1em;
+}
 #right > :not(:first-child) {
 	--spacing: 1em;
 	padding-top: var(--spacing);
 	border-top: thin solid rgba(var(--bg--rgb), 0.65);
 	margin-top: var(--spacing);
 }
+#rules h2 {
+	font-size: 1.125em;
+	margin: 0 0 0.5em;
+}
+#rules ul, ul#rules {
+	list-style: none;
+	margin: 0;
+	padding: 0 0 0 1.5em;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+#rules .rule {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+#rules li.hasmore .rule {
+	cursor: pointer;
+	text-decoration: 1px dotted underline;
+	text-underline-offset: 0.35em;
+}
+#rules li.hasmore .rule:hover { opacity: .5 }
+#rules .rule::before {
+	content: "";
+	display: block;
+	position: absolute;
+	border: 0.4em solid transparent;
+	border-left-color: var(--text);
+	left: -1em;
+}
+#rules li.show .rule::before {
+	border-left-color: transparent;
+	border-top-color: var(--text);
+	left: -1.25em;
+	top: 0.4em;
+}
+#rules .rulemore {
+	display: block;
+	padding: 0.25em 0;
+	font-size: 0.9em;
+}
+#rules li:not(.show) .rulemore { display: none }
 /* #endregion */
 
 

@@ -79,6 +79,8 @@
 	<meta name="text:Custom links title" content="Navigate">
 	<meta name="if:Show group blog members" content="0">
 	<meta name="text:Group blog members title" content="Group members">
+	<meta name="text:Rules title" content="Rules">
+	<meta name="text:Rules" content="&lt;li&gt; Rule 1&NewLine;[m] Further description">
 	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
 	{/block:Hidden}
 
@@ -351,7 +353,31 @@
 		<div id="desc">{Description}</div>
 		{/block:Description}{/block:ShowDescription}
 
-		<!-- TODO: any extra text sections. maybe Rules as dropdowns? -->
+		{block:IfRules}
+		{block:IfRulesTitle}
+		<div id="rules">
+		<h3>{text:Rules title}</h3>{/block:IfRulesTitle}
+		<ul {block:IfNotRulesTitle}id="rules"{/block:IfNotRulesTitle}>
+			{text:Rules}
+		</ul>
+		<script>
+			$("#rules li").each(function() {
+				var parts = $(this).html().split("[m]");
+				parts.forEach((e, i, a) => {a[i] = e.trim()});
+				console.log(parts);
+				var newrule = "<span class=\"rule\">" + parts[0] + "</span>";
+				if (parts[1]) {
+					newrule += "<span class=\"rulemore\">" + parts[1] + "</span>";
+					$(this).addClass("hasmore");
+				}
+				$(this).html(newrule);
+			});
+			$("#rules li.hasmore .rule").on("click keypress", function() {
+				$(this).parent().toggleClass("show");
+			});
+		</script>
+		{block:IfRulesTitle}</div>{/block:IfRulesTitle}
+		{/block:IfRules}
 
 		<div id="back"><!-- Back to main --></div>
 	</aside>
