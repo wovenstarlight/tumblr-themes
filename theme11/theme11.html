@@ -75,7 +75,8 @@
 	<meta name="if:Reblog buttons" content="1">
 	<meta name="if:Post tags" content="1">
 	<meta name="if:Show tags on click" content="0">
-	<meta name="text:Custom links title" content="Navigate">
+	<meta name="if:Custom links on sidebar" content="0">
+	<meta name="text:Custom links title" content="Pages">
 	<meta name="if:Show group blog members" content="0">
 	<meta name="text:Group blog members title" content="Group members">
 	<meta name="text:Featured tags title" content="Featured tags">
@@ -247,18 +248,23 @@
 	<section id="links-search">
 		<!-- BLOG NAVIGATION -->
 		<nav id="links">
-			{block:AskEnabled}<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}">{AskLabel}</a>{/block:AskEnabled}
-			{block:SubmissionsEnabled}<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
-			{block:IfRandomPostLink}<a href="/random" class="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
-			{block:IfArchiveLink}<a href="/archive" class="archivelink">{lang:Archive}</a>{/block:IfArchiveLink}
+			<div id="mobnav">
+				<span>{lang:Navigate}</span>
+				<div class="dropdown">
+					{block:AskEnabled}<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}">{AskLabel}</a>{/block:AskEnabled}
+					{block:SubmissionsEnabled}<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+					{block:IfRandomPostLink}<a href="/random" class="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
+					{block:IfArchiveLink}<a href="/archive" class="archivelink">{lang:Archive}</a>{/block:IfArchiveLink}
+				</div>
+			</div>
 			
-			{block:HasPages}
+			{block:IfNotCustomLinksOnSidebar}{block:HasPages}
 			<!-- CUSTOM PAGES -->
 			<div id="pages">
-				<span>{block:IfCustomLinksTitle}{text:Custom links title}{/block:IfCustomLinksTitle}{block:IfNotCustomLinksTitle}{lang:Navigate}{/block:IfNotCustomLinksTitle}</span>
-				<div id="pages-dropdown">{block:Pages}<a href="{URL}" class="{CurrentState}">{Label}</a>{/block:Pages}</div>
+				<span>{block:IfCustomLinksTitle}{text:Custom links title}{/block:IfCustomLinksTitle}{block:IfNotCustomLinksTitle}{lang:Pages}{/block:IfNotCustomLinksTitle}</span>
+				<div class="dropdown">{block:Pages}<a href="{URL}" class="{CurrentState}">{Label}</a>{/block:Pages}</div>
 			</div>
-			{/block:HasPages}
+			{/block:HasPages}{/block:IfNotCustomLinksOnSidebar}
 		</nav>
 		
 		{block:IfSearchBar}
@@ -393,6 +399,15 @@
 		{/block:GroupMembers}{/block:IfShowGroupBlogMembers}
 
 
+		{block:IfCustomLinksOnSidebar}{block:HasPages}
+		<!-- CUSTOM PAGES -->
+		<div id="pages">
+			{block:IfCustomLinksTitle}<h3>{text:Custom links title}</h3>{/block:IfCustomLinksTitle}
+			{block:Pages}<a href="{URL}" class="{CurrentState}">{Label}</a>{/block:Pages}
+		</div>
+		{/block:HasPages}{/block:IfCustomLinksOnSidebar}
+
+
 		{block:IfFeaturedTags}
 		<!-- FEATURED TAGS -->
 		<div id="ft-tags">
@@ -431,25 +446,6 @@
 		});
 		</script>
 		{/block:IfRecentPosts}
-
-
-		{block:IfHighlightedLinks}
-		<div id="hl-links">
-			{block:IfHighlightedLinksTitle}<h3>{text:Highlighted links title}</h3>{/block:IfHighlightedLinksTitle}
-			<div>{text:Highlighted links}</div>
-		</div>
-		<script>
-		let hl = $("#hl-links div"),
-			links = hl.text().split("[link]").filter(e => e);
-		hl.html("");
-		links.forEach((e) => {
-			var parts = e.split("[label]");
-			parts.forEach((e, i, a) => {a[i] = e.trim()});
-			var newlink = "<a href=\"" + parts[0] + "\">" + parts[1] + "</a>";
-			hl.append(newlink);
-		});
-		</script>
-		{/block:IfHighlightedLinks}
 	</aside>
 
 </section>

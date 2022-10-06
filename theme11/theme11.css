@@ -79,21 +79,22 @@ body.lower .TODO {
 	justify-content: space-between;
 	padding: 0 0.7em 0 2em;
 }
-#links > a, #pages span {
+#links span {
 	border-bottom: none;
 	color: var(--bg);
 	display: inline-flex;
 	padding: 0.5em 0.75em;
 }
-#links > a:hover, #pages:hover span {
+#mobnav { display: inline-block }
+#mobnav a:hover, #mobnav:hover span, #pages:hover span {
 	color: var(--text);
 	background-color: var(--bg2);
 }
 /* #endregion */
 /* #region Custom pages */
-#pages { display: inline-block }
-#pages:not(:hover) #pages-dropdown { opacity: 0; pointer-events: none }
-#pages-dropdown {
+#links #pages { display: inline-block }
+#pages:not(:hover) .dropdown { opacity: 0; pointer-events: none }
+#pages .dropdown {
 	position: absolute;
 	left: 0;
 	display: flex;
@@ -103,12 +104,12 @@ body.lower .TODO {
 	box-shadow: 0.1em 0.1em 0.25em -0.1em rgba(var(--text--rgb), 0.75);
 }
 #pages span { cursor: help }
-#pages-dropdown a {
+#pages .dropdown a {
 	padding: .75em .5em .5em;
 	border-color: var(--text);
 }
-#pages-dropdown a:last-child { border-bottom: none }
-#pages-dropdown a:hover {
+#pages .dropdown a:last-child { border-bottom: none }
+#pages .dropdown a:hover {
 	color: inherit;
 	background-color: rgba(var(--bg--rgb), 0.25);
 }
@@ -256,7 +257,7 @@ span.curr { margin: 0 0.75em }
 	border-radius: 0.25em;
 }
 #left a:hover {
-	background-color: rgba(var(--bg2--rgb), 0.7);
+	background-color: rgba(var(--bg2--rgb), 0.5);
 	color: var(--accent);
 }
 #left a.current-page {
@@ -280,8 +281,15 @@ span.curr { margin: 0 0.75em }
 
 /* #region RESPONSIVENESS */
 @media (min-width: 50rem) { /* Desktop */
-	#pages { position: relative }
-	#pages-dropdown {
+	#mobnav span { display: none }
+	#mobnav a {
+		border-bottom: none;
+		color: var(--bg);
+		display: inline-flex;
+		padding: 0.5em 0.75em;
+	}
+	#links #pages { position: relative }
+	#links #pages .dropdown {
 		left: 0;
 		min-width: 20rem;
 	}
@@ -327,34 +335,34 @@ span.curr { margin: 0 0.75em }
 		margin: 0 0 0.5em;
 		padding: 0 0.4em;
 	}
-	#left a {
-		border-bottom: none;
-		line-height: 2;
-		padding: 0 0.5em;
-		border-radius: 0.25em;
-	}
-	#left a:hover {
-		background-color: rgba(var(--bg2--rgb), 0.7);
-		color: var(--accent);
-	}
-	#left a.current-page {
-		background-color: var(--bg2);
-		color: var(--text);
-	}
 }
 
 @media (max-width: 50rem) { /* Mobile */
 	html { font-size: 0.875em }
 	#page { padding: 0.5em 3.5% 3.5em }
 	
-	#links-search {
-		flex-flow: column;
-		justify-content: unset;
-		padding: 0 0.7em 0 0;
+	#links-search { padding: 0 0.7em 0 0 }
+	#mobnav span { cursor: help }
+	#mobnav:not(:hover) .dropdown { opacity: 0; pointer-events: none }
+	#mobnav .dropdown {
+		position: absolute;
+		left: 0;
+		display: flex;
+		flex-direction: column;
+		background-color: var(--bg2);
+		padding: 0.25em;
+		box-shadow: 0.1em 0.1em 0.25em -0.1em rgba(var(--text--rgb), 0.75);
 	}
-	#links { align-self: start }
-	#search { align-self: end }
-	#pages-dropdown { width: 100% }
+	#mobnav .dropdown a {
+		padding: .75em .5em .5em;
+		border-color: var(--text);
+	}
+	#mobnav .dropdown a:last-child { border-bottom: none }
+	#mobnav .dropdown a:hover {
+		color: inherit;
+		background-color: rgba(var(--bg--rgb), 0.25);
+	}
+	#links .dropdown { width: 100% }
 	
 	
 	/* About section toggling*/
