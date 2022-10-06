@@ -1,5 +1,6 @@
 /* #region GENERAL STYLES */
 html {
+	font-size: var(--font-size);
 	background-color: var(--bg);
 	color: var(--text);
 	font-family: var(--bfont);
@@ -297,7 +298,7 @@ span.curr { margin: 0 0.75em }
 
 
 /* #region RESPONSIVENESS */
-@media (min-width: 50rem) { /* Desktop */
+@media (min-width: 60rem) { /* Desktop */
 	#mobnav span { display: none }
 	#mobnav a {
 		border-bottom: none;
@@ -357,8 +358,7 @@ span.curr { margin: 0 0.75em }
 	}
 }
 
-@media (max-width: 50rem) { /* Mobile */
-	html { font-size: 0.875em }
+@media (max-width: 60rem) { /* Mobile */
 	#page { padding: 0.5em 3.5% 3.5em }
 	
 	#links-search { padding: 0 0.7em 0 0 }
@@ -426,5 +426,9 @@ span.curr { margin: 0 0.75em }
 	#left h3 { padding: 0 0.5em; margin: 0 }
 	#left h3::after { content: ":" }
 	#left a { display: inline-block; margin: 0.2em }
+}
+
+@media (max-width: 40em) {
+	html { font-size: calc(0.875 * var(--font-size)) }
 }
 /* #endregion */
