@@ -92,7 +92,7 @@
 	<meta name="text:FAQ title" content="FAQ">
 <meta name="text:FAQ" content="&lt;li&gt; Question 1&NewLine;[more] Answer 1">
 	<meta name="text:Updates title" content="Updates">
-    <meta name="text:Updates" content="&lt;li&gt; 06 Aug 2022&NewLine;[label] Update text">
+	<meta name="text:Updates" content="&lt;li&gt; 06 Aug 2022&NewLine;[label] Update text">
 	<meta name="text:Ask guidelines" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
 	{/block:Hidden}
 
@@ -400,13 +400,13 @@
 		</ul>
 		{block:IfUpdatesTitle}</div>{/block:IfUpdatesTitle}
 		<script>
-    	$("#updates li").each(function() {
-    		var parts = $(this).html().split("[label]");
-    		parts.forEach((e, i, a) => {a[i] = e.trim()});
-    		var newud = "<span class=\"label\">" + parts[1] + "</span><span class=\"date\">Published: " + parts[0] + "</span>";
-    		$(this).html(newud);
-    	});
-    	</script>
+		$("#updates li").each(function() {
+			var parts = $(this).html().split("[label]");
+			parts.forEach((e, i, a) => {a[i] = e.trim()});
+			var newud = "<span class=\"label\">" + parts[1] + "</span><span class=\"date\">Published: " + parts[0] + "</span>";
+			$(this).html(newud);
+		});
+		</script>
 		{/block:IfUpdates}
 
 		<div id="back"><!-- Back to main --></div>
