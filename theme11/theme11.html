@@ -312,7 +312,7 @@
 	<!-- PAGINATION (top) -->
 	{block:Pagination}<nav class="top pagination">
 		<a {block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage} id="prev" class="button">← {lang:Previous}</a>
-		{block:JumpPagination length="5"}
+		{block:JumpPagination length="9"}
 		{block:CurrentPage}<a class="button curr active">{PageNumber}</a>{/block:CurrentPage}
 		{block:JumpPage}<a href="{URL}" class="button">{PageNumber}</a>{/block:JumpPage}
 		{/block:JumpPagination}
@@ -340,7 +340,7 @@
 	<!-- PAGINATION (bottom) -->
 	{block:Pagination}<nav class="bottom pagination">
 		<a {block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage} id="prev" class="button">← {lang:Previous}</a>
-		{block:JumpPagination length="5"}
+		{block:JumpPagination length="9"}
 		{block:CurrentPage}<a class="button curr active">{PageNumber}</a>{/block:CurrentPage}
 		{block:JumpPage}<a href="{URL}" class="button">{PageNumber}</a>{/block:JumpPage}
 		{/block:JumpPagination}
@@ -421,7 +421,7 @@
 			$("#ft-tags").append("<a href=\"/tagged/"+tag+"\" data-tag=\""+tag+"\">"+tag+"</a>");
 			
 			$.getJSON("https://{Name}.tumblr.com/api/read/json?tagged="+tag+"&num=1&callback=?").done(function (a) {
-				$("[data-tag="+tag+"]").append(" ("+cleanNotes(a["posts-total"])+")");
+				$("[data-tag=\""+tag+"\"]").append(" ("+cleanNotes(a["posts-total"])+")");
 			});
 		});
 		</script>
