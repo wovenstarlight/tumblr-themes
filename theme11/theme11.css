@@ -147,7 +147,7 @@ body.lower .TODO {
 #secondary {
 	font-weight: var(--tweight);
 	font-size: 2.15em;
-	margin: .25em 0 0.5em;
+	margin: .25em 0 0;
 	display: inline;
 }
 #secondary a {
@@ -163,7 +163,7 @@ body.lower .TODO {
 /* #region Actions menu */
 .tmblr-iframe--unified-controls.iframe-controls--desktop ~ #body #actions { top: 50px }
 #actions {
-	margin-bottom: 0.5em;
+	margin-bottom: 1em;
 	text-align: right;
 	position: sticky;
 	top: 0.5em;
@@ -177,10 +177,9 @@ body.lower .TODO {
 #page:not(.desc) #sidebar, #page:not(.desc) #right { display: none }
 /* #endregion */
 /* #region Pagination */
-.pagination {
-	text-align: center;
-	margin-bottom: 0.5em;
-}
+.pagination { text-align: center }
+.top.pagination { margin-bottom: 1em }
+.bottom.pagination { margin-top: 1em }
 .pagination a { margin: 0 0.3em }
 #prev:not([href]), #next:not([href]) {
 	background: none;
@@ -295,7 +294,10 @@ span.curr { margin: 0 0.75em }
 	}
 	
 	
-	#page { grid-template-columns: auto 1fr auto }
+	#page {
+		grid-template-columns: auto 1fr auto;
+		grid-template-rows: repeat(4, auto) 1fr;
+	}
 	#secondary, #actions, .pagination { grid-column: 2 / span 2 }
 	.top.pagination { grid-row: 3 }
 	.bottom.pagination { grid-row: 5 }
