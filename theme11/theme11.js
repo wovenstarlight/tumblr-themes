@@ -1,3 +1,9 @@
+function cleanNotes(num) {
+	if (num.length > 6) { return num.substring(0, num.length - 6) + "M" }
+	else if (num.length > 3) { return num.substring(0, num.length - 3) + "K" }
+	else { return num }
+}
+
 $(document).ready( function() {
 
 	// #region Color mode on first load
