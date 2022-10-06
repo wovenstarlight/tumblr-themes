@@ -78,6 +78,13 @@
 	<meta name="text:Custom links title" content="Navigate">
 	<meta name="if:Show group blog members" content="0">
 	<meta name="text:Group blog members title" content="Group members">
+	<meta name="text:Featured tags title" content="Featured tags">
+	<meta name="text:Featured tags" content="text, chat">
+	<meta name="if:Recent posts" content="1">
+	<meta name="text:Recent posts title" content="Recent posts">
+	<meta name="text:Recent posts tag" content="my posts">
+	<meta name="text:Highlighted links title" content="Links">
+	<meta name="text:Highlighted links" content="[link] https://tumblr.com&NewLine;[label] Link to Tumblr">
 	<meta name="text:Rules title" content="Rules">
 	<meta name="text:Rules" content="&lt;li&gt; Rule 1&NewLine;[more] Further description">
 	<meta name="text:FAQ title" content="FAQ">
@@ -377,7 +384,72 @@
 
 
 	<aside id="left">
-		<!-- TODO: featured tags, updates/recent posts, or other such link sections -->
+		{block:IfShowGroupBlogMembers}{block:GroupMembers}
+		<!-- BLOG MEMBERS -->
+		<div id="members">
+			{block:IfGroupBlogMembersTitle}<h3>{text:Group blog members title}</h3>{/block:IfGroupBlogMembersTitle}
+			{block:GroupMember}<a href="{GroupMemberURL}" title="{GroupMemberTitle}">{GroupMemberName}</a>{/block:GroupMember}
+		</div>
+		{/block:GroupMembers}{/block:IfShowGroupBlogMembers}
+
+
+		{block:IfFeaturedTags}
+		<!-- FEATURED TAGS -->
+		<div id="ft-tags">
+			{block:IfFeaturedTagsTitle}<h3>{text:Featured tags title}</h3>{/block:IfFeaturedTagsTitle}
+		</div>
+		<script>
+		let tags = "{text:Featured tags}".split(",");
+		tags.forEach((e) => {
+			let tag = e.trim();
+			$("#ft-tags").append("<a href=\"/tagged/"+tag+"\" data-tag=\""+tag+"\">"+tag+"</a>");
+			
+			$.getJSON("https://{Name}.tumblr.com/api/read/json?tagged="+tag+"&num=1&callback=?").done(function (a) {
+				$("[data-tag="+tag+"]").append(" ("+cleanNotes(a["posts-total"])+")");
+			});
+		});
+		</script>
+		{/block:IfFeaturedTags}
+
+
+		{block:IfRecentPosts}
+		<!-- RECENT POSTS -->
+		<div id="recents">
+			{block:IfRecentPostsTitle}<h3>{text:Recent posts title}</h3>{/block:IfRecentPostsTitle}
+		</div>
+		<script>
+		$.getJSON("https://{Name}.tumblr.com/api/read/json?{block:IfRecentPostsTag}tagged={text:Recent posts tag}&{/block:IfRecentPostsTag}num=5&callback=?").done(function (a) {
+			let recent, inner;
+			a['posts'].forEach((e) => {
+				inner = e['regular-title'] || e['regular-body'] || e['question'] || e['conversation-title'] || e['conversation-text'] || e['quote-text'] || e['link-text'] || "Media post";
+				inner = inner.replace(/(\w)<\/a>:/g, '$1:').replace(/(<\/\w+>)/g, ' $1');
+				inner = $("<div>").html(inner).text();
+				if (inner.length > 40) { inner = inner.substring(0, 40) + "…" }
+				recent = "<a href=\""+e['url']+"\">"+inner+" ("+cleanNotes(e['note-count'])+")</a>";
+				$("#recents").append(recent);
+			});
+		});
+		</script>
+		{/block:IfRecentPosts}
+
+
+		{block:IfHighlightedLinks}
+		<div id="hl-links">
+			{block:IfHighlightedLinksTitle}<h3>{text:Highlighted links title}</h3>{/block:IfHighlightedLinksTitle}
+			<div>{text:Highlighted links}</div>
+		</div>
+		<script>
+		let hl = $("#hl-links div"),
+			links = hl.text().split("[link]").filter(e => e);
+		hl.html("");
+		links.forEach((e) => {
+			var parts = e.split("[label]");
+			parts.forEach((e, i, a) => {a[i] = e.trim()});
+			var newlink = "<a href=\"" + parts[0] + "\">" + parts[1] + "</a>";
+			hl.append(newlink);
+		});
+		</script>
+		{/block:IfHighlightedLinks}
 	</aside>
 
 </section>
