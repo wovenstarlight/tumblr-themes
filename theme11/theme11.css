@@ -330,6 +330,7 @@ span.curr { margin: 0 0.75em }
 		margin: 0 !important;
 		border: none !important;
 		padding: 0 !important;
+		z-index: 5;
 	}
 }
 /* #endregion */
