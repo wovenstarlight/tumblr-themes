@@ -207,11 +207,11 @@ span.curr {
 	border-top: thin solid rgba(var(--bg--rgb), 0.65);
 	margin-top: var(--spacing);
 }
-#rules h2 {
+.dropper h2 {
 	font-size: 1.125em;
 	margin: 0 0 0.5em;
 }
-#rules ul, ul#rules {
+.dropper ul, ul.dropper {
 	list-style: none;
 	margin: 0;
 	padding: 0 0 0 1.5em;
@@ -219,18 +219,18 @@ span.curr {
 	flex-direction: column;
 	gap: 0.5em;
 }
-#rules .rule {
+.dropper .label {
 	position: relative;
 	display: flex;
 	align-items: center;
 }
-#rules li.hasmore .rule {
+.dropper li.hasmore .label {
 	cursor: pointer;
 	text-decoration: 1px dotted underline;
 	text-underline-offset: 0.35em;
 }
-#rules li.hasmore .rule:hover { opacity: .5 }
-#rules .rule::before {
+.dropper li.hasmore .label:hover { opacity: .5 }
+.dropper .label::before {
 	content: "";
 	display: block;
 	position: absolute;
@@ -238,18 +238,18 @@ span.curr {
 	border-left-color: var(--text);
 	left: -1em;
 }
-#rules li.show .rule::before {
+.dropper li.show .label::before {
 	border-left-color: transparent;
 	border-top-color: var(--text);
 	left: -1.25em;
 	top: 0.4em;
 }
-#rules .rulemore {
+.dropper .more {
 	display: block;
 	padding: 0.25em 0;
 	font-size: 0.9em;
 }
-#rules li:not(.show) .rulemore { display: none }
+.dropper li:not(.show) .more { display: none }
 /* #endregion */
 
 
