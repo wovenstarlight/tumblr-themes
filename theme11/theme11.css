@@ -10,7 +10,7 @@ a {
 	text-decoration: none;
 	border-bottom: 1px solid;
 }
-#main a[href]:hover, #desc a[href]:hover { color: rgba(var(--text--rgb), 0.65) }
+#main a[href]:hover, #right a[href]:hover { color: rgba(var(--text--rgb), 0.65) }
 .button {
 	cursor: pointer;
 	display: inline-block;
@@ -206,7 +206,7 @@ span.curr { margin: 0 0.75em }
 	--spacing: 1.5em;
 	margin-top: var(--spacing);
 }
-.dropper h3 { margin: 0 0 0.5em }
+#right h3 { margin: 0 }
 .dropper ul, ul.dropper {
 	list-style: none;
 	margin: 0;
@@ -218,6 +218,10 @@ span.curr { margin: 0 0.75em }
 .dropper li {
 	border-top: thin solid rgba(var(--bg--rgb), 0.65);
 	padding: 0.4em 0 0 1.25em;
+}
+.dropper li:last-child, #updates li:last-child {
+	padding-bottom: 0.4em;
+	border-bottom: thin solid rgba(var(--bg--rgb), 0.65);
 }
 .dropper .label { position: relative; display: block }
 .dropper li.hasmore .label {
@@ -247,6 +251,20 @@ span.curr { margin: 0 0.75em }
 	font-size: 0.9em;
 }
 .dropper li:not(.show) .more { display: none }
+#updates ul, ul#updates {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#updates li {
+	border-top: thin solid rgba(var(--bg--rgb), 0.65);
+	padding: 0.4em 0;
+}
+#updates li .date {
+	font: .9em 'Monaco', 'Consolas', Courier, monospace;
+	display: block;
+	margin-top: 0.25em;
+}
 /* #endregion */
 /* #region Sidebar: LEFT */
 #left a {
@@ -373,6 +391,7 @@ span.curr { margin: 0 0.75em }
 		position: relative;
 		right: var(--right-width);
 	}
+	/* Right */
 	#right {
 		position: absolute;
 		top: 0;
@@ -394,7 +413,7 @@ span.curr { margin: 0 0.75em }
 		padding: 0 !important;
 		z-index: 5;
 	}
-	/* Right */
+	/* Left */
 	#left {
 		grid-row: 1; grid-column: 1;
 		border-top: 0.7em solid var(--accent);
