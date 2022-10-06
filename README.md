@@ -1,10 +1,10 @@
 # Tumblr themes by wovenstarlight
 
-This repository contains the codes for all my Tumblr themes.
+This repository contains the codes for all my Tumblr themes and pages.
 
 My theme blog is [starlightthemes](https://starlightthemes.tumblr.com). For questions, concerns, or requests, send me an [ask](https://starlightthemes.tumblr.com/ask). If asking for help with a bug, make sure you include a link to a page where I can see the bug. You can also add images, if you'd like, by [submitting](https://starlightthemes.tumblr.com/submit) your request instead.
 
-Blog previews can be seen at [starlightpreviews](https://starlightpreviews.tumblr.com). The main blog uses my most recent theme, and static previews are available for all themes (see below for links).
+Blog previews can be seen at [starlightpreviews](https://starlightpreviews.tumblr.com). The main blog uses my most recent theme, and static previews are available for all themes and pages (see below for links).
 
 My main blog is [wovenstarlight](https://wovenstarlight.tumblr.com).
 
@@ -21,6 +21,13 @@ No. | Name | Status | Last Updated | Previews | Install | On Tumblr
 8 | [Washi (1)](https://wovenstarlight.github.io/tumblr-themes/theme8) | Complete | 17 Sep 2022 | [Index](https://starlightpreviews.tumblr.com/theme8), [permalink](https://starlightpreviews.tumblr.com/theme8/permalink) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme8/theme8.html) | [Reblog](https://starlightthemes.tumblr.com/post/692418465823408128)
 9 | [Washi (2)](https://wovenstarlight.github.io/tumblr-themes/theme9) | Complete | 4 Oct 2022 | [Index](https://starlightpreviews.tumblr.com/theme9), [permalink](https://starlightpreviews.tumblr.com/theme9/permalink) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme9/theme9.html) | [Reblog](https://starlightthemes.tumblr.com/post/695972945136386048)
 10 | [Washi (3)](https://wovenstarlight.github.io/tumblr-themes/theme10) | Complete | 4 Oct 2022 | [Index](https://starlightpreviews.tumblr.com/theme10), [permalink](https://starlightpreviews.tumblr.com/theme10/permalink) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme10/theme10.html) | [Reblog](https://starlightthemes.tumblr.com/post/696856533337767936)
+11 | *Untitled* | Work in progress | 6 Oct 2022 | N/A | N/A | N/A
+
+## List of pages
+No. | Name | Status | Last Updated | Associated Theme | Preview | Install | On Tumblr
+--- | ---- | ------ | ------------ | ---------------- | ------- | ------- | ---------
+1 | [Europa](https://wovenstarlight.github.io/tumblr-themes/pages/page1) | Complete | 28 Sep 2022 | [T5: Jupiter](https://wovenstarlight.github.io/tumblr-themes/theme5) | [Preview](https://starlightpreviews.tumblr.com/pg1) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/pages/page1/page1.html) | [Reblog](https://starlightthemes.tumblr.com/post/696695625503375360)
+2 | [Callisto](https://wovenstarlight.github.io/tumblr-themes/pages/page2) | Complete | 28 Sep 2022 | [T5: Jupiter](https://wovenstarlight.github.io/tumblr-themes/theme5) | [Preview](https://starlightpreviews.tumblr.com/pg2) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/pages/page2/page2.html) | [Reblog](https://starlightthemes.tumblr.com/post/696695625503375360)
 
 ## Collapsible sections
 I've made a guide to adding collapsible sections to your blogs if they're using my themes. As a tie-in to my themes, they have associated styling to make them look good based on whatever colors you've chosen for your blog.
