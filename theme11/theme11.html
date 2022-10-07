@@ -94,6 +94,16 @@
 	<meta name="text:Updates title" content="Updates">
 	<meta name="text:Updates" content="&lt;li&gt; 06 Aug 2022&NewLine;[label] Update text">
 	<meta name="text:Ask guidelines" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
+	<meta name="text:Email address" content="">
+	<meta name="text:Personal site URL" content="">
+	<meta name="text:Personal site name" content="">
+	<meta name="text:AO3 username" content="">
+	<meta name="text:FFNet user ID" content="">
+	<meta name="text:Twitter username" content="">
+	<meta name="text:Facebook username" content="">
+	<meta name="text:Instagram username" content="">
+	<meta name="text:YouTube channel ID" content="">
+	<meta name="if:RSS" content="1">
 	{/block:Hidden}
 
 	<!-- Standardization of theme styles -->
@@ -476,11 +486,40 @@
 
 
 <footer id="footer">
-	<!-- TODO: "Contact". ask/submit again; optional email? -->
+	<div id="contact" class="{block:AskEnabled}a{/block:AskEnabled} {block:SubmissionsEnabled}s{/block:SubmissionsEnabled} {block:IfEmailAddress}e{/block:IfEmailAddress}">
+		<h3>Contact</h3>
+		<div>
+			{block:AskEnabled}<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}">{AskLabel}</a>{/block:AskEnabled}
+			{block:SubmissionsEnabled}<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+			{block:IfEmailAddress}<a href="mailto:{text:Email address}">{lang:Send me an email}</a>{/block:IfEmailAddress}
+		</div>
+	</div>
 
-	<!-- TODO: Find me on/other such title. Social links/custom website/RSS? -->
+	<div id="social" class="{block:IfPersonalSiteURL}p{/block:IfPersonalSiteURL} {block:IfAO3Username}a{/block:IfAO3Username} {block:IfFFNetUserID}f{/block:IfFFNetUserID} {block:IfTwitterUsername}t{/block:IfTwitterUsername} {block:IfNotTwitterUsername}{block:Twitter}t{/block:Twitter}{/block:IfNotTwitterUsername} {block:IfFacebookUsername}fb{/block:IfFacebookUsername} {block:IfInstagramUsername}i{/block:IfInstagramUsername} {block:IfYouTubeChannelID}y{/block:IfYouTubeChannelID} {block:IfRSS}r{/block:IfRSS}">
+		<h3>{lang:Follow}</h3>
+		<div>
+			{block:IfPersonalSiteURL}<a href="{text:Personal site URL}">{block:IfPersonalSiteName}{text:Personal site name}{/block:IfPersonalSiteName}{block:IfNotPersonalSiteName}Personal website{/block:IfNotPersonalSiteName}</a>{/block:IfPersonalSiteURL}
+			{block:IfAO3Username}<a href="https://archiveofourown.org/users/{text:AO3 username}">Archive Of Our Own</a>{/block:IfAO3Username}
+			{block:IfFFNetUserID}<a href="https://www.fanfiction.net/u/{text:FFNet user ID}">Fanfiction.net</a>{/block:IfFFNetUserID}
+			{block:IfTwitterUsername}<a href="https://twitter.com/{text:Twitter username}">Twitter</a>{/block:IfTwitterUsername}
+			{block:IfNotTwitterUsername}{block:Twitter}<a href="https://twitter.com/{TwitterUsername}">Twitter</a>{/block:Twitter}{/block:IfNotTwitterUsername}
+			{block:IfFacebookUsername}<a href="https://www.facebook.com/{text:Facebook username}">{lang:Facebook}</a>{/block:IfFacebookUsername}
+			{block:IfInstagramUsername}<a href="https://instagram.com/{text:Instagram username}">Instagram</a>{/block:IfInstagramUsername}
+			{block:IfYouTubeChannelID}<a href="https://www.youtube.com/channel/{text:YouTube channel ID}">YouTube</a>{/block:IfYouTubeChannelID}
+			{block:IfRSS}<a href="{RSS}">{lang:Subscribe via RSS}</a>{/block:IfRSS}
+		</div>
+	</div>
 
-	<!-- TODO: "Development". blog and theme credit -->
+	<div id="development">
+		<h3>Development</h3>
+		<div>
+			<span>{Name} &copy; {CopyrightYears}</span>
+			<span>{lang:Powered by Tumblr 2}</span>
+			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+			<a id="credit" href="https://starlightthemes.tumblr.com/theme11">{lang:Install this theme}</a>
+			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+		</div>
+	</div>
 </footer>
 </div>
 

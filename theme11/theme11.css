@@ -287,6 +287,55 @@ span.curr { margin: 0 0.75em }
 
 
 
+/* #region FOOTER */
+html, body { height: 100vh }
+#body {
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
+#footer {
+	background-color: var(--accent);
+	color: var(--bg);
+	padding: 2em 6%;
+	font-size: 0.875em;
+	display: flex;
+	flex-flow: row wrap;
+	gap: 4%;
+}
+#footer > div { flex-grow: 1 }
+#footer div div {
+	max-height: 10em;
+	writing-mode: vertical-lr;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: start;
+	align-items: start;
+	width: fit-content;
+	row-gap: 7.5vw;
+}
+#footer h3 {
+	margin: 0 0 0.5em;
+	font-weight: normal;
+}
+#footer a, #footer span {
+	border: none;
+	padding: 0.5em 0;
+	writing-mode: horizontal-tb;
+}
+#footer span { color: rgba(var(--bg--rgb), 0.9) }
+#footer a {
+	color: var(--bg);
+	text-decoration: underline;
+	text-underline-offset: 0.3em;
+}
+#footer a:hover { text-decoration-style: dotted }
+#contact:not(.a, .s, .e),
+#social:not(.p, .a, .f, .t, .fb, .i, .y, .r) { display: none }
+/* #endregion */
+
+
+
 /* #region POSTS */
 /* #endregion */
 
