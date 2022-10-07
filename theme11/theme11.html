@@ -227,7 +227,7 @@
 	<script>
 	$(document).ready(function(){
 		$(".showtags").on("click keypress", function(){
-			$(this).parent().toggle(); // edit to select .tags
+			$(this).next().toggle(); // edit to select .tags
 			$(this).toggleClass('active');
 		});
 	});
@@ -337,15 +337,38 @@
 	
 	{block:DayPage}{block:DayPagination}<nav class="top pagination">
 		<a {block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage} id="prev" class="button">← {lang:Previous}</a>
-		<span class="curr">{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst}, {Year}</span>
+		<span class="curr">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonthWithZero}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonthWithZero} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}</span>
 		<a {block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage} id="next" class="button">{lang:Next} →</a>
 	</nav>{/block:DayPagination}{/block:DayPage}
 
 
 	<main id="main">
 		{block:Posts}
-		<article id="post" {block:NotReblog}class="original"{/block:NotReblog}>
-			<!-- TODO: Header (icons, title, fandom?, date, tags) -->
+		<article class="post{block:NotReblog} original{/block:NotReblog}">
+			{block:Date}<header>
+				<div class="icons">
+					<!-- TODO: what to put in icons? -->
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+
+				<div class="text">
+					<span class="title">{block:RebloggedFrom}{lang:PostTypeNoun reblogged from ReblogParentName 2}{/block:RebloggedFrom}{block:NotReblog}<a href="{Permalink}">{PostTypeNoun}</a> <span>{lang:By PostAuthorName 2}{/block:NotReblog}</span></span>
+					{block:RebloggedFrom}<span class="subtitle">{lang:Originally from ReblogRootName 2}</span>{/block:RebloggedFrom}
+				</div>
+				
+				{block:IfPostDates}<span class="date" title="{lang:Posted TimeAgo}">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonthWithZero}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonthWithZero} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfPostTimes}, {block:If24HourTimes}{24HourWithZero}{/block:If24HourTimes}{block:IfNot24HourTimes}{12HourWithZero}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes}{CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</span>{/block:IfPostDates}
+
+				{block:IfPostTags}{block:HasTags}<div class="tags-container">
+					<span class="label">{lang:Tags}: </span>
+					{block:IfShowTagsOnClick}<span class="showtags" tabindex="0">(<span class="show">Show</span><span class="hide">Hide</span>)</span>{/block:IfShowTagsOnClick}
+					<span class="tags" {block:IfShowTagsOnClick}style="display: none"{/block:IfShowTagsOnClick}>
+						{block:Tags}<a href="{TagURL}">{Tag}</a>{/block:Tags}
+					</span>
+				</div>{/block:HasTags}{/block:IfPostTags}
+			</header>{/block:Date}
 
 
 			<!-- TODO: Body. Placeholder for now: --> {Body}
@@ -375,7 +398,7 @@
 	
 	{block:DayPage}{block:DayPagination}<nav class="bottom pagination">
 		<a {block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage} id="prev" class="button">← {lang:Previous}</a>
-		<span class="curr">{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst}, {Year}</span>
+		<span class="curr">{block:IfDatesFormattedMonthFirst}{DayOfMonthWithZero} {DayOfMonthWithZero}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonthWithZero} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}</span>
 		<a {block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage} id="next" class="button">{lang:Next} →</a>
 	</nav>{/block:DayPagination}{/block:DayPage}
 
