@@ -343,7 +343,17 @@
 
 
 	<main id="main">
-		<!-- TODO: posts as "works" -->
+		{block:Posts}
+		<article id="post" {block:NotReblog}class="original"{/block:NotReblog}>
+			<!-- TODO: Header (icons, title, fandom?, date, tags) -->
+
+
+			<!-- TODO: Body. Placeholder for now: --> {Body}
+
+
+			<!-- TODO: Footer (pinned post, source, submitted by, note count, like, reblog) -->
+		</article>
+		{/block:Posts}
 	</main>
 
 
