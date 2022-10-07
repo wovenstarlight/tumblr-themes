@@ -134,7 +134,6 @@ body {
 	text-overflow: ellipsis;
 	font-weight: 700;
 }
-.viasource .BLOGNAME::before { content: var(--name) }
 .post header .date {
 	justify-self: end;
 	text-align: right;
