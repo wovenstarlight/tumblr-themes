@@ -46,6 +46,7 @@ pre {
 * {
 	scrollbar-width: thin;
 	scrollbar-color: var(--accent) rgba(var(--accent--rgb), 0.2);
+	overflow-wrap: break-word; /* Wrap text by default */
 }
 ::-webkit-scrollbar {
     width: 0.5em;
