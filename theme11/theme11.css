@@ -435,15 +435,14 @@ html, body { height: 100vh }
 .likereblog a[href]:hover { color: var(--text) }
 .likereblog .button { margin: 0 0.25em }
 .likereblog .customlike { position: relative }
-.customlike .like_button {
+.customlike .like_button, .customlike iframe {
 	position: absolute;
-	background: red;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	width: 100%;
-	height: 100%;
+	width: 100% !important;
+	height: 100% !important;
 	overflow: hidden;
 	opacity: 0;
 }
