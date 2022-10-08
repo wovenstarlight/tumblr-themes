@@ -12,7 +12,7 @@
 		Palette toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 7 Oct 2022.
+	Last updated 8 Oct 2022.
 -->
 
 <!DOCTYPE html>
@@ -94,6 +94,8 @@
 	<meta name="text:FAQ" content="&lt;li&gt; Question 1&NewLine;[more] Answer 1">
 	<meta name="text:Updates title" content="Updates">
 	<meta name="text:Updates" content="&lt;li&gt; 06 Aug 2022&NewLine;[label] Update text">
+	<meta name="text:Toggles title" content="">
+	<meta name="text:Toggles" content="&lt;li&gt; Working on themes [on]&NewLine;&NewLine;&lt;li&gt; Getting enough sleep [off]">
 	<meta name="text:Ask guidelines" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
 	<meta name="text:Email address" content="">
 	<meta name="text:Personal site URL" content="">
@@ -729,7 +731,7 @@
 		{block:IfUpdatesTitle}
 		<div id="updates">
 		<h3>{text:Updates title}</h3>{/block:IfUpdatesTitle}
-		<ul {block:IfNotUpdatesTitle}id="updates" class="dropper"{/block:IfNotUpdatesTitle}>
+		<ul {block:IfNotUpdatesTitle}id="updates"{/block:IfNotUpdatesTitle}>
 			{text:Updates}
 		</ul>
 		{block:IfUpdatesTitle}</div>{/block:IfUpdatesTitle}
@@ -742,6 +744,27 @@
 		});
 		</script>
 		{/block:IfUpdates}
+		
+		
+		{block:IfToggles}
+		{block:IfTogglesTitle}
+		<div id="toggles">
+		<h3>{text:Toggles title}</h3>{/block:IfTogglesTitle}
+		<ul {block:IfNotTogglesTitle}id="toggles"{/block:IfNotTogglesTitle}>
+			{text:Toggles}
+		</ul>
+		{block:IfTogglesTitle}</div>{/block:IfTogglesTitle}
+		<script>
+		$("#toggles li").each(function() {
+		    let i = $(this).html().search(/\[\w+\]/),
+		        text = $(this).html().slice(0, i),
+		        status = $(this).html().slice(i);
+		    status = status.trim();
+		    $(this).addClass( (status == "[on]") ? "on" : "off" );
+		    $(this).html(text.trim());
+		});
+		</script>
+		{/block:IfToggles}
 
 		<div id="back"><!-- Back to main --></div>
 	</aside>

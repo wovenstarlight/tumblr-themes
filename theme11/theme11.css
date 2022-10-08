@@ -280,6 +280,40 @@ span.curr { margin: 0 0.75em }
 	display: block;
 	margin-top: 0.25em;
 }
+#toggles ul, ul#toggles {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.6em;
+}
+#toggles h3 {
+	border-bottom: thin solid rgba(var(--bg--rgb), 0.65);
+	margin-bottom: 0.3em;
+}
+#toggles li::before {
+	content: var(--content);
+	display: inline-flex;
+	--size: 1.4em;
+	width: var(--size);
+	height: var(--size);
+	align-items: center;
+	justify-content: center;
+	background: var(--bg) linear-gradient(var(--bg), rgba(var(--color), 0.125));
+	border: thin solid rgba(var(--text--rgb), 0.7);
+	border-radius: 0.25em;
+	color: rgba(var(--color));
+	margin-right: 0.4em;
+}
+#toggles li.on {
+	--content: "\2713";
+	--color: 0, 128, 0;
+}
+#toggles li.off {
+	--content: "\2715";
+	--color: 255, 0, 0;
+}
 /* #endregion */
 /* #region Sidebar: LEFT */
 #left a {
