@@ -39,10 +39,14 @@ h1, h2, h3 { font-family: var(--tfont) }
 	top: -100rem;
 }
 /* #region Casing */
-body.upper .TODO {
+body.upper h1, body.upper h2, body.upper h3,
+body.upper .button, body.upper #links-search, body.upper footer,
+body.upper .date, body.upper .post .text a, body.upper .post .tags-container .label {
 	text-transform: uppercase;
 }
-body.lower .TODO {
+body.lower h1, body.lower h2, body.lower h3,
+body.lower .button, body.lower #links-search, body.lower footer,
+body.lower .date, body.lower .post .text a, body.lower .post .tags-container .label {
 	text-transform: lowercase;
 }
 /* #endregion */
