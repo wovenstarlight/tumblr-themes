@@ -213,6 +213,8 @@
 		--ShrinkPost-Transition-Speed: 699ms; /* can be in ms or s */
 	}
 
+	/* Give filtered original posts shaded background */
+	.post.original { --Spoiler-Overlay-Color: var(--bg) linear-gradient(rgba(var(--bg2--rgb), 0.5), rgba(var(--bg2--rgb), 0.5)) }
 	/* Match button styling */
 	.view-button { transition: unset }
 	.view-button:hover { box-shadow: inset .25em .25em .25em var(--bg2) }
