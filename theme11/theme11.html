@@ -302,7 +302,7 @@
 <section id="page" class="{block:ShowDescription}{block:Description}desc{/block:Description}{/block:ShowDescription}">
 
 	<h2 id="secondary">
-    	{block:HomePage}{block:IfSecondaryTitle}{text:Secondary title}{/block:IfSecondaryTitle}{block:IfNotSecondaryTitle} Works in <a href="/">{Name}</a>
+		{block:HomePage}{block:IfSecondaryTitle}{text:Secondary title}{/block:IfSecondaryTitle}{block:IfNotSecondaryTitle} Works in <a href="/">{Name}</a>
 		<script>
 			$.getJSON("https://{Name}.tumblr.com/api/read/json?num=1&callback=?").done(function (a) {
 			$("#secondary").prepend(a["posts-total"]);
