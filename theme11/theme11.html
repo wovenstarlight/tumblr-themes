@@ -3,6 +3,7 @@
 
 	Credits:
 		Layout and design by Archive Of Our Own: https://archiveofourown.org
+		Expanded Tumblr localization by boscoxvi: https://github.com/boscoxvi/expandedtumblrlocalization
 		NPF photosets plugin by codematurgy: https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin
 		Custom audio posts by annasthms: https://annasthms.tumblr.com/more/js/customaudio/new
 		Tag filtering by glenthemes: https://glenthemes.tumblr.com/spoilertags
@@ -108,6 +109,8 @@
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
 
 	<!-- Resource imports -->
+	<!-- Phosphor Icons -->
+	<script src="https://unpkg.com/phosphor-icons"></script>
 	<!-- Google fonts import -->
 	{block:IfGoogleFontForBody}<link href="https://fonts.googleapis.com/css2?family={text:Google font for body}" rel="stylesheet">{/block:IfGoogleFontForBody}
 	{block:IfGoogleFontForTitle}<link href="https://fonts.googleapis.com/css2?family={text:Google font for title}" rel="stylesheet">{/block:IfGoogleFontForTitle}
@@ -347,11 +350,10 @@
 		<article class="post{block:NotReblog} original{/block:NotReblog}">
 			{block:Date}<header>
 				<div class="icons">
-					<!-- TODO: what to put in icons? -->
-					<span></span>
-					<span></span>
-					<span></span>
-					<span></span>
+					<a href="{Permalink}" title="{lang:Permalink for this post}"><i class="ph-link-bold"></i></a>
+					<a title="{block:NotReblog}Original post{/block:NotReblog}{block:RebloggedFrom}{lang:Reblogged}{/block:RebloggedFrom}"><i class="ph-user{block:RebloggedFrom}-switch{/block:RebloggedFrom}-bold"></i></a>
+					<a title="{block:Text}{lang:Text post}{/block:Text}{block:Photo}{lang:Photo post}{/block:Photo}{block:Panorama}{lang:Photo post}{/block:Panorama}{block:Photoset}{lang:Photoset post}{/block:Photoset}{block:Quote}{lang:Quote post}{/block:Quote}{block:Link}{lang:Link post}{/block:Link}{block:Chat}{lang:Chat post}{/block:Chat}{block:Audio}{lang:Audio post}{/block:Audio}{block:Video}{lang:Video post}{/block:Video}{block:Answer}{lang:Answer}{/block:Answer}"><i class="ph-{block:Text}text-aa{/block:Text}{block:Photo}camera{/block:Photo}{block:Panorama}camera{/block:Panorama}{block:Photoset}camera{/block:Photoset}{block:Quote}quote{/block:Quote}{block:Link}link-simple{/block:Link}{block:Chat}chat-centered-dots{/block:Chat}{block:Audio}headphones{/block:Audio}{block:Video}video-camera{/block:Video}{block:Answer}envelope{/block:Answer}-bold"></i></a>
+					<a title="{lang:Show all posts made on this day}" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/"><i class="ph-clock-bold"></i></a>
 				</div>
 
 				<div class="text">

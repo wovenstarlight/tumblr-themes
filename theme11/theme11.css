@@ -11,7 +11,7 @@ a {
 	text-decoration: none;
 	border-bottom: 1px solid;
 }
-#main a[href]:hover, #right a[href]:hover { color: rgba(var(--text--rgb), 0.65); }
+main a[href]:hover, #right a[href]:hover { color: rgba(var(--text--rgb), 0.65) }
 .button {
 	cursor: pointer;
 	display: inline-block;
@@ -354,13 +354,28 @@ html, body { height: 100vh }
 	grid-template-columns: 1fr 1fr;
 	gap: 0.2em;
 }
-.post .icons span {
-	display: block;
-	--size: 1.5625em;
-	border: thin solid var(--bg2);
+/* Icon quartet */
+.post .icons a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.4em;
+	--size: 1.2755em;
+	border: none;
 	width: var(--size);
 	height: var(--size);
+	color: var(--bg);
+	background-color: var(--accent);
+	cursor: help;
 }
+.post .icons a[href] { background-image: linear-gradient(rgba(var(--bg--rgb), 0.3), transparent 60%) }
+.post .icons a[href]:hover {
+	color: var(--bg);
+	cursor: pointer;
+	background-image: linear-gradient(rgba(var(--bg--rgb), 0.5), transparent 60%);
+}
+.post .icons a[href]:active { background-image: linear-gradient(transparent 60%, rgba(var(--bg--rgb), 0.5)) }
+/* Text */
 .post .text { font-family: var(--tfont) }
 .post .title {
 	font-size: 1.1428em;
@@ -380,20 +395,21 @@ html, body { height: 100vh }
 .post .subtitle a { border-bottom: 1px dotted }
 .post .subtitle a:hover {
 	background-color: var(--accent);
-	color: var(--bg) !important;
+	color: var(--bg);
 }
 .post header .date {
 	font: .8125em 'Monaco', 'Consolas', Courier, monospace;
 }
+/* Tags section */
 .post .tags-container { grid-column: 1 / span 3 }
 .tags-container a, .showtags {
 	border-bottom: thin dotted;
 	margin-right: 0.8em;
 	position: relative;
 }
-.showtags:hover, .tags-container a:hover {
+.showtags:hover, .tags-container a[href]:hover {
 	background-color: var(--accent);
-	color: var(--bg) !important;
+	color: var(--bg);
 }
 .tags-container a:not(:last-child)::after {
 	content: ",";
