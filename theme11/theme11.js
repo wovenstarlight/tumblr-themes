@@ -67,6 +67,9 @@ $(document).ready( function() {
 	});
 	// #endregion
 
+	// set up tooltips
+	$("[title]").style_my_tooltips();
+
 	// Remove stray paragraph tags
 	$(".bodyitemcontent p:first-child:empty").remove();
 

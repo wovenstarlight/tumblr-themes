@@ -38,6 +38,14 @@ h1, h2, h3 { font-family: var(--tfont) }
 	font-size: 1px;
 	top: -100rem;
 }
+/* Tooltips */
+#s-m-t-tooltip {
+	margin: 1em;
+	padding: 0.25em 0.5em;
+	background: var(--bg);
+	border: thin solid var(--bg2);
+	box-shadow: 0.1em 0.1em 0.25em -0.1em rgba(var(--text--rgb), 0.75);
+}
 /* #region Casing */
 body.upper h1, body.upper h2, body.upper h3,
 body.upper .button, body.upper #links-search, body.upper footer,
