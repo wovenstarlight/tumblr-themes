@@ -73,4 +73,12 @@ $(document).ready( function() {
 	// Remove stray paragraph tags
 	$(".bodyitemcontent p:first-child:empty").remove();
 
+	// Fix heading levels structure
+	$(".bodyitemcontent h2:not(.ptitle)").each( function() {
+		$(this).replaceWith("<h4>" + $(this).html() + "</h4>");
+	});
+	$(".bodyitemcontent h1").each( function() {
+		$(this).replaceWith("<h3>" + $(this).html() + "</h3>");
+	});
+
 });
