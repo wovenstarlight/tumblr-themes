@@ -99,6 +99,7 @@ body.lower .date, body.lower .post .text a, body.lower .post .tags-container .la
 	padding: 0.5em 0.75em;
 }
 #mobnav { display: inline-block }
+#mobnav:not(.a, .s, .r, .ar) { display: none }
 #mobnav a:hover, #mobnav:hover span, #pages:hover span {
 	color: var(--text);
 	background-color: var(--bg2);
@@ -447,7 +448,8 @@ html, body { height: 100vh }
 	padding: 0;
 }
 .post footer dt { margin-right: 0 }
-.post footer .likereblog { text-align: left }
+.likereblog { text-align: left }
+.post footer dl:empty, .likereblog:empty { display: none }
 .likereblog a[href]:hover { color: var(--text) }
 .likereblog .button { margin: 0.5em 0.25em 0 }
 .likereblog .customlike { position: relative }
