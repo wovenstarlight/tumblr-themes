@@ -440,6 +440,49 @@ html, body { height: 100vh }
 .tags-container .label, .showtags { font-weight: bold }
 .showtags:not(.active) .hide, .showtags.active .show { display: none }
 /* #endregion */
+/* #region Post body */
+.post .body { margin: 1em 0 }
+.user {
+	display: inline-block;
+	padding: 0.25em;
+	margin-bottom: 0.5em;
+	border-bottom: thin dotted;
+}
+.post .user:hover {
+	background-color: var(--accent);
+	color: var(--bg);
+}
+.user::after { content: ":" }
+.deactivated.user::after { content: " (deactivated):" }
+.bodyitem + .bodyitem { margin-top: 1em }
+.bodyitem .bodyitemcontent, blockquote {
+	border-inline-start: 0.14em solid var(--bg2);
+	margin-inline-start: 1.5em;
+	padding: 0.75em;
+}
+.original.post blockquote { border-inline-start-color: rgba(var(--text--rgb), 0.5) }
+.bodyitemcontent > * { margin-block: 1.25rem }
+.bodyitemcontent > *:first-child, blockquote > *:first-child { margin-block-start: 0 }
+.bodyitemcontent > *:last-child, blockquote > *:last-child { margin-block-end: 0 }
+.ptitle { font-size: 1em; font-weight: normal;}
+.ptitle a {
+	font-size: 1.8em;
+	border-bottom: .125rem solid;
+	display: block;
+}
+.body h3 {
+	font-size: 1.5em;
+	font-weight: normal;
+	text-decoration: double underline;
+	text-underline-offset: 0.3em;
+}
+.body h4 { font-size: 1.3em }
+.body ol, .body ul { padding: 0 1.5em }
+.body li {
+	margin-block: .75em;
+	margin-inline-start: 1.75em;
+}
+/* #endregion */
 /* #region Post footer */
 .post footer { text-align: right }
 #pinnedpost { color: var(--accent) }
@@ -475,6 +518,8 @@ html, body { height: 100vh }
 
 
 /* #region POST TYPES */
+p.npf_quote { font: 1.2em var(--tfont) }
+p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 /* #endregion */
 
 
