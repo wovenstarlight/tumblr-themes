@@ -1,7 +1,7 @@
 $(document).ready( function() {
 
 	// adding name to original posts
-	$(".viasource .BLOGNAME").append($("html").css("--name"));
+	$(".viasource .BLOGNAME").append($("html").css("--name").replace(/"/g, ""));
 	
 	// set up tooltips
 	$("[title]").style_my_tooltips();
