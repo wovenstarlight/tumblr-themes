@@ -423,7 +423,8 @@ html, body { height: 100vh }
 .showtags:not(.active) .hide, .showtags.active .show { display: none }
 /* Post footer */
 .post footer { text-align: right }
-#pinnedpost + dl { margin-left: 0.75em; }
+#pinnedpost { color: var(--accent) }
+#pinnedpost + dl { margin-left: 0.75em }
 .post footer dl { display: inline }
 .post footer dd, .post footer dt {
 	display: inline;
