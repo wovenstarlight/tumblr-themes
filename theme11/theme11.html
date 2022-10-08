@@ -391,7 +391,244 @@
 			</header>{/block:Date}
 
 
-			<!-- TODO: Body. Placeholder for now: --> {Body}
+			<section class="body">
+			
+			{block:Title}<h2 class="ptitle"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+			
+
+			{block:Text}
+			
+				{block:NotReblog}
+				<div class="bodyitemcontent">
+					{block:AskPage}<div class="askwrapper">{text:FAQ}</div>{/block:AskPage}
+					{Body}
+				</div>
+				{/block:NotReblog}
+				
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+				
+			{/block:Text}
+
+
+			{block:Photo}
+				
+				<div class="photowrapper">
+					{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+					<a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
+				</div>
+				
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Caption}</div>
+				{/block:NotReblog}
+				
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+				
+			{/block:Photo}
+
+
+			{block:Panorama}
+				
+				<div class="photowrapper">
+					{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+					<a class="highres" href="{PhotoURL-Panorama}">{lang:View high resolution}</a>
+				</div>
+				
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Caption}</div>
+				{/block:NotReblog}
+				
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+				
+			{/block:Panorama}
+
+
+			{block:Photoset}
+
+				<div class="npf_photoset" data-layout="{PhotosetLayout}">
+					{block:Photos}
+						<figure class="tmblr-full"> 
+							<img class="npf_image" alt="{PhotoAlt}" src="{PhotoURL-500}" data-orig-width="{PhotoWidth-HighRes}" data-orig-height="{PhotoHeight-HighRes}" data-highres="{PhotoURL-HighRes}">
+						</figure>
+					{/block:Photos}
+				</div>
+				
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Caption}</div>
+				{/block:NotReblog}
+				
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+			
+			{/block:Photoset}
+
+
+			{block:Quote}
+
+				{block:RebloggedFrom}<div class="bodyitem">{/block:RebloggedFrom}
+				<div class="bodyitemcontent">
+					<p class="npf_quote quote">{Quote}</p>
+					{block:Source}<p class="quotesource">{Source}</p>{/block:Source}
+				</div>
+				{block:RebloggedFrom}</div>{/block:RebloggedFrom}
+
+			{/block:Quote}
+
+
+			{block:Link}
+
+				{block:NotReblog}
+				<div class="bodyitemcontent">
+					<div class="npf-link-block{block:Thumbnail} has-poster{/block:Thumbnail}">
+						<a href="{URL}" {Target}>
+							{block:Thumbnail}<div class="poster" style="background-image: url('{Thumbnail}')">{/block:Thumbnail}
+							<div class="title">{Name}</div>
+							{block:Thumbnail}</div>{/block:Thumbnail}
+							<div class="bottom">
+								{block:Excerpt}<div class="description">{Excerpt}</div>{/block:Excerpt}
+								{block:Host}<div class="site-name">{Host}</div>{/block:Host}
+							</div>
+						</a>
+					</div>
+					{Body}
+				</div>
+				{/block:NotReblog}
+
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
+					<div class="bodyitemcontent">
+						{block:IsOriginalEntry}
+						<div class="npf-link-block{block:Thumbnail} has-poster{/block:Thumbnail}">
+							<a href="{URL}" {Target}>
+								{block:Thumbnail}<div class="poster" style="background-image: url('{Thumbnail}')">{/block:Thumbnail}
+								<div class="title">{Name}</div>
+								{block:Thumbnail}</div>{/block:Thumbnail}
+								<div class="bottom">
+									{block:Excerpt}<div class="description">{Excerpt}</div>{/block:Excerpt}
+									{block:Host}<div class="site-name">{Host}</div>{/block:Host}
+								</div>
+							</a>
+						</div>
+						{/block:IsOriginalEntry}
+						{Body}
+					</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+
+			{/block:Link}
+
+
+			{block:Chat}
+			
+				{block:RebloggedFrom}<div class="bodyitem">{/block:RebloggedFrom}
+				<div class="bodyitemcontent">
+				{block:Lines}
+				<p class="npf_chat">{block:Label}<strong>{Label}</strong> {/block:Label}{Line}</p>
+				{/block:Lines}
+				</div>
+				{block:RebloggedFrom}</div>{/block:RebloggedFrom}
+
+			{/block:Chat}
+
+
+			{block:Audio}
+			
+				{block:AudioPlayer}
+				<div class="audiowrapper {block:AlbumArt}hasart{/block:AlbumArt}">
+					{AudioPlayer}
+					<span class="custom_audio_buttons"></span>
+					<div class="textinfo">
+					{block:TrackName}<span class="trackname">{TrackName}</span>{/block:TrackName}
+					{block:Artist}<span class="artist">{Artist}</span>{/block:Artist}
+					{block:Album}<span class="album">{Album}</span>{/block:Album}
+					</div>
+					{block:AlbumArt}<img class="albumart" src="{AlbumArtURL}">{/block:AlbumArt}
+					<div class="seekbar">
+						<span class="custom_audio_current_time"></span>
+						<div class="custom_audio_seekbar"></div>
+						<span class="custom_audio_time_left"></span>
+					</div>
+				</div>
+				{/block:AudioPlayer}
+				
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Body}</div>
+				{/block:NotReblog}
+				
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+			
+			{/block:Audio}
+
+
+			{block:Video}
+			
+				<div class="videowrapper">
+					{Video-500}
+				</div>
+				
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Caption}</div>
+				{/block:NotReblog}
+				
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+				
+			{/block:Video}
+
+
+			{block:Answer}
+				
+				<div class="ask">
+					<p class="asker">{lang:Asker asked 2}:</p>
+					{Question}
+				</div>
+				
+				{block:RebloggedFrom}<div class="bodyitem">
+					{block:Answerer}
+					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{ReblogRootName}</a>
+					{/block:Answerer}{/block:RebloggedFrom}
+					
+					<div class="bodyitemcontent">{Answer}</div>
+				{block:RebloggedFrom}</div>
+				
+				{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+					
+			{/block:Answer}
+			
+			</section>
 
 
 			{block:Date}<footer>
