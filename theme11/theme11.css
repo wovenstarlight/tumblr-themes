@@ -387,7 +387,9 @@ html, body { height: 100vh }
 	display: inline-block;
 	padding-bottom: 0;
 }
-.post .title a:hover { color: rgba(var(--accent--rgb), 0.75) !important }
+.post .title a:visited { color: var(--text) }
+.post .title a:hover { color: rgba(var(--accent--rgb), 0.75) }
+.post .title a:visited:hover { color: rgba(var(--text--rgb), 0.75) }
 .post .subtitle {
 	display: block;
 	margin-top: .375em;
@@ -427,14 +429,14 @@ html, body { height: 100vh }
 #pinnedpost + dl { margin-left: 0.75em }
 .post footer dl { display: inline }
 .post footer dd, .post footer dt {
-	display: inline;
-	margin: 0 0.5em;
+	display: inline-block;
+	margin: 0.2em 0.5em;
 	padding: 0;
 }
 .post footer dt { margin-right: 0 }
 .post footer .likereblog { text-align: left }
 .likereblog a[href]:hover { color: var(--text) }
-.likereblog .button { margin: 0 0.25em }
+.likereblog .button { margin: 0.5em 0.25em 0 }
 .likereblog .customlike { position: relative }
 .customlike .like_button, .customlike iframe {
 	position: absolute;
