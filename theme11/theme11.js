@@ -35,22 +35,6 @@ $(document).ready( function() {
 		$("#body").toggleClass("showright");
 	});
 
-	// Rules/FAQ dropdown sections
-	$(".dropper li").each(function() {
-		var parts = $(this).html().split("[more]");
-		parts.forEach((e, i, a) => {a[i] = e.trim()});
-		var newrule = "<span class=\"label\">" + parts[0] + "</span>";
-		if (parts[1]) {
-			newrule += "<span class=\"more\">" + parts[1] + "</span>";
-			$(this).addClass("hasmore");
-		}
-		$(this).html(newrule);
-	});
-	$(".dropper li.hasmore .label").on("click keypress", function() {
-		$(this).parent().toggleClass("show");
-	});
-	// #endregion
-
 	// #region Audio post setup
 	customAudio({
 		playButton: "Play",

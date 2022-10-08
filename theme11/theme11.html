@@ -235,7 +235,7 @@
 	<script>
 	$(document).ready(function(){
 		$(".showtags").on("click keypress", function(){
-			$(this).next().toggle(); // edit to select .tags
+			$(this).next().toggle();
 			$(this).toggleClass('active');
 		});
 	});
@@ -712,6 +712,21 @@
 			{text:Rules}
 		</ul>
 		{block:IfRulesTitle}</div>{/block:IfRulesTitle}
+		<script>
+		$("#rules li").each(function() {
+			var parts = $(this).html().split("[more]");
+			parts.forEach((e, i, a) => {a[i] = e.trim()});
+			var newrule = "<span class=\"label\">" + parts[0] + "</span>";
+			if (parts[1]) {
+				newrule += "<span class=\"more\">" + parts[1] + "</span>";
+				$(this).addClass("hasmore");
+			}
+			$(this).html(newrule);
+		});
+		$("#rules li.hasmore .label").on("click keypress", function() {
+			$(this).parent().toggleClass("show");
+		});
+		</script>
 		{/block:IfRules}
 
 
@@ -723,6 +738,21 @@
 			{text:FAQ}
 		</ul>
 		{block:IfFAQTitle}</div>{/block:IfFAQTitle}
+		<script>
+		$("#faq li").each(function() {
+			var parts = $(this).html().split("[more]");
+			parts.forEach((e, i, a) => {a[i] = e.trim()});
+			var newrule = "<span class=\"label\">" + parts[0] + "</span>";
+			if (parts[1]) {
+				newrule += "<span class=\"more\">" + parts[1] + "</span>";
+				$(this).addClass("hasmore");
+			}
+			$(this).html(newrule);
+		});
+		$("#faq li.hasmore .label").on("click keypress", function() {
+			$(this).parent().toggleClass("show");
+		});
+		</script>
 		{/block:IfFAQ}
 
 
