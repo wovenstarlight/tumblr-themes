@@ -385,8 +385,13 @@
 					{/block:ContentSource}
 
 					{block:Submission}
-					<dt class="sublabel {PostID}">{block:English}Submitter{/block:English}{block:German}Einreichender{/block:German}{block:French}Contributeur{/block:French}{block:Italian}Collaboratore{/block:Italian}{block:Japanese}寄稿者{/block:Japanese}{block:Turkish}Gönderim sahibinin{/block:Turkish}{block:Spanish}Contribuyente{/block:Spanish}{block:Russian}отправителя{/block:Russian}{block:Polish}Autor propozycji{/block:Polish}{block:PortuguesePT}Colaborador{/block:PortuguesePT}{block:PortugueseBR}Colaborador{/block:PortugueseBR}{block:Dutch}Inzender{/block:Dutch}{block:Korean}제출자{/block:Korean}{block:ChineseSimplified}投稿者{/block:ChineseSimplified}{block:ChineseTraditional}投稿者{/block:ChineseTraditional}{block:ChineseHK}投稿者{/block:ChineseHK}{block:Indonesian}Pengirim{/block:Indonesian}{block:Hindi}सबमिट करने वाले{/block:Hindi}:</dt>
-					<dd><a href="{SubmitterURL}">{Submitter}</a></dd>
+					<dt id="p{PostID}">{block:English}Submitter{/block:English}{block:German}Einreichender{/block:German}{block:French}Contributeur{/block:French}{block:Italian}Collaboratore{/block:Italian}{block:Japanese}寄稿者{/block:Japanese}{block:Turkish}Gönderim sahibinin{/block:Turkish}{block:Spanish}Contribuyente{/block:Spanish}{block:Russian}отправителя{/block:Russian}{block:Polish}Autor propozycji{/block:Polish}{block:PortuguesePT}Colaborador{/block:PortuguesePT}{block:PortugueseBR}Colaborador{/block:PortugueseBR}{block:Dutch}Inzender{/block:Dutch}{block:Korean}제출자{/block:Korean}{block:ChineseSimplified}投稿者{/block:ChineseSimplified}{block:ChineseTraditional}投稿者{/block:ChineseTraditional}{block:ChineseHK}投稿者{/block:ChineseHK}{block:Indonesian}Pengirim{/block:Indonesian}{block:Hindi}सबमिट करने वाले{/block:Hindi}:</dt>
+					<dd>{Submitter}</dd>
+					<script>
+						if ("{SubmitterURL}".length) {
+							$("#p{PostID}").next().wrapInner("<a href=\"{SubmitterURL}\"></a>");
+						}
+					</script>
 					{/block:Submission}
 
 					{block:NoteCount}
