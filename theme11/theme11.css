@@ -134,8 +134,9 @@ body.lower .date, body.lower .post .text a, body.lower .post .tags-container .la
 }
 #search #q {
 	height: 1.55em;
+	width: 11.5em;
 	border-radius: 1em;
-	padding: 0.15em 0.25em;
+	padding: 0.15em 0.5em;
 }
 #search input.button { height: 1.75em }
 /* #endregion */
