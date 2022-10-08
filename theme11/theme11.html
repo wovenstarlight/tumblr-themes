@@ -301,12 +301,26 @@
 
 <section id="page" class="{block:ShowDescription}{block:Description}desc{/block:Description}{/block:ShowDescription}">
 
-	<h2 id="secondary">{block:IfSecondaryTitle}{/block:IfSecondaryTitle}{block:IfNotSecondaryTitle} Works in <a href="/">{Name}</a>
+	<h2 id="secondary">
+    	{block:HomePage}{block:IfSecondaryTitle}{text:Secondary title}{/block:IfSecondaryTitle}{block:IfNotSecondaryTitle} Works in <a href="/">{Name}</a>
 		<script>
 			$.getJSON("https://{Name}.tumblr.com/api/read/json?num=1&callback=?").done(function (a) {
 			$("#secondary").prepend(a["posts-total"]);
 		});
-		</script>{/block:IfNotSecondaryTitle}
+		</script>{/block:IfNotSecondaryTitle}{/block:HomePage}
+
+		{block:PermalinkPage}{block:IfSecondaryTitle}{text:Secondary title}{/block:IfSecondaryTitle}{block:IfNotSecondaryTitle} Works in <a href="/">{Name}</a>
+		<script>
+			$.getJSON("https://{Name}.tumblr.com/api/read/json?num=1&callback=?").done(function (a) {
+			$("#secondary").prepend(a["posts-total"]);
+		});
+		</script>{/block:IfNotSecondaryTitle}{/block:PermalinkPage}
+
+		{block:SearchPage}{lang:SearchResultCount results for SearchQuery 2}{block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}{/block:SearchPage}
+		
+		{block:TagPage}{lang:TagResultCount posts tagged Tag 3}{/block:TagPage}
+		
+		{block:DayPage}{lang:Viewing everything posted on Month DayOfMonth Year}{/block:DayPage}
 	</h2>
 
 

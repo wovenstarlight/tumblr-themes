@@ -164,12 +164,12 @@ body.lower .date, body.lower .post .text a, body.lower .post .tags-container .la
 	margin: .25em 0 0;
 	display: inline;
 }
-#secondary a {
+#secondary a, #secondary span {
 	color: inherit;
 	line-height: 1.5;
 	border-bottom: 1px dotted;
 }
-#secondary a:hover {
+#secondary a:hover, #secondary span:hover {
 	background-color: var(--accent);
 	color: var(--bg);
 }
