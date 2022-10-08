@@ -280,7 +280,8 @@ span.curr { margin: 0 0.75em }
 	display: block;
 	margin-top: 0.25em;
 }
-#toggles ul, ul#toggles {
+#toggles ul, ul#toggles,
+#progbars ul, ul#progbars {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -288,7 +289,7 @@ span.curr { margin: 0 0.75em }
 	flex-direction: column;
 	gap: 0.6em;
 }
-#toggles h3 {
+#toggles h3, #progbars h3 {
 	border-bottom: thin solid rgba(var(--bg--rgb), 0.65);
 	margin-bottom: 0.3em;
 }
@@ -313,6 +314,30 @@ span.curr { margin: 0 0.75em }
 #toggles li.off {
 	--content: "\2715";
 	--color: 255, 0, 0;
+}
+#progbars li {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	column-gap: 0.5em;
+	row-gap: 0.1em;
+	align-items: center;
+}
+#progbars .numlabel {
+	font-size: 0.9em;
+	font-family: var(--tfont);
+}
+#progbars .prog {
+	grid-column: 1 / span 2;
+	background-color: var(--bg);
+	border-radius: 0.25em;
+	overflow: hidden;
+}
+#progbars .prog::before {
+	content: "";
+	display: block;
+	height: 0.5em;
+	width: var(--progress);
+	background-color: var(--accent);
 }
 /* #endregion */
 /* #region Sidebar: LEFT */
