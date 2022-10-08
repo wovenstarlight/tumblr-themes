@@ -103,6 +103,7 @@
 	<meta name="text:Personal site name" content="">
 	<meta name="text:AO3 username" content="">
 	<meta name="text:FFNet user ID" content="">
+	<meta name="text:Reddit username" content="">
 	<meta name="text:Twitter username" content="">
 	<meta name="text:Facebook username" content="">
 	<meta name="text:Instagram username" content="">
@@ -866,10 +867,11 @@
 		<h3>{lang:Follow}</h3>
 		<div>
 			{block:IfPersonalSiteURL}<a href="{text:Personal site URL}">{block:IfPersonalSiteName}{text:Personal site name}{/block:IfPersonalSiteName}{block:IfNotPersonalSiteName}Personal website{/block:IfNotPersonalSiteName}</a>{/block:IfPersonalSiteURL}
-			{block:IfAO3Username}<a href="https://archiveofourown.org/users/{text:AO3 username}">Archive Of Our Own</a>{/block:IfAO3Username}
+			{block:IfAO3Username}<a href="https://archiveofourown.org/users/{text:AO3 username}">Archive of Our Own</a>{/block:IfAO3Username}
 			{block:IfFFNetUserID}<a href="https://www.fanfiction.net/u/{text:FFNet user ID}">Fanfiction.net</a>{/block:IfFFNetUserID}
 			{block:IfTwitterUsername}<a href="https://twitter.com/{text:Twitter username}">Twitter</a>{/block:IfTwitterUsername}
 			{block:IfNotTwitterUsername}{block:Twitter}<a href="https://twitter.com/{TwitterUsername}">Twitter</a>{/block:Twitter}{/block:IfNotTwitterUsername}
+			{block:IfRedditUsername}<a href="https://www.reddit.com/user/{text:Reddit username}">{lang:Reddit}</a>{/block:IfRedditUsername}
 			{block:IfFacebookUsername}<a href="https://www.facebook.com/{text:Facebook username}">{lang:Facebook}</a>{/block:IfFacebookUsername}
 			{block:IfInstagramUsername}<a href="https://instagram.com/{text:Instagram username}">Instagram</a>{/block:IfInstagramUsername}
 			{block:IfYouTubeChannelID}<a href="https://www.youtube.com/channel/{text:YouTube channel ID}">YouTube</a>{/block:IfYouTubeChannelID}
