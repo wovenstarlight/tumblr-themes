@@ -779,8 +779,8 @@
 				status = $(this).html().slice(i).trim();
 			status = status.slice(1, status.length - 1).split("/");
 			let item = "<span class=\"textlabel\">" + text + "</span>";
-			item += "<span class=\"prog\" style=\"--progress: " + ((parseFloat(status[0]) / parseFloat(status[1])) * 100) +"%\"></span>";
 			item += "<span class=\"numlabel\">" + status[0] + "/" + status[1] + "</span>";
+			item += "<span class=\"prog\" style=\"--progress: " + ((parseFloat(status[0]) / parseFloat(status[1])) * 100) +"%\"></span>";
 			$(this).html(item);
 		});
 		</script>
