@@ -756,12 +756,11 @@
 		{block:IfTogglesTitle}</div>{/block:IfTogglesTitle}
 		<script>
 		$("#toggles li").each(function() {
-		    let i = $(this).html().search(/\[\w+\]/),
-		        text = $(this).html().slice(0, i),
-		        status = $(this).html().slice(i);
-		    status = status.trim();
-		    $(this).addClass( (status == "[on]") ? "on" : "off" );
-		    $(this).html(text.trim());
+			let i = $(this).html().lastIndexOf("["),
+				text = $(this).html().slice(0, i).trim(),
+				status = $(this).html().slice(i).trim();
+			$(this).addClass( (status == "[on]") ? "on" : "off" )
+				.html(text);
 		});
 		</script>
 		{/block:IfToggles}
