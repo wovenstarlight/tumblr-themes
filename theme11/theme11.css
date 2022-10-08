@@ -320,7 +320,7 @@ span.curr { margin: 0 0.75em }
 	grid-template-columns: 1fr auto;
 	column-gap: 0.5em;
 	row-gap: 0.1em;
-	align-items: center;
+	align-items: last baseline;
 }
 #progbars .numlabel {
 	font-size: 0.9em;
