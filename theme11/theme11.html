@@ -376,7 +376,38 @@
 			<!-- TODO: Body. Placeholder for now: --> {Body}
 
 
-			<!-- TODO: Footer (pinned post, source, submitted by, note count, like, reblog) -->
+			{block:Date}<footer>
+				{block:PinnedPostLabel}<span id="pinnedpost">{PinnedPostLabel}</span>{/block:PinnedPostLabel}
+				<dl>
+					{block:ContentSource}
+					<dt>{lang:Source}:</dt>
+					<dd><a href="{SourceURL}">{SourceTitle}</a></dd>
+					{/block:ContentSource}
+
+					{block:Submission}
+					<dt class="sublabel {PostID}">{block:English}Submitter{/block:English}{block:German}Einreichender{/block:German}{block:French}Contributeur{/block:French}{block:Italian}Collaboratore{/block:Italian}{block:Japanese}寄稿者{/block:Japanese}{block:Turkish}Gönderim sahibinin{/block:Turkish}{block:Spanish}Contribuyente{/block:Spanish}{block:Russian}отправителя{/block:Russian}{block:Polish}Autor propozycji{/block:Polish}{block:PortuguesePT}Colaborador{/block:PortuguesePT}{block:PortugueseBR}Colaborador{/block:PortugueseBR}{block:Dutch}Inzender{/block:Dutch}{block:Korean}제출자{/block:Korean}{block:ChineseSimplified}投稿者{/block:ChineseSimplified}{block:ChineseTraditional}投稿者{/block:ChineseTraditional}{block:ChineseHK}投稿者{/block:ChineseHK}{block:Indonesian}Pengirim{/block:Indonesian}{block:Hindi}सबमिट करने वाले{/block:Hindi}:</dt>
+					<dd><a href="{SubmitterURL}">{Submitter}</a></dd>
+					{/block:Submission}
+
+					{block:NoteCount}
+					<dt>{lang:Notes}:</dt>
+					<dd><a href="{Permalink}#notes">{NoteCount}</a></dd>{/block:NoteCount}
+				</dl>
+
+				<div class="likereblog">
+					{block:IfLikeButtons}
+					<a href="#" class="customlike button">
+					{LikeButton size="30"}
+					<span class="to-like">{block:English}Like{/block:English}{block:German}Liken{/block:German}{block:French}J'aime{/block:French}{block:Italian}Mi piace{/block:Italian}{block:Japanese}スキ{/block:Japanese}{block:Turkish}Beğen{/block:Turkish}{block:Spanish}Me gusta{/block:Spanish}{block:Russian}Нравится{/block:Russian}{block:Polish}Lubię{/block:Polish}{block:PortuguesePT}Gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir{/block:PortugueseBR}{block:Dutch}Vind ik leuk{/block:Dutch}{block:Korean}좋아요{/block:Korean}{block:ChineseSimplified}喜欢{/block:ChineseSimplified}{block:ChineseTraditional}喜歡{/block:ChineseTraditional}{block:ChineseHK}喜歡{/block:ChineseHK}{block:Indonesian}Suka{/block:Indonesian}{block:Hindi}पसंद करें{/block:Hindi}</span>
+					<span class="to-unlike">{block:English}Unlike{/block:English}{block:German}Entliken{/block:German}{block:French}Je n'aime plus{/block:French}{block:Italian}Non mi piace{/block:Italian}{block:Japanese}スキ解除{/block:Japanese}{block:Turkish}Beğenme{/block:Turkish}{block:Spanish}Ya no me gusta{/block:Spanish}{block:Russian}Не нравится{/block:Russian}{block:Polish}Nie lubię{/block:Polish}{block:PortuguesePT}Deixar de gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir (desfazer){/block:PortugueseBR}{block:Dutch}Vind ik niet meer leuk{/block:Dutch}{block:Korean}좋아요 취소{/block:Korean}{block:ChineseSimplified}取消喜欢{/block:ChineseSimplified}{block:ChineseTraditional}收回喜歡{/block:ChineseTraditional}{block:ChineseHK}收回喜歡{/block:ChineseHK}{block:Indonesian}Tidak Suka{/block:Indonesian}{block:Hindi}पसंद हटाएँ{/block:Hindi}</span>
+					</a>
+					{/block:IfLikeButtons}
+					
+					{block:IfReblogButtons}
+					<a href="{ReblogURL}" class="customreblog button">{block:English}Reblog{/block:English}{block:German}Rebloggen{/block:German}{block:French}Rebloguer{/block:French}{block:Italian}Reblogga{/block:Italian}{block:Japanese}リブログ{/block:Japanese}{block:Turkish}Yeniden Blogla{/block:Turkish}{block:Spanish}Rebloguear{/block:Spanish}{block:Russian}Реблог{/block:Russian}{block:Polish}Rebloguj{/block:Polish}{block:PortuguesePT}Reblogar{/block:PortuguesePT}{block:PortugueseBR}Reblogar{/block:PortugueseBR}{block:Dutch}Rebloggen{/block:Dutch}{block:Korean}리블로그{/block:Korean}{block:ChineseSimplified}转发{/block:ChineseSimplified}{block:ChineseTraditional}轉格{/block:ChineseTraditional}{block:ChineseHK}轉載{/block:ChineseHK}{block:Indonesian}Reblog{/block:Indonesian}{block:Hindi}रीब्लॉग करेंे{/block:Hindi}</a>
+					{/block:IfReblogButtons}
+				</div>
+			</footer>{/block:Date}
 		</article>
 		{/block:Posts}
 	</main>

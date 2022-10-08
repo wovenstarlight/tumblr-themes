@@ -421,6 +421,34 @@ html, body { height: 100vh }
 .showtags { cursor: pointer; margin-right: 0.5em }
 .tags-container .label, .showtags { font-weight: bold }
 .showtags:not(.active) .hide, .showtags.active .show { display: none }
+/* Post footer */
+.post footer { text-align: right }
+#pinnedpost + dl { margin-left: 0.75em; }
+.post footer dl { display: inline }
+.post footer dd, .post footer dt {
+	display: inline;
+	margin: 0 0.5em;
+	padding: 0;
+}
+.post footer dt { margin-right: 0 }
+.post footer .likereblog { text-align: left }
+.likereblog a[href]:hover { color: var(--text) }
+.likereblog .button { margin: 0 0.25em }
+.likereblog .customlike { position: relative }
+.customlike .like_button {
+	position: absolute;
+	background: red;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	opacity: 0;
+}
+.customlike .like_button:not(.liked) ~ .to-unlike,
+.customlike .like_button.liked ~ .to-like{ display: none }
 /* #endregion */
 
 
