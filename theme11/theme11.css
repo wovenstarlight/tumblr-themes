@@ -298,7 +298,7 @@ span.curr { margin: 0 0.75em }
 	--size: 1.4em;
 	width: var(--size);
 	height: var(--size);
-	align-items: center;
+	align-items: end;
 	justify-content: center;
 	background: var(--bg) linear-gradient(var(--bg), rgba(var(--color), 0.125));
 	border: thin solid rgba(var(--text--rgb), 0.7);
