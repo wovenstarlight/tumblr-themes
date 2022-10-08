@@ -541,6 +541,10 @@ html, body { height: 100vh }
 	margin-block: .75em;
 	margin-inline-start: 1.75em;
 }
+.body hr {
+	width: 33%;
+	margin: 0.875em auto 1.25em;
+}
 /* #endregion */
 /* #region Post footer */
 .post footer { text-align: right }
