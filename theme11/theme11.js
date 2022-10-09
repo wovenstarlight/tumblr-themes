@@ -4,6 +4,11 @@ function cleanNotes(num) {
 	else { return num }
 }
 
+function tumblrNotesInserted() {
+	// set up tooltips for notes on permalink pages
+	$("[title]").style_my_tooltips();
+}
+
 $(document).ready( function() {
 
 	// #region Color mode on first load
