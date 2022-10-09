@@ -376,8 +376,8 @@
 				</div>
 
 				<div class="text">
-					<span class="title">{block:RebloggedFrom}{lang:PostTypeNoun reblogged from ReblogParentName 2}{/block:RebloggedFrom}{block:NotReblog}<a href="{Permalink}">{PostTypeNoun}</a> <span>{lang:By PostAuthorName 2}{/block:NotReblog}</span></span>
-					{block:RebloggedFrom}<span class="subtitle">{lang:Originally from ReblogRootName 2}</span>{/block:RebloggedFrom}
+					<span class="title"><a href="{Permalink}">{PostTypeNoun}</a> <span>{block:RebloggedFrom}{lang:Originally from ReblogRootName 2}{/block:RebloggedFrom}{block:NotReblog}{lang:By PostAuthorName 2}{/block:NotReblog}</span></span>
+					{block:RebloggedFrom}<span class="subtitle">{lang:Reblogged from ReblogParentName 2}</span>{/block:RebloggedFrom}
 				</div>
 				
 				{block:IfPostDates}<span class="date" title="{lang:Posted TimeAgo}">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonthWithZero}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonthWithZero} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfPostTimes}, {block:If24HourTimes}{24HourWithZero}{/block:If24HourTimes}{block:IfNot24HourTimes}{12HourWithZero}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes}{CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</span>{/block:IfPostDates}
