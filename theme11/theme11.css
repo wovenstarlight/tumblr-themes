@@ -795,7 +795,11 @@ p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 		right: 0;
 		height: 100vh;
 		width: var(--right-width);
+		overflow-y: scroll;
+		-ms-overflow-style: none;  /* IE and Edge */
+		scrollbar-width: none;  /* Firefox */
 	}
+	#right::-webkit-scrollbar { display: none }
 	.tmblr-iframe--unified-controls.iframe-controls--desktop ~ #body #right { padding-top: 50px }
 	#body:not(.showright) #right { display: none }
 	#back {
