@@ -635,7 +635,7 @@ html, body { height: 100vh }
 /* #region POST TYPES */
 /* Photo */
 .photowrapper { position: relative; display: flex; }
-.photowrapper a { border: none }
+.photowrapper a, a:not([href]).post_media_photo_anchor { border: none }
 .photowrapper .highres {
 	position: absolute;
 	bottom: 1em;
