@@ -54,7 +54,7 @@ body.upper .date, body.upper .post .text a, body.upper .post .tags-container .la
 }
 body.lower h1, body.lower h2, body.lower h3, body.upper h4,
 body.lower .button, body.lower .view-button, body.lower #links-search, body.lower footer,
-body.lower .date, body.lower .post .text a, body.lower .post .tags-container .label {
+body.lower .date, body.lower .post .text, body.lower .post .tags-container .label {
 	text-transform: lowercase;
 }
 /* #endregion */
