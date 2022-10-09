@@ -634,7 +634,12 @@ html, body { height: 100vh }
 
 /* #region POST TYPES */
 /* Photo */
-.photowrapper { position: relative; display: flex; }
+.photowrapper {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	width: fit-content;
+}
 .photowrapper a, a:not([href]).post_media_photo_anchor { border: none }
 .photowrapper .highres {
 	position: absolute;
@@ -663,6 +668,16 @@ html, body { height: 100vh }
 	margin-inline-end: 0.5em;
 }
 .photowrapper .highres:not(:hover) span:first-child { opacity: 0.5 }
+.photowrapper, .npf_photoset {
+	max-width: 700px;
+	margin: auto;
+}
+.npf_image {
+	object-fit: cover;
+	object-position: center;
+	margin: 0 !important;
+}
+.photowrapper + .bodyitem, .npf_photoset + .bodyitem { margin-top: .75em }
 /* Quote */
 p.npf_quote { font: 1.2em var(--tfont) }
 /* Chat */
