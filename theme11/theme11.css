@@ -12,7 +12,7 @@ a {
 	border-bottom: 1px solid;
 }
 main a[href]:hover, #right a[href]:hover { color: rgba(var(--text--rgb), 0.65) }
-.button {
+.button, .notes .more_notes_link, .notes .notes_loading {
 	cursor: pointer;
 	display: inline-block;
 	border-radius: 0.3em;
@@ -23,17 +23,18 @@ main a[href]:hover, #right a[href]:hover { color: rgba(var(--text--rgb), 0.65) }
 	background: var(--bg) linear-gradient(var(--bg), var(--bg2));
 }
 .button:hover, .button:focus, .button.active,
-#search input:hover, #search input:focus {
+#search input:hover, #search input:focus,
+.notes .more_notes_link:hover {
 	box-shadow: inset 0.25em 0.25em 0.25em var(--bg2)
 }
-.button:hover { color: var(--accent) }
-.button:active {
+.button:hover, .notes .more_notes_link:hover { color: var(--accent) }
+.button:active, .notes .more_notes_link:active {
 	color: var(--text);
 	background-image: unset;
 }
 h1, h2, h3, h4 { font-family: var(--tfont) }
 /* Accessibility */
-#skip, #hiddentitle, #search label {
+#skip, #hiddentitle, #search label, #postnotes h2 {
 	position: fixed;
 	font-size: 1px;
 	top: -100rem;
@@ -49,12 +50,14 @@ h1, h2, h3, h4 { font-family: var(--tfont) }
 /* #region Casing */
 body.upper h1, body.upper h2, body.upper h3, body.upper h4,
 body.upper .button, body.upper #links-search, body.upper footer,
-body.upper .date, body.upper .post .text a, body.upper .post .tags-container .label {
+body.upper .date, body.upper .post .text a, body.upper .more_notes_link_container,
+body.upper .post .tags-container .label, body.upper #postnotes .action a {
 	text-transform: uppercase;
 }
 body.lower h1, body.lower h2, body.lower h3, body.upper h4,
 body.lower .button, body.lower .view-button, body.lower #links-search, body.lower footer,
-body.lower .date, body.lower .post .text, body.lower .post .tags-container .label {
+body.lower .date, body.lower .post .text, body.lower .more_notes_link_container,
+body.lower .post .tags-container .label {
 	text-transform: lowercase;
 }
 /* #endregion */
@@ -410,7 +413,7 @@ html, body { height: 100vh }
 
 
 /* #region POSTS */
-.post {
+.post, .notes li {
 	margin: 0.5em 0;
 	padding: 0.75em;
 	border: thin solid var(--bg2);
@@ -577,6 +580,51 @@ html, body { height: 100vh }
 .customlike .like_button:not(.liked) ~ .to-unlike,
 .customlike .like_button.liked ~ .to-like{ display: none }
 /* #endregion */
+/* #region Post notes */
+.notes {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.notes .note {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: start;
+}
+.notes .avatar_frame {
+	border: none;
+	margin-right: 0.75em;
+}
+.notes .avatar {
+	--size: 1.9rem;
+	width: var(--size);
+	height: var(--size);
+	border: thin solid var(--bg2);
+}
+.notes .action { font-family: var(--tfont) }
+.notes div.clear { display: none }
+.notes blockquote,
+.notes .reply .answer_content {
+	grid-column: 1 / span 2;
+	margin: 0.5em 0;
+	border: none;
+	padding: 0;
+	font-family: var(--bfont);
+	margin-top: 0.75em;
+}
+.notes blockquote a { border: none }
+.notes .reply { grid-template-columns: auto auto 1fr }
+.notes .reply .action { display: contents }
+.notes .reply .action a:first-child { margin-right: 0.25em }
+.notes .reply .answer_content { grid-column: 1 / span 3 }
+.notes .more_notes_link_container {
+	border: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	justify-content: center;
+}
+/* #endregion */
 /* #endregion */
 
 
@@ -587,9 +635,7 @@ p.npf_quote { font: 1.2em var(--tfont) }
 /* Chat */
 p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 /* Answer */
-.ask .asker {
-	margin: 0 0 0.5em;
-}
+.ask .asker { margin: 0 0 0.5em }
 .original.post .ask + .bodyitemcontent { margin-top: 1em }
 .ask .asker a {
 	margin-right: -0.25em;
