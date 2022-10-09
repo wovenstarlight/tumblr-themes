@@ -53,13 +53,15 @@ h1, h2, h3, h4 { font-family: var(--tfont) }
 body.upper h1, body.upper h2, body.upper h3, body.upper h4, body.upper .pagination,
 body.upper .button, body.upper #links-search, body.upper footer,
 body.upper .date, body.upper .post .text a, body.upper .more_notes_link_container,
-body.upper .post .tags-container .label, body.upper #postnotes .action a {
+body.upper .post .tags-container .label, body.upper #postnotes .action a,
+body.upper .audiowrapper .trackname, body.upper .custom_audio_buttons {
 	text-transform: uppercase;
 }
 body.lower h1, body.lower h2, body.lower h3, body.upper h4, body.lower .pagination,
 body.lower .button, body.lower .view-button, body.lower #links-search, body.lower footer,
 body.lower .date, body.lower .post .text, body.lower .more_notes_link_container,
-body.lower .post .tags-container .label {
+body.lower .post .tags-container .label,
+body.lower .audiowrapper .trackname, body.lower .custom_audio_buttons {
 	text-transform: lowercase;
 }
 /* #endregion */
@@ -420,7 +422,7 @@ html, body { height: 100vh }
 	padding: 0.75em;
 	border: thin solid var(--bg2);
 }
-.post.original { background-color: rgba(var(--bg2--rgb), 0.5) }
+.post.original, .note.original_post { background-color: rgba(var(--bg2--rgb), 0.5) }
 /* #region Post header */
 .post header {
 	display: grid;
@@ -688,7 +690,8 @@ p.npf_quote { font: 1.2em var(--tfont) }
 .npf-link-block > a { border-bottom: none }
 .npf-link-block .title { margin: 0.5em 0.5em 0 }
 .npf-link-block.has-poster .title { margin-bottom: 0.5em }
-.npf-link-block .bottom:empty { display: none }
+.npf-link-block:not(.hasposter) .bottom:empty { padding: 0.5em 0 0;}
+.npf-link-block.hasposter .bottom:empty { display: none }
 /* Chat */
 p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 /* Audio */
@@ -713,10 +716,10 @@ p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 	align-items: center;
 	justify-content: space-between;
 }
-.audiowrapper .trackname { font-family: var(--tfont); font-size: 1.25em }
+.audiowrapper .trackname { font-family: var(--tfont); font-size: 1.25rem }
 .audiowrapper .separator { margin-inline: 0.25em }
 .audiowrapper .separator:first-child, .audiowrapper .separator:last-child { display: none }
-.audiowrapper .artist, .audiowrapper .album { font-size: 0.9em }
+.audiowrapper .trackinfo { font-size: 0.9rem }
 .audiowrapper .album { font-style: italic }
 .audiowrapper .artist + .album::before { content: ", " }
 .audiowrapper .playcount, .custom_audio_current_time, .custom_audio_time_left { font-family: var(--tfont) }
@@ -762,7 +765,11 @@ p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 	height: 5em;
 }
 /* Video */
-.videowrapper, .post .body iframe, .tumblr_video_container { max-width: 100% }
+.videowrapper, .post .body iframe, .tumblr_video_container {
+	max-width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
 .tumblr_video_container { width: 100% !important }
 .post .body video { max-width: 500px }
 .videowrapper + div { margin-top: 0.75em }
