@@ -556,18 +556,26 @@
 				{block:AudioPlayer}
 				<div class="audiowrapper {block:AlbumArt}hasart{/block:AlbumArt}">
 					{AudioPlayer}
-					<span class="custom_audio_buttons"></span>
-					<div class="textinfo">
-					{block:TrackName}<span class="trackname">{TrackName}</span>{/block:TrackName}
-					{block:Artist}<span class="artist">{Artist}</span>{/block:Artist}
-					{block:Album}<span class="album">{Album}</span>{/block:Album}
+					<div class="left">
+						<div class="textinfo {block:TrackName}n{/block:TrackName} {block:Artist}a{/block:Artist} {block:Album}al{/block:Album} {block:PlayCount}p{/block:PlayCount}">
+							<div class="trackinfo">
+							{block:TrackName}<span class="trackname">{TrackName}</span>{/block:TrackName}
+							<span class="separator">—</span>
+							{block:Artist}<span class="artist">{Artist}</span>{/block:Artist}
+							{block:Album}<span class="album">{Album}</span>{/block:Album}
+							</div>
+
+							{block:PlayCount}<span class="playcount">{PlayCountWithLabel}</span>{/block:PlayCount}
+						</div>
 					</div>
-					{block:AlbumArt}<img class="albumart" src="{AlbumArtURL}">{/block:AlbumArt}
 					<div class="seekbar">
-						<span class="custom_audio_current_time"></span>
+						<span class="custom_audio_buttons"></span>
 						<div class="custom_audio_seekbar"></div>
+						<span class="custom_audio_current_time"></span>
 						<span class="custom_audio_time_left"></span>
 					</div>
+					
+					{block:AlbumArt}<img class="albumart" src="{AlbumArtURL}">{/block:AlbumArt}
 				</div>
 				{/block:AudioPlayer}
 				
