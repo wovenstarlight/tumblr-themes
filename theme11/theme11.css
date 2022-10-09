@@ -427,6 +427,7 @@ html, body { height: 100vh }
 	grid-template-columns: auto 1fr auto;
 	gap: 0.9em;
 	align-items: start;
+	line-height: 1.25;
 }
 .post header .icons {
 	display: grid;
@@ -583,7 +584,8 @@ html, body { height: 100vh }
 	opacity: 0;
 }
 .customlike .like_button:not(.liked) ~ .to-unlike,
-.customlike .like_button.liked ~ .to-like{ display: none }
+.customlike .like_button.liked ~ .to-like { display: none }
+.to-unlike { color: var(--accent) }
 /* #endregion */
 /* #region Post notes */
 .notes {
@@ -759,6 +761,11 @@ p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 	border-radius: 0.25em;
 	height: 5em;
 }
+/* Video */
+.videowrapper, .post .body iframe, .tumblr_video_container { max-width: 100% }
+.tumblr_video_container { width: 100% !important }
+.post .body video { max-width: 500px }
+.videowrapper + div { margin-top: 0.75em }
 /* Answer */
 .ask .asker { margin: 0 0 0.5em }
 .original.post .ask + .bodyitemcontent { margin-top: 1em }
