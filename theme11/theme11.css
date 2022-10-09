@@ -48,13 +48,13 @@ h1, h2, h3, h4 { font-family: var(--tfont) }
 	box-shadow: 0.1em 0.1em 0.25em -0.1em rgba(var(--text--rgb), 0.75);
 }
 /* #region Casing */
-body.upper h1, body.upper h2, body.upper h3, body.upper h4,
+body.upper h1, body.upper h2, body.upper h3, body.upper h4, body.upper .pagination,
 body.upper .button, body.upper #links-search, body.upper footer,
 body.upper .date, body.upper .post .text a, body.upper .more_notes_link_container,
 body.upper .post .tags-container .label, body.upper #postnotes .action a {
 	text-transform: uppercase;
 }
-body.lower h1, body.lower h2, body.lower h3, body.upper h4,
+body.lower h1, body.lower h2, body.lower h3, body.upper h4, body.lower .pagination,
 body.lower .button, body.lower .view-button, body.lower #links-search, body.lower footer,
 body.lower .date, body.lower .post .text, body.lower .more_notes_link_container,
 body.lower .post .tags-container .label {
