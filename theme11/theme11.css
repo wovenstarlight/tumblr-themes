@@ -481,7 +481,10 @@ html, body { height: 100vh }
 	font: .8125em 'Monaco', 'Consolas', Courier, monospace;
 }
 /* Tags section */
-.post .tags-container { grid-column: 1 / span 3 }
+.post .tags-container {
+	grid-column: 1 / span 3;
+	line-height: 1.5;
+}
 .tags-container a, .showtags {
 	border-bottom: thin dotted;
 	margin-right: 0.8em;
