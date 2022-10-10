@@ -124,6 +124,7 @@ body.lower .audiowrapper .trackname, body.lower .custom_audio_buttons {
 	background-color: var(--bg2);
 	padding: 0.25em;
 	box-shadow: 0.1em 0.1em 0.25em -0.1em rgba(var(--text--rgb), 0.75);
+	z-index: 4;
 }
 #pages span { cursor: help }
 #pages .dropdown a {
@@ -862,6 +863,7 @@ p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 		background-color: var(--bg2);
 		padding: 0.25em;
 		box-shadow: 0.1em 0.1em 0.25em -0.1em rgba(var(--text--rgb), 0.75);
+		z-index: 4;
 	}
 	#mobnav .dropdown a {
 		padding: .75em .5em .5em;
