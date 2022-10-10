@@ -105,6 +105,7 @@ body.lower .audiowrapper .trackname, body.lower .custom_audio_buttons {
 	display: inline-flex;
 	padding: 0.5em 0.75em;
 }
+#links .current-page { font-weight: bold }
 #mobnav { display: inline-block }
 #mobnav:not(.a, .s, .r, .ar) { display: none }
 #mobnav a:hover, #mobnav:hover span, #pages:hover span {
