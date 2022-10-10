@@ -1,0 +1,177 @@
+<!--
+	PAGE 3: UNTITLED by starlightthemes
+
+	Credits:
+		Layout and design by Archive Of Our Own: https://archiveofourown.org
+		Style My Tooltips by malihu: http://manos.malihu.gr/style-my-tooltips-jquery-plugin
+		Phosphor Icons: https://phosphoricons.com/
+		Palette toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
+		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
+
+	Last updated 8 Oct 2022.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{Title}{block:PostSummary} — {PostSummary}{/block:PostSummary}</title>
+	<meta name="description" content="{MetaDescription}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+	<!-- Standardization of theme styles -->
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
+
+	<!-- Resource imports -->
+	<!-- Phosphor Icons -->
+	<script src="https://unpkg.com/phosphor-icons"></script>
+	<!-- Google fonts import -->
+	<link href="https://fonts.googleapis.com/css2?family=BODYFONT&family=TITLEFONT" rel="stylesheet">
+
+	<!-- Custom theme styles -->
+	<style>
+	html {
+		--font-size: 14px;
+		--tfont: 'TITLEFONT', Georgia, serif;
+		--tweight: normal;
+		--bfont: 'BODYFONT', 'Lucida Grande', 'Lucida Sans Unicode', 'GNU Unifont', Verdana, Helvetica, sans-serif;
+	}
+
+	html:not(.alt) { /* REGULAR PALETTE */
+		--text: #2a2a2a;
+		--bg: #ffffff;
+		--bg2: #d6d6d6;
+		--accent: #990000;
+		--text--rgb: 42, 42, 42;
+		--bg--rgb: 255, 255, 255;
+		--bg2--rgb: 214, 214, 214;
+		--accent--rgb: 153, 0, 0;
+	}
+
+	html.alt { /* ALTERNATE PALETTE */
+		--text: #eeeeee;
+		--bg: #333333;
+		--bg2: #1e1e1e;
+		--accent: #5998d6;
+		--text--rgb: 238, 238, 238;
+		--bg--rgb: 51, 51, 51;
+		--bg2--rgb: 30, 30, 30;
+		--accent--rgb: 89, 152, 214;
+	}
+	</style>
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/page3/page3.min.css">
+	<style>{CustomCSS}</style>
+
+	<!-- jQuery CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+	<!-- Style-my-tooltips by malihu -->
+	<script src="https://wovenstarlight.github.io/jquery-style-my-tooltips/minified/jquery.style-my-tooltips.min.js"></script>
+	<!-- Scroll to top button -->
+	<script src="https://wovenstarlight.github.io/tumblr-themes/scrolltotop.min.js"></script>
+	<script src="https://wovenstarlight.github.io/tumblr-themes/theme11/theme11.min.js"></script>
+</head>
+
+<body class="lower">
+
+<!-- Accessibility: SKIP TO MAIN -->
+<a href="#main" id="skip">Skip to main content</a>
+
+{block:HideTitle}
+<!-- Accessibility: HIDDEN TITLE -->
+<h1 id="hiddentitle">{Title}</h1>
+{/block:HideTitle}
+
+
+<div id="body">
+<header id="header">
+
+	<a href="/" id="title">
+		{block:ShowAvatar}<img src="{PortraitURL-128}" id="avatar" class="{AvatarShape}" />{/block:ShowAvatar}
+		<!-- <img src="{image:Logo}" id="logo"/> -->
+		{block:ShowTitle}<h1>{Title}</h1>{/block:ShowTitle}
+	</a>
+	
+	<section id="links-search">
+		<!-- BLOG NAVIGATION -->
+		<nav id="links">
+			<div id="mobnav" class="{block:AskEnabled}a{/block:AskEnabled} {block:SubmissionsEnabled}s{/block:SubmissionsEnabled}">
+				<span>{lang:Navigate}</span>
+				<div class="dropdown">
+					{block:AskEnabled}<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}">{AskLabel}</a>{/block:AskEnabled}
+					{block:SubmissionsEnabled}<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+				</div>
+			</div>
+			
+			{block:HasPages}
+			<!-- CUSTOM PAGES -->
+			<div id="pages">
+				<span>{lang:Pages}</span>
+				<div class="dropdown">{block:Pages}<a href="{URL}" class="{CurrentState}">{Label}</a>{/block:Pages}</div>
+			</div>
+			{/block:HasPages}
+		</nav>
+		
+		<!-- SEARCH BAR -->
+		<form action="/search" method="get" id="search">
+			<label for="q">{lang:Search}</label>
+			<input id="q" type="text" name="q" value="{SearchQuery}"/>
+			<input class="button" type="submit" value="{lang:Search}">
+		</form>
+
+	</section>
+
+</header>
+
+
+<section id="page">
+
+	<div id="actions">
+		{block:IfBackToTopButton}
+		<!-- BACK TO TOP BUTTON -->
+		<div id="scrolltotop_parent" tabindex="0" style="display: none;">
+			<div id="scrolltotop_arrow" class="button">↑ Top</div>
+		</div>
+		{/block:IfBackToTopButton}
+
+		{block:IfPaletteToggle}
+		<a id="palette" tabindex="0" class="button">Toggle Palette</a>
+		{/block:IfPaletteToggle}
+
+		<a id="sidebar" class="button">{lang:About}</a>
+	</div>
+
+
+	<main id="main">
+		<!-- TODO: "WORK" -->
+	</main>
+
+</section>
+
+
+<footer id="footer">
+	<div id="contact" class="{block:AskEnabled}a{/block:AskEnabled} {block:SubmissionsEnabled}s{/block:SubmissionsEnabled}">
+		<h3>Contact</h3>
+		<div>
+			{block:AskEnabled}<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}">{AskLabel}</a>{/block:AskEnabled}
+			{block:SubmissionsEnabled}<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+		</div>
+	</div>
+
+	<div id="development">
+		<h3>Development</h3>
+		<div>
+			<span>{Name} &copy; {CopyrightYears}</span>
+			<span>{lang:Powered by Tumblr 2}</span>
+			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+			<a id="credit" href="https://starlightthemes.tumblr.com/pg3">Page by starlightthemes</a>
+			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+		</div>
+	</div>
+</footer>
+</div>
+
+</body>
+</html>
