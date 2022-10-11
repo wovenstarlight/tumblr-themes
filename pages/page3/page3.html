@@ -1,6 +1,9 @@
 <!--
 	PAGE 3: UNTITLED by starlightthemes
 
+	An WIP page designed to match Theme 11: UNTITLED.
+	Search "CUSTOMIZE" to jump to editable sections.
+
 	Credits:
 		Layout and design by Archive Of Our Own: https://archiveofourown.org
 		Style My Tooltips by malihu: http://manos.malihu.gr/style-my-tooltips-jquery-plugin
@@ -31,8 +34,18 @@
 	<!-- Google fonts import -->
 	<link href="https://fonts.googleapis.com/css2?family=BODYFONT&family=TITLEFONT" rel="stylesheet">
 
-	<!-- Custom theme styles -->
 	<style>
+	/** CUSTOMIZE: GENERAL APPEARANCE
+		1. Replace fonts
+			- Body font: Search/Replace All "BODYFONT"
+			- Title/headings font: Search/Replace All "TITLEFONT"
+			You can check "--bfont" and "--tfont" below to see if these were correctly replaced.
+		
+		2. Edit other layout/color options just below this
+			- font-size: Self-explanatory. Measured in px values.
+			- tweight: Whether the title is bolded or not. Choose between "normal" or "bold".
+			- See below for color customization.
+	*/
 	html {
 		--font-size: 14px;
 		--tfont: 'TITLEFONT', Georgia, serif;
@@ -40,18 +53,28 @@
 		--bfont: 'BODYFONT', 'Lucida Grande', 'Lucida Sans Unicode', 'GNU Unifont', Verdana, Helvetica, sans-serif;
 	}
 
-	html:not(.alt) { /* REGULAR PALETTE */
-		--text: #2a2a2a;
+	/** COLORS SECTION 1
+		Default palette colors (if you choose to have two color palettes), OR
+		General page colors (if not).
+	*/
+	html:not(.alt) {
+		/* These top 4 colors can be in either hex format (#abc123) or RGB format (rgba(1, 2, 3)) */
+		--text: #2a2a2a; /* Hex equivalent of the color rgba(42, 42, 42) */
 		--bg: #ffffff;
 		--bg2: #d6d6d6;
 		--accent: #990000;
+		/* The RGB numbers for the 4 colors above, without brackets. See "text" and "text--rgb" for comparison */
 		--text--rgb: 42, 42, 42;
 		--bg--rgb: 255, 255, 255;
 		--bg2--rgb: 214, 214, 214;
 		--accent--rgb: 153, 0, 0;
 	}
 
-	html.alt { /* ALTERNATE PALETTE */
+	/** COLORS SECTION 2
+		Alternate palette colors (if you chose to have two color palettes; ignore otherwise.)
+		Same annotations as above apply.
+	*/
+	html.alt {
 		--text: #eeeeee;
 		--bg: #333333;
 		--bg2: #1e1e1e;
@@ -74,7 +97,13 @@
 	<script src="https://wovenstarlight.github.io/tumblr-themes/theme11/theme11.min.js"></script>
 </head>
 
-<body class="lower">
+<!--
+	CUSTOMIZE: SPECIAL TEXT CASING
+	If you want to make special text (including all headings) lowercase, change the line below to read <body class="lower">
+	If you want to make special text uppercase, change the line below to read <body class="upper">
+	Otherwise, leave it unchanged.
+-->
+<body class="">
 
 <!-- Accessibility: SKIP TO MAIN -->
 <a href="#main" id="skip">Skip to main content</a>
@@ -89,8 +118,18 @@
 <header id="header">
 
 	<a href="/" id="title">
+		<!--
+			CUSTOMIZE: PAGE HEADER
+			By default, your avatar and title will show/not show depending on the settings of your base blog.
+			If you'd rather hide one of them while ignoring the settings of your blog:
+				- TO HIDE AVATAR: delete the line below, from {block:ShowAvatar} to {/block:ShowAvatar}.
+				- TO HIDE TITLE: delete the second line below, from {block:ShowTitle} to {/block:ShowTitle}.
+			
+			If you'd like to insert an image as a "logo", copy+paste the following line BETWEEN the Avatar and Title lines:
+			<img src="https://YOUR-URL-HERE.com" id="logo"/>
+			And replace https://YOUR-URL-HERE.com with the link to your image.
+		-->
 		{block:ShowAvatar}<img src="{PortraitURL-128}" id="avatar" class="{AvatarShape}" />{/block:ShowAvatar}
-		<!-- <img src="{image:Logo}" id="logo"/> -->
 		{block:ShowTitle}<h1>{Title}</h1>{/block:ShowTitle}
 	</a>
 	
@@ -134,13 +173,40 @@
 			<div id="scrolltotop_arrow" class="button">↑ Top</div>
 		</div>
 
+		<!--
+			CUSTOMIZE: PALETTE TOGGLE
+			If you don't want two color palettes, remove the line below.
+		-->
 		<a id="palette" tabindex="0" class="button">Toggle Palette</a>
 	</div>
 
 
 	<main id="main">
 		<aside>
+			<!--
+				CUSTOMIZE: TAGS
+				As you can see below, the tags section is written in the following format:
+				
+				<dt>Label here</dt>
+					<dd>Corresponding value here</dd>
+				
+				A template has been given below, in the format of AO3's actual work tags header, filled with example "tags".
+				
+				You can edit both the labels and tags to say whatever you want.
+					- You don't need to add a colon (:) to the end of the labels; the page code will handle that automatically.
+					- To bold a label/value, add class="warning" to the opening dt/dd element tag, as seen below with Archive Warnings.
+					- To add a link, either to a label or a value, write it as follows:
+						<a href="https://YOUR-URL-HERE.com">YOUR TEXT HERE</a>
+						Examples can be seen in the Relationships and Additional Tags sections.
+						(You can also link to other pages on your blog by omitting the "https://YOUR-USERNAME-HERE.tumblr.com" part of the url, and just writing "/pagename". For example, if I was using this page on https://starlightpreviews.tumblr.com, and I wanted to link to https://starlightpreviews.tumblr.com/theme11, I would write <a href="/theme11">TEXT HERE</a> )
+					- Add new labels and tags by adding more <dt></dt> <dd></dd> pairs. Make sure they're added ABOVE the </dl></aside> tags!
+				
+				See below for additional notes.
+			-->
+
 			<dl id="worktags">
+				<!-- Add new labels/values BELOW this line! -->
+
 				<dt>Rating</dt>
 					<dd>General Audiences</dd>
 				
@@ -165,30 +231,61 @@
 				<dt>Language</dt>
 					<dd>English</dd>
 				
+				<!--
+					Additional customization notes: SERIES
+					Each series is in the following format. You can copy/paste this to add more. Make sure to add commas to split up different series!
+
+					<span class="series">
+						<a class="prev" href="https://LINK-TO-PREVIOUS.com">Previous Work</a><span class="separator"></span>
+						Part # of <a href="https://RELEVANT-LINK.com">Series Name</a>
+						<span class="separator"></span><a class="next" href="https://LINK-TO-NEXT.com/">Next Work</a>
+					</span>
+
+					If there is no previous/next work, simply delete the first/third lines, including the "separator" span element.
+
+					Additionally, to ensure the spacing between each line is proper, you'll have to add comments between lines. They're the arrow-bracket and dash combinations around this text, looking like this but without the spaces: < !-- -- >
+					
+					See below for examples. The first series has both a Previous and a Next link, while the second has only a Previous link.
+				-->
 				<dt>Series</dt>
 					<dd>
-						<span class="series"><!--
-							--><a class="prev" href="https://starlightthemes.tumblr.com/pg2">Previous Work</a><!--
-							--><span class="separator"></span><!--
-							-->Part 3 of <a href="https://starlightthemes.tumblr.com/tagged/pages">Pages by starlightthemes</a><!--
-							--><span class="separator"></span><!--
-							--><a class="next" href="https://starlightthemes.tumblr.com/">Next Work</a><!--
-						--></span>,
-						<span class="series"><!--
+					<!-- Add new series BELOW this line! -->
+
+					<span class="series"><!--
+						--><a class="prev" href="https://starlightthemes.tumblr.com/pg2">Previous Work</a><span class="separator"></span><!--
+						-->Part 3 of <a href="https://starlightthemes.tumblr.com/tagged/pages">Pages by starlightthemes</a><!--
+						--><span class="separator"></span><a class="next" href="https://starlightthemes.tumblr.com/">Next Work</a><!--
+					--></span>,
+
+					<span class="series"><!--
 						--><a class="prev" href="https://starlightthemes.tumblr.com/theme10">Previous Work</a><!--
 						--><span class="separator"></span><!--
 						-->Part 11 of <a href="https://starlightthemes.tumblr.com/tagged/themes">Themes by starlightthemes</a><!--
 					--></span>
+
+					<!-- Add new series ABOVE this line! -->
 					</dd>
-				
+
+
+				<!--
+					Additional customization notes: STATS
+					The stats section is a smaller version of this entire list. Add label-value pairs in the same <dt>-<dd> format as described above.
+					Again, if you want to bold a bit, add class="warning", and if you want to add a link, wrap it in <a> tags.
+				-->
 				<dt>Stats</dt>
-					<dd><dl id="stats">
-					<dt>Example statistic</dt>
-						<dd>Example value</dd>
+					<dd><dl class="stats">
+					<!-- Add new stats BELOW this line! -->
 					
-					<dt>Another statistic</dt>
-						<dd>1234556789</dd>
+					<dt>Published</dt>
+						<dd>2022-10-10</dd>
+
+					<dt>Words</dt>
+						<dd>123456</dd>
+
+					<!-- Add new stats ABOVE this line! -->
 					</dl></dd>
+				
+				<!-- Add new labels/values ABOVE this line! -->
 			</dl>
 		</aside>
 
@@ -196,9 +293,11 @@
 			<!-- Title, author (default to Name), Summary, and Notes -->
 		</header>
 
+
 		<section id="workbody">
 			<!-- The actual text. To be edited by the user. -->
 		</section>
+
 
 		<footer id="workfoot">
 			<!-- End notes. -->
