@@ -244,9 +244,9 @@ html, body { height: 100vh }
 #worktags > dd > a { border-bottom: 1px dotted }
 #worktags > dd > a:hover { background-color: var(--accent); color: var(--bg) }
 #worktags .warning { font-weight: bold }
-#stats * { display: inline; margin: 0 0.1em }
-#stats :first-child { margin-left: 0 }
-#stats dd + dt { margin-left: 0.75em }
+.stats * { display: inline; margin: 0 0.1em }
+.stats :first-child { margin-left: 0 }
+.stats dd + dt { margin-left: 0.75em }
 /* Series navigation */
 #worktags .series .separator::before {
 	content: "\25CF";
