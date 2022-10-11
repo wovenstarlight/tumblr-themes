@@ -128,7 +128,7 @@ body.lower .button, body.lower #links-search, body.lower footer {
 }
 #links .current-page { font-weight: bold }
 #mobnav { display: inline-block }
-#mobnav:not(.a, .s, .r, .ar) { display: none }
+#mobnav:not(.a, .s) { display: none }
 #mobnav a:hover, #mobnav:hover span, #pages:hover span {
 	color: var(--text);
 	background-color: var(--bg2);
@@ -251,8 +251,6 @@ html, body { height: 100vh }
 	text-underline-offset: 0.3em;
 }
 #footer a:hover { text-decoration-style: dotted }
-#contact:not(.a, .s, .e),
-#social:not(.p, .a, .f, .t, .fb, .i, .y, .r) { display: none }
 /* #endregion */
 
 

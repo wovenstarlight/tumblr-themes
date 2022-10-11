@@ -372,11 +372,34 @@
 
 
 <footer id="footer">
-	<div id="contact" class="{block:AskEnabled}a{/block:AskEnabled} {block:SubmissionsEnabled}s{/block:SubmissionsEnabled}">
+	<!--
+		CUSTOMIZE: PERSONAL LINKS
+		Theme 11 has a lot of custom link options in the footer (including the ask/submit links, depending on whether your blog has asks/submissions enabled). They've been provided here as defaults; you can choose whether or not to keep them, and if you'd like, you can replace them with entirely different links. All links follow the same <a href="https://YOUR-LINK-HERE.com">Text here</a> format.
+
+		If you're removing a link, delete that full line. If this leaves the section empty i.e. there is only the <h3>Section Heading</h3> and the empty inner <div></div> left, then delete the entire outer <div id="SECTION-NAME">...</div>.
+	-->
+
+	<div id="contact">
 		<h3>Contact</h3>
 		<div>
-			{block:AskEnabled}<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}">{AskLabel}</a>{/block:AskEnabled}
-			{block:SubmissionsEnabled}<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+			{block:AskEnabled}<a href="/ask" class="asklink">{AskLabel}</a>{/block:AskEnabled}
+			{block:SubmissionsEnabled}<a href="/submit" class="submitlink">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+			<a href="mailto:YOUR-MAIL@PROVIDER.COM">{lang:Send me an email}</a>
+		</div>
+	</div>
+
+	<div id="social">
+		<h3>{lang:Follow}</h3>
+		<div>
+			<a href="https://YOUR-LINK-HERE.com">Personal website</a>
+			<a href="https://archiveofourown.org/users/USERNAME">Archive of Our Own</a>
+			<a href="https://www.fanfiction.net/u/USER-ID">Fanfiction.net</a>
+			<a href="https://twitter.com/USERNAME">Twitter</a>
+			<a href="https://www.reddit.com/user/USERNAME">{lang:Reddit}</a>
+			<a href="https://www.facebook.com/USERNAME">{lang:Facebook}</a>
+			<a href="https://instagram.com/USERNAME">Instagram</a>
+			<a href="https://www.youtube.com/channel/CHANNEL-ID">YouTube</a>
+			<a href="https://YOUR-LINK-HERE.com">{lang:Subscribe via RSS}</a>
 		</div>
 	</div>
 
