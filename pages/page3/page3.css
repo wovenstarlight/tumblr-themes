@@ -32,6 +32,10 @@ main a[href]:hover, #right a[href]:hover { color: rgba(var(--text--rgb), 0.65) }
 	background-image: unset;
 }
 h1, h2, h3, h4 { font-family: var(--tfont) }
+hr {
+	width: 33%;
+	margin: 0.875em auto 1.25em !important;
+}
 /* Accessibility */
 #skip, #hiddentitle, #search label {
 	position: fixed;
@@ -256,6 +260,47 @@ html, body { height: 100vh }
 #worktags .series .prev::before { content: "← " }
 #worktags .series .next::after { content: " →" }
 /* #endregion */
+#workhead, #workbody, #workfoot {
+	margin: auto;
+	max-width: 80em;
+	padding: 2em 4em;
+}
+/* #region Header */
+#workhead > :is(h2, h3) { text-align: center }
+#workhead > h2 {
+	font-size: 2.35em;
+	font-weight: normal;
+	margin: 0.1em 0;
+}
+#workhead > h3, h3.heading {
+	font-size: 1.4em;
+	font-weight: normal;
+}
+#workhead > h3 {
+	margin: 0.5em 0;
+	color: rgba(var(--text--rgb), 0.7);
+}
+h3.heading {
+	font-weight: normal;
+	line-height: 1;
+	border-bottom: thin solid;
+	margin: 0.25em 0 0;
+}
+:is(#summary, #top) div {
+	margin: 0.75em;
+	line-height: 1.5;
+	font-size: 1.08em;
+}
+:is(#summary, #top) div > * { margin: 1.375em 0 }
+:is(#summary, #top) div :first-child { margin-top: 0 }
+:is(#summary, #top) div :last-child { margin-bottom: 0 }
+#summary + #top { margin-top: 2em }
+.jump {
+	margin-top: 1.5em;
+	font-size: 1.08em;
+}
+#workhead:not(:nth-last-child(3)) .jump { display: none }
+/* #endregion */
 /* #endregion */
 
 
@@ -302,6 +347,8 @@ html, body { height: 100vh }
 		background-color: rgba(var(--bg--rgb), 0.25);
 	}
 	#links .dropdown { width: 100% }
+	
+	#workhead, #workbody, #workfoot { margin: auto 1.5% }
 }
 
 @media (max-width: 40em) {

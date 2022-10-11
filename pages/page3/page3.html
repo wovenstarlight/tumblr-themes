@@ -290,7 +290,35 @@
 		</aside>
 
 		<header id="workhead">
-			<!-- Title, author (default to Name), Summary, and Notes -->
+			<!--
+				CUSTOMIZE: HEADER
+				h2: The work's title.
+				h3: The work's author/subtitle. By default, this is your blog name.
+				Summary and Notes: Like the AO3 fields. A paragraph has been provided in each as a starting point. If you don't want one or both of the sections, delete everything from the corresponding <section id="..."> to its matching </section> tag a few lines below.
+					- You'll also have the chance to add notes at the end of the "work". If you don't want end notes, delete <p class="jump"> at the end of the header notes section.
+			-->
+
+			<h2>Title Goes Here</h2>
+			<h3>{Name}</h3>
+			
+			<section id="summary">
+				<h3 class="heading">Summary:</h3>
+
+				<div>
+					<p>Your text here! Add new paragraphs inside p tags, like the ones around this block.</p>
+				</div>
+			</section>
+			
+			<section id="top" class="notes">
+				<h3 class="heading">Notes:</h3>
+
+				<div>
+					<p>Your text here! Add new paragraphs inside p tags, like the ones around this block.</p>
+				</div>
+			
+				<!-- Delete the next line if you don't have end notes. -->
+				<p class="jump">(See the end of the work for <a href="#workfoot">more notes</a>.)</p>
+			</section>
 		</header>
 
 
