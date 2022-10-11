@@ -226,7 +226,7 @@ html, body { height: 100vh }
 }
 #footer > div { flex-grow: 1 }
 #footer div div {
-	max-height: 10em;
+	max-height: 11em;
 	writing-mode: vertical-lr;
 	display: flex;
 	flex-wrap: wrap;
