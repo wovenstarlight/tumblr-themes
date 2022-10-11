@@ -107,7 +107,7 @@ body.lower .button, body.lower #links-search, body.lower footer {
 	margin: 0 0 0 0.25em;
 }
 #title:hover { color: inherit }
-#avatar {
+#avatar, #logo {
 	height: 100%;
 	width: auto;
 }
