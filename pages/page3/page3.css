@@ -248,14 +248,8 @@ html, body { height: 100vh }
 #stats :first-child { margin-left: 0 }
 #stats dd + dt { margin-left: 0.75em }
 /* Series navigation */
-#worktags .series :is(.prev, .next) { position: relative }
-#worktags .series .prev { margin-right: 1.5em }
-#worktags .series .prev::after { left: 100% }
-#worktags .series .next { margin-left: 1.5em }
-#worktags .series .next::before { right: 100% }
-#worktags .series .prev::after, #worktags .series .next::before {
-	content: "\0020\25CF";
-	position: absolute;
+#worktags .series .separator::before {
+	content: "\25CF";
 	margin: 0 0.35em;
 	color: rgba(var(--text--rgb), 0.6);
 }
