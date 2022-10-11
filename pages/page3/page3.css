@@ -263,9 +263,9 @@ html, body { height: 100vh }
 #workhead, #workbody, #workfoot {
 	margin: auto;
 	max-width: 80em;
-	padding: 2em 4em;
 }
 /* #region Header */
+#workhead { padding: 2em 4em 0 }
 #workhead > :is(h2, h3) { text-align: center }
 #workhead > h2 {
 	font-size: 2.35em;
@@ -300,6 +300,16 @@ h3.heading {
 	font-size: 1.08em;
 }
 #workhead:not(:nth-last-child(3)) .jump { display: none }
+/* #endregion */
+/* #region Work body */
+#workbody {
+	line-height: 1.5;
+	font-size: 1.08em;
+	padding: 2em 0;
+}
+/* #endregion */
+/* #region Work footer */
+#workfoot { padding: 0 4em 2em }
 /* #endregion */
 /* #endregion */
 
