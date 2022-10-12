@@ -255,7 +255,6 @@ html:not(.alt) body.noimg3 .custom_audio_seekbar_progress {
 /* #region CENTER */
 body {
 	display: grid;
-	justify-content: center;
 	justify-items: center;
 	overflow-x: hidden;
 }
