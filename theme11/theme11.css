@@ -199,7 +199,7 @@ body.lower .audiowrapper .trackname, body.lower .custom_audio_buttons {
 	background: var(--bg2);
 }
 #scrolltotop_parent { display: inline-block }
-#page:not(.desc) #sidebar, #page:not(.desc) #right { display: none }
+#page:not(.desc, .rules, .faq, .updates, .togs, .progs) :is(#sidebar, #right) { display: none }
 /* #endregion */
 /* #region Pagination */
 .pagination { text-align: center }
@@ -818,7 +818,7 @@ p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 	.top.pagination { grid-row: 3 }
 	.bottom.pagination { grid-row: 5 }
 	#main { grid-column: 2 }
-	#page:not(.desc) #main { grid-column: 2 / span 2 }
+	#page:not(.desc, .rules, .faq, .updates, .togs, .progs) #main { grid-column: 2 / span 2 }
 	/* Right */
 	#right {
 		margin: .5em;
