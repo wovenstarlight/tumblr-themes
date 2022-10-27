@@ -70,6 +70,7 @@
 	<meta name="text:Search bar title" content="Search">
 	<meta name="if:Post dates" content="1">
 	<meta name="if:Post times" content="0">
+	<meta name="if:Dates in monospace font" content="1">
 	<meta name="if:Dates formatted month first" content="0">
 	<meta name="if:24 hour times" content="0">
 	<meta name="if:Like buttons" content="1">
@@ -377,7 +378,7 @@
 					{block:RebloggedFrom}<span class="subtitle">{lang:Reblogged from ReblogParentName 2}</span>{/block:RebloggedFrom}
 				</div>
 				
-				{block:IfPostDates}<span class="date" title="{lang:Posted TimeAgo}">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonthWithZero}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonthWithZero} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfPostTimes}, {block:If24HourTimes}{24HourWithZero}{/block:If24HourTimes}{block:IfNot24HourTimes}{12HourWithZero}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes}{CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</span>{/block:IfPostDates}
+				{block:IfPostDates}<span class="date {block:IfDatesInMonospaceFont}mono{/block:IfDatesInMonospaceFont}" title="{lang:Posted TimeAgo}">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonthWithZero}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonthWithZero} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfPostTimes}, {block:If24HourTimes}{24HourWithZero}{/block:If24HourTimes}{block:IfNot24HourTimes}{12HourWithZero}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes}{CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</span>{/block:IfPostDates}
 
 				{block:IfPostTags}{block:HasTags}<div class="tags-container">
 					<span class="label">{lang:Tags}: </span>

@@ -516,9 +516,8 @@ html.alt .altinvert .post .icons a[href]:active {
 	background-color: var(--accent);
 	color: var(--bg);
 }
-.post header .date {
-	font: .8125em 'Monaco', 'Consolas', Courier, monospace;
-}
+.post header .date { font-size: .8125em }
+.post header .mono.date { font-family: 'Monaco', 'Consolas', Courier, monospace }
 /* Tags section */
 .post .tags-container {
 	grid-column: 1 / span 3;
