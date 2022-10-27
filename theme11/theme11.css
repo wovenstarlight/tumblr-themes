@@ -860,6 +860,7 @@ p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 		text-align: right;
 		overflow-wrap: anywhere;
 		hyphens: auto;
+		height: fit-content;
 	}
 	#left div {
 		border-top: 0.15em solid var(--bg2);
