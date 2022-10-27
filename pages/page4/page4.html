@@ -185,10 +185,10 @@
 
 		To change the "user" name (your blog username by default), replace {Name}.
 	-->
-    <header id="phead" {block:ShowAvatar}class="avatar"{/block:ShowAvatar}>
-        {block:ShowAvatar}<a href="/"><img class="{AvatarShape}" src="{PortraitURL-128}"></a>{/block:ShowAvatar}
-        <h2>{Name}</h2>
-    </header>
+	<header id="phead" {block:ShowAvatar}class="avatar"{/block:ShowAvatar}>
+		{block:ShowAvatar}<a href="/"><img class="{AvatarShape}" src="{PortraitURL-128}"></a>{/block:ShowAvatar}
+		<h2>{Name}</h2>
+	</header>
 
 	<div id="actions">
 		<!-- BACK TO TOP BUTTON -->
@@ -247,15 +247,21 @@
 	</aside>
 
 
-	<section id="workbody">
+	<main id="bio">
 		<!--
-			CUSTOMIZE: BODY
-			The actual "work"! Add whatever you want here- paragraphs, images, lists, etc.
+			CUSTOMIZE: BIO
+			Change or remove the heading on the line immediately after this comment, and add whatever content you'd like to the "body" section!
 		-->
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<h3>Bio</h3>
 
-		<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-	</section>
+		<div class="body"> <!-- Add your bio text below this line! -->
+
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	
+			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+
+		</div> <!-- Add your bio text above this line! -->
+	</main>
 
 
 	<aside id="left">
