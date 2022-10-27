@@ -313,6 +313,22 @@ html, body { height: 100vh }
 }
 #scrolltotop_parent { display: inline-block }
 /* #endregion */
+/* #region Personal stats */
+#mystats {
+	border: thin solid var(--bg2);
+	box-shadow: 0.1em 0.1em 0.356em rgba(var(--text--rgb), 0.5);
+	padding: 1.25em 0.75em;
+	line-height: 1.286;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	row-gap: 1em;
+}
+#mystats * { margin: 0 }
+#mystats dt::after { content: ":" }
+#mystats a { border-bottom: 1px dotted }
+#mystats a:hover { background-color: var(--accent); color: var(--bg) }
+#mystats .warning { font-weight: bold }
+/* #endregion */
 /* #endregion */
 
 
@@ -335,10 +351,8 @@ html, body { height: 100vh }
 	
 	#page {
 		grid-template-columns: auto 1fr;
-		grid-template-rows: repeat(4, auto) 1fr;
+		grid-template-rows: auto auto 1fr;
 	}
-	#phead, #actions { grid-column: 2 / span 2 }
-	#main { grid-column: 2 }
 	/* Left */
 	#left {
 		grid-column: 1;
@@ -407,5 +421,8 @@ html, body { height: 100vh }
 
 @media (max-width: 40em) {
 	html { font-size: calc(0.875 * var(--font-size)) }
+	
+	#mystats { display: block; padding-bottom: 0.25em }
+	#mystats dd { margin: 0 0 0.75em 1em }
 }
 /* #endregion */
