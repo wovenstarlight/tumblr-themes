@@ -95,7 +95,7 @@
 	<meta name="text:Toggles title" content="">
 	<meta name="text:Toggles" content="&lt;li&gt; Working on themes [on]&NewLine;&NewLine;&lt;li&gt; Getting enough sleep [off]">
 	<meta name="text:Progress bars title" content="">
-	<meta name="text:Progress bars" content="&lt;li&gt; Intelligence [90/100]&NewLine;&NewLine;&lt;li&gt; Wisdom [5/100]">
+	<meta name="text:Progress bars" content="&lt;li&gt; Intelligence [90/100]&NewLine;&NewLine;&lt;li&gt; Wisdom [5/100]&NewLine;&NewLine;&lt;li&gt; Progress on fixing that [50%]">
 	<meta name="text:Ask guidelines" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
 	<meta name="text:Email address" content="">
 	<meta name="text:Personal site URL" content="">
@@ -825,9 +825,12 @@
 				text = $(this).html().slice(0, i).trim(),
 				status = $(this).html().slice(i).trim();
 			status = status.slice(1, status.length - 1).split("/");
+			let percentage = status.length > 1 ? ((parseFloat(status[0]) / parseFloat(status[1])) * 100) + "%" : status[0];
 			let item = "<span class=\"textlabel\">" + text + "</span>";
-			item += "<span class=\"numlabel\">" + status[0] + "/" + status[1] + "</span>";
-			item += "<span class=\"prog\" style=\"--progress: " + ((parseFloat(status[0]) / parseFloat(status[1])) * 100) +"%\"></span>";
+			item += "<span class=\"numlabel\">" + status[0];
+			item += (status.length > 1 ? "/" + status[1] : "");
+			item += "</span>";
+			item += "<span class=\"prog\" style=\"--progress: " + percentage +"\"></span>";
 			$(this).html(item);
 		});
 		</script>
