@@ -99,6 +99,10 @@ body.lower .audiowrapper .trackname, body.lower .custom_audio_buttons {
 	justify-content: space-between;
 	padding: 0 0.7em 0 2em;
 }
+html:not(.alt) .invert #links-search, html.alt .altinvert #links-search {
+	background: var(--bg2) linear-gradient(rgba(var(--text--rgb), 0.2), rgba(var(--bg--rgb), 0.5) 90%);
+}
+html:not(.alt) .invert #links-search *, html.alt .altinvert #links-search * { color: var(--text) !important }
 #links span {
 	border-bottom: none;
 	color: var(--bg);
@@ -195,8 +199,8 @@ body.lower .audiowrapper .trackname, body.lower .custom_audio_buttons {
 	z-index: 3;
 }
 .button.active, .pagination a.curr:not([href]):hover {
-	box-shadow: inset 0.25em 0.25em 0.25em rgba(var(--text--rgb), 0.2);
-	background: var(--bg2);
+	box-shadow: inset 0.25em 0.25em 0.25em var(--bg2);
+	background: rgba(var(--bg2--rgb), 0.5);
 }
 #scrolltotop_parent { display: inline-block }
 #page:not(.desc, .rules, .faq, .updates, .togs, .progs) :is(#sidebar, #right) { display: none }
@@ -466,7 +470,26 @@ html, body { height: 100vh }
 	cursor: pointer;
 	background-image: linear-gradient(rgba(var(--bg--rgb), 0.5), transparent 60%);
 }
-.post .icons a[href]:active { background-image: linear-gradient(transparent 60%, rgba(var(--bg--rgb), 0.5)) }
+.post .icons a[href]:active { background-image: linear-gradient(transparent 40%, rgba(var(--bg--rgb), 0.5)) }
+/* Icons with inverted palette */
+html:not(.alt) .invert .post .icons a,
+html.alt .altinvert .post .icons a {
+	background: var(--bg2);
+	color: var(--accent);
+	text-shadow: 0 0 1px rgba(var(--text--rgb), 0.4);
+}
+html:not(.alt) .invert .post .icons a[href],
+html.alt .altinvert .post .icons a[href] {
+	background-image: linear-gradient(rgba(var(--text--rgb), 0.2), transparent 60%)
+}
+html:not(.alt) .invert .post .icons a[href]:hover,
+html.alt .altinvert .post .icons a[href]:hover {
+	background-image: linear-gradient(rgba(var(--text--rgb), 0.3), transparent 60%)
+}
+html:not(.alt) .invert .post .icons a[href]:active,
+html.alt .altinvert .post .icons a[href]:active {
+	background-image: linear-gradient(transparent 40%, rgba(var(--text--rgb), 0.3))
+}
 /* Text */
 .post .text { font-family: var(--tfont) }
 .post header .title {

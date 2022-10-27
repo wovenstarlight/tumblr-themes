@@ -12,14 +12,14 @@
 		Palette toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 18 Oct 2022.
+	Last updated 26 Oct 2022.
 -->
 
 <!DOCTYPE html>
 <html lang="en" class="{select:Default palette}">
 <head>
 	<meta charset="UTF-8">
-	<title>{Title}{block:TagPage} ({lang:TagResultCount posts tagged Tag}){/block:TagPage}{block:SearchPage} ({lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+	<title>{block:TagPage}{lang:TagResultCount posts tagged Tag} | {/block:TagPage}{block:SearchPage}{lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults} | {/block:SearchPage}{block:PermalinkPage}{block:PostSummary}{PostSummary} | {/block:PostSummary}{/block:PermalinkPage}{Title}</title>
 	<meta name="description" content="{MetaDescription}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link rel="shortcut icon" href="{Favicon}">
@@ -47,6 +47,7 @@
 	<meta name="color:Background" content="#ffffff">
 	<meta name="color:Secondary background" content="#d6d6d6">
 	<meta name="color:Accent" content="#990000">
+	<meta name="if:Invert navbar" content="0">
 	<!-- Alternate palette -->
 	<meta name="if:Palette toggle" content="1">
 	<meta name="select:Default palette" content="" title="Original">
@@ -55,6 +56,7 @@
 	<meta name="color:ALT Background" content="#333333">
 	<meta name="color:ALT Secondary background" content="#1e1e1e">
 	<meta name="color:ALT Accent" content="#5998d6">
+	<meta name="if:Invert ALT navbar" content="1">
 
 	<!-- General theme options -->
 	<meta name="text:Secondary title" content="">
@@ -248,7 +250,7 @@
 {/block:HideTitle}
 
 
-<div id="body">
+<div id="body" class="{block:IfInvertNavbar}invert{/block:IfInvertNavbar} {block:IfInvertAltNavbar}altinvert{/block:IfInvertAltNavbar}">
 <header id="header">
 
 	<a href="/" id="title">
