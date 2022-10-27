@@ -297,10 +297,7 @@ html, body { height: 100vh }
 /* #region Header */
 #workhead { padding: 2em 4em 0 }
 #workhead > :is(h2, h3) { text-align: center }
-#workhead > h3 {
-	margin: 0.5em 0;
-	color: rgba(var(--text--rgb), 0.7);
-}
+#workhead > h3 { margin: 0.5em 0 }
 h3.heading {
 	line-height: 1;
 	border-bottom: thin solid;
