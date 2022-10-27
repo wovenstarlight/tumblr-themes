@@ -120,6 +120,10 @@ body.lower .button, body.lower #links-search, body.lower footer {
 	justify-content: space-between;
 	padding: 0 0.7em 0 2em;
 }
+html:not(.alt) .invert #links-search, html.alt .altinvert #links-search {
+	background: var(--bg2) linear-gradient(rgba(var(--text--rgb), 0.2), rgba(var(--bg--rgb), 0.5) 90%);
+}
+html:not(.alt) .invert #links-search *, html.alt .altinvert #links-search * { color: var(--text) !important }
 #links span {
 	border-bottom: none;
 	color: var(--bg);
