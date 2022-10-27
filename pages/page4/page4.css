@@ -197,45 +197,6 @@ html:not(.alt) .invert #links-search *, html.alt .altinvert #links-search * { co
 	display: grid;
 	align-self: start;
 }
-/* Page header */
-#phead {
-	display: grid;
-	grid-template-columns: auto 1fr;
-	align-items: start;
-	padding: 0.7em 0 0;
-}
-#phead h2 {
-	font-weight: var(--tweight);
-	font-size: 2.15em;
-	border-bottom: 0.075em solid;
-	text-align: right;
-	margin: 0;
-	grid-column: 2;
-}
-#phead a:first-child {
-	border: none;
-	display: flex;
-	--size: 7.14em;
-	width: var(--size);
-	height: var(--size);
-}
-/* #region Actions menu */
-.tmblr-iframe--unified-controls.iframe-controls--desktop ~ #body #actions { top: 50px }
-#actions {
-	margin-top: 1em;
-	justify-self: right;
-	position: sticky;
-	top: 0.5em;
-	z-index: 3;
-}
-#phead.avatar + #actions { margin-top: -3.5em }
-#actions .button { margin-inline: 0.25em }
-.button.active {
-	box-shadow: inset 0.25em 0.25em 0.25em var(--bg2);
-	background: rgba(var(--bg2--rgb), 0.5);
-}
-#scrolltotop_parent { display: inline-block }
-/* #endregion */
 /* #region Sidebar: LEFT */
 #left {
 	border-block: 1em solid var(--accent);
@@ -307,6 +268,51 @@ html, body { height: 100vh }
 #footer a:hover { text-decoration-style: dotted }
 #contact:not(.a, .s, .e),
 #social:not(.p, .a, .f, .t, .fb, .i, .y, .r) { display: none }
+/* #endregion */
+
+
+
+/* #region About section */
+/* #region Page header */
+#phead {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: start;
+	padding: 0.7em 0 0;
+}
+#phead h2 {
+	font-weight: var(--tweight);
+	font-size: 2.15em;
+	border-bottom: 0.075em solid;
+	text-align: right;
+	margin: 0;
+	grid-column: 2;
+}
+#phead a:first-child {
+	border: none;
+	display: flex;
+	--size: 7.14em;
+	width: var(--size);
+	height: var(--size);
+}
+/* #endregion */
+/* #region Actions menu */
+.tmblr-iframe--unified-controls.iframe-controls--desktop ~ #body #actions { top: 50px }
+#actions {
+	margin-top: 1em;
+	justify-self: right;
+	position: sticky;
+	top: 0.5em;
+	z-index: 3;
+}
+#phead.avatar + #actions { margin-top: -3.5em }
+#actions .button { margin-inline: 0.25em }
+.button.active {
+	box-shadow: inset 0.25em 0.25em 0.25em var(--bg2);
+	background: rgba(var(--bg2--rgb), 0.5);
+}
+#scrolltotop_parent { display: inline-block }
+/* #endregion */
 /* #endregion */
 
 
