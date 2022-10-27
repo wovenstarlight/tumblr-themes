@@ -820,7 +820,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
-		right: 1.5em;
+		right: 2.5em;
 		z-index: 3;
 	}
 	
