@@ -1,0 +1,435 @@
+<!--
+	PAGE 4: ARCHIVIST by starlightthemes
+
+	Credits:
+		Layout and design by Archive of Our Own: https://archiveofourown.org
+		Style My Tooltips by malihu: http://manos.malihu.gr/style-my-tooltips-jquery-plugin
+		Palette toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
+		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
+
+	Last updated 27 Oct 2022.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{Title}{block:PostSummary} — {PostSummary}{/block:PostSummary}</title>
+	<meta name="description" content="{MetaDescription}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+	<!-- Standardization of theme styles -->
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
+
+	<!-- Resource imports -->
+	<!-- Phosphor Icons -->
+	<script src="https://unpkg.com/phosphor-icons"></script>
+	<!-- Google fonts import -->
+	<link href="https://fonts.googleapis.com/css2?family=BODYFONT&family=TITLEFONT" rel="stylesheet">
+
+	<style>
+	/** CUSTOMIZE: GENERAL APPEARANCE
+		1. Replace fonts
+			Choose your fonts from https://fonts.google.com.
+			- Body font: Search/Replace All "BODYFONT"
+			- Title/headings font: Search/Replace All "TITLEFONT"
+			You can check "--bfont" and "--tfont" below to see if these were correctly replaced.
+		
+		2. Edit other layout/color options just below this
+			- font-size: Self-explanatory. Measured in px values.
+			- tweight: Whether the title is bolded or not. Choose between "normal" or "bold".
+			- See below for color customization.
+	*/
+	html {
+		--font-size: 14px;
+		--tfont: 'TITLEFONT', Georgia, serif;
+		--tweight: normal;
+		--bfont: 'BODYFONT', 'Lucida Grande', 'Lucida Sans Unicode', 'GNU Unifont', Verdana, Helvetica, sans-serif;
+	}
+
+	/** COLORS SECTION 1
+		Default palette colors (if you choose to have two color palettes), OR
+		General page colors (if not).
+	*/
+	html:not(.alt) {
+		/* These top 4 colors can be in either hex format (#abc123) or RGB format (rgba(1, 2, 3)) */
+		--text: #2a2a2a; /* Hex equivalent of the color rgba(42, 42, 42) */
+		--bg: #ffffff;
+		--bg2: #d6d6d6;
+		--accent: #990000;
+		/* The RGB numbers for the 4 colors above, without brackets. See "text" and "text--rgb" for comparison */
+		--text--rgb: 42, 42, 42;
+		--bg--rgb: 255, 255, 255;
+		--bg2--rgb: 214, 214, 214;
+		--accent--rgb: 153, 0, 0;
+	}
+
+	/** COLORS SECTION 2
+		Alternate palette colors (if you chose to have two color palettes; ignore otherwise.)
+		Same annotations as above apply.
+	*/
+	html.alt {
+		--text: #eeeeee;
+		--bg: #333333;
+		--bg2: #1e1e1e;
+		--accent: #5998d6;
+		--text--rgb: 238, 238, 238;
+		--bg--rgb: 51, 51, 51;
+		--bg2--rgb: 30, 30, 30;
+		--accent--rgb: 89, 152, 214;
+	}
+	</style>
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/pages/page4/page4.min.css">
+	<style>{CustomCSS}</style>
+
+	<!-- jQuery CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+	<!-- Style-my-tooltips by malihu -->
+	<script src="https://wovenstarlight.github.io/jquery-style-my-tooltips/minified/jquery.style-my-tooltips.min.js"></script>
+	<!-- Scroll to top button -->
+	<script src="https://wovenstarlight.github.io/tumblr-themes/scrolltotop.min.js"></script>
+	<script src="https://wovenstarlight.github.io/tumblr-themes/theme11/theme11.min.js"></script>
+</head>
+
+<!--
+	CUSTOMIZE: SPECIAL TEXT CASING
+	If you want to make special text (including all headings) lowercase, change the line below to read <body class="lower">
+	If you want to make special text uppercase, change the line below to read <body class="upper">
+	Otherwise, leave it unchanged.
+-->
+<body class="">
+
+<!-- Accessibility: SKIP TO MAIN -->
+<a href="#main" id="skip">Skip to main content</a>
+
+{block:HideTitle}
+<!-- Accessibility: HIDDEN TITLE -->
+<h1 id="hiddentitle">{Title}</h1>
+{/block:HideTitle}
+
+
+<!--
+	CUSTOMIZE: SPECIAL NAVBAR COLORATION
+	If you want to invert the colors of your navbar for your default theme palette, change the line below to read <div id="body" class="invert">
+	If you want to invert your navbar colors for your alternate palette, change the line below to read <div id="body" class="altinvert">
+	If you want to invert the navbar colors on both palettes, change the line below to read <div id="body" class="invert altinvert">
+	Otherwise, leave it unchanged.
+-->
+<div id="body" class="">
+<header id="header">
+
+	<a href="/" id="title">
+		<!--
+			CUSTOMIZE: PAGE HEADER
+			By default, your avatar and title will show/not show depending on the settings of your base blog.
+			If you'd rather hide one of them while ignoring the settings of your blog:
+				- TO HIDE AVATAR: delete the line below, from {block:ShowAvatar} to {/block:ShowAvatar}.
+				- TO HIDE TITLE: delete the second line below, from {block:ShowTitle} to {/block:ShowTitle}.
+			
+			If you'd like to insert an image as a "logo", copy+paste the following line BETWEEN the Avatar and Title lines:
+			<img src="https://YOUR-URL-HERE.com" id="logo" class="" />
+			And replace https://YOUR-URL-HERE.com with the link to your image.
+
+			If you'd like to add padding (spacing) around your avatar or your logo:
+				- FOR AVATAR: change class="{AvatarShape}" to class="{AvatarShape} padded"
+				- FOR LOGO: change class="" to class="padded"
+		-->
+		{block:ShowAvatar}<img src="{PortraitURL-128}" id="avatar" class="{AvatarShape}" />{/block:ShowAvatar}
+		{block:ShowTitle}<h1>{Title}</h1>{/block:ShowTitle}
+	</a>
+	
+	<section id="links-search">
+		<!-- BLOG NAVIGATION -->
+		<nav id="links">
+			<div id="mobnav" class="{block:AskEnabled}a{/block:AskEnabled} {block:SubmissionsEnabled}s{/block:SubmissionsEnabled}">
+				<span>{lang:Navigate}</span>
+				<div class="dropdown">
+					{block:AskEnabled}<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}">{AskLabel}</a>{/block:AskEnabled}
+					{block:SubmissionsEnabled}<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+				</div>
+			</div>
+			
+			{block:HasPages}
+			<!-- CUSTOM PAGES -->
+			<div id="pages">
+				<span>{lang:Pages}</span>
+				<div class="dropdown">{block:Pages}<a href="{URL}" class="{CurrentState}">{Label}</a>{/block:Pages}</div>
+			</div>
+			{/block:HasPages}
+		</nav>
+		
+		<!-- SEARCH BAR -->
+		<form action="/search" method="get" id="search">
+			<label for="q">{lang:Search}</label>
+			<input id="q" type="text" name="q" value="{SearchQuery}"/>
+			<input class="button" type="submit" value="{lang:Search}">
+		</form>
+
+	</section>
+
+</header>
+
+
+<section id="page">
+
+	<div id="actions">
+		<!-- BACK TO TOP BUTTON -->
+		<div id="scrolltotop_parent" tabindex="0" style="display: none;">
+			<div id="scrolltotop_arrow" class="button">↑ Top</div>
+		</div>
+
+		<!--
+			CUSTOMIZE: PALETTE TOGGLE
+			If you don't want two color palettes, remove the line below.
+		-->
+		<a id="palette" tabindex="0" class="button">Toggle Palette</a>
+	</div>
+
+
+	<main id="main">
+		<aside>
+			<!--
+				CUSTOMIZE: TAGS
+				As you can see below, the tags section is written in the following format:
+				
+				<dt>Label here</dt>
+					<dd>Corresponding value here</dd>
+				
+				A template has been given below, in the format of AO3's actual work tags header, filled with example "tags".
+				
+				You can edit both the labels and tags to say whatever you want.
+					- You don't need to add a colon (:) to the end of the labels; the page code will handle that automatically.
+					- To bold a label/value, add class="warning" to the opening dt/dd element tag, as seen below with Archive Warnings.
+					- To add a link, either to a label or a value, write it as follows:
+						<a href="https://YOUR-URL-HERE.com">YOUR TEXT HERE</a>
+						Examples can be seen in the Relationships and Additional Tags sections.
+						(You can also link to other pages on your blog by omitting the "https://YOUR-USERNAME-HERE.tumblr.com" part of the url, and just writing "/pagename". For example, if I was using this page on https://starlightpreviews.tumblr.com, and I wanted to link to https://starlightpreviews.tumblr.com/theme11, I would write <a href="/theme11">TEXT HERE</a> )
+					- Add new labels and tags by adding more <dt></dt> <dd></dd> pairs. Make sure they're added ABOVE the </dl></aside> tags!
+				
+				See below for additional notes.
+			-->
+
+			<dl id="worktags">
+				<!-- Add new labels/values BELOW this line! -->
+
+				<dt>Rating</dt>
+					<dd>General Audiences</dd>
+				
+				<dt class="warning">Archive Warnings</dt>
+					<dd class="warning">No Archive Warnings Apply</dd>
+				
+				<dt>Categories</dt>
+					<dd>Multi, M/F</dd>
+				
+				<dt>Fandoms</dt>
+					<dd>No Fandom</dd>
+				
+				<dt>Relationships</dt>
+					<dd><a href="/">Character A & Character B</a>, Character A/Character C, Minor or Background Relationship(s)</dd>
+				
+				<dt>Characters</dt>
+					<dd>Character A, Character B, Character C</dd>
+				
+				<dt>Additional Tags</dt>
+					<dd>Tag 1, <a href="/">Tag 2 With a Link</a></dd>
+				
+				<dt>Language</dt>
+					<dd>English</dd>
+				
+				<!--
+					Additional customization notes: SERIES
+					Each series is in the following format. You can copy/paste this to add more. Make sure to add commas to split up different series!
+
+					<span class="series">
+						<a class="prev" href="https://LINK-TO-PREVIOUS.com">Previous Work</a><span class="separator"></span>
+						Part # of <a href="https://RELEVANT-LINK.com">Series Name</a>
+						<span class="separator"></span><a class="next" href="https://LINK-TO-NEXT.com/">Next Work</a>
+					</span>
+
+					If there is no previous/next work, simply delete the first/third lines, including the "separator" span element.
+
+					Additionally, to ensure the spacing between each line is proper, you'll have to add comments between lines. They're the arrow-bracket and dash combinations around this text, looking like this but without the spaces: < !-- -- >
+					
+					See below for examples. The first series has both a Previous and a Next link, while the second has only a Previous link.
+				-->
+				<dt>Series</dt>
+					<dd>
+					<!-- Add new series BELOW this line! -->
+
+					<span class="series"><!--
+						--><a class="prev" href="https://starlightthemes.tumblr.com/pg2">Previous Work</a><span class="separator"></span><!--
+						-->Part 3 of <a href="https://starlightthemes.tumblr.com/tagged/pages">Pages by starlightthemes</a><!--
+						--><span class="separator"></span><a class="next" href="https://starlightthemes.tumblr.com/">Next Work</a><!--
+					--></span>,
+
+					<span class="series"><!--
+						--><a class="prev" href="https://starlightthemes.tumblr.com/theme10">Previous Work</a><!--
+						--><span class="separator"></span><!--
+						-->Part 11 of <a href="https://starlightthemes.tumblr.com/tagged/themes">Themes by starlightthemes</a><!--
+					--></span>
+
+					<!-- Add new series ABOVE this line! -->
+					</dd>
+
+
+				<!--
+					Additional customization notes: STATS
+					The stats section is a smaller version of this entire list. Add label-value pairs in the same <dt>-<dd> format as described above.
+					Again, if you want to bold a bit, add class="warning", and if you want to add a link, wrap it in <a> tags.
+				-->
+				<dt>Stats</dt>
+					<dd><dl class="stats">
+					<!-- Add new stats BELOW this line! -->
+					
+					<dt>Published</dt>
+						<dd>2022-10-10</dd>
+
+					<dt>Words</dt>
+						<dd>123456</dd>
+
+					<!-- Add new stats ABOVE this line! -->
+					</dl></dd>
+				
+				<!-- Add new labels/values ABOVE this line! -->
+			</dl>
+		</aside>
+
+		<header id="workhead">
+			<!--
+				CUSTOMIZE: HEADER
+				h2: The work's title.
+				h3: The work's author/subtitle. By default, this is your blog name.
+				Summary and Notes: Like the AO3 fields. A paragraph has been provided in each as a starting point. If you don't want one or both of the sections, delete everything from the corresponding <section id="..."> to its matching </section> tag a few lines below.
+					- You'll also have the chance to add notes at the end of the "work". If you don't want end notes, delete <p class="jump"> at the end of the header notes section.
+			-->
+
+			<h2>Title Goes Here</h2>
+			<h3>{Name}</h3>
+			
+			<section id="summary">
+				<h3 class="heading">Summary:</h3>
+
+				<div>
+					<p>Your text here! Add new paragraphs inside p tags, like the ones around this block.</p>
+				</div>
+			</section>
+			
+			<section id="top" class="notes">
+				<h3 class="heading">Notes:</h3>
+
+				<div>
+					<p>Your text here! Add new paragraphs inside p tags, like the ones around this block.</p>
+				</div>
+			
+				<!-- Delete the next line if you don't have end notes. -->
+				<p class="jump">(See the end of the work for <a href="#bottom">more notes</a>.)</p>
+			</section>
+		</header>
+
+
+		<section id="workbody">
+			<!--
+				CUSTOMIZE: BODY
+				The actual "work"! Add whatever you want here- paragraphs, images, lists, etc.
+			-->
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+		</section>
+
+
+		<footer id="workfoot">
+			<!--
+				CUSTOMIZE: FOOTER
+				Notes: identical to the notes at the top of the page. Same guidelines apply.
+				Series: You can copy/paste whatever you added for the Series label in the tags section at the top of the page. Just replace the "span"s with "li"s, so that instead of the outermost tag being <span class="series"> ... </span> , it's <li class="series"> ... </li> .
+			-->
+			<section id="bottom" class="notes">
+				<h3 class="heading">Notes:</h3>
+
+				<div>
+					<p>Your text here! Add new paragraphs inside p tags, like the ones around this block.</p>
+				</div>
+			</section>
+
+			<section id="series">
+				<h3 class="heading">Series this work belongs to:</h3>
+
+				<ul>
+					<li class="series"><!--
+						--><a class="prev" href="https://starlightthemes.tumblr.com/pg2">Previous Work</a><span class="separator"></span><!--
+						-->Part 3 of <a href="https://starlightthemes.tumblr.com/tagged/pages">Pages by starlightthemes</a><!--
+						--><span class="separator"></span><a class="next" href="https://starlightthemes.tumblr.com/">Next Work</a><!--
+					--></li>
+
+					<li class="series"><!--
+						--><a class="prev" href="https://starlightthemes.tumblr.com/theme10">Previous Work</a><!--
+						--><span class="separator"></span><!--
+						-->Part 11 of <a href="https://starlightthemes.tumblr.com/tagged/themes">Themes by starlightthemes</a><!--
+					--></li>
+				</ul>
+			</section>
+		</footer>
+	</main>
+
+
+	<aside id="left">
+		<div id="members">
+			<h3>{text:Group blog members title}</h3>
+			<a href="{GroupMemberURL}" title="{GroupMemberTitle}">{GroupMemberName}</a>
+		</div>
+	</aside>
+
+</section>
+
+
+<footer id="footer">
+	<!--
+		CUSTOMIZE: PERSONAL LINKS
+		Theme 11 has a lot of custom link options in the footer (including the ask/submit links, depending on whether your blog has asks/submissions enabled). They've been provided here as defaults; you can choose whether or not to keep them, and if you'd like, you can replace them with entirely different links. All links follow the same <a href="https://YOUR-LINK-HERE.com">Text here</a> format.
+
+		If you're removing a link, delete that full line. If this leaves the section empty i.e. there is only the <h3>Section Heading</h3> and the empty inner <div></div> left, then delete the entire outer <div id="SECTION-NAME">...</div>.
+	-->
+
+	<div id="contact">
+		<h3>Contact</h3>
+		<div>
+			{block:AskEnabled}<a href="/ask" class="asklink">{AskLabel}</a>{/block:AskEnabled}
+			{block:SubmissionsEnabled}<a href="/submit" class="submitlink">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+			<a href="mailto:YOUR-MAIL@PROVIDER.COM">{lang:Send me an email}</a>
+		</div>
+	</div>
+
+	<div id="social">
+		<h3>{lang:Follow}</h3>
+		<div>
+			<a href="https://YOUR-LINK-HERE.com">Personal website</a>
+			<a href="https://archiveofourown.org/users/USERNAME">Archive of Our Own</a>
+			<a href="https://www.fanfiction.net/u/USER-ID">Fanfiction.net</a>
+			<a href="https://twitter.com/USERNAME">Twitter</a>
+			<a href="https://www.reddit.com/user/USERNAME">{lang:Reddit}</a>
+			<a href="https://www.facebook.com/USERNAME">{lang:Facebook}</a>
+			<a href="https://instagram.com/USERNAME">Instagram</a>
+			<a href="https://www.youtube.com/channel/CHANNEL-ID">YouTube</a>
+			<a href="https://YOUR-LINK-HERE.com">{lang:Subscribe via RSS}</a>
+		</div>
+	</div>
+
+	<div id="development">
+		<h3>Development</h3>
+		<div>
+			<span>{Name} &copy; {CopyrightYears}</span>
+			<span>{lang:Powered by Tumblr 2}</span>
+			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+			<a id="credit" href="https://starlightthemes.tumblr.com/pg3">Page by starlightthemes</a>
+			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+		</div>
+	</div>
+</footer>
+</div>
+
+</body>
+</html>
