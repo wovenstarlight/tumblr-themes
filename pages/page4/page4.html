@@ -175,6 +175,21 @@
 
 <section id="page">
 
+	<!--
+		CUSTOMIZE: ICON AND NAME
+		
+		To change the icon, replace {PortraitURL-128} with the link to your icon image,
+			and delete any instances of {block:ShowAvatar} or {/block:ShowAvatar}.
+			(Make sure not to delete the text *between* these {block}s!)
+		To remove the icon, delete the two blocks of text wrapped in {block:ShowAvatar} ... {/block:ShowAvatar}.
+
+		To change the "user" name (your blog username by default), replace {Name}.
+	-->
+    <header id="phead" {block:ShowAvatar}class="avatar"{/block:ShowAvatar}>
+        {block:ShowAvatar}<a href="/"><img class="{AvatarShape}" src="{PortraitURL-128}"></a>{/block:ShowAvatar}
+        <h2>{Name}</h2>
+    </header>
+
 	<div id="actions">
 		<!-- BACK TO TOP BUTTON -->
 		<div id="scrolltotop_parent" tabindex="0" style="display: none;">
@@ -182,10 +197,17 @@
 		</div>
 
 		<!--
-			CUSTOMIZE: PALETTE TOGGLE
-			If you don't want two color palettes, remove the line below.
+			CUSTOMIZE: ACTIONS MENU
+			If you don't want two color palettes, remove the first <a>...</a> below.
+			If you don't want a follow or message link, remove the second or third <a>...</a> below, respectively.
+			You can add more links by copying/pasting the following:
+				<a href="https://YOUR-URL-HERE.com" class="button">LABEL HERE</a>
 		-->
 		<a id="palette" tabindex="0" class="button">Toggle Palette</a>
+		
+		<a href="//tumblr.com/follow/{Name}" class="button">{lang:Follow}</a>
+		
+		<a href="//tumblr.com/message/{Name}" class="button">Message</a>
 	</div>
 
 
@@ -377,9 +399,17 @@
 
 
 	<aside id="left">
-		<div id="members">
-			<h3>{text:Group blog members title}</h3>
-			<a href="{GroupMemberURL}" title="{GroupMemberTitle}">{GroupMemberName}</a>
+		<div>
+			<h3>Sample section</h3>
+			<a href="#" title="example">Link</a>
+			<a href="#" title="example">Link</a>
+			<a href="#" title="example">Link</a>
+		</div>
+		
+		<div>
+			<a href="#" title="example">Link</a>
+			<a href="#" title="example">Link</a>
+			<a href="#" title="example">Link</a>
 		</div>
 	</aside>
 
