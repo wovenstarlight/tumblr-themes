@@ -206,6 +206,7 @@ html:not(.alt) .invert #links-search *, html.alt .altinvert #links-search * { co
 	z-index: 3;
 	width: fit-content;
 }
+#actions .button { margin-inline: 0.25em }
 .button.active, .pagination a.curr:not([href]):hover {
 	box-shadow: inset 0.25em 0.25em 0.25em rgba(var(--text--rgb), 0.2);
 	background: var(--bg2);
