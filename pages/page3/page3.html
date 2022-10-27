@@ -134,8 +134,12 @@
 				- TO HIDE TITLE: delete the second line below, from {block:ShowTitle} to {/block:ShowTitle}.
 			
 			If you'd like to insert an image as a "logo", copy+paste the following line BETWEEN the Avatar and Title lines:
-			<img src="https://YOUR-URL-HERE.com" id="logo"/>
+			<img src="https://YOUR-URL-HERE.com" id="logo" class="" />
 			And replace https://YOUR-URL-HERE.com with the link to your image.
+
+			If you'd like to add padding (spacing) around your avatar or your logo:
+				- FOR AVATAR: change class="{AvatarShape}" to class="{AvatarShape} padded"
+				- FOR LOGO: change class="" to class="padded"
 		-->
 		{block:ShowAvatar}<img src="{PortraitURL-128}" id="avatar" class="{AvatarShape}" />{/block:ShowAvatar}
 		{block:ShowTitle}<h1>{Title}</h1>{/block:ShowTitle}

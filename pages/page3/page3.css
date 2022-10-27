@@ -99,18 +99,20 @@ body.lower .button, body.lower #links-search, body.lower footer {
 	height: 3.75em;
 	width: fit-content;
 	padding-right: 1.25em;
+	gap: 0.25em;
 }
 #title h1 {
 	font-weight: var(--tweight);
 	color: var(--accent);
 	font-size: 1.75em;
-	margin: 0 0 0 0.25em;
+	margin: 0;
 }
 #title:hover { color: inherit }
 #avatar, #logo {
 	height: 100%;
 	width: auto;
 }
+.padded#avatar, .padded#logo { padding: 0.4em 0 }
 /* #region Links/search bar */
 #links-search {
 	background: var(--accent) linear-gradient(var(--accent) 50%, rgba(var(--text--rgb), 0.3));
