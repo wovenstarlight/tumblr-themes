@@ -197,6 +197,7 @@ html:not(.alt) .invert #links-search *, html.alt .altinvert #links-search * { co
 	display: grid;
 	align-self: start;
 }
+/* Page header */
 #phead {
 	display: grid;
 	grid-template-columns: auto 1fr;
