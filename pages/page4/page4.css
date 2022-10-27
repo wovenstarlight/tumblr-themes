@@ -266,8 +266,6 @@ html, body { height: 100vh }
 	text-underline-offset: 0.3em;
 }
 #footer a:hover { text-decoration-style: dotted }
-#contact:not(.a, .s, .e),
-#social:not(.p, .a, .f, .t, .fb, .i, .y, .r) { display: none }
 /* #endregion */
 
 
