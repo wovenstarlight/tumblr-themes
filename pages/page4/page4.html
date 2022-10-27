@@ -211,191 +211,51 @@
 	</div>
 
 
-	<main id="main">
-		<aside>
-			<!--
-				CUSTOMIZE: TAGS
-				As you can see below, the tags section is written in the following format:
-				
-				<dt>Label here</dt>
-					<dd>Corresponding value here</dd>
-				
-				A template has been given below, in the format of AO3's actual work tags header, filled with example "tags".
-				
-				You can edit both the labels and tags to say whatever you want.
-					- You don't need to add a colon (:) to the end of the labels; the page code will handle that automatically.
-					- To bold a label/value, add class="warning" to the opening dt/dd element tag, as seen below with Archive Warnings.
-					- To add a link, either to a label or a value, write it as follows:
-						<a href="https://YOUR-URL-HERE.com">YOUR TEXT HERE</a>
-						Examples can be seen in the Relationships and Additional Tags sections.
-						(You can also link to other pages on your blog by omitting the "https://YOUR-USERNAME-HERE.tumblr.com" part of the url, and just writing "/pagename". For example, if I was using this page on https://starlightpreviews.tumblr.com, and I wanted to link to https://starlightpreviews.tumblr.com/theme11, I would write <a href="/theme11">TEXT HERE</a> )
-					- Add new labels and tags by adding more <dt></dt> <dd></dd> pairs. Make sure they're added ABOVE the </dl></aside> tags!
-				
-				See below for additional notes.
-			-->
-
-			<dl id="worktags">
-				<!-- Add new labels/values BELOW this line! -->
-
-				<dt>Rating</dt>
-					<dd>General Audiences</dd>
-				
-				<dt class="warning">Archive Warnings</dt>
-					<dd class="warning">No Archive Warnings Apply</dd>
-				
-				<dt>Categories</dt>
-					<dd>Multi, M/F</dd>
-				
-				<dt>Fandoms</dt>
-					<dd>No Fandom</dd>
-				
-				<dt>Relationships</dt>
-					<dd><a href="/">Character A & Character B</a>, Character A/Character C, Minor or Background Relationship(s)</dd>
-				
-				<dt>Characters</dt>
-					<dd>Character A, Character B, Character C</dd>
-				
-				<dt>Additional Tags</dt>
-					<dd>Tag 1, <a href="/">Tag 2 With a Link</a></dd>
-				
-				<dt>Language</dt>
-					<dd>English</dd>
-				
-				<!--
-					Additional customization notes: SERIES
-					Each series is in the following format. You can copy/paste this to add more. Make sure to add commas to split up different series!
-
-					<span class="series">
-						<a class="prev" href="https://LINK-TO-PREVIOUS.com">Previous Work</a><span class="separator"></span>
-						Part # of <a href="https://RELEVANT-LINK.com">Series Name</a>
-						<span class="separator"></span><a class="next" href="https://LINK-TO-NEXT.com/">Next Work</a>
-					</span>
-
-					If there is no previous/next work, simply delete the first/third lines, including the "separator" span element.
-
-					Additionally, to ensure the spacing between each line is proper, you'll have to add comments between lines. They're the arrow-bracket and dash combinations around this text, looking like this but without the spaces: < !-- -- >
-					
-					See below for examples. The first series has both a Previous and a Next link, while the second has only a Previous link.
-				-->
-				<dt>Series</dt>
-					<dd>
-					<!-- Add new series BELOW this line! -->
-
-					<span class="series"><!--
-						--><a class="prev" href="https://starlightthemes.tumblr.com/pg2">Previous Work</a><span class="separator"></span><!--
-						-->Part 3 of <a href="https://starlightthemes.tumblr.com/tagged/pages">Pages by starlightthemes</a><!--
-						--><span class="separator"></span><a class="next" href="https://starlightthemes.tumblr.com/">Next Work</a><!--
-					--></span>,
-
-					<span class="series"><!--
-						--><a class="prev" href="https://starlightthemes.tumblr.com/theme10">Previous Work</a><!--
-						--><span class="separator"></span><!--
-						-->Part 11 of <a href="https://starlightthemes.tumblr.com/tagged/themes">Themes by starlightthemes</a><!--
-					--></span>
-
-					<!-- Add new series ABOVE this line! -->
-					</dd>
-
-
-				<!--
-					Additional customization notes: STATS
-					The stats section is a smaller version of this entire list. Add label-value pairs in the same <dt>-<dd> format as described above.
-					Again, if you want to bold a bit, add class="warning", and if you want to add a link, wrap it in <a> tags.
-				-->
-				<dt>Stats</dt>
-					<dd><dl class="stats">
-					<!-- Add new stats BELOW this line! -->
-					
-					<dt>Published</dt>
-						<dd>2022-10-10</dd>
-
-					<dt>Words</dt>
-						<dd>123456</dd>
-
-					<!-- Add new stats ABOVE this line! -->
-					</dl></dd>
-				
-				<!-- Add new labels/values ABOVE this line! -->
-			</dl>
-		</aside>
-
-		<header id="workhead">
-			<!--
-				CUSTOMIZE: HEADER
-				h2: The work's title.
-				h3: The work's author/subtitle. By default, this is your blog name.
-				Summary and Notes: Like the AO3 fields. A paragraph has been provided in each as a starting point. If you don't want one or both of the sections, delete everything from the corresponding <section id="..."> to its matching </section> tag a few lines below.
-					- You'll also have the chance to add notes at the end of the "work". If you don't want end notes, delete <p class="jump"> at the end of the header notes section.
-			-->
-
-			<h2>Title Goes Here</h2>
-			<h3>{Name}</h3>
+	<aside>
+		<!--
+			CUSTOMIZE: PERSONAL DATA
+			As you can see below, the personal stats section is written in the following format:
 			
-			<section id="summary">
-				<h3 class="heading">Summary:</h3>
-
-				<div>
-					<p>Your text here! Add new paragraphs inside p tags, like the ones around this block.</p>
-				</div>
-			</section>
+			<dt>Label here</dt>
+				<dd>Corresponding value here</dd>
 			
-			<section id="top" class="notes">
-				<h3 class="heading">Notes:</h3>
-
-				<div>
-					<p>Your text here! Add new paragraphs inside p tags, like the ones around this block.</p>
-				</div>
+			A template has been given below, in the format of AO3's actual profile page.
 			
-				<!-- Delete the next line if you don't have end notes. -->
-				<p class="jump">(See the end of the work for <a href="#bottom">more notes</a>.)</p>
-			</section>
-		</header>
+			You can edit both the labels and tags to say whatever you want, and add as many extra stats as you'd like.
+				- You don't need to add a colon (:) to the end of the labels; the page code will handle that automatically.
+				- To bold a label/value, add class="warning" to the opening dt/dd element tag- for example, <dt> ... </dt> would become <dt class="warning"> ... </dt>
+				- To add a link, either to a label or a value, write it as follows:
+					<a href="https://YOUR-URL-HERE.com">YOUR TEXT HERE</a>
+					Examples can be seen in the "My pseuds" field.
+					(You can also link to other pages on your blog by omitting the "https://YOUR-USERNAME-HERE.tumblr.com" part of the url, and just writing "/pagename". For example, if I was using this page on https://starlightpreviews.tumblr.com, and I wanted to link to https://starlightpreviews.tumblr.com/theme11, I would write <a href="/theme11">TEXT HERE</a> )
+				- Add new labels and tags by adding more <dt></dt> <dd></dd> pairs. Make sure they're added ABOVE the </dl></aside> tags!
+			
+			See below for additional notes.
+		-->
+
+		<dl id="mystats">
+			<!-- Add new labels/values BELOW this line! -->
+
+			<dt>My pseuds</dt>
+				<dd><a href="//wovenstarlight.tumblr.com">wovenstarlight</a>, <a href="//starlightthemes.tumblr.com">starlightthemes</a>, <a href="//starlightpreviews.tumblr.com">starlightpreviews</a></dd>
+			
+			<dt>I joined on</dt>
+				<dd>2021-06-10</dd>
+			
+			<!-- Add new labels/values ABOVE this line! -->
+		</dl>
+	</aside>
 
 
-		<section id="workbody">
-			<!--
-				CUSTOMIZE: BODY
-				The actual "work"! Add whatever you want here- paragraphs, images, lists, etc.
-			-->
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<section id="workbody">
+		<!--
+			CUSTOMIZE: BODY
+			The actual "work"! Add whatever you want here- paragraphs, images, lists, etc.
+		-->
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-		</section>
-
-
-		<footer id="workfoot">
-			<!--
-				CUSTOMIZE: FOOTER
-				Notes: identical to the notes at the top of the page. Same guidelines apply.
-				Series: You can copy/paste whatever you added for the Series label in the tags section at the top of the page. Just replace the "span"s with "li"s, so that instead of the outermost tag being <span class="series"> ... </span> , it's <li class="series"> ... </li> .
-			-->
-			<section id="bottom" class="notes">
-				<h3 class="heading">Notes:</h3>
-
-				<div>
-					<p>Your text here! Add new paragraphs inside p tags, like the ones around this block.</p>
-				</div>
-			</section>
-
-			<section id="series">
-				<h3 class="heading">Series this work belongs to:</h3>
-
-				<ul>
-					<li class="series"><!--
-						--><a class="prev" href="https://starlightthemes.tumblr.com/pg2">Previous Work</a><span class="separator"></span><!--
-						-->Part 3 of <a href="https://starlightthemes.tumblr.com/tagged/pages">Pages by starlightthemes</a><!--
-						--><span class="separator"></span><a class="next" href="https://starlightthemes.tumblr.com/">Next Work</a><!--
-					--></li>
-
-					<li class="series"><!--
-						--><a class="prev" href="https://starlightthemes.tumblr.com/theme10">Previous Work</a><!--
-						--><span class="separator"></span><!--
-						-->Part 11 of <a href="https://starlightthemes.tumblr.com/tagged/themes">Themes by starlightthemes</a><!--
-					--></li>
-				</ul>
-			</section>
-		</footer>
-	</main>
+		<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+	</section>
 
 
 	<aside id="left">
