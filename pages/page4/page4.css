@@ -12,8 +12,7 @@ a {
 	border-bottom: 1px solid;
 }
 main a[href]:hover, #right a[href]:hover { color: rgba(var(--text--rgb), 0.65) }
-.button, .custom_audio_buttons div,
-.notes .more_notes_link, .notes .notes_loading {
+.button {
 	cursor: pointer;
 	display: inline-block;
 	border-radius: 0.3em;
@@ -24,19 +23,47 @@ main a[href]:hover, #right a[href]:hover { color: rgba(var(--text--rgb), 0.65) }
 	background: var(--bg) linear-gradient(var(--bg), var(--bg2));
 }
 .button:hover, .button:focus, .button.active,
-#search input:hover, #search input:focus,
-.custom_audio_buttons div:hover,
-.notes .more_notes_link:hover {
+#search input:hover, #search input:focus {
 	box-shadow: inset 0.25em 0.25em 0.25em var(--bg2)
 }
-.button:hover, .notes .more_notes_link:hover { color: var(--accent) }
-.button:active, .notes .more_notes_link:active {
+.button:hover { color: var(--accent) }
+.button:active {
 	color: var(--text);
 	background-image: unset;
 }
-h1, h2, h3, h4 { font-family: var(--tfont) }
+h1, h2, h3, h4, h5, h6 { font-family: var(--tfont) }
+h2 {
+	font-size: 2.35rem;
+	font-weight: normal;
+	margin: 0.1rem 0;
+}
+h3 {
+	font-size: 1.4rem;
+	font-weight: normal;
+}
+p, li { margin: 1.375em 0 }
+blockquote {
+	border-inline-start: 0.14em solid var(--bg2);
+	margin-inline-start: 1.5em;
+	padding: 0.75em;
+}
+blockquote > *:first-child { margin-block-start: 0 }
+blockquote > *:last-child { margin-block-end: 0 }
+ul {
+	margin: 1.125em 0;
+	padding: 0 1em;
+}
+ol {
+	margin: 0.75em 0;
+	padding: 0 1.5em;
+}
+li { margin: 0.75em 0 0.75em 1.75em }
+hr {
+	width: 33%;
+	margin: 0.875em auto 1.25em;
+}
 /* Accessibility */
-#skip, #hiddentitle, #search label, #postnotes h2 {
+#skip, #hiddentitle, #search label {
 	position: fixed;
 	font-size: 1px;
 	top: -100rem;
@@ -50,18 +77,12 @@ h1, h2, h3, h4 { font-family: var(--tfont) }
 	box-shadow: 0.1em 0.1em 0.25em -0.1em rgba(var(--text--rgb), 0.75);
 }
 /* #region Casing */
-body.upper h1, body.upper h2, body.upper h3, body.upper h4, body.upper .pagination,
-body.upper .button, body.upper #links-search, body.upper footer,
-body.upper .date, body.upper .post .text a, body.upper .more_notes_link_container,
-body.upper .post .tags-container .label, body.upper #postnotes .action a,
-body.upper .audiowrapper .trackname, body.upper .custom_audio_buttons {
+body.upper h1, body.upper h2, body.upper h3, body.upper h4,
+body.upper .button, body.upper #links-search, body.upper footer {
 	text-transform: uppercase;
 }
 body.lower h1, body.lower h2, body.lower h3, body.upper h4, body.lower .pagination,
-body.lower .button, body.lower .view-button, body.lower #links-search, body.lower footer,
-body.lower .date, body.lower .post .text, body.lower .more_notes_link_container,
-body.lower .post .tags-container .label,
-body.lower .audiowrapper .trackname, body.lower .custom_audio_buttons {
+body.lower .button, body.lower #links-search, body.lower footer {
 	text-transform: lowercase;
 }
 /* #endregion */
@@ -92,7 +113,8 @@ body.lower .audiowrapper .trackname, body.lower .custom_audio_buttons {
 	height: 100%;
 	width: auto;
 }
-.padded#avatar, .padded#logo { padding: 0.4em 0 }
+.padded#avatar { padding: 0.4em 0.4em 0.4em 0 }
+.padded#logo { padding: 0.4em 0 }
 /* #region Links/search bar */
 #links-search {
 	background: var(--accent) linear-gradient(var(--accent) 50%, rgba(var(--text--rgb), 0.3));
@@ -114,7 +136,7 @@ html:not(.alt) .invert #links-search *, html.alt .altinvert #links-search * { co
 }
 #links .current-page { font-weight: bold }
 #mobnav { display: inline-block }
-#mobnav:not(.a, .s, .r, .ar) { display: none }
+#mobnav:not(.a, .s) { display: none }
 #mobnav a:hover, #mobnav:hover span, #pages:hover span {
 	color: var(--text);
 	background-color: var(--bg2);
