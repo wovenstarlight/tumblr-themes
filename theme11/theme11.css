@@ -86,6 +86,7 @@ body.lower .audiowrapper .trackname, body.lower .custom_audio_buttons {
 	font-size: 1.75em;
 	margin: 0;
 }
+#title h1:first-child { margin-left: 0.5em }
 #title:hover { color: inherit }
 #avatar, #logo {
 	height: 100%;
