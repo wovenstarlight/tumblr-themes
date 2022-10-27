@@ -92,7 +92,7 @@ body.lower .audiowrapper .trackname, body.lower .custom_audio_buttons {
 	height: 100%;
 	width: auto;
 }
-.padded#avatar { padding: 0.4em 0.4em 0.4em 0 }
+.padded#avatar { padding: 0.4em 0 0.4em 0.4em }
 .padded#logo { padding: 0.4em 0 }
 /* #region Links/search bar */
 #links-search {

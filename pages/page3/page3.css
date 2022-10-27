@@ -113,7 +113,7 @@ body.lower .button, body.lower #links-search, body.lower footer {
 	height: 100%;
 	width: auto;
 }
-.padded#avatar { padding: 0.4em 0.4em 0.4em 0 }
+.padded#avatar { padding: 0.4em 0 0.4em 0.4em }
 .padded#logo { padding: 0.4em 0 }
 /* #region Links/search bar */
 #links-search {
