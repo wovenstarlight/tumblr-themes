@@ -1,0 +1,33 @@
+.collapsible { margin-bottom: 1em }
+.collapsible > .clpbutton {
+	position: relative;
+	cursor: pointer;
+	text-decoration: 1px dotted underline;
+	text-underline-offset: 0.25em;
+	margin-bottom: 0.25em;
+	padding-left: 1.25em;
+}
+.collapsible > .clpbutton:hover { color: rgba(var(--text--rgb), 0.65) }
+.collapsible > .clpbutton::before {
+	content: "";
+	display: block;
+	position: absolute;
+	border: 0.4em solid transparent;
+	border-left-color: inherit;
+	top: 0.3em;
+	left: 0.4em;
+}
+.collapsible.active > .clpbutton::before {
+	border-left-color: transparent;
+	border-top-color: inherit;
+	left: 0.1em;
+	top: 0.55em;
+}
+
+.collapsible > .clpcontent {
+	padding: 0.5em 1em 0.3em;
+	transition: max-height 0.4s ease;
+	background-color: rgba(var(--bg--rgb), 0.6);
+	border: thin solid var(--bg2);
+}
+.collapsible.even > .clpcontent { background-color: rgba(var(--bg2--rgb), 0.5) }
