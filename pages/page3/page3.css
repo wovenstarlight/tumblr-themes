@@ -280,7 +280,7 @@ html, body { height: 100vh }
 #worktags .warning { font-weight: bold }
 #worktags .stats * { display: inline; margin: 0 0.1em }
 .stats :first-child { margin-left: 0 }
-#worktags .stats dd + dt { margin-left: 0.75em }
+#worktags .stats dd + dt { margin-left: 0.75em; }
 /* Series navigation */
 .series .separator::before {
 	content: "\25CF";
@@ -306,13 +306,13 @@ h3.heading {
 	border-bottom: thin solid;
 	margin: 0.25em 0;
 }
-:is(#summary, #top) div {
+:is(#summary, .notes) div {
 	margin: 0.75em;
 	line-height: 1.5;
 	font-size: 1.08em;
 }
-:is(#summary, #top) div :first-child { margin-top: 0 }
-:is(#summary, #top) div :last-child { margin-bottom: 0 }
+:is(#summary, .notes) div :first-child { margin-top: 0 }
+:is(#summary, .notes) div :last-child { margin-bottom: 0 }
 #summary + #top { margin-top: 2em }
 .jump {
 	margin-top: 1.5em;
@@ -358,6 +358,7 @@ h3.heading {
 /* #endregion */
 /* #region Work footer */
 #workfoot { padding: 0 4em 2em }
+.notes + #series { margin-top: 3em }
 #series h3 { border: none }
 #series ul {
 	list-style: none;
