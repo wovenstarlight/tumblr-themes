@@ -107,12 +107,14 @@ body.lower .button, body.lower #links-search, body.lower footer {
 	font-size: 1.75em;
 	margin: 0;
 }
+#title h1:first-child { margin-left: 0.5em }
 #title:hover { color: inherit }
 #avatar, #logo {
 	height: 100%;
 	width: auto;
 }
-.padded#avatar, .padded#logo { padding: 0.4em 0 }
+.padded#avatar { padding: 0.4em 0.4em 0.4em 0 }
+.padded#logo { padding: 0.4em 0 }
 /* #region Links/search bar */
 #links-search {
 	background: var(--accent) linear-gradient(var(--accent) 50%, rgba(var(--text--rgb), 0.3));
