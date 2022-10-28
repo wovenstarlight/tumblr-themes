@@ -31,5 +31,5 @@ If you like this page or plan to use it, please [reblog it](https://starlightthe
 - [Scroll to top script](https://github.com/FabianLins/scrolltotop_arrow_jquery) by Fabian Lins
 
 ## Screenshot previews
-![A Tumblr blog page styled to almost exactly resemble an Archive Of Our Own work page, complete with tags header, title and author, summary, and more. The blog title and avatar have replaced the AO3 logo and name on the top left of the page.](https://github.com/wovenstarlight/tumblr-themes/blob/main/pages/page1/page3_light.png?raw=true)
-![The same page scrolled further down and swapped to Reversi colors, showing the work summary and starting notes, body, and ending notes, along with a list of the series it's supposedly a part of.](https://github.com/wovenstarlight/tumblr-themes/blob/main/pages/page1/page3_dark.png?raw=true)
+![A Tumblr blog page styled to almost exactly resemble an Archive Of Our Own work page, complete with tags header, title and author, summary, and more. The blog title and avatar have replaced the AO3 logo and name on the top left of the page.](https://github.com/wovenstarlight/tumblr-themes/blob/main/pages/page3/page3_light.png?raw=true)
+![The same page scrolled further down and swapped to Reversi colors, showing the work summary and starting notes, body, and ending notes, along with a list of the series it's supposedly a part of.](https://github.com/wovenstarlight/tumblr-themes/blob/main/pages/page3/page3_dark.png?raw=true)
