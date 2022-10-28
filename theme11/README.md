@@ -6,7 +6,7 @@ PREVIEWS: [Index page](https://starlightpreviews.tumblr.com/theme11), [permalink
 
 [INSTALL](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme11/theme11.html)
 
-If you like this theme or plan to use it, please [reblog it](https://starlightthemes.tumblr.com/theme11) on Tumblr!
+If you like this theme or plan to use it, please [reblog it](https://starlightthemes.tumblr.com/post/699336450345435136) on Tumblr!
 
 ## Features
 ### Theme-specific

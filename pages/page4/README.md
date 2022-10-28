@@ -6,7 +6,7 @@ An about/navigation page designed to match [Theme 11: Archive Of Your Own](https
 
 [INSTALL](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/pages/page4/page4.html)
 
-If you like this page or plan to use it, please [reblog it](https://starlightthemes.tumblr.com/pg4) on Tumblr!
+If you like this page or plan to use it, please [reblog it](https://starlightthemes.tumblr.com/post/699336450345435136) on Tumblr!
 
 ## Features
 ### Page-specific
