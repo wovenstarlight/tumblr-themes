@@ -419,9 +419,12 @@ html, body { height: 100vh }
 		grid-row: 1; grid-column: 1;
 		border-block-width: 0.7em;
 	}
-	#left > div, #left h3 { display: inline }
-	#left > div { margin-right: 0.25em }
-	#left h3 { padding: 0 0.5em; margin: 0 }
+	#left > div { display: inline; margin-right: 0.25em }
+	#left h3 {
+		display: inline-block;
+		padding: 0 0.5em;
+		margin: 0;
+	}
 	#left h3::after { content: ":" }
 	#left a { display: inline-block; margin: 0.2em }
 }
