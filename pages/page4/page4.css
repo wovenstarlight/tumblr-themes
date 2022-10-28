@@ -296,6 +296,7 @@ html, body { height: 100vh }
 /* #endregion */
 /* #region Actions menu */
 .tmblr-iframe--unified-controls.iframe-controls--desktop ~ #body #actions { top: 50px }
+.tmblr-iframe--unified-controls.iframe-controls--phone-mobile ~ #body #actions { top: 60px }
 #actions {
 	margin-top: 1em;
 	justify-self: right;

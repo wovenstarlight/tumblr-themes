@@ -198,6 +198,7 @@ html:not(.alt) .invert #links-search *, html.alt .altinvert #links-search * { co
 }
 /* #region Actions menu */
 .tmblr-iframe--unified-controls.iframe-controls--desktop ~ #body #actions { top: 50px }
+.tmblr-iframe--unified-controls.iframe-controls--phone-mobile ~ #body #actions { top: 60px }
 #actions {
 	margin-bottom: 1em;
 	margin-left: auto;
