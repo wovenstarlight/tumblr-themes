@@ -6,7 +6,7 @@ A WIP page designed to match [Theme 11: Archive Of Your Own](https://wovenstarli
 
 [INSTALL](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/pages/page3/page3.html)
 
-If you like this theme or plan to use it, please [reblog it](https://starlightthemes.tumblr.com/pg3) on Tumblr!
+If you like this page or plan to use it, please [reblog it](https://starlightthemes.tumblr.com/pg3) on Tumblr!
 
 ## Features
 ### Page-specific
