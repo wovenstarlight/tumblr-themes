@@ -45,8 +45,7 @@ If you like this theme or plan to use it, please [reblog it](https://starlightth
 - Layout and design by [Archive of Our Own](https://archiveofourown.org)
 - [Style My Tooltips](http://manos.malihu.gr/style-my-tooltips-jquery-plugin) by malihu
 - [Phosphor Icons](https://phosphoricons.com/)
-- [Expanded Tumblr localization](https://github.com/boscoxvi/expandedtumblrlocalization) by boscoxvi
-- [NPF photosets plugin](https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin) by codematurgy
+- [Expanded Tumblr localization](https://github.com/boscoxvi/expandedtumblrlocalization) and [NPF photosets plugin](https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin) by codematurgy
 - [Custom audio posts](https://annasthms.tumblr.com/more/js/customaudio/new) by annasthms
 - [Tag filtering](https://glenthemes.tumblr.com/spoilertags) by glenthemes
 - [Palette toggle](https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a) by eggdesign
