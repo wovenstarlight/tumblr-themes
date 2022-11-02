@@ -565,6 +565,8 @@ aside .sticky.header { top: calc(var(--title-height) + 1.5em) }
 #blogavatar {
 	width: 100%;
 	border: 0.4em solid var(--border);
+	height: 15em;
+	object-fit: cover;
 }
 /* Name, ask/submit, description */
 #name-asksubmit {
