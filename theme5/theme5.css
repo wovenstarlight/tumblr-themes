@@ -701,6 +701,7 @@ pre {
 			flex-direction: column;
 	row-gap: 1em;
 	max-width: 28em;
+	min-width: 15em;
 }
 /* Icon and important links section */
 #iconlinks {
@@ -881,12 +882,13 @@ body.light #darklight .cp-sun { display: none }
 /* Description */
 #sidebartext {
 	text-align: center;
-	width: -webkit-max-content;
-	width: -moz-max-content;
-	width: max-content;
 	max-width: 100%;
 }
 #sidebartext:empty { display: none }
+#title, #description {
+	width: max-content;
+	display: inline-block;
+}
 #title h1 { margin: 0 }
 #description { margin: 0.5em 0 }
 #description > :first-child { margin-top: 0 }
