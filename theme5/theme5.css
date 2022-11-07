@@ -951,10 +951,7 @@ form input {
 			-ms-flex-direction: column;
 				flex-direction: column;
 	}
-	.posts {
-		margin: 2em;
-		margin-right: 0;
-	}
+	.posts { margin: 3em 0 3em 2em }
 	
 	/* Position/resize page nav */
 	#pagination {
