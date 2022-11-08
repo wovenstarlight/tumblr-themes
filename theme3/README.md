@@ -4,9 +4,7 @@ A newspaper-style theme good for text-heavy blogs.
 
 PREVIEWS: [Index page](https://starlightpreviews.tumblr.com/theme3), [permalink](https://starlightpreviews.tumblr.com/theme3/permalink)
 
-[INSTALL (standard)](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme3/theme3.html)
-
-[INSTALL (spoiler plugin)](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme3/theme3spoilers.html)
+[INSTALL](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme3/theme3.html)
 
 If you like this theme or plan to use it, please [reblog it](https://starlightthemes.tumblr.com/post/669390258666946560/theme-3-newsprint) on Tumblr!
 
