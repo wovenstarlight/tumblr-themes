@@ -4,9 +4,7 @@ A super customizable theme, with everything you might need visible at a glance.
 
 PREVIEWS: [Index page](https://starlightpreviews.tumblr.com/theme2), [permalink](https://starlightpreviews.tumblr.com/theme2/permalink)
 
-[INSTALL (standard)](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme2/theme2.html)
-
-[INSTALL (spoiler plugin)](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme2/theme2spoilers.html)
+[INSTALL](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme2/theme2.html)
 
 If you like this theme or plan to use it, please [reblog it](https://starlightthemes.tumblr.com/post/664789392768008192/theme-2-paint-job) on Tumblr!
 
