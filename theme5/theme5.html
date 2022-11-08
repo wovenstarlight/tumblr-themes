@@ -11,7 +11,7 @@
 		Custom audio posts by annasthms: https://annasthms.tumblr.com/more/js/customaudio/new
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 6 Sep 2022.
+	Last updated 7 Nov 2022.
 -->
 
 <!DOCTYPE html>
@@ -134,6 +134,9 @@
 	{block:IfNotUseTumblrFontsForBody}<link href="https://fonts.googleapis.com/css2?family={text:Google font for body}" rel="stylesheet">{/block:IfNotUseTumblrFontsForBody}
 	{block:IfNotUseTumblrFontsForTitle}<link href="https://fonts.googleapis.com/css2?family={text:Google font for title}" rel="stylesheet">{/block:IfNotUseTumblrFontsForTitle}
 
+	<!-- Theme stylesheet -->
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme5/theme5.min.css">
+
 <style>
 /* DEFAULT VARIABLES */
 html {
@@ -172,19 +175,14 @@ html.light {
 	--highlight-bg: {color:LM Text highlight background};
 }
 
-/* Custom CSS */
-{CustomCSS}
-</style>
-
-	<!-- Theme stylesheet -->
-	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme5/theme5.min.css">
-
-<style>
 /* Background images */
 {block:IfBackgroundImage}html body { background-image: url("{image:Background}") }{/block:IfBackgroundImage}
 {block:IfLMBackgroundImage}html.light body { background-image: url("{image:LM Background}") }{/block:IfLMBackgroundImage}
 /* Dual avatars */
 html.light .planet .dark, html:not(.light) .planet .light { display: none }
+
+/* Custom CSS */
+{CustomCSS}
 </style>
 
 	<!-- jQuery CDN -->
