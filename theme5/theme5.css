@@ -699,7 +699,6 @@ pre {
 	-webkit-box-direction: normal;
 		-ms-flex-direction: column;
 			flex-direction: column;
-	align-items: center;
 	row-gap: 1em;
 	max-width: 28em;
 	min-width: 15em;
@@ -887,6 +886,7 @@ body.light #darklight .cp-sun { display: none }
 	width: -moz-max-content;
 	width: max-content;
 	max-width: 100%;
+	align-self: center;
 }
 #sidebartext:empty { display: none }
 #title h1 { margin: 0 }
