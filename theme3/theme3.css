@@ -542,7 +542,8 @@ body.sidebarleft #sidebar { /* ...on left */
 	margin-top: 0.05em;
 	margin-right: 0.025em;
 	font-size: 3.25em;
-	color: var(--bold)
+	color: var(--bold);
+	line-height: 0.5;
 }
 /* Group members section */
 #members .members {
