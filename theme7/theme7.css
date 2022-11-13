@@ -707,7 +707,11 @@ div:not(.hasimg) .feature img {
 	
 	#scrolltotop_parent { bottom: 3.75em }
 	body.showright #scrolltotop_parent { display: none }
-	body.showright #showright { left: calc(50vw - 1.375em); transform: unset }
+	body.showright #showright {
+		left: calc(50vw - 1.375em);
+		transform: unset;
+		z-index: 6;
+	}
 }
 
 @media (max-width: 30em) {
