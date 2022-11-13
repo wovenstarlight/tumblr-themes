@@ -243,7 +243,7 @@
 	<!-- AVATAR/USERNAME -->
 	<a href="/" id="avnm">
 		{block:ShowAvatar}<img src="{PortraitURL-128}" id="avatar" class="{AvatarShape}" alt="Avatar" />{/block:ShowAvatar}
-		<span id="name">{Name}</span>
+		<span id="name">@{Name}</span>
 	</a>
 
 	<!-- BLOG NAVIGATION -->
@@ -276,7 +276,45 @@
 	</main>
 
 	<aside id="sidebar">
-		<!-- TODO: Sidebar image, page title, description, custom links, and pagination -->
+		{block:IfSidebarImage}<img src="{image:Sidebar}" alt="Sidebar" class="og">{/block:IfSidebarImage}
+		{block:IfAltSidebarImage}<img src="{image:ALT Sidebar}" alt="Sidebar" class="alt">{/block:IfAltSidebarImage}
+		
+		{block:HasPages}
+		<!-- CUSTOM PAGES -->
+		<nav id="pages">
+			{block:Pages}<a href="{URL}" class="{CurrentState}">{Label}</a>{/block:Pages}
+		</nav>
+		{/block:HasPages}
+
+		{block:ShowDescription}{block:Description}
+		<!-- BLOG DESCRIPTION -->
+		<div id="desc">{Description}</div>
+		{/block:Description}{/block:ShowDescription}
+
+		{block:ShowTitle}
+		<!-- BLOG TITLE -->
+		<h1 id="title">{Title}</h1>
+		{/block:ShowTitle}
+
+
+		<!-- PAGINATION -->
+		{block:Pagination}<nav id="pagination">
+			{block:PreviousPage}<a href="{PreviousPage}" id="prev">Back</a>{/block:PreviousPage}
+			<span id="curr">{lang:CurrentPage of TotalPages}</span>
+			{block:NextPage}<a href="{NextPage}" id="next">Forth</a>{/block:NextPage}
+		</nav>{/block:Pagination}
+		
+		{block:PermalinkPagination}<nav id="pagination">
+			{block:PreviousPost}<a href="{PreviousPost}" id="prev">Back</a>{/block:PreviousPost}
+			<span id="curr">{lang:See more posts}</span>
+			{block:NextPost}<a href="{NextPost}" id="next">Forth</a>{/block:NextPost}
+		</nav>{/block:PermalinkPagination}
+		
+		{block:DayPage}{block:DayPagination}<nav id="pagination">
+			{block:PreviousDayPage}<a href="{PreviousDayPage}" id="prev">Back</a>{/block:PreviousDayPage}
+			<span id="curr">{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}</span>
+			{block:NextDayPage}<a href="{NextDayPage}" id="next">Forth</a>{/block:NextDayPage}
+		</nav>{/block:DayPagination}{/block:DayPage}
 	</aside>
 </div>
 
