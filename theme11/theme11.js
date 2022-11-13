@@ -33,8 +33,7 @@ $(document).ready( function() {
 	});
 	// #endregion
 
-	// #region Sidebar
-	// Mobile toggle
+	// Sidebar mobile toggle
 	$("#sidebar, #back").on("click keypress", function() {
 		$("#sidebar").toggleClass("active");
 		$("#body").toggleClass("showright");
