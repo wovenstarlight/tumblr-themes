@@ -105,7 +105,6 @@
 		--bg-pg: {color:Page background};
 		--text: {color:Text};
 		--accent: {color:Accent};
-		--header-img: url({image:Header});
 		--bg-img: url({image:Background});
 		--sidebar-img: url({image:Sidebar});
 	}
@@ -115,7 +114,6 @@
 		--bg-pg: {color:ALT Page background};
 		--text: {color:ALT Text};
 		--accent: {color:ALT Accent};
-		--header-img: url({image:ALT Header});
 		--bg-img: url({image:ALT Background});
 		--sidebar-img: url({image:ALT Sidebar});
 	}
@@ -224,6 +222,15 @@
 
 <div id="banner">
 	<!-- Header image section -->
+	{block:IfHeaderImage}
+	{block:IfHeaderOverlay}<span class="overlay {block:IfAltHeaderImage}og{/block:IfAltHeaderImage}">{text:Header overlay}</span>{/block:IfHeaderOverlay}
+	<img src="{image:Header}" alt="Header" {block:IfAltHeaderImage}class="og"{/block:IfAltHeaderImage}>
+	{/block:IfHeaderImage}
+	
+	{block:IfAltHeaderImage}
+	{block:IfAltHeaderOverlay}<span class="overlay {block:IfHeaderImage}alt{/block:IfHeaderImage}">{text:ALT Header overlay}</span>{/block:IfAltHeaderOverlay}
+	<img src="{image:ALT Header}" alt="Header" {block:IfHeaderImage}class="alt"{/block:IfHeaderImage}>
+	{/block:IfAltHeaderImage}
 </div>
 
 
