@@ -17,14 +17,13 @@ html {
 	background-color: var(--bg-pg);
 	color: var(--text);
 	font-family: var(--bfont);
+	height: 100%;
 }
 a {
 	color: var(--text);
-	text-decoration: none;
+	transition: color .2s;
 }
-a:hover {
-	color: var(--accent);
-}
+a:hover, a:focus { color: var(--accent) }
 /* Accessibility */
 #skip, #hiddentitle, #search label {
 	position: fixed;
@@ -37,14 +36,91 @@ a:hover {
 	padding: 0.25em 0.5em;
 }
 /* Roundness */
-.TODO {
+#avatar {
 	border-radius: var(--roundness)
 }
 /* #endregion */
 
 
 
-/* #region HEADER/TITLE/WHATEVER */
+/* #region PAGE LAYOUT */
+body {
+	display: grid;
+	--navbar-size: 3.5em;
+	height: 100%;
+}
+body:not(.ntop) { grid-template-rows: auto 1fr auto }
+body.nleft { margin-left: var(--navbar-size) }
+body.nright { margin-right: var(--navbar-size) }
+/* #endregion */
+
+
+
+/* #region NAVBAR */
+#navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--bg);
+	padding-inline: 1em;
+	z-index: 4;
+}
+body.ntop #navbar {
+	position: sticky;
+	top: 0;
+	width: 100vw;
+	height: var(--navbar-size);
+}
+body:not(.ntop) #navbar {
+	position: fixed;
+}
+body.nleft #navbar {
+	bottom: 0;
+	left: var(--navbar-size);
+	width: 100vh;
+	height: var(--navbar-size);
+	transform: rotate(-90deg);
+	transform-origin: bottom left;
+}
+body.nright #navbar {
+	right: 0;
+	height: 100vh;
+	width: var(--navbar-size);
+	writing-mode: vertical-lr;
+	flex-direction: row-reverse;
+}
+#avnm {
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+	text-decoration: none;
+}
+body.nright #avnm { flex-direction: row-reverse }
+#avatar {
+	--size: 2.5em;
+	height: var(--size);
+	width: var(--size);
+}
+#name, #blognav a {
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	cursor: pointer;
+	padding-block: 0.75em;
+	text-decoration: none;
+}
+/* Blog navigation */
+#blognav {
+	display: flex;
+	gap: 0.5em;
+}
+body:not(.nright) #scrolltotop_parent { order: -1 }
+body.nright #scrolltotop_parent { order: 1 }
+body:not(.ntop) #tumblrcontrols { display: none }
+/* #endregion */
+
+
+
+/* #region SIDEBAR */
 #title {
 	font-family: var(--tfont);
 	font-weight: var(--tweight);
