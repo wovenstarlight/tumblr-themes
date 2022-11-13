@@ -50,6 +50,7 @@ body {
 	height: 100%;
 }
 body:not(.ntop) { grid-template-rows: auto 1fr auto }
+body.ntop { grid-template-rows: auto auto 1fr auto }
 body.nleft { margin-left: var(--navbar-size) }
 body.nright { margin-right: var(--navbar-size) }
 /* #endregion */
@@ -115,7 +116,12 @@ body.nright #avnm { flex-direction: row-reverse }
 }
 body:not(.nright) #scrolltotop_parent { order: -1 }
 body.nright #scrolltotop_parent { order: 1 }
-body:not(.ntop) #tumblrcontrols { display: none }
+.tmblr-iframe--unified-controls {
+	transform: scale(0.75);
+	transform-origin: top right;
+}
+body.ntop .tmblr-iframe--unified-controls { margin-top: var(--navbar-size) }
+body.nright .tmblr-iframe--unified-controls { margin-right: var(--navbar-size) }
 /* #endregion */
 
 
