@@ -68,6 +68,16 @@
 	<meta name="select:Header text position" content="start; align-items: end" title="Bottom left">
 	<meta name="select:Header text position" content="end; text-align: right; align-items: end" title="Bottom right">
 	<meta name="image:Background" content="{HeaderImage}">
+	<meta name="select:Background image size" content="no-repeat; --bg-size: contain" title="Contain">
+	<meta name="select:Background image size" content="no-repeat; --bg-size: cover" title="Cover">
+	<meta name="select:Background image size" content="repeat; --bg-size: contain" title="Tile">
+	<meta name="select:Background image position" content="center" title="Center">
+	<meta name="select:Background image position" content="top" title="Top">
+	<meta name="select:Background image position" content="bottom" title="Bottom">
+	<meta name="select:Background image position" content="left" title="Left">
+	<meta name="select:Background image position" content="right" title="Right">
+	<meta name="select:Background image scrolling" content="scroll" title="Scrollable">
+	<meta name="select:Background image scrolling" content="fixed" title="Fixed">
 	<meta name="image:Sidebar" content="">
 	<meta name="image:ALT Header" content="">
 	<meta name="text:ALT Header text" content="">
@@ -89,6 +99,16 @@
 	<meta name="select:ALT Header text position" content="start; align-items: end" title="Bottom left">
 	<meta name="select:ALT Header text position" content="end; text-align: right; align-items: end" title="Bottom right">
 	<meta name="image:ALT Background" content="{HeaderImage}">
+	<meta name="select:ALT Background image size" content="no-repeat; --bg-size: contain" title="Contain">
+	<meta name="select:ALT Background image size" content="no-repeat; --bg-size: cover" title="Cover">
+	<meta name="select:ALT Background image size" content="repeat; --bg-size: contain" title="Tile">
+	<meta name="select:ALT Background image position" content="center" title="Center">
+	<meta name="select:ALT Background image position" content="top" title="Top">
+	<meta name="select:ALT Background image position" content="bottom" title="Bottom">
+	<meta name="select:ALT Background image position" content="left" title="Left">
+	<meta name="select:ALT Background image position" content="right" title="Right">
+	<meta name="select:ALT Background image scrolling" content="scroll" title="Scrollable">
+	<meta name="select:ALT Background image scrolling" content="fixed" title="Fixed">
 	<meta name="image:ALT Sidebar" content="">
 
 	<!-- Color options -->
@@ -150,7 +170,12 @@
 		--text: {color:Text};
 		--accent: {color:Accent};
 		--text-h: {color:Header text};
+		{block:IfBackgroundImage}
 		--bg-img: url({image:Background});
+		--bg-repeat: {select:Background image size};
+		--bg-position: {select:Background image position};
+		--bg-attachment: {select:Background image scrolling};
+		{/block:IfBackgroundImage}
 		--sidebar-img: url({image:Sidebar});
 	}
 
@@ -161,7 +186,12 @@
 		--text: {color:ALT Text};
 		--accent: {color:ALT Accent};
 		--text-h: {color:ALT Header text};
+		{block:IfAltBackgroundImage}
 		--bg-img: url({image:ALT Background});
+		--bg-repeat: {select:ALT Background image size};
+		--bg-position: {select:ALT Background image position};
+		--bg-attachment: {select:ALT Background image scrolling};
+		{/block:IfAltBackgroundImage}
 		--sidebar-img: url({image:ALT Sidebar});
 	}
 	

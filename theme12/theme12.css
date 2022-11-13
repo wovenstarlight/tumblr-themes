@@ -151,6 +151,9 @@ body.nright .tmblr-iframe--unified-controls { margin-right: var(--navbar-size) }
 /* #region CENTER - GENERAL AND SEARCH */
 #center {
 	position: relative;
+	background: var(--bg-img) var(--bg-position) var(--bg-repeat);
+	background-size: var(--bg-size);
+	background-attachment: var(--bg-attachment);
 }
 /* #region Search form */
 body:not(.showsearch) #search { opacity: 0; pointer-events: none }
