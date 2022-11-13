@@ -36,7 +36,7 @@ a:hover, a:focus { color: var(--accent) }
 	padding: 0.25em 0.5em;
 }
 /* Roundness */
-#avatar {
+#avatar, #search button {
 	border-radius: var(--roundness)
 }
 /* #endregion */
@@ -116,6 +116,73 @@ body.nright #avnm { flex-direction: row-reverse }
 body:not(.nright) #scrolltotop_parent { order: -1 }
 body.nright #scrolltotop_parent { order: 1 }
 body:not(.ntop) #tumblrcontrols { display: none }
+/* #endregion */
+
+
+
+/* #region CENTER - GENERAL AND SEARCH */
+#center {
+	position: relative;
+}
+/* #region Search form */
+body:not(.showsearch) #search { opacity: 0; pointer-events: none }
+#search {
+	transition: opacity .2s;
+}
+body.showsearch { overflow: hidden }
+#search, #back {
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+}
+#back {
+	background-color: var(--bg-pg);
+	opacity: 0.75;
+}
+#search form {
+	position: absolute;
+	top: 50%;
+	background-color: var(--bg);
+	padding: 1em;
+	display: flex;
+	gap: 0.5em;
+}
+body.nleft #search form {
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin-left: calc(-0.5 * var(--navbar-size));
+}
+body.nright #search form {
+	right: 50%;
+	transform: translate(50%, -50%);
+	margin-right: calc(0.5 * var(--navbar-size));
+}
+body.ntop #search form {
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin-top: calc(-0.5 * var(--navbar-size));
+}
+#search input {
+	background-color: unset;
+	color: var(--text);
+	border: none;
+	border-bottom: 0.1em solid;
+	transition: opacity .2s;
+}
+#search input:placeholder-shown:not(:focus) { opacity: 0.25 }
+#search input:placeholder-shown:not(:focus):hover { opacity: 0.5 }
+#search button {
+	background: none;
+	border: none;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--text);
+	cursor: pointer;
+	padding: 0.25em 0.5em;
+	transition: color .2s;
+}
+#search button:hover, #search button:focus { color: var(--accent) }
+/* #endregion */
 /* #endregion */
 
 
