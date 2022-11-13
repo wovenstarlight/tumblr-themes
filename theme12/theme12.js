@@ -1,6 +1,12 @@
+function tumblrNotesInserted() {
+	// set up tooltips for notes on permalink pages
+	$("[title]").style_my_tooltips();
+}
+
 $(document).ready( function() {
 
-	// #region Color mode on first load
+	// #region Color mode
+	// On first load
 	const page = $("html");
 
 	const currPalette = localStorage.getItem("palette");
@@ -10,7 +16,7 @@ $(document).ready( function() {
 		page.removeClass("alt");
 	} // else palette is unset; use default
 
-	// Color mode button click
+	// Button click
 	$("#palette").on("click keypress", function() {
 		page.toggleClass("alt");
 		
@@ -22,11 +28,19 @@ $(document).ready( function() {
 	});
 	// #endregion
 
+	// Search toggle
+	$("#opensearch, #back").on("click keypress", function() {
+		$("body").toggleClass("showsearch");
+		if ($("body").hasClass("showsearch")) {
+			$("#q").focus();
+		}
+	});
+	
 	// #region Audio post setup
 	customAudio({
-		playButton: "<i class='ph-play'></i>",
-		pauseButton: "<i class='ph-pause'></i>",
-		errorIcon: "<i class='ph-x'></i>",
+		playButton: "Play",
+		pauseButton: "Pause",
+		errorIcon: "Error",
 		callAfterLoad: null
 	});
 	// #endregion
@@ -38,17 +52,8 @@ $(document).ready( function() {
 	});
 	// #endregion
 
-	// #region TODO: CHOOSE TOOLTIPS AND ICON SET
 	// Set up tooltips
 	$("[title]").style_my_tooltips();
-	// Set up tooltips
-	tippy("[data-tippy-content]", {
-		theme: 'standard'
-	});
-
-	// Set up all SVG icons on initial load
-	feather.replace();
-	// #endregion
 
 	// Remove stray paragraph tags
 	$(".bodyitemcontent p:first-child:empty").remove();
