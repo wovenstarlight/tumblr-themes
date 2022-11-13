@@ -49,11 +49,45 @@
 
 	<!-- Image options -->
 	<meta name="image:Header" content="">
-	<meta name="text:Header overlay" content="">
+	<meta name="text:Header text" content="">
+	<meta name="if:Header text background" content="1">
+	<meta name="select:Header image size" content="contain" title="Contain">
+	<meta name="select:Header image size" content="cover" title="Cover">
+	<meta name="select:Header image position" content="center" title="Center">
+	<meta name="select:Header image position" content="top" title="Top">
+	<meta name="select:Header image position" content="bottom" title="Bottom">
+	<meta name="select:Header image position" content="left" title="Left">
+	<meta name="select:Header image position" content="right" title="Right">
+	<meta name="select:Header text position" content="center; text-align: center; align-items: center" title="Center">
+	<meta name="select:Header text position" content="center; text-align: center; align-items: start" title="Top">
+	<meta name="select:Header text position" content="center: text-align: center; align-items: end" title="Bottom">
+	<meta name="select:Header text position" content="start; align-items: center" title="Left">
+	<meta name="select:Header text position" content="end; text-align: right; align-items: center" title="Right">
+	<meta name="select:Header text position" content="start; align-items: start" title="Top left">
+	<meta name="select:Header text position" content="end: text-align: right; align-items: start" title="Top right">
+	<meta name="select:Header text position" content="start; align-items: end" title="Bottom left">
+	<meta name="select:Header text position" content="end; text-align: right; align-items: end" title="Bottom right">
 	<meta name="image:Background" content="{HeaderImage}">
 	<meta name="image:Sidebar" content="">
 	<meta name="image:ALT Header" content="">
-	<meta name="text:ALT Header overlay" content="">
+	<meta name="text:ALT Header text" content="">
+	<meta name="if:ALT Header text background" content="1">
+	<meta name="select:ALT Header image size" content="contain" title="Contain">
+	<meta name="select:ALT Header image size" content="cover" title="Cover">
+	<meta name="select:ALT Header image position" content="center" title="Center">
+	<meta name="select:ALT Header image position" content="top" title="Top">
+	<meta name="select:ALT Header image position" content="bottom" title="Bottom">
+	<meta name="select:ALT Header image position" content="left" title="Left">
+	<meta name="select:ALT Header image position" content="right" title="Right">
+	<meta name="select:ALT Header text position" content="center; text-align: center; align-items: center" title="Center">
+	<meta name="select:ALT Header text position" content="center; text-align: center; align-items: start" title="Top">
+	<meta name="select:ALT Header text position" content="center: text-align: center; align-items: end" title="Bottom">
+	<meta name="select:ALT Header text position" content="start; align-items: center" title="Left">
+	<meta name="select:ALT Header text position" content="end; text-align: right; align-items: center" title="Right">
+	<meta name="select:ALT Header text position" content="start; align-items: start" title="Top left">
+	<meta name="select:ALT Header text position" content="end: text-align: right; align-items: start" title="Top right">
+	<meta name="select:ALT Header text position" content="start; align-items: end" title="Bottom left">
+	<meta name="select:ALT Header text position" content="end; text-align: right; align-items: end" title="Bottom right">
 	<meta name="image:ALT Background" content="{HeaderImage}">
 	<meta name="image:ALT Sidebar" content="">
 
@@ -62,6 +96,7 @@
 	<meta name="color:Page background" content="{BackgroundColor}">
 	<meta name="color:Text" content="{TitleColor}">
 	<meta name="color:Accent" content="{AccentColor}">
+	<meta name="color:Header text" content="{TitleColor}">
 	<!-- Alternate palette -->
 	<meta name="if:Palette toggle" content="1">
 	<meta name="select:Default palette" content="" title="Original">
@@ -70,6 +105,7 @@
 	<meta name="color:ALT Page background" content="{BackgroundColor}">
 	<meta name="color:ALT Text" content="{TitleColor}">
 	<meta name="color:ALT Accent" content="{AccentColor}">
+	<meta name="color:ALT Header text" content="{TitleColor}">
 
 	<!-- General theme options -->
 	<meta name="text:Filtered tags" content="spoiler, spoilers">
@@ -109,21 +145,45 @@
 
 	html:not(.alt) { /* REGULAR PALETTE */
 		--bg: {color:Background};
+		--bg--rgb: {RGBcolor:Background};
 		--bg-pg: {color:Page background};
 		--text: {color:Text};
 		--accent: {color:Accent};
+		--text-h: {color:Header text};
 		--bg-img: url({image:Background});
 		--sidebar-img: url({image:Sidebar});
 	}
 
 	html.alt { /* ALTERNATE PALETTE */
 		--bg: {color:ALT Background};
+		--bg--rgb: {RGBcolor:ALT Background};
 		--bg-pg: {color:ALT Page background};
 		--text: {color:ALT Text};
 		--accent: {color:ALT Accent};
+		--text-h: {color:ALT Header text};
 		--bg-img: url({image:ALT Background});
 		--sidebar-img: url({image:ALT Sidebar});
 	}
+	
+	/* HEADER IMAGE */
+	{block:IfHeaderImage}
+	#banner img.og {
+	    object-fit: {select:Header image size};
+	    object-position: {select:Header image position};
+	}
+	{block:IfHeaderText}
+	#banner span.og { justify-content: {select:Header text position}; }
+	{/block:IfHeaderText}
+	{/block:IfHeaderImage}
+	{block:IfAltHeaderImage}
+	#banner img.alt {
+	    object-fit: {select:ALT Header image size};
+	    object-position: {select:ALT Header image position};
+	}
+	{block:IfAltHeaderText}
+	#banner span.alt { justify-content: {select:ALT Header text position}; }
+	{/block:IfAltHeaderText}
+	{/block:IfAltHeaderImage}
 	</style>
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme12/theme12.min.css">
 	<style>{CustomCSS}</style>
@@ -230,12 +290,12 @@
 <div id="banner">
 	<!-- Header image section -->
 	{block:IfHeaderImage}
-	{block:IfHeaderOverlay}<span class="og">{text:Header overlay}</span>{/block:IfHeaderOverlay}
+	{block:IfHeaderText}<span class="og {block:IfHeaderTextBackground}bg{/block:IfHeaderTextBackground}">{text:Header text}</span>{/block:IfHeaderText}
 	<img src="{image:Header}" alt="Header" class="og">
 	{/block:IfHeaderImage}
 	
 	{block:IfAltHeaderImage}
-	{block:IfAltHeaderOverlay}<span class="alt">{text:ALT Header overlay}</span>{/block:IfAltHeaderOverlay}
+	{block:IfAltHeaderText}<span class="alt {block:IfAltHeaderTextBackground}bg{/block:IfAltHeaderTextBackground}">{text:ALT Header text}</span>{/block:IfAltHeaderText}
 	<img src="{image:ALT Header}" alt="Header" class="alt">
 	{/block:IfAltHeaderImage}
 </div>
