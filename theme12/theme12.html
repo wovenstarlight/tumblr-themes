@@ -228,13 +228,13 @@
 <div id="banner">
 	<!-- Header image section -->
 	{block:IfHeaderImage}
-	{block:IfHeaderOverlay}<span class="overlay {block:IfAltHeaderImage}og{/block:IfAltHeaderImage}">{text:Header overlay}</span>{/block:IfHeaderOverlay}
-	<img src="{image:Header}" alt="Header" {block:IfAltHeaderImage}class="og"{/block:IfAltHeaderImage}>
+	{block:IfHeaderOverlay}<span class="og">{text:Header overlay}</span>{/block:IfHeaderOverlay}
+	<img src="{image:Header}" alt="Header" class="og">
 	{/block:IfHeaderImage}
 	
 	{block:IfAltHeaderImage}
-	{block:IfAltHeaderOverlay}<span class="overlay {block:IfHeaderImage}alt{/block:IfHeaderImage}">{text:ALT Header overlay}</span>{/block:IfAltHeaderOverlay}
-	<img src="{image:ALT Header}" alt="Header" {block:IfHeaderImage}class="alt"{/block:IfHeaderImage}>
+	{block:IfAltHeaderOverlay}<span class="alt">{text:ALT Header overlay}</span>{/block:IfAltHeaderOverlay}
+	<img src="{image:ALT Header}" alt="Header" class="alt">
 	{/block:IfAltHeaderImage}
 </div>
 
