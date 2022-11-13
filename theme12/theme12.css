@@ -36,7 +36,7 @@ a:hover, a:focus { color: var(--accent) }
 	padding: 0.25em 0.5em;
 }
 /* Roundness */
-#avatar, #search button {
+#avatar.square, #search button {
 	border-radius: var(--roundness)
 }
 /* #endregion */
@@ -102,6 +102,7 @@ body.nright #avnm { flex-direction: row-reverse }
 	height: var(--size);
 	width: var(--size);
 }
+body.nleft #avatar { transform: rotate(90deg) }
 #name, #blognav a {
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
