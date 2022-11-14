@@ -22,6 +22,10 @@ html {
 a {
 	color: var(--text);
 	transition: color .2s;
+	text-decoration: none;
+}
+#desc a, .post .body a {
+	text-decoration: underline;
 	text-underline-offset: 0.2em;
 }
 a:hover, a:focus { color: var(--accent) }
@@ -35,9 +39,11 @@ a:hover, a:focus { color: var(--accent) }
 #s-m-t-tooltip {
 	margin: 1em;
 	padding: 0.25em 0.5em;
+	background-color: var(--bg);
+	color: var(--text);
 }
 /* Roundness */
-#avatar.square, #search button {
+#avatar.square, #search button, .post, #s-m-t-tooltip {
 	border-radius: var(--roundness)
 }
 /* #endregion */
@@ -301,7 +307,6 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 	gap: 0.25em;
 	
 }
-#pages a, #pagination a { text-decoration: none }
 /* #endregion */
 
 
@@ -309,7 +314,56 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 /* #region POSTS */
 #main {
 	max-width: var(--post-width);
+	display: flex;
+	flex-direction: column;
+	gap: 1.5em;
 }
+.post {
+	background-color: var(--bg);
+}
+/* Header/footer links */
+.post header, .post footer { padding: 1rem }
+.post header, .post footer .topline {
+	text-transform: uppercase;
+	display: flex;
+	flex-flow: row wrap;
+	gap: 0.25em 0.75em;
+	justify-content: space-between;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	font-size: 0.9em;
+}
+/* Spaced out links */
+.post .date, .vsn, .lrt, .tags {
+	display: flex;
+	gap: 0.75em;
+}
+/* #region Like button */
+.customlike { position: relative }
+.customlike .like_button, .customlike iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100% !important;
+	height: 100% !important;
+	overflow: hidden;
+	opacity: 0;
+}
+.like_button:not(.liked) ~ .to-unlike,
+.like_button.liked ~ .to-like { display: none }
+.to-unlike { color: var(--accent) }
+/* #endregion */
+/* #region Tags */
+.tags {
+	flex-flow: row wrap;
+	margin-top: 0.5em;
+}
+.tags a::before { content: "#" }
+.tags a { transition-property: color, opacity }
+.tags a:not(:hover, :focus) { opacity: 0.6 }
+/* #endregion */
 /* #endregion */
 
 
@@ -340,6 +394,7 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 @media (max-width: 60rem) { /* Mobile sizing */
 	#center {
 		justify-items: center;
+		gap: 2em;
 		padding: 5%;
 	}
 	#sidebar { grid-row: 1 }
