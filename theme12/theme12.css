@@ -393,11 +393,13 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 		bottom: 2em;
 		align-self: end;
 		justify-content: end;
-		justify-self: start;
 		max-height: calc(100vh - 4em);
 	}
 	body.ntop #sidebar { max-height: calc(100vh - 4em - var(--navbar-size)) }
-	#main { justify-self: end }
+	body.sright #sidebar { justify-self: start; grid-column: 2; grid-row: 1 }
+	body.sright #main { justify-self: end; grid-column: 1; grid-row: 1 }
+	body.sleft #sidebar { justify-self: end; grid-column: 1; grid-row: 1 }
+	body.sleft #main { justify-self: start; grid-column: 2; grid-row: 1 }
 }
 @media (max-width: 60rem) { /* Mobile sizing */
 	#center {
