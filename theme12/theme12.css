@@ -177,6 +177,7 @@ body.showsearch { overflow: hidden }
 	padding: 1em;
 	display: flex;
 	gap: 0.5em;
+	text-align: center;
 }
 body.nleft #search form {
 	left: 50%;
@@ -199,6 +200,8 @@ body.ntop #search form {
 	border: none;
 	border-bottom: 0.1em solid;
 	transition: opacity .2s;
+	text-align: center;
+	padding: 0.25em 0.5em;
 }
 #search input:placeholder-shown:not(:focus) { opacity: 0.25 }
 #search input:placeholder-shown:not(:focus):hover { opacity: 0.5 }
