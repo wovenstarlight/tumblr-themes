@@ -297,7 +297,7 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 	justify-content: space-between;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
-	text-align: center;
+	text-align-last: center;
 	gap: 0.25em;
 	
 }
