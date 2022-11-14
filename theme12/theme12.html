@@ -410,7 +410,25 @@
 		<!-- TODO: Date headers (index pages only) -->
 
 		<article class="post">
-			<!-- TODO: Post header; date, pin, source, submitted by -->
+			{block:Date}<header>
+				{block:IfPostDates}<a href="{Permalink}" class="date" title="{lang:Posted TimeAgo}">{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfPostTimes}, {block:If24HourTimes}{24HourWithZero}{/block:If24HourTimes}{block:IfNot24HourTimes}{12Hour}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes} {CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</a>{/block:IfPostDates}
+
+				{block:PinnedPostLabel}<span id="pinnedpost">{PinnedPostLabel}</span>{/block:PinnedPostLabel}
+
+				{block:ContentSource}<span class="source">{lang:Source}: <a href="{SourceURL}">{SourceTitle}</a></span>{/block:ContentSource}
+
+				{block:Submission}
+				<span class="sublabel {PostID}">{lang:Submitted By}</span>
+				<script>
+				if ("{SubmitterURL}".length > 0) {
+					var label = $(".sublabel.{PostID}");
+					var labeltext = label.html();
+					labeltext = labeltext.replace("{Submitter}", "<a href=\"{SubmitterURL}\">{Submitter}</a>");
+					label.html(labeltext);
+				}
+				</script>
+				{/block:Submission}
+			</header>{/block:Date}
 
 			<!-- TODO: Post body -->
 
