@@ -409,7 +409,7 @@
 		{block:Posts}
 		<!-- TODO: Date headers (index pages only) -->
 
-		<article class="post">
+		<article class="post" {block:IfFilteredTags}posts-selector{/block:IfFilteredTags}>
 			{block:Date}<header>
 				{block:IfPostDates}<a href="{Permalink}" class="date" title="{lang:Posted TimeAgo}">{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfPostTimes}, {block:If24HourTimes}{24HourWithZero}{/block:If24HourTimes}{block:IfNot24HourTimes}{12Hour}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes} {CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</a>{/block:IfPostDates}
 
@@ -430,9 +430,42 @@
 				{/block:Submission}
 			</header>{/block:Date}
 
+
 			<!-- TODO: Post body -->
 
-			<!-- TODO: Post footer; note count/via/source, like/reblog, tags -->
+
+			{block:Date}<footer>
+				<span class="topline">
+					<span class="vsn">
+						{block:NoteCount}<a href="{Permalink}#notes" class="notecount">{NoteCountWithLabel}</a>{/block:NoteCount}
+						{block:RebloggedFrom}
+						<a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}">{lang:Via}</a>
+						<a href="{ReblogRootURL}" title="{lang:Originally from ReblogRootName}">{lang:Source}</a>
+						{/block:RebloggedFrom}
+					</span>
+
+					<span class="lrt">
+						<!-- LIKE/REBLOG/SHOW TAGS -->
+						{block:IfLikeButtons}
+						<a href="#" class="customlike">
+						{LikeButton size="30"}
+						<span class="to-like">{block:English}Like{/block:English}{block:German}Liken{/block:German}{block:French}J'aime{/block:French}{block:Italian}Mi piace{/block:Italian}{block:Japanese}スキ{/block:Japanese}{block:Turkish}Beğen{/block:Turkish}{block:Spanish}Me gusta{/block:Spanish}{block:Russian}Нравится{/block:Russian}{block:Polish}Lubię{/block:Polish}{block:PortuguesePT}Gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir{/block:PortugueseBR}{block:Dutch}Vind ik leuk{/block:Dutch}{block:Korean}좋아요{/block:Korean}{block:ChineseSimplified}喜欢{/block:ChineseSimplified}{block:ChineseTraditional}喜歡{/block:ChineseTraditional}{block:ChineseHK}喜歡{/block:ChineseHK}{block:Indonesian}Suka{/block:Indonesian}{block:Hindi}पसंद करें{/block:Hindi}</span>
+						<span class="to-unlike">{block:English}Unlike{/block:English}{block:German}Entliken{/block:German}{block:French}Je n'aime plus{/block:French}{block:Italian}Non mi piace{/block:Italian}{block:Japanese}スキ解除{/block:Japanese}{block:Turkish}Beğenme{/block:Turkish}{block:Spanish}Ya no me gusta{/block:Spanish}{block:Russian}Не нравится{/block:Russian}{block:Polish}Nie lubię{/block:Polish}{block:PortuguesePT}Deixar de gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir (desfazer){/block:PortugueseBR}{block:Dutch}Vind ik niet meer leuk{/block:Dutch}{block:Korean}좋아요 취소{/block:Korean}{block:ChineseSimplified}取消喜欢{/block:ChineseSimplified}{block:ChineseTraditional}收回喜歡{/block:ChineseTraditional}{block:ChineseHK}收回喜歡{/block:ChineseHK}{block:Indonesian}Tidak Suka{/block:Indonesian}{block:Hindi}पसंद हटाएँ{/block:Hindi}</span>
+						</a>
+						{/block:IfLikeButtons}
+						{block:IfReblogButtons}
+						<a href="{ReblogURL}" class="customreblog">{block:English}Reblog{/block:English}{block:German}Rebloggen{/block:German}{block:French}Rebloguer{/block:French}{block:Italian}Reblogga{/block:Italian}{block:Japanese}リブログ{/block:Japanese}{block:Turkish}Yeniden Blogla{/block:Turkish}{block:Spanish}Rebloguear{/block:Spanish}{block:Russian}Реблог{/block:Russian}{block:Polish}Rebloguj{/block:Polish}{block:PortuguesePT}Reblogar{/block:PortuguesePT}{block:PortugueseBR}Reblogar{/block:PortugueseBR}{block:Dutch}Rebloggen{/block:Dutch}{block:Korean}리블로그{/block:Korean}{block:ChineseSimplified}转发{/block:ChineseSimplified}{block:ChineseTraditional}轉格{/block:ChineseTraditional}{block:ChineseHK}轉載{/block:ChineseHK}{block:Indonesian}Reblog{/block:Indonesian}{block:Hindi}रीब्लॉग करेंे{/block:Hindi}</a>
+						{/block:IfReblogButtons}
+						{block:IfPostTags}{block:HasTags}{block:IfShowTagsOnClick}
+						<a class="showtags" tabindex="0">{lang:Tags}</a>
+						{/block:IfShowTagsOnClick}{/block:HasTags}{/block:IfPostTags}
+					</span>
+				</span>
+
+				{block:IfPostTags}{block:HasTags}<span class="tags" {block:IfShowTagsOnClick}style="display: none"{/block:IfShowTagsOnClick}>
+					{block:Tags}<a href="{TagURL}" {block:IfFilteredTags}init-tags{/block:IfFilteredTags}>{Tag}</a>{/block:Tags}
+				</span>{/block:HasTags}{/block:IfPostTags}
+			</footer>{/block:Date}
 		</article>
 		{/block:Posts}
 
