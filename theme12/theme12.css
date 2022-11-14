@@ -173,7 +173,9 @@ body.nright .tmblr-iframe--unified-controls { margin-right: var(--navbar-size) }
 /* #region CENTER - GENERAL AND SEARCH */
 #center {
 	position: relative;
-	background: var(--bg-img) var(--bg-position) var(--bg-repeat);
+	background-image: var(--bg-img);
+	background-position: var(--bg-position);
+	background-repeat: var(--bg-repeat);
 	background-size: var(--bg-size);
 	background-attachment: var(--bg-attachment);
 	display: grid;
