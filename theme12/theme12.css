@@ -363,6 +363,7 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 .tags a::before { content: "#" }
 .tags a { transition-property: color, opacity }
 .tags a:not(:hover, :focus) { opacity: 0.6 }
+.showtags { cursor: pointer }
 .showtags.active { color: var(--accent) }
 /* #endregion */
 /* #endregion */
