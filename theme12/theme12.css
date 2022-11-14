@@ -43,7 +43,9 @@ a:hover, a:focus { color: var(--accent) }
 	color: var(--text);
 }
 /* Roundness */
-#avatar.square, #search button, .post, #s-m-t-tooltip {
+#avatar.square,
+#search form, #search button,
+.post, #s-m-t-tooltip {
 	border-radius: var(--roundness)
 }
 /* #endregion */
