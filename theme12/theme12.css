@@ -22,6 +22,7 @@ html {
 a {
 	color: var(--text);
 	transition: color .2s;
+	text-underline-offset: 0.2em;
 }
 a:hover, a:focus { color: var(--accent) }
 /* Accessibility */
@@ -47,14 +48,17 @@ a:hover, a:focus { color: var(--accent) }
 body {
 	display: grid;
 	--navbar-size: 3.5em;
-	height: 100%;
+	min-height: 100%;
 }
 body:not(.ntop) { grid-template-rows: auto 1fr auto }
 body.ntop { grid-template-rows: auto auto 1fr auto }
 body.nleft { margin-left: var(--navbar-size) }
 body.nright { margin-right: var(--navbar-size) }
 /* #region Banner */
-#banner { position: relative }
+#banner {
+	position: relative;
+	display: flex;
+}
 #banner img {
 	max-height: 25em;
 	width: 100%;
@@ -85,7 +89,7 @@ html:not(.alt) #banner .alt, html.alt #banner .og { display: none }
 	align-items: center;
 	background-color: var(--bg);
 	padding-inline: 1em;
-	z-index: 4;
+	z-index: 5;
 }
 body.ntop #navbar {
 	position: sticky;
@@ -154,21 +158,42 @@ body.nright .tmblr-iframe--unified-controls { margin-right: var(--navbar-size) }
 	background: var(--bg-img) var(--bg-position) var(--bg-repeat);
 	background-size: var(--bg-size);
 	background-attachment: var(--bg-attachment);
+	display: grid;
 }
 /* #region Search form */
 body:not(.showsearch) #search { opacity: 0; pointer-events: none }
 #search {
 	transition: opacity .2s;
+	z-index: 4;
 }
 body.showsearch { overflow: hidden }
-#search, #back {
-	position: fixed;
+#search { position: fixed }
+body.nleft #search {
+	width: calc(100% - var(--navbar-size));
+	height: 100%;
+	top: 0;
+	left: var(--navbar-size);
+}
+body.nright #search {
+	width: calc(100% - var(--navbar-size));
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+body.ntop #search {
 	width: 100%;
-	height: 100vh;
+	height: calc(100% - var(--navbar-size));
+	top: var(--navbar-size);
+	left: 0;
 }
 #back {
 	background-color: var(--bg-pg);
 	opacity: 0.75;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 #search form {
 	position: absolute;
@@ -182,17 +207,14 @@ body.showsearch { overflow: hidden }
 body.nleft #search form {
 	left: 50%;
 	transform: translate(-50%, -50%);
-	margin-left: calc(-0.5 * var(--navbar-size));
 }
 body.nright #search form {
 	right: 50%;
 	transform: translate(50%, -50%);
-	margin-right: calc(0.5 * var(--navbar-size));
 }
 body.ntop #search form {
 	left: 50%;
 	transform: translate(-50%, -50%);
-	margin-top: calc(-0.5 * var(--navbar-size));
 }
 #search input {
 	background-color: unset;
@@ -222,15 +244,62 @@ body.ntop #search form {
 
 
 /* #region SIDEBAR */
+#sidebar {
+	display: flex;
+	flex-direction: column;
+	max-width: 25em;
+	text-align: justify;
+}
+#sidebar > * { margin-block: 0.3rem }
+#sidebar > :first-child { margin-block-start: 0 }
+#sidebar > :last-child { margin-block-end: 0 }
+/* Sidebar images */
+#sidebarimg {
+	position: relative;
+	display: flex;
+	overflow: hidden;
+}
+html:not(.alt) #sidebarimg.oggrad::after,
+html.alt #sidebarimg.altgrad::after {
+	content: "";
+	background: linear-gradient(transparent 70%, var(--bg-pg) 98%);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none }
+/* Title */
 #title {
 	font-family: var(--tfont);
 	font-weight: var(--tweight);
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 4em;
+	line-height: 1;
 }
+/* Links and pagination */
+#pages, #pagination {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	text-align: center;
+	gap: 0.25em;
+	
+}
+#pages a, #pagination a { text-decoration: none }
 /* #endregion */
 
 
 
 /* #region POSTS */
+#main {
+	max-width: var(--post-width);
+}
 /* #endregion */
 
 
@@ -241,4 +310,28 @@ body.ntop #search form {
 
 
 /* #region RESPONSIVENESS */
+@media (min-width: 60rem) { /* Desktop sizing */
+	#center {
+		grid-template-columns: auto auto;
+		gap: 5%;
+		padding: 2em;
+	}
+	#sidebar {
+		position: sticky;
+		bottom: 2em;
+		align-self: end;
+		justify-content: end;
+		justify-self: start;
+		max-height: calc(100vh - 4em);
+	}
+	body.ntop #sidebar { max-height: calc(100vh - 4em - var(--navbar-size)) }
+	#main { justify-self: end }
+}
+@media (max-width: 60rem) { /* Mobile sizing */
+	#center {
+		justify-items: center;
+		padding: 5%;
+	}
+	#sidebar { grid-row: 1 }
+}
 /* #endregion */
