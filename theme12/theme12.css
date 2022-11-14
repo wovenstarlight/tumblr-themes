@@ -86,12 +86,16 @@ html:not(.alt) #banner .alt, html.alt #banner .og { display: none }
 /* #endregion */
 /* Footer */
 #footer {
-	padding: 1em;
+	padding: 0.5em 1em;
 	display: flex;
 	flex-flow: row wrap;
-	gap: 0.5em 2em;
+	gap: 0.5em 1em;
+	align-items: center;
 	justify-content: center;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
 }
+#footer a { padding: 0.5em 1em }
 /* #endregion */
 
 
@@ -304,8 +308,10 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
 	text-align-last: center;
-	gap: 0.25em;
-	
+}
+#pages a, #pagination a {
+	padding: 0.25em 0.5em;
+	margin-inline: -0.5em;
 }
 /* #endregion */
 
