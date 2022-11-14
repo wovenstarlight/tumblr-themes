@@ -347,9 +347,7 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 	letter-spacing: 0.1em;
 }
 #hdr h2, .newdate h3 { margin: 0 }
-#hdr.day ~ .newdate,
-#hdr:not(.perma) ~ .post .date .d,
-#hdr.perma ~ .post .date .p { display: none }
+#hdr.day ~ .newdate { display: none }
 #hdr p { margin-block: 0.25em 0.5em }
 #hdr p a { padding: 0.5em }
 .post { background-color: var(--bg) }
@@ -369,7 +367,7 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 	font-size: 0.9em;
 }
 /* Spaced out links */
-.post .date, .vsn, .lrt, .tags {
+.vsn, .lrt, .tags {
 	display: flex;
 	gap: 0.25em 0.75em;
 }

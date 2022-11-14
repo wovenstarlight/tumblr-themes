@@ -478,13 +478,13 @@
 
 		
 		{block:Posts}
-		{block:Date}{block:IndexPage}{block:NewDayDate}<a class="newdate" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">
+		{block:Date}{block:IndexPage}{block:NewDayDate}{block:IfPostDates}<a class="newdate" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">
 			<h3>{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}</h3>
-		</a>{/block:NewDayDate}{/block:IndexPage}{/block:Date}
+		</a>{/block:IfPostDates}{/block:NewDayDate}{/block:IndexPage}{/block:Date}
 
 		<article class="post" {block:IfFilteredTags}posts-selector{/block:IfFilteredTags}>
 			{block:Date}<header>
-				{block:IfPostDates}<a href="{Permalink}" class="date"><span class="d">{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfPostTimes}</span><span class="t">{block:If24HourTimes}{24HourWithZero}{/block:If24HourTimes}{block:IfNot24HourTimes}{12Hour}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes} {CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</span>{block:IfNotPostTimes}<span class="p">{lang:Permalink}</span>{/block:IfNotPostTimes}</a>{/block:IfPostDates}
+				<a href="{Permalink}" class="date">{block:IfPostDates}{block:IfPostTimes}{block:If24HourTimes}{24HourWithZero}{/block:If24HourTimes}{block:IfNot24HourTimes}{12HourWithZero}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes} {CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}{block:IfNotPostTimes}{lang:Permalink}{/block:IfNotPostTimes}{/block:IfPostDates}{block:IfNotPostDates}{lang:Permalink}{/block:IfNotPostDates}</a>
 
 				{block:PinnedPostLabel}<span id="pinnedpost">{PinnedPostLabel}</span>{/block:PinnedPostLabel}
 
