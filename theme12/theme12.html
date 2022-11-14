@@ -141,7 +141,7 @@
 	<meta name="if:Search bar" content="1">
 	<meta name="text:Search bar title" content="Search">
 	<meta name="if:Post dates" content="1">
-	<meta name="if:Post times" content="1">
+	<meta name="if:Post times" content="0">
 	<meta name="if:Dates formatted month first" content="0">
 	<meta name="if:24 hour times" content="0">
 	<meta name="if:Like buttons" content="1">
@@ -335,7 +335,9 @@
 	<script>
 	$(document).ready(function(){
 		$(".showtags").on("click keypress", function(){
-			$(this).parent().toggle(); // edit to select .tags
+			$(this).parent() //.lrt
+				.parent() //.topline
+				.next().toggle(); //.tags
 			$(this).toggleClass('active');
 		});
 	});
