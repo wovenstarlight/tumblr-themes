@@ -168,6 +168,8 @@ body.nright .tmblr-iframe--unified-controls { margin-right: var(--navbar-size) }
 	background-attachment: var(--bg-attachment);
 	display: grid;
 }
+html:not(.alt) #center:not(.i, .p, .d, .t, .pn),
+html.alt #center:not(.ai, .p, .d, .t, .pn) { gap: 0 }
 /* #region Search form */
 body:not(.showsearch) #search { opacity: 0; pointer-events: none }
 #search {
