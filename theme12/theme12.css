@@ -78,6 +78,14 @@ body.nright { margin-right: var(--navbar-size) }
 #banner span.bg { background: rgba(var(--bg--rgb), 0.5) }
 html:not(.alt) #banner .alt, html.alt #banner .og { display: none }
 /* #endregion */
+/* Footer */
+#footer {
+	padding: 1em;
+	display: flex;
+	flex-flow: row wrap;
+	gap: 0.5em 2em;
+	justify-content: center;
+}
 /* #endregion */
 
 
