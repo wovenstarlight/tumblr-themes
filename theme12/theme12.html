@@ -9,7 +9,7 @@
 		Palette toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 13 Nov 2022.
+	Last updated 14 Nov 2022.
 -->
 
 <!DOCTYPE html>
@@ -405,15 +405,56 @@
 	{/block:IfSearchBar}
 	
 	<main id="main">
-		<!-- TODO: Page headers -->
+		{block:HomePage}
+		<!-- ACCESSIBILITY: HOME PAGE HEADER -->
+		<div id="hdr" class="hidden"><h2>{lang:Posts}</h2></div>
+		{/block:HomePage}
+
+		{block:PermalinkPage}
+		<!-- ACCESSIBILITY: PERMALINK PAGE HEADER -->
+		{block:PostSummary}<div id="hdr" class="hidden perma"><h2>{PostSummary}</h2></div>{/block:PostSummary}
+		{/block:PermalinkPage}
+
+		{block:TagPage}
+		<!-- SPECIAL PAGE HEADER: TAG -->
+		<div id="hdr">
+			<h2>{lang:TagResultCount posts tagged Tag 2}</h2>
+			<p>
+				<a href="/tagged/{URLSafeTag}">Newest first</a>
+				<a href="/tagged/{URLSafeTag}/chrono">Oldest first</a>
+			</p>
+		</div>
+		{/block:TagPage}
+		
+		{block:DayPage}
+		<!-- SPECIAL PAGE HEADER: DAY -->
+		<div id="hdr" class="day"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
+		{/block:DayPage}
+		
+		{block:SearchPage}
+		<!-- SPECIAL PAGE HEADER: SEARCH -->
+		<div id="hdr day"><h2>
+			{lang:SearchResultCount results for SearchQuery 2}
+			{block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}
+		</h2></div>
+		{/block:SearchPage}
+
+		{block:NoPosts}
+		<!-- SPECIAL MESSAGE: EMPTY BLOG -->
+		<section class="post" id="noposts"><section class="body"><div class="bodyitemcontent">
+			<p>{lang:This Tumblr hasnt posted anything}</p>
+		</div></section></section>
+		{/block:NoPosts}
 
 		
 		{block:Posts}
-		<!-- TODO: Date headers (index pages only) -->
+		{block:Date}{block:IndexPage}{block:NewDayDate}<a class="newdate" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">
+			<h3>{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}</h3>
+		</a>{/block:NewDayDate}{/block:IndexPage}{/block:Date}
 
 		<article class="post" {block:IfFilteredTags}posts-selector{/block:IfFilteredTags}>
 			{block:Date}<header>
-				{block:IfPostDates}<a href="{Permalink}" class="date" title="{lang:Posted TimeAgo}">{block:IfPostTimes}<span class="d">{/block:IfPostTimes}{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfPostTimes}</span><span class="t">{block:If24HourTimes}{24HourWithZero}{/block:If24HourTimes}{block:IfNot24HourTimes}{12Hour}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes} {CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</span></a>{/block:IfPostDates}
+				{block:IfPostDates}<a href="{Permalink}" class="date" title="{lang:Posted TimeAgo}"><span class="d">{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfPostTimes}</span><span class="t">{block:If24HourTimes}{24HourWithZero}{/block:If24HourTimes}{block:IfNot24HourTimes}{12Hour}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes} {CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</span>{block:IfNotPostTimes}<span class="p">{lang:Permalink}</span>{/block:IfNotPostTimes}</a>{/block:IfPostDates}
 
 				{block:PinnedPostLabel}<span id="pinnedpost">{PinnedPostLabel}</span>{/block:PinnedPostLabel}
 
