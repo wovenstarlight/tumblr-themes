@@ -94,6 +94,7 @@ html:not(.alt) #banner .alt, html.alt #banner .og { display: none }
 	justify-content: center;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
+	text-align: center;
 }
 #footer a { padding: 0.5em 1em }
 /* #endregion */
@@ -127,6 +128,7 @@ body.nleft #navbar {
 	transform-origin: bottom left;
 }
 body.nright #navbar {
+	top: 0;
 	right: 0;
 	height: 100vh;
 	width: var(--navbar-size);
@@ -160,10 +162,12 @@ body.nleft #avatar { transform: rotate(90deg) }
 }
 body:not(.nright) #scrolltotop_parent { order: -1 }
 body.nright #scrolltotop_parent { order: 1 }
-.tmblr-iframe--unified-controls {
+.tmblr-iframe--unified-controls.tmblr-iframe--desktop {
 	transform: scale(0.75);
 	transform-origin: top right;
 }
+body:not(.ntop) .tmblr-iframe--unified-controls.iframe-controls--phone-mobile { width: calc(100% - var(--navbar-size)) }
+body.nleft .tmblr-iframe--unified-controls.iframe-controls--phone-mobile { margin-left: var(--navbar-size) }
 body.ntop .tmblr-iframe--unified-controls { margin-top: var(--navbar-size) }
 body.nright .tmblr-iframe--unified-controls { margin-right: var(--navbar-size) }
 /* #endregion */
@@ -298,7 +302,6 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 	font-family: var(--tfont);
 	font-weight: var(--tweight);
 	text-transform: uppercase;
-	font-weight: bold;
 	font-size: 4em;
 	line-height: 1;
 }
@@ -419,10 +422,13 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 	body.sleft #main { justify-self: start; grid-column: 2; grid-row: 1 }
 }
 @media (max-width: 60rem) { /* Mobile sizing */
+	body:not(.ntop) { --navbar-size: 2.5em }
+	#avatar { --size: 2em }
+	
 	#center {
 		justify-items: center;
 		gap: 2em;
-		padding: 5%;
+		padding: 2em 5%;
 	}
 	#sidebar { grid-row: 1 }
 }
