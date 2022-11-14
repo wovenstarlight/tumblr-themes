@@ -111,6 +111,7 @@ html:not(.alt) #banner .alt, html.alt #banner .og { display: none }
 	background-color: var(--bg);
 	padding-inline: 1em;
 	z-index: 5;
+	gap: 1em;
 }
 body.ntop #navbar {
 	position: sticky;
@@ -118,9 +119,7 @@ body.ntop #navbar {
 	width: 100vw;
 	height: var(--navbar-size);
 }
-body:not(.ntop) #navbar {
-	position: fixed;
-}
+body:not(.ntop) #navbar { position: fixed }
 body.nleft #navbar {
 	bottom: 0;
 	left: var(--navbar-size);
@@ -142,6 +141,7 @@ body.nright #navbar {
 	align-items: center;
 	gap: 0.5em;
 	text-decoration: none;
+	flex-shrink: 1;
 }
 body.nright #avnm { flex-direction: row-reverse }
 #avatar {
@@ -150,6 +150,11 @@ body.nright #avnm { flex-direction: row-reverse }
 	width: var(--size);
 }
 body.nleft #avatar { transform: rotate(90deg) }
+#name {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 #name, #blognav a {
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
@@ -162,9 +167,11 @@ body.nleft #avatar { transform: rotate(90deg) }
 	display: flex;
 	gap: 0.5em;
 }
+#dropnav.active #shownav { color: var(--accent) }
 body:not(.nright) #scrolltotop_parent { order: -1 }
 body.nright #scrolltotop_parent { order: 1 }
-.tmblr-iframe--unified-controls.tmblr-iframe--desktop {
+.tmblr-iframe--unified-controls { z-index: 5 !important }
+.iframe-controls--desktop {
 	transform: scale(0.75);
 	transform-origin: top right;
 }
@@ -422,10 +429,35 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 	body.sright #main { justify-self: end; grid-column: 1; grid-row: 1 }
 	body.sleft #sidebar { justify-self: end; grid-column: 1; grid-row: 1 }
 	body.sleft #main { justify-self: start; grid-column: 2; grid-row: 1 }
+	
+	body.ntop #shownav { display: none }
+	body.ntop #dropper {
+		display: flex;
+		gap: 0.5em;
+	}
 }
 @media (max-width: 60rem) { /* Mobile sizing */
 	body:not(.ntop) { --navbar-size: 2.5em }
 	#avatar { --size: 2em }
+	
+	body.ntop #dropnav {
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+	body.ntop #dropper {
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		background: var(--bg);
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		transition: opacity .2s;
+	}
+	body.ntop #dropnav:not(.active) #dropper { opacity: 0; pointer-events: none }
+	body.ntop #dropper a { padding-inline: 1em }
 	
 	#center {
 		justify-items: center;
@@ -433,5 +465,44 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 		padding: 2em 5%;
 	}
 	#sidebar { grid-row: 1 }
+}
+
+/* Side navbar, small window height */
+@media (min-height: 45rem) {
+	body:not(.ntop) #shownav { display: none }
+	body:not(.ntop) #dropper {
+		display: flex;
+		gap: 0.5em;
+	}
+}
+@media (max-height: 45rem) {
+	body:not(.ntop) #dropnav {
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+	body.nright #dropper {
+		writing-mode: horizontal-tb;
+		position: absolute;
+		top: 0;
+		right: calc(100% + .3em);
+	}
+	body.nleft #dropper {
+		transform: rotate(90deg);
+		transform-origin: top left;
+		position: absolute;
+		top: calc(100% + .3em);
+		left: 100%;
+	}
+	body:not(.ntop) #dropper {
+		background: var(--bg);
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		transition: opacity .2s;
+	}
+	body.nright .iframe-controls--desktop ~ #navbar #dropper { top: 1.5rem }
+	body:not(.ntop) #dropnav:not(.active) #dropper { opacity: 0; pointer-events: none }
+	body:not(.ntop) #dropper a { padding-inline: 1em }
 }
 /* #endregion */

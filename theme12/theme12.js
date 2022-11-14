@@ -28,11 +28,19 @@ $(document).ready( function() {
 	});
 	// #endregion
 
+	// Navigation dropdown on small screens
+	$("#shownav").on("click keypress", function() {
+		$(this).parent().toggleClass("active");
+	});
+
 	// Search toggle
 	$("#opensearch, #back").on("click keypress", function() {
 		$("body").toggleClass("showsearch");
 		if ($("body").hasClass("showsearch")) {
 			$("#q").focus();
+		}
+		if ($("#dropnav").hasClass("active")) {
+			$("#dropnav").removeClass("active");
 		}
 	});
 	

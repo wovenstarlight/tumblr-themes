@@ -405,11 +405,16 @@
 
 	<!-- BLOG NAVIGATION -->
 	<nav id="blognav">
-		{block:AskEnabled}<a href="/ask" id="asklink" {block:AskPage}class="current-page"{/block:AskPage}>{AskLabel}</a>{/block:AskEnabled}
-		{block:SubmissionsEnabled}<a href="/submit" id="submitlink" {block:SubmitPage}class="current-page"{/block:SubmitPage}>{SubmitLabel}</a>{/block:SubmissionsEnabled}
-		{block:IfRandomPostLink}<a href="/random" id="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
-		{block:IfArchiveLink}<a href="/archive" id="archivelink">{lang:Archive}</a>{/block:IfArchiveLink}
-		{block:IfSearchBar}<a id="opensearch">{lang:Search}</a>{/block:IfSearchBar}
+		<div id="dropnav">
+			<a tabindex="0" id="shownav">{lang:Navigate}</a>
+			<div id="dropper">
+				{block:AskEnabled}<a href="/ask" id="asklink" {block:AskPage}class="current-page"{/block:AskPage}>{AskLabel}</a>{/block:AskEnabled}
+				{block:SubmissionsEnabled}<a href="/submit" id="submitlink" {block:SubmitPage}class="current-page"{/block:SubmitPage}>{SubmitLabel}</a>{/block:SubmissionsEnabled}
+				{block:IfRandomPostLink}<a href="/random" id="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
+				{block:IfArchiveLink}<a href="/archive" id="archivelink">{lang:Archive}</a>{/block:IfArchiveLink}
+				{block:IfSearchBar}<a id="opensearch">{lang:Search}</a>{/block:IfSearchBar}
+			</div>
+		</div>
 		{block:IfBackToTopButton}<a id="scrolltotop_parent" tabindex="0" style="display: none;"><div id="scrolltotop_arrow">Top</div></a>{/block:IfBackToTopButton}
 		{block:IfPaletteToggle}<a id="palette" tabindex="0">Palette</a>{/block:IfPaletteToggle}
 	</nav>
