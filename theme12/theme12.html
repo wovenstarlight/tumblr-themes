@@ -79,6 +79,11 @@
 	<meta name="select:Background image scrolling" content="scroll" title="Scrollable">
 	<meta name="select:Background image scrolling" content="fixed" title="Fixed">
 	<meta name="image:Sidebar" content="">
+	<meta name="if:Sidebar image gradient" content="0">
+	<meta name="if:Stretch sidebar image" content="1">
+	<meta name="select:Sidebar image position" content="center" title="Center">
+	<meta name="select:Sidebar image position" content="left" title="Left">
+	<meta name="select:Sidebar image position" content="right" title="Right">
 	<meta name="image:ALT Header" content="">
 	<meta name="text:ALT Header text" content="">
 	<meta name="if:ALT Header text background" content="1">
@@ -110,6 +115,7 @@
 	<meta name="select:ALT Background image scrolling" content="scroll" title="Scrollable">
 	<meta name="select:ALT Background image scrolling" content="fixed" title="Fixed">
 	<meta name="image:ALT Sidebar" content="">
+	<meta name="if:ALT Sidebar image gradient" content="0">
 
 	<!-- Color options -->
 	<meta name="color:Background" content="{BackgroundColor}">
@@ -198,8 +204,8 @@
 	/* HEADER IMAGE */
 	{block:IfHeaderImage}
 	#banner img.og {
-	    object-fit: {select:Header image size};
-	    object-position: {select:Header image position};
+		object-fit: {select:Header image size};
+		object-position: {select:Header image position};
 	}
 	{block:IfHeaderText}
 	#banner span.og { justify-content: {select:Header text position}; }
@@ -207,13 +213,45 @@
 	{/block:IfHeaderImage}
 	{block:IfAltHeaderImage}
 	#banner img.alt {
-	    object-fit: {select:ALT Header image size};
-	    object-position: {select:ALT Header image position};
+		object-fit: {select:ALT Header image size};
+		object-position: {select:ALT Header image position};
 	}
 	{block:IfAltHeaderText}
 	#banner span.alt { justify-content: {select:ALT Header text position}; }
 	{/block:IfAltHeaderText}
 	{/block:IfAltHeaderImage}
+
+	/* SIDEBAR IMAGE */
+	{block:IfSidebarImage}
+	{block:IfStretchSidebarImage}
+	html:not(.alt) #sidebar.ogstretch { height: 100% }
+	html:not(.alt) .ogstretch #sidebarimg { flex-grow: 1 }
+	html:not(.alt) .ogstretch #sidebarimg img.og {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
+	#sidebarimg img.og { object-position: {select:Sidebar image position} }
+	{/block:IfStretchSidebarImage}
+	{block:IfNotStretchSidebarImage}
+	html:not(.alt) #sidebarimg { justify-content: {select:Sidebar image position} }
+	{/block:IfNotStretchSidebarImage}
+	{/block:IfSidebarImage}
+	{block:IfAltSidebarImage}
+	{block:IfAltStretchSidebarImage}
+	html.alt #sidebar.altstretch { height: 100% }
+	html.alt .altstretch #sidebarimg { flex-grow: 1 }
+	html.alt .altstretch #sidebarimg img.alt {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
+	#sidebarimg img.alt { object-position: {select:ALT Sidebar image position} }
+	{/block:IfAltStretchSidebarImage}
+	{block:IfNotAltStretchSidebarImage}
+	html:not(.alt) #sidebarimg { justify-content: {select:ALT Sidebar image position} }
+	{/block:IfNotAltStretchSidebarImage}
+	{/block:IfAltSidebarImage}
 	</style>
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme12/theme12.min.css">
 	<style>{CustomCSS}</style>
@@ -369,9 +407,11 @@
 	</main>
 
 	<aside id="sidebar">
-		{block:IfSidebarImage}<img src="{image:Sidebar}" alt="Sidebar" class="og">{/block:IfSidebarImage}
-		{block:IfAltSidebarImage}<img src="{image:ALT Sidebar}" alt="Sidebar" class="alt">{/block:IfAltSidebarImage}
-		
+		<div class="sidebarimg" class="{block:IfSidebarImage}{block:IfSidebarImageGradient}oggrad{/block:IfSidebarImageGradient}{/block:IfSidebarImage} {block:IfAltSidebarImage}{block:IfAltSidebarImageGradient}altgrad{/block:IfAltSidebarImageGradient}{/block:IfAltSidebarImage}">
+			{block:IfSidebarImage}<img src="{image:Sidebar}" alt="Sidebar" class="og">{/block:IfSidebarImage}
+			{block:IfAltSidebarImage}<img src="{image:ALT Sidebar}" alt="Sidebar" class="alt">{/block:IfAltSidebarImage}
+		</div>
+
 		{block:HasPages}
 		<!-- CUSTOM PAGES -->
 		<nav id="pages">
