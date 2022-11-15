@@ -41,6 +41,7 @@ a:hover, a:focus { color: var(--accent) }
 	padding: 0.25em 0.5em;
 	background-color: var(--bg);
 	color: var(--text);
+	box-shadow: 0.1em 0.1em 0.5em var(--bg-pg);
 }
 /* Roundness */
 #avatar.square,
