@@ -505,9 +505,28 @@
 
 
 			<section class="body">
-				{block:Title}<h4 class="title"><a href="{Permalink}">{Title}</a></h4>{/block:Title}
 
-				<!-- TODO: Text, photo, panorama, photoset, quote, link, chat, audio, video, answer -->
+			{block:Title}<a href="{Permalink}"></a><h4 class="title">{Title}</h4></a>{/block:Title}
+
+			<!-- TODO: Photo, panorama, photoset, quote, link, chat, audio, video, answer -->
+			{block:Text}
+			
+				{block:NotReblog}
+				<div class="bodyitemcontent">
+					{block:AskPage}<div class="askwrapper">{text:FAQ}</div>{/block:AskPage}
+					{Body}
+				</div>
+				{/block:NotReblog}
+				
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user {block:IsDeactivated}deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+				
+			{/block:Text}
+
 			</section>
 
 
