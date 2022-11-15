@@ -355,7 +355,6 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 .search_query::before { content: "\201C" }
 .search_query::after { content: "\201D" }
 /* Header/footer links */
-.post header, .post footer { padding: 1rem }
 .post header, .post footer .topline {
 	text-transform: uppercase;
 	display: flex;
@@ -399,6 +398,53 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 .showtags { cursor: pointer }
 .showtags.active { color: var(--accent) }
 /* #endregion */
+/* #region Post body: general */
+.post .body { margin-block: 1.2em }
+.post .user + .bodyitemcontent { padding-inline-start: 0.25em }
+.post .bodyitem:not(:last-child) { margin-block-end: 1em }
+.post .user {
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 0.1em;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	gap: 0.25em;
+	margin-block-end: 0.3em;
+	overflow-wrap: break-word;
+	hyphens: auto;
+}
+.post .deactivated.user::after {
+	content: "(deactivated)";
+	opacity: 0.5;
+	font-size: 0.8em;
+}
+.post .bodyitemcontent > :first-child { margin-block-start: 0 }
+.post .bodyitemcontent > :last-child { margin-block-end: 0 }
+/* #endregion */
+/* #region Post body item elements */
+.post .title { margin-block: 0 0.5em }
+.post .title a {
+	display: block;
+	text-align: center;
+	font-size: 2.25em;
+	font-weight: bold;
+	font-variant: small-caps;
+}
+.post h5 { font-size: 1.6em }
+.post h6 { font-size: 1.3em }
+.post h5, .post h6 { margin-block: 0.5em }
+.post .body .read_more { 
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 0.1em;
+	text-decoration: none;
+	text-align: center;
+	display: block;
+	margin-block: -0.5em;
+	padding: 0.5em;
+}
+/* #endregion */
 /* #endregion */
 
 
@@ -433,6 +479,9 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 		display: flex;
 		gap: 0.5em;
 	}
+	
+	.post header, .post footer { margin: 1em }
+	.post .user, .post .bodyitemcontent { margin-inline: 1em }
 }
 @media (max-width: 60rem) { /* Mobile sizing */
 	body:not(.ntop) { --navbar-size: 2.5em }
@@ -463,6 +512,9 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 		padding: 2em 5%;
 	}
 	#sidebar { grid-row: 1 }
+	
+	.post header, .post footer { margin: 1em 4% }
+	.post .user, .post .bodyitemcontent { margin-inline: 4% }
 }
 
 /* Side navbar, small window height */
