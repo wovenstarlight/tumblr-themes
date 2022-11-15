@@ -405,7 +405,7 @@
 
 	<!-- BLOG NAVIGATION -->
 	<nav id="blognav">
-		<div id="dropnav">
+		<div id="dropnav" class="{block:AskEnabled}a{/block:AskEnabled} {block:SubmissionsEnabled}s{/block:SubmissionsEnabled} {block:IfRandomPostLink}r{/block:IfRandomPostLink} {block:IfArchiveLink}c{/block:IfArchiveLink} {block:IfSearchBar}e{/block:IfSearchBar}">
 			<a tabindex="0" id="shownav">{lang:Navigate}</a>
 			<div id="dropper">
 				{block:AskEnabled}<a href="/ask" id="asklink" {block:AskPage}class="current-page"{/block:AskPage}>{AskLabel}</a>{/block:AskEnabled}

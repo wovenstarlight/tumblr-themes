@@ -168,6 +168,7 @@ body.nleft #avatar { transform: rotate(90deg) }
 	display: flex;
 	gap: 0.5em;
 }
+#dropnav:not(.a, s, .r, .c, .e) { display: none !important }
 #dropnav.active #shownav { color: var(--accent) }
 body:not(.nright) #scrolltotop_parent { order: -1 }
 body.nright #scrolltotop_parent { order: 1 }
