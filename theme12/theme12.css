@@ -24,7 +24,7 @@ a {
 	transition: color .2s;
 	text-decoration: none;
 }
-#desc a, .post .body a {
+#desc a, .post .bodyitemcontent a {
 	text-decoration: underline;
 	text-underline-offset: 0.2em;
 }
@@ -502,5 +502,9 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 	body.nright .iframe-controls--desktop ~ #navbar #dropper { top: 1.5rem }
 	body:not(.ntop) #dropnav:not(.active) #dropper { opacity: 0; pointer-events: none }
 	body:not(.ntop) #dropper a { padding-inline: 1em }
+}
+@media (max-height: 45rem) and (max-width: 60rem) {
+	body.nright #dropper { right: calc(100% - .15em) }
+	body.nleft #dropper { top: calc(100% - .15em) }
 }
 /* #endregion */
