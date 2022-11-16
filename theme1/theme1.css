@@ -269,9 +269,9 @@ body.light {
 	width: 1.25em;
 	margin-right: 0.325em;
 }
-#channels a:hover span, #channels a.active span { color: var(--text-normal); }
+#channels a:hover span, #channels a.active span, #channels a.current-page span { color: var(--text-normal) }
 #channels a:hover { background-color: var(--channels-hover); }
-#channels a.active { background-color: var(--channels-active); }
+#channels a.active, #channels a.current-page { background-color: var(--channels-active) }
 .blogname {
 	background-color: var(--blogname);
 	padding: 0.65em 0.5em;
@@ -538,7 +538,6 @@ body.light .post:hover, body.light .post:hover .timestamp .date { background: #f
 	visibility: hidden;
 }
 .photo-wrapper:hover .highres { visibility: visible }
-/* Addon to glenthemes' NPF photoset fix; makes images narrower */
 .npf_inst > .tmblr-full img,
 body .post div.npf_row {
 	width: min(650px, 100%) !important;

@@ -1,19 +1,19 @@
 <!-- 
-	THEME 1: DISCORD
+	THEME 1: DISCORD by starlightthemes
 	VERSION 2
 
-	Theme created by starlightthemes. Original interface design belongs to discordapp.com; I do not claim any rights to the design.
+	Original interface design belongs to discord.com; I do not claim any rights to the design.
 
 	Credits:
 		Tippy.js tooltips by atomiks: https://atomiks.github.io/tippyjs
 		Toggleable Tumblr controls by seyche: https://seyche.tumblr.com/post/643682133088583680/hi-looove-your-new-blog-theme-i-was-wondering-if
 		Icons from Font Awesome (https://fontawesome.com) and Discord
 		Custom like buttons by Georgi Demirev: https://demirev.cubthemes.com/post/106345243051/changing-like-and-reblog-button-colors-revisited
-		Infinite scroll by Paul Irish & Metafizzy: https://infinite-scroll.com/
-		NPF photosets fix by glenthemes: https://glenthemes.tumblr.com/post/659034084446748672/npf-images-v3
+		Infinite scroll by Metafizzy: https://infinite-scroll.com/
+		NPF photosets plugin by codematurgy: https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin
 		Dark/light mode toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 
-	Last updated 23 April 2022.
+	Last updated 16 Nov 2022.
 -->
 
 <!DOCTYPE html>
@@ -86,17 +86,11 @@
 	<!-- jQuery CDN -->
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 	<!--
-			NPF images fix v3.0 by @glenthemes [2021]
-			💌 git.io/JRBt7
-	--->
-	<script src="//npf-images-v3.github.io/script.js"></script>
-	<link rel="stylesheet" href="//npf-images-v3.github.io/recon.css">
-	<style tmblr-npf>
-	:root {
-		--NPF-Caption-Spacing:1em;
-		--NPF-Image-Spacing:0.5em;
-	}
-	</style>
+	NPF photosets plugin by @codematurgy
+	https://codematurgy.tumblr.com/post/643394597477875713/npfphotosets-plugin
+	-->
+	<script src="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosets.js"></script>
+	<link href="https://cdn.jsdelivr.net/gh/boscoxvi/npfphotosets/npfphotosetstyle.css" rel="stylesheet" type="text/css">
 	<!-- Tippy.js tooltips by atomiks -->
 	<script src="https://unpkg.com/@popperjs/core@2"></script>
 	<script src="https://unpkg.com/tippy.js@6"></script>
@@ -277,7 +271,7 @@ body.light em, body.light i { color: {color:Light mode italics} }
 		
 		{block:HasPages}
 		<nav id="channels">
-			{block:Pages}<a href="{URL}">
+			{block:Pages}<a href="{URL}" class="{CurrentState}">
 				<svg width="1.5em" height="1.5em" viewBox="0 -3 24 24" xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMinYMin"><use href="#img-hash"></use></svg>
 				<span>{Label}</span>
 			</a>{/block:Pages}
@@ -348,7 +342,7 @@ body.light em, body.light i { color: {color:Light mode italics} }
 	
 	{block:Posts inlineMediaWidth="1280" inlineNestedMediaWidth="1280"}
 
-	<section class="post">
+	<article class="post">
 		{block:Date}
 		<p class="timestamp">
 			{block:IfShowDates}
@@ -507,10 +501,13 @@ body.light em, body.light i { color: {color:Light mode italics} }
 				<a href="{Permalink}" class="circle usericon"><img src="{PortraitURL-64}" class="circle"/></a>
 				<a class="username" href="{Permalink}">{PostAuthorName}</a>
 				<div class="content">
-					<div class="photo-wrapper">
-					{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}"/>{LinkCloseTag}
-					{block:HighRes}<a class="highres" href="{PhotoURL-HighRes}">{lang:View high resolution}</a>{/block:HighRes}
-					</div>
+					<div class="npf_photoset" data-layout="{PhotosetLayout}">
+						{block:Photos}
+							<figure class="tmblr-full"> 
+								<img class="npf_image" alt="{PhotoAlt}" src="{PhotoURL-500}" data-orig-width="{PhotoWidth-HighRes}" data-orig-height="{PhotoHeight-HighRes}" data-highres="{PhotoURL-HighRes}">
+							</figure>
+						{/block:Photos}
+					 </div>
 					{Body}
 				</div>
 			</div>
@@ -526,10 +523,13 @@ body.light em, body.light i { color: {color:Light mode italics} }
 				<a href="{ReblogRootURL}" class="circle usericon"><img src="{ReblogRootPortraitURL-64}" class="circle"/></a>
 				<a class="username" href="{ReblogRootURL}">{ReblogRootName}</a>
 				<div class="content">
-				
-					<div class="photo-wrapper">
-					{Photoset}
-					</div>
+					<div class="npf_photoset" data-layout="{PhotosetLayout}">
+						{block:Photos}
+							<figure class="tmblr-full"> 
+								<img class="npf_image" alt="{PhotoAlt}" src="{PhotoURL-500}" data-orig-width="{PhotoWidth-HighRes}" data-orig-height="{PhotoHeight-HighRes}" data-highres="{PhotoURL-HighRes}">
+							</figure>
+						{/block:Photos}
+					 </div>
 			{block:Reblogs}
 			{block:IsOriginalEntry}{Body}{/block:IsOriginalEntry}
 			{block:IsNotOriginalEntry}
@@ -796,7 +796,7 @@ body.light em, body.light i { color: {color:Light mode italics} }
 			</a>{/block:Tags}
 		</div>{/block:HasTags}
 		{/block:IfShowTags}
-	</section>
+	</article>
 	
 	{/block:Posts}
 	
@@ -936,18 +936,6 @@ body.light em, body.light i { color: {color:Light mode italics} }
 	});
 </script>
 {/block:IfInfiniteScroll}
-
-{block:HasPages}
-{block:PermalinkPage}
-<script>
-	$("#channels a").each( function() {
-		if ($(this).attr('href') === window.location.pathname) {
-			$(this).addClass("active")
-		}
-	})
-</script>
-{/block:PermalinkPage}
-{/block:HasPages}
 
 </body>
 

@@ -1,6 +1,7 @@
 $(document).ready( function() {
 	const body = $("body");
 	
+	// Color theme
 	const currTheme = localStorage.getItem("theme");
 
 	if ( currTheme == "light" ) {
@@ -18,15 +19,24 @@ $(document).ready( function() {
 		localStorage.setItem("theme", newTheme);
 	});
 
+	// Expand sidebar on mobile
 	$("#servers .more").click( function() {
 		$(this).toggleClass("active");
 		$("#sidebar").toggleClass("active");
 	});
 
+	// Show Tumblr controls on click
 	$("#tmblr-controls-toggle").click(function(){
 		body.toggleClass("controls-click");
 	});
 
+	// Photoset setup
+	npfPhotosets(".post", {
+		includeCommonPhotosets: true,
+		photosetMargins: "2"
+	});
+
+	// Tooltips
 	tippy("#servers a[data-tippy-content]", {
 		placement: "right",
 		offset: [0, 20],
