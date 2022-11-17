@@ -152,7 +152,7 @@
 	<meta name="if:Reblog buttons" content="1">
 	<meta name="if:Post tags" content="1">
 	<meta name="if:Show tags on click" content="0">
-	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
+	<meta name="text:Ask guidelines" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want ask guidelines, delete this text and leave this field empty!">
 	{/block:Hidden}
 
 	<!-- Standardization of theme styles -->
@@ -514,7 +514,7 @@
 			
 				{block:NotReblog}
 				<div class="bodyitemcontent">
-					{block:AskPage}<div class="askwrapper">{text:FAQ}</div>{/block:AskPage}
+					{block:AskPage}{block:IfAskGuidelines}<div class="askwrapper">{text:Ask guidelines}</div>{/block:IfAskGuidelines}{/block:AskPage}
 					{Body}
 				</div>
 				{/block:NotReblog}
