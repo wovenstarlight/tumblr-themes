@@ -508,7 +508,7 @@
 
 			{block:Title}<a href="{Permalink}"><h4 class="title">{Title}</h4></a>{/block:Title}
 
-			<!-- TODO: Photo, panorama, photoset, quote, link, chat, audio, video, answer -->
+			<!-- TODO: Quote, Link, Chat, Audio, Video, Answer -->
 			{block:Text}
 			
 				{block:NotReblog}
@@ -526,6 +526,72 @@
 				{/block:Reblogs}{/block:RebloggedFrom}
 				
 			{/block:Text}
+
+
+			{block:Photo}
+				
+				<div class="photowrapper">
+					{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+					<a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
+				</div>
+				
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Caption}</div>
+				{/block:NotReblog}
+				
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+				
+			{/block:Photo}
+
+
+			{block:Panorama}
+				
+				<div class="photowrapper">
+					{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
+					<a class="highres" href="{PhotoURL-Panorama}">{lang:View high resolution}</a>
+				</div>
+				
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Caption}</div>
+				{/block:NotReblog}
+				
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+				
+			{/block:Panorama}
+
+
+			{block:Photoset}
+
+				<div class="npf_photoset" data-layout="{PhotosetLayout}">
+					{block:Photos}
+						<figure class="tmblr-full"> 
+							<img class="npf_image" alt="{PhotoAlt}" src="{PhotoURL-500}" data-orig-width="{PhotoWidth-HighRes}" data-orig-height="{PhotoHeight-HighRes}" data-highres="{PhotoURL-HighRes}">
+						</figure>
+					{/block:Photos}
+				</div>
+				
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Caption}</div>
+				{/block:NotReblog}
+				
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+			
+			{/block:Photoset}
 
 			</section>
 

@@ -44,9 +44,9 @@ a:hover, a:focus { color: var(--accent) }
 	box-shadow: 0.1em 0.1em 0.5em var(--bg-pg);
 }
 /* Roundness */
-#avatar.square,
+#avatar.square, #s-m-t-tooltip,
 #search form, #search button,
-.post, #s-m-t-tooltip {
+.post, .photowrapper .highres {
 	border-radius: var(--roundness)
 }
 /* #endregion */
@@ -456,6 +456,29 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 
 
 /* #region POST TYPES */
+/* #region Photo posts */
+.photowrapper {
+	position: relative;
+	display: flex;
+}
+.photowrapper > a:first-child, .photowrapper .photopost { width: 100% }
+.photowrapper .highres {
+	position: absolute;
+	bottom: min(5%, 0.5em);
+	right: min(5%, 0.25em);
+	background: var(--bg);
+	padding: min(0.5em, 5%);
+	transition-property: color, opacity;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	font-size: 0.9em;
+}
+.photowrapper:not(:hover) .highres { opacity: 0 }
+.bodyitem .npf_photoset { margin-inline: var(--backing) }
+.bodyitemcontent .npf_photoset { margin-inline-start: calc(var(--backing) - 0.25em) }
+.bodyitemcontent .npf_photoset:first-child { margin-top: 0.5em }
+.photowrapper + .bodyitem, .npf_photoset + .bodyitem { margin-block-start: 0.5em }
+/* #endregion */
 /* #endregion */
 
 
@@ -488,6 +511,7 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 	
 	.post header, .post footer { margin: 1em }
 	.post .user, .post .bodyitemcontent { margin-inline: 1em }
+	.npf_photoset { --backing: -1em }
 }
 @media (max-width: 60rem) { /* Mobile sizing */
 	body:not(.ntop) { --navbar-size: 2.5em }
@@ -521,6 +545,7 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 	
 	.post header, .post footer { margin: 1em 4% }
 	.post .user, .post .bodyitemcontent { margin-inline: 4% }
+	.npf_photoset { --backing: -4.3% }
 }
 
 /* Side navbar, small window height */
