@@ -524,6 +524,7 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 .post .notes .reblog .avatar_frame::after { content: "\f554" }
 .post .notes .like .avatar_frame::after { content: "\f460" }
 .post .notes .reply .avatar_frame::after { content: "\f331" }
+.post .notes .original_post .avatar_frame::after { content: "\f5b4"; color: var(--accent) }
 /* Commentary blockquotes */
 .post .notes .with_commentary blockquote {
 	margin: 0 0 0.15em 0.5em;
