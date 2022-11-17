@@ -68,10 +68,10 @@ $(document).ready( function() {
 
 	// Fix heading levels structure
 	$(".bodyitemcontent h2").each( function() {
-		$(this).replaceWith("<h4>" + $(this).html() + "</h6>");
+		$(this).replaceWith("<h6>" + $(this).html() + "</h6>");
 	});
 	$(".bodyitemcontent h1").each( function() {
-		$(this).replaceWith("<h3>" + $(this).html() + "</h5>");
+		$(this).replaceWith("<h5>" + $(this).html() + "</h5>");
 	});
 
 });
