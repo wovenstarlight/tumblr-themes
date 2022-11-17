@@ -44,8 +44,14 @@ $(document).ready( function() {
 		}
 	});
 	
-	// Audio post setup
-	customAudio();
+	// #region Audio post setup
+	customAudio({
+		playButton: "<i class='ph-play'></i>",
+		pauseButton: "<i class='ph-pause'></i>",
+		errorIcon: "<i class='ph-x'></i>",
+		callAfterLoad: null
+	});
+	// #endregion
 
 	// #region Photoset setup
 	npfPhotosets("article", {
