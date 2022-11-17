@@ -774,7 +774,15 @@
 		{/block:Posts}
 
 
-		<!-- TODO: Post notes -->
+		{block:PostNotes}
+		<!-- NOTES SECTION ON PERMALINK PAGES -->
+		<section class="post notes">
+			<section class="body">
+				<h4 class="title">{lang:Notes}</h4>
+				{PostNotes-64}
+			</section>
+		</section>
+		{/block:PostNotes}
 	</main>
 
 	<aside id="sidebar">

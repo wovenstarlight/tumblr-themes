@@ -29,6 +29,13 @@ a {
 	text-underline-offset: 0.2em;
 }
 a:hover, a:focus { color: var(--accent) }
+blockquote {
+	margin-inline: 0.9em;
+	border-inline-start: 0.1em solid var(--accent);
+	padding: 0.2em 0 0.2em 1em;
+}
+blockquote > :first-child { margin-block-start: 0 }
+blockquote > :last-child { margin-block-end: 0 }
 /* Accessibility */
 #skip, #hiddentitle, #search label, .hidden#hdr {
 	position: fixed;
@@ -46,7 +53,8 @@ a:hover, a:focus { color: var(--accent) }
 /* Roundness */
 #avatar.square, #s-m-t-tooltip,
 #search form, #search button,
-.post, .photowrapper .highres {
+.post, .photowrapper .highres,
+.post .notes .avatar {
 	border-radius: var(--roundness)
 }
 /* #endregion */
@@ -433,7 +441,7 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 .post .bodyitemcontent > :last-child { margin-block-end: 0 }
 /* #endregion */
 /* #region Post body item elements */
-.post .body > a.title h4 {
+.post .body > a.title h4, .post.notes .title {
 	margin-block: 0 0.5em;
 	text-align: center;
 	font-size: 2.25em;
@@ -443,7 +451,7 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 .post h5 { font-size: 1.6em }
 .post h6 { font-size: 1.3em }
 .post h5, .post h6 { margin-block: 0.5em }
-.post .body .read_more { 
+.post .body .read_more, .more_notes_link_container > * { 
 	text-transform: uppercase;
 	font-weight: bold;
 	letter-spacing: 0.1em;
@@ -453,6 +461,76 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 	margin-block: -0.5em;
 	padding: 0.5em;
 }
+/* #endregion */
+/* #region Post notes */
+.post .notes {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	flex-flow: row wrap;
+	gap: 0.75rem;
+}
+/* Simple notes */
+.post .notes li:not(.reply, .with_commentary, .more_notes_link_container) { font-size: 0 }
+/* Replies and commentary */
+.post .notes .reply, .post .notes .with_commentary {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 0.5em 1em;
+	align-items: center;
+	width: 100%;
+	border-top: 0.1em solid var(--accent);
+	border-bottom: 0.1em solid var(--accent);
+	padding-block: 0.4em;
+}
+/* Align simple notes to left */
+.post .notes li:first-child,
+.post .notes .reply + li, .post .notes .with_commentary + li { margin-inline-start: 0 }
+/* Usernames */
+.post .notes .action a {
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+/* Avatars */
+.post .notes .with_commentary .avatar_frame { grid-row: 1 / span 2 }
+.post .notes .clear { display: none }
+.post .notes .avatar_frame {
+	position: relative;
+	align-self: first baseline;
+	display: flex;
+}
+.post .notes .avatar { width: 2.5rem; height: 2.5rem }
+/* Note icons */
+.post .notes .avatar_frame::after {
+	font: normal normal normal 0.75rem/1 "Phosphor";
+	color: inherit;
+	flex-shrink: 0;
+	speak: none;
+	text-transform: none;
+	text-decoration: inherit;
+	text-align: center;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	display: block;
+	position: absolute;
+	bottom: -0.25em;
+	right: -0.25em;
+	background: var(--bg-pg);
+	padding: 0.25em;
+	border-radius: 100%;
+}
+.post .notes .reblog .avatar_frame::after { content: "\f554" }
+.post .notes .like .avatar_frame::after { content: "\f460" }
+.post .notes .reply .avatar_frame::after { content: "\f331" }
+/* Commentary blockquotes */
+.post .notes .with_commentary blockquote {
+	margin: 0 0 0.15em 0.5em;
+	padding: 0 0 0 0.5em;
+}
+/* More notes */
+.more_notes_link_container { width: 100% }
+.more_notes_link_container > * { margin-block: 0 }
 /* #endregion */
 /* #endregion */
 
@@ -609,7 +687,7 @@ iframe, .tumblr_video_container {
 	}
 	
 	.post header, .post footer { margin: 1em }
-	.post .user, .post .bodyitemcontent { margin-inline: 1em }
+	.post .user, .post .bodyitemcontent, .post .notes { margin-inline: 1em }
 	.npf_photoset { --backing: -1em }
 }
 @media (max-width: 60rem) { /* Mobile sizing */
@@ -643,7 +721,7 @@ iframe, .tumblr_video_container {
 	#sidebar { grid-row: 1 }
 	
 	.post header, .post footer { margin: 1em 4% }
-	.post .user, .post .bodyitemcontent { margin-inline: 4% }
+	.post .user, .post .bodyitemcontent, .post .notes { margin-inline: 4% }
 	.npf_photoset { --backing: -4.3% }
 }
 
