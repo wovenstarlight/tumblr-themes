@@ -292,7 +292,7 @@ body.ntop #search form {
 	text-align: justify;
 }
 #sidebar > * { margin-block: 0.3rem }
-#sidebar > :first-child { margin-block-start: 0 }
+#sidebar > :first-child, #sidebarimg:empty + * { margin-block-start: 0 }
 #sidebar > :last-child { margin-block-end: 0 }
 /* Sidebar images */
 #sidebarimg {
@@ -311,7 +311,7 @@ html.alt #sidebarimg.altgrad::after {
 	height: 100%;
 	display: block;
 }
-html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none }
+html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:empty { display: none }
 /* Title */
 #title {
 	font-family: var(--tfont);
