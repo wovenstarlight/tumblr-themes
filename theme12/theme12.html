@@ -480,9 +480,9 @@
 
 		
 		{block:Posts}
-		{block:Date}{block:IndexPage}{block:NewDayDate}{block:IfPostDates}<a class="newdate" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">
+		{block:Date}{block:NewDayDate}{block:IfPostDates}<a class="newdate" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">
 			<h3>{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}</h3>
-		</a>{/block:IfPostDates}{/block:NewDayDate}{/block:IndexPage}{/block:Date}
+		</a>{/block:IfPostDates}{/block:NewDayDate}{/block:Date}
 
 		<article class="post" {block:IfFilteredTags}posts-selector{/block:IfFilteredTags}>
 			{block:Date}<header>
