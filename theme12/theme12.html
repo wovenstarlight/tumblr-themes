@@ -508,7 +508,6 @@
 
 			{block:Title}<a href="{Permalink}" class="title"><h4>{Title}</h4></a>{/block:Title}
 
-			<!-- TODO: Answer -->
 			{block:Text}
 			
 				{block:NotReblog}
@@ -710,6 +709,31 @@
 				{/block:Reblogs}{/block:RebloggedFrom}
 				
 			{/block:Video}
+
+			
+			{block:Answer}
+				
+				<div class="ask">
+					<i class="ph-envelope-open"></i>
+					<div class="question"><span class="asker">{Asker}:</span> {Question}</div>
+				</div>
+				
+				{block:RebloggedFrom}<div class="bodyitem">
+					{block:Answerer}
+					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} href="{ReblogRootURL}">{ReblogRootName}</a>
+					{/block:Answerer}{/block:RebloggedFrom}
+					
+					<div class="bodyitemcontent">{Answer}</div>
+				{block:RebloggedFrom}</div>
+				
+				{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+					
+			{/block:Answer}
 
 			</section>
 
