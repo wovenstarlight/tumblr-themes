@@ -505,7 +505,7 @@
 
 			{block:Title}<a href="{Permalink}"><h4 class="title">{Title}</h4></a>{/block:Title}
 
-			<!-- TODO: Quote, Link, Chat, Audio, Video, Answer -->
+			<!-- TODO: Link, Chat, Audio, Video, Answer -->
 			{block:Text}
 			
 				{block:NotReblog}
@@ -589,6 +589,16 @@
 				{/block:Reblogs}{/block:RebloggedFrom}
 			
 			{/block:Photoset}
+
+
+			{block:Quote}
+				{block:RebloggedFrom}<div class="bodyitem">{/block:RebloggedFrom}
+				<div class="bodyitemcontent">
+					<p class="npf_quote">{Quote}</p>
+					{block:Source}<p>— {Source}</p>{/block:Source}
+				</div>
+				{block:RebloggedFrom}</div>{/block:RebloggedFrom}
+			{/block:Quote}
 
 			</section>
 
