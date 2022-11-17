@@ -433,7 +433,7 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 .post .bodyitemcontent > :last-child { margin-block-end: 0 }
 /* #endregion */
 /* #region Post body item elements */
-.post .title {
+.post .body > .title {
 	margin-block: 0 0.5em;
 	text-align: center;
 	font-size: 2.25em;
@@ -481,6 +481,13 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 .bodyitemcontent .npf_photoset { margin-inline-start: calc(var(--backing) - 0.25em) }
 .bodyitemcontent .npf_photoset:first-child { margin-top: 0.5em }
 .photowrapper + .bodyitem, .npf_photoset + .bodyitem { margin-block-start: 0.5em }
+/* #endregion */
+/* #region Link posts */
+.bodyitemcontent div.npf-link-block a { text-decoration: none }
+div.npf-link-block .title,
+div.npf-link-block.no-poster .title { padding: 1rem 0.75rem 0 }
+.has-poster .bottom:empty { display: none }
+div.npf-link-block:not(.has-poster) .bottom:empty { padding-top: 0 }
 /* #endregion */
 /* #endregion */
 
