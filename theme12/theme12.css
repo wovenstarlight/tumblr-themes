@@ -471,6 +471,7 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 	flex-flow: row wrap;
 	gap: 0.75rem;
 }
+.post .notes li, .post .notes .with_commentary .avatar_frame, .post .notes .reply .avatar_frame { position: relative }
 /* Simple notes */
 .post .notes li:not(.reply, .with_commentary, .more_notes_link_container) { font-size: 0 }
 /* Replies and commentary */
@@ -496,13 +497,13 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 .post .notes .with_commentary .avatar_frame { grid-row: 1 / span 2 }
 .post .notes .clear { display: none }
 .post .notes .avatar_frame {
-	position: relative;
 	align-self: first baseline;
 	display: flex;
 }
 .post .notes .avatar { width: 2.5rem; height: 2.5rem }
 /* Note icons */
-.post .notes .avatar_frame::after {
+.post .notes .avatar_frame::after,
+.post .notes .reblog.without_commentary .tumblelog::after {
 	font: normal normal normal 0.75rem/1 "Phosphor";
 	color: inherit;
 	flex-shrink: 0;
@@ -520,7 +521,8 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 	padding: 0.25em;
 	border-radius: 100%;
 }
-.post .notes .reblog .avatar_frame::after { content: "\f554" }
+.post .notes .reblog.with_commentary .avatar_frame::after,
+.post .notes .reblog.without_commentary:not(.original_post) .tumblelog::after { content: "\f554" }
 .post .notes .like .avatar_frame::after { content: "\f460" }
 .post .notes .reply .avatar_frame::after { content: "\f331" }
 .post .notes .original_post .avatar_frame::after { content: "\f5b4"; color: var(--accent) }
