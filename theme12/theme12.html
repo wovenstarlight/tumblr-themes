@@ -508,7 +508,7 @@
 
 			{block:Title}<a href="{Permalink}" class="title"><h4>{Title}</h4></a>{/block:Title}
 
-			<!-- TODO: Video, Answer -->
+			<!-- TODO: Answer -->
 			{block:Text}
 			
 				{block:NotReblog}
@@ -690,6 +690,26 @@
 				{/block:Reblogs}{/block:RebloggedFrom}
 			
 			{/block:Audio}
+
+
+			{block:Video}
+			
+				<div class="videowrapper">
+					{Video-500}
+				</div>
+				
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Caption}</div>
+				{/block:NotReblog}
+				
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+				
+			{/block:Video}
 
 			</section>
 
