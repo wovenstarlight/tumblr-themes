@@ -40,6 +40,7 @@ No. | Name | Collapsibles CSS file | Preview
 9 | Washi (2) | [theme9.css](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/collapsibles/theme9_collapsibles.css) | [Preview link](https://starlightpreviews.tumblr.com/theme9/collapsibles)
 10 | Washi (3) | [theme10.css](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/collapsibles/theme10_collapsibles.css) | [Preview link](https://starlightpreviews.tumblr.com/theme10/collapsibles)
 11 | Archivist | [theme11.css](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/collapsibles/theme11_collapsibles.css) | [Preview link](https://starlightpreviews.tumblr.com/theme11/collapsibles)
+12 | *Untitled* | [theme12.css](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/collapsibles/theme12_collapsibles.css) | [Preview link](https://starlightpreviews.tumblr.com/theme12/collapsibles)
 
 Once you've copied the CSS as instructed above and saved it, you're ready to start making collapsible sections!
 
