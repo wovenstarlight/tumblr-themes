@@ -433,7 +433,7 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 .post .bodyitemcontent > :last-child { margin-block-end: 0 }
 /* #endregion */
 /* #region Post body item elements */
-.post .body > .title {
+.post .body > a.title h4 {
 	margin-block: 0 0.5em;
 	text-align: center;
 	font-size: 2.25em;
