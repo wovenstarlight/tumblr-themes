@@ -182,7 +182,7 @@
 		--accent: {color:Accent};
 		--text-h: {color:Header text};
 		{block:IfBackgroundImage}
-		--bg-img: {block:IfBackgroundImageOverlay}linear-gradient(transparent var(--offset), rgba(var(--bg-pg--rgb), 0.75) calc(var(--offset) + 20%), var(--bg-pg) calc(var(--offset) + 40%)), {/block:IfBackgroundImageOverlay}url({image:Background});
+		--bg-img: {block:IfBackgroundImageOverlay}linear-gradient(transparent var(--offset), rgba(var(--bg-pg--rgb), 0.75) calc(var(--offset) + 10%), var(--bg-pg) calc(var(--offset) + 40%)), {/block:IfBackgroundImageOverlay}url({image:Background});
 		--rpt: {select:Background image size};
 		--bg-repeat: {block:IfBackgroundImageOverlay}no-repeat, {/block:IfBackgroundImageOverlay}var(--rpt);
 		--bg-size: {block:IfBackgroundImageOverlay}cover, {/block:IfBackgroundImageOverlay}var(--sz);
@@ -201,7 +201,7 @@
 		--accent: {color:ALT Accent};
 		--text-h: {color:ALT Header text};
 		{block:IfAltBackgroundImage}
-		--bg-img: {block:IfAltBackgroundImageOverlay}linear-gradient(transparent var(--offset), rgba(var(--bg-pg--rgb), 0.75) calc(var(--offset) + 20%), var(--bg-pg) calc(var(--offset) + 40%)), {/block:IfAltBackgroundImageOverlay}url({image:ALT Background});
+		--bg-img: {block:IfAltBackgroundImageOverlay}linear-gradient(transparent var(--offset), rgba(var(--bg-pg--rgb), 0.75) calc(var(--offset) + 10%), var(--bg-pg) calc(var(--offset) + 40%)), {/block:IfAltBackgroundImageOverlay}url({image:ALT Background});
 		--rpt: {select:ALT Background image size};
 		--bg-repeat: {block:IfAltBackgroundImageOverlay}no-repeat, {/block:IfAltBackgroundImageOverlay}var(--rpt);
 		--bg-size: {block:IfAltBackgroundImageOverlay}cover, {/block:IfAltBackgroundImageOverlay}var(--sz);
@@ -215,13 +215,13 @@
 	@media (max-width: 60rem) {
 		{block:IfBackgroundImage}
 		html:not(.alt) { /* REGULAR PALETTE */
-			--bg-img: {block:IfBackgroundImageOverlay}linear-gradient(var(--bg-pg) calc(60% - var(--offset)), rgba(var(--bg-pg--rgb), 0.75) calc(80% - var(--offset)), transparent calc(100% - var(--offset))), {/block:IfBackgroundImageOverlay}url({image:Background});
+			--bg-img: {block:IfBackgroundImageOverlay}linear-gradient(var(--bg-pg) calc(60% - var(--offset)), rgba(var(--bg-pg--rgb), 0.75) calc(90% - var(--offset)), transparent calc(100% - var(--offset))), {/block:IfBackgroundImageOverlay}url({image:Background});
 		}
 		{/block:IfBackgroundImage}
 
 		{block:IfAltBackgroundImage}
 		html.alt { /* ALTERNATE PALETTE */
-			--bg-img: {block:IfAltBackgroundImageOverlay}linear-gradient(var(--bg-pg) calc(60% - var(--offset)), rgba(var(--bg-pg--rgb), 0.75) calc(80% - var(--offset)), transparent calc(100% - var(--offset))), {/block:IfAltBackgroundImageOverlay}url({image:ALT Background});
+			--bg-img: {block:IfAltBackgroundImageOverlay}linear-gradient(var(--bg-pg) calc(60% - var(--offset)), rgba(var(--bg-pg--rgb), 0.75) calc(90% - var(--offset)), transparent calc(100% - var(--offset))), {/block:IfAltBackgroundImageOverlay}url({image:ALT Background});
 		}
 		{/block:IfAltBackgroundImage}
 	}
