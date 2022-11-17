@@ -505,7 +505,7 @@
 
 			{block:Title}<a href="{Permalink}" class="title"><h4>{Title}</h4></a>{/block:Title}
 
-			<!-- TODO: Chat, Audio, Video, Answer -->
+			<!-- TODO: Audio, Video, Answer -->
 			{block:Text}
 			
 				{block:NotReblog}
@@ -643,6 +643,17 @@
 				{/block:Reblogs}{/block:RebloggedFrom}
 
 			{/block:Link}
+
+
+			{block:Chat}
+				{block:RebloggedFrom}<div class="bodyitem">{/block:RebloggedFrom}
+				<div class="bodyitemcontent">
+				{block:Lines}
+				<p class="npf_chat">{block:Label}<strong>{Label}</strong> {/block:Label}{Line}</p>
+				{/block:Lines}
+				</div>
+				{block:RebloggedFrom}</div>{/block:RebloggedFrom}
+			{/block:Chat}
 
 			</section>
 
