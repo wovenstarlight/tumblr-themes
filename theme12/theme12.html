@@ -318,36 +318,32 @@
 		
 	<style>
 	:root {
-		/* TODO: EDIT */
-		--Spoiler-Overlay-Color: #fcfcfc;
+		--Spoiler-Overlay-Color: var(--bg);
 		--Spoiler-Overlay-Transparency: 0%; /* MUST be in % */
 		
-		--Warning-Text-Size: 12px;
-		--Warning-Text-Color: #222;
-		--Spoiler-Tags-Color: #222;
+		--Warning-Text-Size: 1em;
+		--Warning-Text-Color: var(--text);
+		--Spoiler-Tags-Color: var(--accent);
 		
-		--ViewPost-Button-Padding: 10px;
-		--ViewPost-Button-Border: #eee;
-		--ViewPost-Button-Roundness: 3px;
-		--ViewPost-Button-Background: #fefefe;
+		--ViewPost-Button-Padding: 0.75em;
+		--ViewPost-Button-Border: transparent;
+		--ViewPost-Button-Roundness: var(--roundness);
+		--ViewPost-Button-Background: var(--bg-pg);
 		--ViewPost-Button-FontSize: 80%;
-		--ViewPost-Button-Text-Color: #222;
+		--ViewPost-Button-Text-Color: var(--text);
 		
-		--ViewPost-Button-HOVER-Border: #222;
-		--ViewPost-Button-HOVER-Background: #222;
-		--ViewPost-Button-HOVER-Text-Color: #eee;
+		--ViewPost-Button-HOVER-Border: transparent;
+		--ViewPost-Button-HOVER-Background: var(--bg-pg);
+		--ViewPost-Button-HOVER-Text-Color: var(--accent);
 		
 		--ShrinkPost-Transition-Speed: 699ms; /* can be in ms or s */
 	}
 
-	/* Match special text casing */
-	body:not(.lower, .upper) { text-transform: unset }
-	body.lower .view-button { text-transform: lowercase }
 	/* Match corner roundness */
 	.sp { border-radius: var(--roundness) }
 	/* Spacing */
-	.warning-text { padding: 1em }
-	.warning-text p { margin: 0 }
+	.warning-text { padding: 0.5em 1em }
+	.warning-text p, .warning-text a { margin: 0 }
 	.warning-text .sp-tags { margin: 0.5em 0 }
 	</style>
 	{/block:IfFilteredTags}
