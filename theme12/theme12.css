@@ -50,6 +50,30 @@ blockquote > :last-child { margin-block-end: 0 }
 	color: var(--text);
 	box-shadow: 0.1em 0.1em 0.5em rgba(var(--text--rgb), 0.25);
 }
+/* #region Casing */
+body.upper #footer,
+body.upper #name, body.upper #blognav a, body.upper #title,
+body.upper #search button, body.upper #search input,
+body.upper #pages, body.upper #pagination,
+body.upper #hdr, body.upper .newdate,
+body.upper .post header, body.upper .post footer .topline,
+body.upper .post .user,
+body.upper .post .body .read_more, body.upper .more_notes_link_container > *,
+body.upper .post .notes .action a,
+body.upper .photowrapper .highres, body.upper .ask .asker {
+	text-transform: uppercase;
+}
+body.upper .post .body > a.title h4, body.upper .post#notes .title { font-variant: small-caps }
+body.lower #footer, body.lower #blognav a, body.lower #title,
+body.lower #search button, body.lower #search input,
+body.lower #pages, body.lower #pagination,
+body.lower #hdr, body.lower .newdate,
+body.lower .post header, body.lower .post footer .topline,
+body.lower .post .body .read_more, body.lower .more_notes_link_container > *,
+body.lower .photowrapper .highres, body.lower .ask .asker {
+	text-transform: lowercase;
+}
+/* #endregion */
 /* Roundness */
 #avatar.square, #s-m-t-tooltip,
 #search form, #search button,
@@ -106,7 +130,6 @@ html:not(.alt) #banner .alt, html.alt #banner .og { display: none }
 	gap: 0.5em 1em;
 	align-items: center;
 	justify-content: center;
-	text-transform: uppercase;
 	letter-spacing: 0.1em;
 	text-align: center;
 }
@@ -169,7 +192,6 @@ body.nleft #avatar { transform: rotate(90deg) }
 	text-overflow: ellipsis;
 }
 #name, #blognav a {
-	text-transform: uppercase;
 	letter-spacing: 0.1em;
 	cursor: pointer;
 	padding-block: calc((var(--navbar-size) - 1em) / 2);
@@ -283,7 +305,6 @@ body.ntop #search form {
 #search button {
 	background: none;
 	border: none;
-	text-transform: uppercase;
 	letter-spacing: 0.1em;
 	color: var(--text);
 	cursor: pointer;
@@ -328,7 +349,6 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 #title {
 	font-family: var(--tfont);
 	font-weight: var(--tweight);
-	text-transform: uppercase;
 	font-size: 4em;
 	line-height: 1;
 }
@@ -337,7 +357,6 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
-	text-transform: uppercase;
 	letter-spacing: 0.1em;
 	text-align-last: center;
 }
@@ -362,7 +381,6 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 #hdr, .newdate {
 	text-align: justify;
 	text-align-last: center;
-	text-transform: uppercase;
 	letter-spacing: 0.1em;
 }
 #hdr h2, .newdate h3 { margin: 0 }
@@ -375,7 +393,6 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 .search_query::after { content: "\201D" }
 /* Header/footer links */
 .post header, .post footer .topline {
-	text-transform: uppercase;
 	display: flex;
 	flex-flow: row wrap;
 	gap: 0.25em 0.75em;
@@ -422,7 +439,6 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 .post .user + .bodyitemcontent { padding-inline-start: 0.25em }
 .post .bodyitem:not(:last-child) { margin-block-end: 1em }
 .post .user {
-	text-transform: uppercase;
 	font-weight: bold;
 	letter-spacing: 0.1em;
 	display: flex;
@@ -447,13 +463,11 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 	text-align: center;
 	font-size: 2.25em;
 	font-weight: bold;
-	font-variant: small-caps;
 }
 .post h5 { font-size: 1.6em }
 .post h6 { font-size: 1.3em }
 .post h5, .post h6 { margin-block: 0.5em }
 .post .body .read_more, .more_notes_link_container > * { 
-	text-transform: uppercase;
 	font-weight: bold;
 	letter-spacing: 0.1em;
 	text-decoration: none;
@@ -490,7 +504,6 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 /* Usernames */
 .post .notes .action a {
 	font-weight: bold;
-	text-transform: uppercase;
 	letter-spacing: 0.05em;
 }
 /* Avatars */
@@ -555,7 +568,6 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 	background: var(--bg);
 	padding: min(0.5em, 5%);
 	transition-property: color, opacity;
-	text-transform: uppercase;
 	letter-spacing: 0.1em;
 	font-size: 0.9em;
 }
@@ -658,7 +670,6 @@ iframe, .tumblr_video_container {
 }
 .question > :last-child { margin-block-end: 0 }
 .ask .asker {
-	text-transform: uppercase;
 	letter-spacing: 0.05em;
 	font-weight: bold;
 }
