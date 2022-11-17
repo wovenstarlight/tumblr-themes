@@ -113,6 +113,7 @@ html:not(.alt) #banner .alt, html.alt #banner .og { display: none }
 	padding-inline: 1em;
 	z-index: 5;
 	gap: 1em;
+	line-height: 1;
 }
 body.ntop #navbar {
 	position: sticky;
@@ -160,13 +161,13 @@ body.nleft #avatar { transform: rotate(90deg) }
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
 	cursor: pointer;
-	padding-block: 0.75em;
+	padding-block: calc((var(--navbar-size) - 1em) / 2);
 	text-decoration: none;
 }
 /* Blog navigation */
 #blognav {
 	display: flex;
-	gap: 0.5em;
+	gap: 0.6em;
 }
 #dropnav:not(.a, s, .r, .c, .e) { display: none !important }
 #dropnav.active #shownav { color: var(--accent) }
@@ -524,7 +525,7 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 	body:not(.ntop) #shownav { display: none }
 	body:not(.ntop) #dropper {
 		display: flex;
-		gap: 0.5em;
+		gap: 0.6em;
 	}
 }
 @media (max-height: 45rem) {
@@ -537,13 +538,13 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 		writing-mode: horizontal-tb;
 		position: absolute;
 		top: 0;
-		right: calc(100% + .3em);
+		right: 100%;
 	}
 	body.nleft #dropper {
 		transform: rotate(90deg);
 		transform-origin: top left;
 		position: absolute;
-		top: calc(100% + .3em);
+		top: 100%;
 		left: 100%;
 	}
 	body:not(.ntop) #dropper {
@@ -555,10 +556,6 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og { display: none 
 	}
 	body.nright .iframe-controls--desktop ~ #navbar #dropper { top: 1.5rem }
 	body:not(.ntop) #dropnav:not(.active) #dropper { opacity: 0; pointer-events: none }
-	body:not(.ntop) #dropper a { padding: 0.5em 1em }
-}
-@media (max-height: 45rem) and (max-width: 60rem) {
-	body.nright #dropper { right: calc(100% - .15em) }
-	body.nleft #dropper { top: calc(100% - .15em) }
+	body:not(.ntop) #dropper a { padding: 0.6em 1em }
 }
 /* #endregion */
