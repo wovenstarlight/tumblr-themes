@@ -84,6 +84,8 @@ body.nright { margin-right: var(--navbar-size) }
 	font-size: 3em;
 	color: var(--text-h);
 	font-family: var(--tfont);
+	padding: .25em;
+	line-height: 1;
 }
 #banner span.bg { background: rgba(var(--bg--rgb), 0.5) }
 html:not(.alt) #banner .alt, html.alt #banner .og { display: none }
