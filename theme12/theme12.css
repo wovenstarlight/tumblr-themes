@@ -480,8 +480,7 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 	gap: 0.5em 1em;
 	align-items: center;
 	width: 100%;
-	border-top: 0.1em solid var(--accent);
-	border-bottom: 0.1em solid var(--accent);
+	border-block: 0.1em solid var(--accent);
 	padding-block: 0.4em;
 }
 /* Align simple notes to left */
@@ -641,8 +640,7 @@ iframe, .tumblr_video_container {
 .ask {
 	margin: 0 1.75em 1em;
 	padding: 1em 0.5em;
-	border-top: 0.1em solid var(--accent);
-	border-bottom: 0.1em solid var(--accent);
+	border-block: 0.1em solid var(--accent);
 	position: relative;
 }
 .ask .ph-envelope-open {
