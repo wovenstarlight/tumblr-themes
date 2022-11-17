@@ -489,6 +489,64 @@ div.npf-link-block.no-poster .title { padding: 1rem 0.75rem 0 }
 .has-poster .bottom:empty { display: none }
 div.npf-link-block:not(.has-poster) .bottom:empty { padding-top: 0 }
 /* #endregion */
+/* #region Audio posts */
+.audiowrapper {
+	display: grid;
+	grid-template-rows: 5em auto;
+	background-size: cover;
+}
+.audiowrapper span[id*='audio_player'] { display: none }
+.audiowrapper .top {
+	background-color: rgba(var(--bg-pg--rgb), 0.75);
+	display: flex;
+	width: 100%;
+}
+.audiowrapper.hasart .top {
+	backdrop-filter: blur(15px);
+	background-color: rgba(var(--bg-pg--rgb), 0.5);
+}
+.audiowrapper .custom_audio_buttons {
+	width: 5em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.audiowrapper .custom_audio_buttons div[style*='block'] {
+	background: var(--bg);
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+	width: 2em;
+	height: 2em;
+	font-size: 1.5em;
+	border-radius: 100%;
+	cursor: pointer;
+}
+.audiowrapper .textinfo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0.1em;
+	padding-inline-end: 1em;
+}
+.audiowrapper .textinfo .trackname { font-weight: bold }
+.audiowrapper .textinfo .album { font-style: italic }
+.audiowrapper .textinfo { flex-grow: 1 }
+.audiowrapper .custom_audio_seekbar {
+	background-color: var(--bg-pg);
+	display: block;
+	height: 0.25em;
+	cursor: pointer;
+}
+.audiowrapper .custom_audio_seekbar_progress {
+	background-color: var(--accent);
+	display: block;
+	height: 100%;
+}
+.audiowrapper + .bodyitem { margin-block-start: 0.5em }
+/* #endregion */
+/* Video posts */
+.post .body iframe { max-width: 100% }
 /* #endregion */
 
 

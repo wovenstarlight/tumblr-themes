@@ -508,7 +508,7 @@
 
 			{block:Title}<a href="{Permalink}" class="title"><h4>{Title}</h4></a>{/block:Title}
 
-			<!-- TODO: Audio, Video, Answer -->
+			<!-- TODO: Video, Answer -->
 			{block:Text}
 			
 				{block:NotReblog}
@@ -657,6 +657,39 @@
 				</div>
 				{block:RebloggedFrom}</div>{/block:RebloggedFrom}
 			{/block:Chat}
+
+
+			{block:Audio}
+			
+				{block:AudioPlayer}
+				<div class="audiowrapper {block:AlbumArt}hasart" style="background-image: url('{AlbumArtURL}'){/block:AlbumArt}">
+					{AudioPlayer}
+					
+					<div class="top">
+						<span class="custom_audio_buttons"></span>
+						<div class="textinfo">
+						{block:TrackName}<span class="trackname">{TrackName}</span>{/block:TrackName}
+						{block:Artist}<span class="artist">{Artist}</span>{/block:Artist}
+						{block:Album}<span class="album">{Album}</span>{/block:Album}
+						</div>
+						{block:AlbumArt}<img class="albumart" src="{AlbumArtURL}">{/block:AlbumArt}
+					</div>
+					<div class="custom_audio_seekbar"></div>
+				</div>
+				{/block:AudioPlayer}
+				
+				{block:NotReblog}
+				<div class="bodyitemcontent">{Body}</div>
+				{/block:NotReblog}
+				
+				{block:RebloggedFrom}{block:Reblogs}
+				<div class="bodyitem">
+					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
+					<div class="bodyitemcontent">{Body}</div>
+				</div>
+				{/block:Reblogs}{/block:RebloggedFrom}
+			
+			{/block:Audio}
 
 			</section>
 
