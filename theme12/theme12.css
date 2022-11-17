@@ -511,7 +511,8 @@ div.npf-link-block:not(.has-poster) .bottom:empty { padding-top: 0 }
 	align-items: center;
 	justify-content: center;
 }
-.audiowrapper .custom_audio_buttons div[style*='block'] {
+.audiowrapper .custom_audio_buttons div[style*='block'],
+.audiowrapper .custom_audio_buttons div:not([style]) {
 	background: var(--bg);
 	display: flex !important;
 	align-items: center;
