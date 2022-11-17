@@ -48,7 +48,7 @@ blockquote > :last-child { margin-block-end: 0 }
 	padding: 0.25em 0.5em;
 	background-color: var(--bg);
 	color: var(--text);
-	box-shadow: 0.1em 0.1em 0.5em var(--bg-pg);
+	box-shadow: 0.1em 0.1em 0.5em rgba(var(--text--rgb), 0.25);
 }
 /* Roundness */
 #avatar.square, #s-m-t-tooltip,
