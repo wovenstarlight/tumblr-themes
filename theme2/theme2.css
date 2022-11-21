@@ -17,7 +17,7 @@ a:not(:hover) { text-decoration: none }
 #pagessearch a:hover,
 .post .actions a:hover,
 .post .title a:hover,
-.post.notes .more_notes_link:hover,
+.post.notes .more_notes_link:hover, .post#notes .more_notes_link:hover,
 #navigation a:hover,
 .bodyitemcontent .read_more:hover {
 	filter: contrast(1.2)
@@ -394,21 +394,21 @@ iframe { max-width: 100% }
 .post .tags a:not(:last-child)::after { content: "," }
 
 /* Post notes on permalink pages */
-.post.notes { padding: 0.5em 1em }
-.post.notes .title { text-align: center }
-.post.notes ol {
+.post.notes, .post#notes { padding: 0.5em 1em }
+.post.notes .title, .post#notes .title { text-align: center }
+.post.notes ol, .post#notes ol {
 	list-style: none;
 	padding: 0;
 	margin: 0;
 }
-.post.notes li {
+.post.notes li, .post#notes li {
 	margin: 0.25em 0;
 	display: grid;
 	align-items: center;
 	column-gap: 0.5em;
 	grid-template-columns: auto 1fr;
 }
-.post.notes .avatar {
+.post.notes .avatar, .post#notes .avatar {
 	--size: 1.5em;
 	width: var(--size);
 	height: var(--size);
@@ -420,8 +420,8 @@ blockquote {
 	padding-left: 0.75em;
 	border-left: 0.2em solid rgba(var(--links--rgb), 0.6);
 }
-.post.notes .more_notes_link,
-.post.notes .notes_loading {
+.post.notes .more_notes_link, .post#notes .more_notes_link,
+.post.notes .notes_loading, .post#notes .notes_loading {
 	background: var(--accent2);
 	margin: 0.5em;
 	padding: 0.5em;

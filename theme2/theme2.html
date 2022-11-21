@@ -667,7 +667,7 @@ body.light #pinnedpost { border: .1em solid }
 			</a>
 			<a class="today" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">{lang:Show all posts made on this day}</a>
 			{block:NoteCount}
-			<a class="notes" href="{Permalink}">
+			<a class="notes" href="{Permalink}#notes">
 				{NoteCountWithLabel}
 				<i data-feather="bookmark"></i>
 			</a>
@@ -693,7 +693,7 @@ body.light #pinnedpost { border: .1em solid }
 	
 	
 	{block:PostNotes}
-	<section class="post notes">
+	<section class="post" id="notes">
 		<h2 class="title">{lang:Notes}</h2>
 		{PostNotes-64}
 	</section>
