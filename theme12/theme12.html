@@ -176,7 +176,8 @@
 		--post-width: {text:Post width};
 		--tfont: {block:IfNotUseTumblrFontsForTitle}{text:Google font for title}{/block:IfNotUseTumblrFontsForTitle}{block:IfUseTumblrFontsForTitle}{TitleFont}{/block:IfUseTumblrFontsForTitle};
 		--tweight: {TitleFontWeight};
-		--tsize: {text:Title size};
+		--tsize: {block:IfTitleSize}{text:Header text size}{block:IfTitleSize}{block:IfNotTitleSize}3em{/block:IfNotTitleSize};
+		{block:IfBackgroundImage};
 		--bfont: {block:IfNotUseTumblrFontsForBody}{text:Google font for body}{/block:IfNotUseTumblrFontsForBody}{block:IfUseTumblrFontsForBody}{font:Tumblr font for body}{/block:IfUseTumblrFontsForBody};
 		--roundness: {select:Corner roundness};
 		--offset: {text:Background image overlay start};
@@ -192,7 +193,7 @@
 		--accent: {color:Accent};
 		--text-h: {color:Header text};
 		--htsize: {block:IfHeaderTextSize}{text:Header text size}{block:IfHeaderTextSize}{block:IfNotHeaderTextSize}3em{/block:IfNotHeaderTextSize};
-		{block:IfBackgroundImage}
+		{block:IfBackgroundImage};
 		--bg-img: {block:IfBackgroundImageOverlay}linear-gradient(transparent var(--offset), rgba(var(--bg-pg--rgb), 0.75) calc(var(--offset) + 10%), var(--bg-pg) calc(var(--offset) + 40%)), {/block:IfBackgroundImageOverlay}url({image:Background});
 		--rpt: {select:Background image size};
 		--bg-repeat: {block:IfBackgroundImageOverlay}no-repeat, {/block:IfBackgroundImageOverlay}var(--rpt);
@@ -213,7 +214,7 @@
 		--accent: {color:ALT Accent};
 		--text-h: {color:ALT Header text};
 		--htsize: {block:IfAltHeaderTextSize}{text:ALT Header text size}{block:IfAltHeaderTextSize}{block:IfNotAltHeaderTextSize}3em{/block:IfNotAltHeaderTextSize};
-		{block:IfAltBackgroundImage}
+		{block:IfAltBackgroundImage};
 		--bg-img: {block:IfAltBackgroundImageOverlay}linear-gradient(transparent var(--offset), rgba(var(--bg-pg--rgb), 0.75) calc(var(--offset) + 10%), var(--bg-pg) calc(var(--offset) + 40%)), {/block:IfAltBackgroundImageOverlay}url({image:ALT Background});
 		--rpt: {select:ALT Background image size};
 		--bg-repeat: {block:IfAltBackgroundImageOverlay}no-repeat, {/block:IfAltBackgroundImageOverlay}var(--rpt);
