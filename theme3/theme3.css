@@ -292,10 +292,7 @@ body:not(.sidebarleft) main {
 }
 .customlike .like_button.liked + span::after { content: "d" }
 /* Tags section */
-.tags a:not(:last-child)::after {
-	content: ",";
-	margin-right: 0.25em;
-}
+.tags a:not(:last-child)::after { content: ", " }
 /* Permalink posts: notes section */
 .post.notes { padding-bottom: 1em }
 .post.notes li:nth-child(even) { background:rgba(var(--text--rgb),.05) }
