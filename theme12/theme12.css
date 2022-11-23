@@ -599,7 +599,7 @@ div.npf-link-block:not(.has-poster) .bottom:empty { padding-top: 0 }
 }
 .audiowrapper.hasart .top {
 	backdrop-filter: blur(15px);
-	background-color: rgba(var(--bg-pg--rgb), 0.5);
+	background-color: rgba(var(--bg-pg--rgb), 0.75);
 }
 .audiowrapper .custom_audio_buttons {
 	display: flex;
