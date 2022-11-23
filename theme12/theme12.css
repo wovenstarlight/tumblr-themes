@@ -178,6 +178,7 @@ body.nright #navbar {
 	gap: 0.5em;
 	text-decoration: none;
 	flex-shrink: 1;
+	z-index: 2;
 }
 body.nright #avnm { flex-direction: row-reverse }
 #avatar {
@@ -201,9 +202,37 @@ body.nleft #avatar { transform: rotate(90deg) }
 #blognav {
 	display: flex;
 	gap: 0.6em;
+	position: relative;
+}
+#blognav::before {
+	position: absolute;
+	content: "";
+	display: block;
+	background-color: var(--bg);
+	z-index: 1;
+	pointer-events: none;
+}
+body:not(.nright) #blognav::before {
+	top: 0;
+	right: 100%;
+	width: 5em;
+	height: var(--navbar-size);
+}
+body.nright #blognav::before {
+	top: 100%;
+	right: 0;
+	width: var(--navbar-size);
+	height: 5em;
 }
 #dropnav:not(.a, s, .r, .c, .e) { display: none !important }
 #dropnav.active #shownav { color: var(--accent) }
+#blognav > a, #shownav {
+	background-color: var(--bg);
+	z-index: 1;
+	padding-inline: 0.3em;
+	margin-inline: -0.3em;
+}
+#dropnav.active #dropper { box-shadow: 0 0 0.5em rgba(var(--text--rgb), 0.25) }
 body:not(.nright) #scrolltotop_parent { order: -1 }
 body.nright #scrolltotop_parent { order: 1 }
 .tmblr-iframe--unified-controls { z-index: 5 !important }
@@ -729,7 +758,7 @@ iframe, .tumblr_video_container {
 		transition: opacity .2s;
 	}
 	body.ntop #dropnav:not(.active) #dropper { opacity: 0; pointer-events: none }
-	body.ntop #dropper a { padding-inline: 1em }
+	body.ntop #dropper a { padding: 0.75em 1em }
 	
 	#center {
 		justify-items: center;
