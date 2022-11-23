@@ -349,7 +349,7 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 #title {
 	font-family: var(--tfont);
 	font-weight: var(--tweight);
-	font-size: 4em;
+	font-size: var(--tsize);
 	line-height: 1;
 }
 /* Links and pagination */
