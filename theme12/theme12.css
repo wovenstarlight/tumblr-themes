@@ -113,7 +113,7 @@ body.nright { margin-right: var(--navbar-size) }
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 3em;
+	font-size: var(--htsize);
 	color: var(--text-h);
 	font-family: var(--tfont);
 	padding: .25em;
