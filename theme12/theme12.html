@@ -10,7 +10,7 @@
 		Palette toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 17 Nov 2022.
+	Last updated 22 Nov 2022.
 -->
 
 <!DOCTYPE html>
@@ -55,8 +55,7 @@
 	<meta name="image:Header" content="">
 	<meta name="text:Header text" content="">
 	<meta name="if:Header image overlay" content="1">
-	<meta name="select:Header image size" content="contain" title="Contain">
-	<meta name="select:Header image size" content="cover" title="Cover">
+	<meta name="if:Stretch header image" content="1">
 	<meta name="select:Header image position" content="center" title="Center">
 	<meta name="select:Header image position" content="top" title="Top">
 	<meta name="select:Header image position" content="bottom" title="Bottom">
@@ -93,8 +92,7 @@
 	<meta name="image:ALT Header" content="">
 	<meta name="text:ALT Header text" content="">
 	<meta name="if:ALT Header image overlay" content="1">
-	<meta name="select:ALT Header image size" content="contain" title="Contain">
-	<meta name="select:ALT Header image size" content="cover" title="Cover">
+	<meta name="if:ALT Stretch header image" content="1">
 	<meta name="select:ALT Header image position" content="center" title="Center">
 	<meta name="select:ALT Header image position" content="top" title="Top">
 	<meta name="select:ALT Header image position" content="bottom" title="Bottom">
@@ -237,7 +235,7 @@
 	/* HEADER IMAGE */
 	{block:IfHeaderImage}
 	#banner img.og {
-		object-fit: {select:Header image size};
+		object-fit: {block:IfStretchHeaderImage}cover{/block:IfStretchHeaderImage}{block:IfNotStretchHeaderImage}contain{/block:IfNotStretchHeaderImage};
 		object-position: {select:Header image position};
 	}
 	{block:IfHeaderText}
@@ -246,7 +244,7 @@
 	{/block:IfHeaderImage}
 	{block:IfAltHeaderImage}
 	#banner img.alt {
-		object-fit: {select:ALT Header image size};
+		object-fit: {block:IfAltStretchHeaderImage}cover{/block:IfAltStretchHeaderImage}{block:IfNotAltStretchHeaderImage}contain{/block:IfNotAltStretchHeaderImage};
 		object-position: {select:ALT Header image position};
 	}
 	{block:IfAltHeaderText}
