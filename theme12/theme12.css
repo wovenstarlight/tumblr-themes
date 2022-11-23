@@ -119,7 +119,7 @@ body.nright { margin-right: var(--navbar-size) }
 	padding: .25em;
 	line-height: 1;
 }
-#banner span.bg { background: rgba(var(--bg--rgb), 0.5) }
+#banner span.bg { background: rgba(var(--bg--rgb), var(--hbg)) }
 html:not(.alt) #banner .alt, html.alt #banner .og { display: none }
 /* #endregion */
 /* Footer */

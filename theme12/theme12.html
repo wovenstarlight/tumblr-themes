@@ -58,6 +58,7 @@
 	<meta name="text:Header text" content="">
 	<meta name="text:Header text size" content="3em">
 	<meta name="if:Header image overlay" content="1">
+	<meta name="text:Header image overlay opacity" content="0.5">
 	<meta name="if:Stretch header image" content="1">
 	<meta name="select:Header image position" content="center" title="Center">
 	<meta name="select:Header image position" content="top" title="Top">
@@ -96,6 +97,7 @@
 	<meta name="text:ALT Header text" content="">
 	<meta name="text:ALT Header text size" content="3em">
 	<meta name="if:ALT Header image overlay" content="1">
+	<meta name="text:ALT Header image overlay opacity" content="0.5">
 	<meta name="if:ALT Stretch header image" content="1">
 	<meta name="select:ALT Header image position" content="center" title="Center">
 	<meta name="select:ALT Header image position" content="top" title="Top">
@@ -191,8 +193,11 @@
 		--text: {color:Text};
 		--text--rgb: {RGBcolor:Text};
 		--accent: {color:Accent};
+		{block:IfHeaderImage}{block:IfHeaderText}
 		--text-h: {color:Header text};
 		--htsize: {block:IfHeaderTextSize}{text:Header text size}{block:IfHeaderTextSize}{block:IfNotHeaderTextSize}3em{/block:IfNotHeaderTextSize};
+		{block:IfHeaderImageOverlay}--hbg: {block:IfHeaderImageOverlayOpacity}{text:Header image overlay opacity}{/block:IfHeaderImageOverlayOpacity}{block:IfNotHeaderImageOverlayOpacity}0.5{/block:IfNotHeaderImageOverlayOpacity};{/block:IfHeaderImageOverlay}
+		{/block:IfHeaderText}{/block:IfHeaderImage}
 		{block:IfBackgroundImage};
 		--bg-img: {block:IfBackgroundImageOverlay}linear-gradient(transparent var(--offset), rgba(var(--bg-pg--rgb), 0.75) calc(var(--offset) + 10%), var(--bg-pg) calc(var(--offset) + 40%)), {/block:IfBackgroundImageOverlay}url({image:Background});
 		--rpt: {select:Background image size};
@@ -212,8 +217,11 @@
 		--text: {color:ALT Text};
 		--text--rgb: {RGBcolor:ALT Text};
 		--accent: {color:ALT Accent};
+		{block:IfAltHeaderImage}{block:IfAltHeaderText}
 		--text-h: {color:ALT Header text};
 		--htsize: {block:IfAltHeaderTextSize}{text:ALT Header text size}{block:IfAltHeaderTextSize}{block:IfNotAltHeaderTextSize}3em{/block:IfNotAltHeaderTextSize};
+		{block:IfAltHeaderImageOverlay}--hbg: {block:IfAltHeaderImageOverlayOpacity}{text:ALT Header image overlay opacity}{/block:IfAltHeaderImageOverlayOpacity}{block:IfNotAltHeaderImageOverlayOpacity}0.5{/block:IfNotAltHeaderImageOverlayOpacity};{/block:IfAltHeaderImageOverlay}
+		{block:IfAltHeaderText}{/block:IfAltHeaderImage}
 		{block:IfAltBackgroundImage};
 		--bg-img: {block:IfAltBackgroundImageOverlay}linear-gradient(transparent var(--offset), rgba(var(--bg-pg--rgb), 0.75) calc(var(--offset) + 10%), var(--bg-pg) calc(var(--offset) + 40%)), {/block:IfAltBackgroundImageOverlay}url({image:ALT Background});
 		--rpt: {select:ALT Background image size};
