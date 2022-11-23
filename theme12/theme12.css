@@ -681,7 +681,7 @@ iframe, .tumblr_video_container {
 /* #region RESPONSIVENESS */
 @media (min-width: 60rem) { /* Desktop sizing */
 	#center {
-		grid-template-columns: auto auto;
+		grid-template-columns: 1fr 1fr;
 		gap: 5%;
 		padding: 2em;
 	}
