@@ -455,7 +455,8 @@ ol.chat li:nth-child(even) {
 .custom_audio_time_left::before { content : "-" }
 /* Video posts */
 .tumblr_video_container,
-.tumblr_video_container iframe {
+.tumblr_video_container iframe,
+.tmblr-full iframe {
 	max-width: 100%;
 	width: 100% !important;
 }
