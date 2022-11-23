@@ -512,13 +512,14 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 	padding: 0;
 	display: flex;
 	flex-flow: row wrap;
+	justify-content: space-evenly;
 	gap: 0.75rem;
 }
 .post .notes li, .post .notes .with_commentary .avatar_frame, .post .notes .reply .avatar_frame { position: relative }
 /* Simple notes */
-.post .notes li:not(.reply, .with_commentary, .more_notes_link_container) { font-size: 0 }
+.post .notes li:not(.reply, .with_commentary:not(.original_post), .more_notes_link_container) { font-size: 0 }
 /* Replies and commentary */
-.post .notes .reply, .post .notes .with_commentary {
+.post .notes .reply, .post .notes .with_commentary:not(.original_post) {
 	display: grid;
 	grid-template-columns: auto 1fr;
 	gap: 0.5em 1em;
@@ -545,7 +546,8 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 .post .notes .avatar { width: 2.5rem; height: 2.5rem }
 /* Note icons */
 .post .notes .avatar_frame::after,
-.post .notes .reblog.without_commentary .tumblelog::after {
+.post .notes .reblog.without_commentary .tumblelog::after,
+.post .notes .reblog.original_post blockquote a::after{
 	font: normal normal normal 0.75rem/1 "Phosphor";
 	color: inherit;
 	flex-shrink: 0;
@@ -564,10 +566,10 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 	border-radius: 100%;
 }
 .post .notes .reblog.with_commentary .avatar_frame::after,
-.post .notes .reblog.without_commentary:not(.original_post) .tumblelog::after { content: "\f554" }
+.post .notes .reblog.without_commentary .tumblelog::after { content: "\f554" }
 .post .notes .like .avatar_frame::after { content: "\f460" }
 .post .notes .reply .avatar_frame::after { content: "\f331" }
-.post .notes .original_post .avatar_frame::after { content: "\f5b4"; color: var(--accent) }
+.post .notes .reblog.original_post blockquote a::after { content: "\f5b4"; color: var(--accent) }
 /* Commentary blockquotes */
 .post .notes .with_commentary blockquote {
 	margin: 0 0 0.15em 0.5em;
