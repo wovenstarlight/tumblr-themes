@@ -537,7 +537,8 @@ html.alt .altinvert .post .icons a[href]:active {
 	color: var(--bg);
 }
 .tags-container a:not(:last-child)::after {
-	content: ",";
+	content: ", ";
+	margin-right: -0.25em;
 	position: relative;
 	margin-left: -0.325em;
 	left: 0.325em;
