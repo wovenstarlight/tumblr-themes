@@ -358,9 +358,9 @@ template {
 }
 
 /**
-* Make images fit their containers.
+* Make images and iframes fit their containers.
 */
-img {
+img, iframe {
 	max-width: 100%;
 }
 
