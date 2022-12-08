@@ -6,7 +6,7 @@ function cleanNotes(num) {
 
 function tumblrNotesInserted() {
 	// set up tooltips for notes on permalink pages
-	$("[title]").style_my_tooltips();
+	$(".note [title]").style_my_tooltips();
 }
 
 $(document).ready( function() {
@@ -57,6 +57,7 @@ $(document).ready( function() {
 
 	// set up tooltips
 	$("[title]").style_my_tooltips();
+	$("#postnotes .note").addClass("smted");
 
 	// Remove stray paragraph tags
 	$(".bodyitemcontent p:first-child:empty").remove();
