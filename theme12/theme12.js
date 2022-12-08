@@ -1,6 +1,6 @@
 function tumblrNotesInserted() {
 	// set up tooltips for notes on permalink pages
-	$("[title]").style_my_tooltips();
+	$(".note [title]").style_my_tooltips();
 }
 
 $(document).ready( function() {
