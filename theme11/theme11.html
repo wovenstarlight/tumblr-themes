@@ -12,7 +12,7 @@
 		Palette toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 27 Oct 2022.
+	Last updated 8 Dec 2022.
 -->
 
 <!DOCTYPE html>
@@ -341,24 +341,24 @@
 
 	<!-- PAGINATION (top) -->
 	{block:Pagination}<nav class="top pagination">
-		<a {block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage} id="prev" class="button">← {lang:Previous}</a>
+		<a {block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage} class="prev" class="button">← {lang:Previous}</a>
 		{block:JumpPagination length="9"}
 		{block:CurrentPage}<a class="button curr active">{PageNumber}</a>{/block:CurrentPage}
 		{block:JumpPage}<a href="{URL}" class="button">{PageNumber}</a>{/block:JumpPage}
 		{/block:JumpPagination}
-		<a {block:NextPage}href="{NextPage}"{/block:NextPage} id="next" class="button">{lang:Next} →</a>
+		<a {block:NextPage}href="{NextPage}"{/block:NextPage} class="next" class="button">{lang:Next} →</a>
 	</nav>{/block:Pagination}
 	
 	{block:PermalinkPagination}<nav class="top pagination">
-		<a {block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost} id="prev" class="button">← {lang:Previous}</a>
+		<a {block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost} class="prev" class="button">← {lang:Previous}</a>
 		<span class="curr">{lang:See more posts}</span>
-		<a {block:NextPost}href="{NextPost}"{/block:NextPost} id="next" class="button">{lang:Next} →</a>
+		<a {block:NextPost}href="{NextPost}"{/block:NextPost} class="next" class="button">{lang:Next} →</a>
 	</nav>{/block:PermalinkPagination}
 	
 	{block:DayPage}{block:DayPagination}<nav class="top pagination">
-		<a {block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage} id="prev" class="button">← {lang:Previous}</a>
+		<a {block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage} class="prev" class="button">← {lang:Previous}</a>
 		<span class="curr">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonthWithZero}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonthWithZero} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}</span>
-		<a {block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage} id="next" class="button">{lang:Next} →</a>
+		<a {block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage} class="next" class="button">{lang:Next} →</a>
 	</nav>{/block:DayPagination}{/block:DayPage}
 
 
@@ -692,24 +692,24 @@
 
 	<!-- PAGINATION (bottom) -->
 	{block:Pagination}<nav class="bottom pagination">
-		<a {block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage} id="prev" class="button">← {lang:Previous}</a>
+		<a {block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage} class="prev" class="button">← {lang:Previous}</a>
 		{block:JumpPagination length="9"}
 		{block:CurrentPage}<a class="button curr active">{PageNumber}</a>{/block:CurrentPage}
 		{block:JumpPage}<a href="{URL}" class="button">{PageNumber}</a>{/block:JumpPage}
 		{/block:JumpPagination}
-		<a {block:NextPage}href="{NextPage}"{/block:NextPage} id="next" class="button">{lang:Next} →</a>
+		<a {block:NextPage}href="{NextPage}"{/block:NextPage} class="next" class="button">{lang:Next} →</a>
 	</nav>{/block:Pagination}
 	
 	{block:PermalinkPagination}<nav class="bottom pagination">
-		<a {block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost} id="prev" class="button">← {lang:Previous}</a>
+		<a {block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost} class="prev" class="button">← {lang:Previous}</a>
 		<span class="curr">{lang:See more posts}</span>
-		<a {block:NextPost}href="{NextPost}"{/block:NextPost} id="next" class="button">{lang:Next} →</a>
+		<a {block:NextPost}href="{NextPost}"{/block:NextPost} class="next" class="button">{lang:Next} →</a>
 	</nav>{/block:PermalinkPagination}
 	
 	{block:DayPage}{block:DayPagination}<nav class="bottom pagination">
-		<a {block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage} id="prev" class="button">← {lang:Previous}</a>
+		<a {block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage} class="prev" class="button">← {lang:Previous}</a>
 		<span class="curr">{block:IfDatesFormattedMonthFirst}{DayOfMonthWithZero} {DayOfMonthWithZero}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonthWithZero} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}</span>
-		<a {block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage} id="next" class="button">{lang:Next} →</a>
+		<a {block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage} class="next" class="button">{lang:Next} →</a>
 	</nav>{/block:DayPagination}{/block:DayPage}
 
 

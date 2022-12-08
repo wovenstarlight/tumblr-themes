@@ -216,7 +216,8 @@ html:not(.alt) .invert #links-search *, html.alt .altinvert #links-search * { co
 .top.pagination { margin-bottom: 1em }
 .bottom.pagination { margin-top: 1em }
 .pagination a { margin: 0 0.3em }
-#prev:not([href]), #next:not([href]) {
+#prev:not([href]), #next:not([href]), /* for backwards compatibility */
+.prev:not([href]), .next:not([href]) {
 	background: none;
 	border: none;
 	padding: 0;
