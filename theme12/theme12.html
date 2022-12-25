@@ -178,8 +178,7 @@
 		--post-width: {text:Post width};
 		--tfont: {block:IfNotUseTumblrFontsForTitle}{text:Google font for title}{/block:IfNotUseTumblrFontsForTitle}{block:IfUseTumblrFontsForTitle}{TitleFont}{/block:IfUseTumblrFontsForTitle};
 		--tweight: {TitleFontWeight};
-		--tsize: {block:IfTitleSize}{text:Title size}{block:IfTitleSize}{block:IfNotTitleSize}4em{/block:IfNotTitleSize};
-		{block:IfBackgroundImage};
+		--tsize: {block:IfTitleSize}{text:Title size}{/block:IfTitleSize}{block:IfNotTitleSize}4em{/block:IfNotTitleSize};
 		--bfont: {block:IfNotUseTumblrFontsForBody}{text:Google font for body}{/block:IfNotUseTumblrFontsForBody}{block:IfUseTumblrFontsForBody}{font:Tumblr font for body}{/block:IfUseTumblrFontsForBody};
 		--roundness: {select:Corner roundness};
 		--offset: {text:Background image overlay start};
@@ -220,8 +219,8 @@
 		--text-h: {color:ALT Header text};
 		--htsize: {block:IfAltHeaderTextSize}{text:ALT Header text size}{/block:IfAltHeaderTextSize}{block:IfNotAltHeaderTextSize}3em{/block:IfNotAltHeaderTextSize};
 		{block:IfAltHeaderImageOverlay}--hbg: {block:IfAltHeaderImageOverlayOpacity}{text:ALT Header image overlay opacity}{/block:IfAltHeaderImageOverlayOpacity}{block:IfNotAltHeaderImageOverlayOpacity}0.5{/block:IfNotAltHeaderImageOverlayOpacity};{/block:IfAltHeaderImageOverlay}
-		{block:IfAltHeaderText}{/block:IfAltHeaderImage}
-		{block:IfAltBackgroundImage};
+		{/block:IfAltHeaderText}{/block:IfAltHeaderImage}
+		{block:IfAltBackgroundImage}
 		--bg-img: {block:IfAltBackgroundImageOverlay}linear-gradient(transparent var(--offset), rgba(var(--bg-pg--rgb), 0.75) calc(var(--offset) + 10%), var(--bg-pg) calc(var(--offset) + 40%)), {/block:IfAltBackgroundImageOverlay}url({image:ALT Background});
 		--rpt: {select:ALT Background image size};
 		--bg-repeat: {block:IfAltBackgroundImageOverlay}no-repeat, {/block:IfAltBackgroundImageOverlay}var(--rpt);
