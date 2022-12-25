@@ -11,7 +11,7 @@
 		Palette toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 22 Nov 2022.
+	Last updated 25 Dec 2022.
 -->
 
 <!DOCTYPE html>
@@ -195,7 +195,7 @@
 		--accent: {color:Accent};
 		{block:IfHeaderImage}{block:IfHeaderText}
 		--text-h: {color:Header text};
-		--htsize: {block:IfHeaderTextSize}{text:Header text size}{block:IfHeaderTextSize}{block:IfNotHeaderTextSize}3em{/block:IfNotHeaderTextSize};
+		--htsize: {block:IfHeaderTextSize}{text:Header text size}{/block:IfHeaderTextSize}{block:IfNotHeaderTextSize}3em{/block:IfNotHeaderTextSize};
 		{block:IfHeaderImageOverlay}--hbg: {block:IfHeaderImageOverlayOpacity}{text:Header image overlay opacity}{/block:IfHeaderImageOverlayOpacity}{block:IfNotHeaderImageOverlayOpacity}0.5{/block:IfNotHeaderImageOverlayOpacity};{/block:IfHeaderImageOverlay}
 		{/block:IfHeaderText}{/block:IfHeaderImage}
 		{block:IfBackgroundImage};
@@ -218,7 +218,7 @@
 		--accent: {color:ALT Accent};
 		{block:IfAltHeaderImage}{block:IfAltHeaderText}
 		--text-h: {color:ALT Header text};
-		--htsize: {block:IfAltHeaderTextSize}{text:ALT Header text size}{block:IfAltHeaderTextSize}{block:IfNotAltHeaderTextSize}3em{/block:IfNotAltHeaderTextSize};
+		--htsize: {block:IfAltHeaderTextSize}{text:ALT Header text size}{/block:IfAltHeaderTextSize}{block:IfNotAltHeaderTextSize}3em{/block:IfNotAltHeaderTextSize};
 		{block:IfAltHeaderImageOverlay}--hbg: {block:IfAltHeaderImageOverlayOpacity}{text:ALT Header image overlay opacity}{/block:IfAltHeaderImageOverlayOpacity}{block:IfNotAltHeaderImageOverlayOpacity}0.5{/block:IfNotAltHeaderImageOverlayOpacity};{/block:IfAltHeaderImageOverlay}
 		{block:IfAltHeaderText}{/block:IfAltHeaderImage}
 		{block:IfAltBackgroundImage};
