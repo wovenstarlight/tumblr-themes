@@ -377,3 +377,10 @@ img.circle {
 #s-m-t-tooltip[style*='opacity: 0'] {
 	pointer-events: none;
 }
+
+/**
+* Ensure poll option text is wrapped.
+*/
+.poll-row p {
+	overflow-wrap: anywhere;
+}
