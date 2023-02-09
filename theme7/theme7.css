@@ -210,7 +210,13 @@ body {
 #pinnedpost, .notecount { font-weight: 700 }
 #pinnedpost svg { margin-right: 0.375em }
 #pinnedpost, .tags a { padding: 0.125em 0.375em }
+.tags a { margin-inline: -.375em  .125em } /* Undo extra spacing visually*/
 .tags a::before{ content: "#" }
+.tags a::after {
+	content: " ";
+	display: inline-block;
+	width: 0;
+}
 .notecount { display: block }
 .post .buttons {
 	display: flex;
