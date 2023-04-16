@@ -570,7 +570,11 @@ html.alt .altinvert .post .icons a[href]:active {
 	padding: 0.75em;
 }
 .original.post blockquote { border-inline-start-color: rgba(var(--text--rgb), 0.5) }
-.bodyitemcontent { line-height: 1.5 }
+.bodyitemcontent {
+	line-height: 1.5;
+	overflow-wrap: anywhere;
+	hyphens: auto;
+}
 .bodyitemcontent > * { margin-block: 1.25rem }
 .bodyitemcontent > *:first-child, blockquote > *:first-child { margin-block-start: 0 }
 .bodyitemcontent > *:last-child, blockquote > *:last-child { margin-block-end: 0 }
