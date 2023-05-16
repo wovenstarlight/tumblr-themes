@@ -351,7 +351,6 @@ span.curr { margin: 0 0.75em }
 	grid-column: 1 / span 2;
 	background-color: var(--bg);
 	border-radius: 0.25em;
-	overflow: hidden;
 }
 #progbars .prog::before {
 	content: "";
@@ -359,6 +358,7 @@ span.curr { margin: 0 0.75em }
 	height: 0.5em;
 	width: var(--progress);
 	background-color: var(--accent);
+	border-radius: 0.25em;
 }
 /* #endregion */
 /* #region Sidebar: LEFT */
@@ -388,7 +388,10 @@ span.curr { margin: 0 0.75em }
 
 
 /* #region FOOTER */
-html, body { height: 100vh }
+html, body {
+	height: 100vh;
+	overflow-x: hidden;
+}
 #body {
 	min-height: 100vh;
 	display: grid;
@@ -932,6 +935,7 @@ p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 		overflow-y: scroll;
 		-ms-overflow-style: none;  /* IE and Edge */
 		scrollbar-width: none;  /* Firefox */
+		overflow-x: hidden;
 	}
 	#right::-webkit-scrollbar { display: none }
 	.tmblr-iframe--unified-controls.iframe-controls--desktop ~ #body #right { padding-top: 50px }
