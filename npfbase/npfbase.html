@@ -49,20 +49,32 @@
 	.user {
 		display: flex;
 		align-items: center;
+		gap: 0.4em;
 	}
-	.user img {
+	.user > img {
 		--size: 2.5em;
 		width: var(--size);
 		height: var(--size);
-		margin-right: 0.5em;
 		border-radius: 0.25em;
 	}
+	.user span:not(:first-of-type) {
+	    display: flex;
+	    align-items: center;
+	    gap: 0.15em;
+	}
+	.user span:not(:first-of-type) img {
+    	--size: 0.875em;
+    	width: var(--size);
+    	height: var(--size);
+    }
+	
 	.ask {
 		border: solid {AccentColor};
 		padding: 0.5em;
 		white-space: pre-line;
 	}
 	.ask .user a { margin-inline-end: 0.2em }
+	
 	img { max-width: 100%; }
 	figure { margin: 0 }
 	.npf-link-block, .npf_row { max-width: 33.75em }
