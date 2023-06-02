@@ -202,8 +202,8 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	// get the avatar and username
 	// either an active user's nested size-64 URL, or a direct URL for currentUser or anon/broken users
 	let avatar = document.createElement("img");
-	// TODO: For some reason avatar isn't available as an option for blog objects. this used to be just "blogData.avatar[2]?.url || blogData.avatar". putting in a backup avatar fetch via API as a fix for now
-	avatar.src = blogData.avatar?.at(2)?.url || blogData.avatar || `https://api.tumblr.com/v2/blog/${blogData.name}/avatar/64`;
+	// TODO: For some reason avatar isn't available as an option for blog objects. this used to be just "blogData.avatar[3]?.url || blogData.avatar". putting in a backup avatar fetch via API as a fix for now
+	avatar.src = blogData.avatar?.at(3)?.url || blogData.avatar || `https://api.tumblr.com/v2/blog/${blogData.name}/avatar/64`;
 	let username = document.createElement("span");
 	username.innerHTML = blogData.name;
 
