@@ -444,7 +444,14 @@ function createContentBlock(trailItem, content, i) {
 			if (curr.attribution) {
 				let attrib = document.createElement("p");
 				attrib.classList.add("tmblr-attribution");
-				attrib.innerHTML = `<a href="${curr.attribution.url}">{lang:Via} ${curr.attribution.blog.name}</a>`;
+				switch (curr.attribution.type) {
+					case "post":
+						attrib.innerHTML = `<a href="${curr.attribution.url}">{lang:Via} ${curr.attribution.blog.name}</a>`;
+						break;
+					case "link":
+						attrib.innerHTML = `<a href="${curr.attribution.url}">{lang:Source}</a>`;
+						break;
+				}
 				fig.insertBefore(attrib, bit.nextElementSibling);
 			}
 			break;
