@@ -136,7 +136,8 @@ const textSubtypes = {
 }
 
 // for broken blog trail items. use size 64 avatars!
-const anonAvatars = [
+const anonAvatar = "https://assets.tumblr.com/images/anonymous_avatar_64.gif";
+const defaultAvatars = [
 	"https://assets.tumblr.com/images/default_avatar/cone_closed_64.png",
 	"https://assets.tumblr.com/images/default_avatar/cone_open_64.png",
 	"https://assets.tumblr.com/images/default_avatar/cube_closed_64.png",
@@ -200,7 +201,7 @@ function createTrailItem(post, npf, postID, expand = false) {
 	else if (npf.broken_blog_name !== undefined) {
 		createTrailItemHeader(item, {
 			name: npf.broken_blog_name,
-			avatar: anonAvatars[Math.floor(Math.random() * anonAvatars.length)]
+			avatar: defaultAvatars[Math.floor(Math.random() * defaultAvatars.length)]
 		});
 	}
 	
@@ -331,7 +332,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 			askerName.classList.add("name");
 		}
 		else {
-			askerIcon.src = "https://assets.tumblr.com/images/anonymous_avatar_64.gif";
+			askerIcon.src = anonAvatar;
 			askerName.innerText = "Anonymous";
 		}
 		asker.append(askerIcon, askerName, " asked:");
