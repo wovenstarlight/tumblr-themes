@@ -35,7 +35,7 @@
 
 	a { color: {AccentColor} }
 
-	.deactivated.user span::after {
+	.deactivated.user .name::after {
 		content: "deactivated";
 		opacity: 0.6;
 		margin-left: 0.5em;
@@ -229,9 +229,11 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	// get the avatar and username
 	// either an active user's nested size-64 URL, or a direct URL for currentUser or anon/broken users
 	let avatar = document.createElement("img");
+	avatar.classList.add("avatar");
 	// TODO: For some reason avatar isn't currently available as an option for blog objects. this used to be just "blogData.avatar[3]?.url || blogData.avatar". putting in a backup avatar fetch via API as a fix for now
 	avatar.src = blogData.avatar?.at(3)?.url || blogData.avatar || `https://api.tumblr.com/v2/blog/${blogData.name}/avatar/64`;
 	let username = document.createElement("span");
+	username.classList.add("name");
 	username.innerHTML = blogData.name;
 
 	// put together the header
@@ -326,6 +328,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 			askerIcon.src = `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name}/avatar/64`;
 			askerName.href = askNPF.attribution.blog.url;
 			askerName.innerText = askNPF.attribution.blog.name;
+			askerName.classList.add("name");
 		}
 		else {
 			askerIcon.src = "https://assets.tumblr.com/images/anonymous_avatar_64.gif";
