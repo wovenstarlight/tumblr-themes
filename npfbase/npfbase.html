@@ -1,0 +1,527 @@
+<!--
+	Based on the NPF variable offered by Tumblr.
+	https://github.com/tumblr/docs/blob/master/npf-spec.md
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	{MobileAppHeaders}
+	<meta charset="utf-8">
+	<title>{Title}{block:TagPage} ({lang:TagResultCount posts tagged Tag}){/block:TagPage}{block:SearchPage} ({lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+	<meta name="description" content="{MetaDescription}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="theme-color" content="#35465D">
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+	{block:Hidden}
+	<!-- TODO: Custom variables -->
+	{/block:Hidden}
+	{block:IfSyntaxHighlighting}
+	<link rel="stylesheet" href="https://static.tumblr.com/ehm1tdz/2VWnye81h/tumblr-highlightjs.css">
+	{/block:IfSyntaxHighlighting}
+	{PostTypographyStyles}
+
+	<style>
+	{NewPostStyles}
+	/* Colors */
+	body { background: {BackgroundColor} }
+
+	.blog-title {
+		font-family: {TitleFont}, "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
+		font-weight: {TitleFontWeight};
+	}
+
+	a { color: {AccentColor} }
+
+	.deactivated.user span::after {
+		content: "deactivated";
+		opacity: 0.6;
+		margin-left: 0.5em;
+	}
+	.post {
+		border: solid {AccentColor};
+		margin-block: 1em;
+		padding: 0.5em;
+		white-space: pre-line;
+	}
+	.user {
+		display: flex;
+		align-items: center;
+	}
+	.user img {
+		--size: 2.5em;
+		width: var(--size);
+		height: var(--size);
+		margin-right: 0.5em;
+		border-radius: 0.25em;
+	}
+	.ask {
+		border: solid {AccentColor};
+		padding: 0.5em;
+		white-space: pre-line;
+	}
+	.ask .user a { margin-inline-end: 0.2em }
+	img { max-width: 100%; }
+	figure { margin: 0 }
+	.npf-link-block, .npf_row { max-width: 33.75em }
+
+	/* Custom CSS */
+	{CustomCSS}
+	</style>
+</head>
+
+
+
+<body class="{block:IndexPage} index-page{/block:IndexPage}{block:PermalinkPage} permalink{/block:PermalinkPage}{block:LikesPage} likes-page{/block:LikesPage}{block:FollowingPage} following-page{/block:FollowingPage}{block:SearchPage} search-page{block:NoSearchResults} no-results{/block:NoSearchResults}{block:NoLikes} no-likes{/block:NoLikes}{block:NoPosts} no-posts{/block:NoPosts}{block:NoFollowing} no-following{/block:NoFollowing}{/block:SearchPage}">
+
+
+<main id="main">
+
+	<section id="posts">
+		<noscript><article>Javascript is required to view this blog. Please enable scripting and reload.</article></noscript>
+	</section>
+
+
+<script>
+// #region CONSTANTS AND GLOBAL VARIABLES
+// for when the current blog made/added to a post
+const currentUser = {
+	name: {JSName},
+	title: {JSTitle},
+	description: {JSDescription},
+	avatar: {JSPortraitURL-64},
+	url: {JSBlogURL},
+	active: true,
+}
+
+// default tags to wrap things in
+const textSubtypes = {
+	"heading1": "h2",
+	"heading2": "h3",
+	"quirky": "p",
+	"quote": "p",
+	"indented": "blockquote",
+	"chat": "p",
+	"ordered-list-item": "li",
+	"unordered-list-item": "li",
+}
+
+// for broken blog trail items. use size 64 avatars!
+const anonAvatars = [
+	"https://assets.tumblr.com/images/default_avatar/cone_closed_64.png",
+	"https://assets.tumblr.com/images/default_avatar/cone_open_64.png",
+	"https://assets.tumblr.com/images/default_avatar/cube_closed_64.png",
+	"https://assets.tumblr.com/images/default_avatar/cube_open_64.png",
+	"https://assets.tumblr.com/images/default_avatar/sphere_closed_64.png",
+	"https://assets.tumblr.com/images/default_avatar/sphere_open_64.png",
+]
+
+// for use in trail item body construction
+let bit,	// the base element - a paragraph, blockquote, etc. as drawn from textSubtypes
+	list;	// parent element for list items. null when no list is being constructed
+
+// #endregion
+
+
+
+// #region POST CREATION
+let posts = [
+	{block:Posts}
+	{
+		id: {JSPostID},
+		npf: {NPF},
+	},
+	{/block:Posts}
+];
+let postContainer = document.getElementById("posts");
+posts.forEach(post => {
+	let article = document.createElement("article");
+	article.classList.add("post");
+	postContainer.append(article);
+	
+	// Create each reblog of the post
+	if (!post.npf.trail.length) { article.classList.add("original") }
+	else { post.npf.trail.forEach(trailItem => createTrailItem(article, trailItem, null)) }
+	// End with the current blog's addition, if any, and expand if on the permalink page
+	if (post.npf.content.length) {
+		createTrailItem(
+			article,
+			post.npf,
+			post.id
+			{block:PermalinkPage}, true{/block:PermalinkPage}
+		);
+	}
+});
+// #endregion
+
+
+
+// #region CONSTRUCTOR FUNCTIONS
+
+// Each individual blog's contribution to a post
+function createTrailItem(post, npf, postID, expand = false) {
+	let item = document.createElement("div");
+	item.classList.add("bodyitem");
+	post.append(item);
+	
+	// extant blog; create directly
+	if (npf.blog !== undefined) { createTrailItemHeader(item, npf.blog, npf.post) }
+	
+	// deleted/unrecoverable blog; provide an anon avatar
+	else if (npf.broken_blog_name !== undefined) {
+		createTrailItemHeader(item, {
+			name: npf.broken_blog_name,
+			avatar: anonAvatars[Math.floor(Math.random() * anonAvatars.length)]
+		});
+	}
+	
+	// blog is currentUser; provide directly-pulled info
+	else { createTrailItemHeader(item, currentUser, { id: postID }) }
+	
+	// create the body of their contribution
+	createTrailItemBody(item, npf, { id: postID }, expand);
+}
+
+
+// Link to the post version on the contributing blog
+function createTrailItemHeader(trailItem, blogData, postData = null) {
+	let header = document.createElement("a");
+	header.classList.add("user");
+	trailItem.append(header);
+	
+	// mark broken trail items
+	if (postData === null || blogData.active === false) { header.classList.add("deactivated") }
+	
+	// add link where original posts exist
+	if (blogData.url && blogData.active) {
+		header.href = blogData.url.concat(blogData.url.endsWith("/") ? `post/${postData.id}` : `/${postData.id}`);
+	}
+	
+	// get the avatar and username
+	// either an active user's nested size-64 URL, or a direct URL for currentUser or anon/broken users
+	let avatar = document.createElement("img");
+	// TODO: For some reason avatar isn't available as an option for blog objects. this used to be just "blogData.avatar[2]?.url || blogData.avatar". putting in a backup avatar fetch via API as a fix for now
+	avatar.src = blogData.avatar?.at(2)?.url || blogData.avatar || `https://api.tumblr.com/v2/blog/${blogData.name}/avatar/64`;
+	let username = document.createElement("span");
+	username.innerHTML = blogData.name;
+
+	// TODO: Checkmarks and badges, pulled from tumblrmart_accessories
+	
+	// put together the header
+	header.append(avatar, username);
+}
+
+
+// Body of each individual user's contribution
+function createTrailItemBody(trailItem, npf, postData, expand) {
+	let content = npf.content;
+	let rows = npf.layout.find(l => l.type === "rows");
+
+	for (let i = 0; i < content.length; i ++) {
+		// figure out the content type and create the block based on that
+		createContentBlock(trailItem, content, i);
+		
+		// cut off the post and add a readmore, if one is present and you aren't currently on the post's permalink page
+		if (i === rows?.truncate_after && !expand) {
+			let readmore = document.createElement("a");
+			readmore.classList.add("read_more");
+			readmore.innerText = "{lang:Read more}";
+			let readmorecontainer = document.createElement("p");
+			readmorecontainer.classList.add("read_more_container");
+			readmorecontainer.append(readmore);
+			trailItem.append(readmorecontainer);
+			
+			let link;
+			if (npf.blog !== undefined) { // blog is extant
+				link = npf.blog.url.concat(npf.blog.url.endsWith("/") ? `post/${npf.post.id}` : `/${npf.post.id}`);
+			} else if (npf.broken_blog_name !== undefined) { // blog is unreachable; no link
+				link = null;
+			} else { // blog is current user's
+				link = currentUser.url.concat(currentUser.url.endsWith("/") ? `post/${postData.id}` : `/${postData.id}`);
+			}
+			// add link if reachable
+			if (link !== null) { readmore.href = link }
+			break; // don't render any more post blocks
+		}
+	}
+	
+	// All base content blocks are done. Adjust layout
+	// Put columns into rows
+	if (rows) {
+		let offset = 0;
+		rows.display.filter(i => (i.blocks.length > 1)).forEach((iRow, index) => {
+			// Need to move further columns out of their rows into the first column
+			
+			// the +1 is for the user header
+			// the -offset is because of however many items being put inside rows and therefore being removed from the indices
+			let row = trailItem.children[1 + iRow.blocks[0] - offset];
+			
+			// and now, move the corresponding columns inside the row
+			// skipping the first element, which is already in the row
+			for (let i = 1; i < iRow.blocks.length; i ++) {
+				// Move next column into row
+				row.append(row.nextElementSibling.children[0]);
+				// Delete now-empty next row
+				row.nextElementSibling.remove();
+			}
+			offset += iRow.blocks.length - 1;
+		})
+	}
+	
+	// If there's an ask, separate it from its answer, if any
+	let askNPF = npf.layout.find(l => l.type === "ask");
+	if (askNPF) {
+		// Anon or not?
+		let asker = document.createElement("p");
+		asker.classList.add("user");
+		let askerIcon = document.createElement("img");
+		let askerName = document.createElement("a");
+		if (askNPF.attribution) {
+			askerIcon.src = `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name}/avatar/64`;
+			askerName.href = askNPF.attribution.blog.url;
+			askerName.innerText = askNPF.attribution.blog.name;
+		}
+		else {
+			askerIcon.src = "https://assets.tumblr.com/images/anonymous_avatar_64.gif";
+			askerName.innerText = "Anonymous";
+		}
+		asker.append(askerIcon, askerName, " asked:");
+		
+		let ask = document.createElement("div");
+		ask.classList.add("ask");
+		ask.append(asker);
+		
+		if (rows) {
+			// Blocks may already be nested in rows; count off how many should be in the ask
+			let i = askNPF.blocks.length;
+			while (i > 0) {
+				i -= Math.max(1, trailItem.children[1].childElementCount);
+				ask.append(trailItem.children[1]);
+			}
+		}
+		else {
+			// just a simple stack. take however many off the top and put them in the ask
+			askNPF.blocks.forEach(b => ask.append(trailItem.children[1]));
+		}
+		
+		// PLACEMENT OPTIONS:
+		// In root post body, above answer trail item
+		trailItem.parentElement.insertBefore(ask, trailItem);
+		// Inside same trail item, above answerer's name
+		// trailItem.insertBefore(ask, trailItem.children[0]);
+		// Inside same trail item, below answerer's name
+		// trailItem.insertBefore(ask, trailItem.children[1]);
+	}
+}
+
+
+// Create an individual element in a trail item
+function createContentBlock(trailItem, content, i) {
+	let curr = content[i];
+	switch (curr.type) {
+		
+		case "text":
+			bit = document.createElement(textSubtypes[curr.subtype] || "p");
+			
+			bit.innerHTML = formatText(curr);
+			
+			if (curr.subtype?.includes("ordered-list-item")) {
+				// if first bullet point of a type, start a new list
+				if (content[i - 1]?.subtype !== curr.subtype) {
+					if (list) { trailItem.append(list); }
+					list = document.createElement(curr.subtype === "ordered-list-item" ? "ol" : "ul")
+				}
+				
+				list.append(bit); // continue the list
+				
+				// if last item in the list, or a last list, end the list and add the whole thing
+				if (content[i + 1]?.subtype !== curr.subtype || i + 1 === content.length) {
+					trailItem.append(list);
+					list = null;
+				}
+			}
+			else if ( ["quirky", "quote", "indented", "chat"].includes(curr.subtype) ) {
+				bit.classList.add("npf_".concat(curr.subtype));
+				trailItem.append(bit);
+			}
+			// otherwise it's a simple paragraph or blockquote or whatever. add
+			else { trailItem.append(bit) }
+			
+			break;
+		
+		case "image":
+			// wrappers
+			// for some reason this breaks if col/row are also in the >=540 block
+			let row = document.createElement("div");
+			row.classList.add("npf_row");
+			let col = document.createElement("div");
+			col.classList.add("npf_col");
+			let fig = document.createElement("figure");
+			if (curr.media[0].width >= 540) {
+				fig.classList.add("tmblr-full");
+			}
+			
+			// actual image
+			bit = document.createElement("img");
+			bit.src = curr.media[0].url;
+			bit.width = curr.media[0].width;
+			bit.height = curr.media[0].height;
+			// add alt text, if present
+			if (curr.alt_text) { bit.setAttribute("alt", curr.alt_text) }
+			// include colors, if present
+			for (color in curr.colors) {
+				bit.setAttribute("data-".concat(color), "#".concat(curr.colors[color]));
+			}
+			// nest the structure and append it to the post
+			fig.append(bit);
+			if (curr.media[0].width >= 540) {
+				col.append(fig);
+				row.append(col);
+				trailItem.append(row);
+			}
+			else {
+				trailItem.append(fig);
+			}
+			
+			if (curr.caption) { // add caption, if present
+				let caption = document.createElement("p");
+				caption.innerText = curr.caption;
+				fig.insertBefore(caption, bit.nextElementSibling);
+			}
+			
+			if (curr.attribution) {
+				let attrib = document.createElement("p");
+				attrib.classList.add("tmblr-attribution");
+				attrib.innerHTML = `<a href="${curr.attribution.url}">{lang:Via} ${curr.attribution.blog.name}</a>`;
+				fig.insertBefore(attrib, bit.nextElementSibling);
+			}
+			break;
+		
+		case "link":
+			bit = document.createElement("div");
+			bit.classList.add("npf-link-block");
+			let link = document.createElement("a");
+			let poster;
+			if (curr.poster) {
+				bit.classList.add("has-poster");
+				poster = document.createElement("div");
+				poster.classList.add("poster");
+				poster.style.backgroundImage = `url(${curr.poster[0].url})`;
+				link.append(poster);
+			} else {
+				bit.classList.add("no-poster");
+			}
+			if (curr.title) {
+				let title = document.createElement("div");
+				title.classList.add("title");
+				title.innerText = curr.title;
+				if (curr.poster) { poster.append(title) }
+				else { link.append(title) }
+			}
+			let bottom = document.createElement("div");
+			bottom.classList.add("bottom");
+			if (curr.description) {
+				let desc = document.createElement("div");
+				desc.classList.add("description");
+				desc.innerText = curr.description;
+				bottom.append(desc);
+			}
+			// get "site name" - just the base url without the https
+			let sitename = document.createElement("div");
+			sitename.classList.add("site-name");
+			// use display url if sitename is absent, as in older links
+			sitename.innerText = curr.site_name ? curr.site_name : curr.display_url;
+			bottom.append(sitename);
+			
+			link.append(bottom);
+			link.href = curr.url;
+			bit.append(link);
+			trailItem.append(bit);
+			break;
+			
+		default:
+			bit = document.createElement("p");
+			bit.innerHTML = `TODO: ${curr.type} block`;
+			trailItem.append(bit);
+		
+	}
+}
+
+
+// Applies inline formatting to text blocks
+function formatText(content) {
+	let base = content.text;
+	if (!content.formatting) { return base; }
+	let text = "",
+		formats = new Array(),
+		i = 0;
+	// Manually incrementing i instead of a full for-i loop so that emoji unicode combos aren't split up
+	for (const char of base) {
+		// open any formatting tags
+		formats = content.formatting.filter(f => (f.start === i));
+		formats.forEach(f => {
+			switch (f.type) {
+				case "bold":
+					text += "<strong>";
+					break;
+				case "italic":
+					text += "<em>";
+					break;
+				case "small":
+					text += "<small>";
+					break;
+				case "link":
+					text += `<a href='${f.url}'>`;
+					break;
+				case "mention":
+					text += `<a href='${f.blog.url}'>`;
+					break;
+				case "color":
+					text += `<span style='color: ${f.hex};'>`;
+					break;
+			}
+		})
+		
+		// add the actual character
+		text += char;
+		
+		// close any formatting tags
+		formats = content.formatting.filter(f => (f.end === i + 1));
+		formats.forEach(f => {
+			switch (f.type) {
+				case "bold":
+					text += "</strong>";
+					break;
+				case "italic":
+					text += "</em>";
+					break;
+				case "small":
+					text += "</small>";
+					break;
+				case "link":
+					text += "</a>";
+					break;
+				case "mention":
+					text += "</a>";
+					break;
+				case "color":
+					text += "</span>";
+					break;
+			}
+		})
+		
+		i ++;
+	}
+	return text;
+}
+
+// #endregion
+</script>
+
+
+</main>
+
+</body>
+</html>
