@@ -57,16 +57,31 @@
 		height: var(--size);
 		border-radius: 0.25em;
 	}
-	.user span:not(:first-of-type) {
-	    display: flex;
-	    align-items: center;
-	    gap: 0.15em;
+	.user .badges {
+		--size: 0.875em;
+		flex-grow: 1;
+		display: flex;
+		align-items: center;
+		gap: 0.15em;
+		height: var(--size);
 	}
-	.user span:not(:first-of-type) img {
-    	--size: 0.875em;
-    	width: var(--size);
-    	height: var(--size);
-    }
+	.user .badges span {
+		position: relative;
+		flex-grow: 1;
+		max-width: var(--size);
+		height: var(--size);
+	}
+	.user .badges img {
+		width: var(--size);
+		height: var(--size);
+		max-width: unset;
+		filter: drop-shadow(0 0 0.1em {BackgroundColor});
+		display: block;
+	}
+	.user .badges span:not(:last-child) img {
+		position: absolute;
+		left: 0;
+	}
 	
 	.ask {
 		border: solid {AccentColor};
@@ -226,16 +241,17 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	let badges = blogData.tumblrmart_accessories?.badges;
 	if (blogData.can_show_badges && badges) {
 		badges.forEach(group => {
-			let badge,
+			let badge, badgeWrapper,
 				badgegroup = document.createElement("span");
+			badgegroup.classList.add("badges");
 			header.append(badgegroup);
 			badgegroup.classList.add(group.product_group);
-			badgegroup.setAttribute("style", "--total: ".concat(group.urls.length));
 			group.urls.forEach((url, index) => {
 				badge = document.createElement("img");
 				badge.src = url;
-				badge.setAttribute("style", "--position: ".concat(index));
-				badgegroup.append(badge);
+				badgeWrapper = document.createElement("span");
+				badgeWrapper.append(badge);
+				badgegroup.append(badgeWrapper);
 			})
 		})
 	}
