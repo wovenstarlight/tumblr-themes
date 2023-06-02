@@ -202,15 +202,31 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	// get the avatar and username
 	// either an active user's nested size-64 URL, or a direct URL for currentUser or anon/broken users
 	let avatar = document.createElement("img");
-	// TODO: For some reason avatar isn't available as an option for blog objects. this used to be just "blogData.avatar[3]?.url || blogData.avatar". putting in a backup avatar fetch via API as a fix for now
+	// TODO: For some reason avatar isn't currently available as an option for blog objects. this used to be just "blogData.avatar[3]?.url || blogData.avatar". putting in a backup avatar fetch via API as a fix for now
 	avatar.src = blogData.avatar?.at(3)?.url || blogData.avatar || `https://api.tumblr.com/v2/blog/${blogData.name}/avatar/64`;
 	let username = document.createElement("span");
 	username.innerHTML = blogData.name;
 
-	// TODO: Checkmarks and badges, pulled from tumblrmart_accessories
-	
 	// put together the header
 	header.append(avatar, username);
+
+	// Checkmarks and other badges, pulled from tumblrmart_accessories
+	let badges = blogData.tumblrmart_accessories?.badges;
+	if (blogData.can_show_badges && badges) {
+		badges.forEach(group => {
+			let badge,
+				badgegroup = document.createElement("span");
+			header.append(badgegroup);
+			badgegroup.classList.add(group.product_group);
+			badgegroup.setAttribute("style", "--total: ".concat(group.urls.length));
+			group.urls.forEach((url, index) => {
+				badge = document.createElement("img");
+				badge.src = url;
+				badge.setAttribute("style", "--position: ".concat(index));
+				badgegroup.append(badge);
+			})
+		})
+	}
 }
 
 
