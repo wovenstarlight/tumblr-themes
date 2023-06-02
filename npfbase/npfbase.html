@@ -145,6 +145,7 @@ const defaultAvatars = [
 	"https://assets.tumblr.com/images/default_avatar/sphere_closed_64.png",
 	"https://assets.tumblr.com/images/default_avatar/sphere_open_64.png",
 ]
+let brokenIcons = {};
 
 // for use in trail item body construction
 let bit,	// the base element - a paragraph, blockquote, etc. as drawn from textSubtypes
@@ -199,9 +200,10 @@ function createTrailItem(post, npf, postID, expand = false) {
 	
 	// deleted/unrecoverable blog; provide an anon avatar
 	else if (npf.broken_blog_name !== undefined) {
+		brokenIcons[npf.broken_blog_name] ??= defaultAvatars[Math.floor(Math.random() * defaultAvatars.length)];
 		createTrailItemHeader(item, {
 			name: npf.broken_blog_name,
-			avatar: defaultAvatars[Math.floor(Math.random() * defaultAvatars.length)]
+			avatar: brokenIcons[npf.broken_blog_name]
 		});
 	}
 	
