@@ -186,6 +186,8 @@ let posts = [
 			url: "/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}",
 		},
 
+		{block:PinnedPostLabel} pinned: {JSPinnedPostLabel}, {/block:PinnedPostLabel}
+
 		{block:HasTags} tags: [
 			{block:Tags} [
 				{JSTag},
