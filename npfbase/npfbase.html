@@ -416,14 +416,19 @@ function makeNoteCount(wrapper, postData) {
 	wrapper.append(notes);
 }
 
-function makeTags(wrapper, postData, span = false, commas = true) {
+function makeTags(wrapper, postData, tagOptions = {}) {
 	if (!postData.tags) { return; }
+	let options = Object.assign({
+		span: false,
+		commas: false,
+		hashtags: true,
+	}, tagOptions);
 	// Make element
-	let tags = document.createElement(span ? "span" : "p");
+	let tags = document.createElement(options.span ? "span" : "p");
 	tags.classList.add("tags");
 	// Populate with each tag
-	let tagList = postData.tags.map(tag => `<a href="${tag.url}">${tag.name}</a>`);
-	tags.innerHTML = tagList.join(commas ? ", " : "");
+	let tagList = postData.tags.map(tag => `<a href="${tag.url}">`.concat(options.hashtags ? "#" : "",`${tag.name}</a>`));
+	tags.innerHTML = tagList.join(options.commas ? ", " : "");
 	wrapper.append(tags);
 }
 
