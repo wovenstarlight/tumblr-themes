@@ -277,13 +277,35 @@ posts.forEach(post => {
 function createPostHeader(wrapper, postData) {
 	let header = document.createElement("header");
 	wrapper.append(header);
-	// TODO: Populate post header
+
+	// Populate post header
+	makeDate(header, postData);
+
+	makePin(header, postData);
+
+	makeContentSource(header, postData);
+
+	makeSubmitter(header, postData);
 }
 
 function createPostFooter(wrapper, postData) {
 	let footer = document.createElement("footer");
 	wrapper.append(footer);
-	// TODO: Populate post footer
+	
+	// Populate post footer
+	let vsn = document.createElement("span");
+	vsn.classList.add("vsn");
+	footer.append(vsn);
+	makeNoteCount(vsn, postData);
+	makeViaSource(vsn, postData);
+
+	let lr = document.createElement("span");
+	lr.classList.add("lr");
+	footer.append(lr);
+	makeLike(lr, postData);
+	makeReblog(lr, postData);
+
+	makeTags(footer, postData);
 }
 
 // #region Helpers
