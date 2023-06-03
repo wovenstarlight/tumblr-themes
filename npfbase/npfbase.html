@@ -189,10 +189,10 @@ let posts = [
 		{block:PinnedPostLabel} pinned: {JSPinnedPostLabel}, {/block:PinnedPostLabel}
 
 		{block:HasTags} tags: [
-			{block:Tags} [
-				{JSTag},
-				{JSTagURL},
-			], {/block:Tags}
+			{block:Tags} {
+				name: {JSTag},
+				url: {JSTagURL},
+			}, {/block:Tags}
 		], {/block:HasTags}
 		
 		{/block:Date}
