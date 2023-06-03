@@ -46,12 +46,12 @@
 		padding: 0.5em;
 		white-space: pre-line;
 	}
-	.user {
+	.user a {
 		display: flex;
 		align-items: center;
 		gap: 0.4em;
 	}
-	.user > img {
+	.user .avatar {
 		--size: 2.5em;
 		width: var(--size);
 		height: var(--size);
@@ -218,16 +218,18 @@ function createTrailItem(post, npf, postID, expand = false) {
 
 // Link to the post version on the contributing blog
 function createTrailItemHeader(trailItem, blogData, postData = null) {
-	let header = document.createElement("a");
+	let header = document.createElement("header");
 	header.classList.add("user");
 	trailItem.append(header);
+	let link = document.createElement("a");
+	header.append(link);
 	
 	// mark broken trail items
 	if (postData === null || blogData.active === false) { header.classList.add("deactivated") }
 	
 	// add link where original posts exist
 	if (blogData.url && blogData.active) {
-		header.href = blogData.url.concat(blogData.url.endsWith("/") ? `post/${postData.id}` : `/${postData.id}`);
+		link.href = blogData.url.concat(blogData.url.endsWith("/") ? `post/${postData.id}` : `/${postData.id}`);
 	}
 	
 	// Get the username and avatar
@@ -241,7 +243,7 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	avatar.src = blogData.avatar?.at(3)?.url || blogData.avatar || `https://api.tumblr.com/v2/blog/${blogData.name}/avatar/64`;
 
 	// put together the header
-	header.append(avatar, username);
+	link.append(avatar, username);
 
 	// Checkmarks and other badges, pulled from tumblrmart_accessories
 	let badges = blogData.tumblrmart_accessories?.badges;
@@ -250,7 +252,7 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 			let badge, badgeWrapper,
 				badgegroup = document.createElement("span");
 			badgegroup.classList.add("badges");
-			header.append(badgegroup);
+			link.append(badgegroup);
 			badgegroup.classList.add(group.product_group);
 			group.urls.forEach((url, index) => {
 				badge = document.createElement("img");
@@ -324,7 +326,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 	let askNPF = npf.layout.find(l => l.type === "ask");
 	if (askNPF) {
 		// Anon or not?
-		let asker = document.createElement("p");
+		let asker = document.createElement("header");
 		asker.classList.add("user");
 		let askerIcon = document.createElement("img");
 		let askerName = document.createElement("a");
