@@ -225,8 +225,7 @@ posts.forEach(post => {
 	article.classList.add("post");
 	postContainer.append(article);
 
-	let postHeader = document.createElement("header");
-	createPostHeader(postHeader, post);
+	createPostHeader(article, post);
 
 	let postBody = document.createElement("section");
 	postBody.classList.add("body");
@@ -244,8 +243,7 @@ posts.forEach(post => {
 		);
 	}
 
-	let postFooter = document.createElement("footer");
-	createPostFooter(postFooter, post);
+	createPostFooter(article, post);
 });
 // #endregion
 
@@ -255,10 +253,14 @@ posts.forEach(post => {
 
 // #region FOR POST HEADER/FOOTER
 function createPostHeader(wrapper, postData) {
+	let header = document.createElement("header");
+	wrapper.append(header);
 	// TODO: Populate post header
 }
 
 function createPostFooter(wrapper, postData) {
+	let footer = document.createElement("footer");
+	wrapper.append(footer);
 	// TODO: Populate post footer
 }
 
