@@ -250,6 +250,8 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	link.append(avatar, username);
 
 	// Checkmarks and other badges, pulled from tumblrmart_accessories
+	// https://assets.tumblr.com/images/tumblrmart/badges/blue-checkmark/1.png
+	// https://assets.tumblr.com/images/tumblrmart/badges/rainbow/1.png , [1-12].png available
 	let badges = blogData.tumblrmart_accessories?.badges;
 	if (blogData.can_show_badges && badges) {
 		badges.forEach(group => {
