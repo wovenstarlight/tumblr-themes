@@ -447,6 +447,24 @@ function makeSubmitter(wrapper, postData, label = true, avatar = false) {
 		sublabel.innerHTML += subData.label.replace(subData.name, `<a>${subData.name}</a>`);
 	}
 }
+
+function makeContentSource(wrapper, postData, label = true, logo = false) {
+	if (!(sourceData = postData.contentSource)) { return; }
+	let source = document.createElement("span");
+	source.classList.add("source");
+	wrapper.append(source);
+	// Include label?
+	if (label) { source.innerText = "{lang:Source}: " }
+	// Display as...
+	if (logo && sourceData.logo) {
+		// Image, no text
+		source.innerHTML += `<a href="${sourceData.url}"><img src="${sourceData.logo.url}" width="${sourceData.logo.width}" height="${sourceData.logo.height}" alt="${sourceData.name}" /></a>`;
+	}
+	else {
+		// Text, no image
+		source.innerHTML += `<a href="${sourceData.url}">${sourceData.name}</a>`;
+	}
+}
 // #endregion
 // #endregion
 
