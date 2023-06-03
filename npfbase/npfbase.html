@@ -194,7 +194,20 @@ let posts = [
 				url: {JSTagURL},
 			}, {/block:Tags}
 		], {/block:HasTags}
+
+		{block:RebloggedFrom}
+		via: {
+			name: {JSReblogParentName},
+			url: {JSReblogParentURL},
+			avatar: {JSReblogParentPortraitURL-40},
+		},
+		{/block:RebloggedFrom}
+
+		{block:NoteCount} noteCount: {JSNoteCountWithLabel}, {/block:NoteCount}
 		
+		like_html: {JSLikeButton size="30"},
+		reblog_url: {JSReblogURL},
+
 		{/block:Date}
 	},
 	{/block:Posts}
