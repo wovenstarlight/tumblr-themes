@@ -256,7 +256,7 @@ function createPostFooter(wrapper, postData) {
 }
 
 // #region Helpers
-// TODO: pin label, via/source, note count, tags
+// TODO: via/source, note count, tags
 function makeLike(wrapper, postData, icon = null) {
 	let likeButton = document.createElement("a");
 	likeButton.href = "#";
@@ -290,6 +290,20 @@ function makeReblog(wrapper, postData, icon = null) {
 	}
 	else {
 		reblogButton.innerText = label;
+	}
+}
+
+function makePin(wrapper, postData, icon = null) {
+	if (!postData.pinned) { return; }
+	let pin = document.createElement("span");
+	pin.id = "pinnedpost";
+	wrapper.append(pin);
+	if (icon !== null) {
+		pin.innerHTML = icon;
+		pin.title = postData.pinned;
+	}
+	else {
+		pin.innerText = postData.pinned;
 	}
 }
 // #endregion
