@@ -263,14 +263,16 @@ function makeLike(wrapper, postData, icon = null) {
 	likeButton.classList.add("customlike");
 	likeButton.innerHTML = postData.like_html;
 	wrapper.append(likeButton);
+	let label = `<span class="to-like">{block:English}Like{/block:English}{block:German}Liken{/block:German}{block:French}J'aime{/block:French}{block:Italian}Mi piace{/block:Italian}{block:Japanese}スキ{/block:Japanese}{block:Turkish}Beğen{/block:Turkish}{block:Spanish}Me gusta{/block:Spanish}{block:Russian}Нравится{/block:Russian}{block:Polish}Lubię{/block:Polish}{block:PortuguesePT}Gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir{/block:PortugueseBR}{block:Dutch}Vind ik leuk{/block:Dutch}{block:Korean}좋아요{/block:Korean}{block:ChineseSimplified}喜欢{/block:ChineseSimplified}{block:ChineseTraditional}喜歡{/block:ChineseTraditional}{block:ChineseHK}喜歡{/block:ChineseHK}{block:Indonesian}Suka{/block:Indonesian}{block:Hindi}पसंद करें{/block:Hindi}</span>`;
 	if (icon !== null) {
 		// Assumes icon is an HTML string
 		likeButton.innerHTML += icon;
+		likeButton.title = label;
 	}
 	else {
 		// No icon provided; use text labels
 		// Like text
-		likeButton.innerHTML += `<span class="to-like">{block:English}Like{/block:English}{block:German}Liken{/block:German}{block:French}J'aime{/block:French}{block:Italian}Mi piace{/block:Italian}{block:Japanese}スキ{/block:Japanese}{block:Turkish}Beğen{/block:Turkish}{block:Spanish}Me gusta{/block:Spanish}{block:Russian}Нравится{/block:Russian}{block:Polish}Lubię{/block:Polish}{block:PortuguesePT}Gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir{/block:PortugueseBR}{block:Dutch}Vind ik leuk{/block:Dutch}{block:Korean}좋아요{/block:Korean}{block:ChineseSimplified}喜欢{/block:ChineseSimplified}{block:ChineseTraditional}喜歡{/block:ChineseTraditional}{block:ChineseHK}喜歡{/block:ChineseHK}{block:Indonesian}Suka{/block:Indonesian}{block:Hindi}पसंद करें{/block:Hindi}</span>`;
+		likeButton.innerHTML += label;
 		// Unlike text
 		likeButton.innerHTML += `<span class="to-unlike">{block:English}Unlike{/block:English}{block:German}Entliken{/block:German}{block:French}Je n'aime plus{/block:French}{block:Italian}Non mi piace{/block:Italian}{block:Japanese}スキ解除{/block:Japanese}{block:Turkish}Beğenme{/block:Turkish}{block:Spanish}Ya no me gusta{/block:Spanish}{block:Russian}Не нравится{/block:Russian}{block:Polish}Nie lubię{/block:Polish}{block:PortuguesePT}Deixar de gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir (desfazer){/block:PortugueseBR}{block:Dutch}Vind ik niet meer leuk{/block:Dutch}{block:Korean}좋아요 취소{/block:Korean}{block:ChineseSimplified}取消喜欢{/block:ChineseSimplified}{block:ChineseTraditional}收回喜歡{/block:ChineseTraditional}{block:ChineseHK}收回喜歡{/block:ChineseHK}{block:Indonesian}Tidak Suka{/block:Indonesian}{block:Hindi}पसंद हटाएँ{/block:Hindi}</span>`;
 	}
@@ -281,11 +283,13 @@ function makeReblog(wrapper, postData, icon = null) {
 	reblogButton.href = postData.reblog_url;
 	reblogButton.classList.add("customreblog");
 	wrapper.append(reblogButton);
+	let label = "{block:English}Reblog{/block:English}{block:German}Rebloggen{/block:German}{block:French}Rebloguer{/block:French}{block:Italian}Reblogga{/block:Italian}{block:Japanese}リブログ{/block:Japanese}{block:Turkish}Yeniden Blogla{/block:Turkish}{block:Spanish}Rebloguear{/block:Spanish}{block:Russian}Реблог{/block:Russian}{block:Polish}Rebloguj{/block:Polish}{block:PortuguesePT}Reblogar{/block:PortuguesePT}{block:PortugueseBR}Reblogar{/block:PortugueseBR}{block:Dutch}Rebloggen{/block:Dutch}{block:Korean}리블로그{/block:Korean}{block:ChineseSimplified}转发{/block:ChineseSimplified}{block:ChineseTraditional}轉格{/block:ChineseTraditional}{block:ChineseHK}轉載{/block:ChineseHK}{block:Indonesian}Reblog{/block:Indonesian}{block:Hindi}रीब्लॉग करें{/block:Hindi}";
 	if (icon !== null) {
 		reblogButton.innerHTML = icon;
+		reblogButton.title = label;
 	}
 	else {
-		reblogButton.innerText = "{block:English}Reblog{/block:English}{block:German}Rebloggen{/block:German}{block:French}Rebloguer{/block:French}{block:Italian}Reblogga{/block:Italian}{block:Japanese}リブログ{/block:Japanese}{block:Turkish}Yeniden Blogla{/block:Turkish}{block:Spanish}Rebloguear{/block:Spanish}{block:Russian}Реблог{/block:Russian}{block:Polish}Rebloguj{/block:Polish}{block:PortuguesePT}Reblogar{/block:PortuguesePT}{block:PortugueseBR}Reblogar{/block:PortugueseBR}{block:Dutch}Rebloggen{/block:Dutch}{block:Korean}리블로그{/block:Korean}{block:ChineseSimplified}转发{/block:ChineseSimplified}{block:ChineseTraditional}轉格{/block:ChineseTraditional}{block:ChineseHK}轉載{/block:ChineseHK}{block:Indonesian}Reblog{/block:Indonesian}{block:Hindi}रीब्लॉग करें{/block:Hindi}";
+		reblogButton.innerText = label;
 	}
 }
 // #endregion
