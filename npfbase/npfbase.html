@@ -431,6 +431,22 @@ function makeDate(wrapper, postData, dateOptions = {}) {
 		date.innerText += postData.date[`time${options.timeFormat}`];
 	}
 }
+
+function makeSubmitter(wrapper, postData, label = true, avatar = false) {
+	if (!(subData = postData.submission)) { return; }
+	let sublabel = document.createElement("span");
+	sublabel.classList.add("sublabel");
+	wrapper.append(sublabel);
+	// Include avatar?
+	if (avatar) { sublabel.innerHTML = `<img src="${subData.avatar}" />` }
+	// Submitter name, with link to blog if provided
+	if (subData.url.length) {
+		sublabel.innerHTML += subData.label.replace(subData.name, `<a href="${subData.url}">${subData.name}</a>`);
+	}
+	else {
+		sublabel.innerHTML += subData.label.replace(subData.name, `<a>${subData.name}</a>`);
+	}
+}
 // #endregion
 // #endregion
 
