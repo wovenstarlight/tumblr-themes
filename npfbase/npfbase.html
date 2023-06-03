@@ -197,7 +197,7 @@ let posts = [
 
 		{block:HasTags} tags: [
 			{block:Tags} {
-				name: {JSTag},
+				name: "{Tag}",
 				url: {JSTagURL},
 			}, {/block:Tags}
 		], {/block:HasTags}
@@ -368,13 +368,14 @@ function makeNoteCount(wrapper, postData) {
 	wrapper.append(notes);
 }
 
-function makeTags(wrapper, postData, span = false) {
+function makeTags(wrapper, postData, span = false, commas = false) {
 	if (!postData.tags) { return; }
 	// Make element
 	let tags = document.createElement(span ? "span" : "p");
 	tags.classList.add("tags");
 	// Populate with each tag
-	postData.tags.forEach(tag => tags.innerHTML += `<a href="${tag.url}">${tag.name}</a>`);
+	let tagList = postData.tags.map(tag => `<a href="${tag.url}">${tag.name}</a>`);
+	tags.innerHTML = tagList.join(commas ? ", " : "");
 	wrapper.append(tags);
 }
 
