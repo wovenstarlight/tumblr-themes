@@ -256,7 +256,7 @@ function createPostFooter(wrapper, postData) {
 }
 
 // #region Helpers
-// TODO: note count, tags
+// TODO: tags
 function makeLike(wrapper, postData, icon = null) {
 	// Make element
 	let likeButton = document.createElement("a");
@@ -349,6 +349,15 @@ function makeViaSource(wrapper, postData, icons = false) {
 		via.innerText = "{lang:Via}";
 		source.innerText = "{lang:Source}";
 	}
+}
+
+function makeNoteCount(wrapper, postData) {
+	if (!postData.noteCount) { return; }
+	let notes = document.createElement("a");
+	notes.href = postData.permalink.concat("#notes");
+	notes.classList.add("notecount");
+	notes.innerText = postData.noteCount;
+	wrapper.append(notes);
 }
 // #endregion
 // #endregion
