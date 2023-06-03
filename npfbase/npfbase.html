@@ -164,8 +164,32 @@ let bit,	// the base element - a paragraph, blockquote, etc. as drawn from textS
 let posts = [
 	{block:Posts}
 	{
-		id: {JSPostID},
 		npf: {NPF},
+		
+		// Post-specific items
+		{block:Date}
+
+		id: {JSPostID},
+		permalink: {JSPermalink},
+		
+		date: {
+			day: {JSDayOfWeek},
+			textDateDM: "{DayOfMonth} {Month}, {Year}",
+			numDateDM: "{DayOfMonthWithZero}/{MonthNumberWithZero}/{Year}",
+			textDateMD: "{Month} {DayOfMonth}, {Year}",
+			numDateMD: "{MonthNumberWithZero}/{DayOfMonthWithZero}/{Year}",
+			timestamp: "{12Hour}:{Minutes} {CapitalAmPm}",
+			url: "/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}",
+		},
+
+		{block:HasTags} tags: [
+			{block:Tags} [
+				{JSTag},
+				{JSTagURL},
+			], {/block:Tags}
+		], {/block:HasTags}
+		
+		{/block:Date}
 	},
 	{/block:Posts}
 ];
