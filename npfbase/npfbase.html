@@ -89,6 +89,10 @@
 		white-space: pre-line;
 		margin-bottom: 1em;
 	}
+	.ask .user {
+		display: flex;
+		align-items: center;
+	}
 	.ask .user a { margin-inline-end: 0.2em }
 	
 	img { max-width: 100%; }
@@ -328,19 +332,21 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		// Anon or not?
 		let asker = document.createElement("header");
 		asker.classList.add("user");
-		let askerIcon = document.createElement("img");
 		let askerName = document.createElement("a");
+		let askerIcon = document.createElement("img");
+		askerIcon.classList.add("avatar");
+		askerName.append(askerIcon);
 		if (askNPF.attribution) {
 			askerIcon.src = `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name}/avatar/64`;
 			askerName.href = askNPF.attribution.blog.url;
-			askerName.innerText = askNPF.attribution.blog.name;
+			askerName.append(askNPF.attribution.blog.name);
 			askerName.classList.add("name");
 		}
 		else {
 			askerIcon.src = anonAvatar;
-			askerName.innerText = "Anonymous";
+			askerName.append("Anonymous");
 		}
-		asker.append(askerIcon, askerName, " asked:");
+		asker.append(askerName, " asked:");
 		
 		let ask = document.createElement("div");
 		ask.classList.add("ask");
