@@ -274,10 +274,13 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 function createTrailItemBody(trailItem, npf, postData, expand) {
 	let content = npf.content;
 	let rows = npf.layout.find(l => l.type === "rows");
+	let body = document.createElement("div");
+	body.classList.add("bodyitemcontent");
+	trailItem.append(body);
 
 	for (let i = 0; i < content.length; i ++) {
 		// figure out the content type and create the block based on that
-		createContentBlock(trailItem, content, i);
+		createContentBlock(body, content, i);
 		
 		// cut off the post and add a readmore, if one is present and you aren't currently on the post's permalink page
 		if (i === rows?.truncate_after && !expand) {
@@ -287,7 +290,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 			let readmorecontainer = document.createElement("p");
 			readmorecontainer.classList.add("read_more_container");
 			readmorecontainer.append(readmore);
-			trailItem.append(readmorecontainer);
+			body.append(readmorecontainer);
 			
 			let link;
 			if (npf.blog !== undefined) { // blog is extant
@@ -310,9 +313,8 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		rows.display.filter(i => (i.blocks.length > 1)).forEach((iRow, index) => {
 			// Need to move further columns out of their rows into the first column
 			
-			// the +1 is for the user header
 			// the -offset is because of however many items being put inside rows and therefore being removed from the indices
-			let row = trailItem.children[1 + iRow.blocks[0] - offset];
+			let row = body.children[iRow.blocks[0] - offset];
 			
 			// and now, move the corresponding columns inside the row
 			// skipping the first element, which is already in the row
@@ -351,27 +353,30 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		let ask = document.createElement("div");
 		ask.classList.add("ask");
 		ask.append(asker);
+		let askBody = document.createElement("div");
+		askBody.classList.add("bodyitemcontent");
+		ask.append(askBody);
 		
 		if (rows) {
 			// Blocks may already be nested in rows; count off how many should be in the ask
 			let i = askNPF.blocks.length;
 			while (i > 0) {
-				i -= Math.max(1, trailItem.children[1].childElementCount);
-				ask.append(trailItem.children[1]);
+				i -= Math.max(1, body.children[0].childElementCount);
+				askBody.append(body.children[0]);
 			}
 		}
 		else {
 			// just a simple stack. take however many off the top and put them in the ask
-			askNPF.blocks.forEach(b => ask.append(trailItem.children[1]));
+			askNPF.blocks.forEach(b => askBody.append(body.children[0]));
 		}
 		
-		// PLACEMENT OPTIONS:
+		// PLACEMENT OPTIONS (note, none of these are inside .bodyitemcontent!):
 		// In root post body, above answer trail item
 		trailItem.parentElement.insertBefore(ask, trailItem);
 		// Inside same trail item, above answerer's name
-		// trailItem.insertBefore(ask, trailItem.children[0]);
+		// trailItem.insertBefore(ask, body.previousElementSibling);
 		// Inside same trail item, below answerer's name
-		// trailItem.insertBefore(ask, trailItem.children[1]);
+		// trailItem.insertBefore(ask, body);
 	}
 }
 
