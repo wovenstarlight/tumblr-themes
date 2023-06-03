@@ -378,7 +378,7 @@ function makeTags(wrapper, postData, span = false) {
 	wrapper.append(tags);
 }
 
-function makeDate(wrapper, postData, dateOptions) {
+function makeDate(wrapper, postData, dateOptions = {}) {
 	let defaultOptions = {
 		includeDay: false,
 		dateFormat: "textDM",
