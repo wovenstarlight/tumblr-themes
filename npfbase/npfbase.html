@@ -217,14 +217,17 @@ posts.forEach(post => {
 	let article = document.createElement("article");
 	article.classList.add("post");
 	postContainer.append(article);
-	
+
+	let postBody = document.createElement("section");
+	postBody.classList.add("body");
+	article.append(postBody);
 	// Create each reblog of the post
 	if (!post.npf.trail.length) { article.classList.add("original") }
-	else { post.npf.trail.forEach(trailItem => createTrailItem(article, trailItem, null)) }
+	else { post.npf.trail.forEach(trailItem => createTrailItem(postBody, trailItem, null)) }
 	// End with the current blog's addition, if any, and expand if on the permalink page
 	if (post.npf.content.length) {
 		createTrailItem(
-			article,
+			postBody,
 			post.npf,
 			post.id
 			{block:PermalinkPage}, true{/block:PermalinkPage}
