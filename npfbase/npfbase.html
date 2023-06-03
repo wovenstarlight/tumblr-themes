@@ -215,6 +215,23 @@ let posts = [
 		like_html: {JSLikeButton size="30"},
 		reblog_url: {JSReblogURL},
 
+		{block:Submission} submission: {
+			name: {JSSubmitter},
+			url: {JSSubmitterURL},
+			avatar: {JSSubmitterPortraitURL-64},
+			label: "{lang:Submitted By}",
+		}, {/block:Submission}
+
+		{block:ContentSource} contentSource: {
+			name: {JSSourceTitle},
+			url: {JSSourceURL},
+			{block:SourceLogo} url: {
+				url: {JSBlackLogoURL},
+				width: {JSLogoWidth},
+				height: {JSLogoHeight},
+			}, {/block:SourceLogo}
+		}, {/block:ContentSource}
+
 		{/block:Date}
 	},
 	{/block:Posts}
