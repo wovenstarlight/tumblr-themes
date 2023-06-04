@@ -852,7 +852,11 @@ function createContentBlock(trailItem, npf, i) {
 			// See results link, if poll is expired
 			let expireDate = new Date((curr.timestamp + curr.settings.expire_after) * 1000);
 			if (((new Date()) > expireDate) && url) {
-				bit.innerHTML += `<a class="poll-see-results" href="${url}">See Results</a>`;
+				let seeResults = document.createElement("a");
+				seeResults.classList.add("poll-see-results");
+				seeResults.href = url;
+				seeResults.innerText = "See Results";
+				bit.append(seeResults);
 			}
 			break;
 		
