@@ -844,7 +844,10 @@ function createContentBlock(trailItem, npf, i) {
 			curr.answers.forEach(a => {
 				answer = document.createElement("a");
 				answer.classList.add("poll-row");
-				if (url) { answer.href = url }
+				if (url) {
+					answer.href = url;
+					answer.target = "_blank";
+				}
 				answer.innerHTML = `<p>${a.answer_text}</p>`;
 				bit.append(answer);
 			});
@@ -855,6 +858,7 @@ function createContentBlock(trailItem, npf, i) {
 				let seeResults = document.createElement("a");
 				seeResults.classList.add("poll-see-results");
 				seeResults.href = url;
+				seeResults.target = "_blank";
 				seeResults.innerText = "See Results";
 				bit.append(seeResults);
 			}
