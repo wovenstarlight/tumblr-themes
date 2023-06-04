@@ -583,7 +583,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 
 	for (let i = 0; i < content.length; i ++) {
 		// figure out the content type and create the block based on that
-		createContentBlock(body, npf, i);
+		createContentBlock(body, content, i, npf.blog !== undefined ? npf.blog.blog_view_url.concat("/", npf.post.id) : "");
 		
 		// cut off the post and add a readmore, if one is present and you aren't currently on the post's permalink page
 		if (i === rows?.truncate_after && !expand) {
@@ -685,9 +685,8 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 
 
 // Create an individual element in a trail item
-function createContentBlock(trailItem, npf, i) {
-	let content = npf.content,
-		curr = content[i];
+function createContentBlock(trailItem, content, i, blogViewLink = "") {
+	let curr = content[i];
 	switch (curr.type) {
 		
 		case "text":
@@ -839,13 +838,12 @@ function createContentBlock(trailItem, npf, i) {
 			}
 
 			// Create answers
-			let answer,
-				url = npf.blog !== undefined ? npf.blog.blog_view_url.concat("/", npf.post.id) : false;
+			let answer;
 			curr.answers.forEach(a => {
 				answer = document.createElement("a");
 				answer.classList.add("poll-row");
-				if (url) {
-					answer.href = url;
+				if (blogViewLink.length) {
+					answer.href = blogViewLink;
 					answer.target = "_blank";
 				}
 				answer.innerHTML = `<p>${a.answer_text}</p>`;
@@ -854,10 +852,10 @@ function createContentBlock(trailItem, npf, i) {
 
 			// See results link, if poll is expired
 			let expireDate = new Date((curr.timestamp + curr.settings.expire_after) * 1000);
-			if (((new Date()) > expireDate) && url) {
+			if (((new Date()) > expireDate) && blogViewLink.length) {
 				let seeResults = document.createElement("a");
 				seeResults.classList.add("poll-see-results");
-				seeResults.href = url;
+				seeResults.href = blogViewLink;
 				seeResults.target = "_blank";
 				seeResults.innerText = "See Results";
 				bit.append(seeResults);
