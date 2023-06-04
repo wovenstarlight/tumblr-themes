@@ -583,7 +583,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 
 	for (let i = 0; i < content.length; i ++) {
 		// figure out the content type and create the block based on that
-		createContentBlock(body, content, i);
+		createContentBlock(body, npf, i);
 		
 		// cut off the post and add a readmore, if one is present and you aren't currently on the post's permalink page
 		if (i === rows?.truncate_after && !expand) {
@@ -685,8 +685,9 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 
 
 // Create an individual element in a trail item
-function createContentBlock(trailItem, content, i) {
-	let curr = content[i];
+function createContentBlock(trailItem, npf, i) {
+	let content = npf.content,
+		curr = content[i];
 	switch (curr.type) {
 		
 		case "text":
@@ -824,8 +825,36 @@ function createContentBlock(trailItem, content, i) {
 		// TODO?
 		// case "paywall":
 
-		// TODO
-		// case "poll"
+		case "poll":
+			bit = document.createElement("div");
+			bit.classList.add("poll-post");
+			trailItem.append(bit);
+
+			// Create question, if present
+			if (curr.question !== "") {
+				let question = document.createElement("p");
+				question.classList.add("poll-question");
+				question.innerText = curr.question;
+				bit.append(question);
+			}
+
+			// Create answers
+			let answer,
+				url = npf.blog !== undefined ? npf.blog.blog_view_url.concat("/", npf.post.id) : false;
+			curr.answers.forEach(a => {
+				answer = document.createElement("a");
+				answer.classList.add("poll-row");
+				if (url) { answer.href = url }
+				answer.innerHTML = `<p>${a.answer_text}</p>`;
+				bit.append(answer);
+			});
+
+			// See results link, if poll is expired
+			let expireDate = new Date((curr.timestamp + curr.settings.expire_after) * 1000);
+			if (((new Date()) > expireDate) && url) {
+				bit.innerHTML += `<a class="poll-see-results" href="${url}">See Results</a>`;
+			}
+			break;
 		
 		default:
 			bit = document.createElement("p");
