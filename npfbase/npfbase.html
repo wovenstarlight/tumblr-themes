@@ -247,6 +247,11 @@ posts.forEach(post => {
 	article.classList.add("post");
 	postContainer.append(article);
 
+	if (post.npf.content.length === 0 && post.npf.trail.length === 0) {
+		createPage(article, post);
+		return;
+	}
+
 	createPostHeader(article, post);
 
 	let postBody = document.createElement("section");
@@ -943,6 +948,55 @@ function formatText(content) {
 		i ++;
 	}
 	return text;
+}
+// #endregion
+
+// #region FOR NON-POST PAGES
+function createPage(wrapper, postData) {
+	let postBody = document.createElement("section");
+	postBody.classList.add("body");
+	let trailItem = document.createElement("div");
+	trailItem.classList.add("bodyitem");
+	postBody.append(trailItem);
+	wrapper.append(postBody);
+
+	// Create user
+	let header = document.createElement("header");
+	header.classList.add("user");
+	trailItem.append(header);
+	// Create permalink
+	let link = document.createElement("a");
+	link.href = ""; // gives current URL
+	header.append(link);
+	// Get the username and avatar
+	let username = document.createElement("span");
+	username.classList.add("name");
+	username.innerHTML = currentUser.name;
+	let avatar = document.createElement("img");
+	avatar.classList.add("avatar");
+	avatar.src = currentUser.avatar;
+	// put together the header
+	link.append(avatar, username);
+
+	// Create title and body of page
+	// postData.npf is empty; use exclusively .title and .body
+	let bodyWrapper = document.createElement("div");
+	bodyWrapper.classList.add("bodyitemcontent");
+	let title = document.createElement(textSubtypes.heading1);
+	title.innerHTML = unescapeHTML(postData.title);
+	bodyWrapper.append(title);
+	bodyWrapper.innerHTML += unescapeHTML(postData.body);
+
+	// Plug the whole thing in
+	trailItem.append(bodyWrapper);
+}
+
+function unescapeHTML(string) {
+	return string.replaceAll("&amp;", "&")
+				.replaceAll("&#39;", "'")
+				.replaceAll("&quot;", "\"")
+				.replaceAll("&lt;", "<")
+				.replaceAll("&gt;", ">");
 }
 // #endregion
 
