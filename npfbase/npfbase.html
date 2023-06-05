@@ -167,11 +167,11 @@ let posts = [
 		npf: {NPF},
 
 		// For ask/submit/general blog pages
-		title: {JSTitle},
+		{block:Title} title: {JSTitle}, {/block:Title}
 		body: {JSBody},
 
-		// Post-specific items
 		{block:Date}
+		// Post-specific items
 
 		id: {JSPostID},
 		permalink: {JSPermalink},
