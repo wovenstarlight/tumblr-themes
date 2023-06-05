@@ -44,8 +44,8 @@
 		border: solid {AccentColor};
 		margin-block: 1em;
 		padding: 0.5em;
-		white-space: pre-line;
 	}
+	.post:not(.page) { white-space: pre-line }
 	.user a {
 		display: flex;
 		align-items: center;
@@ -248,6 +248,7 @@ posts.forEach(post => {
 	postContainer.append(article);
 
 	if (post.npf.content.length === 0 && post.npf.trail.length === 0) {
+		article.classList.add("page");
 		createPage(article, post);
 		return;
 	}
