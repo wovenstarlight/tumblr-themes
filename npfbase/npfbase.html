@@ -583,7 +583,11 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 
 	for (let i = 0; i < content.length; i ++) {
 		// figure out the content type and create the block based on that
-		createContentBlock(body, content, i, npf.blog !== undefined ? npf.blog.blog_view_url.concat("/", npf.post.id) : "");
+		createContentBlock(
+			body, content, i,
+			npf.blog !== undefined ? npf.blog.blog_view_url.concat("/", npf.post.id)
+				: npf.broken_blog_name === undefined ? `https://tumblr.com/${currentUser.name}/${postData.id}`
+				: "");
 		
 		// cut off the post and add a readmore, if one is present and you aren't currently on the post's permalink page
 		if (i === rows?.truncate_after && !expand) {
