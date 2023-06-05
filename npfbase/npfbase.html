@@ -838,7 +838,19 @@ function createContentBlock(trailItem, content, i, blogViewLink = "") {
 				bit.src = curr.media.url;
 			}
 			// TODO: else if client side SDK... need examples of metadata object
-			// TODO: else if embed_html and/or embed_url field present, render embed_html or show embed_url in an iframe
+			// If embeds are present, use those
+			else if (curr.embed_html) {
+				bit = document.createElement("div");
+				bit.innerHTML = curr.embed_html.trim();
+				bit = bit.firstChild;
+			}
+			else if (curr.embed_url) {
+				bit = document.createElement("iframe");
+				bit.title = `Audio: ${curr.title || "Unknown title"} — ${curr.artist || "Unknown artist"}`;
+				if (curr.album) { bit.title += ` (<em>${curr.album}</em>)` }
+				bit.src = curr.embed_url;
+				bit.width = "100%";
+			}
 			else {
 				// All else failed; display a plain link to given URL
 				bit = document.createElement("a");
