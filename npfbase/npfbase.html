@@ -828,8 +828,26 @@ function createContentBlock(trailItem, content, i, blogViewLink = "") {
 			trailItem.append(bit);
 			break;
 		
-		// TODO
-		// case "audio":
+		case "audio":
+			if (curr.media) {
+				// TODO: Replicate default Tumblr audio player as in Theme 7: Unite, using Anna's customaudio.js
+				bit = document.createElement("audio");
+				bit.controls = true;
+				bit.preload = "metadata";
+				bit.classList.add("tumblr_audio_player"); // TODO: Is this the class I want to use?
+				bit.src = curr.media.url;
+			}
+			// TODO: else if client side SDK... need examples of metadata object
+			// TODO: else if embed_html and/or embed_url field present, render embed_html or show embed_url in an iframe
+			else {
+				// All else failed; display a plain link to given URL
+				bit = document.createElement("a");
+				bit.href = curr.url;
+				bit.innerText = `${curr.title || "Unknown title"} — ${curr.artist || "Unknown artist"}`;
+				if (curr.album) { bit.innerHTML += `, <em>${curr.album}</em>` }
+			}
+			trailItem.append(bit);
+			break;
 		
 		// TODO
 		// case "video":
