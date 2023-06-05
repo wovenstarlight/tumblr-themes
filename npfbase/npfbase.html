@@ -982,9 +982,11 @@ function createPage(wrapper, postData) {
 	// postData.npf is empty; use exclusively .title and .body
 	let bodyWrapper = document.createElement("div");
 	bodyWrapper.classList.add("bodyitemcontent");
-	let title = document.createElement(textSubtypes.heading1);
-	title.innerHTML = unescapeHTML(postData.title);
-	bodyWrapper.append(title);
+	if (postData.title) {
+		let title = document.createElement(textSubtypes.heading1);
+		title.innerHTML = unescapeHTML(postData.title);
+		bodyWrapper.append(title);
+	}
 	bodyWrapper.innerHTML += unescapeHTML(postData.body);
 
 	// Plug the whole thing in
