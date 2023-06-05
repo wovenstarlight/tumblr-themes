@@ -161,6 +161,7 @@ let bit,	// the base element - a paragraph, blockquote, etc. as drawn from textS
 
 
 // #region POST CREATION
+// #region Post array declaration
 let posts = [
 	{block:Posts}
 	{
@@ -241,6 +242,7 @@ let posts = [
 	},
 	{/block:Posts}
 ];
+// #endregion
 let postContainer = document.getElementById("posts");
 posts.forEach(post => {
 	let article = document.createElement("article");
