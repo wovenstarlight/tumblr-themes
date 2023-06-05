@@ -731,6 +731,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "") {
 			break;
 		
 		case "image":
+			let breakpoint = 540;
 			// wrappers
 			// for some reason this breaks if col/row are also in the >=540 block
 			let row = document.createElement("div");
@@ -738,7 +739,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "") {
 			let col = document.createElement("div");
 			col.classList.add("npf_col");
 			let fig = document.createElement("figure");
-			if (curr.media[0].width >= 540) {
+			if (curr.media[0].width >= breakpoint) {
 				fig.classList.add("tmblr-full");
 			}
 			
@@ -755,7 +756,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "") {
 			}
 			// nest the structure and append it to the post
 			fig.append(bit);
-			if (curr.media[0].width >= 540) {
+			if (curr.media[0].width >= breakpoint) {
 				col.append(fig);
 				row.append(col);
 				trailItem.append(row);
