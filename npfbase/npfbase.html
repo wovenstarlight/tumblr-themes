@@ -249,7 +249,7 @@ posts.forEach(post => {
 	article.classList.add("post");
 	postContainer.append(article);
 
-	if (post.npf.content.length === 0 && post.npf.trail.length === 0) {
+	if ((post.npf.content.length === 0 && post.npf.trail.length === 0) {block:AskPage}|| true{/block:AskPage}{block:SubmitPage}|| true{/block:SubmitPage}) {
 		article.classList.add("page");
 		createPage(article, post);
 		return;
