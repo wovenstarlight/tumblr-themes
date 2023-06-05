@@ -851,8 +851,9 @@ function createContentBlock(trailItem, content, i, blogViewLink = "") {
 			});
 
 			// See results link, if poll is expired
-			let expireDate = new Date((curr.timestamp + curr.settings.expire_after) * 1000);
-			if (((new Date()) > expireDate) && blogViewLink.length) {
+			// Timestamp/expiry durations are given in seconds; times 1000 for millisecond count
+			let expiryDate = new Date((curr.timestamp + curr.settings.expire_after) * 1000);
+			if (((new Date()) > expiryDate) && blogViewLink.length) {
 				let seeResults = document.createElement("a");
 				seeResults.classList.add("poll-see-results");
 				seeResults.href = blogViewLink;
