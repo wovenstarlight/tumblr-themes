@@ -842,7 +842,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "") {
 			}
 
 			// Create answers
-			let answer;
+			let answer, answerText;
 			curr.answers.forEach(a => {
 				answer = document.createElement("a");
 				answer.classList.add("poll-row");
@@ -850,7 +850,9 @@ function createContentBlock(trailItem, content, i, blogViewLink = "") {
 					answer.href = blogViewLink;
 					answer.target = "_blank";
 				}
-				answer.innerHTML = `<p>${a.answer_text}</p>`;
+				answerText = document.createElement("p");
+				answerText.innerText = a.answer_text;
+				answer.append(answerText);
 				bit.append(answer);
 			});
 
