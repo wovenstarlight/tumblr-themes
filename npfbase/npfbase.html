@@ -838,12 +838,11 @@ function createContentBlock(trailItem, content, i, blogViewLink = "") {
 		
 		case "audio":
 			if (curr.media) {
-				// TODO: Replicate default Tumblr audio player as in Theme 7: Unite, using Anna's customaudio.js
-				bit = document.createElement("audio");
-				bit.controls = true;
-				bit.preload = "metadata";
-				bit.classList.add("tumblr_audio_player"); // TODO: Is this the class I want to use?
-				bit.src = curr.media.url;
+				// Use media object to display default Tumblr audio player
+				bit = createTumblrAudio(curr.media);
+
+				// ...or, display a custom player with more options
+				// bit = createCustomAudio(curr.media);
 			}
 			// TODO: else if client side SDK... need examples of metadata object
 			// If embeds are present, use those
@@ -922,6 +921,33 @@ function createContentBlock(trailItem, content, i, blogViewLink = "") {
 			trailItem.append(bit);
 		
 	}
+}
+// Helpers: create audio blocks
+function createTumblrAudio(media) {
+	wrapper = document.createElement("div");
+	wrapper.classList.add("audiowrapper");
+
+	let audio = document.createElement("audio");
+	audio.src = curr.media.url;
+	audio.preload = "metadata";
+	wrapper.append(audio);
+
+	// TODO: add audio info and controls
+
+	return wrapper;
+}
+function createCustomAudio(media) {
+	wrapper = document.createElement("div");
+	wrapper.classList.add("audiowrapper");
+
+	let audio = document.createElement("audio");
+	audio.src = curr.media.url;
+	audio.preload = "metadata";
+	wrapper.append(audio);
+
+	// TODO: add audio info and controls
+
+	return wrapper;
 }
 
 
