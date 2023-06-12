@@ -26,14 +26,25 @@
 	<style>
 	{NewPostStyles}
 	/* Colors */
-	body { background: {BackgroundColor} }
+	html {
+		--text: {TitleColor};
+		--text--rgb: {RGBTitleColor};
+		--bg: {BackgroundColor};
+		--bg--rgb: {RGBBackgroundColor};
+		--accent: {AccentColor};
+		--accent--rgb: {RGBAccentColor};
+	}
+	body {
+		background: var(--bg);
+		color: var(--text);
+	}
 
 	.blog-title {
 		font-family: {TitleFont}, "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
 		font-weight: {TitleFontWeight};
 	}
 
-	a { color: {AccentColor} }
+	a { color: var(--accent) }
 
 	.deactivated.user .name::after {
 		content: "deactivated";
@@ -41,7 +52,7 @@
 		margin-left: 0.25em;
 	}
 	.post {
-		border: solid {AccentColor};
+		border: solid var(--accent);
 		margin-block: 1em;
 		padding: 0.5em;
 	}
@@ -76,7 +87,7 @@
 		width: var(--size);
 		height: var(--size);
 		max-width: unset;
-		filter: drop-shadow(0 0 0.1em {BackgroundColor});
+		filter: drop-shadow(0 0 0.1em var(--bg));
 		display: block;
 	}
 	.user .badges span:not(:last-child) img {
@@ -85,7 +96,7 @@
 	}
 	
 	.ask {
-		border: solid {AccentColor};
+		border: solid var(--accent);
 		padding: 0.5em;
 		white-space: pre-line;
 		margin-bottom: 1em;
