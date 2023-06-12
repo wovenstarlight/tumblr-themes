@@ -923,16 +923,51 @@ function createContentBlock(trailItem, content, i, blogViewLink = "") {
 	}
 }
 // Helpers: create audio blocks
-function createTumblrAudio(media) {
+function createTumblrAudio(media, defaultIcons = {}) {
+	let icons = Object.assign({
+		play: '<svg class="play" fill="currentColor" viewBox="18 15 13 16"><path d="M30.592 23.578L19.52 30.3a1 1 0 0 1-1.52-.854V16a1 1 0 0 1 1.519-.855l11.073 6.723a1 1 0 0 1 0 1.71z"></path></svg>',
+		pause: '<svg class="pause" fill="currentColor" viewBox="0 0 24 24"><rect width="4" height="16" x="15" y="4" rx="1"></rect><rect width="4" height="16" x="5" y="4" rx="1"></rect></svg>',
+	}, defaultIcons);
+
 	wrapper = document.createElement("div");
 	wrapper.classList.add("audiowrapper");
 
 	let audio = document.createElement("audio");
 	audio.src = curr.media.url;
 	audio.preload = "metadata";
-	wrapper.append(audio);
 
-	// TODO: add audio info and controls
+	// Left side: play/pause buttons, title/artist/album info, and seekbar
+	let left = document.createElement("div");
+	left.classList.add("left");
+
+	let playPause = document.createElement("button");
+	playPause.classList.add("buttons");
+	playPause.innerHTML = icons.play + icons.pause;
+
+	let textInfo = document.createElement("div");
+	textInfo.classList.add("textinfo");
+	if (curr.title) { textInfo.innerHTML += `<span class="trackname">${curr.title}</span>` }
+	if (curr.artist) { textInfo.innerHTML += `<span class="artist">${curr.artist}</span>` }
+	if (curr.album) { textInfo.innerHTML += `<span class="album">${curr.album}</span>` }
+
+	let seekbar = document.createElement("input");
+	seekbar.type = "range";
+	seekbar.min = 0;
+	seekbar.value = 0;
+	seekbar.max = 100;
+	seekbar.classList.add("seekbar");
+
+	// TODO:
+	// Preload data and set up interactive elements
+
+	left.append(playPause, textInfo, seekbar);
+	
+	wrapper.append(audio, left);
+
+	// Add album art, if any
+	if (curr.poster) {
+		wrapper.innerHTML += `<img class="albumart" src="${curr.poster[0].url}" width="${curr.poster[0].width}" height="${curr.poster[0].height}" />`;
+	}
 
 	return wrapper;
 }
