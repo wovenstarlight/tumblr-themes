@@ -957,8 +957,40 @@ function createTumblrAudio(media, defaultIcons = {}) {
 	seekbar.max = 100;
 	seekbar.classList.add("seekbar");
 
-	// TODO:
 	// Preload data and set up interactive elements
+	let rAF = null;
+	audio.addEventListener("loadedmetadata", () => {
+		seekbar.setAttribute("max", audio.duration);
+	});
+	// Play/pause
+	playPause.addEventListener("click", () => {
+		if (audio.classList.contains("playing")) {
+			audio.pause();
+			cancelAnimationFrame(rAF);
+		} else {
+			audio.play();
+			requestAnimationFrame(whilePlaying);
+		}
+		audio.classList.toggle("playing");
+	})
+	// Seekbar
+	const whilePlaying = () => {
+		seekbar.value = Math.floor(audio.currentTime);
+		seekbar.setAttribute("style", `--progress-width: ${(audio.currentTime / audio.duration) * 100}%`);
+		rAF = requestAnimationFrame(whilePlaying);
+	}
+	seekbar.addEventListener("input", () => {
+		if (!audio.paused) {
+			cancelAnimationFrame(rAF);
+		}
+	});
+	seekbar.addEventListener("change", () => {
+		audio.currentTime = seekbar.value;
+		seekbar.setAttribute("style", `--progress-width: ${(audio.currentTime / audio.duration) * 100}%`);
+		if (!audio.paused) {
+			requestAnimationFrame(whilePlaying);
+		}
+	});
 
 	left.append(playPause, textInfo, seekbar);
 	
