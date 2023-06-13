@@ -1072,6 +1072,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "") {
 }
 // Helpers: create audio blocks
 function createTumblrAudio(npf, defaultIcons = {}) {
+	// #region Basic blocks setup: icons, audio wrapper, and audio
 	let icons = Object.assign({
 		play: '<svg class="play" height="1.5em" fill="currentColor" viewBox="18 15 13 16"><path d="M30.592 23.578L19.52 30.3a1 1 0 0 1-1.52-.854V16a1 1 0 0 1 1.519-.855l11.073 6.723a1 1 0 0 1 0 1.71z"></path></svg>',
 		pause: '<svg class="pause" height="1.5em" fill="currentColor" viewBox="0 0 24 24"><rect width="4" height="16" x="15" y="4" rx="1"></rect><rect width="4" height="16" x="5" y="4" rx="1"></rect></svg>',
@@ -1083,8 +1084,9 @@ function createTumblrAudio(npf, defaultIcons = {}) {
 	let audio = document.createElement("audio");
 	audio.src = npf.media.url;
 	audio.preload = "metadata";
+	// #endregion
 
-	// Left side: play/pause buttons, title/artist/album info, and seekbar
+	// #region Left side: play/pause buttons, title/artist/album info, and seekbar
 	let left = document.createElement("div");
 	left.classList.add("left");
 
@@ -1104,8 +1106,10 @@ function createTumblrAudio(npf, defaultIcons = {}) {
 	seekbar.setAttribute("value", "0");
 	seekbar.max = 100;
 	seekbar.classList.add("seekbar");
+	// #endregion
 
-	// Preload data and set up interactive elements
+	// #region Preload data and set up interactive elements
+	// #region Audio length and ending check
 	audio.addEventListener("loadedmetadata", () => {
 		seekbar.setAttribute("max", audio.duration);
 	});
@@ -1113,7 +1117,8 @@ function createTumblrAudio(npf, defaultIcons = {}) {
 		if (!audio.loop) { audio.classList.remove("playing") }
 		currentlyPlaying = null;
 	})
-	// Play/pause
+	// #endregion
+	// #region Play/pause
 	playPause.addEventListener("click", () => {
 		// Pause any other audio on the page
 		if (currentlyPlaying !== null && currentlyPlaying !== audio) {
@@ -1133,7 +1138,8 @@ function createTumblrAudio(npf, defaultIcons = {}) {
 		}
 		audio.classList.toggle("playing");
 	})
-	// Seekbar
+	// #endregion
+	// #region Seekbar
 	const whilePlaying = () => {
 		seekbar.value = Math.floor(audio.currentTime);
 		seekbar.setAttribute("style", `--progress-width: ${(audio.currentTime / audio.duration) * 100}%`);
@@ -1151,6 +1157,8 @@ function createTumblrAudio(npf, defaultIcons = {}) {
 			requestAnimationFrame(whilePlaying);
 		}
 	});
+	// #endregion
+	// #endregion
 
 	left.append(playPause, textInfo, seekbar);
 	
@@ -1169,6 +1177,7 @@ function createTumblrAudio(npf, defaultIcons = {}) {
 	return wrapper;
 }
 function createCustomAudio(npf, defaultIcons = {}) {
+	// #region Basic blocks setup: icons, audio wrapper, and audio
 	// Uses Phosphor icons by default
 	// All icons need matching classes, except for skip to start/end
 	let icons = Object.assign({
@@ -1189,6 +1198,7 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	audio.src = npf.media.url;
 	audio.preload = "metadata";
 	wrapper.append(audio);
+	// #endregion
 
 	// #region Audio information
 	let top = document.createElement("div");
@@ -1252,7 +1262,8 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	// #endregion
 
 	// TODO:
-	// Preload data and set up interactive elements
+	// #region Preload data and set up interactive elements
+	// #endregion
 
 	return wrapper;
 }
