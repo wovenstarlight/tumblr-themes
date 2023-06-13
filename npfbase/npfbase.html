@@ -1098,7 +1098,7 @@ function createTumblrAudio(npf, defaultIcons = {}) {
 	let seekbar = document.createElement("input");
 	seekbar.type = "range";
 	seekbar.min = 0;
-	seekbar.value = 0;
+	seekbar.setAttribute("value", "0");
 	seekbar.max = 100;
 	seekbar.classList.add("seekbar");
 
