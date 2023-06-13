@@ -1158,7 +1158,12 @@ function createTumblrAudio(npf, defaultIcons = {}) {
 
 	// Add album art, if any
 	if (npf.poster) {
-		wrapper.innerHTML += `<img class="albumart" src="${npf.poster[0].url}" width="${npf.poster[0].width}" height="${npf.poster[0].height}" />`;
+		let art = document.createElement("img");
+		art.classList.add("albumart");
+		art.src = npf.poster[0].url;
+		art.width = npf.poster[0].width;
+		art.height = npf.poster[0].height;
+		wrapper.append(art);
 	}
 
 	return wrapper;
