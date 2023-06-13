@@ -248,6 +248,179 @@
 	}
 	/* #endregion */
 
+	/* #region Custom audio block */
+	.audiowrapper {
+		background-color: var(--bg);
+		color: var(--text);
+		display: flex;
+		flex-direction: column;
+	}
+	.audiowrapper .top {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1em;
+		padding: 1em 2em;
+	}
+	.audiowrapper .hasart {
+		background-position: center;
+		background-size: cover;
+	}
+	.audiowrapper .hasart .top {
+		backdrop-filter: blur(1em);
+		background-color: rgba(var(--bg--rgb), 0.75);
+	}
+	.audiowrapper .albumart {
+		--size: 5em;
+		max-width: var(--size);
+		max-height: var(--size);
+		border-radius: 100%;
+	}
+	.audiowrapper .textinfo {
+		display: flex;
+		flex-direction: column;
+		line-height: 1;
+		align-self: center;
+		gap: 0.4em;
+	}
+	.audiowrapper .textinfo:empty { display: none }
+	.audiowrapper .trackname { font-weight: 700 }
+	.audiowrapper .artist, .audiowrapper .album { font-size: 0.875em }
+	.audiowrapper .buttons {
+		padding-block: 0.75em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		line-height: 1;
+		gap: 0.5em;
+	}
+	.audiowrapper .buttons button {
+		--size: 2em;
+		width: var(--size);
+		height: var(--size);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		font: inherit;
+		font-size: 1.25em;
+		border: none;
+		border-radius: 100%;
+		background-color: transparent;
+		color: inherit;
+	}
+	.audiowrapper .buttons button:hover {
+		color: rgba(var(--text--rgb), 0.5);
+		text-shadow: 0 0 var(--accent);
+	}
+	.audiowrapper .buttons .playpause {
+		background-color: var(--text);
+		color: var(--bg);
+		margin-inline: 0.25em;
+	}
+	.audiowrapper .buttons .playpause:hover {
+		color: var(--bg);
+		text-shadow: unset;
+		background-color: var(--accent);
+		background-image: linear-gradient(rgba(var(--text--rgb), 0.75), rgba(var(--text--rgb), 0.75))
+	}
+	.audiowrapper .buttons button.active {
+		color: var(--accent);
+	}
+	.audiowrapper audio,
+	.audiowrapper audio.playing ~ .buttons .play,
+	.audiowrapper audio:not(.playing) ~ .buttons .pause,
+	.audiowrapper .volume.active .mute,
+	.audiowrapper .volume:not(.active) .unmute,
+	.audiowrapper .loop.active .repeat,
+	.audiowrapper .loop:not(.active) .unrepeat {
+		display: none;
+	}
+
+	/* Seekbar styling */
+	.seekbar {
+		width: 100%;
+		height: 0.5em;
+		margin: 0;
+		background-color: rgba(var(--text--rgb), 0.15);
+		-webkit-appearance: none;
+		--progress-bg: var(--accent);
+		position: relative;
+	}
+	.seekbar:focus { outline: none }
+	.seekbar::before {
+		content: "";
+		background-color: var(--progress-bg);
+		display: block;
+		height: 100%;
+		width: var(--progress-width);
+		position: absolute;
+		top: 0;
+		left: 0;
+		cursor: pointer;
+	}
+
+	.seekbar::-webkit-slider-runnable-track {
+		background: transparent;
+		border: 0;
+		width: 100%;
+		height: 100%;
+		cursor: pointer;
+	}
+	.seekbar::-webkit-slider-thumb {
+		width: 0px;
+		height: 0px;
+		border: 0;
+		cursor: pointer;
+		-webkit-appearance: none;
+	}
+
+	.seekbar::-moz-range-track {
+		background: transparent;
+		border: 0;
+		width: 100%;
+		height: 100%;
+		cursor: pointer;
+	}
+	.seekbar::-moz-range-thumb {
+		width: 0px;
+		height: 0px;
+		border: 0;
+		cursor: pointer;
+	}
+	.seekbar::-moz-range-progress {
+		background-color: var(--progress-bg);
+		height: 100%;
+	}
+
+	.seekbar::-ms-track {
+		background: transparent;
+		border-color: transparent;
+		border-width: 0 0;
+		color: transparent;
+		width: 100%;
+		height: 100%;
+		cursor: pointer;
+	}
+	.seekbar::-ms-fill-lower {
+		background: var(--progress-bg);
+		border: 0;
+	}
+	.seekbar::-ms-fill-upper {
+		background: transparent;
+		border: 0;
+	}
+	.seekbar::-ms-thumb {
+		width: 0px;
+		height: 0px;
+		border: 0;
+		cursor: pointer;
+		margin-top: 0px;
+		/* Needed to keep the Edge thumb centered */
+	}
+	/* #endregion */
+
 	/* Custom CSS */
 	{CustomCSS}
 	</style>
