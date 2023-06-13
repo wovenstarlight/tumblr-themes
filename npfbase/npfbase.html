@@ -1259,10 +1259,81 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	loop.innerHTML = icons.loop + icons.unloop;
 
 	buttons.append(volume, skipStart, playPause, skipEnd, loop);
+
+	wrapper.append(seekbar, buttons);
 	// #endregion
 
-	// TODO:
 	// #region Preload data and set up interactive elements
+	// #region Audio length and ending check
+	audio.addEventListener("loadedmetadata", () => {
+		seekbar.setAttribute("max", audio.duration);
+	});
+	audio.addEventListener("ended", () => {
+		if (!audio.loop) { audio.classList.remove("playing") }
+		currentlyPlaying = null;
+	})
+	// #endregion
+	// #region Buttons
+	playPause.addEventListener("click", () => {
+		// Pause any other audio on the page
+		if (currentlyPlaying !== null && currentlyPlaying !== audio) {
+			currentlyPlaying.pause();
+			currentlyPlaying.classList.remove("playing");
+			cancelAnimationFrame(rAF); // in case the previous one had an rAF going on
+		}
+		// Play/pause current audio as necessary
+		if (audio.classList.contains("playing")) {
+			currentlyPlaying = null;
+			audio.pause();
+			cancelAnimationFrame(rAF);
+		} else {
+			currentlyPlaying = audio;
+			audio.play();
+			requestAnimationFrame(whilePlaying);
+		}
+		audio.classList.toggle("playing");
+	})
+	volume.addEventListener("click", () => {
+		audio.muted = !audio.muted;
+		volume.classList.toggle("active");
+	});
+	loop.addEventListener("click", () => {
+		audio.loop = !audio.loop;
+		loop.classList.toggle("active");
+	});
+	skipStart.addEventListener("click", () => {
+		if (audio.classList.contains("playing")) { audio.pause() }
+		audio.currentTime = 0;
+		seekbar.value = 0;
+		seekbar.setAttribute("style", `--progress-width: 0%`);
+		if (audio.classList.contains("playing")) { audio.play() }
+	});
+	skipEnd.addEventListener("click", () => {
+		audio.currentTime = audio.duration;
+		seekbar.value = audio.duration;
+		seekbar.setAttribute("style", `--progress-width: 100%`);
+		// Fires "ended" by itself
+	});
+	// #endregion
+	// #region Seekbar
+	const whilePlaying = () => {
+		seekbar.value = Math.floor(audio.currentTime);
+		seekbar.setAttribute("style", `--progress-width: ${(audio.currentTime / audio.duration) * 100}%`);
+		rAF = requestAnimationFrame(whilePlaying);
+	}
+	seekbar.addEventListener("input", () => {
+		if (!audio.paused) {
+			cancelAnimationFrame(rAF);
+		}
+	});
+	seekbar.addEventListener("change", () => {
+		audio.currentTime = seekbar.value;
+		seekbar.setAttribute("style", `--progress-width: ${(audio.currentTime / audio.duration) * 100}%`);
+		if (!audio.paused) {
+			requestAnimationFrame(whilePlaying);
+		}
+	});
+	// #endregion
 	// #endregion
 
 	return wrapper;
