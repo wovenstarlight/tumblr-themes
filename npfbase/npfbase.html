@@ -1168,7 +1168,20 @@ function createTumblrAudio(npf, defaultIcons = {}) {
 
 	return wrapper;
 }
-function createCustomAudio(npf) {
+function createCustomAudio(npf, defaultIcons = {}) {
+	// Uses Phosphor icons by default
+	// All icons need matching classes, except for skip to start/end
+	let icons = Object.assign({
+		play: '<i class="pause ph ph-pause">',
+		pause: '</i><i class="play ph ph-play"></i>',
+		toStart: '<i class="ph ph-skip-back"></i>',
+		toEnd: '<i class="ph ph-skip-forward"></i>',
+		mute: '<i class="mute ph ph-speaker-simple-high"></i>',
+		unmute: '<i class="unmute ph ph-speaker-simple-slash"></i>',
+		repeat: '<i class="repeat ph ph-repeat"></i>',
+		unrepeat: '<i class="unrepeat ph ph-repeat-once"></i>',
+	}, defaultIcons);
+
 	wrapper = document.createElement("div");
 	wrapper.classList.add("audiowrapper");
 
@@ -1177,7 +1190,69 @@ function createCustomAudio(npf) {
 	audio.preload = "metadata";
 	wrapper.append(audio);
 
-	// TODO: add audio info and controls
+	// #region Audio information
+	let top = document.createElement("div");
+	top.classList.add("top");
+
+	let textInfo = document.createElement("div");
+	textInfo.classList.add("textinfo");
+	if (npf.title) { textInfo.innerHTML += `<span class="trackname">${npf.title}</span>` }
+	if (npf.artist) { textInfo.innerHTML += `<span class="artist">${npf.artist}</span>` }
+	if (npf.album) { textInfo.innerHTML += `<span class="album">${npf.album}</span>` }
+	if (textInfo.childElementCount > 0) { top.append(textInfo) }
+
+	if (npf.poster) {
+		let hasArt = document.createElement("div");
+		hasArt.classList.add("hasart");
+		hasArt.setAttribute("style", `background-image: url('${npf.poster[0].url}')`);
+
+		let art = document.createElement("img");
+		art.classList.add("albumart");
+		art.src = npf.poster[0].url;
+		art.width = npf.poster[0].width;
+		art.height = npf.poster[0].height;
+
+		top.prepend(art);
+		hasArt.append(top);
+		wrapper.append(hasArt);
+	}
+	else if (top.childElementCount > 0 ) {
+		wrapper.append(top);
+	}
+	// #endregion
+
+	// #region Audio controls
+	let seekbar = document.createElement("input");
+	seekbar.type = "range";
+	seekbar.min = 0;
+	seekbar.setAttribute("value", "0");
+	seekbar.max = 100;
+	seekbar.classList.add("seekbar");
+
+	let buttons = document.createElement("div");
+	buttons.classList.add("buttons");
+
+	let playPause = document.createElement("button");
+	playPause.classList.add("playpause");
+	playPause.innerHTML = icons.play + icons.pause;
+	let skipStart = document.createElement("button");
+	skipStart.classList.add("skipstart");
+	skipStart.innerHTML = icons.toStart;
+	let skipEnd = document.createElement("button");
+	skipEnd.classList.add("skipend");
+	skipEnd.innerHTML = icons.toEnd;
+	let volume = document.createElement("button");
+	volume.classList.add("volume");
+	volume.innerHTML = icons.mute + icons.unmute;
+	let loop = document.createElement("button");
+	loop.classList.add("loop");
+	loop.innerHTML = icons.loop + icons.unloop;
+
+	buttons.append(volume, skipStart, playPause, skipEnd, loop);
+	// #endregion
+
+	// TODO:
+	// Preload data and set up interactive elements
 
 	return wrapper;
 }
