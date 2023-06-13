@@ -23,6 +23,9 @@
 	{/block:IfSyntaxHighlighting}
 	{PostTypographyStyles}
 
+	<!-- Phosphor icons -->
+	<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+
 	<style>
 	{NewPostStyles}
 	/* Colors */
@@ -1429,7 +1432,7 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	volume.innerHTML = icons.mute + icons.unmute;
 	let loop = document.createElement("button");
 	loop.classList.add("loop");
-	loop.innerHTML = icons.loop + icons.unloop;
+	loop.innerHTML = icons.repeat + icons.unrepeat;
 
 	buttons.append(volume, skipStart, playPause, skipEnd, loop);
 
