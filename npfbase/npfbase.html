@@ -276,7 +276,7 @@ const currentUser = {
 	url: {JSBlogURL},
 	active: true,
 	theme: {
-	    avatar_shape: {JSAvatarShape},
+		avatar_shape: {JSAvatarShape},
 	},
 }
 
@@ -308,6 +308,9 @@ let brokenIcons = {};
 let bit,	// the base element - a paragraph, blockquote, etc. as drawn from textSubtypes
 	list;	// parent element for list items. null when no list is being constructed
 
+// for audio posts specifically
+let rAF = null,	// for the requestAnimationFrame calls
+	currentlyPlaying = null;
 // #endregion
 
 
@@ -1103,16 +1106,28 @@ function createTumblrAudio(npf, defaultIcons = {}) {
 	seekbar.classList.add("seekbar");
 
 	// Preload data and set up interactive elements
-	let rAF = null;
 	audio.addEventListener("loadedmetadata", () => {
 		seekbar.setAttribute("max", audio.duration);
 	});
+	audio.addEventListener("ended", () => {
+		if (!audio.loop) { audio.classList.remove("playing") }
+		currentlyPlaying = null;
+	})
 	// Play/pause
 	playPause.addEventListener("click", () => {
+		// Pause any other audio on the page
+		if (currentlyPlaying !== null && currentlyPlaying !== audio) {
+			currentlyPlaying.pause();
+			currentlyPlaying.classList.remove("playing");
+			cancelAnimationFrame(rAF); // in case the previous one had an rAF going on
+		}
+		// Play/pause current audio as necessary
 		if (audio.classList.contains("playing")) {
+			currentlyPlaying = null;
 			audio.pause();
 			cancelAnimationFrame(rAF);
 		} else {
+			currentlyPlaying = audio;
 			audio.play();
 			requestAnimationFrame(whilePlaying);
 		}
