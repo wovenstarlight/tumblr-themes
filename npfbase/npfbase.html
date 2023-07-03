@@ -976,17 +976,38 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		let offset = 0;
 		rows.display.filter(i => (i.blocks.length > 1)).forEach((iRow, index) => {
 			// Need to move further columns out of their rows into the first column
-			
 			// the -offset is because of however many items being put inside rows and therefore being removed from the indices
-			let row = body.children[iRow.blocks[0] - offset];
+			
+			// Narrow images might not be in NPF rows, so wrap the first element in a row+col if it's not
+			var row = body.children[iRow.blocks[0] - offset];
+			if (!row.classList.contains("npf_row")) {
+				let newRow = document.createElement("div"),
+					col = document.createElement("div");
+				newRow.classList.add("npf_row");
+				col.classList.add("npf_col");
+				// Insert in place of element
+				row.parentElement.insertBefore(newRow, row);
+				newRow.append(col);
+				col.append(row);
+				row = newRow;
+			}
 			
 			// and now, move the corresponding columns inside the row
 			// skipping the first element, which is already in the row
 			for (let i = 1; i < iRow.blocks.length; i ++) {
-				// Move next column into row
-				row.append(row.nextElementSibling.children[0]);
-				// Delete now-empty next row
-				row.nextElementSibling.remove();
+				if (row.nextElementSibling.classList.contains("npf_row")) {
+					// Move next column into row
+					row.append(row.nextElementSibling.children[0]);
+					// Delete now-empty next row
+					row.nextElementSibling.remove();
+				}
+				else {
+					// Wrap next item in column and move into row
+					let col = document.createElement("div");
+					col.classList.add("npf_col");
+					col.append(row.nextElementSibling);
+					row.append(col);
+				}
 			}
 			offset += iRow.blocks.length - 1;
 		})
