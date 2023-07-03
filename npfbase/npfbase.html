@@ -1029,12 +1029,22 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		}
 		
 		// PLACEMENT OPTIONS (note, none of these are inside .bodyitemcontent!):
-		// In root post body, above answer trail item
+		// Case 1. In root post body, above answer trail item
 		trailItem.parentElement.insertBefore(ask, trailItem);
-		// Inside same trail item, above answerer's name
+		// Case 2. Inside same trail item, above answerer's name
 		// trailItem.insertBefore(ask, body.previousElementSibling);
-		// Inside same trail item, below answerer's name
+		// Case 3. Inside same trail item, below answerer's name
 		// trailItem.insertBefore(ask, body);
+		
+		// Sometimes asks have no answer content (i.e. nothing left in body); in this case, clean up answerer section
+		if (body.childElementCount === 0) {
+			// Case 1
+			trailItem.remove();
+			// Case 2
+			// body.previousElementSibling.remove(); // the answerer's name
+			// Case 2 or 3
+			// body.remove(); // the empty answer content
+		}
 	}
 }
 
