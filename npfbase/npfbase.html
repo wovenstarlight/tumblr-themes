@@ -118,6 +118,12 @@
 		height: auto;
 	}
 	figure { margin: 0 }
+	.video {
+		width: 100%;
+		min-height: 20vh;
+		max-height: 80vh;
+		background: rgba(var(--accent--rgb), 0.2);
+	}
 
 	/* Align poll colors to theme colors */
 	div.poll-post a.poll-row {
@@ -1214,8 +1220,37 @@ function createContentBlock(trailItem, content, i, blogViewLink = "") {
 			trailItem.append(bit);
 			break;
 		
-		// TODO
-		// case "video":
+		case "video":
+			// Use media object to display default video player
+			if (curr.media) {
+				bit = document.createElement("video");
+				bit.classList.add("video");
+				bit.preload = "metadata";
+				bit.controls = true;
+				if (curr.poster) { bit.poster = curr.poster[0].url }
+				bit.loop = true;
+				bit.src = curr.media.url;
+			}
+			// TODO: else if client side SDK... need examples of metadata object
+			// If embeds are present, use those
+			else if (curr.embed_html) {
+				bit = document.createElement("div");
+				bit.innerHTML = curr.embed_html.trim();
+				bit = bit.firstChild;
+			}
+			else if (curr.embed_url) {
+				bit = document.createElement("iframe");
+				bit.src = curr.embed_url;
+				bit.width = "100%";
+			}
+			// All else failed; display a plain link to given URL
+			else {
+				bit = document.createElement("a");
+				bit.href = curr.url;
+				bit.innerText = curr.url;
+			}
+			trailItem.append(bit);
+			break;
 
 		// TODO?
 		// case "paywall":
