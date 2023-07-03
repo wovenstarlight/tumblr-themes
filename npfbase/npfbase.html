@@ -41,6 +41,7 @@
 		background: var(--bg);
 		color: var(--text);
 	}
+	* { box-sizing: border-box }
 
 	.blog-title {
 		font-family: {TitleFont}, "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
@@ -56,8 +57,10 @@
 	}
 	.post {
 		border: solid var(--accent);
-		margin-block: 1em;
-		padding: 0.5em;
+		margin: 1em auto;
+		--padding: 0.5em;
+		padding: 0.5em var(--padding);
+		max-width: calc(33.75em + (var(--padding) * 2));
 	}
 	.post:not(.page) { white-space: pre-line }
 	.user a {
@@ -115,8 +118,6 @@
 		height: auto;
 	}
 	figure { margin: 0 }
-	.audiowrapper,
-	.npf-link-block, .npf_row { max-width: 33.75em }
 
 	/* Align poll colors to theme colors */
 	div.poll-post a.poll-row {
