@@ -963,7 +963,7 @@ function makeNoteCount(wrapper, postData) {
  * Creates links to the tags a given post was tagged with.
  * @param {HTMLElement} wrapper The child element of the post to which the tags will be added. Usually the footer.
  * @param {Object} postData This post's data, containing relevant information to create the tag links with.
- * @param {?Object} tagOptions Options for how to display the tags.
+ * @param {Object} [tagOptions={}] Options for how to display the tags.
  * @param {boolean} [tagOptions.span=false] True if the tags should be contained in a <span> element. False if the container should be a <p> element.
  * @param {boolean} [tagOptions.commas=false] True if the tags should be separated by commas, false otherwise.
  * @param {boolean} [tagOptions.hashtags=true] True if the tags should be prefixed by hashtags, false otherwise.
@@ -988,7 +988,7 @@ function makeTags(wrapper, postData, tagOptions = {}) {
  * Creates a date label showing when a given post was posted/reblogged.
  * @param {HTMLElement} wrapper The child element of the post to which the date label will be added. Usually the header.
  * @param {Object} postData This post's data, containing relevant information to create the date label with.
- * @param {?Object} dateOptions Options for the formatting of the date.
+ * @param {Object} [dateOptions={}] Options for the formatting of the date.
  * @param {boolean} [dateOptions.includeDay=false] True if the weekday should be included in the date label, false otherwise.
  * @param {string} [dateOptions.dateFormat="textDM"] The format of the date, month, and year portion of the label. Either "text" or "num" (numerical) for the month name, "DM" or "MD" for the date-month ordering, followed by an optional "Z" if dates and months should be zero-padded.
  * @param {boolean} [dateOptions.includeTime=false] True if the time of reblogging/posting should be included in the date label, false otherwise.
