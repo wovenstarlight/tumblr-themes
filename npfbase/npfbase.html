@@ -2131,6 +2131,13 @@ function closeLightbox() {
 // #endregion
 
 // #region FOR NON-POST PAGES
+/**
+ * Renders page content on non-post pages.
+ * @param {HTMLElement} wrapper The HTML element in which to insert the page content.
+ * @param {Object} postData The object containing relevant info with which to populate the page
+ * @param {string} postData.title An HTML string containing the title of this page
+ * @param {string} postData.body An HTML string containing the body of this page
+ */
 function createPage(wrapper, postData) {
 	let postBody = document.createElement("section");
 	postBody.classList.add("body");
@@ -2172,6 +2179,11 @@ function createPage(wrapper, postData) {
 	trailItem.append(bodyWrapper);
 }
 
+/**
+ * Unescapes HTML strings which have quotations, ampersands, or arrow brackets replaced with HTML entities.
+ * @param {string} string The escaped HTML string to unescape.
+ * @returns An unescaped version of the provided HTML string, fit for adding to innerHTML.
+ */
 function unescapeHTML(string) {
 	return string.replaceAll("&amp;", "&")
 				.replaceAll("&#39;", "'")
