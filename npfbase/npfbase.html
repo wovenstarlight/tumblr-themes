@@ -1036,11 +1036,17 @@ function makeSubmitter(wrapper, postData, label = true, avatar = false) {
 	// Include avatar?
 	if (avatar) { sublabel.innerHTML = `<img src="${subData.avatar}" />` }
 	// Submitter name, with link to blog if provided
-	if (subData.url.length) {
-		sublabel.innerHTML += subData.label.replace(subData.name, `<a href="${subData.url}">${subData.name}</a>`);
+	// (only if labels are requested!)
+	if (label) {
+		if (subData.url.length) {
+			sublabel.innerHTML += subData.label.replace(subData.name, `<a href="${subData.url}">${subData.name}</a>`);
+		}
+		else {
+			sublabel.innerHTML += subData.label.replace(subData.name, `<a>${subData.name}</a>`);
+		}
 	}
 	else {
-		sublabel.innerHTML += subData.label.replace(subData.name, `<a>${subData.name}</a>`);
+		sublabel.title = subData.label;
 	}
 }
 
