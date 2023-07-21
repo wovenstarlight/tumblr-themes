@@ -725,8 +725,10 @@ let posts = [
 	{/block:Posts}
 ];
 // #endregion
+/** The wrapper element in which all posts will be inserted */
 let postContainer = document.getElementById("posts");
 posts.forEach(post => {
+	/** The HTML article corresponding to the post currently being created */
 	let article = document.createElement("article");
 	article.classList.add("post");
 	postContainer.append(article);
@@ -739,6 +741,7 @@ posts.forEach(post => {
 
 	createPostHeader(article, post);
 
+	/** The body of the post, to be populated with trail items */
 	let postBody = document.createElement("section");
 	postBody.classList.add("body");
 	article.append(postBody);
@@ -773,6 +776,12 @@ document.querySelectorAll("img.lightboxable").forEach(obj => {
 // #region CONSTRUCTOR FUNCTIONS
 
 // #region FOR POST HEADER/FOOTER
+/**
+ * Creates a post header object and appends it to the given post object.
+ * The individual elements in the header can be rearranged as per theme preference.
+ * @param {HTMLElement} wrapper The HTML object for this post, to which the header will be added.
+ * @param {Object} postData This post's data, containing relevant information to populate the header with.
+ */
 function createPostHeader(wrapper, postData) {
 	let header = document.createElement("header");
 	wrapper.append(header);
@@ -787,6 +796,12 @@ function createPostHeader(wrapper, postData) {
 	makeSubmitter(header, postData);
 }
 
+/**
+ * Creates a post footer object and appends it to the given post object.
+ * The individual elements in the footer can be rearranged as per theme preference.
+ * @param {HTMLElement} wrapper The HTML object for this post, to which the footer will be added.
+ * @param {Object} postData This post's data, containing relevant information to populate the footer with.
+ */
 function createPostFooter(wrapper, postData) {
 	let footer = document.createElement("footer");
 	wrapper.append(footer);
@@ -808,6 +823,12 @@ function createPostFooter(wrapper, postData) {
 }
 
 // #region Helpers
+/**
+ * Creates a like button for a given post.
+ * @param {HTMLElement} wrapper The child element of the post to which the like button will be added. Usually the footer.
+ * @param {Object} postData This post's data, containing relevant information to create the like button with.
+ * @param {?string} icon An HTML string representing the icon for the like button, or null if a text label should be used.
+ */
 function makeLike(wrapper, postData, icon = null) {
 	// Make element
 	let likeButton = document.createElement("a");
@@ -832,6 +853,12 @@ function makeLike(wrapper, postData, icon = null) {
 	}
 }
 
+/**
+ * Creates a reblog button for a given post.
+ * @param {HTMLElement} wrapper The child element of the post to which the reblog button will be added. Usually the footer.
+ * @param {Object} postData This post's data, containing relevant information to create the reblog button with.
+ * @param {?string} icon An HTML string representing the icon for the reblog button, or null if a text label should be used.
+ */
 function makeReblog(wrapper, postData, icon = null) {
 	// Make element
 	let reblogButton = document.createElement("a");
@@ -850,6 +877,12 @@ function makeReblog(wrapper, postData, icon = null) {
 	}
 }
 
+/**
+ * Creates a label indicating that a given post is a pinned post.
+ * @param {HTMLElement} wrapper The child element of the post to which the pinned marker will be added. Usually the header.
+ * @param {Object} postData This post's data, containing relevant information to create the pinned marker with.
+ * @param {?string} icon An HTML string representing the icon for the pinned marker, or null if a text label should be used.
+ */
 function makePin(wrapper, postData, icon = null) {
 	if (!postData.pinned) { return; }
 	// Make element
@@ -866,6 +899,12 @@ function makePin(wrapper, postData, icon = null) {
 	}
 }
 
+/**
+ * Creates links to the blogs that a given post was reblogged from (via) and originally made by (source).
+ * @param {HTMLElement} wrapper The child element of the post to which the via/source links will be added. Usually the footer.
+ * @param {Object} postData This post's data, containing relevant information to create the via/source links with.
+ * @param {?boolean} icons The URLs to the 64x64 avatars of the via/source blogs, or null if text labels should be used.
+ */
 function makeViaSource(wrapper, postData, icons = false) {
 	if (!postData.via) { return; }
 	// Viasource container
@@ -906,6 +945,11 @@ function makeViaSource(wrapper, postData, icons = false) {
 	}
 }
 
+/**
+ * Creates a label for the number of notes on a given post.
+ * @param {HTMLElement} wrapper The child element of the post to which the note count will be added. Usually the footer.
+ * @param {Object} postData This post's data, containing relevant information to create the note count with.
+ */
 function makeNoteCount(wrapper, postData) {
 	if (!postData.noteCount) { return; }
 	let notes = document.createElement("a");
@@ -915,6 +959,15 @@ function makeNoteCount(wrapper, postData) {
 	wrapper.append(notes);
 }
 
+/**
+ * Creates links to the tags a given post was tagged with.
+ * @param {HTMLElement} wrapper The child element of the post to which the tags will be added. Usually the footer.
+ * @param {Object} postData This post's data, containing relevant information to create the tag links with.
+ * @param {?Object} tagOptions Options for how to display the tags.
+ * @param {boolean} [tagOptions.span=false] True if the tags should be contained in a <span> element. False if the container should be a <p> element.
+ * @param {boolean} [tagOptions.commas=false] True if the tags should be separated by commas, false otherwise.
+ * @param {boolean} [tagOptions.hashtags=true] True if the tags should be prefixed by hashtags, false otherwise.
+ */
 function makeTags(wrapper, postData, tagOptions = {}) {
 	if (!postData.tags) { return; }
 	let options = Object.assign({
@@ -931,6 +984,17 @@ function makeTags(wrapper, postData, tagOptions = {}) {
 	wrapper.append(tags);
 }
 
+/**
+ * Creates a date label showing when a given post was posted/reblogged.
+ * @param {HTMLElement} wrapper The child element of the post to which the date label will be added. Usually the header.
+ * @param {Object} postData This post's data, containing relevant information to create the date label with.
+ * @param {?Object} dateOptions Options for the formatting of the date.
+ * @param {boolean} [dateOptions.includeDay=false] True if the weekday should be included in the date label, false otherwise.
+ * @param {string} [dateOptions.dateFormat="textDM"] The format of the date, month, and year portion of the label. Either "text" or "num" (numerical) for the month name, "DM" or "MD" for the date-month ordering, followed by an optional "Z" if dates and months should be zero-padded.
+ * @param {boolean} [dateOptions.includeTime=false] True if the time of reblogging/posting should be included in the date label, false otherwise.
+ * @param {string} [dateOptions.timeFormat="12"] The format of the time portion of the label. Either "12" or "24" for 12-hour (AM/PM) or 24-hour format, followed by an optional "Z" if hours should be zero-padded.
+ * @param {boolean} [dateOptions.commaSeparate=true] For when includeTime is set to true. True if the label should be formatted as "[DATE], [TIME]", and false if the label should be formatted as "[DATE] at [TIME]".
+ */
 function makeDate(wrapper, postData, dateOptions = {}) {
 	let options = Object.assign({
 		includeDay: false,
@@ -957,6 +1021,13 @@ function makeDate(wrapper, postData, dateOptions = {}) {
 	}
 }
 
+/**
+ * Creates a label indicating a given post is a submission.
+ * @param {HTMLElement} wrapper The child element of the post to which the submission label will be added. Usually the header.
+ * @param {Object} postData This post's data, containing relevant information to create the submission label with.
+ * @param {boolean} [label=true] True if a text label should be included giving the submitter's name, potentially with a link to their blog
+ * @param {boolean} [avatar=false] True if the submitter's avatar should be included.
+ */
 function makeSubmitter(wrapper, postData, label = true, avatar = false) {
 	if (!(subData = postData.submission)) { return; }
 	let sublabel = document.createElement("span");
@@ -973,6 +1044,13 @@ function makeSubmitter(wrapper, postData, label = true, avatar = false) {
 	}
 }
 
+/**
+ * Creates a label indicating the source of a given post's content.
+ * @param {HTMLElement} wrapper The child element of the post to which the content source label will be added. Usually the header.
+ * @param {Object} postData This post's data, containing relevant information to create the content source with.
+ * @param {boolean} [label=true] True if a "Source:" prefix should be included before the link to the source, false otherwise
+ * @param {boolean} [logo=false] True if any provided logos should be displayed on the link instead of the source's text name, false otherwise
+ */
 function makeContentSource(wrapper, postData, label = true, logo = false) {
 	if (!(sourceData = postData.contentSource)) { return; }
 	let source = document.createElement("span");
