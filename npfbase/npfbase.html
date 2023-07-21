@@ -507,20 +507,56 @@
 
 <script>
 // #region CONSTANTS AND GLOBAL VARIABLES
-// for when the current blog made/added to a post
+/**
+ * Information of the blog this theme is being used on. For use when this blog makes/adds to posts.
+ */
 const currentUser = {
+	/**
+	 * Blog username
+	 * @type {string}
+	 */
 	name: {JSName},
+	/**
+	 * Blog title
+	 * @type {string}
+	 */
 	title: {JSTitle},
+	/**
+	 * Blog description. May contain HTML
+	 * @type {string}
+	 */
 	description: {JSDescription},
+	/**
+	 * URL to the blog avatar, size 64x64
+	 * @type {string}
+	 */
 	avatar: {JSPortraitURL-64},
+	/**
+	 * URL to the blog (in the format https://username.tumblr.com)
+	 * @type {string}
+	 */
 	url: {JSBlogURL},
+	/**
+	 * Whether the blog is active. Always true
+	 * @type {boolean}
+	 */
 	active: true,
+	/**
+	 * Blog theme object. Contains information about colors/blog layout
+	 */
 	theme: {
+		/**
+		 * Shape of the blog avatar. Either "square" or "circle"
+		 * @type {string}
+		 */
 		avatar_shape: {JSAvatarShape},
 	},
 }
 
-// default tags to wrap things in
+/**
+ * Default HTML tags to wrap specific text content block types in.
+ * @type {Object.<string, string>}
+ */
 const textSubtypes = {
 	"heading1": "h2",
 	"heading2": "h3",
@@ -532,8 +568,15 @@ const textSubtypes = {
 	"unordered-list-item": "li",
 }
 
-// for broken blog trail items. use size 64 avatars!
+/**
+ * URL to the 64x64 avatar for anonymous users.
+ * @type {string}
+ */
 const anonAvatar = "https://assets.tumblr.com/images/anonymous_avatar_64.gif";
+/**
+ * URL to the 64x64 avatar for deactivated/broken users.
+ * @type {string[]}
+ */
 const defaultAvatars = [
 	"https://assets.tumblr.com/images/default_avatar/cone_closed_64.png",
 	"https://assets.tumblr.com/images/default_avatar/cone_open_64.png",
@@ -542,15 +585,55 @@ const defaultAvatars = [
 	"https://assets.tumblr.com/images/default_avatar/sphere_closed_64.png",
 	"https://assets.tumblr.com/images/default_avatar/sphere_open_64.png",
 ]
+/**
+ * Contains icons assigned to deactivated/broken users present on this page.
+ * To be checked in case the same deactivated/broken user authors multiple trail items
+ * @type {Object.<string, string>}
+ */
 let brokenIcons = {};
 
-// for use in trail item body construction
-let bit,	// the base element - a paragraph, blockquote, etc. as drawn from textSubtypes
-	list;	// parent element for list items. null when no list is being constructed
+/**
+ * For use in trail item body construction. The base element (paragraph, blockquote etc.) as selected from textSubtypes.
+ * @type {HTMLElement}
+ */
+let bit;
+/**
+ * For use in trail item body construction. The parent element for list items. Null when no list is being constructed.
+ * @type {?string}
+ */
+let list;
 
-// for audio posts specifically
-let rAF = null,	// for the requestAnimationFrame calls
-	currentlyPlaying = null;
+/**
+ * For use in audio posts. Stores the request ID for the animation frames.
+ * @type {?long}
+ */
+let rAF = null;
+/**
+ * For use in audio posts. Stores the currently playing audio element, if any.
+ * @type {?HTMLElement}
+ */
+let currentlyPlaying = null;
+
+/**
+ * The currently active lightbox, if any.
+ * @type {?HTMLElement}
+ */
+let lightbox;
+/**
+ * All images from the trail item currently being represented in the lightbox. Null if no lightbox is active.
+ * @type {?HTMLElement[]}
+ */
+let lightboxImages = null;
+/**
+ * The index in lightboxImages of the image currently being viewed in the lightbox. Null if no lightbox is active.
+ * @type {?number}
+ */
+let lightboxIndex = null;
+/**
+ * The image the currently active lightbox was opened from. Null if no lightbox is active.
+ * @type {?HTMLElement}
+ */
+let comingFrom = null;
 // #endregion
 
 
@@ -1729,12 +1812,6 @@ function formatText(content) {
 
 
 // #region Lightbox
-// For tracking the lightbox, the progress through said lightbox,
-// and where to return to upon closing said lightbox
-let lightbox,
-	lightboxImages = null, lightboxIndex = null,
-	comingFrom;
-
 /**
  * Creates and opens a lightbox using the images from the target image's trail item.
  */
