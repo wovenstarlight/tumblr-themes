@@ -512,6 +512,9 @@
 	/* Custom CSS */
 	{CustomCSS}
 	</style>
+	
+	<!-- Keyboard navigation -->
+	<script src="https://static.tumblr.com/h7vugp8/jjLryp14e/keyboardnav.js"></script>
 </head>
 
 
@@ -799,6 +802,9 @@ document.querySelectorAll("img.lightboxable").forEach(obj => {
 		if (e.key === "Enter" || e.key === " ") { triggerLightbox(e) }
 	});
 });
+
+// Set up keyboard navigation
+keyboardNav();
 // #endregion
 
 
