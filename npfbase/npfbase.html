@@ -113,11 +113,6 @@
 	}
 	.ask .user a { margin-inline-end: 0.2em }
 	
-	img {
-		max-width: 100%;
-		height: auto;
-	}
-	figure { margin: 0 }
 	.video {
 		width: 100%;
 		min-height: 20vh;
@@ -125,6 +120,30 @@
 		background: rgba(var(--accent--rgb), 0.2);
 	}
 
+	/* #region Images and image rows */
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+	figure { margin: 0 }
+	.row {
+		display: grid;
+		grid-auto-flow: column;
+		grid-auto-columns: 1fr;
+		--spacing: min(0.2em, 1vw);
+		gap: var(--spacing);
+		margin-block: var(--spacing);
+	}
+	.row figure {
+		display: flex;
+		flex-direction: column;
+	}
+	.row img {
+		object-fit: cover;
+		height: 100%;
+		width: 100%;
+	}
+	/* #endregion */
 	/* #region Lightbox */
 	body.lightboxed { overflow: hidden }
 	#lightbox {
@@ -140,6 +159,8 @@
 		top: 50%;
 		max-width: 90vw;
 		max-height: 90vh;
+		width: auto;
+		height: auto;
 		box-shadow: 0 0 0.5em rgba(0, 0, 0);
 	}
 	#lightbox img.center {
@@ -1222,37 +1243,32 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 			
 			// Narrow images might not be in NPF rows, so wrap the first element in a row+col if it's not
 			var row = body.children[iRow.blocks[0] - offset];
-			if (!row.classList.contains("npf_row")) {
+			if (!row.classList.contains("row")) {
 				// Make sure to make it lightbox-capable
 				row.children[0].classList.add("lightboxable");
-				let newRow = document.createElement("div"),
-					col = document.createElement("div");
-				newRow.classList.add("npf_row");
-				col.classList.add("npf_col");
+				let newRow = document.createElement("div");
+				newRow.classList.add("row");
 				// Insert in place of element
 				row.parentElement.insertBefore(newRow, row);
-				newRow.append(col);
-				col.append(row);
+				newRow.append(row);
 				row = newRow;
 			}
 			
 			// and now, move the corresponding columns inside the row
 			// skipping the first element, which is already in the row
 			for (let i = 1; i < iRow.blocks.length; i ++) {
-				if (row.nextElementSibling.classList.contains("npf_row")) {
+				if (row.nextElementSibling.classList.contains("row")) {
 					// Move next column into row
 					row.append(row.nextElementSibling.children[0]);
 					// Delete now-empty next row
 					row.nextElementSibling.remove();
 				}
 				else {
+					// Image-figure, not row
 					// Make sure to make it lightbox-capable
 					row.nextElementSibling.children[0].classList.add("lightboxable");
-					// Wrap next item in column and move into row
-					let col = document.createElement("div");
-					col.classList.add("npf_col");
-					col.append(row.nextElementSibling);
-					row.append(col);
+					// Move into row
+					row.append(row.nextElementSibling);
 				}
 			}
 			offset += iRow.blocks.length - 1;
@@ -1368,9 +1384,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "") {
 			// wrappers
 			// for some reason this breaks if col/row are also in the >=540 block
 			let row = document.createElement("div");
-			row.classList.add("npf_row");
-			let col = document.createElement("div");
-			col.classList.add("npf_col");
+			row.classList.add("row");
 			let fig = document.createElement("figure");
 			if (curr.media[0].width >= breakpoint) {
 				fig.classList.add("tmblr-full");
@@ -1393,8 +1407,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "") {
 				// Make large images lightbox-capable
 				bit.classList.add("lightboxable");
 				
-				col.append(fig);
-				row.append(col);
+				row.append(fig);
 				trailItem.append(row);
 			}
 			else {
@@ -1954,7 +1967,7 @@ function triggerLightbox(e) {
 	document.body.classList.add("lightboxed");
 	comingFrom = e.target;
 		
-	// Lightboxes only trigger on images in the structure .bodyitemcontent > .npf_row > .npf_col > figure > img.lightboxable (this is also applicable to all images sized >= breakpoint).
+	// Lightboxes only trigger on images in the structure .bodyitemcontent > .row > figure > img.lightboxable (this is also applicable to all images sized >= breakpoint).
 	// Lightboxes should only include other lightbox-capable images.
 	lightbox = document.createElement("div");
 	lightbox.id = "lightbox";
