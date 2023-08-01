@@ -525,6 +525,15 @@
 		<noscript><article>Javascript is required to view this blog. Please enable scripting and reload.</article></noscript>
 	</section>
 
+	{block:Pagination}<nav>
+		{block:PreviousPage}<a href="{PreviousPage}" id="prev">Previous</a>{/block:PreviousPage}
+		{block:JumpPagination length="7"}
+			{block:CurrentPage}<a>{PageNumber}</a>{/block:CurrentPage}
+			{block:JumpPage}<a href="{URL}">{PageNumber}</a>{/block:JumpPage}
+		{/block:JumpPagination}
+		{block:NextPage}<a href="{NextPage}" id="next">Next</a>{/block:NextPage}
+	</nav>{/block:Pagination}
+
 
 <script>
 // #region CONSTANTS AND GLOBAL VARIABLES
