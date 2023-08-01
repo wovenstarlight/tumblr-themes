@@ -803,6 +803,9 @@ document.querySelectorAll("img.lightboxable").forEach(obj => {
 	});
 });
 
+// Format media in posts in legacy style
+formatLegacyStyle();
+
 // Set up keyboard navigation
 keyboardNav();
 // #endregion
@@ -2155,6 +2158,44 @@ function closeLightbox() {
 	comingFrom.focus();
 }
 // #endregion
+
+/**
+ * Moves any media at the start of posts to the top of the post body, as in legacy formatting.
+ */
+ function formatLegacyStyle() {
+	// Select all special media elements at the very start of posts
+	let selector = [
+		".bodyitem:first-child .bodyitemcontent > .row:first-child",
+		".bodyitem:first-child .bodyitemcontent > video:first-child",
+		".bodyitem:first-child .bodyitemcontent > .audiowrapper:first-child",
+		".bodyitem:first-child .bodyitemcontent > .npf-link-block:first-child",
+	].join(", ");
+	
+	document.querySelectorAll(selector).forEach(el => {
+		// Move el outside its bodyitem into a "mediawrapper" div at the top of the post body
+		let bodyitemcontent = el.parentElement,
+			wrapper = document.createElement("div");
+		wrapper.classList.add("mediawrapper");
+		
+		// Put wrapper in post body
+		// .bodyitemcontent to .bodyitem to .body
+		bodyitemcontent.parentElement.parentElement.prepend(wrapper);
+		
+		// Add this element
+		wrapper.prepend(el);
+		
+		// If this is a photoset element, check for additional rows in the photoset and add them
+		if (el.classList.contains("row")) {
+			while (bodyitemcontent.childElementCount !== 0 && bodyitemcontent.children[0].classList.contains("row")) {
+				wrapper.append(bodyitemcontent.children[0]);
+			}
+		}
+		// Remove the parent body item if it's empty
+		if (bodyitemcontent.childElementCount === 0) {
+			bodyitemcontent.parentElement.remove();
+		}
+	})
+}
 // #endregion
 
 // #region FOR NON-POST PAGES
