@@ -2119,9 +2119,7 @@ function triggerLightbox(e) {
 	let center = e.target.cloneNode();
 	center.classList.add("center");
 	center.addEventListener("click", interactLightbox);
-	center.addEventListener("keydown", e => {
-			if (e.key === "Enter" || e.key === " ") { interactLightbox(e) }
-		});
+	center.addEventListener("keydown", interactLightboxKeyboard);
 	lightbox.append(center);
 	center.focus();
 		
@@ -2148,6 +2146,8 @@ function interactLightbox(e) {
 			// Move current image to the left
 			e.target.classList.remove("center");
 			e.target.classList.add("left");
+			
+			// Move right image to center
 			e.target.nextElementSibling.classList.remove("right");
 			e.target.nextElementSibling.classList.add("center");
 			e.target.nextElementSibling.focus();
@@ -2216,9 +2216,7 @@ function interactLightbox(e) {
 		left.classList.add("left");
 		lightbox.firstChild.insertAdjacentElement("afterend", left);
 		left.addEventListener("click", interactLightbox);
-		left.addEventListener("keydown", e => {
-			if (e.key === "Enter" || e.key === " ") { interactLightbox(e) }
-		});
+		left.addEventListener("keydown", interactLightboxKeyboard);
 		return left;
 	}
 	else if (side === "right" && lightboxIndex !== lightboxImages.length - 1) {
@@ -2226,16 +2224,22 @@ function interactLightbox(e) {
 		right.classList.add("right");
 		lightbox.lastChild.insertAdjacentElement("afterend", right);
 		right.addEventListener("click", interactLightbox);
-		right.addEventListener("keydown", e => {
-			if (e.key === "Enter" || e.key === " ") { interactLightbox(e) }
-			else if (e.key === "Tab") {
-				lightbox.querySelector("#close")?.focus();
-			}
-		});
+		right.addEventListener("keydown", interactLightboxKeyboard);
 		return right;
 	}
 	else {
 		return null;
+	}
+}
+
+/**
+ * Triggers lightbox interaction for specific keyboard events, and traps focus inside the lightbox.
+ * @param {Event} e The event object, to check for keyboard events and the keys pressed.
+ */
+function interactLightboxKeyboard(e) {
+	if (e.key === "Enter" || e.key === " ") { interactLightbox(e) }
+	else if (e.key === "Tab" && !e.target.nextElementSibling) {
+		lightbox.querySelector("#close")?.focus();
 	}
 }
 
