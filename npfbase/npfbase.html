@@ -62,7 +62,6 @@
 		padding: 0.5em var(--padding);
 		max-width: calc(33.75em + (var(--padding) * 2));
 	}
-	.post:not(.page) { white-space: pre-line }
 	.user a {
 		display: flex;
 		align-items: center;
@@ -2004,7 +2003,9 @@ function createCustomAudio(npf, defaultIcons = {}) {
  */
 function formatText(content) {
 	let base = content.text;
-	if (!content.formatting) { return base; }
+	if (!content.formatting)
+		return base.replaceAll(String.fromCharCode(10), "<br />");
+	
 	let text = "",
 		formats = new Array(),
 		i = 0;
@@ -2035,8 +2036,9 @@ function formatText(content) {
 			}
 		})
 		
-		// add the actual character
-		text += char;
+		// add the actual character, subbing in linebreaks
+		if (char === String.fromCharCode(10)) { text += "<br />" }
+		else { text += char }
 		
 		// close any formatting tags
 		formats = content.formatting.filter(f => (f.end === i + 1));
