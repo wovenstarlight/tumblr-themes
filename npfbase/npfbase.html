@@ -2129,6 +2129,7 @@ function triggerLightbox(e) {
 
 /**
  * Interaction handler for the images in the lightbox. Moves forward/back in the lightbox depending on which image was clicked, or closes the lightbox if out of images.
+ * @param {Event} e The event object, to check for type and the image interacted with.
  */
 function interactLightbox(e) {
 	if (e.target.classList.contains("center")) {
@@ -2234,7 +2235,7 @@ function interactLightbox(e) {
 
 /**
  * Triggers lightbox interaction for specific keyboard events, and traps focus inside the lightbox.
- * @param {Event} e The event object, to check for keyboard events and the keys pressed.
+ * @param {KeyboardEvent} e The event object, to check for keyboard events and the keys pressed.
  */
 function interactLightboxKeyboard(e) {
 	if (e.key === "Enter" || e.key === " ") { interactLightbox(e) }
