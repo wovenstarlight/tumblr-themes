@@ -509,6 +509,43 @@
 	}
 	/* #endregion */
 
+	/* #region Paywall block */
+	.paywall {
+		background-color: var(--bg);
+		color: var(--text);
+		padding: 1em 5%;
+		margin-block: 1em;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		align-items: center;
+		gap: 1em;
+	}
+	.paywall * { margin-block: 0 }
+	.paywall h2 { font-family: var(--font) }
+	.paywall h2, .paywall strong, .paywall a { color: var(--accent) }
+	.paywall a {
+		text-decoration: none;
+		border: solid var(--accent);
+		padding: 0.5em 1em;
+		display: block;
+		border-radius: 5em;
+	}
+	.paywall.divider {
+		padding: unset;
+		background-color: unset;
+		color: var(--color);
+		flex-direction: row;
+		gap: 0.25em;
+	}
+	.paywall.divider::before, .paywall.divider::after {
+		content: "";
+		flex-grow: 1;
+		display: block;
+		border: thin solid var(--color);
+	}
+	/* #endregion */
+
 	/* Custom CSS */
 	{CustomCSS}
 	</style>
@@ -583,6 +620,10 @@ const currentUser = {
 		 * @type {string}
 		 */
 		avatar_shape: {JSAvatarShape},
+		background_color: {JSBackgroundColor},
+		title_color: {JSTitleColor},
+		link_color: {JSAccentColor},
+		title_font: {JSTitleFont},
 	},
 }
 
@@ -1223,9 +1264,13 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		// figure out the content type and create the block based on that
 		createContentBlock(
 			body, content, i,
+			// For poll content blocks, a link to the in-dashboard view
 			npf.blog !== undefined ? npf.blog.blog_view_url.concat("/", npf.post.id)
 				: npf.broken_blog_name === undefined ? `https://tumblr.com/${currentUser.name}/${postData.id}`
-				: "");
+				: "",
+			// For paywall content blocks, the paywaller's info and the post object for the viewer's subscription status
+			npf.blog || currentUser,
+			npf.post);
 		
 		// cut off the post and add a readmore, if one is present and you aren't currently on the post's permalink page
 		if (i === rows?.truncate_after && !expand) {
@@ -1364,7 +1409,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
  * @param {number} i The index of this content block in the "content" object, i.e. this block's position in relation to other blocks.
  * @param {string} [blogViewLink=""] The URL to this post in the in-dashboard view, i.e. a link formatted in the style "https://tumblr.com/username/1234567890".
  */
-function createContentBlock(trailItem, content, i, blogViewLink = "") {
+function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = {}, postObj = {}) {
 	let curr = content[i];
 	switch (curr.type) {
 		
@@ -1558,8 +1603,55 @@ function createContentBlock(trailItem, content, i, blogViewLink = "") {
 			trailItem.append(bit);
 			break;
 
-		// TODO?
-		// case "paywall":
+		case "paywall":
+			bit = document.createElement("div");
+			let title, label;
+			bit.classList.add("paywall");
+			bit.style.setProperty("--bg", blogObj.theme.background_color);
+			bit.style.setProperty("--text", blogObj.theme.title_color);
+			bit.style.setProperty("--accent", blogObj.theme.link_color);
+			bit.style.setProperty("--font", blogObj.theme.title_font);
+			
+			if (postObj.paywall_access === "member") {
+				// Shouldn't see this block at all! No need to render anything inside
+				bit.style.setProperty("display", "none");
+				trailItem.append(bit);
+				break;
+			}
+			
+			// Block should be visible. Format as appropriate
+			switch (content[i].subtype) {
+				case "cta":
+					// For supportable blogs
+					title = document.createElement("h2");
+					label = document.createElement("p");
+					supportlink = document.createElement("a");
+					title.innerText = content[i].title;
+					label.innerHTML = content[i].text.replace("%s", `<strong>${blogObj.name}</strong>`);
+					supportlink.innerText = blogObj.subscription_plan?.checkout_labels?.support || "Show your Support";
+					supportlink.href = content[i].url || `https://www.tumblr.com/${blogObj.name}/support`;
+					bit.append(title, label, supportlink);
+					break;
+				
+				case "divider":
+					// For creators looking at own +Posts
+					bit.classList.add("divider");
+					bit.style.setProperty("--color", content[i].color);
+					bit.innerText = content[i].text;
+					break;
+				
+				case "disabled":
+					// For blogs that have disabled Post+
+					title = document.createElement("h2");
+					label = document.createElement("p");
+					title.innerText = content[i].title;
+					label.innerHTML = content[i].text.replace("%s", `<strong>${blogObj.name}</strong>`);
+					bit.append(title, label);
+					break;
+			}
+			
+			trailItem.append(bit);
+			break;
 
 		case "poll":
 			bit = document.createElement("div");
@@ -2162,7 +2254,7 @@ function closeLightbox() {
 /**
  * Moves any media at the start of posts to the top of the post body, as in legacy formatting.
  */
- function formatLegacyStyle() {
+function formatLegacyStyle() {
 	// Select all special media elements at the very start of posts
 	let selector = [
 		".bodyitem:first-child .bodyitemcontent > .row:first-child",
