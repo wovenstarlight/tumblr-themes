@@ -2082,8 +2082,11 @@ function triggerLightbox(e) {
 	// Lightboxes only trigger on images in the structure .bodyitemcontent > .row > figure > img.lightboxable (this is also applicable to all images sized >= breakpoint).
 	// Lightboxes should only include other lightbox-capable images.
 	lightbox = document.createElement("div");
+	lightbox.role = "dialog";
+	lightbox.setAttribute("aria-modal", "true");
 	lightbox.id = "lightbox";
 	lightbox.setAttribute("tabindex", "-1");
+	Array.from(document.body.children).forEach(el => el.setAttribute("inert", "true"));
 	document.body.append(lightbox);
 	// Hit Esc to close lightbox
 	lightbox.addEventListener("keydown", e => {
@@ -2235,7 +2238,7 @@ function interactLightbox(e) {
 
 /**
  * Triggers lightbox interaction for specific keyboard events, and traps focus inside the lightbox.
- * @param {KeyboardEvent} e The event object, to check for keyboard events and the keys pressed.
+ * @param {Event} e The event object, to check for keyboard events and the keys pressed.
  */
 function interactLightboxKeyboard(e) {
 	if (e.key === "Enter" || e.key === " ") { interactLightbox(e) }
@@ -2254,6 +2257,7 @@ function closeLightbox() {
 	lightboxIndex = null;
 	lightbox = null;
 	// Go back to the image the lightbox was opened from
+	Array.from(document.body.children).forEach(el => el.removeAttribute("inert"));
 	comingFrom.focus();
 }
 // #endregion
