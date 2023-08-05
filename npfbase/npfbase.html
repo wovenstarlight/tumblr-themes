@@ -1690,7 +1690,7 @@ function createTumblrAudio(npf, defaultIcons = {}) {
 	// #region Seekbar
 	const whilePlaying = () => {
 		seekbar.value = Math.floor(audio.currentTime);
-		seekbar.setAttribute("style", `--progress-width: ${(audio.currentTime / audio.duration) * 100}%`);
+		seekbar.style.setProperty("--progress-width", `${(audio.currentTime / audio.duration) * 100}%`);
 		rAF = requestAnimationFrame(whilePlaying);
 	}
 	seekbar.addEventListener("input", () => {
@@ -1700,7 +1700,7 @@ function createTumblrAudio(npf, defaultIcons = {}) {
 	});
 	seekbar.addEventListener("change", () => {
 		audio.currentTime = seekbar.value;
-		seekbar.setAttribute("style", `--progress-width: ${(audio.currentTime / audio.duration) * 100}%`);
+		seekbar.style.setProperty("--progress-width", `${(audio.currentTime / audio.duration) * 100}%`);
 		if (!audio.paused) {
 			requestAnimationFrame(whilePlaying);
 		}
@@ -1777,7 +1777,7 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	if (npf.poster) {
 		let hasArt = document.createElement("div");
 		hasArt.classList.add("hasart");
-		hasArt.setAttribute("style", `background-image: url('${npf.poster[0].url}')`);
+		hasArt.style.setProperty("background-image", `url('${npf.poster[0].url}')`);
 
 		let art = document.createElement("img");
 		art.classList.add("albumart");
@@ -1868,20 +1868,20 @@ function createCustomAudio(npf, defaultIcons = {}) {
 		if (audio.classList.contains("playing")) { audio.pause() }
 		audio.currentTime = 0;
 		seekbar.value = 0;
-		seekbar.setAttribute("style", `--progress-width: 0%`);
+		seekbar.style.setProperty("--progress-width", "0%");
 		if (audio.classList.contains("playing")) { audio.play() }
 	});
 	skipEnd.addEventListener("click", () => {
 		audio.currentTime = audio.duration;
 		seekbar.value = audio.duration;
-		seekbar.setAttribute("style", `--progress-width: 100%`);
+		seekbar.style.setProperty("--progress-width", "100%");
 		// Fires "ended" by itself
 	});
 	// #endregion
 	// #region Seekbar
 	const whilePlaying = () => {
 		seekbar.value = Math.floor(audio.currentTime);
-		seekbar.setAttribute("style", `--progress-width: ${(audio.currentTime / audio.duration) * 100}%`);
+		seekbar.style.setProperty("--progress-width", `${(audio.currentTime / audio.duration) * 100}%`);
 		rAF = requestAnimationFrame(whilePlaying);
 	}
 	seekbar.addEventListener("input", () => {
@@ -1891,7 +1891,7 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	});
 	seekbar.addEventListener("change", () => {
 		audio.currentTime = seekbar.value;
-		seekbar.setAttribute("style", `--progress-width: ${(audio.currentTime / audio.duration) * 100}%`);
+		seekbar.style.setProperty("--progress-width", `${(audio.currentTime / audio.duration) * 100}%`);
 		if (!audio.paused) {
 			requestAnimationFrame(whilePlaying);
 		}
