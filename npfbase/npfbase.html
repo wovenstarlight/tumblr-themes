@@ -2238,7 +2238,7 @@ function interactLightbox(e) {
  */
 function interactLightboxKeyboard(e) {
 	if (e.key === "Enter" || e.key === " ") { interactLightbox(e) }
-	else if (e.key === "Tab" && !e.target.nextElementSibling) {
+	else if (e.key === "Tab" && !e.shiftKey && !e.target.nextElementSibling) {
 		lightbox.querySelector("#close")?.focus();
 	}
 }
