@@ -2114,7 +2114,6 @@ function triggerLightbox(e) {
 	closeButton.addEventListener("click", closeLightbox);
 	closeButton.addEventListener("keydown", e => {
 		if (e.key === "Enter" || e.key === " ") { closeLightbox(e) }
-		else if (e.shiftKey && e.key === "Tab") { lightbox.lastChild.focus() }
 	});
 	
 	// Actual images
@@ -2243,9 +2242,6 @@ function interactLightbox(e) {
  */
 function interactLightboxKeyboard(e) {
 	if (e.key === "Enter" || e.key === " ") { interactLightbox(e) }
-	else if (e.key === "Tab" && !e.shiftKey && !e.target.nextElementSibling) {
-		lightbox.querySelector("#close")?.focus();
-	}
 }
 
 /**
