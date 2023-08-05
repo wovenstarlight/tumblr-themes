@@ -1697,7 +1697,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 			bit = document.createElement("p");
 			bit.innerHTML = `TODO: ${curr.type} block`;
 			trailItem.append(bit);
-		
+	
 	}
 }
 
@@ -2078,7 +2078,7 @@ function formatText(content) {
 function triggerLightbox(e) {
 	document.body.classList.add("lightboxed");
 	comingFrom = e.target;
-		
+	
 	// Lightboxes only trigger on images in the structure .bodyitemcontent > .row > figure > img.lightboxable (this is also applicable to all images sized >= breakpoint).
 	// Lightboxes should only include other lightbox-capable images.
 	lightbox = document.createElement("div");
@@ -2101,7 +2101,7 @@ function triggerLightbox(e) {
 			lightbox.querySelector(".center")?.focus();
 		}
 	});
-		
+	
 	// Close lightbox
 	let closeButton = document.createElement("div");
 	closeButton.id = "close";
@@ -2112,7 +2112,7 @@ function triggerLightbox(e) {
 		if (e.key === "Enter" || e.key === " ") { closeLightbox(e) }
 		else if (e.shiftKey && e.key === "Tab") { lightbox.lastChild.focus() }
 	});
-		
+	
 	// Actual images
 	lightboxImages = Array.from(e.target.parentElement.parentElement.parentElement.querySelectorAll("img.lightboxable"));
 	lightboxIndex = lightboxImages.findIndex(el => el === e.target);
@@ -2122,7 +2122,7 @@ function triggerLightbox(e) {
 	center.addEventListener("keydown", interactLightboxKeyboard);
 	lightbox.append(center);
 	center.focus();
-		
+	
 	getAdjacentImage("left");
 	getAdjacentImage("right");
 }
@@ -2151,7 +2151,7 @@ function interactLightbox(e) {
 			e.target.nextElementSibling.classList.remove("right");
 			e.target.nextElementSibling.classList.add("center");
 			e.target.nextElementSibling.focus();
-				
+			
 			// Get new next
 			getAdjacentImage("right");
 		}
@@ -2161,7 +2161,7 @@ function interactLightbox(e) {
 			e.target.parentElement.firstChild.click();
 		}
 	}
-		
+	
 	else if (e.target.classList.contains("right")) {
 		// Advance to next image
 		lightboxIndex ++;
@@ -2182,7 +2182,7 @@ function interactLightbox(e) {
 		// Get new next and focus on it
 		getAdjacentImage("right")?.focus();
 	}
-		
+	
 	else { // e.target.classList.contains("left")
 		// Go back to previous image
 		lightboxIndex --;
