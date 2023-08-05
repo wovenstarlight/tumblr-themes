@@ -2112,7 +2112,7 @@ function triggerLightbox(e) {
 	});
 		
 	// Actual images
-	lightboxImages = Array.from(e.target.parentElement.parentElement.parentElement.parentElement.querySelectorAll("img.lightboxable"));
+	lightboxImages = Array.from(e.target.parentElement.parentElement.parentElement.querySelectorAll("img.lightboxable"));
 	lightboxIndex = lightboxImages.findIndex(el => el === e.target);
 	let center = e.target.cloneNode();
 	center.classList.add("center");
