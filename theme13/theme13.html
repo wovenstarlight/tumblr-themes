@@ -30,8 +30,8 @@
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
 
 	<!-- #region Resource imports -->
-	<!-- Phosphor icons -->
-	<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+	<!-- Google's material icons -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 	<!-- #endregion -->
 
 	<style>
@@ -104,7 +104,7 @@
 	{block:IfSearchBar}
 	<!-- SEARCH BAR -->
 	<form action="/search" method="get" id="search">
-		<i class="ph-magnifying-glass"></i>
+		<span class="material-symbols-outlined">search</span>
 		<label for="q" hidden>{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
 		<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}"/>
 	</form>
