@@ -14,15 +14,18 @@
 	<meta name="theme-color" content="#35465D">
 	<link rel="shortcut icon" href="{Favicon}">
 	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
-	<link rel="alternate" type="application/rss+xml" href="{RSS}">
-	{block:Hidden}
-	<!-- TODO: Custom variables -->
-	{/block:Hidden}
-	{block:IfSyntaxHighlighting}
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">{block:IfSyntaxHighlighting}
 	<link rel="stylesheet" href="https://static.tumblr.com/ehm1tdz/2VWnye81h/tumblr-highlightjs.css">
 	{/block:IfSyntaxHighlighting}
 	{PostTypographyStyles}
 
+	{block:Hidden}
+	<!-- #region Custom variables -->
+	<meta name="if:Search bar" content="1">
+	<meta name="text:Search bar title" content="Search">
+	<!-- #endregion -->
+	{/block:Hidden}
+	
 	<!-- Standardization of theme styles -->
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
 
@@ -95,6 +98,18 @@
 		{block:ShowAvatar}<img src="{PortraitURL-128}" id="avatar" class="{AvatarShape}" />{/block:ShowAvatar}
 	</a>
 </header>
+
+
+<nav id="blognav">
+	{block:IfSearchBar}
+	<!-- SEARCH BAR -->
+	<form action="/search" method="get" id="search">
+		<i class="ph-magnifying-glass"></i>
+		<label for="q" hidden>{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
+		<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}"/>
+	</form>
+	{/block:IfSearchBar}
+</nav>
 
 
 <main id="main">
