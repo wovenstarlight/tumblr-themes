@@ -23,6 +23,9 @@
 	<!-- #region Custom variables -->
 	<meta name="if:Search bar" content="1">
 	<meta name="text:Search bar title" content="Search">
+	<meta name="if:Direct Message link in navbar" content="1">
+	<meta name="if:Random post link" content="1">
+	<meta name="if:Archive link" content="1">
 	<!-- #endregion -->
 	{/block:Hidden}
 	
@@ -109,6 +112,40 @@
 		<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}"/>
 	</form>
 	{/block:IfSearchBar}
+
+	<a
+		{block:Pagination}{block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage}{/block:Pagination}
+		{block:PermalinkPagination}{block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost}{/block:PermalinkPagination}
+		{block:DayPagination}{block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage}{/block:DayPagination}
+	>
+		<span class="material-symbols-outlined">undo</span>
+	</a>
+	<a
+		{block:Pagination}{block:NextPage}href="{NextPage}"{/block:NextPage}{/block:Pagination}
+		{block:PermalinkPagination}{block:NextPost}href="{NextPost}"{/block:NextPost}{/block:PermalinkPagination}
+		{block:DayPagination}{block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage}{/block:DayPagination}
+	>
+		<span class="material-symbols-outlined">redo</span>
+	</a>
+
+	<!-- TODO: Accessibility options. Zoom, font?, font size -->
+
+	<a href="/" class="homelink"><span class="material-symbols-outlined">home</span></a>
+	{block:AskEnabled}
+		<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}" title="{AskLabel}"><span class="material-symbols-outlined">mail</span></a>
+	{/block:AskEnabled}
+	{block:SubmissionsEnabled}
+		<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}" title="{SubmitLabel}"><span class="material-symbols-outlined">inbox</span></a>
+	{/block:SubmissionsEnabled}
+	{block:IfDirectMessageLinkInNavbar}
+		<a href="https://www.tumblr.com/message/{Name}" class="messagelink" title="Message"><span class="material-symbols-outlined">add_comment</span></a>
+	{/block:IfDirectMessageLinkInNavbar}
+	{block:IfRandomPostLink}
+		<a href="/random" class="randomlink" title="{lang:Random}"><span class="material-symbols-outlined">shuffle</span></a>
+	{/block:IfRandomPostLink}
+	{block:IfArchiveLink}
+		<a href="/archive" class="archivelink" title="{lang:Archive}"><span class="material-symbols-outlined">archive</span></a>
+	{/block:IfArchiveLink}
 </nav>
 
 
