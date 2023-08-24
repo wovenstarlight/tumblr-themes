@@ -3,7 +3,7 @@
 	https://github.com/tumblr/docs/blob/master/npf-spec.md
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="{select:Default palette}">
 
 <head>
 	{MobileAppHeaders}
@@ -22,7 +22,18 @@
 	{block:Hidden}
 	<!-- #region Custom variables -->
 	<!-- Color options -->
+	<meta name="color:Page background" content="{BackgroundColor}">
+	<meta name="color:Post background" content="{BackgroundColor}">
+	<meta name="color:Text" content="{TitleColor}">
+	<meta name="color:Accent" content="{AccentColor}">
+	<!-- Alternate palette -->
 	<meta name="if:Palette toggle" content="1">
+	<meta name="select:Default palette" content="" title="Original">
+	<meta name="select:Default palette" content="alt" title="Alternate">
+	<meta name="color:ALT Page background" content="{BackgroundColor}">
+	<meta name="color:ALT Post background" content="{BackgroundColor}">
+	<meta name="color:ALT Text" content="{TitleColor}">
+	<meta name="color:ALT Accent" content="{AccentColor}">
 	
 	<!-- Miscellaneous options -->
 	<meta name="if:Search bar" content="1">
@@ -44,14 +55,30 @@
 	<style>
 	{NewPostStyles}
 	html {
-		--text: {TitleColor};
-		--text--rgb: {RGBTitleColor};
-		--bg: {BackgroundColor};
-		--bg--rgb: {RGBBackgroundColor};
-		--accent: {AccentColor};
-		--accent--rgb: {RGBAccentColor};
 		--title-font: {TitleFont};
 		--title-font-weight: {TitleFontWeight};
+	}
+
+	/* Color options */
+	html:not(.alt) {
+		--text: {color:Text};
+		--text--rgb: {RGBcolor:Text};
+		--bg: {color:Page background};
+		--bg--rgb: {RGBcolor:Page background};
+		--post-bg: {color:Post background};
+		--post-bg--rgb: {RGBcolor:Post background};
+		--accent: {color:Accent};
+		--accent--rgb: {RGBcolor:Accent};
+	}
+	html.alt {
+		--text: {color:ALT Text};
+		--text--rgb: {RGBcolor:ALT Text};
+		--bg: {color:ALT Page background};
+		--bg--rgb: {RGBcolor:ALT Page background};
+		--post-bg: {color:ALT Post background};
+		--post-bg--rgb: {RGBcolor:ALT Post background};
+		--accent: {color:ALT Accent};
+		--accent--rgb: {RGBcolor:ALT Accent};
 	}
 	</style>
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme#/theme13.min.css">
