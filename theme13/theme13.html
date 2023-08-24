@@ -21,6 +21,10 @@
 
 	{block:Hidden}
 	<!-- #region Custom variables -->
+	<!-- Color options -->
+	<meta name="if:Palette toggle" content="1">
+	
+	<!-- Miscellaneous options -->
 	<meta name="if:Search bar" content="1">
 	<meta name="text:Search bar title" content="Search">
 	<meta name="if:Direct Message link in navbar" content="1">
@@ -129,6 +133,10 @@
 			<span class="material-symbols-outlined">redo</span>
 		</a>
 
+		{block:IfPaletteToggle}
+		<button id="palette" title="Toggle palette"><span class="material-symbols-outlined">palette</span></button>
+		{/block:IfPaletteToggle}
+
 		<!-- TODO: Accessibility options. Zoom, font?, font size -->
 
 		<a href="/" class="homelink"><span class="material-symbols-outlined">home</span></a>
@@ -147,6 +155,10 @@
 		{block:IfArchiveLink}
 			<a href="/archive" class="archivelink" title="{lang:Archive}"><span class="material-symbols-outlined">archive</span></a>
 		{/block:IfArchiveLink}
+
+		<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+		<a id="credit" href="https://starlightthemes.tumblr.com/theme13" title="{lang:Install this theme}"><span class="material-symbols-outlined">code</span></a>
+		<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
 	</div>
 
 	<div class="right">
