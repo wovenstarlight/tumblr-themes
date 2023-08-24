@@ -460,7 +460,13 @@ document.querySelectorAll("img.lightboxable").forEach(obj => {
 // Format media in posts in legacy style
 formatLegacyStyle();
 
-// Set up keyboard navigation
+// Set up accessibility and keyboard navigation
+document.getElementById("palette").addEventListener("click", () => {
+	document.body.parentElement.classList.toggle("alt");
+});
+document.getElementById("scrolltotop").addEventListener("click", () => {
+	window.scrollTo(0, 0);
+});
 keyboardNav();
 // #endregion
 
