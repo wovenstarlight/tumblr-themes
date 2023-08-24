@@ -1,22 +1,22 @@
-/* Colors */
+/* #region Basic colors/sizing */
+* { box-sizing: border-box }
 body {
 	background: var(--bg);
 	color: var(--text);
 }
-* { box-sizing: border-box }
+a { color: var(--accent) }
+/* #endregion */
 
+
+/* #region Blog header */
 .blog-title {
 	font-family: var(--title-font), "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
 	font-weight: var(--title-font-weight);
 }
+/* #endregion */
 
-a { color: var(--accent) }
 
-.deactivated.user .name::after {
-	content: "deactivated";
-	opacity: 0.6;
-	margin-left: 0.25em;
-}
+/* #region Posts section */
 .post {
 	border: solid var(--accent);
 	margin: 1em auto;
@@ -24,6 +24,8 @@ a { color: var(--accent) }
 	padding: 0.5em var(--padding);
 	max-width: calc(33.75em + (var(--padding) * 2));
 }
+
+/* #region Trail item user labels */
 .user a {
 	display: flex;
 	align-items: center;
@@ -36,6 +38,13 @@ a { color: var(--accent) }
 	border-radius: 0.25em;
 }
 .user .circle.avatar { border-radius: 100% }
+/* Mark deactivated/broken users */
+.deactivated.user .name::after {
+	content: "deactivated";
+	opacity: 0.6;
+	margin-left: 0.25em;
+}
+/* #region Trail item user badges */
 .user .badges {
 	--size: 0.875em;
 	flex-grow: 1;
@@ -50,6 +59,7 @@ a { color: var(--accent) }
 	max-width: var(--size);
 	height: var(--size);
 }
+/* Stop all but the last badge from collapsing at small widths */
 .user .badges img {
 	width: var(--size);
 	height: var(--size);
@@ -61,7 +71,11 @@ a { color: var(--accent) }
 	position: absolute;
 	left: 0;
 }
+/* #endregion */
+/* #endregion */
 
+/* #region Post body content */
+/* #region Ask blocks */
 .ask {
 	border: solid var(--accent);
 	padding: 0.5em;
@@ -73,15 +87,16 @@ a { color: var(--accent) }
 	align-items: center;
 }
 .ask .user a { margin-inline-end: 0.2em }
-
+/* #endregion */
+/* #region Video blocks */
 .video {
 	width: 100%;
 	min-height: 20vh;
 	max-height: 80vh;
 	background: rgba(var(--accent--rgb), 0.2);
 }
-
-/* #region Images and image rows */
+/* #endregion */
+/* #region Image blocks and image rows */
 img {
 	max-width: 100%;
 	height: auto;
@@ -138,6 +153,7 @@ body.lightboxed { overflow: hidden }
 	left: 100%;
 	transform: translate(-20%, -50%);
 }
+/* The close button */
 #lightbox #close {
 	position: absolute;
 	left: 0;
@@ -156,13 +172,13 @@ body.lightboxed { overflow: hidden }
 }
 #lightbox #close:focus::before { color: #acacac }
 /* #endregion */
-
+/* #region Poll block */
 /* Align poll colors to theme colors */
 div.poll-post a.poll-row {
 	color: var(--text);
 	background-color: rgba(var(--accent--rgb), 0.2);
 }
-
+/* #endregion */
 /* #region Default Tumblr audio block */
 .audiowrapper {
 	--box: 5.3125em;
@@ -296,7 +312,6 @@ div.poll-post a.poll-row {
 	/* Needed to keep the Edge thumb centered */
 }
 /* #endregion */
-
 /* #region Custom audio block */
 .audiowrapper {
 	background-color: var(--bg);
@@ -469,7 +484,6 @@ div.poll-post a.poll-row {
 	/* Needed to keep the Edge thumb centered */
 }
 /* #endregion */
-
 /* #region Paywall block */
 .paywall {
 	background-color: var(--bg);
@@ -505,4 +519,7 @@ div.poll-post a.poll-row {
 	display: block;
 	border: thin solid var(--color);
 }
+/* #endregion */
+/* #endregion */
+
 /* #endregion */
