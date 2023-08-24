@@ -55,6 +55,47 @@
 
 <body class="{block:IndexPage} index-page{/block:IndexPage}{block:PermalinkPage} permalink{/block:PermalinkPage}{block:LikesPage} likes-page{/block:LikesPage}{block:FollowingPage} following-page{/block:FollowingPage}{block:SearchPage} search-page{block:NoSearchResults} no-results{/block:NoSearchResults}{block:NoLikes} no-likes{/block:NoLikes}{block:NoPosts} no-posts{/block:NoPosts}{block:NoFollowing} no-following{/block:NoFollowing}{/block:SearchPage}">
 
+<!-- Accessibility: SKIP TO MAIN -->
+<a href="#main" id="skip">Skip to main content</a>
+
+
+<header>
+	<a href="/">
+		<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 88" xml:space="preserve">
+			<path d="M58,88H6c-3.3,0-6-2.7-6-6V6c0-3.3,2.7-6,6-6h36l22,22v60C64,85.3,61.3,88,58,88z" fill="#3086F6"/>
+			<path d="M42,0l22,22H42V0z" fill="#0C67D6"/>
+			<path d="M50,39H14v-5h36V39z M50,46H14v5h36V46z M40,58H14v5h26V58z" fill="#FDFFFF"/>
+		</svg>
+		<h1 id="title">
+			{block:ShowTitle}{Title}{/block:ShowTitle}
+			{block:HideTitle}{Name}{/block:HideTitle}
+		</h1>
+		<h2 id="subtitle">
+			{block:HomePage}
+				<span>Showing all posts</span>
+				{block:Pagination}
+					<span class="hidden">-</span>
+					<span>{lang:Page CurrentPage of TotalPages}</span>
+				{/block:Pagination}
+			{/block:HomePage}
+			{block:TagPage}
+				<span>{lang:Showing TagResultCount posts tagged Tag 2}</span>
+				<a href="{TagURL}">Newest first</a>
+				<a href="{TagURL}/chrono">Oldest first</a>
+				{block:Pagination}
+					<span class="hidden">-</span>
+					<span>{lang:Page CurrentPage of TotalPages}</span>
+				{/block:Pagination}
+			{/block:TagPage}
+			{block:DayPage}
+				<span>{lang:Viewing everything posted on Month DayOfMonth Year}</span>
+			{/block:DayPage}
+		</h2>
+
+		{block:ShowAvatar}<img src="{PortraitURL-128}" id="avatar" class="{AvatarShape}" />{/block:ShowAvatar}
+	</a>
+</header>
+
 
 <main id="main">
 
