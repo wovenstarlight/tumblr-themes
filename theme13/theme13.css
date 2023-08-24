@@ -16,6 +16,32 @@ a { color: var(--accent) }
 /* #endregion */
 
 
+/* #region Blog sidebar */
+#left {
+	position: fixed;
+	left: 0;
+	top: 0;
+	display: block;
+	width: 15em;
+	transition: transform .3s;
+}
+#left[data-collapsed=true] {
+	transform: translateX(-100%);
+}
+#showleft {
+	position: fixed;
+	left: 0;
+	transform: translateX(-100%);
+	transition-duration: inherit;
+	transition-property: left, transform;
+}
+#left[data-collapsed=true] #showleft {
+	left: 100%;
+	transform: translateX(0%);
+}
+/* #endregion */
+
+
 /* #region Posts section */
 .post {
 	border: solid var(--accent);
