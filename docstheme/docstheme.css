@@ -5,6 +5,14 @@ body {
 	color: var(--text);
 }
 a { color: var(--accent) }
+/* Accessibility */
+.hidden {
+	position: fixed;
+	top: -10vh;
+	left: 0;
+	font-size: 1vh;
+	line-height: 1;
+}
 /* #endregion */
 
 
