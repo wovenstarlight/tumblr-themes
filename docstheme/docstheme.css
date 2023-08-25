@@ -21,11 +21,14 @@ a { color: var(--accent) }
 	top: 0;
 	padding-right: 1em;
 	padding-left: 0.5em;
-	padding-top: 0.5em
+	padding-top: 0.5em;
 }
 #pagehead a {
 	display: grid;
 	grid-template-columns: auto 1fr auto;
+	text-decoration: none;
+	color: inherit;
+	height: fit-content;
 }
 #pagehead svg, #pagehead #avatar {
 	grid-row: 1 / span 2;
@@ -50,10 +53,33 @@ a { color: var(--accent) }
 }
 #pagehead #avatar.square { border-radius: 0.5em }
 #pagehead #avatar.round { border-radius: 100% }
-.blog-title {
+#title, #subtitle {
+	margin: 0;
+	font-weight: 400;
+}
+#title {
+	font-size: 1.125em;
+	line-height: 1.375em;
 	font-family: var(--title-font), "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
 	font-weight: var(--title-font-weight);
 }
+#subtitle {
+	font-size: 0.875em;
+	line-height: normal;
+	color: rgba(var(--text--rgb), 0.8);
+	text-shadow: 0 0 rgba(var(--accent--rgb), 0.4);
+	display: flex;
+	margin-left: -0.4375rem;
+	margin-bottom: 0.125em;
+}
+#subtitle span {
+	display: flex;
+	align-items: center;
+	letter-spacing: 0.0125rem;
+	padding: 0.125rem 0.4375rem;
+	border-radius: 0.25rem;
+}
+#subtitle span:hover { background-color: rgba(var(--text--rgb), 0.05) }
 /* #endregion */
 
 
