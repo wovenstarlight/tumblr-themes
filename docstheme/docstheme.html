@@ -182,7 +182,7 @@
 		</a>
 
 		{block:IfPaletteToggle}
-		<button id="palette" title="Toggle palette"><span class="material-symbols-outlined">palette</span></button>
+		<button id="palette" title="Toggle palette" type="button"><span class="material-symbols-outlined">palette</span></button>
 		{/block:IfPaletteToggle}
 
 		<!-- TODO: Accessibility options. Zoom, font?, font size -->
@@ -215,15 +215,15 @@
 			Viewing
 		</span>
 		<!-- BACK TO TOP BUTTON -->
-		<button id="scrolltotop" title="{lang:Back to top}"><span class="material-symbols-outlined">expand_less</span></button>
+		<button id="scrolltotop" title="{lang:Back to top}" type="button"><span class="material-symbols-outlined">expand_less</span></button>
 	</div>
 </nav>
 
 
 <aside id="left" class="{block:ShowDescription}{block:Description}hasdesc{/block:Description}{/block:ShowDescription} {block:HasPages}haspages{/block:HasPages} {block:IfShowGroupBlogMembers}{block:GroupMembers}hasmembers{/block:GroupMembers}{/block:IfShowGroupBlogMembers}">
 	<!-- Show/hide buttons -->
-	<button id="showleft"><span class="material-symbols-outlined">format_list_bulleted</span></button>
-	<button id="hideleft"><span class="material-symbols-outlined">arrow_left_alt</span></button>
+	<button id="showleft" type="button"><span class="material-symbols-outlined">format_list_bulleted</span></button>
+	<button id="hideleft" type="button"><span class="material-symbols-outlined">arrow_left_alt</span></button>
 
 	{block:ShowDescription}{block:Description}
 	<!-- BLOG DESCRIPTION -->
