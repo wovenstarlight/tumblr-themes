@@ -126,7 +126,9 @@
 		{/block:HomePage}
 		{block:TagPage}
 			<span>{lang:Showing TagResultCount posts tagged Tag 2}</span>
+			<span class="hidden">-</span>
 			<a href="{TagURL}">Newest first</a>
+			<span class="hidden">-</span>
 			<a href="{TagURL}/chrono">Oldest first</a>
 			{block:Pagination}
 				<span class="hidden">-</span>
@@ -136,6 +138,13 @@
 		{block:DayPage}
 			<span>{lang:Viewing everything posted on Month DayOfMonth Year}</span>
 		{/block:DayPage}
+		{block:SearchPage}
+			<span>{lang:Showing SearchResultCount results for SearchQuery 2}</span>
+			{block:Pagination}
+				<span class="hidden">-</span>
+				<span>{lang:Page CurrentPage of TotalPages}</span>
+			{/block:Pagination}
+		{/block:SearchPage}
 	</h2>
 	
 	{block:ShowAvatar}
