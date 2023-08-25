@@ -15,6 +15,8 @@ a { color: var(--accent) }
 	line-height: 1;
 }
 button { cursor: pointer }
+.tmblr-iframe--unified-controls { top: 0.3em }
+body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 /* #endregion */
 
 
