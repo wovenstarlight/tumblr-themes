@@ -22,42 +22,42 @@ a { color: var(--accent) }
 	padding-right: 1em;
 	padding-left: 0.5em;
 	padding-top: 0.5em;
-}
-#pagehead a {
 	display: grid;
 	grid-template-columns: auto 1fr auto;
+}
+#pagehead a {
 	text-decoration: none;
 	color: inherit;
 	height: fit-content;
 }
-#pagehead svg, #pagehead #avatar {
-	grid-row: 1 / span 2;
+#docs, #avatar { grid-row: 1 / span 2 }
+#docs svg, #avatar img {
 	width: var(--size);
 	height: var(--size);
 	display: block;
 }
-#pagehead svg {
+#docs svg {
 	--size: 3.25em;
 	padding: 0.5em;
 }
-#pagehead #avatar {
-	grid-column: 3;
+#avatar { grid-column: 3 }
+#avatar img {
 	--size: 2.5em;
 	padding: 0.25em;
 	margin-left: 1em;
 	margin-top: 0.25em;
 }
-#pagehead #avatar:hover {
+#avatar:hover img {
 	filter: drop-shadow(0 0.0625em rgba(var(--text--rgb), 0.15));
 	background-color: rgba(var(--accent--rgb), 0.1);
 }
-#pagehead #avatar.square { border-radius: 0.5em }
-#pagehead #avatar.round { border-radius: 100% }
-#title, #subtitle {
+#avatar .square { border-radius: 0.5em }
+#avatar .round { border-radius: 100% }
+#title h1, #subtitle {
 	margin: 0;
 	font-weight: 400;
 }
-#title {
+#title h1 {
 	font-size: 1.125em;
 	line-height: 1.375em;
 	font-family: var(--title-font), "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
