@@ -17,6 +17,40 @@ a { color: var(--accent) }
 
 
 /* #region Blog header */
+#pagehead {
+	position: sticky;
+	top: 0;
+	padding-right: 1em;
+	padding-left: 0.5em;
+	padding-top: 0.5em
+}
+#pagehead a {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+}
+#pagehead svg, #pagehead #avatar {
+	grid-row: 1 / span 2;
+	width: var(--size);
+	height: var(--size);
+	display: block;
+}
+#pagehead svg {
+	--size: 3.25em;
+	padding: 0.5em;
+}
+#pagehead #avatar {
+	grid-column: 3;
+	--size: 2.5em;
+	padding: 0.25em;
+	margin-left: 1em;
+	margin-top: 0.25em;
+}
+#pagehead #avatar:hover {
+	filter: drop-shadow(0 0.0625em rgba(var(--text--rgb), 0.15));
+	background-color: rgba(var(--accent--rgb), 0.1);
+}
+#pagehead #avatar.square { border-radius: 0.5em }
+#pagehead #avatar.round { border-radius: 100% }
 .blog-title {
 	font-family: var(--title-font), "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
 	font-weight: var(--title-font-weight);
