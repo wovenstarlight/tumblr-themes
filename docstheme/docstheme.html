@@ -1271,11 +1271,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 		
 		case "audio":
 			if (curr.media) {
-				// Use media object to display default Tumblr audio player
-				bit = createTumblrAudio(curr);
-
-				// ...or, display a custom player with more options
-				// bit = createCustomAudio(curr);
+				bit = createCustomAudio(curr);
 			}
 			// TODO: else if client side SDK... need examples of metadata object
 			// If embeds are present, use those
@@ -1433,120 +1429,6 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 
 /**
  * Helper function for createContentBlock, specifically for audio content blocks.
- * Renders an audio player in the style of default Tumblr audio players, with basic pause and play functionality.
- * @param {Object} npf The NPF object with links to and data on the audio file.
- * @param {Object} [defaultIcons={}] HTML strings representing the icons to use for the audio player.
- * @param {string} defaultIcons.play The icon to use as the "play" (⏵︎) button.
- * @param {string} defaultIcons.pause The icon to use as the "pause" (⏸︎) button.
- * @returns {HTMLElement} The complete audio element with attached event listeners.
- */
-function createTumblrAudio(npf, defaultIcons = {}) {
-	// #region Basic blocks setup: icons, audio wrapper, and audio
-	let icons = Object.assign({
-		play: '<svg class="play" height="1.5em" fill="currentColor" viewBox="18 15 13 16"><path d="M30.592 23.578L19.52 30.3a1 1 0 0 1-1.52-.854V16a1 1 0 0 1 1.519-.855l11.073 6.723a1 1 0 0 1 0 1.71z"></path></svg>',
-		pause: '<svg class="pause" height="1.5em" fill="currentColor" viewBox="0 0 24 24"><rect width="4" height="16" x="15" y="4" rx="1"></rect><rect width="4" height="16" x="5" y="4" rx="1"></rect></svg>',
-	}, defaultIcons);
-
-	wrapper = document.createElement("div");
-	wrapper.classList.add("audiowrapper");
-
-	let audio = document.createElement("audio");
-	audio.src = npf.media.url;
-	audio.preload = "metadata";
-	// #endregion
-
-	// #region Left side: play/pause buttons, title/artist/album info, and seekbar
-	let left = document.createElement("div");
-	left.classList.add("left");
-
-	let playPause = document.createElement("button");
-	playPause.classList.add("buttons");
-	playPause.innerHTML = icons.play + icons.pause;
-
-	let textInfo = document.createElement("div");
-	textInfo.classList.add("textinfo");
-	if (npf.title) { textInfo.innerHTML += `<span class="trackname">${npf.title}</span>` }
-	if (npf.artist) { textInfo.innerHTML += `<span class="artist">${npf.artist}</span>` }
-	if (npf.album) { textInfo.innerHTML += `<span class="album">${npf.album}</span>` }
-
-	let seekbar = document.createElement("input");
-	seekbar.type = "range";
-	seekbar.min = 0;
-	seekbar.setAttribute("value", "0");
-	seekbar.max = 100;
-	seekbar.classList.add("seekbar");
-	// #endregion
-
-	// #region Preload data and set up interactive elements
-	// #region Audio length and ending check
-	audio.addEventListener("loadedmetadata", () => {
-		seekbar.setAttribute("max", audio.duration);
-	});
-	audio.addEventListener("ended", () => {
-		if (!audio.loop) { audio.classList.remove("playing") }
-		currentlyPlaying = null;
-	})
-	// #endregion
-	// #region Play/pause
-	playPause.addEventListener("click", () => {
-		// Pause any other audio on the page
-		if (currentlyPlaying !== null && currentlyPlaying !== audio) {
-			currentlyPlaying.pause();
-			currentlyPlaying.classList.remove("playing");
-			cancelAnimationFrame(rAF); // in case the previous one had an rAF going on
-		}
-		// Play/pause current audio as necessary
-		if (audio.classList.contains("playing")) {
-			currentlyPlaying = null;
-			audio.pause();
-			cancelAnimationFrame(rAF);
-		} else {
-			currentlyPlaying = audio;
-			audio.play();
-			requestAnimationFrame(whilePlaying);
-		}
-		audio.classList.toggle("playing");
-	})
-	// #endregion
-	// #region Seekbar
-	const whilePlaying = () => {
-		seekbar.value = Math.floor(audio.currentTime);
-		seekbar.style.setProperty("--progress-width", `${(audio.currentTime / audio.duration) * 100}%`);
-		rAF = requestAnimationFrame(whilePlaying);
-	}
-	seekbar.addEventListener("input", () => {
-		if (!audio.paused) {
-			cancelAnimationFrame(rAF);
-		}
-	});
-	seekbar.addEventListener("change", () => {
-		audio.currentTime = seekbar.value;
-		seekbar.style.setProperty("--progress-width", `${(audio.currentTime / audio.duration) * 100}%`);
-		if (!audio.paused) {
-			requestAnimationFrame(whilePlaying);
-		}
-	});
-	// #endregion
-	// #endregion
-
-	left.append(playPause, textInfo, seekbar);
-	
-	wrapper.append(audio, left);
-
-	// Add album art, if any
-	if (npf.poster) {
-		let art = document.createElement("img");
-		art.classList.add("albumart");
-		art.src = npf.poster[0].url;
-		art.width = npf.poster[0].width;
-		art.height = npf.poster[0].height;
-		wrapper.append(art);
-	}
-
-	return wrapper;
-}
-/**
- * Helper function for createContentBlock, specifically for audio content blocks.
  * Renders an audio player in a custom style, with pause/play, skip to start/end, muting, and looping functionality.
  * @param {Object} npf The NPF object with links to and data on the audio file.
  * @param {Object} [defaultIcons={}] HTML strings representing the icons to use for the audio player.
@@ -1565,14 +1447,14 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	// Uses Phosphor icons by default
 	// All icons need matching classes, except for skip to start/end
 	let icons = Object.assign({
-		play: '<i class="pause ph ph-pause">',
-		pause: '</i><i class="play ph ph-play"></i>',
-		toStart: '<i class="ph ph-skip-back"></i>',
-		toEnd: '<i class="ph ph-skip-forward"></i>',
-		mute: '<i class="mute ph ph-speaker-simple-high"></i>',
-		unmute: '<i class="unmute ph ph-speaker-simple-slash"></i>',
-		repeat: '<i class="repeat ph ph-repeat"></i>',
-		unrepeat: '<i class="unrepeat ph ph-repeat-once"></i>',
+		play: '<span class="play material-symbols-outlined">play_arrow</span>',
+		pause: '<span class="pause material-symbols-outlined">pause</span>',
+		toStart: '<span class="material-symbols-outlined">skip_previous</span>',
+		toEnd: '<span class="material-symbols-outlined">skip_next</span>',
+		mute: '<span class="mute material-symbols-outlined">volume_up</span>',
+		unmute: '<span class="unmute material-symbols-outlined">volume_off</span>',
+		repeat: '<span class="repeat material-symbols-outlined">repeat</span>',
+		unrepeat: '<span class="unrepeat material-symbols-outlined">repeat_one</span>',
 	}, defaultIcons);
 
 	wrapper = document.createElement("div");
