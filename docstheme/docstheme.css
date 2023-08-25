@@ -138,10 +138,27 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 	margin: 0 0.1875em;
 }
 /* #region Search form */
+#search[data-collapsed] #q { display: none }
+#search { position: relative }
+#blognav #togglesearch { width: 2.1875em }
+#search:not([data-collapsed]) {
+	background-color: var(--post-bg);
+	display: flex;
+	align-items: center;
+	gap: 0.2em;
+	border-radius: 0.25em;
+	padding-inline-end: 0.25em;
+	margin-inline-end: 0.1875em;
+}
+#search:not([data-collapsed]) #togglesearch {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
 #q {
-	position: absolute;
-	opacity: 0;
-	pointer-events: none;
+	background: none;
+	color: inherit;
+	border: none;
+	height: 100%;
 }
 /* #endregion */
 /* #region Right side */
