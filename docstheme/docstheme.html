@@ -559,7 +559,10 @@ document.getElementById("palette").addEventListener("click", () => {
 	document.body.parentElement.classList.toggle("alt");
 });
 document.getElementById("scrolltotop").addEventListener("click", () => {
-	window.scrollTo(0, 0);
+	window.scrollTo({
+		top: 0,
+		behavior: "smooth",
+	});
 });
 
 // Set up misc. page features
