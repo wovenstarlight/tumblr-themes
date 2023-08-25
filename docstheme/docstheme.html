@@ -152,72 +152,71 @@
 		<img src="{PortraitURL-128}" class="{AvatarShape}" />
 	</a>
 	{/block:ShowAvatar}
+
+	<nav id="blognav">
+		<div class="left">
+			{block:IfSearchBar}
+			<!-- SEARCH BAR -->
+			<form action="/search" method="get" id="search" data-collapsed="true">
+				<button id="togglesearch" type="button"><span class="material-symbols-outlined">search</span></button>
+				<label for="q" hidden>{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
+				<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}"/>
+			</form>
+			{/block:IfSearchBar}
+
+			<a id="prev" title="{lang:Previous}"
+				{block:Pagination}{block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage}{/block:Pagination}
+				{block:PermalinkPagination}{block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost}{/block:PermalinkPagination}
+				{block:DayPagination}{block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage}{/block:DayPagination}
+			>
+				<span class="material-symbols-outlined">undo</span>
+			</a>
+			<a id="next" title="{lang:Next}"
+				{block:Pagination}{block:NextPage}href="{NextPage}"{/block:NextPage}{/block:Pagination}
+				{block:PermalinkPagination}{block:NextPost}href="{NextPost}"{/block:NextPost}{/block:PermalinkPagination}
+				{block:DayPagination}{block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage}{/block:DayPagination}
+			>
+				<span class="material-symbols-outlined">redo</span>
+			</a>
+
+			{block:IfPaletteToggle}
+			<button id="palette" title="Toggle palette" type="button"><span class="material-symbols-outlined">palette</span></button>
+			{/block:IfPaletteToggle}
+
+			<!-- TODO: Accessibility options. Zoom, font?, font size -->
+
+			<a href="/" class="homelink"><span class="material-symbols-outlined">home</span></a>
+			{block:AskEnabled}
+				<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}" title="{AskLabel}"><span class="material-symbols-outlined">mail</span></a>
+			{/block:AskEnabled}
+			{block:SubmissionsEnabled}
+				<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}" title="{SubmitLabel}"><span class="material-symbols-outlined">inbox</span></a>
+			{/block:SubmissionsEnabled}
+			{block:IfDirectMessageLinkInNavbar}
+				<a href="https://www.tumblr.com/message/{Name}" class="messagelink" title="Message"><span class="material-symbols-outlined">add_comment</span></a>
+			{/block:IfDirectMessageLinkInNavbar}
+			{block:IfRandomPostLink}
+				<a href="/random" class="randomlink" title="{lang:Random}"><span class="material-symbols-outlined">shuffle</span></a>
+			{/block:IfRandomPostLink}
+			{block:IfArchiveLink}
+				<a href="/archive" class="archivelink" title="{lang:Archive}"><span class="material-symbols-outlined">archive</span></a>
+			{/block:IfArchiveLink}
+
+			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+			<a id="credit" href="https://starlightthemes.tumblr.com/docstheme" title="{lang:Install this theme}"><span class="material-symbols-outlined">code</span></a>
+			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+		</div>
+
+		<div class="right">
+			<span>
+				<span class="material-symbols-outlined">visibility</span>
+				Viewing
+			</span>
+			<!-- BACK TO TOP BUTTON -->
+			<button id="scrolltotop" title="{lang:Back to top}" type="button"><span class="material-symbols-outlined">expand_less</span></button>
+		</div>
+	</nav>
 </header>
-
-
-<nav id="blognav">
-	<div class="left">
-		{block:IfSearchBar}
-		<!-- SEARCH BAR -->
-		<form action="/search" method="get" id="search" data-collapsed="true">
-			<button id="togglesearch" type="button"><span class="material-symbols-outlined">search</span></button>
-			<label for="q" hidden>{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
-			<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}"/>
-		</form>
-		{/block:IfSearchBar}
-
-		<a id="prev" title="{lang:Previous}"
-			{block:Pagination}{block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage}{/block:Pagination}
-			{block:PermalinkPagination}{block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost}{/block:PermalinkPagination}
-			{block:DayPagination}{block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage}{/block:DayPagination}
-		>
-			<span class="material-symbols-outlined">undo</span>
-		</a>
-		<a id="next" title="{lang:Next}"
-			{block:Pagination}{block:NextPage}href="{NextPage}"{/block:NextPage}{/block:Pagination}
-			{block:PermalinkPagination}{block:NextPost}href="{NextPost}"{/block:NextPost}{/block:PermalinkPagination}
-			{block:DayPagination}{block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage}{/block:DayPagination}
-		>
-			<span class="material-symbols-outlined">redo</span>
-		</a>
-
-		{block:IfPaletteToggle}
-		<button id="palette" title="Toggle palette" type="button"><span class="material-symbols-outlined">palette</span></button>
-		{/block:IfPaletteToggle}
-
-		<!-- TODO: Accessibility options. Zoom, font?, font size -->
-
-		<a href="/" class="homelink"><span class="material-symbols-outlined">home</span></a>
-		{block:AskEnabled}
-			<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}" title="{AskLabel}"><span class="material-symbols-outlined">mail</span></a>
-		{/block:AskEnabled}
-		{block:SubmissionsEnabled}
-			<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}" title="{SubmitLabel}"><span class="material-symbols-outlined">inbox</span></a>
-		{/block:SubmissionsEnabled}
-		{block:IfDirectMessageLinkInNavbar}
-			<a href="https://www.tumblr.com/message/{Name}" class="messagelink" title="Message"><span class="material-symbols-outlined">add_comment</span></a>
-		{/block:IfDirectMessageLinkInNavbar}
-		{block:IfRandomPostLink}
-			<a href="/random" class="randomlink" title="{lang:Random}"><span class="material-symbols-outlined">shuffle</span></a>
-		{/block:IfRandomPostLink}
-		{block:IfArchiveLink}
-			<a href="/archive" class="archivelink" title="{lang:Archive}"><span class="material-symbols-outlined">archive</span></a>
-		{/block:IfArchiveLink}
-
-		<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
-		<a id="credit" href="https://starlightthemes.tumblr.com/docstheme" title="{lang:Install this theme}"><span class="material-symbols-outlined">code</span></a>
-		<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
-	</div>
-
-	<div class="right">
-		<span>
-			<span class="material-symbols-outlined">visibility</span>
-			Viewing
-		</span>
-		<!-- BACK TO TOP BUTTON -->
-		<button id="scrolltotop" title="{lang:Back to top}" type="button"><span class="material-symbols-outlined">expand_less</span></button>
-	</div>
-</nav>
 
 
 <aside id="left" class="{block:ShowDescription}{block:Description}hasdesc{/block:Description}{/block:ShowDescription} {block:HasPages}haspages{/block:HasPages} {block:IfShowGroupBlogMembers}{block:GroupMembers}hasmembers{/block:GroupMembers}{/block:IfShowGroupBlogMembers}">
