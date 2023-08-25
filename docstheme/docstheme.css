@@ -2,6 +2,8 @@
 body {
 	background: var(--bg);
 	color: var(--text);
+	font-family: var(--title-font), "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
+	font-weight: var(--title-font-weight);
 }
 a { color: var(--accent) }
 /* Accessibility */
@@ -60,8 +62,6 @@ a { color: var(--accent) }
 #title h1 {
 	font-size: 1.125em;
 	line-height: 1.375em;
-	font-family: var(--title-font), "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
-	font-weight: var(--title-font-weight);
 }
 #subtitle {
 	font-size: 0.875em;
