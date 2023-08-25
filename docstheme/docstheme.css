@@ -21,11 +21,10 @@ a { color: var(--accent) }
 #pagehead {
 	position: sticky;
 	top: 0;
-	padding-right: 1em;
-	padding-left: 0.5em;
-	padding-top: 0.5em;
 	display: grid;
 	grid-template-columns: auto 1fr auto;
+	padding: 0.5em 1em 0.375em 0.5em;
+	background-color: var(--bg);
 }
 #pagehead a {
 	text-decoration: none;
@@ -72,14 +71,19 @@ a { color: var(--accent) }
 	margin-left: -0.4375rem;
 	margin-bottom: 0.125em;
 }
-#subtitle span {
+#subtitle > span, #subtitle a {
 	display: flex;
 	align-items: center;
 	letter-spacing: 0.0125rem;
 	padding: 0.125rem 0.4375rem;
 	border-radius: 0.25rem;
+	height: unset;
 }
-#subtitle span:hover { background-color: rgba(var(--text--rgb), 0.05) }
+#subtitle > span:hover, #subtitle a:hover { background-color: rgba(var(--text--rgb), 0.05) }
+#subtitle .tag, #subtitle .search_query { margin-inline: 0.2em }
+#subtitle .tag::before { content: "#" }
+#subtitle .search_query::before { content: "\201C" }
+#subtitle .search_query::after { content: "\201D" }
 /* #endregion */
 
 
