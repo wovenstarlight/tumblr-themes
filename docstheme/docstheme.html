@@ -567,7 +567,7 @@ document.getElementById("togglesearch").addEventListener("click", () => {
 	document.getElementById("search").toggleAttribute("data-collapsed");
 })
 document.getElementById("showleft").addEventListener("click", () => {
-	document.getElementById("left").setAttribute("data-collapsed", false);
+	document.getElementById("left").removeAttribute("data-collapsed");
 })
 document.getElementById("hideleft").addEventListener("click", () => {
 	document.getElementById("left").setAttribute("data-collapsed", true);
