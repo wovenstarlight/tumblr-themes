@@ -251,6 +251,11 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 	line-height: 1.25rem;
 	letter-spacing: 0.0125rem;
 }
+#left hr {
+	margin-block: 1.125em;
+	border: none;
+	border-top: 0.0625em solid rgba(var(--text--rgb), 0.22);
+}
 /* #endregion */
 
 
