@@ -204,6 +204,7 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 	padding-top: 3em;
 	transition: transform .3s;
 	margin-right: 0.5em;
+	margin-bottom: 1em;
 }
 #left[data-collapsed=true] {
 	transform: translateX(-100%);
@@ -686,3 +687,21 @@ div.poll-post a.poll-row {
 /* #endregion */
 
 /* #endregion */
+
+
+@media (max-width: 55em) {
+	body {
+		display: flex;
+		flex-direction: column;
+	}
+	#showleft, #hideleft { display: none }
+	#left {
+		padding-top: 0;
+		position: static;
+		max-width: unset;
+	}
+	#left[data-collapsed] { transform: unset }
+	#main {
+		margin-inline: min(1.25em, 2vw);
+	}
+}
