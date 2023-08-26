@@ -159,7 +159,7 @@
 			<!-- SEARCH BAR -->
 			<form action="/search" method="get" id="search" data-collapsed="true">
 				<button id="togglesearch" type="button"><span class="material-symbols-outlined">search</span></button>
-				<label for="q" hidden>{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
+				<label for="q" class="hidden">{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
 				<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}"/>
 			</form>
 			{/block:IfSearchBar}
