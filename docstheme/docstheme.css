@@ -4,6 +4,9 @@ body {
 	color: var(--text);
 	font-family: var(--title-font), "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
 	font-weight: var(--title-font-weight);
+	display: grid;
+	grid-template-columns: minmax(17em, 1fr) auto 1fr;
+	column-gap: 0.5em;
 }
 a { color: var(--accent) }
 /* Accessibility */
@@ -22,6 +25,7 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 
 /* #region Blog header */
 #pagehead {
+	grid-column: 1 / span 3;
 	position: sticky;
 	top: 0;
 	display: grid;
@@ -191,25 +195,40 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 
 /* #region Blog sidebar */
 #left {
-	position: fixed;
-	left: 0;
-	top: 0;
-	display: block;
-	width: 15em;
+	position: sticky;
+	top: 7em;
+	height: fit-content;
+	max-width: 17em;
+	padding-inline: 1.5em 0.5em;
+	padding-top: 3em;
 	transition: transform .3s;
 }
 #left[data-collapsed=true] {
 	transform: translateX(-100%);
 }
+#showleft, #hideleft {
+	position: absolute;
+	top: 0;
+	--left: 0.9em;
+	left: var(--left);
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	--size: 2.5em;
+	height: var(--size);
+	width: var(--size);
+	border-radius: 100%;
+}
+#showleft:hover, #hideleft:hover { background-color: rgba(var(--text--rgb), 0.06) }
 #showleft {
-	position: fixed;
 	left: 0;
 	transform: translateX(-100%);
 	transition-duration: inherit;
 	transition-property: left, transform;
 }
 #left[data-collapsed=true] #showleft {
-	left: 100%;
+	left: calc(100% + var(--left));
 	transform: translateX(0%);
 }
 /* #endregion */
