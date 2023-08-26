@@ -301,7 +301,7 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 #posts {
 	display: flex;
 	flex-direction: column;
-	gap: 1em;
+	gap: 0.75em;
 }
 .post {
 	background-color: var(--post-bg);
