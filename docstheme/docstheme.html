@@ -514,13 +514,18 @@ posts.forEach(post => {
 	article.classList.add("post");
 	postContainer.append(article);
 
+	// Backup method, using the old "body" T-var
 	if ((post.npf.content.length === 0 && post.npf.trail.length === 0) {block:AskPage}|| true{/block:AskPage}{block:SubmitPage}|| true{/block:SubmitPage}) {
 		article.classList.add("page");
 		createPage(article, post);
 		return;
 	}
 
-	createPostHeader(article, post);
+	// Content available via NPF
+	// Create, but put guards in for header/footer just in case pages are parsed as NPF too
+	
+	if (post.id !== undefined)
+		createPostHeader(article, post);
 
 	/** The body of the post, to be populated with trail items */
 	let postBody = document.createElement("section");
@@ -539,7 +544,8 @@ posts.forEach(post => {
 		);
 	}
 
-	createPostFooter(article, post);
+	if (post.id !== undefined)
+		createPostFooter(article, post);
 });
 
 // Add lightboxes to all applicable images
