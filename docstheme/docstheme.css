@@ -231,6 +231,26 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 	left: calc(100% + var(--left));
 	transform: translateX(0%);
 }
+#left h2 {
+	margin: 0;
+	font-size: 0.6875em;
+	font-weight: 500;
+	color: rgba(var(--text--rgb), 0.6);
+	text-shadow: 0 0 rgba(var(--accent--rgb), 0.1);
+	letter-spacing: 0.00625rem;
+	height: 2.25rem;
+	display: flex;
+	align-items: center;
+}
+#desc .content {
+	font-size: 0.875em;
+	padding: 0.5rem;
+	margin-inline-start: -0.5rem;
+	border: 0.125rem solid transparent;
+	color: rgba(var(--text--rgb), 0.73);
+	line-height: 1.25rem;
+	letter-spacing: 0.0125rem;
+}
 /* #endregion */
 
 
