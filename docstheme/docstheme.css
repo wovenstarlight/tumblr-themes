@@ -5,7 +5,7 @@ body {
 	font-family: var(--title-font), "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
 	font-weight: var(--title-font-weight);
 	display: grid;
-	grid-template-columns: minmax(17em, 1fr) auto 1fr;
+	grid-template-columns: minmax(17em, 1fr) 1fr 1fr;
 	column-gap: 0.5em;
 }
 a { color: var(--accent) }
@@ -250,6 +250,40 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 	color: rgba(var(--text--rgb), 0.73);
 	line-height: 1.25rem;
 	letter-spacing: 0.0125rem;
+}
+#pages {
+	display: flex;
+	flex-direction: column;
+	margin-left: -1.5em;
+}
+#pages h2 { margin-left: 1.5rem }
+#pages a {
+	text-decoration: none;
+	color: rgba(var(--text--rgb), 0.73);
+	font-size: 0.875em;
+	letter-spacing: 0.015625rem;
+	font-weight: 500;
+	line-height: 2rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	padding-left: 1.5rem;
+}
+#pages a:hover { color: rgba(var(--text--rgb), 0.9) }
+#pages a.current-page {
+	color: var(--accent);
+	position: relative;
+}
+#pages a.current-page:hover {
+	color: rgba(var(--text--rgb), 0.15);
+	text-shadow: 0 0 var(--accent);
+}
+#pages a.current-page::before {
+	content: "–";
+	font-size: 1.0625rem;
+	position: absolute;
+	left: 0;
+	padding-left: 0.5rem;
 }
 #left hr {
 	margin-block: 1.125em;
