@@ -5,8 +5,8 @@ body {
 	font-family: var(--title-font), "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
 	font-weight: var(--title-font-weight);
 	display: grid;
-	grid-template-columns: minmax(17em, 1fr) 1fr 1fr;
-	column-gap: 0.5em;
+	grid-template-columns: minmax(17em, 1fr) auto 1fr;
+	gap: 0.5em;
 }
 a { color: var(--accent) }
 /* Accessibility */
