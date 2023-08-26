@@ -9,6 +9,9 @@ body {
 	grid-template-columns: minmax(17.5em, 1fr) minmax(1px, 52.25rem) 1fr;
 	row-gap: 0.5em;
 }
+body[data-sidebar-collapsed] {
+	grid-template-columns: minmax(5.3em, 1fr) minmax(1px, 52.25rem) 1fr;
+}
 a { color: var(--accent) }
 /* Accessibility */
 .hidden {
@@ -688,6 +691,7 @@ div.poll-post a.poll-row {
 
 @media (min-width: 55em) {
 	body[data-sidebar-collapsed] #left { transform: translateX(-100%) }
+	body[data-sidebar-collapsed] #left > :not(button) { display: none }
 }
 @media (max-width: 55em) {
 	body {
