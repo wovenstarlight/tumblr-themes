@@ -524,8 +524,10 @@ posts.forEach(post => {
 	// Content available via NPF
 	// Create, but put guards in for header/footer just in case pages are parsed as NPF too
 	
-	if (post.id !== undefined)
+	if (post.id !== undefined) {
+		document.getElementById("subtitle").innerHTML = `<span>${post.title}</span>`;
 		createPostHeader(article, post);
+	}
 
 	/** The body of the post, to be populated with trail items */
 	let postBody = document.createElement("section");
