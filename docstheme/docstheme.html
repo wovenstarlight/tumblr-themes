@@ -943,8 +943,12 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	// mark broken trail items
 	if (postData === null || blogData.active === false) { header.classList.add("deactivated") }
 	
-	// add link where original posts exist
-	if (blogData.url && blogData.active) {
+	// add link where original posts exist, with safeguards for pages
+	if (postData.id === undefined) {
+		// page! link back to itself
+		link.href = window.location.href;
+	}
+	else if (blogData.url && blogData.active) {
 		link.href = blogData.url.concat(blogData.url.endsWith("/") ? `post/${postData.id}` : `/${postData.id}`);
 	}
 	
