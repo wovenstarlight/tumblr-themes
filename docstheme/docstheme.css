@@ -208,11 +208,10 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 	top: 7em;
 	height: fit-content;
 	max-width: 17em;
-	padding-inline: 1.5em 0.5em;
+	padding-right: 0.5em;
 	padding-top: 3em;
 	transition: transform .3s;
 	margin-right: 0.5em;
-	margin-bottom: 1em;
 }
 #showleft, #hideleft {
 	position: absolute;
@@ -239,6 +238,12 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 body[data-sidebar-collapsed] #left #showleft {
 	left: calc(100% + var(--left));
 	transform: translateX(0%);
+}
+#leftcontent {
+	padding-left: 1.5em;
+	padding-bottom: 3em;
+	max-height: calc(100vh - 10em);
+	overflow-y: auto;
 }
 #left h2 {
 	margin: 0;
@@ -299,6 +304,7 @@ body[data-sidebar-collapsed] #left #showleft {
 	border: none;
 	border-top: 0.0625em solid rgba(var(--text--rgb), 0.22);
 }
+#leftcontent hr:first-child { display: none }
 /* #endregion */
 
 
@@ -698,7 +704,7 @@ div.poll-post a.poll-row {
 
 @media (min-width: 55em) {
 	body[data-sidebar-collapsed] #left { transform: translateX(-100%) }
-	body[data-sidebar-collapsed] #left > :not(button) { display: none }
+	body[data-sidebar-collapsed] #left #leftcontent { display: none }
 }
 @media (max-width: 55em) {
 	body {

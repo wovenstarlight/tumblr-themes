@@ -233,46 +233,48 @@
 	<button id="showleft" type="button"><span class="material-symbols-outlined">format_list_bulleted</span></button>
 	<button id="hideleft" type="button"><span class="material-symbols-outlined">arrow_back</span></button>
 
-	{block:ShowDescription}{block:Description}
-	<!-- BLOG DESCRIPTION -->
-	<section id="desc">
-		<h2>
-			{block:IfDescriptionTitle}{text:Description title}{/block:IfDescriptionTitle}
-			{block:IfNotDescriptionTitle}{lang:About}{/block:IfNotDescriptionTitle}
-		</h2>
-		<div class="content">{Description}</div>
-	</section>
-	{/block:Description}{/block:ShowDescription}
+	<div id="leftcontent">
+		{block:ShowDescription}{block:Description}
+		<!-- BLOG DESCRIPTION -->
+		<section id="desc">
+			<h2>
+				{block:IfDescriptionTitle}{text:Description title}{/block:IfDescriptionTitle}
+				{block:IfNotDescriptionTitle}{lang:About}{/block:IfNotDescriptionTitle}
+			</h2>
+			<div class="content">{Description}</div>
+		</section>
+		{/block:Description}{/block:ShowDescription}
 
-	{block:HasPages}
-	<hr>
+		{block:HasPages}
+		<hr>
 
-	<!-- CUSTOM PAGES -->
-	<nav id="pages">
-		<h2>
-			{block:IfCustomLinksTitle}{text:Custom links title}{/block:IfCustomLinksTitle}
-			{block:IfNotCustomLinksTitle}{lang:Navigate}{/block:IfNotCustomLinksTitle}
-		</h2>
-		{block:Pages}<a href="{URL}" class="{CurrentState}">{Label}</a>{/block:Pages}
-	</nav>
-	{/block:HasPages}
+		<!-- CUSTOM PAGES -->
+		<nav id="pages">
+			<h2>
+				{block:IfCustomLinksTitle}{text:Custom links title}{/block:IfCustomLinksTitle}
+				{block:IfNotCustomLinksTitle}{lang:Navigate}{/block:IfNotCustomLinksTitle}
+			</h2>
+			{block:Pages}<a href="{URL}" class="{CurrentState}">{Label}</a>{/block:Pages}
+		</nav>
+		{/block:HasPages}
 
-	{block:IfShowGroupBlogMembers}{block:GroupMembers}
-	<hr>
+		{block:IfShowGroupBlogMembers}{block:GroupMembers}
+		<hr>
 
-	<!-- BLOG MEMBERS -->
-	<section id="members">
-		<h2>
-			{block:IfGroupBlogMembersTitle}{text:Group blog members title}{/block:IfGroupBlogMembersTitle}
-			{block:IfNotGroupBlogMembersTitle}{lang:Group members}{/block:IfNotGroupBlogMembersTitle}
-		</h2>
-		<div class="members">
-			{block:GroupMember}
-			<a href="{GroupMemberURL}">{GroupMemberName}</a>
-			{/block:GroupMember}
-		</div>
-	</section>
-	{/block:GroupMembers}{/block:IfShowGroupBlogMembers}
+		<!-- BLOG MEMBERS -->
+		<section id="members">
+			<h2>
+				{block:IfGroupBlogMembersTitle}{text:Group blog members title}{/block:IfGroupBlogMembersTitle}
+				{block:IfNotGroupBlogMembersTitle}{lang:Group members}{/block:IfNotGroupBlogMembersTitle}
+			</h2>
+			<div class="members">
+				{block:GroupMember}
+				<a href="{GroupMemberURL}">{GroupMemberName}</a>
+				{/block:GroupMember}
+			</div>
+		</section>
+		{/block:GroupMembers}{/block:IfShowGroupBlogMembers}
+	</div>
 </aside>
 
 
