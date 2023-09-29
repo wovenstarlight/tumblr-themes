@@ -579,10 +579,10 @@ document.getElementById("togglesearch").addEventListener("click", () => {
 document.getElementById("search").removeAttribute("data-collapsed");
 {/block:SearchPage}
 document.getElementById("showleft").addEventListener("click", () => {
-	document.body.removeAttribute("data-collapsed");
+	document.body.removeAttribute("data-sidebar-collapsed");
 })
 document.getElementById("hideleft").addEventListener("click", () => {
-	document.body.setAttribute("data-collapsed", true);
+	document.body.setAttribute("data-sidebar-collapsed", true);
 })
 
 // Set up keyboard navigation
