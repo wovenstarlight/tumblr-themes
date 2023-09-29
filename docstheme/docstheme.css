@@ -111,7 +111,7 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 	align-items: center;
 	border-radius: 1.1875em;
 	background-color: rgba(var(--accent--rgb), 0.05);
-	color: rgba(var(--text--rgb), 0.8);
+	color: rgba(var(--text--rgb), 0.75);
 	padding: 0.3125em 0.75em;
 }
 #blognav .left, #blognav .right {
@@ -222,6 +222,7 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 	height: var(--size);
 	width: var(--size);
 	border-radius: 100%;
+	color: rgba(var(--text--rgb), 0.75);
 }
 #showleft:hover, #hideleft:hover { background-color: rgba(var(--text--rgb), 0.06) }
 #showleft {
