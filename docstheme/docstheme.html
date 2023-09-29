@@ -518,6 +518,7 @@ posts.forEach(post => {
 	if ((post.npf.content.length === 0 && post.npf.trail.length === 0) {block:AskPage}|| true{/block:AskPage}{block:SubmitPage}|| true{/block:SubmitPage}) {
 		article.classList.add("page");
 		createPage(article, post);
+		document.getElementById("subtitle").innerHTML = `<span>${post.title}</span>`;
 		return;
 	}
 
