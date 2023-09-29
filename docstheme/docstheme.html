@@ -946,7 +946,7 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	if (postData === null || blogData.active === false) { header.classList.add("deactivated") }
 	
 	// add link where original posts exist, with safeguards for pages
-	if (postData.id === undefined) {
+	if (postData?.id === undefined) {
 		// page! link back to itself
 		link.href = window.location.href;
 	}
