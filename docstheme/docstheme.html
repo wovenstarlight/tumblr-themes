@@ -267,11 +267,9 @@
 				{block:IfGroupBlogMembersTitle}{text:Group blog members title}{/block:IfGroupBlogMembersTitle}
 				{block:IfNotGroupBlogMembersTitle}{lang:Group members}{/block:IfNotGroupBlogMembersTitle}
 			</h2>
-			<div class="members">
-				{block:GroupMember}
-				<a href="{GroupMemberURL}">{GroupMemberName}</a>
-				{/block:GroupMember}
-			</div>
+			{block:GroupMember}
+			<a href="{GroupMemberURL}">{GroupMemberName}</a>
+			{/block:GroupMember}
 		</section>
 		{/block:GroupMembers}{/block:IfShowGroupBlogMembers}
 	</div>

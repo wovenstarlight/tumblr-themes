@@ -274,13 +274,13 @@ body[data-sidebar-collapsed] #left #showleft {
 	line-height: 1.25rem;
 	letter-spacing: 0.0125rem;
 }
-#pages {
+#pages, #members {
 	display: flex;
 	flex-direction: column;
 	margin-left: -1.5em;
 }
-#pages h2 { margin-left: 1.5rem }
-#pages a {
+#pages h2, #members h2 { margin-left: 1.5rem }
+#pages a, #members a {
 	text-decoration: none;
 	color: rgba(var(--text--rgb), 0.73);
 	font-size: 0.875em;
@@ -292,7 +292,7 @@ body[data-sidebar-collapsed] #left #showleft {
 	text-overflow: ellipsis;
 	padding-left: 1.5rem;
 }
-#pages a:hover { color: rgba(var(--text--rgb), 0.9) }
+#pages a:hover, #members a:hover { color: rgba(var(--text--rgb), 0.9) }
 #pages a.current-page {
 	color: var(--accent);
 	position: relative;
