@@ -9,6 +9,15 @@ body {
 	grid-template-columns: minmax(17.5em, 1fr) minmax(1px, 52.25rem) 1fr;
 	row-gap: 0.5em;
 }
+/* #region For when there's nothing in the sidebar */
+body:not(.hasdesc, .haspages, .hasmembers) {
+	grid-template-columns: 1fr minmax(1px, 52.25rem) 1fr;
+}
+body:not(.hasdesc, .haspages, .hasmembers) #main {
+	grid-column: 2;
+}
+body:not(.hasdesc, .haspages, .hasmembers) #left { display: none !important }
+/* #endregion */
 body[data-sidebar-collapsed] {
 	grid-template-columns: minmax(5.3em, 1fr) minmax(1px, 52.25rem) 1fr;
 }
