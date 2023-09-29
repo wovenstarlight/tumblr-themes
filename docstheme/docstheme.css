@@ -302,6 +302,7 @@ body[data-sidebar-collapsed] #left #showleft {
 	display: flex;
 	flex-direction: column;
 	gap: 0.75em;
+	margin-bottom: 1em;
 }
 .post {
 	background-color: var(--post-bg);
