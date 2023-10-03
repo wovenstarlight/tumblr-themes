@@ -222,7 +222,7 @@
 			<hr>
 
 			<!-- BACK TO TOP BUTTON -->
-			<button id="scrolltotop" title="{lang:Back to top}" type="button"><span class="material-symbols-outlined">expand_less</span></button>
+			<button id="scrolltotop" title="{lang:Back to top}" type="button" disabled><span class="material-symbols-outlined">expand_less</span></button>
 		</div>
 	</nav>
 </header>
@@ -551,12 +551,20 @@ formatLegacyStyle();
 document.getElementById("palette").addEventListener("click", () => {
 	document.body.parentElement.classList.toggle("alt");
 });
-document.getElementById("scrolltotop").addEventListener("click", () => {
+(scrolltotop = document.getElementById("scrolltotop")).addEventListener("click", () => {
 	window.scrollTo({
 		top: 0,
 		behavior: "smooth",
 	});
 });
+document.addEventListener("scroll", () => {
+	if (window.pageYOffset <= 100) {
+		scrolltotop.setAttribute("disabled", "true");
+	}
+	else {
+		scrolltotop.removeAttribute("disabled");
+	}
+})
 
 // Set up misc. page features
 document.getElementById("togglesearch").addEventListener("click", () => {

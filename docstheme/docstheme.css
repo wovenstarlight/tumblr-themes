@@ -207,6 +207,11 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 	margin-inline-end: 0.4375em;
 	gap: 0.5em;
 }
+#scrolltotop[disabled] { opacity: 0.38 }
+#scrolltotop[disabled]:hover {
+	background-color: unset;
+	cursor: initial;
+}
 /* #endregion */
 /* #endregion */
 
