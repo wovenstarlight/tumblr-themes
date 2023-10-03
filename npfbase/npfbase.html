@@ -1153,6 +1153,28 @@ function makeContentSource(wrapper, postData, label = true, logo = false) {
 		source.innerHTML += `<a href="${sourceData.url}">${sourceData.name}</a>`;
 	}
 }
+
+/**
+ * Maps an NPF post object to the corresponding legacy post type. Evaluates only original trail items, in the following order:
+ * Answer > Video > Photo > Audio > Quote > Chat > Link > Text
+ * @param {Object} npf A post's NPF object.
+ * @param {Object[]} npf.trail The trail items, if this post was reblogged. When non-empty, the first of these trail items has its "content" property evaluated to determine the post type.
+ * @param {Object[]} npf.content The current blog's contribution to this post. For original posts, this property is evaluated to determine the post type.
+ * @param {Object[]} [npf.layout] Checked on original posts to determine if this is an answer post. On reblogged posts, the first trail item may contain a similar property.
+ */
+function getPostType(npf) {
+	// takes post npf object and checks first trail item to determine post type
+	let trailItem = npf.trail[0] ? npf.trail[0] : npf;
+
+	if (trailItem.layout?.some(el => el.type === "ask")) { return "answer" }
+	else if (trailItem.content.some(el => el.type === "video")) { return "video" }
+	else if (trailItem.content.some(el => el.type === "image")) { return "photo" }
+	else if (trailItem.content.some(el => el.type === "audio")) { return "audio" }
+	else if (trailItem.content.some(el => el.type === "audio" && el.subtype === "quote")) { return "quote" }
+	else if (trailItem.content.filter(el => el.type === "chat").length > 1) { return "chat" }
+	else if (trailItem.content.some(el => el.type === "link")) { return "link" }
+	else { return "text" }
+}
 // #endregion
 // #endregion
 
