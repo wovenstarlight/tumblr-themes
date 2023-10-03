@@ -145,6 +145,9 @@
 				<span>{lang:Page CurrentPage of TotalPages}</span>
 			{/block:Pagination}
 		{/block:SearchPage}
+		{block:PermalinkPage}
+			{block:PostSummary}<span>{PostSummary}</span>{/block:PostSummary}
+		{/block:PermalinkPage}
 	</h2>
 	
 	{block:ShowAvatar}
@@ -408,9 +411,11 @@ let posts = [
 	{
 		npf: {NPF},
 
+		{block:PermalinkPage}
 		// For ask/submit/general blog pages
 		{block:Title} title: {JSTitle}, {/block:Title}
 		body: {JSBody},
+		{/block:PermalinkPage}
 
 		{block:Date}
 		// Post-specific items
@@ -500,19 +505,14 @@ posts.forEach(post => {
 	if ((post.npf.content.length === 0 && post.npf.trail.length === 0) {block:AskPage}|| true{/block:AskPage}{block:SubmitPage}|| true{/block:SubmitPage}) {
 		article.classList.add("page");
 		createPage(article, post);
-		document.getElementById("subtitle").innerHTML = `<span>${post.title}</span>`;
 		return;
 	}
 
 	// Content available via NPF
 	// Create, but put guards in for header/footer just in case pages are parsed as NPF too
 	
-	if (post.id !== undefined) {
+	if (post.id !== undefined)
 		createPostHeader(article, post);
-	}
-	else {
-		document.getElementById("subtitle").innerHTML = `<span>${post.title}</span>`;
-	}
 
 	/** The body of the post, to be populated with trail items */
 	let postBody = document.createElement("section");
@@ -1938,7 +1938,7 @@ function createPage(wrapper, postData) {
 	trailItem.append(header);
 	// Create permalink
 	let link = document.createElement("a");
-	link.href = ""; // gives current URL
+	link.href = window.location.href; // gives current URL
 	header.append(link);
 	// Get the username and avatar
 	let username = document.createElement("span");
