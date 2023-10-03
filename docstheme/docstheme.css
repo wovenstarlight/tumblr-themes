@@ -93,7 +93,7 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 	margin-left: -0.4375rem;
 	margin-bottom: 0.125em;
 }
-#subtitle > span, #subtitle a {
+#subtitle > span, #subtitle a, body.permalink #subtitle:empty::before {
 	display: flex;
 	align-items: center;
 	letter-spacing: 0.0125rem;
@@ -101,7 +101,10 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 	border-radius: 0.25rem;
 	height: unset;
 }
-#subtitle > span:hover, #subtitle a:hover { background-color: rgba(var(--text--rgb), 0.05) }
+#subtitle > span:hover, #subtitle a:hover, body.permalink #subtitle:empty:hover::before { background-color: rgba(var(--text--rgb), 0.05) }
+body.permalink:not(.ask-page, .submit-page) #subtitle:empty::before { content: "Media post" }
+body.permalink.ask-page #subtitle:empty::before { content: "Ask me anything" }
+body.permalink.submit-page #subtitle:empty::before { content: "Submit" }
 #subtitle .tag, #subtitle .search_query { margin-inline: 0.2em }
 #subtitle .tag::before { content: "#" }
 #subtitle .search_query::before { content: "\201C" }
