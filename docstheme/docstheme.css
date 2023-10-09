@@ -21,7 +21,11 @@ body:not(.hasdesc, .haspages, .hasmembers) #left { display: none !important }
 body[data-sidebar-collapsed] {
 	grid-template-columns: minmax(5.3em, 1fr) minmax(1px, 52.25rem) 1fr;
 }
-a { color: var(--accent) }
+a {
+	color: var(--accent);
+	text-underline-offset: 0.05em;
+	text-decoration-thickness: 0.1em;
+}
 /* Accessibility */
 .hidden {
 	position: fixed;
