@@ -719,7 +719,10 @@ div.poll-post a.poll-row {
 /* #endregion */
 
 
+/* #region Media queries */
+/* ~Desktop sizing */
 @media (min-width: 55em) {
+	/* #region Show/hide sidebar */
 	body[data-sidebar-collapsed] #left { transform: translateX(-100%) }
 	body[data-sidebar-collapsed] #left #leftcontent { display: none }
 	#leftcontent {
@@ -750,12 +753,17 @@ div.poll-post a.poll-row {
 		background-size: 100% 1em, 100% 0.25em, 100% 0.25em;
 		background-attachment: local, scroll, scroll;
 	}
+	/* #endregion */
 }
+/* ~Mobile sizing */
 @media (max-width: 55em) {
+	/* Stack content */
 	body {
 		display: flex;
 		flex-direction: column;
 	}
+	
+	/* #region Alter sidebar layout and add scroll shadows */
 	#showleft, #hideleft { display: none }
 	#left {
 		padding-top: 0;
@@ -800,7 +808,11 @@ div.poll-post a.poll-row {
 		background-size: 100% 1em, 100% 1em, 100% 0.25em, 100% 0.25em;
 		background-attachment: local, local, scroll, scroll;
 	}
+	/* #endregion */
+	
+	/* Pad posts */
 	#main {
 		margin-inline: min(1.25em, 2vw);
 	}
 }
+/* #endregion */
