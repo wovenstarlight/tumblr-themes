@@ -350,6 +350,10 @@ body[data-sidebar-collapsed] #left #showleft {
 }
 .post > header { align-items: start }
 .post > footer { align-items: end }
+.post > footer > * { margin: 0 }
+.post > footer .vsn:empty,
+.post > footer .lr:empty,
+.post > footer .tags:empty { display: none }
 /* #endregion */
 
 /* #region Trail item user labels */
