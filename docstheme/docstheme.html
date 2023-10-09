@@ -96,7 +96,7 @@
 
 
 
-<body class="{block:IndexPage} index-page{/block:IndexPage}{block:PermalinkPage} permalink{/block:PermalinkPage}{block:AskPage} ask-page{/block:AskPage}{block:SubmitPage} submit-page{/block:SubmitPage}{block:LikesPage} likes-page{/block:LikesPage}{block:FollowingPage} following-page{/block:FollowingPage}{block:SearchPage} search-page{block:NoSearchResults} no-results{/block:NoSearchResults}{block:NoLikes} no-likes{/block:NoLikes}{block:NoPosts} no-posts{/block:NoPosts}{block:NoFollowing} no-following{/block:NoFollowing}{/block:SearchPage} {block:ShowAvatar}hasavatar{/block:ShowAvatar} {block:ShowDescription}{block:Description}hasdesc{/block:Description}{/block:ShowDescription} {block:HasPages}haspages{/block:HasPages} {block:IfShowGroupBlogMembers}{block:GroupMembers}hasmembers{/block:GroupMembers}{/block:IfShowGroupBlogMembers}">
+<body class="{block:IndexPage} index-page{/block:IndexPage}{block:PermalinkPage} permalink{/block:PermalinkPage}{block:AskPage} ask-page{/block:AskPage}{block:SubmitPage} submit-page{/block:SubmitPage}{block:LikesPage} likes-page{/block:LikesPage}{block:FollowingPage} following-page{/block:FollowingPage}{block:SearchPage} search-page{block:NoSearchResults} no-results{/block:NoSearchResults}{block:NoLikes} no-likes{/block:NoLikes}{block:NoPosts} no-posts{/block:NoPosts}{block:NoFollowing} no-following{/block:NoFollowing}{/block:SearchPage} {block:ShowAvatar}hasavatar{/block:ShowAvatar} {block:ShowDescription}{block:Description}hasdesc{/block:Description}{/block:ShowDescription} {block:HasPages}haspages{/block:HasPages} {block:IfShowGroupBlogMembers}{block:GroupMembers}hasmembers{/block:GroupMembers}{/block:IfShowGroupBlogMembers}" {block:PermalinkPage}data-sidebar-collapsed="true"{/block:PermalinkPage}>
 
 <!-- Accessibility: SKIP TO MAIN -->
 <a href="#main" id="skip" class="hidden">Skip to main content</a>
@@ -467,6 +467,7 @@ let posts = [
 		{/block:RebloggedFrom}
 
 		{block:NoteCount} noteCount: {JSNoteCountWithLabel}, {/block:NoteCount}
+		{block:PostNotes} postNotes: {JSPostNotesURL}, {/block:PostNotes}
 		
 		like_html: {JSLikeButton size="30"},
 		reblog_url: {JSReblogURL},
@@ -1908,6 +1909,38 @@ function formatLegacyStyle() {
 			bodyitemcontent.parentElement.remove();
 		}
 	})
+}
+// #endregion
+
+// #region FOR POST NOTES
+/**
+ * Creates the Notes section for posts on permalink pages.
+ * @param {string} notesURL The URL for the HTML partial of this post's Notes.
+ */
+function createNotes(notesURL) {
+	// Create base notes section
+	let notes = document.createElement("section");
+	notes.id = "notes";
+	document.getElementById("main").append(notes);
+
+	// Get notes
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(data) {
+		if (this.readyState === 4 && this.status === 200) {
+			notes.innerHTML = data.srcElement.response;
+			cleanNotes();
+		}
+	}
+	xhttp.open("GET", notesURL);
+	xhttp.send();
+}
+
+/**
+ * Cleans newly added notes in the notes section.
+ * TODO
+ */
+function cleanNotes() {
+	return;
 }
 // #endregion
 
