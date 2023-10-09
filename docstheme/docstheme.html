@@ -96,7 +96,7 @@
 
 
 
-<body class="{block:IndexPage} index-page{/block:IndexPage}{block:PermalinkPage} permalink{/block:PermalinkPage}{block:AskPage} ask-page{/block:AskPage}{block:SubmitPage} submit-page{/block:SubmitPage}{block:LikesPage} likes-page{/block:LikesPage}{block:FollowingPage} following-page{/block:FollowingPage}{block:SearchPage} search-page{block:NoSearchResults} no-results{/block:NoSearchResults}{block:NoLikes} no-likes{/block:NoLikes}{block:NoPosts} no-posts{/block:NoPosts}{block:NoFollowing} no-following{/block:NoFollowing}{/block:SearchPage} {block:ShowAvatar}hasavatar{/block:ShowAvatar} {block:ShowDescription}{block:Description}hasdesc{/block:Description}{/block:ShowDescription} {block:HasPages}haspages{/block:HasPages} {block:IfShowGroupBlogMembers}{block:GroupMembers}hasmembers{/block:GroupMembers}{/block:IfShowGroupBlogMembers}">
+<body class="{block:IndexPage} index-page{/block:IndexPage}{block:PermalinkPage} permalink{block:PostNotes} hasnotes{/block:PostNotes}{/block:PermalinkPage}{block:AskPage} ask-page{/block:AskPage}{block:SubmitPage} submit-page{/block:SubmitPage}{block:LikesPage} likes-page{/block:LikesPage}{block:FollowingPage} following-page{/block:FollowingPage}{block:SearchPage} search-page{block:NoSearchResults} no-results{/block:NoSearchResults}{block:NoLikes} no-likes{/block:NoLikes}{block:NoPosts} no-posts{/block:NoPosts}{block:NoFollowing} no-following{/block:NoFollowing}{/block:SearchPage} {block:ShowAvatar}hasavatar{/block:ShowAvatar} {block:ShowDescription}{block:Description}hasdesc{/block:Description}{/block:ShowDescription} {block:HasPages}haspages{/block:HasPages} {block:IfShowGroupBlogMembers}{block:GroupMembers}hasmembers{/block:GroupMembers}{/block:IfShowGroupBlogMembers}">
 
 <!-- Accessibility: SKIP TO MAIN -->
 <a href="#main" id="skip" class="hidden">Skip to main content</a>
@@ -549,7 +549,7 @@ document.querySelectorAll("img.lightboxable").forEach(obj => {
 formatLegacyStyle();
 
 // Add post notes on permalink pages
-if (document.body.classList.contains("permalink") && posts.at(0)?.postNotes) {
+if (document.body.classList.contains("hasnotes")) {
 	document.body.setAttribute("data-sidebar-collapsed", true);
 	createNotes();
 }
