@@ -466,8 +466,10 @@ let posts = [
 		},
 		{/block:RebloggedFrom}
 
-		{block:NoteCount} noteCount: {JSNoteCountWithLabel}, {/block:NoteCount}
+		{block:NoteCount}
+		noteCount: {JSNoteCountWithLabel},
 		postNotes: {JSPostNotesURL},
+		{/block:NoteCount}
 		
 		like_html: {JSLikeButton size="30"},
 		reblog_url: {JSReblogURL},
@@ -549,8 +551,7 @@ document.querySelectorAll("img.lightboxable").forEach(obj => {
 formatLegacyStyle();
 
 // Add post notes on permalink pages
-// Even no-note posts have a default notes link; use noteCount (undefined or 1+) to check for actual notes
-if (document.body.classList.contains("permalink") && posts.at(0)?.noteCount) {
+if (document.body.classList.contains("permalink") && posts.at(0)?.postNotes) {
 	document.body.setAttribute("data-sidebar-collapsed", true);
 	document.body.classList.add("hasnotes")
 	createNotes(posts[0].postNotes);
