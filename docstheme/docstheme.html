@@ -506,10 +506,12 @@ posts.forEach(post => {
 
 	// Backup method, using the old "body" T-var
 	if ((post.npf.content.length === 0 && post.npf.trail.length === 0) {block:AskPage}|| true{/block:AskPage}{block:SubmitPage}|| true{/block:SubmitPage}) {
-		article.classList.add("page");
 		createPage(article, post);
 		return;
 	}
+	// Regardless of NPF/.body creation, mark if currently on a custom blog page
+	if (document.querySelector("#pages .current-page") != null)
+		document.body.classList.add("page");
 
 	// Content available via NPF
 	// Create, but put guards in for header/footer just in case pages are parsed as NPF too
@@ -555,6 +557,27 @@ if (document.body.classList.contains("permalink") && posts.at(0)?.postNotes) {
 	document.body.setAttribute("data-sidebar-collapsed", true);
 	document.body.classList.add("hasnotes")
 	createNotes(posts[0].postNotes);
+}
+
+// Fill in #subtitle if empty
+if ((subtitle = document.getElementById("subtitle")).textContent.length === 0) {
+	// Only blank on permalink pages with no text content of any sort => always a media post,
+	// OR on custom pages with no title defined => might have text, need to check.
+	// (Ask and submit pages will always have default text, even when the user blanks out the label)
+
+	let label = document.createElement("span");
+
+	if (document.body.classList.contains("page")) {
+		let text = document.querySelector(".post .bodyitemcontent").textContent,
+			text2 = text.length > 50 ? text.slice(0, 50).concat("…") : text,
+			first = posts[0].npf?.content.find(e => e.type==="text")?.text;
+		label.innerText = text2.length < first.length ? text2 : first;
+	}
+	else {
+		label.innerText = "Media post";
+	}
+	document.title += ` — ${label.innerText}`;
+	subtitle.append(label);
 }
 
 // Set up accessibility
