@@ -1952,8 +1952,10 @@ function formatLegacyStyle() {
  */
 function createNotes(notesURL) {
 	// Create base notes section
-	let notes = document.createElement("section");
+	let notes = document.createElement("section"),
+		header = document.createElement("h2");
 	notes.id = "notes";
+	header.textContent = "{lang:Notes}";
 	document.getElementById("main").append(notes);
 
 	// Get notes
@@ -1966,6 +1968,9 @@ function createNotes(notesURL) {
 	}
 	xhttp.open("GET", notesURL);
 	xhttp.send();
+
+	// Minimize HTML parsing by prepending header after notes partial is added
+	notes.prepend(header);
 }
 
 /**
