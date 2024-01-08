@@ -753,13 +753,6 @@ body.hasnotes[data-sidebar-collapsed] {
 body.hasnotes #main { display: contents }
 body.hasnotes #posts { margin-right: 1.25em }
 #notes {
-	/* Positioning */
-	position: sticky;
-	top: 0;
-	grid-row: 1 / span 2;
-	grid-column: 4;
-	height: 100vh;
-	/* Content/display */
 	--notes-bg: rgba(var(--accent--rgb), 0.05);
 	background: var(--notes-bg);
 	display: flex;
@@ -939,7 +932,19 @@ body.hasnotes #posts { margin-right: 1.25em }
 		margin-inline: min(1.25em, 2vw);
 	}
 }
-/* ~Mobile sizing, break earlier on permalink pages with notes displays */
+
+/* #region For permalink pages with notes */
+/* ~Desktop sizing */
+@media (min-width: 65em) {
+	#notes {
+		position: sticky;
+		top: 0;
+		grid-row: 1 / span 2;
+		grid-column: 4;
+		height: 100vh;
+	}
+}
+/* ~Mobile sizing (break earlier, so posts aren't scrunched more) */
 @media (max-width: 65em) {
 	/* Stack content */
 	body.hasnotes {
@@ -999,4 +1004,5 @@ body.hasnotes #posts { margin-right: 1.25em }
 		margin-inline: min(1.25em, 2vw);
 	}
 }
+/* #endregion */
 /* #endregion */
