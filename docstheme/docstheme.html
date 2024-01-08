@@ -1948,6 +1948,9 @@ function createNotes(notesURL) {
  */
 function cleanNotes() {
 	document.getElementById("notes").querySelectorAll("li:not(.cleaned)").forEach(note => {
+		// No cleaning to be done on load more button
+		if (note.classList.contains("more_notes_link_container")) { return }
+
 		// Remove avatars and clears
 		note.firstChild.remove();
 		note.querySelector(".clear").remove();
@@ -1959,7 +1962,7 @@ function cleanNotes() {
 		note.firstChild.childNodes[1].replaceWith(acted);
 		
 		// Collapse via into reblog action
-		if (note.classList.contains("reblog")) {
+		if (note.classList.contains("reblog") && !note.classList.contains("original_post")) {
 			note.firstChild.childNodes[1].append(note.firstChild.childNodes[2]);
 			// Remove "and added:"
 			if (note.classList.contains("with_commentary"))
