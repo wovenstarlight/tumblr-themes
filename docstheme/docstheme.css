@@ -810,13 +810,17 @@ body.hasnotes #posts { margin-right: 1.25em }
 	height: var(--size);
 	background-color: var(--marker);
 	border-radius: 100%;
-	margin-inline-end: 0.8em;
+	margin-inline-end: 0.5em;
 }
 #notes .reblog .acted::before { --marker: #137333 }
 #notes .like .acted::before { --marker: #D81B60 }
 #notes .reply .acted::before { --marker: #03A9F4 }
 #notes .original_post .acted::before { --marker: var(--accent) }
 #notes .acted a { margin-inline-start: 0.2em }
+#notes .with_commentary blockquote {
+	font-size: 0.875em;
+	margin: 0.1em 0 0 1em;
+}
 /* #endregion */
 
 /* #endregion */
