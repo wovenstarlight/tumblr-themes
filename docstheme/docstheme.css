@@ -937,6 +937,10 @@ body.hasnotes #posts { margin-right: 1.25em }
 /* #region For permalink pages with notes */
 /* ~Desktop sizing */
 @media (min-width: 65em) {
+	/* Shift Tumblr controls further aside */
+	body.hasnotes .tmblr-iframe--unified-controls { right: 20em }
+	body.hasavatar.hasnotes .tmblr-iframe--unified-controls { right: 23.25em }
+
 	#notes {
 		position: sticky;
 		top: 0;
