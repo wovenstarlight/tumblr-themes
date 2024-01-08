@@ -825,10 +825,11 @@ body.hasnotes #posts { margin-right: 1.25em }
 #notes .more_notes_link_container:hover { background: var(--bg) }
 #notes .more_notes_link, #notes .more_notes_link_container span {
 	display: block;
+	font-size: 0.875em;
 	line-height: 1;
-	padding: 1.375em 1.5em;
+	padding: 1.375rem 1.5rem;
 	background: var(--notes-bg);
-	border-top: 0.0625em solid rgba(var(--text--rgb), 0.22);
+	border-top: 0.0625rem solid rgba(var(--text--rgb), 0.22);
 }
 #notes .note:last-child:not(.more_notes_link_container) { margin-bottom: 1em }
 /* #endregion */
