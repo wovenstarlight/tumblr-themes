@@ -35,7 +35,7 @@ a {
 	line-height: 1;
 }
 button { cursor: pointer }
-.tmblr-iframe--unified-controls { top: 0.3em }
+.tmblr-iframe--unified-controls.iframe-controls--desktop { top: 0.3em }
 body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 /* #endregion */
 
