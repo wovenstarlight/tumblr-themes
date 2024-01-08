@@ -760,7 +760,8 @@ body.hasnotes #posts { margin-right: 1.25em }
 	grid-column: 4;
 	height: 100vh;
 	/* Content/display */
-	background: rgba(var(--accent--rgb), 0.05);
+	--notes-bg: rgba(var(--accent--rgb), 0.05);
+	background: var(--notes-bg);
 	display: flex;
 	flex-direction: column;
 }
@@ -821,6 +822,22 @@ body.hasnotes #posts { margin-right: 1.25em }
 	font-size: 0.875em;
 	margin: 0.1em 0 0 1em;
 }
+/* More notes/Loading button */
+#notes .more_notes_link_container {
+	position: sticky;
+	bottom: 0;
+	background: var(--bg);
+	padding: 0;
+}
+#notes .more_notes_link_container:hover { background: var(--bg) }
+#notes .more_notes_link, #notes .more_notes_link_container span {
+	display: block;
+	line-height: 1;
+	padding: 1.375em 1.5em;
+	background: var(--notes-bg);
+	border-top: 0.0625em solid rgba(var(--text--rgb), 0.22);
+}
+#notes .note:last-child:not(.more_notes_link_container) { margin-bottom: 1em }
 /* #endregion */
 
 /* #endregion */
