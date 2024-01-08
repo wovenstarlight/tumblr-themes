@@ -496,8 +496,11 @@ let posts = [
 	{/block:Posts}
 ];
 // #endregion
+
 /** The wrapper element in which all posts will be inserted */
 let postContainer = document.getElementById("posts");
+
+// #region The main post creation loop
 posts.forEach(post => {
 	/** The HTML article corresponding to the post currently being created */
 	let article = document.createElement("article");
@@ -539,7 +542,9 @@ posts.forEach(post => {
 	if (post.id !== undefined)
 		createPostFooter(article, post);
 });
+// #endregion
 
+// #region Remaining post functionality
 // Add lightboxes to all applicable images
 document.querySelectorAll("img.lightboxable").forEach(obj => {
 	obj.setAttribute("tabindex", "0");
@@ -549,15 +554,61 @@ document.querySelectorAll("img.lightboxable").forEach(obj => {
 	});
 });
 
-// Format media in posts in legacy style
-formatLegacyStyle();
-
 // Add post notes on permalink pages
 if (document.body.classList.contains("permalink") && posts.at(0)?.postNotes) {
 	document.body.setAttribute("data-sidebar-collapsed", true);
 	document.body.classList.add("hasnotes")
 	createNotes(posts[0].postNotes);
 }
+// #endregion
+
+// #region Remaining page functionality (base features)
+// Search bar show/hide
+document.getElementById("togglesearch")?.addEventListener("click", () => {
+	document.getElementById("search").toggleAttribute("data-collapsed");
+})
+{block:SearchPage}
+document.getElementById("search")?.removeAttribute("data-collapsed");
+{/block:SearchPage}
+
+// Sidebar show/hide
+document.getElementById("showleft").addEventListener("click", () => {
+	document.body.removeAttribute("data-sidebar-collapsed");
+})
+document.getElementById("hideleft").addEventListener("click", () => {
+	document.body.setAttribute("data-sidebar-collapsed", true);
+})
+// #endregion
+
+// #region Remaining page functionality (accessibility features)
+// Set up keyboard navigation
+keyboardNav();
+
+// Palette
+document.getElementById("palette").addEventListener("click", () => {
+	document.body.parentElement.classList.toggle("alt");
+});
+
+// Scroll to top
+(scrolltotop = document.getElementById("scrolltotop")).addEventListener("click", () => {
+	window.scrollTo({
+		top: 0,
+		behavior: "smooth",
+	});
+});
+document.addEventListener("scroll", () => {
+	if (window.pageYOffset <= 100) {
+		scrolltotop.setAttribute("disabled", "true");
+	}
+	else {
+		scrolltotop.removeAttribute("disabled");
+	}
+})
+// #endregion
+
+// #region Visual extras for page
+// Format media in posts in legacy style
+formatLegacyStyle();
 
 // Fill in #subtitle if empty
 if ((subtitle = document.getElementById("subtitle")).textContent.length === 0) {
@@ -579,42 +630,7 @@ if ((subtitle = document.getElementById("subtitle")).textContent.length === 0) {
 	document.title += ` — ${label.innerText}`;
 	subtitle.append(label);
 }
-
-// Set up accessibility
-document.getElementById("palette").addEventListener("click", () => {
-	document.body.parentElement.classList.toggle("alt");
-});
-(scrolltotop = document.getElementById("scrolltotop")).addEventListener("click", () => {
-	window.scrollTo({
-		top: 0,
-		behavior: "smooth",
-	});
-});
-document.addEventListener("scroll", () => {
-	if (window.pageYOffset <= 100) {
-		scrolltotop.setAttribute("disabled", "true");
-	}
-	else {
-		scrolltotop.removeAttribute("disabled");
-	}
-})
-
-// Set up misc. page features
-document.getElementById("togglesearch").addEventListener("click", () => {
-	document.getElementById("search").toggleAttribute("data-collapsed");
-})
-{block:SearchPage}
-document.getElementById("search").removeAttribute("data-collapsed");
-{/block:SearchPage}
-document.getElementById("showleft").addEventListener("click", () => {
-	document.body.removeAttribute("data-sidebar-collapsed");
-})
-document.getElementById("hideleft").addEventListener("click", () => {
-	document.body.setAttribute("data-sidebar-collapsed", true);
-})
-
-// Set up keyboard navigation
-keyboardNav();
+// #endregion
 // #endregion
 
 
