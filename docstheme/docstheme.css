@@ -406,47 +406,12 @@ body[data-sidebar-collapsed] #left #showleft {
 	align-items: center;
 	gap: 0.4em;
 }
-.user .avatar {
-	--size: 2.5em;
-	width: var(--size);
-	height: var(--size);
-	border-radius: 0.25em;
-}
-.user .circle.avatar { border-radius: 100% }
 /* Mark deactivated/broken users */
 .deactivated.user .name::after {
 	content: "deactivated";
 	opacity: 0.6;
 	margin-left: 0.25em;
 }
-/* #region Trail item user badges */
-.user .badges {
-	--size: 0.875em;
-	flex-grow: 1;
-	display: flex;
-	align-items: center;
-	gap: 0.15em;
-	height: var(--size);
-}
-.user .badges span {
-	position: relative;
-	flex-grow: 1;
-	max-width: var(--size);
-	height: var(--size);
-}
-/* Stop all but the last badge from collapsing at small widths */
-.user .badges img {
-	width: var(--size);
-	height: var(--size);
-	max-width: unset;
-	filter: drop-shadow(0 0 0.1em var(--bg));
-	display: block;
-}
-.user .badges span:not(:last-child) img {
-	position: absolute;
-	left: 0;
-}
-/* #endregion */
 /* #endregion */
 
 /* #region Post body content */

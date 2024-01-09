@@ -311,11 +311,6 @@ const currentUser = {
 	 */
 	description: {JSDescription},
 	/**
-	 * URL to the blog avatar, size 64x64
-	 * @type {string}
-	 */
-	avatar: {JSPortraitURL-64},
-	/**
 	 * URL to the blog (in the format https://username.tumblr.com)
 	 * @type {string}
 	 */
@@ -329,11 +324,6 @@ const currentUser = {
 	 * Blog theme object. Contains information about colors/blog layout
 	 */
 	theme: {
-		/**
-		 * Shape of the blog avatar. Either "square" or "circle"
-		 * @type {string}
-		 */
-		avatar_shape: {JSAvatarShape},
 		background_color: {JSBackgroundColor},
 		title_color: {JSTitleColor},
 		link_color: {JSAccentColor},
@@ -355,12 +345,6 @@ const textSubtypes = {
 	"ordered-list-item": "li",
 	"unordered-list-item": "li",
 }
-
-/**
- * URL to the 64x64 avatar for anonymous or deactivated/broken users.
- * @type {string}
- */
-const anonAvatar = "https://assets.tumblr.com/images/anonymous_avatar_64.gif";
 
 /**
  * For use in trail item body construction. The base element (paragraph, blockquote etc.) as selected from textSubtypes.
@@ -457,14 +441,12 @@ let posts = [
 		via: {
 			name: {JSReblogParentName},
 			url: {JSReblogParentURL},
-			avatar: {JSReblogParentPortraitURL-40},
 			label: "{lang:Reblogged from ReblogParentName}",
 			labellink: `{lang:Reblogged from ReblogParentName 2}`,
 		},
 		source: {
 			name: {JSReblogRootName},
 			url: {JSReblogRootURL},
-			avatar: {JSReblogRootPortraitURL-40},
 			label: "{lang:Originally from ReblogRootName}",
 			labellink: `{lang:Originally from ReblogRootName 2}`,
 		},
@@ -481,7 +463,6 @@ let posts = [
 		{block:Submission} submission: {
 			name: {JSSubmitter},
 			url: {JSSubmitterURL},
-			avatar: {JSSubmitterPortraitURL-64},
 			label: "{lang:Submitted By}",
 		}, {/block:Submission}
 
@@ -840,9 +821,8 @@ function makePin(wrapper, postData, icon = null) {
  * Creates links to the blogs that a given post was reblogged from (via) and originally made by (source).
  * @param {HTMLElement} wrapper The child element of the post to which the via/source links will be added. Usually the footer.
  * @param {Object} postData This post's data, containing relevant information to create the via/source links with.
- * @param {?boolean} icons The URLs to the 64x64 avatars of the via/source blogs, or null if text labels should be used.
  */
-function makeViaSource(wrapper, postData, icons = false) {
+function makeViaSource(wrapper, postData) {
 	if (!postData.via) { return; }
 	// Via and source links
 	let via = document.createElement("a"),
@@ -863,18 +843,9 @@ function makeViaSource(wrapper, postData, icons = false) {
 		wrapper.append(source);
 	}
 
-	// Icons or text, as needed
-	if (icons) {
-		via.innerHTML = `<img src="${postData.via.avatar}" />`;
-		via.title = "{lang:Via}";
-		// This might end up being undefined, if the source is broken, but since it isn't added it won't make a difference
-		source.innerHTML = `<img src="${sourceTrail.blog?.avatar?.at(3)?.url}" />`;
-		source.title = "{lang:Source}";
-	}
-	else {
-		via.innerText = "{lang:Via}";
-		source.innerText = "{lang:Source}";
-	}
+	// Add labels
+	via.innerText = "{lang:Via}";
+	source.innerText = "{lang:Source}";
 }
 
 /**
@@ -958,23 +929,20 @@ function makeDate(wrapper, postData, dateOptions = {}) {
  * @param {HTMLElement} wrapper The child element of the post to which the submission label will be added. Usually the header.
  * @param {Object} postData This post's data, containing relevant information to create the submission label with.
  * @param {boolean} [label=true] True if a text label should be included giving the submitter's name, potentially with a link to their blog
- * @param {boolean} [avatar=false] True if the submitter's avatar should be included.
  */
-function makeSubmitter(wrapper, postData, label = true, avatar = false) {
+function makeSubmitter(wrapper, postData, label = true) {
 	if (!(subData = postData.submission)) { return; }
 	let sublabel = document.createElement("span");
 	sublabel.classList.add("sublabel");
 	wrapper.append(sublabel);
-	// Include avatar?
-	if (avatar) { sublabel.innerHTML = `<img src="${subData.avatar}" />` }
 	// Submitter name, with link to blog if provided
 	// (only if labels are requested!)
 	if (label) {
 		if (subData.url.length) {
-			sublabel.innerHTML += subData.label.replace(subData.name, `<a href="${subData.url}">${subData.name}</a>`);
+			sublabel.innerHTML = subData.label.replace(subData.name, `<a href="${subData.url}">${subData.name}</a>`);
 		}
 		else {
-			sublabel.innerHTML += subData.label.replace(subData.name, `<a>${subData.name}</a>`);
+			sublabel.innerHTML = subData.label.replace(subData.name, `<a>${subData.name}</a>`);
 		}
 	}
 	else {
@@ -1024,12 +992,9 @@ function createTrailItem(post, npf, postID, expand = false) {
 	// extant blog; create directly
 	if (npf.blog !== undefined) { createTrailItemHeader(item, npf.blog, npf.post) }
 	
-	// deleted/unrecoverable blog; provide an anon avatar
+	// deleted/unrecoverable blog
 	else if (npf.broken_blog_name !== undefined) {
-		createTrailItemHeader(item, {
-			name: npf.broken_blog_name,
-			avatar: anonAvatar
-		});
+		createTrailItemHeader(item, { name: npf.broken_blog_name });
 	}
 	
 	// blog is currentUser; provide directly-pulled info
@@ -1065,39 +1030,12 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 		link.href = blogData.url.concat(blogData.url.endsWith("/") ? `post/${postData.id}` : `/${postData.id}`);
 	}
 	
-	// Get the username and avatar
+	// Get the username
 	let username = document.createElement("span");
 	username.classList.add("name");
 	username.innerHTML = blogData.name;
-	// Generally an active user's nested size-64 URL (index 3 of [512,128,96,64]), or a direct URL for currentUser or anon/broken users
-	// The array blog.avatar isn't available sometimes, so include a backup avatar fetch via API
-	let avatar = document.createElement("img");
-	avatar.classList.add("avatar", blogData?.theme?.avatar_shape || "square");
-	avatar.src = blogData.avatar?.at(3)?.url || blogData.avatar || `https://api.tumblr.com/v2/blog/${blogData.name}/avatar/64`;
-
 	// put together the header
-	link.append(avatar, username);
-
-	// Checkmarks and other badges, pulled from tumblrmart_accessories
-	// https://assets.tumblr.com/images/tumblrmart/badges/blue-checkmark/1.png
-	// https://assets.tumblr.com/images/tumblrmart/badges/rainbow/1.png , [1-12].png available
-	let badges = blogData.tumblrmart_accessories?.badges;
-	if (blogData.can_show_badges && badges) {
-		badges.forEach(group => {
-			let badge, badgeWrapper,
-				badgegroup = document.createElement("span");
-			badgegroup.classList.add("badges");
-			link.append(badgegroup);
-			badgegroup.classList.add(group.product_group);
-			group.urls.forEach((url, index) => {
-				badge = document.createElement("img");
-				badge.src = url;
-				badgeWrapper = document.createElement("span");
-				badgeWrapper.append(badge);
-				badgegroup.append(badgeWrapper);
-			})
-		})
-	}
+	link.append(username);
 }
 
 
@@ -1200,18 +1138,12 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		let asker = document.createElement("header");
 		asker.classList.add("user");
 		let askerName = document.createElement("a");
-		let askerIcon = document.createElement("img");
-		askerIcon.classList.add("avatar");
-		askerName.append(askerIcon);
 		if (askNPF.attribution) {
-			askerIcon.src = askNPF.attribution.blog.avatar?.at(3)?.url || `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name}/avatar/64`;
-			askerIcon.classList.add(askNPF.attribution.blog.theme.avatar_shape || "square");
 			askerName.href = askNPF.attribution.blog.url;
 			askerName.append(askNPF.attribution.blog.name);
 			askerName.classList.add("name");
 		}
 		else {
-			askerIcon.src = anonAvatar;
 			askerName.append("Anonymous");
 		}
 		asker.append(askerName, " asked:");
@@ -2126,15 +2058,12 @@ function createPage(wrapper, postData) {
 	let link = document.createElement("a");
 	link.href = window.location.href; // gives current URL
 	header.append(link);
-	// Get the username and avatar
+	// Get the username
 	let username = document.createElement("span");
 	username.classList.add("name");
 	username.innerHTML = currentUser.name;
-	let avatar = document.createElement("img");
-	avatar.classList.add("avatar", currentUser.theme.avatar_shape);
-	avatar.src = currentUser.avatar;
 	// put together the header
-	link.append(avatar, username);
+	link.append(username);
 
 	// Create title and body of page
 	// postData.npf is empty; use exclusively .title and .body
