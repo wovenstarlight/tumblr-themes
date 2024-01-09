@@ -1499,10 +1499,10 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
  * Renders an audio player in a custom style, with pause/play, skip to start/end, muting, and looping functionality.
  * @param {Object} npf The NPF object with links to and data on the audio file.
  * @param {Object} [defaultIcons={}] HTML strings representing the icons to use for the audio player.
+ * @param {string} defaultIcons.audio The icon to use for audio files in general, if needed.
  * @param {string} defaultIcons.play The icon to use as the "play" (⏵︎) button.
  * @param {string} defaultIcons.pause The icon to use as the "pause" (⏸︎) button.
- * @param {string} defaultIcons.toStart The icon to use as the "skip to start" (⏮︎) button.
- * @param {string} defaultIcons.toEnd The icon to use as the "skip to end" (⏭︎) button.
+ * @param {string} defaultIcons.download The icon to use as the "download" button.
  * @param {string} defaultIcons.mute The icon to use as the "mute" (🔇) button.
  * @param {string} defaultIcons.unmute The icon to use as the "unmute" (🔊) button.
  * @param {string} defaultIcons.repeat The icon to use as the "loop" (🔁) button.
@@ -1514,10 +1514,10 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	// Uses Phosphor icons by default
 	// All icons need matching classes, except for skip to start/end
 	let icons = Object.assign({
+		audio: '<span class="material-symbols-outlined">headphones</span>',
 		play: '<span class="play material-symbols-outlined">play_arrow</span>',
 		pause: '<span class="pause material-symbols-outlined">pause</span>',
-		toStart: '<span class="material-symbols-outlined">skip_previous</span>',
-		toEnd: '<span class="material-symbols-outlined">skip_next</span>',
+		download: '<span class="material-symbols-outlined">download</span>',
 		mute: '<span class="mute material-symbols-outlined">volume_up</span>',
 		unmute: '<span class="unmute material-symbols-outlined">volume_off</span>',
 		repeat: '<span class="repeat material-symbols-outlined">repeat</span>',
@@ -1539,29 +1539,37 @@ function createCustomAudio(npf, defaultIcons = {}) {
 
 	let textInfo = document.createElement("div");
 	textInfo.classList.add("textinfo");
-	if (npf.title) { textInfo.innerHTML += `<span class="trackname">${npf.title}</span>` }
-	if (npf.artist) { textInfo.innerHTML += `<span class="artist">${npf.artist}</span>` }
-	if (npf.album) { textInfo.innerHTML += `<span class="album">${npf.album}</span>` }
-	if (textInfo.childElementCount > 0) { top.append(textInfo) }
+	if (npf.title) {
+		let trackname = document.createElement("span");
+		trackname.classList.add("trackname");
+		trackname.innerText = npf.title;
+		textInfo.append(trackname);
+	}
+	if (npf.artist) {
+		let artist = document.createElement("span");
+		artist.classList.add("artist");
+		artist.innerText = npf.artist;
+		textInfo.append(artist);
+	}
+	if (npf.album) {
+		let album = document.createElement("span");
+		album.classList.add("album");
+		album.innerText = npf.album;
+		textInfo.append(album);
+	}
+	if (!npf.title && !npf.artist && !npf.album) { textInfo.innerHTML = "<em>No information avaliable</em>" }
 
+	let poster = document.createElement(npf.poster ? "img" : "span");
+	poster.classList.add("poster");
 	if (npf.poster) {
-		let hasArt = document.createElement("div");
-		hasArt.classList.add("hasart");
-		hasArt.style.setProperty("background-image", `url('${npf.poster[0].url}')`);
-
-		let art = document.createElement("img");
-		art.classList.add("albumart");
-		art.src = npf.poster[0].url;
-		art.width = npf.poster[0].width;
-		art.height = npf.poster[0].height;
-
-		top.prepend(art);
-		hasArt.append(top);
-		wrapper.append(hasArt);
+		poster.src = npf.poster[0].url;
+		poster.width = npf.poster[0].width;
+		poster.height = npf.poster[0].height;
 	}
-	else if (top.childElementCount > 0 ) {
-		wrapper.append(top);
-	}
+	else { poster.innerHTML = icons.audio }
+	
+	top.append(poster, textInfo);
+	wrapper.append(top);
 	// #endregion
 
 	// #region Audio controls
@@ -1572,34 +1580,41 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	seekbar.max = 100;
 	seekbar.classList.add("seekbar");
 
-	let buttons = document.createElement("div");
-	buttons.classList.add("buttons");
-
 	let playPause = document.createElement("button");
 	playPause.classList.add("playpause");
 	playPause.innerHTML = icons.play + icons.pause;
-	let skipStart = document.createElement("button");
-	skipStart.classList.add("skipstart");
-	skipStart.innerHTML = icons.toStart;
-	let skipEnd = document.createElement("button");
-	skipEnd.classList.add("skipend");
-	skipEnd.innerHTML = icons.toEnd;
+	let times = document.createElement("span"),
+		currTime = document.createElement("span"),
+		totalTime = document.createElement("span");
+	currTime.innerText = "0:00";
+	totalTime.innerText = "0:00";
+	times.classList.add("times");
+	currTime.classList.add("current");
+	totalTime.classList.add("total");
+	times.append(currTime, " / ", totalTime);
 	let volume = document.createElement("button");
 	volume.classList.add("volume");
 	volume.innerHTML = icons.mute + icons.unmute;
 	let loop = document.createElement("button");
 	loop.classList.add("loop");
 	loop.innerHTML = icons.repeat + icons.unrepeat;
+	let download = document.createElement("a");
+	download.classList.add("download");
+	download.setAttribute("download", "audio");
+	download.href = npf.media.url;
+	download.innerHTML = icons.download;
 
-	buttons.append(volume, skipStart, playPause, skipEnd, loop);
-
-	wrapper.append(seekbar, buttons);
+	let controls = document.createElement("div");
+	controls.classList.add("controls");
+	controls.append(playPause, times, seekbar, volume, loop, download);
+	wrapper.append(controls);
 	// #endregion
 
 	// #region Preload data and set up interactive elements
 	// #region Audio length and ending check
 	audio.addEventListener("loadedmetadata", () => {
 		seekbar.setAttribute("max", audio.duration);
+		totalTime.innerText = calculateTime(audio.duration);
 	});
 	audio.addEventListener("ended", () => {
 		if (!audio.loop) { audio.classList.remove("playing") }
@@ -1634,27 +1649,16 @@ function createCustomAudio(npf, defaultIcons = {}) {
 		audio.loop = !audio.loop;
 		loop.classList.toggle("active");
 	});
-	skipStart.addEventListener("click", () => {
-		if (audio.classList.contains("playing")) { audio.pause() }
-		audio.currentTime = 0;
-		seekbar.value = 0;
-		seekbar.style.setProperty("--progress-width", "0%");
-		if (audio.classList.contains("playing")) { audio.play() }
-	});
-	skipEnd.addEventListener("click", () => {
-		audio.currentTime = audio.duration;
-		seekbar.value = audio.duration;
-		seekbar.style.setProperty("--progress-width", "100%");
-		// Fires "ended" by itself
-	});
 	// #endregion
 	// #region Seekbar
 	const whilePlaying = () => {
 		seekbar.value = Math.floor(audio.currentTime);
+		currTime.innerText = calculateTime(seekbar.value);
 		seekbar.style.setProperty("--progress-width", `${(audio.currentTime / audio.duration) * 100}%`);
 		rAF = requestAnimationFrame(whilePlaying);
 	}
 	seekbar.addEventListener("input", () => {
+		currTime.innerText = calculateTime(seekbar.value);
 		if (!audio.paused) {
 			cancelAnimationFrame(rAF);
 		}
@@ -1662,6 +1666,7 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	seekbar.addEventListener("change", () => {
 		audio.currentTime = seekbar.value;
 		seekbar.style.setProperty("--progress-width", `${(audio.currentTime / audio.duration) * 100}%`);
+		currTime.innerText = calculateTime(seekbar.value);
 		if (!audio.paused) {
 			requestAnimationFrame(whilePlaying);
 		}
@@ -1670,6 +1675,21 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	// #endregion
 
 	return wrapper;
+}
+
+
+/** Helper for createCustomAudio. Calculates times and returns it in a MM:SS format.
+ * Pulled from https://css-tricks.com/lets-create-a-custom-audio-player/
+ * @param {number} secs The number of seconds to be converted.
+ * @returns {string} The converted time in minutes and seconds.
+ */
+function calculateTime(secs) {
+	let time = {
+		minutes: Math.floor(secs / 60),
+		seconds: Math.floor(secs % 60),
+	}
+	time.seconds = time.seconds < 10 ? `0${time.seconds}` : `${time.seconds}`;
+	return `${time.minutes}:${time.seconds}`;
 }
 
 

@@ -643,31 +643,34 @@ body.lightboxed { overflow: hidden }
 /* #endregion */
 /* #region Custom audio block */
 .audiowrapper {
-	background-color: var(--bg);
+	background: var(--bg);
 	color: var(--text);
-	display: flex;
-	flex-direction: column;
+	border-radius: 0.25em;
+	padding: 0.5em;
 }
+/* #region Static info */
 .audiowrapper .top {
-	display: flex;
+	display: grid;
+	grid-template-columns: 5em 1fr;
 	align-items: center;
-	justify-content: center;
 	gap: 1em;
-	padding: 1em 2em;
+	padding: 0.5em 0.75em;
 }
-.audiowrapper .hasart {
-	background-position: center;
-	background-size: cover;
-}
-.audiowrapper .hasart .top {
-	backdrop-filter: blur(1em);
-	background-color: rgba(var(--bg--rgb), 0.75);
-}
-.audiowrapper .albumart {
+.audiowrapper .poster {
 	--size: 5em;
 	max-width: var(--size);
 	max-height: var(--size);
-	border-radius: 100%;
+	display: block;
+	object-fit: cover;
+	border-radius: 0.25em;
+	overflow: hidden;
+}
+/* No album art */
+.audiowrapper span.poster { user-select: all }
+.audiowrapper .poster span {
+	font-size: 5em;
+	color: white;
+	background: #d82f24;
 }
 .audiowrapper .textinfo {
 	display: flex;
@@ -677,66 +680,62 @@ body.lightboxed { overflow: hidden }
 	gap: 0.4em;
 }
 .audiowrapper .textinfo:empty { display: none }
-.audiowrapper .trackname { font-weight: 700 }
+.audiowrapper .trackname { font-weight: 500 }
 .audiowrapper .artist, .audiowrapper .album { font-size: 0.875em }
-.audiowrapper .buttons {
-	padding-block: 0.75em;
-	display: flex;
+/* #endregion */
+/* #region Basic controls */
+.audiowrapper .controls {
+	display: grid;
+	grid-template-columns: auto 6em 1fr repeat(3, auto);
 	align-items: center;
 	justify-content: center;
 	text-align: center;
-	line-height: 1;
-	gap: 0.5em;
+	gap: 0.25em;
 }
-.audiowrapper .buttons button {
-	--size: 2em;
-	width: var(--size);
-	height: var(--size);
+@media (max-width: 40em) {
+	.audiowrapper .controls {
+		grid-template-columns: auto 1fr repeat(3, auto);
+	}
+	.audiowrapper .controls .times { justify-self: start }
+	.audiowrapper .controls .seekbar {
+		grid-row: 2;
+		grid-column: 1 / span 5;
+	}
+}
+.audiowrapper .controls button, .audiowrapper .controls a {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	cursor: pointer;
-	font: inherit;
-	font-size: 1.25em;
+	text-decoration: none;
+	background: none;
 	border: none;
-	border-radius: 100%;
-	background-color: transparent;
 	color: inherit;
+	padding: 0;
+	margin: 0;
+	width: 2em;
+	height: 2em;
+	place-self: center;
 }
-.audiowrapper .buttons button:hover {
+.audiowrapper .controls button:hover, .audiowrapper .controls a:hover {
 	color: rgba(var(--text--rgb), 0.5);
 	text-shadow: 0 0 var(--accent);
 }
-.audiowrapper .buttons .playpause {
-	background-color: var(--text);
-	color: var(--bg);
-	margin-inline: 0.25em;
-}
-.audiowrapper .buttons .playpause:hover {
-	color: var(--bg);
-	text-shadow: unset;
-	background-color: var(--accent);
-	background-image: linear-gradient(rgba(var(--text--rgb), 0.75), rgba(var(--text--rgb), 0.75))
-}
-.audiowrapper .buttons button.active {
-	color: var(--accent);
-}
+.audiowrapper .controls button.active { color: var(--accent) }
 .audiowrapper audio,
-.audiowrapper audio.playing ~ .buttons .play,
-.audiowrapper audio:not(.playing) ~ .buttons .pause,
+.audiowrapper audio.playing ~ .controls .play,
+.audiowrapper audio:not(.playing) ~ .controls .pause,
 .audiowrapper .volume.active .mute,
 .audiowrapper .volume:not(.active) .unmute,
 .audiowrapper .loop.active .repeat,
 .audiowrapper .loop:not(.active) .unrepeat {
 	display: none;
 }
-
-/* Seekbar styling */
+/* #endregion */
+/* #region Seekbar styling */
 .seekbar {
 	width: 100%;
-	height: 0.5em;
 	margin: 0;
-	background-color: rgba(var(--text--rgb), 0.15);
+	background-color: transparent;
 	-webkit-appearance: none;
 	--progress-bg: var(--accent);
 	position: relative;
@@ -753,65 +752,73 @@ body.lightboxed { overflow: hidden }
 	left: 0;
 	cursor: pointer;
 }
-
 .seekbar::-webkit-slider-runnable-track {
-	background: transparent;
+	background: rgba(var(--text--rgb), 0.15);
 	border: 0;
 	width: 100%;
-	height: 100%;
+	height: 0.125em;
 	cursor: pointer;
 }
 .seekbar::-webkit-slider-thumb {
-	width: 0px;
-	height: 0px;
+	margin-top: -0.375em;
+	width: 0.875em;
+	height: 0.875em;
+	background: var(--accent);
 	border: 0;
+	border-radius: 100%;
 	cursor: pointer;
 	-webkit-appearance: none;
 }
-
+.seekbar:focus::-webkit-slider-runnable-track {
+	background: var(--accent);
+}
 .seekbar::-moz-range-track {
-	background: transparent;
+	background: rgba(var(--text--rgb), 0.15);
 	border: 0;
 	width: 100%;
-	height: 100%;
+	height: 0.125em;
 	cursor: pointer;
 }
 .seekbar::-moz-range-thumb {
-	width: 0px;
-	height: 0px;
+	width: 0.875em;
+	height: 0.875em;
+	background: var(--accent);
 	border: 0;
+	border-radius: 1em;
 	cursor: pointer;
 }
 .seekbar::-moz-range-progress {
 	background-color: var(--progress-bg);
-	height: 100%;
+	height: 0.125em;
 }
-
 .seekbar::-ms-track {
 	background: transparent;
 	border-color: transparent;
-	border-width: 0 0;
+	border-width: 0.375em 0;
 	color: transparent;
 	width: 100%;
-	height: 100%;
+	height: 0.125em;
 	cursor: pointer;
 }
 .seekbar::-ms-fill-lower {
-	background: var(--progress-bg);
+	background: var(--accent);
 	border: 0;
 }
 .seekbar::-ms-fill-upper {
-	background: transparent;
+	background: rgba(var(--text--rgb), 0.15);
 	border: 0;
 }
 .seekbar::-ms-thumb {
-	width: 0px;
-	height: 0px;
+	width: 0.875em;
+	height: 0.875em;
+	background: var(--accent);
 	border: 0;
+	border-radius: 100%;
 	cursor: pointer;
 	margin-top: 0px;
-	/* Needed to keep the Edge thumb centered */
+	/*Needed to keep the Edge thumb centred*/
 }
+/* #endregion */
 /* #endregion */
 /* #region Paywall block */
 .paywall {
