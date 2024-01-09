@@ -2,7 +2,8 @@
 body {
 	background: var(--bg);
 	color: var(--text);
-	font-family: var(--title-font), "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
+	--base-font: var(--title-font), "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
+	font-family: var(--base-font);
 	font-weight: var(--title-font-weight);
 	display: grid;
 	/* Including right-hand margins in the minimum widths, so this is actually 17em 51em [remainder] */
@@ -768,7 +769,7 @@ div.poll-post a.poll-row {
 	gap: 1em;
 }
 .paywall * { margin-block: 0 }
-.paywall h2 { font-family: var(--font) }
+.paywall h2 { font-family: var(--font), var(--base-font) }
 .paywall h2, .paywall strong, .paywall a { color: var(--accent) }
 .paywall a {
 	text-decoration: none;
