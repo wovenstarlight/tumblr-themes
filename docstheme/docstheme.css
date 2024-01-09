@@ -196,6 +196,27 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 	width: 100%;
 }
 /* #endregion */
+/* #region Font size */
+#fontsize::-webkit-outer-spin-button,
+#fontsize::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+#fontsize {
+	-moz-appearance: textfield;
+	color: inherit;
+	background: transparent;
+	border: none;
+	text-align: center;
+	width: 2em;
+	outline: 1px solid rgba(var(--text--rgb), 0.4);
+	border-radius: 0.25em;
+	line-height: 1;
+}
+#fontsize:hover { outline-color: var(--text) }
+#fontsize:active, #fontsize:focus { outline: 0.125em solid var(--accent) }
+#posts .post > * { font-size: var(--fontsize, 1em) }
+/* #endregion */
 /* #region Right side */
 #blognav .right {
 	flex-grow: 1;
@@ -211,12 +232,12 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 	margin-inline-end: 0.4375em;
 	gap: 0.5em;
 }
-#scrolltotop[disabled] { opacity: 0.38 }
-#scrolltotop[disabled]:hover {
+/* #endregion */
+#blognav button[disabled] { opacity: 0.38 }
+#blognav button[disabled]:hover {
 	background-color: unset;
 	cursor: initial;
 }
-/* #endregion */
 /* #endregion */
 
 

@@ -188,7 +188,10 @@
 			<button id="palette" title="Toggle palette" type="button"><span class="material-symbols-outlined">palette</span></button>
 			{/block:IfPaletteToggle}
 
-			<!-- TODO: Accessibility options. Zoom, font?, font size -->
+			<!-- TODO: Accessibility options. Zoom, font? -->
+			<button id="fontminus" title="Increase font size"><span class="material-symbols-outlined">remove</span></button>
+			<input id="fontsize" type="number" value="16" min="10" max="36" />
+			<button id="fontplus" title="Decrease font size"><span class="material-symbols-outlined">add</span></button>
 
 			<hr>
 
@@ -588,6 +591,63 @@ keyboardNav();
 document.getElementById("palette").addEventListener("click", () => {
 	document.body.parentElement.classList.toggle("alt");
 });
+
+// Font sizing
+let fontsize = document.getElementById("fontsize"),
+	fontplus = document.getElementById("fontplus"),
+	fontminus = document.getElementById("fontminus");
+fontsize.addEventListener("change", e => {
+	let input = e.target,
+		val = Math.round(parseFloat(input.value));
+	
+	// Valid and non-empty
+	if (input.checkValidity() && input.value !== "")
+		fontSizeSetter(parseInt(input.value));
+	
+	// Otherwise, some variant of invalid, whether that be:
+	// Empty string or non-numerical
+	else if (input.checkValidity() || isNaN(val))
+		fontSizeSetter(parseInt(input.getAttribute("data-current")) ?? 16);
+	
+	// OR either a float, <min, or >max
+	else {
+		let val2 = Math.max(
+			parseInt(input.getAttribute("min")),
+			Math.min(
+				parseInt(input.getAttribute("max")),
+				val
+			)
+		);
+		fontSizeSetter(parseInt(val2));
+	}
+});
+fontplus.addEventListener("click", e => {
+	var val = isNaN(parseInt(fontsize.value))
+		? fontsize.getAttribute("data-current") ?? 16
+		: Math.min(parseInt(fontsize.value) + 1, parseInt(fontsize.getAttribute("max")));
+	fontSizeSetter(parseInt(val));
+});
+fontminus.addEventListener("click", e => {
+	var val = isNaN(parseInt(fontsize.value))
+		? fontsize.getAttribute("data-current") ?? 16
+		: Math.max(parseInt(fontsize.value) - 1, parseInt(fontsize.getAttribute("min")));
+	fontSizeSetter(parseInt(val));
+});
+/**
+ * Helper for font size event listeners. Updates font size and toggles sizing buttons as necessary.
+ * @param {number} sizeValue The integer value for the new font size.
+ */
+function fontSizeSetter(sizeValue) {
+	fontsize.value = sizeValue;
+	fontsize.setAttribute("data-current", sizeValue);
+	postContainer.setAttribute("style", "--fontsize: "+sizeValue+"px;");
+
+	// Disable/enable font size buttons as necessary
+	if (sizeValue === fontsize.getAttribute("max")) { fontplus.setAttribute("disabled", "disabled") }
+	else { fontplus.removeAttribute("disabled") }
+	if (sizeValue === fontsize.getAttribute("min")) { fontminus.setAttribute("disabled", "disabled") }
+	else { fontminus.removeAttribute("disabled") }
+};
 
 // Scroll to top
 (scrolltotop = document.getElementById("scrolltotop")).addEventListener("click", () => {
