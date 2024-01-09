@@ -188,10 +188,11 @@
 			<button id="palette" title="Toggle palette" type="button"><span class="material-symbols-outlined">palette</span></button>
 			{/block:IfPaletteToggle}
 
-			<!-- TODO: Accessibility options. Zoom, font? -->
 			<button id="fontminus" title="Increase font size"><span class="material-symbols-outlined">remove</span></button>
 			<input id="fontsize" type="number" value="16" min="10" max="36" />
 			<button id="fontplus" title="Decrease font size"><span class="material-symbols-outlined">add</span></button>
+
+			<!-- TODO: Accessibility options. Font? -->
 
 			<hr>
 
@@ -660,6 +661,8 @@ function fontSizeSetter(sizeValue) {
 // Persistence
 if ((size = localStorage.getItem("fontsize")) !== null)
 	fontSizeSetter(parseInt(size));
+
+// TODO: Font?
 
 // Scroll to top
 (scrolltotop = document.getElementById("scrolltotop")).addEventListener("click", () => {
