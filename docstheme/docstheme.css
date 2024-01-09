@@ -486,19 +486,26 @@ body[data-sidebar-collapsed] #left #showleft {
 }
 /* #endregion */
 /* #region Video blocks */
-.video {
-	width: 100%;
+.post .video,
+.post iframe {
+	display: block;
+	max-width: 100%;
+	margin-inline: auto;
 	min-height: 20vh;
 	max-height: 80vh;
+}
+.post .video {
+	width: 100%;
 	background: rgba(var(--accent--rgb), 0.2);
 }
 /* #endregion */
 /* #region Image blocks and image rows */
-img {
+.post img {
+	display: block;
 	max-width: 100%;
 	height: auto;
 }
-figure { margin: 0 }
+.post figure { margin-inline: 0 }
 .row {
 	display: grid;
 	grid-auto-flow: column;
