@@ -511,6 +511,15 @@ body[data-sidebar-collapsed] #left #showleft {
 	height: auto;
 }
 .post figure { margin-inline: 0 }
+.tmblr-attribution {
+	text-align: right;
+	margin-block: 0.25em 0;
+}
+.tmblr-attribution a {
+	color: rgba(var(--text--rgb), 0.5);
+	text-decoration: none;
+	font-size: 0.9em;
+}
 .row {
 	display: grid;
 	grid-auto-flow: column;
