@@ -1036,6 +1036,7 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	username.innerHTML = blogData.name;
 	// put together the header
 	link.append(username);
+	link.setAttribute("style", `--bg: ${blogData?.theme?.background_color ?? currentUser.theme.background_color}; --text: ${blogData?.theme?.title_color ?? currentUser.theme.title_color}; --accent: ${blogData?.theme?.link_color ?? currentUser.theme.link_color}`)
 }
 
 
@@ -1137,16 +1138,20 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		// Anon or not?
 		let asker = document.createElement("header");
 		asker.classList.add("user");
-		let askerName = document.createElement("a");
+		let askerName = document.createElement("a"),
+			askingLabel = document.createElement("span");
 		if (askNPF.attribution) {
 			askerName.href = askNPF.attribution.blog.url;
 			askerName.append(askNPF.attribution.blog.name);
 			askerName.classList.add("name");
+			asker.setAttribute("style", `--bg: ${askNPF.attribution.blog.theme?.background_color ?? currentUser.theme.background_color}; --text: ${askNPF.attribution.blog.theme?.title_color ?? currentUser.theme.title_color}; --accent: ${askNPF.attribution.blog.theme?.link_color ?? currentUser.theme.link_color}`)
 		}
 		else {
 			askerName.append("Anonymous");
+			asker.setAttribute("style", `--bg: ${currentUser.theme.background_color}; --text: ${currentUser.theme.title_color}; --accent: ${currentUser.theme.link_color}`)
 		}
-		asker.append(askerName, " asked:");
+		askingLabel.innerText = " asked:";
+		asker.append(askerName, askingLabel);
 		
 		let ask = document.createElement("div");
 		ask.classList.add("ask");
@@ -2064,6 +2069,7 @@ function createPage(wrapper, postData) {
 	username.innerHTML = currentUser.name;
 	// put together the header
 	link.append(username);
+	link.setAttribute("style", `--bg: ${currentUser.theme.background_color}; --text: ${currentUser.theme.title_color}; --accent: ${currentUser.theme.link_color}`)
 
 	// Create title and body of page
 	// postData.npf is empty; use exclusively .title and .body
