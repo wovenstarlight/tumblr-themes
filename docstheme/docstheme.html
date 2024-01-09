@@ -589,8 +589,14 @@ keyboardNav();
 
 // Palette
 document.getElementById("palette").addEventListener("click", () => {
-	document.body.parentElement.classList.toggle("alt");
+	let added = document.body.parentElement.classList.toggle("alt");
+
+	// Persistence
+	localStorage.setItem("palette", added ? "alt" : "");
 });
+// Persistence
+if ((palette = localStorage.getItem("palette")) !== null)
+	palette === "alt" ? document.body.parentElement.classList.add("alt") : document.body.parentElement.classList.remove("alt");
 
 // Font sizing
 let fontsize = document.getElementById("fontsize"),
@@ -647,7 +653,13 @@ function fontSizeSetter(sizeValue) {
 	else { fontplus.removeAttribute("disabled") }
 	if (sizeValue === fontsize.getAttribute("min")) { fontminus.setAttribute("disabled", "disabled") }
 	else { fontminus.removeAttribute("disabled") }
+
+	// Persistence
+	localStorage.setItem("fontsize", sizeValue);
 };
+// Persistence
+if ((size = localStorage.getItem("fontsize")) !== null)
+	fontSizeSetter(parseInt(size));
 
 // Scroll to top
 (scrolltotop = document.getElementById("scrolltotop")).addEventListener("click", () => {
