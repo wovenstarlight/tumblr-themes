@@ -364,14 +364,19 @@ body[data-sidebar-collapsed] #left #showleft {
 
 /* #region Post headers and footers */
 .post > header, .post > footer {
-	min-height: 3.7em;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: center;
 	gap: 1em min(5vw, 5em);
 }
-.post > header { align-items: start }
-.post > footer { align-items: end }
+.post > header {
+	align-items: start;
+	padding-block-end: 2.4em;
+}
+.post > footer {
+	align-items: end;
+	padding-block-start: 2.4em;
+}
 .post > footer > * {
 	margin: 0;
 	display: flex;
@@ -450,6 +455,7 @@ body[data-sidebar-collapsed] #left #showleft {
 	flex-direction: column;
 	gap: 1.2em;
 }
+.bodyitemcontent > :not(.row) { margin-block: 1em }
 .bodyitemcontent > :first-child { margin-block-start: 0.1em }
 .bodyitemcontent > :last-child { margin-block-end: 0 }
 /* #region Ask blocks */
