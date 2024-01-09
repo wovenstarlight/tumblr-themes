@@ -454,10 +454,29 @@ body[data-sidebar-collapsed] #left #showleft {
 .bodyitemcontent > :last-child { margin-block-end: 0 }
 /* #region Ask blocks */
 .ask {
-	border: solid var(--accent);
-	padding: 0.5em;
-	white-space: pre-line;
-	margin-bottom: 1em;
+	border-block: medium solid var(--accent);
+	padding: 0.75em 0.5em;
+	position: relative;
+}
+.ask::before, .ask::after {
+	content: "";
+	display: block;
+	width: 0;
+	height: 0;
+	border: 0.1875em solid var(--accent);
+	position: absolute;
+}
+.ask::before {
+	top: 0;
+	left: 0;
+	border-block-end-color: transparent;
+	border-inline-end-color: transparent;
+}
+.ask::after {
+	bottom: 0;
+	right: 0;
+	border-block-start-color: transparent;
+	border-inline-start-color: transparent;
 }
 /* #endregion */
 /* #region Video blocks */
