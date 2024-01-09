@@ -1331,7 +1331,8 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 			break;
 		
 		case "audio":
-			if (curr.media) {
+			// Soundcloud links keep throwing 401 errors for some reason, so exclude
+			if (curr.media && curr.provider !== "soundcloud") {
 				bit = createCustomAudio(curr);
 			}
 			// TODO: else if client side SDK... need examples of metadata object
