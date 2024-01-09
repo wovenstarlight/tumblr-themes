@@ -611,20 +611,25 @@ body.lightboxed { overflow: hidden }
 .poll .option:not(:hover) .checked,
 .poll .option:hover .empty { display: none }
 .poll .option p { margin: 0 }
-.poll .seeresults {
+/* See results link and read more link */
+.filechip {
 	display: flex;
 	gap: 0.2em;
 	width: fit-content;
 	background-color: rgba(var(--text--rgb), 0.1);
 	color: var(--text);
 	border-radius: 0.6em;
-	padding: 0 0.25em;
+	padding: 0 0.35em;
 	text-decoration: none;
 	line-height: 1.5;
 	margin-block: 0.5em;
 }
-.poll .seeresults:hover { background-color: rgba(var(--text--rgb), 0.2) }
-.poll .seeresults span { color: var(--accent) }
+.filechip:hover { background-color: rgba(var(--text--rgb), 0.2) }
+.filechip span, .filechip svg { color: var(--accent) }
+.filechip svg {
+	align-self: center;
+	height: 0.85em;
+}
 /* #endregion */
 /* #region Custom audio block */
 .audiowrapper {

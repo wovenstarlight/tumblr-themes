@@ -1069,12 +1069,10 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		// cut off the post and add a readmore, if one is present and you aren't currently on the post's permalink page
 		if (i === rows?.truncate_after && !expand) {
 			let readmore = document.createElement("a");
-			readmore.classList.add("read_more");
-			readmore.innerText = "{lang:Read more}";
-			let readmorecontainer = document.createElement("p");
-			readmorecontainer.classList.add("read_more_container");
-			readmorecontainer.append(readmore);
-			body.append(readmorecontainer);
+			readmore.classList.add("filechip", "readmore");
+			readmore.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" preserveAspectRatio="none" x="0" y="0" viewBox="2 2 15 15"><path xmlns="http://www.w3.org/2000/svg" fill="currentColor" d="M14.5 2h-11C2.67 2 2 2.67 2 3.5v11c0 .83.67 1.5 1.5 1.5h11c.83 0 1.5-.67 1.5-1.5v-11c0-.83-.67-1.5-1.5-1.5zM11 13H5v-1.5h6V13zm2-3.25H5v-1.5h8v1.5zm0-3.25H5V5h8v1.5z"/></svg>`;
+			readmore.append("{lang:Read more}");
+			body.append(readmore);
 			
 			let link;
 			if (npf.blog !== undefined) { // blog is extant
@@ -1477,7 +1475,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 			// Timestamp/expiry durations are given in seconds; times 1000 for millisecond count
 			if (hasResults) {
 				let seeResults = document.createElement("a");
-				seeResults.classList.add("seeresults");
+				seeResults.classList.add("filechip");
 				seeResults.href = blogViewLink;
 				seeResults.target = "_blank";
 				seeResults.innerHTML = `<span class="material-symbols-outlined">bar_chart</span>`;
