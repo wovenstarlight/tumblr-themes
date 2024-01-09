@@ -456,9 +456,13 @@ body[data-sidebar-collapsed] #left #showleft {
 	flex-direction: column;
 	gap: 1.2em;
 }
+/* #region General blocks & text content */
 .bodyitemcontent > :not(.row) { margin-block: 1em }
 .bodyitemcontent > :first-child { margin-block-start: 0.1em }
 .bodyitemcontent > :last-child { margin-block-end: 0 }
+.bodyitemcontent h2 { font-size: 1.6em }
+.bodyitemcontent h3 { font-size: 1.3em }
+/* #endregion */
 /* #region Ask blocks */
 .ask {
 	border-block: medium solid var(--accent);
