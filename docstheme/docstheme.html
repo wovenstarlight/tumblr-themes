@@ -631,9 +631,9 @@ function fontSizeSetter(sizeValue) {
 	postContainer.setAttribute("style", "--fontsize: "+sizeValue+"px;");
 
 	// Disable/enable font size buttons as necessary
-	if (sizeValue === fontsize.getAttribute("max")) { fontplus.setAttribute("disabled", "disabled") }
+	if (sizeValue === parseInt(fontsize.getAttribute("max"))) { fontplus.setAttribute("disabled", "disabled") }
 	else { fontplus.removeAttribute("disabled") }
-	if (sizeValue === fontsize.getAttribute("min")) { fontminus.setAttribute("disabled", "disabled") }
+	if (sizeValue === parseInt(fontsize.getAttribute("min"))) { fontminus.setAttribute("disabled", "disabled") }
 	else { fontminus.removeAttribute("disabled") }
 
 	// Persistence
