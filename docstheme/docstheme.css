@@ -8,6 +8,8 @@ body {
 	display: grid;
 	/* Including right-hand margins in the minimum widths, so this is actually 17em 51em [remainder] */
 	grid-template-columns: minmax(17.5em, 1fr) minmax(1px, 52.25rem) 1fr;
+	/* Prevent header from expanding on pages with minimal #main content */
+	grid-template-rows: auto 1fr;
 	row-gap: 0.5em;
 }
 /* #region For when there's nothing in the sidebar */
