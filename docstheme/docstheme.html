@@ -56,6 +56,9 @@
 	<!-- #region Resource imports -->
 	<!-- Google's material icons -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+	<!-- Tippy.js tooltips by atomiks -->
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
 	<!-- #endregion -->
 
 	<style>
@@ -170,14 +173,14 @@
 			</form>
 			{/block:IfSearchBar}
 
-			<a id="prev" title="{lang:Previous}"
+			<a id="prev" data-tippy-content="{lang:Previous}"
 				{block:Pagination}{block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage}{/block:Pagination}
 				{block:PermalinkPagination}{block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost}{/block:PermalinkPagination}
 				{block:DayPagination}{block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage}{/block:DayPagination}
 			>
 				<span class="material-symbols-outlined">undo</span>
 			</a>
-			<a id="next" title="{lang:Next}"
+			<a id="next" data-tippy-content="{lang:Next}"
 				{block:Pagination}{block:NextPage}href="{NextPage}"{/block:NextPage}{/block:Pagination}
 				{block:PermalinkPagination}{block:NextPost}href="{NextPost}"{/block:NextPost}{/block:PermalinkPagination}
 				{block:DayPagination}{block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage}{/block:DayPagination}
@@ -188,38 +191,38 @@
 			<hr>
 
 			{block:IfPaletteToggle}
-			<button id="palette" title="Toggle palette" type="button"><span class="material-symbols-outlined">palette</span></button>
+			<button id="palette" data-tippy-content="Toggle palette" type="button"><span class="material-symbols-outlined">palette</span></button>
 			{/block:IfPaletteToggle}
 
-			<button id="fontminus" title="Increase font size"><span class="material-symbols-outlined">remove</span></button>
+			<button id="fontminus" data-tippy-content="Increase font size"><span class="material-symbols-outlined">remove</span></button>
 			<input id="fontsize" type="number" value="16" min="10" max="24" />
-			<button id="fontplus" title="Decrease font size"><span class="material-symbols-outlined">add</span></button>
+			<button id="fontplus" data-tippy-content="Decrease font size"><span class="material-symbols-outlined">add</span></button>
 
 			<!-- TODO: Accessibility options. Font? -->
 
 			<hr>
 
-			<a href="/" class="homelink" title="{lang:Home}"><span class="material-symbols-outlined">home</span></a>
+			<a href="/" class="homelink" data-tippy-content="{lang:Home}"><span class="material-symbols-outlined">home</span></a>
 			{block:AskEnabled}
-				<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}" title="{AskLabel}"><span class="material-symbols-outlined">mail</span></a>
+				<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}" data-tippy-content="{AskLabel}"><span class="material-symbols-outlined">mail</span></a>
 			{/block:AskEnabled}
 			{block:SubmissionsEnabled}
-				<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}" title="{SubmitLabel}"><span class="material-symbols-outlined">inbox</span></a>
+				<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}" data-tippy-content="{SubmitLabel}"><span class="material-symbols-outlined">inbox</span></a>
 			{/block:SubmissionsEnabled}
 			{block:IfDirectMessageLinkInNavbar}
-				<a href="https://www.tumblr.com/message/{Name}" class="messagelink" title="Message"><span class="material-symbols-outlined">add_comment</span></a>
+				<a href="https://www.tumblr.com/message/{Name}" class="messagelink" data-tippy-content="Message"><span class="material-symbols-outlined">add_comment</span></a>
 			{/block:IfDirectMessageLinkInNavbar}
 			{block:IfRandomPostLink}
-				<a href="/random" class="randomlink" title="{lang:Random}"><span class="material-symbols-outlined">shuffle</span></a>
+				<a href="/random" class="randomlink" data-tippy-content="{lang:Random}"><span class="material-symbols-outlined">shuffle</span></a>
 			{/block:IfRandomPostLink}
 			{block:IfArchiveLink}
-				<a href="/archive" class="archivelink" title="{lang:Archive}"><span class="material-symbols-outlined">archive</span></a>
+				<a href="/archive" class="archivelink" data-tippy-content="{lang:Archive}"><span class="material-symbols-outlined">archive</span></a>
 			{/block:IfArchiveLink}
 
 			<hr>
 
 			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
-			<a id="credit" href="https://starlightthemes.tumblr.com/docstheme" title="{lang:Install this theme}"><span class="material-symbols-outlined">code</span></a>
+			<a id="credit" href="https://starlightthemes.tumblr.com/docstheme" data-tippy-content="{lang:Install this theme}"><span class="material-symbols-outlined">code</span></a>
 			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
 		</div>
 
@@ -232,7 +235,7 @@
 			<hr>
 
 			<!-- BACK TO TOP BUTTON -->
-			<button id="scrolltotop" title="{lang:Back to top}" type="button" disabled><span class="material-symbols-outlined">expand_less</span></button>
+			<button id="scrolltotop" data-tippy-content="{lang:Back to top}" type="button" disabled><span class="material-symbols-outlined">expand_less</span></button>
 		</div>
 	</nav>
 </header>
@@ -723,6 +726,12 @@ if ((subtitle = document.getElementById("subtitle")).textContent.length === 0) {
 	document.title += ` — ${label.innerText}`;
 	subtitle.append(label);
 }
+
+// Set up tooltips
+tippy('[data-tippy-content]', {
+	placement: "bottom",
+	arrow: false,
+});
 // #endregion
 // #endregion
 
@@ -797,7 +806,7 @@ function makeLike(wrapper, postData, icon = null) {
 	if (icon !== null) {
 		// Assumes icon is an HTML string
 		likeButton.innerHTML += icon;
-		likeButton.title = label;
+		likeButton.setAttribute("data-tippy-content", label);
 	}
 	else {
 		// No icon provided; use text labels
@@ -825,7 +834,7 @@ function makeReblog(wrapper, postData, icon = null) {
 	let label = "{block:English}Reblog{/block:English}{block:German}Rebloggen{/block:German}{block:French}Rebloguer{/block:French}{block:Italian}Reblogga{/block:Italian}{block:Japanese}リブログ{/block:Japanese}{block:Turkish}Yeniden Blogla{/block:Turkish}{block:Spanish}Rebloguear{/block:Spanish}{block:Russian}Реблог{/block:Russian}{block:Polish}Rebloguj{/block:Polish}{block:PortuguesePT}Reblogar{/block:PortuguesePT}{block:PortugueseBR}Reblogar{/block:PortugueseBR}{block:Dutch}Rebloggen{/block:Dutch}{block:Korean}리블로그{/block:Korean}{block:ChineseSimplified}转发{/block:ChineseSimplified}{block:ChineseTraditional}轉格{/block:ChineseTraditional}{block:ChineseHK}轉載{/block:ChineseHK}{block:Indonesian}Reblog{/block:Indonesian}{block:Hindi}रीब्लॉग करें{/block:Hindi}";
 	if (icon !== null) {
 		reblogButton.innerHTML = icon;
-		reblogButton.title = label;
+		reblogButton.setAttribute("data-tippy-content", label);
 	}
 	else {
 		reblogButton.innerText = label;
@@ -847,7 +856,7 @@ function makePin(wrapper, postData, icon = null) {
 	// Icon or text, as needed
 	if (icon !== null) {
 		pin.innerHTML = icon;
-		pin.title = postData.pinned;
+		pin.setAttribute("data-tippy-content", postData.pinned);
 	}
 	else {
 		pin.innerText = postData.pinned;
@@ -983,7 +992,7 @@ function makeSubmitter(wrapper, postData, label = true) {
 		}
 	}
 	else {
-		sublabel.title = subData.label;
+		sublabel.setAttribute("data-tippy-content", subData.label);
 	}
 }
 
@@ -1386,7 +1395,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 			}
 			else if (curr.embed_url) {
 				bit = document.createElement("iframe");
-				bit.title = `Audio: ${curr.title || "Unknown title"} — ${curr.artist || "Unknown artist"}`;
+				bit.setAttribute("data-tippy-content", `Audio: ${curr.title || "Unknown title"} — ${curr.artist || "Unknown artist"}`);
 				if (curr.album) { bit.title += ` (<em>${curr.album}</em>)` }
 				bit.src = curr.embed_url;
 				bit.width = "100%";
