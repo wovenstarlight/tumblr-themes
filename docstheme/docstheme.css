@@ -644,6 +644,11 @@ body.lightboxed { overflow: hidden }
 	align-self: center;
 	height: 0.85em;
 }
+hr.readmore {
+	border-color: rgba(var(--text--rgb), 0.5);
+	border-style: dashed;
+	margin-inline: .3em;
+}
 /* #endregion */
 /* #region Custom audio block */
 .audiowrapper {

@@ -1117,6 +1117,11 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 			if (link !== null) { readmore.href = link }
 			break; // don't render any more post blocks
 		}
+		else if (i === rows?.truncate_after) {
+			let readmore = document.createElement("hr");
+			readmore.classList.add("readmore");
+			body.append(readmore);
+		}
 	}
 	
 	// All base content blocks are done. Adjust layout
