@@ -728,11 +728,17 @@ if ((subtitle = document.getElementById("subtitle")).textContent.length === 0) {
 }
 
 // Set up tooltips
-tippy('[data-tippy-content]', {
+let tippyOptions = {
+	// Basic layout
+	theme: "docs",
 	placement: "bottom",
 	arrow: false,
-	theme: "docs",
-});
+	delay: [300, 100], // Delay show/hide after cursor enters/leaves
+	duration: 0, // Don't fade in/out
+	offset: [0, 5], // Align with bottom of navbar
+}
+tippy.createSingleton(tippy("#blognav [data-tippy-content]"), tippyOptions);
+tippy.createSingleton(tippy(".post [data-tippy-content]"), tippyOptions);
 // #endregion
 // #endregion
 

@@ -40,6 +40,15 @@ a {
 button { cursor: pointer }
 .tmblr-iframe--unified-controls.iframe-controls--desktop { top: 0.3em }
 body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
+/* Tooltips */
+.tippy-box[data-theme~='docs'] {
+	background-color: var(--text);
+	color: var(--post-bg);
+	font-size: 0.8em;
+}
+.tippy-box[data-theme~='docs'] .tippy-content {
+	padding: 0.25em 0.6em;
+}
 /* #endregion */
 
 
