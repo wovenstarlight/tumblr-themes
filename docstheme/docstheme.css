@@ -99,6 +99,8 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 	flex-flow: row wrap;
 	margin-left: -0.4375rem;
 	margin-bottom: 0.125em;
+	grid-column: 2;
+	grid-row: 2;
 }
 #subtitle > span, #subtitle a {
 	display: flex;
