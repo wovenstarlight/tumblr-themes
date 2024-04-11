@@ -139,7 +139,10 @@
 			<span>{lang:Viewing everything posted on Month DayOfMonth Year}</span>
 		{/block:DayPage}
 		{block:SearchPage}
-			<span>{lang:Showing SearchResultCount results for SearchQuery 2}</span>
+			<span>
+				{lang:Showing SearchResultCount results for SearchQuery 2}
+				{block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}
+			</span>
 			{block:Pagination}
 				<span class="hidden">-</span>
 				<span>{lang:Page CurrentPage of TotalPages}</span>
@@ -479,6 +482,34 @@ let posts = [
 		{/block:Date}
 	},
 	{/block:Posts}
+	{block:NoPosts}
+	{
+		npf: {
+			content: [
+				{
+					type: "text",
+					text: "{lang:This Tumblr hasnt posted anything}"
+				}
+			],
+			layout: [],
+			trail: []
+		}
+	}
+	{/block:NoPosts}
+	{block:NoSearchResults}
+	{
+		npf: {
+			content: [
+				{
+					type: "text",
+					text: `{lang:Sorry no results for SearchQuery 2}.`
+				}
+			],
+			layout: [],
+			trail: []
+		}
+	}
+	{/block:NoSearchResults}
 ];
 // #endregion
 

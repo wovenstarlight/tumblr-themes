@@ -111,8 +111,8 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 #subtitle > span:hover, #subtitle a:hover { background-color: rgba(var(--text--rgb), 0.05) }
 #subtitle .tag, #subtitle .search_query { margin-inline: 0.2em }
 #subtitle .tag::before { content: "#" }
-#subtitle .search_query::before { content: "\201C" }
-#subtitle .search_query::after { content: "\201D" }
+#subtitle .search_query::before, .bodyitemcontent .search_query::before { content: "\201C" }
+#subtitle .search_query::after, .bodyitemcontent .search_query::after { content: "\201D" }
 /* #endregion */
 
 
