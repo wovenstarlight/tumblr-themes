@@ -198,8 +198,6 @@
 			<input id="fontsize" type="number" value="16" min="10" max="24" data-tippy-content="Font size" />
 			<button id="fontplus" data-tippy-content="Increase font size"><span class="material-symbols-outlined">add</span></button>
 
-			<!-- TODO: Accessibility options. Font? -->
-
 			<hr>
 
 			<a href="/" class="homelink" data-tippy-content="{lang:Home}"><span class="material-symbols-outlined">home</span></a>
@@ -682,8 +680,6 @@ function fontSizeSetter(sizeValue) {
 // Persistence
 if ((size = localStorage.getItem("fontsize")) !== null)
 	fontSizeSetter(parseInt(size));
-
-// TODO: Font?
 
 // Scroll to top
 (scrolltotop = document.getElementById("scrolltotop")).addEventListener("click", () => {
