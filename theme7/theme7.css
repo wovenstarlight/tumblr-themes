@@ -21,7 +21,7 @@ a {
 	text-decoration: none
 }
 #highlight:hover, #desc a:hover, #main a:hover { text-decoration: underline }
-iframe, .tumblr_video_container { width: 100% !important }
+#center iframe, .tumblr_video_container { width: 100% !important }
 /* Blockquotes */
 blockquote {
 	border-left: 0.1875rem solid rgba(var(--accent--rgb), 0.2);
