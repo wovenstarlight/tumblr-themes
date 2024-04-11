@@ -544,8 +544,13 @@ posts.forEach(post => {
 	article.append(postBody);
 	// Create each reblog of the post
 	if (!post.npf.trail.length) { article.classList.add("original") }
-	else { post.npf.trail.forEach(trailItem => createTrailItem(postBody, trailItem, null)) }
-	// End with the current blog's addition, if any, and expand if on the permalink page
+	else { post.npf.trail.forEach(trailItem => createTrailItem(
+		postBody,
+		trailItem,
+		null
+		{block:PermalinkPage}, true{/block:PermalinkPage}
+	)) }
+	// End with the current blog's addition, if any
 	if (post.npf.content.length) {
 		createTrailItem(
 			postBody,
@@ -554,6 +559,7 @@ posts.forEach(post => {
 			{block:PermalinkPage}, true{/block:PermalinkPage}
 		);
 	}
+	// In the above, expand any read more links if on the permalink page
 
 	if (post.id !== undefined)
 		createPostFooter(article, post);
