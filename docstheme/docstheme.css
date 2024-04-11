@@ -597,7 +597,7 @@ body.lightboxed { overflow: hidden }
 /* #endregion */
 /* #region Poll block */
 .poll .question {
-	font-size: 1.2em;
+	font-size: 1.5em;
 	color: rgba(var(--text--rgb), 0.75);
 	margin-block: 0.75em 0.5em;
 }
