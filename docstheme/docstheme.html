@@ -106,7 +106,7 @@
 
 
 <header id="pagehead">
-	<a href="/" id="docs">
+	<a href="/" id="docs" data-tippy-content="{lang:Home}">
 		<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 88" xml:space="preserve">
 			<path d="M58,88H6c-3.3,0-6-2.7-6-6V6c0-3.3,2.7-6,6-6h36l22,22v60C64,85.3,61.3,88,58,88z" fill="#3086F6"/>
 			<path d="M42,0l22,22H42V0z" fill="#0C67D6"/>
@@ -167,7 +167,7 @@
 			{block:IfSearchBar}
 			<!-- SEARCH BAR -->
 			<form action="/search" method="get" id="search" data-collapsed="true">
-				<button id="togglesearch" type="button"><span class="material-symbols-outlined">search</span></button>
+				<button id="togglesearch" type="button" data-tippy-content="{lang:Search}"><span class="material-symbols-outlined">search</span></button>
 				<label for="q" class="hidden">{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
 				<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}"/>
 			</form>
@@ -195,7 +195,7 @@
 			{/block:IfPaletteToggle}
 
 			<button id="fontminus" data-tippy-content="Decrease font size"><span class="material-symbols-outlined">remove</span></button>
-			<input id="fontsize" type="number" value="16" min="10" max="24" />
+			<input id="fontsize" type="number" value="16" min="10" max="24" data-tippy-content="Font size" />
 			<button id="fontplus" data-tippy-content="Increase font size"><span class="material-symbols-outlined">add</span></button>
 
 			<!-- TODO: Accessibility options. Font? -->
@@ -243,8 +243,8 @@
 
 <aside id="left">
 	<!-- Show/hide buttons -->
-	<button id="showleft" type="button"><span class="material-symbols-outlined">format_list_bulleted</span></button>
-	<button id="hideleft" type="button"><span class="material-symbols-outlined">arrow_back</span></button>
+	<button id="showleft" type="button" data-tippy-content="Show blog outline"><span class="material-symbols-outlined">format_list_bulleted</span></button>
+	<button id="hideleft" type="button" data-tippy-content="Close blog outline"><span class="material-symbols-outlined">arrow_back</span></button>
 
 	<div id="leftcontent">
 		{block:ShowDescription}{block:Description}
@@ -737,7 +737,9 @@ let tippyOptions = {
 	duration: 0, // Don't fade in/out
 	offset: [0, 5], // Align with bottom of navbar
 }
+tippy("#docs[data-tippy-content]", tippyOptions);
 tippy.createSingleton(tippy("#blognav [data-tippy-content]"), tippyOptions);
+tippy.createSingleton(tippy("#left [data-tippy-content]"), tippyOptions);
 tippy.createSingleton(tippy(".post [data-tippy-content]"), tippyOptions);
 // #endregion
 // #endregion
