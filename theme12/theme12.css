@@ -678,7 +678,7 @@ div.npf-link-block:not(.has-poster) .bottom:empty { padding-top: 0 }
 .audiowrapper + .bodyitem { margin-block-start: 0.5em }
 /* #endregion */
 /* Video posts */
-iframe, .tumblr_video_container {
+.bodyitemcontent iframe, .tumblr_video_container {
 	width: 100% !important;
 	max-width: 100%;
 }

@@ -691,7 +691,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 	content: "-";
 	padding-right: 0.2em;
 }
-.bodyitem iframe { max-width: 100% }
+.bodyitemcontent iframe { max-width: 100% }
 /* Video posts */
 .videowrapper div, .videowrapper iframe { width: 100% !important }
 /* Ask posts */

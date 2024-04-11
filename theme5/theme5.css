@@ -382,7 +382,7 @@ pre {
 }
 .photowrapper:not(:hover) .highres { opacity: 0 }
 /* Video posts */
-.videowrapper, iframe, .tumblr_video_container, .tumblr_video_iframe { width: 100% !important }
+.videowrapper, .bodyitemcontent iframe, .tumblr_video_container, .tumblr_video_iframe { width: 100% !important }
 /* Quote posts */
 .quote { text-align: center }
 .quote h2 { margin: 0 }
