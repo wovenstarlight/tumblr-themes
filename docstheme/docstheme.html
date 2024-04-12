@@ -59,6 +59,7 @@
 	<meta name="text:Filtered tags" content="text post, long post">
 	<meta name="if:Like buttons" content="1">
 	<meta name="if:Reblog buttons" content="1">
+	<meta name="if:Day page links" content="1">
 	<meta name="if:Post tags" content="1">
 	<!-- #endregion -->
 	{/block:Hidden}
@@ -867,12 +868,13 @@ function createPostFooter(wrapper, postData) {
 	makeNoteCount(vsn, postData);
 	makeViaSource(vsn, postData);
 
-	if ({block:IfLikeButtons}true{/block:IfLikeButtons}{block:IfNotLikeButtons}false{/block:IfNotLikeButtons} || {block:IfReblogButtons}true{/block:IfReblogButtons}{block:IfNotReblogButtons}false{/block:IfNotReblogButtons}) {
-		let lr = document.createElement("span");
-		lr.classList.add("lr");
-		footer.append(lr);
-		{block:IfLikeButtons}makeLike(lr, postData);{/block:IfLikeButtons}
-		{block:IfReblogButtons}makeReblog(lr, postData);{/block:IfReblogButtons}
+	if ({block:IfLikeButtons}true{/block:IfLikeButtons}{block:IfNotLikeButtons}false{/block:IfNotLikeButtons} || {block:IfReblogButtons}true{/block:IfReblogButtons}{block:IfNotReblogButtons}false{/block:IfNotReblogButtons} || {block:IfDayPageLinks}true{/block:IfDayPageLinks}{block:IfNotDayPageLinks}false{/block:IfNotDayPageLinks}) {
+		let lrd = document.createElement("span");
+		lrd.classList.add("lrd");
+		footer.append(lrd);
+		{block:IfLikeButtons}makeLike(lrd, postData);{/block:IfLikeButtons}
+		{block:IfReblogButtons}makeReblog(lrd, postData);{/block:IfReblogButtons}
+		{block:IfDayPageLinks}makeDayLink(lrd, postData);{/block:IfDayPageLinks}
 	}
 
 	{block:IfPostTags}makeTags(footer, postData);{/block:IfPostTags}
@@ -930,6 +932,30 @@ function makeReblog(wrapper, postData, icon = null) {
 	}
 	else {
 		reblogButton.innerText = label;
+	}
+}
+
+/**
+ * Creates a link to the corresponding day page for a given post.
+ * @param {HTMLElement} wrapper The child element of the post to which the day page link will be added. Usually the footer.
+ * @param {Object} postData This post's data, containing relevant information to create the day page link with.
+ * @param {?string} icon An HTML string representing the icon for the day page link, or null if a text label should be used.
+ */
+function makeDayLink(wrapper, postData, icon = null) {
+	// Make element
+	let dayLink = document.createElement("a");
+	dayLink.href = postData.date.url;
+	dayLink.classList.add("customday");
+	wrapper.append(dayLink);
+
+	// Icon or text, as needed
+	let label = "{lang:Show all posts made on this day}";
+	if (icon !== null) {
+		dayLink.innerHTML = icon;
+		dayLink.setAttribute("data-tippy-content", label);
+	}
+	else {
+		dayLink.innerText = label;
 	}
 }
 
