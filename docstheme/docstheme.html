@@ -609,34 +609,36 @@ posts.forEach(post => {
 		createPostFooter(article, post);
 
 	{block:IfFilteredTags}
-	// User has provided tags to filter. Check each post's tags and add a filter message
-	let filters = post.tags.filter(tag => filteredTags.includes(tag.name.toLowerCase()));
-	if (filters.length > 0) {
-		// Hide post content
-		article.classList.add("filtered");
-		
-		// Assemble and insert filter message
-		let msg = document.createElement("div"),
-			warning = document.createElement("p"),
-			tagList = document.createElement("p"),
-			btn = document.createElement("button");
-		msg.append(warning, tagList, btn);
-		article.insertBefore(msg, article.firstElementChild);
-		
-		// Add classes
-		msg.classList.add("filter");
-		tagList.classList.add("tags");
-		
-		// Add text to all elements
-		warning.innerText = "This post contains filtered tags.";
-		tagList.innerText = "#".concat(filters.map(el => el.name).join(", #"));
-		btn.innerText = "View post";
-		
-		// Set up viewing function
-		btn.addEventListener("click", () => {
-			msg.remove();
-			article.classList.remove("filtered");
-		});
+	if (post.tags) {
+		// User has provided tags to filter. Check each post's tags and add a filter message
+		let filters = post.tags.filter(tag => filteredTags.includes(tag.name.toLowerCase()));
+		if (filters.length > 0) {
+			// Hide post content
+			article.classList.add("filtered");
+			
+			// Assemble and insert filter message
+			let msg = document.createElement("div"),
+				warning = document.createElement("p"),
+				tagList = document.createElement("p"),
+				btn = document.createElement("button");
+			msg.append(warning, tagList, btn);
+			article.insertBefore(msg, article.firstElementChild);
+			
+			// Add classes
+			msg.classList.add("filter");
+			tagList.classList.add("tags");
+			
+			// Add text to all elements
+			warning.innerText = "This post contains filtered tags.";
+			tagList.innerText = "#".concat(filters.map(el => el.name).join(", #"));
+			btn.innerText = "View post";
+			
+			// Set up viewing function
+			btn.addEventListener("click", () => {
+				msg.remove();
+				article.classList.remove("filtered");
+			});
+		}
 	}
 	{/block:IfFilteredTags}
 });
