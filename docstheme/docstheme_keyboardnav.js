@@ -32,12 +32,13 @@ function scrollByOffset() {
  * @param {string} [customOptions.postSelector=".post"] CSS selector for the posts themselves.
  * @param {string} [customOptions.postContainerSelector="#posts"] CSS selector for the container of the post elements.
  * @param {number} [customOptions.postOffset=0] Pixel height from the top of the screen that the posts should sit at; generally at least the height of any sticky header elements.
+ * @param {function} [customOptions.scrollCallback] Callback function for any scroll actions (J/K post navigation and scroll to top). Called AFTER any scrolling is complete.
  * @param {string} [customOptions.nextPageSelector="#next"] CSS selector for the "next page" link.
  * @param {string} [customOptions.prevPageSelector="#prev"] CSS selector for the "previous page" link.
  * @param {string} [customOptions.searchSelector="#q"] CSS selector for the search input field.
+ * @param {function} [customOptions.searchCallback] Callback function for opening/focusing on the search bar. Called BEFORE the search bar is focused on.
  * @param {string} [customOptions.reblogSelector=".customreblog"] CSS selector for the reblog button. This should be inside the post elements defined in postSelector.
  * @param {string} [customOptions.paletteToggleSelector="#palette"] CSS selector for the palette toggle button, if any.
-}
  */
 function keyboardNav(customOptions) {
 	let options = Object.assign({
@@ -114,6 +115,7 @@ function keyboardNav(customOptions) {
 					window.scrollBy(0, 20);
 				}
 			}
+			if (options.scrollCallback) { options.scrollCallback() }
 		}
 		else if (key === 'K') {
 			if (currPost == null) {
@@ -138,6 +140,7 @@ function keyboardNav(customOptions) {
 				}
 			}
 			currPost.focus();
+			if (options.scrollCallback) { options.scrollCallback() }
 		}
 
 		// scroll to top
@@ -147,15 +150,16 @@ function keyboardNav(customOptions) {
 				behavior: "smooth",
 			});  // jump to top of header, too
 			currPost = sections[0];
+			if (options.scrollCallback) { options.scrollCallback() }
 		}
 
 		// optional reblog
 		else if (options.reblogSelector != null && e.shiftKey && key === 'R')
-			currPost.querySelector(options.reblogSelector).click();
+			currPost.querySelector(options.reblogSelector)?.click();
 
 		// optional search
 		else if (search != null && key === '?') {
-			search.parentElement.removeAttribute("data-collapsed");
+			if (options.searchCallback) { options.searchCallback() }
 			search.focus();
 			e.preventDefault(); // Don't type the ? in the input field
 		}
