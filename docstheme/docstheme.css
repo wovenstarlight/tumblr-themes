@@ -4,7 +4,6 @@ body {
 	color: var(--text);
 	--base-font: var(--title-font), "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
 	font-family: var(--base-font);
-	font-weight: var(--title-font-weight);
 	display: grid;
 	/* Including right-hand margins in the minimum widths, so this is actually 17em 51em [remainder] */
 	grid-template-columns: minmax(17.5em, 1fr) minmax(1px, 52.25rem) 1fr;
@@ -91,16 +90,15 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 }
 #avatar .square { border-radius: 0.5em }
 #avatar .round { border-radius: 100% }
-#title h1, #subtitle {
-	margin: 0;
-	font-weight: 400;
-}
+#title h1, #subtitle { margin: 0 }
 #title h1 {
 	font-size: 1.125em;
 	line-height: 1.375em;
+	font-weight: var(--title-font-weight);
 }
 #subtitle {
 	font-size: 0.875em;
+	font-weight: 400;
 	line-height: normal;
 	color: rgba(var(--text--rgb), 0.8);
 	text-shadow: 0 0 rgba(var(--accent--rgb), 0.4);
