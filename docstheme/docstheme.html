@@ -56,11 +56,15 @@
 
 	<!-- Posts section -->
 	<meta name="if:Use legacy format for post media" content="0">
-	<meta name="text:Filtered tags" content="text post, long post">
+	<meta name="if:Post dates" content="1">
+	<meta name="if:Post times" content="1">
+	<meta name="if:Dates formatted month first" content="1">
+	<meta name="if:24 hour times" content="0">
 	<meta name="if:Like buttons" content="1">
 	<meta name="if:Reblog buttons" content="1">
 	<meta name="if:Day page links" content="1">
 	<meta name="if:Post tags" content="1">
+	<meta name="text:Filtered tags" content="text post, long post">
 	<!-- #endregion -->
 	{/block:Hidden}
 	
@@ -842,7 +846,13 @@ function createPostHeader(wrapper, postData) {
 	wrapper.append(header);
 
 	// Populate post header
-	makeDate(header, postData);
+	{block:IfPostDates}
+	makeDate(header, postData, {
+		{block:IfDatesFormattedMonthFirst}dateFormat: "textMD",{/block:IfDatesFormattedMonthFirst}
+		{block:IfPostTimes}includeTime: true,{/block:IfPostTimes}
+		{block:If24HourTimes}timeFormat: "24",{/block:If24HourTimes}
+	})
+	{/block:IfPostDates}
 
 	makePin(header, postData);
 
@@ -1098,8 +1108,7 @@ function makeDate(wrapper, postData, dateOptions = {}) {
 	date.innerText += postData.date[options.dateFormat];
 	// Add time, as needed
 	if (options.includeTime) {
-		date.innerText += commaSeparate ? ", " : " at ";
-		date.innerText += postData.date[`time${options.timeFormat}`];
+		date.innerText += (options.commaSeparate ? ", " : " at ").concat(postData.date[`time${options.timeFormat}`]);
 	}
 }
 
