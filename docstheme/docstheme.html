@@ -54,7 +54,8 @@
 	<meta name="if:Show group blog members" content="0">
 	<meta name="text:Group blog members title" content="Contributors">
 
-	<!-- Other options -->
+	<!-- Posts section -->
+	<meta name="if:Use legacy format for post media" content="0">
 	<meta name="text:Filtered tags" content="text post, long post">
 	<!-- #endregion -->
 	{/block:Hidden}
@@ -762,8 +763,10 @@ document.addEventListener("scroll", () => {
 // #endregion
 
 // #region Visual extras for page
+{block:IfUseLegacyFormatForPostMedia}
 // Format media in posts in legacy style
 formatLegacyStyle();
+{/block:IfUseLegacyFormatForPostMedia}
 
 // Fill in #subtitle if empty
 if ((subtitle = document.getElementById("subtitle")).textContent.length === 0) {
