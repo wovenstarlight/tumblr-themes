@@ -878,12 +878,20 @@ hr.readmore {
 /* #endregion */
 
 /* #region Post notes */
+/* Add extra column for the notes area */
 body.hasnotes {
 	grid-template-columns: minmax(17.5em, 1fr) minmax(1px, 52.25rem) 1fr minmax(20em, 1fr);
 }
 body.hasnotes[data-sidebar-collapsed] {
 	grid-template-columns: minmax(5.3em, 1fr) minmax(1px, 52.25rem) 1fr minmax(20em, 1fr);
 }
+/* When sidebar is absent, don't adjust leftmost column, and force posts section to be centered */
+body.hasnotes:not(.hasdesc, .haspages, .hasmembers) {
+	grid-template-columns: 1fr minmax(1px, 52.25rem) 1fr minmax(20em, 1fr);
+}
+body.hasnotes:not(.hasdesc, .haspages, .hasmembers) #posts { grid-column: 2 }
+
+/* General notes styles */
 body.hasnotes #main { display: contents }
 body.hasnotes #posts { margin-right: 1.25em }
 #notes {
