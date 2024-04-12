@@ -72,8 +72,6 @@
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
 
 	<!-- #region Resource imports -->
-	<!-- Google's material icons -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 	<!-- Tippy.js tooltips by atomiks -->
 	<script src="https://unpkg.com/@popperjs/core@2"></script>
 	<script src="https://unpkg.com/tippy.js@6"></script>
@@ -185,7 +183,7 @@
 			{block:IfSearchBar}
 			<!-- SEARCH BAR -->
 			<form action="/search" method="get" id="search" data-collapsed="true">
-				<button id="togglesearch" type="button" data-tippy-content="{lang:Search}"><span class="material-symbols-outlined">search</span></button>
+				<button id="togglesearch" type="button" data-tippy-content="{lang:Search}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" fill="currentColor" /></svg></button>
 				<label for="q" class="hidden">{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
 				<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}"/>
 			</form>
@@ -196,64 +194,64 @@
 				{block:PermalinkPagination} data-tippy-content="{lang:Previous post}"{block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost}{/block:PermalinkPagination}
 				{block:DayPagination} data-tippy-content="{lang:Previous day}"{block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage}{/block:DayPagination}
 			>
-				<span class="material-symbols-outlined">undo</span>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M280-200v-80h284q63 0 109.5-40T720-420q0-60-46.5-100T564-560H312l104 104-56 56-200-200 200-200 56 56-104 104h252q97 0 166.5 63T800-420q0 94-69.5 157T564-200H280Z" fill="currentColor" /></svg>
 			</a>
 			<a id="next"
 				{block:Pagination} data-tippy-content="{lang:Next page}" {block:NextPage}href="{NextPage}"{/block:NextPage}{/block:Pagination}
 				{block:PermalinkPagination} data-tippy-content="{lang:Next post}" {block:NextPost}href="{NextPost}"{/block:NextPost}{/block:PermalinkPagination}
 				{block:DayPagination} data-tippy-content="{lang:Next day}" {block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage}{/block:DayPagination}
 			>
-				<span class="material-symbols-outlined">redo</span>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M396-200q-97 0-166.5-63T160-420q0-94 69.5-157T396-640h252L544-744l56-56 200 200-200 200-56-56 104-104H396q-63 0-109.5 40T240-420q0 60 46.5 100T396-280h284v80H396Z" fill="currentColor" /></svg>
 			</a>
 
 			<hr>
 
 			{block:IfPaletteToggle}
-			<button id="palette" data-tippy-content="Toggle palette" type="button"><span class="material-symbols-outlined">palette</span></button>
+			<button id="palette" data-tippy-content="Toggle palette" type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 32.5-156t88-127Q256-817 330-848.5T488-880q80 0 151 27.5t124.5 76q53.5 48.5 85 115T880-518q0 115-70 176.5T640-280h-74q-9 0-12.5 5t-3.5 11q0 12 15 34.5t15 51.5q0 50-27.5 74T480-80Zm0-400Zm-220 40q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm120-160q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm200 0q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm120 160q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17ZM480-160q9 0 14.5-5t5.5-13q0-14-15-33t-15-57q0-42 29-67t71-25h70q66 0 113-38.5T800-518q0-121-92.5-201.5T488-800q-136 0-232 93t-96 227q0 133 93.5 226.5T480-160Z" fill="currentColor" /></svg></button>
 			{/block:IfPaletteToggle}
 
-			<button id="fontminus" data-tippy-content="Decrease font size"><span class="material-symbols-outlined">remove</span></button>
+			<button id="fontminus" data-tippy-content="Decrease font size"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M200-440v-80h560v80H200Z" fill="currentColor" /></svg></button>
 			<input id="fontsize" type="number" value="16" min="10" max="24" data-tippy-content="Font size" />
-			<button id="fontplus" data-tippy-content="Increase font size"><span class="material-symbols-outlined">add</span></button>
+			<button id="fontplus" data-tippy-content="Increase font size"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" fill="currentColor" /></svg></button>
 
 			<hr>
 
-			<a href="/" class="homelink" data-tippy-content="{lang:Home}"><span class="material-symbols-outlined">home</span></a>
+			<a href="/" class="homelink" data-tippy-content="{lang:Home}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" fill="currentColor" /></svg></a>
 			{block:AskEnabled}
-				<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}" data-tippy-content="{AskLabel}"><span class="material-symbols-outlined">mail</span></a>
+				<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}" data-tippy-content="{AskLabel}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" fill="currentColor" /></svg></a>
 			{/block:AskEnabled}
 			{block:SubmissionsEnabled}
-				<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}" data-tippy-content="{SubmitLabel}"><span class="material-symbols-outlined">inbox</span></a>
+				<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}" data-tippy-content="{SubmitLabel}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-120H640q-30 38-71.5 59T480-240q-47 0-88.5-21T320-320H200v120Zm280-120q38 0 69-22t43-58h168v-360H200v360h168q12 36 43 58t69 22ZM200-200h560-560Z" fill="currentColor" /></svg></a>
 			{/block:SubmissionsEnabled}
 			{block:IfDirectMessageLinkInNavbar}
-				<a href="https://www.tumblr.com/message/{Name}" class="messagelink" data-tippy-content="Message"><span class="material-symbols-outlined">add_comment</span></a>
+				<a href="https://www.tumblr.com/message/{Name}" class="messagelink" data-tippy-content="Message"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M440-400h80v-120h120v-80H520v-120h-80v120H320v80h120v120ZM80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z" fill="currentColor" /></svg></a>
 			{/block:IfDirectMessageLinkInNavbar}
 			{block:IfRandomPostLink}
-				<a href="/random" class="randomlink" data-tippy-content="{lang:Random}"><span class="material-symbols-outlined">shuffle</span></a>
+				<a href="/random" class="randomlink" data-tippy-content="{lang:Random}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M560-160v-80h104L537-367l57-57 126 126v-102h80v240H560Zm-344 0-56-56 504-504H560v-80h240v240h-80v-104L216-160Zm151-377L160-744l56-56 207 207-56 56Z" fill="currentColor" /></svg></a>
 			{/block:IfRandomPostLink}
 			{block:IfArchiveLink}
-				<a href="/archive" class="archivelink" data-tippy-content="{lang:Archive}"><span class="material-symbols-outlined">archive</span></a>
+				<a href="/archive" class="archivelink" data-tippy-content="{lang:Archive}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m480-240 160-160-56-56-64 64v-168h-80v168l-64-64-56 56 160 160ZM200-640v440h560v-440H200Zm0 520q-33 0-56.5-23.5T120-200v-499q0-14 4.5-27t13.5-24l50-61q11-14 27.5-21.5T250-840h460q18 0 34.5 7.5T772-811l50 61q9 11 13.5 24t4.5 27v499q0 33-23.5 56.5T760-120H200Zm16-600h528l-34-40H250l-34 40Zm264 300Z" fill="currentColor" /></svg></a>
 			{/block:IfArchiveLink}
 
 			<hr>
 			
-			<a id="blogcredit" data-tippy-content="{Name} © {CopyrightYears}"><span class="material-symbols-outlined">info</span></a>
+			<a id="blogcredit" data-tippy-content="{Name} © {CopyrightYears}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" fill="currentColor" /></svg></a>
 
 			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
-			<a id="credit" href="https://starlightthemes.tumblr.com/docstheme" data-tippy-content="{lang:Install this theme}"><span class="material-symbols-outlined">code</span></a>
+			<a id="credit" href="https://starlightthemes.tumblr.com/docstheme" data-tippy-content="{lang:Install this theme}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z" fill="currentColor" /></svg></a>
 			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
 		</div>
 
 		<div class="right">
 			<span>
-				<span class="material-symbols-outlined">visibility</span>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z" fill="currentColor" /></svg>
 				Viewing
 			</span>
 
 			<hr>
 
 			<!-- BACK TO TOP BUTTON -->
-			<button id="scrolltotop" data-tippy-content="{lang:Back to top}" type="button" disabled><span class="material-symbols-outlined">expand_less</span></button>
+			<button id="scrolltotop" data-tippy-content="{lang:Back to top}" type="button" disabled><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m296-345-56-56 240-240 240 240-56 56-184-184-184 184Z" fill="currentColor" /></svg></button>
 		</div>
 	</nav>
 </header>
@@ -261,8 +259,8 @@
 
 <aside id="left">
 	<!-- Show/hide buttons -->
-	<button id="showleft" type="button" data-tippy-content="Show blog outline" disabled="true"><span class="material-symbols-outlined">format_list_bulleted</span></button>
-	<button id="hideleft" type="button" data-tippy-content="Close blog outline"><span class="material-symbols-outlined">arrow_back</span></button>
+	<button id="showleft" type="button" data-tippy-content="Show blog outline" disabled="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M360-200v-80h480v80H360Zm0-240v-80h480v80H360Zm0-240v-80h480v80H360ZM200-160q-33 0-56.5-23.5T120-240q0-33 23.5-56.5T200-320q33 0 56.5 23.5T280-240q0 33-23.5 56.5T200-160Zm0-240q-33 0-56.5-23.5T120-480q0-33 23.5-56.5T200-560q33 0 56.5 23.5T280-480q0 33-23.5 56.5T200-400Zm0-240q-33 0-56.5-23.5T120-720q0-33 23.5-56.5T200-800q33 0 56.5 23.5T280-720q0 33-23.5 56.5T200-640Z" fill="currentColor" /></svg></button>
+	<button id="hideleft" type="button" data-tippy-content="Close blog outline"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" fill="currentColor" /></svg></button>
 
 	<div id="leftcontent">
 		{block:ShowDescription}{block:Description}
@@ -885,9 +883,9 @@ function createPostFooter(wrapper, postData) {
 		lrdwrapper.classList.add("wrapper");
 		footer.append(lrd);
 		lrd.append(lrdwrapper);
-		{block:IfLikeButtons}makeLike(lrdwrapper, postData, {});{/block:IfLikeButtons}
-		{block:IfReblogButtons}makeReblog(lrdwrapper, postData, `<span class="material-symbols-outlined">repeat</span>`);{/block:IfReblogButtons}
-		{block:IfDayPageLinks}makeDayLink(lrdwrapper, postData, `<span class="material-symbols-outlined">schedule</span>`);{/block:IfDayPageLinks}
+		{block:IfLikeButtons}makeLike(lrdwrapper, postData, {l: "l"});{/block:IfLikeButtons}
+		{block:IfReblogButtons}makeReblog(lrdwrapper, postData, `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M280-80 120-240l160-160 56 58-62 62h406v-160h80v240H274l62 62-56 58Zm-80-440v-240h486l-62-62 56-58 160 160-160 160-56-58 62-62H280v160h-80Z" fill="currentColor" /></svg>`);{/block:IfReblogButtons}
+		{block:IfDayPageLinks}makeDayLink(lrdwrapper, postData, `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z" fill="currentColor" /></svg>`);{/block:IfDayPageLinks}
 	}
 
 	{block:IfPostTags}makeTags(footer, postData);{/block:IfPostTags}
@@ -917,8 +915,8 @@ function makeLike(wrapper, postData, icons = null) {
 	};
 	if (icons !== null) {
 		let likons = Object.assign({
-			like: `<span class="material-symbols-outlined">favorite</span>`,
-			unlike: `<span class="material-symbols-outlined">heart_minus</span>`,
+			like: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z" fill="currentColor" /></svg>`, // favorite
+			unlike: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z" fill="currentColor" /></svg>`, // heart_minus
 		}, icons);
 		likeButton.innerHTML += `<span class="to-like">${likons.like}</span>`
 		likeButton.innerHTML += `<span class="to-unlike">${likons.unlike}</span>`
@@ -1258,7 +1256,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		if (i === rows?.truncate_after && !expand) {
 			let readmore = document.createElement("a");
 			readmore.classList.add("filechip", "readmore");
-			readmore.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" preserveAspectRatio="none" x="0" y="0" viewBox="2 2 15 15"><path xmlns="http://www.w3.org/2000/svg" fill="currentColor" d="M14.5 2h-11C2.67 2 2 2.67 2 3.5v11c0 .83.67 1.5 1.5 1.5h11c.83 0 1.5-.67 1.5-1.5v-11c0-.83-.67-1.5-1.5-1.5zM11 13H5v-1.5h6V13zm2-3.25H5v-1.5h8v1.5zm0-3.25H5V5h8v1.5z"/></svg>`;
+			readmore.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" preserveAspectRatio="none" x="0" y="0" viewBox="2 2 15 15"><path xmlns="http://www.w3.org/2000/svg" fill="currentColor" d="M14.5 2h-11C2.67 2 2 2.67 2 3.5v11c0 .83.67 1.5 1.5 1.5h11c.83 0 1.5-.67 1.5-1.5v-11c0-.83-.67-1.5-1.5-1.5zM11 13H5v-1.5h6V13zm2-3.25H5v-1.5h8v1.5zm0-3.25H5V5h8v1.5z" fill="currentColor" /></svg>`;
 			readmore.append("{lang:Read more}");
 			body.append(readmore);
 			
@@ -1650,7 +1648,12 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 				hasResults = ((new Date()) > expiryDate) && blogViewLink.length;
 
 			// Create answers
-			let answer, answerText;
+			let answer, answerText,
+				pollIcons = {
+					timeout: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M280-440h400v-80H280v80Zm-80 320q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" fill="currentColor" /></svg>`, // indeterminate_check_box
+					option: `<svg class="empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Z" fill="currentColor" /></svg>`, // check_box_outline_blank
+					optionChecked: `<svg class="checked" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m424-312 282-282-56-56-226 226-114-114-56 56 170 170ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" fill="currentColor" /></svg>`, // check_box
+				};
 			curr.answers.forEach(a => {
 				answer = document.createElement("a");
 				answer.classList.add("option");
@@ -1658,7 +1661,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 					answer.href = blogViewLink;
 					answer.target = "_blank";
 				}
-				answer.innerHTML = hasResults ? `<span class="material-symbols-outlined">indeterminate_check_box</span>` : `<span class="material-symbols-outlined empty">check_box_outline_blank</span><span class="material-symbols-outlined checked">check_box</span>`;
+				answer.innerHTML = hasResults ? pollIcons.timeout : pollIcons.option + pollIcons.optionChecked;
 				answerText = document.createElement("p");
 				answerText.innerText = a.answer_text;
 				answer.append(answerText);
@@ -1672,7 +1675,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 				seeResults.classList.add("filechip");
 				seeResults.href = blogViewLink;
 				seeResults.target = "_blank";
-				seeResults.innerHTML = `<span class="material-symbols-outlined">bar_chart</span>`;
+				seeResults.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M640-160v-280h160v280H640Zm-240 0v-640h160v640H400Zm-240 0v-440h160v440H160Z" fill="currentColor" /></svg>`; // bar_chart
 				seeResults.append("See Results");
 				bit.append(seeResults);
 				bit.classList.add("complete");
@@ -1707,14 +1710,14 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	// Uses Phosphor icons by default
 	// All icons need matching classes, except for skip to start/end
 	let icons = Object.assign({
-		audio: '<span class="material-symbols-outlined">headphones</span>',
-		play: '<span class="play material-symbols-outlined">play_arrow</span>',
-		pause: '<span class="pause material-symbols-outlined">pause</span>',
-		download: '<span class="material-symbols-outlined">download</span>',
-		mute: '<span class="mute material-symbols-outlined">volume_up</span>',
-		unmute: '<span class="unmute material-symbols-outlined">volume_off</span>',
-		repeat: '<span class="repeat material-symbols-outlined">repeat</span>',
-		unrepeat: '<span class="unrepeat material-symbols-outlined">repeat_one</span>',
+		audio: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M360-120H200q-33 0-56.5-23.5T120-200v-280q0-75 28.5-140.5t77-114q48.5-48.5 114-77T480-840q75 0 140.5 28.5t114 77q48.5 48.5 77 114T840-480v280q0 33-23.5 56.5T760-120H600v-320h160v-40q0-117-81.5-198.5T480-760q-117 0-198.5 81.5T200-480v40h160v320Zm-80-240h-80v160h80v-160Zm400 0v160h80v-160h-80Zm-400 0h-80 80Zm400 0h80-80Z" fill="currentColor" /></svg>', // headphones
+		play: '<svg class="play" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z" fill="currentColor" /></svg>', // play_arrow
+		pause: '<svg class="pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M520-200v-560h240v560H520Zm-320 0v-560h240v560H200Zm400-80h80v-400h-80v400Zm-320 0h80v-400h-80v400Zm0-400v400-400Zm320 0v400-400Z" fill="currentColor" /></svg>', // pause
+		download: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" fill="currentColor" /></svg>', // download
+		mute: '<svg class="mute" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M560-131v-82q90-26 145-100t55-168q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 127-78 224.5T560-131ZM120-360v-240h160l200-200v640L280-360H120Zm440 40v-322q47 22 73.5 66t26.5 96q0 51-26.5 94.5T560-320ZM400-606l-86 86H200v80h114l86 86v-252ZM300-480Z" fill="currentColor" /></svg>', // volume_up
+		unmute: '<svg class="unmute" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M792-56 671-177q-25 16-53 27.5T560-131v-82q14-5 27.5-10t25.5-12L480-368v208L280-360H120v-240h128L56-792l56-56 736 736-56 56Zm-8-232-58-58q17-31 25.5-65t8.5-70q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 53-14.5 102T784-288ZM650-422l-90-90v-130q47 22 73.5 66t26.5 96q0 15-2.5 29.5T650-422ZM480-592 376-696l104-104v208Zm-80 238v-94l-72-72H200v80h114l86 86Zm-36-130Z" fill="currentColor" /></svg>', // volume_off
+		repeat: '<svg class="repeat" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M280-80 120-240l160-160 56 58-62 62h406v-160h80v240H274l62 62-56 58Zm-80-440v-240h486l-62-62 56-58 160 160-160 160-56-58 62-62H280v160h-80Z" fill="currentColor" /></svg>', // repeat
+		unrepeat: '<svg class="unrepeat" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M460-360v-180h-60v-60h120v240h-60ZM280-80 120-240l160-160 56 58-62 62h406v-160h80v240H274l62 62-56 58Zm-80-440v-240h486l-62-62 56-58 160 160-160 160-56-58 62-62H280v160h-80Z" fill="currentColor" /></svg>', // repeat_one
 	}, defaultIcons);
 
 	wrapper = document.createElement("div");
