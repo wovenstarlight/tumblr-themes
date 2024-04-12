@@ -420,7 +420,7 @@ body[data-sidebar-collapsed] #left #showleft {
 	height: 100%;
 	transform: translateX(50%);
 	padding-block: 4.5em;
-	transition: opacity 0.4s;
+	transition: opacity 0.3s;
 }
 .post:not(:hover, :focus-within) .lrd {
 	opacity: 0;
