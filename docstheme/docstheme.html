@@ -392,6 +392,17 @@ let lightboxIndex = null;
  * @type {?HTMLElement}
  */
 let comingFrom = null;
+
+/** For use with Tippy tooltips. Standard themeing for all tooltips. */
+let tippyOptions = {
+	// Basic layout
+	theme: "docs",
+	placement: "bottom",
+	arrow: false,
+	delay: [300, 100], // Delay show/hide after cursor enters/leaves
+	duration: 0, // Don't fade in/out
+	offset: [0, 5], // Align with bottom of navbar
+};
 // #endregion
 
 
@@ -723,20 +734,16 @@ if ((subtitle = document.getElementById("subtitle")).textContent.length === 0) {
 	subtitle.append(label);
 }
 
-// Set up tooltips
-let tippyOptions = {
-	// Basic layout
-	theme: "docs",
-	placement: "bottom",
-	arrow: false,
-	delay: [300, 100], // Delay show/hide after cursor enters/leaves
-	duration: 0, // Don't fade in/out
-	offset: [0, 5], // Align with bottom of navbar
-}
+// #region Set up tooltips
+// Top left icon
 tippy("#docs[data-tippy-content]", tippyOptions);
-tippy.createSingleton(tippy("#blognav [data-tippy-content]"), tippyOptions);
+// Singletons for the button groups: navbar, sidebar, and via/source links in posts
+var navTooltips = tippy.createSingleton(tippy("#blognav [data-tippy-content]"), tippyOptions);
 tippy.createSingleton(tippy("#left [data-tippy-content]"), tippyOptions);
 tippy.createSingleton(tippy(".post [data-tippy-content]"), tippyOptions);
+// Prepare variables for notes section's tooltips
+var notesTooltipInstances, notesTooltips;
+// #endregion
 // #endregion
 // #endregion
 
@@ -2115,10 +2122,28 @@ function cleanNotes() {
 			note.firstChild.children[1].innerText = note.firstChild.children[1].innerText.substring(0, note.firstChild.children[1].innerText.length - 1)
 		}
 
+		// Replace [title] with [data-tippy-content]
+		note.querySelectorAll("[title]:not([title=''])").forEach(el => {
+			el.setAttribute("data-tippy-content", el.title);
+			el.removeAttribute("title");
+		})
+
 		// Mark note as cleaned
 		note.classList.add("cleaned");
 	})
+
+	// Create a new singleton tooltip for the full notes section
+	notesTooltipInstances = tippy("#notes [data-tippy-content]");
+	notesTooltips = tippy.createSingleton(notesTooltipInstances, tippyOptions);
 }
+
+/** Removes note tooltips in preparation for new set of notes to be added. */
+function tumblrNotesLoaded() {
+	// Remove the last singleton and its instances
+	notesTooltips?.destroy();
+	notesTooltipInstances?.forEach(instance => instance.destroy());
+}
+/** Cleans up notes and adds tooltips back in. */
 function tumblrNotesInserted() { cleanNotes() }
 // #endregion
 
