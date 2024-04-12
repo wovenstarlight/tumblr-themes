@@ -694,10 +694,10 @@ hideleft.addEventListener("click", hideSidebar);
 // #endregion
 
 // #region Remaining page functionality (accessibility features)
-// Set up keyboard navigation
-keyboardNav();
+// Keyboard navigation moved to very end, after the "Visual extras" region,
+// in order to prevent errors being thrown in Customize preview window.
 
-// Palette
+// #region Palette
 document.getElementById("palette").addEventListener("click", () => {
 	let added = document.body.parentElement.classList.toggle("alt");
 
@@ -707,8 +707,9 @@ document.getElementById("palette").addEventListener("click", () => {
 // Persistence
 if ((palette = localStorage.getItem("palette")) !== null)
 	palette === "alt" ? document.body.parentElement.classList.add("alt") : document.body.parentElement.classList.remove("alt");
+// #endregion
 
-// Font sizing
+// #region Font sizing
 let fontsize = document.getElementById("fontsize"),
 	fontplus = document.getElementById("fontplus"),
 	fontminus = document.getElementById("fontminus");
@@ -770,8 +771,9 @@ function fontSizeSetter(sizeValue) {
 // Persistence
 if ((size = localStorage.getItem("fontsize")) !== null)
 	fontSizeSetter(parseInt(size));
+// #endregion
 
-// Scroll to top
+// #region Scroll to top
 (scrolltotop = document.getElementById("scrolltotop")).addEventListener("click", () => {
 	window.scrollTo({
 		top: 0,
@@ -786,6 +788,7 @@ document.addEventListener("scroll", () => {
 		scrolltotop.removeAttribute("disabled");
 	}
 })
+// #endregion
 // #endregion
 
 // #region Visual extras for page
@@ -826,6 +829,11 @@ tippy.createSingleton(tippy(".post [data-tippy-content]"), tippyOptions);
 var notesTooltipInstances, notesTooltips;
 // #endregion
 // #endregion
+
+// Set up keyboard navigation
+keyboardNav({
+	postOffset: 110,
+});
 // #endregion
 
 
