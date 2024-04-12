@@ -869,12 +869,15 @@ function createPostFooter(wrapper, postData) {
 	makeViaSource(vsn, postData);
 
 	if ({block:IfLikeButtons}true{/block:IfLikeButtons}{block:IfNotLikeButtons}false{/block:IfNotLikeButtons} || {block:IfReblogButtons}true{/block:IfReblogButtons}{block:IfNotReblogButtons}false{/block:IfNotReblogButtons} || {block:IfDayPageLinks}true{/block:IfDayPageLinks}{block:IfNotDayPageLinks}false{/block:IfNotDayPageLinks}) {
-		let lrd = document.createElement("span");
+		let lrd = document.createElement("span"),
+			lrdwrapper = document.createElement("span");
 		lrd.classList.add("lrd");
+		lrdwrapper.classList.add("wrapper");
 		footer.append(lrd);
-		{block:IfLikeButtons}makeLike(lrd, postData);{/block:IfLikeButtons}
-		{block:IfReblogButtons}makeReblog(lrd, postData);{/block:IfReblogButtons}
-		{block:IfDayPageLinks}makeDayLink(lrd, postData);{/block:IfDayPageLinks}
+		lrd.append(lrdwrapper);
+		{block:IfLikeButtons}makeLike(lrdwrapper, postData, {});{/block:IfLikeButtons}
+		{block:IfReblogButtons}makeReblog(lrdwrapper, postData, `<span class="material-symbols-outlined">repeat</span>`);{/block:IfReblogButtons}
+		{block:IfDayPageLinks}makeDayLink(lrdwrapper, postData, `<span class="material-symbols-outlined">schedule</span>`);{/block:IfDayPageLinks}
 	}
 
 	{block:IfPostTags}makeTags(footer, postData);{/block:IfPostTags}
@@ -885,9 +888,11 @@ function createPostFooter(wrapper, postData) {
  * Creates a like button for a given post.
  * @param {HTMLElement} wrapper The child element of the post to which the like button will be added. Usually the footer.
  * @param {Object} postData This post's data, containing relevant information to create the like button with.
- * @param {?string} icon An HTML string representing the icon for the like button, or null if a text label should be used.
+ * @param {Object} [icons=null] HTML strings representing the icons to use for the like and unlike buttons, or null if a text label should be used.
+ * @param {string} icons.like The icon to use as the "like" button (typically an unfilled heart).
+ * @param {string} icons.unlike The icon to use as the "unlike" button (typically a filled heart).
  */
-function makeLike(wrapper, postData, icon = null) {
+function makeLike(wrapper, postData, icons = null) {
 	// Make element
 	let likeButton = document.createElement("a");
 	likeButton.href = "#";
@@ -896,18 +901,25 @@ function makeLike(wrapper, postData, icon = null) {
 	wrapper.append(likeButton);
 	
 	// Icon or text, as needed
-	let label = `<span class="to-like">{block:English}Like{/block:English}{block:German}Liken{/block:German}{block:French}J'aime{/block:French}{block:Italian}Mi piace{/block:Italian}{block:Japanese}スキ{/block:Japanese}{block:Turkish}Beğen{/block:Turkish}{block:Spanish}Me gusta{/block:Spanish}{block:Russian}Нравится{/block:Russian}{block:Polish}Lubię{/block:Polish}{block:PortuguesePT}Gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir{/block:PortugueseBR}{block:Dutch}Vind ik leuk{/block:Dutch}{block:Korean}좋아요{/block:Korean}{block:ChineseSimplified}喜欢{/block:ChineseSimplified}{block:ChineseTraditional}喜歡{/block:ChineseTraditional}{block:ChineseHK}喜歡{/block:ChineseHK}{block:Indonesian}Suka{/block:Indonesian}{block:Hindi}पसंद करें{/block:Hindi}</span>`;
-	if (icon !== null) {
-		// Assumes icon is an HTML string
-		likeButton.innerHTML += icon;
-		likeButton.setAttribute("data-tippy-content", label);
+	let labels = {
+		like: `{block:English}Like{/block:English}{block:German}Liken{/block:German}{block:French}J'aime{/block:French}{block:Italian}Mi piace{/block:Italian}{block:Japanese}スキ{/block:Japanese}{block:Turkish}Beğen{/block:Turkish}{block:Spanish}Me gusta{/block:Spanish}{block:Russian}Нравится{/block:Russian}{block:Polish}Lubię{/block:Polish}{block:PortuguesePT}Gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir{/block:PortugueseBR}{block:Dutch}Vind ik leuk{/block:Dutch}{block:Korean}좋아요{/block:Korean}{block:ChineseSimplified}喜欢{/block:ChineseSimplified}{block:ChineseTraditional}喜歡{/block:ChineseTraditional}{block:ChineseHK}喜歡{/block:ChineseHK}{block:Indonesian}Suka{/block:Indonesian}{block:Hindi}पसंद करें{/block:Hindi}`,
+		unlike: `{block:English}Unlike{/block:English}{block:German}Entliken{/block:German}{block:French}Je n'aime plus{/block:French}{block:Italian}Non mi piace{/block:Italian}{block:Japanese}スキ解除{/block:Japanese}{block:Turkish}Beğenme{/block:Turkish}{block:Spanish}Ya no me gusta{/block:Spanish}{block:Russian}Не нравится{/block:Russian}{block:Polish}Nie lubię{/block:Polish}{block:PortuguesePT}Deixar de gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir (desfazer){/block:PortugueseBR}{block:Dutch}Vind ik niet meer leuk{/block:Dutch}{block:Korean}좋아요 취소{/block:Korean}{block:ChineseSimplified}取消喜欢{/block:ChineseSimplified}{block:ChineseTraditional}收回喜歡{/block:ChineseTraditional}{block:ChineseHK}收回喜歡{/block:ChineseHK}{block:Indonesian}Tidak Suka{/block:Indonesian}{block:Hindi}पसंद हटाएँ{/block:Hindi}`
+	};
+	if (icons !== null) {
+		let likons = Object.assign({
+			like: `<span class="material-symbols-outlined">favorite</span>`,
+			unlike: `<span class="material-symbols-outlined">heart_minus</span>`,
+		}, icons);
+		likeButton.innerHTML += `<span class="to-like">${likons.like}</span>`
+		likeButton.innerHTML += `<span class="to-unlike">${likons.unlike}</span>`
+		likeButton.setAttribute("data-tippy-content", labels.like);
 	}
 	else {
 		// No icon provided; use text labels
 		// Like text
-		likeButton.innerHTML += label;
+		likeButton.innerHTML += `<span class="to-like">${labels.like}</span>`;
 		// Unlike text
-		likeButton.innerHTML += `<span class="to-unlike">{block:English}Unlike{/block:English}{block:German}Entliken{/block:German}{block:French}Je n'aime plus{/block:French}{block:Italian}Non mi piace{/block:Italian}{block:Japanese}スキ解除{/block:Japanese}{block:Turkish}Beğenme{/block:Turkish}{block:Spanish}Ya no me gusta{/block:Spanish}{block:Russian}Не нравится{/block:Russian}{block:Polish}Nie lubię{/block:Polish}{block:PortuguesePT}Deixar de gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir (desfazer){/block:PortugueseBR}{block:Dutch}Vind ik niet meer leuk{/block:Dutch}{block:Korean}좋아요 취소{/block:Korean}{block:ChineseSimplified}取消喜欢{/block:ChineseSimplified}{block:ChineseTraditional}收回喜歡{/block:ChineseTraditional}{block:ChineseHK}收回喜歡{/block:ChineseHK}{block:Indonesian}Tidak Suka{/block:Indonesian}{block:Hindi}पसंद हटाएँ{/block:Hindi}</span>`;
+		likeButton.innerHTML += `<span class="to-unlike">${labels.unlike}</span>`;
 	}
 }
 

@@ -6,14 +6,14 @@ body {
 	font-family: var(--base-font);
 	display: grid;
 	/* Including right-hand margins in the minimum widths, so this is actually 17em 51em [remainder] */
-	grid-template-columns: minmax(17.5em, 1fr) minmax(1px, 52.25rem) 1fr;
+	grid-template-columns: minmax(17.5em, 1fr) minmax(1px, 53rem) 1fr;
 	/* Prevent header from expanding on pages with minimal #main content */
 	grid-template-rows: auto 1fr;
 	row-gap: 0.5em;
 }
 /* #region For when there's nothing in the sidebar */
 body:not(.hasdesc, .haspages, .hasmembers) {
-	grid-template-columns: 1fr minmax(1px, 52.25rem) 1fr;
+	grid-template-columns: 1fr minmax(1px, 53rem) 1fr;
 }
 body:not(.hasdesc, .haspages, .hasmembers) #main {
 	grid-column: 2;
@@ -21,7 +21,7 @@ body:not(.hasdesc, .haspages, .hasmembers) #main {
 body:not(.hasdesc, .haspages, .hasmembers) #left { display: none !important }
 /* #endregion */
 body[data-sidebar-collapsed] {
-	grid-template-columns: minmax(5.3em, 1fr) minmax(1px, 52.25rem) 1fr;
+	grid-template-columns: minmax(5.3em, 1fr) minmax(1px, 53rem) 1fr;
 }
 a {
 	color: var(--accent);
@@ -363,7 +363,7 @@ body[data-sidebar-collapsed] #left #showleft {
 
 
 /* #region Posts section */
-#main { margin-right: 1.25em }
+#main { margin-right: 2em }
 #posts {
 	display: flex;
 	flex-direction: column;
@@ -400,9 +400,49 @@ body[data-sidebar-collapsed] #left #showleft {
 	justify-content: center;
 }
 .post > footer .vsn:empty,
-.post > footer .lr:empty,
+.post > footer .lrd:empty,
 .post > footer .tags:empty { display: none }
 .post > footer .tags a { text-align: center }
+
+/* #region Like/reblog/day menu on side */
+.post { position: relative }
+.lrd {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	transform: translateX(50%);
+	padding-block: 5em;
+	transition: opacity 0.4s;
+}
+.post:not(:hover, :focus-within) .lrd {
+	opacity: 0;
+	pointer-events: none;
+}
+.lrd .wrapper {
+	display: flex;
+	flex-direction: column;
+	height: fit-content;
+	position: sticky;
+	top: 10em;
+	background-color: var(--bg);
+	box-shadow: 0 0.25em 0.75em rgba(var(--text--rgb), 0.4);
+	border-radius: 5em;
+	overflow: hidden;
+}
+.lrd .wrapper a {
+	padding: 0.5em;
+	--extrapadding: 0.6em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	line-height: 1;
+}
+.lrd .wrapper a:first-child { padding-block-start: var(--extrapadding) }
+.lrd .wrapper a:last-child { padding-block-end: var(--extrapadding) }
+.lrd .wrapper a:hover, .lrd .wrapper a:focus-within { background-color: rgba(var(--accent--rgb), 0.1) }
+/* #endregion */
 
 /* #region Like button */
 .customlike { position: relative }
@@ -886,14 +926,14 @@ hr.readmore {
 /* #region Post notes */
 /* Add extra column for the notes area */
 body.hasnotes {
-	grid-template-columns: minmax(17.5em, 1fr) minmax(1px, 52.25rem) 1fr minmax(20em, 1fr);
+	grid-template-columns: minmax(17.5em, 1fr) minmax(1px, 53rem) 1fr minmax(20em, 1fr);
 }
 body.hasnotes[data-sidebar-collapsed] {
-	grid-template-columns: minmax(5.3em, 1fr) minmax(1px, 52.25rem) 1fr minmax(20em, 1fr);
+	grid-template-columns: minmax(5.3em, 1fr) minmax(1px, 53rem) 1fr minmax(20em, 1fr);
 }
 /* When sidebar is absent, don't adjust leftmost column, and force posts section to be centered */
 body.hasnotes:not(.hasdesc, .haspages, .hasmembers) {
-	grid-template-columns: 1fr minmax(1px, 52.25rem) 1fr minmax(20em, 1fr);
+	grid-template-columns: 1fr minmax(1px, 53rem) 1fr minmax(20em, 1fr);
 }
 body.hasnotes:not(.hasdesc, .haspages, .hasmembers) #posts { grid-column: 2 }
 
@@ -1096,9 +1136,8 @@ body.hasnotes #posts { margin-right: 1.25em }
 	/* #endregion */
 	
 	/* Pad posts */
-	#main {
-		margin-inline: min(1.25em, 2vw);
-	}
+	#main { margin-inline: min(1.25em, 2vw) }
+	.lrd { transform: translateX(min(0.75em, 1vw)) }
 }
 
 /* #region For permalink pages with notes */
@@ -1172,9 +1211,8 @@ body.hasnotes #posts { margin-right: 1.25em }
 	/* #endregion */
 	
 	/* Pad posts */
-	body.hasnotes #main {
-		margin-inline: min(1.25em, 2vw);
-	}
+	body.hasnotes #main { margin-inline: min(1.25em, 2vw) }
+	body.hasnotes .lrd { transform: translateX(min(0.75em, 1vw)) }
 }
 /* #endregion */
 /* #endregion */
