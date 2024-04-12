@@ -253,7 +253,7 @@
 
 <aside id="left">
 	<!-- Show/hide buttons -->
-	<button id="showleft" type="button" data-tippy-content="Show blog outline"><span class="material-symbols-outlined">format_list_bulleted</span></button>
+	<button id="showleft" type="button" data-tippy-content="Show blog outline" disabled="true"><span class="material-symbols-outlined">format_list_bulleted</span></button>
 	<button id="hideleft" type="button" data-tippy-content="Close blog outline"><span class="material-symbols-outlined">arrow_back</span></button>
 
 	<div id="leftcontent">
@@ -404,6 +404,17 @@ let lightboxIndex = null;
  * @type {?HTMLElement}
  */
 let comingFrom = null;
+
+/**
+ * For use with the sidebar. The "open sidebar" button.
+ * @type {HTMLButtonElement}
+ */
+let showleft = document.getElementById("showleft");
+/**
+ * For use with the sidebar. The "close sidebar" button.
+ * @type {HTMLButtonElement}
+ */
+let hideleft = document.getElementById("hideleft");
 
 {block:IfFilteredTags}
 /**
@@ -643,7 +654,7 @@ document.querySelectorAll("img.lightboxable").forEach(obj => {
 
 // Add post notes on permalink pages
 if (document.body.classList.contains("permalink") && posts.at(0)?.postNotes) {
-	document.body.setAttribute("data-sidebar-collapsed", true);
+	hideSidebar();
 	document.body.classList.add("hasnotes")
 	createNotes(posts[0].postNotes);
 }
@@ -659,12 +670,19 @@ document.getElementById("search")?.removeAttribute("data-collapsed");
 {/block:SearchPage}
 
 // Sidebar show/hide
-document.getElementById("showleft").addEventListener("click", () => {
+function showSidebar() {
 	document.body.removeAttribute("data-sidebar-collapsed");
-})
-document.getElementById("hideleft").addEventListener("click", () => {
+	showleft.setAttribute("disabled", "true");
+	hideleft.removeAttribute("disabled");
+}
+function hideSidebar() {
 	document.body.setAttribute("data-sidebar-collapsed", true);
-})
+	hideleft.setAttribute("disabled", "true");
+	showleft.removeAttribute("disabled");
+}
+
+showleft.addEventListener("click", showSidebar);
+hideleft.addEventListener("click", hideSidebar);
 // #endregion
 
 // #region Remaining page functionality (accessibility features)
