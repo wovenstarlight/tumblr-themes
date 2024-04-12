@@ -403,6 +403,7 @@ body[data-sidebar-collapsed] #left #showleft {
 .post > footer .lr:empty,
 .post > footer .tags:empty { display: none }
 .post > footer .tags a { text-align: center }
+
 /* #region Like button */
 .customlike { position: relative }
 .customlike .like_button, .customlike iframe {
@@ -419,6 +420,11 @@ body[data-sidebar-collapsed] #left #showleft {
 .customlike .like_button:not(.liked) ~ .to-unlike,
 .customlike .like_button.liked ~ .to-like { display: none }
 /* #endregion */
+
+/* Hide empty headers/footers */
+.post > header:empty, .post > footer:empty { display: none }
+.post:has(> header:empty) .body { padding-block-start: 3.7em }
+.post:has(> footer:empty) .body { padding-block-end: 3.7em }
 /* #endregion */
 
 /* #region Trail item user labels */

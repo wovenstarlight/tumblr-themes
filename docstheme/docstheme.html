@@ -57,6 +57,9 @@
 	<!-- Posts section -->
 	<meta name="if:Use legacy format for post media" content="0">
 	<meta name="text:Filtered tags" content="text post, long post">
+	<meta name="if:Like buttons" content="1">
+	<meta name="if:Reblog buttons" content="1">
+	<meta name="if:Post tags" content="1">
 	<!-- #endregion -->
 	{/block:Hidden}
 	
@@ -864,13 +867,15 @@ function createPostFooter(wrapper, postData) {
 	makeNoteCount(vsn, postData);
 	makeViaSource(vsn, postData);
 
-	let lr = document.createElement("span");
-	lr.classList.add("lr");
-	footer.append(lr);
-	makeLike(lr, postData);
-	makeReblog(lr, postData);
+	if ({block:IfLikeButtons}true{/block:IfLikeButtons}{block:IfNotLikeButtons}false{/block:IfNotLikeButtons} || {block:IfReblogButtons}true{/block:IfReblogButtons}{block:IfNotReblogButtons}false{/block:IfNotReblogButtons}) {
+		let lr = document.createElement("span");
+		lr.classList.add("lr");
+		footer.append(lr);
+		{block:IfLikeButtons}makeLike(lr, postData);{/block:IfLikeButtons}
+		{block:IfReblogButtons}makeReblog(lr, postData);{/block:IfReblogButtons}
+	}
 
-	makeTags(footer, postData);
+	{block:IfPostTags}makeTags(footer, postData);{/block:IfPostTags}
 }
 
 // #region Helpers
