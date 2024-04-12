@@ -600,8 +600,8 @@ posts.forEach(post => {
 	// User has provided tags to filter. Check each post's tags and add a filter message
 	let filters = post.tags.filter(tag => filteredTags.includes(tag.name.toLowerCase()));
 	if (filters.length > 0) {
-		// Hide post
-		article.style.display = "none";
+		// Hide post content
+		article.classList.add("filtered");
 		
 		// Assemble and insert filter message
 		let msg = document.createElement("div"),
@@ -609,10 +609,10 @@ posts.forEach(post => {
 			tagList = document.createElement("p"),
 			btn = document.createElement("button");
 		msg.append(warning, tagList, btn);
-		postContainer.insertBefore(msg, article);
+		article.insertBefore(msg, article.firstElementChild);
 		
 		// Add classes
-		msg.classList.add("post", "filter");
+		msg.classList.add("filter");
 		tagList.classList.add("tags");
 		
 		// Add text to all elements
@@ -623,7 +623,7 @@ posts.forEach(post => {
 		// Set up viewing function
 		btn.addEventListener("click", () => {
 			msg.remove();
-			article.removeAttribute("style");
+			article.classList.remove("filtered");
 		});
 	}
 	{/block:IfFilteredTags}

@@ -969,9 +969,10 @@ body.hasnotes #posts { margin-right: 1.25em }
 /* #endregion */
 
 /* #region Filtered posts */
-.post.filter { text-align: center }
-.post.filter .tags { color: var(--accent) }
-.post.filter button {
+.filtered.post > :not(.filter) { display: none }
+.filtered.post .filter { text-align: center }
+.filtered.post .filter .tags { color: var(--accent) }
+.filtered.post .filter button {
 	border: none;
 	background-color: var(--accent);
 	color: var(--bg);
@@ -980,7 +981,7 @@ body.hasnotes #posts { margin-right: 1.25em }
 	border-radius: 1.75em;
 	margin-block-start: 1em;
 }
-.post.filter button:hover, .post.filter button:focus {
+.filtered.post .filter button:hover, .filtered.post .filter button:focus {
 	background-color: rgba(var(--accent--rgb), 0.85);
 	box-shadow: 0 0.15em 0.5em rgba(var(--text--rgb), 0.25)
 }
