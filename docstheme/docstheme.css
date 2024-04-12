@@ -183,6 +183,8 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 	border-inline-start: 0.0125em solid rgba(var(--text--rgb), 0.22);
 	margin: 0 0.1875em;
 }
+/* Hide dividers if nothing to divide */
+#blognav hr:first-child, #blognav hr:last-child { display: none }
 /* #region Search form */
 #search:not([data-collapsed]) {
 	background-color: var(--post-bg);
