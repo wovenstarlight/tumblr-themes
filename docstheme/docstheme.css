@@ -165,10 +165,11 @@ body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
 	border-radius: 0.25em;
 }
 #blognav .material-symbols-outlined { font-size: 1.25em }
-#blognav a:not([href]) {
+#blognav a:not([href], #blogcredit) {
 	color: rgba(var(--text--rgb), 0.25);
 	text-shadow: 0 0 rgba(var(--accent--rgb), 0.1);
 }
+#blognav #blogcredit { cursor: help }
 #blognav button:hover, #blognav a[href]:hover,
 #blognav .right > span:hover {
 	background-color: rgba(var(--text--rgb), 0.05);
