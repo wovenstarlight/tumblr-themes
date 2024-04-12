@@ -967,6 +967,24 @@ body.hasnotes #posts { margin-right: 1.25em }
 #notes .note:last-child:not(.more_notes_link_container) { margin-bottom: 1em }
 /* #endregion */
 
+/* #region Filtered posts */
+.post.filter { text-align: center }
+.post.filter .tags { color: var(--accent) }
+.post.filter button {
+	border: none;
+	background-color: var(--accent);
+	color: var(--bg);
+	font-weight: 500;
+	padding: 0.75em 1.5em;
+	border-radius: 1.75em;
+	margin-block-start: 1em;
+}
+.post.filter button:hover, .post.filter button:focus {
+	background-color: rgba(var(--accent--rgb), 0.85);
+	box-shadow: 0 0.15em 0.5em rgba(var(--text--rgb), 0.25)
+}
+/* #endregion */
+
 /* #endregion */
 
 

@@ -52,6 +52,9 @@
 	<meta name="text:Custom links title" content="Outline">
 	<meta name="if:Show group blog members" content="0">
 	<meta name="text:Group blog members title" content="Contributors">
+
+	<!-- Other options -->
+	<meta name="text:Filtered tags" content="text post, long post">
 	<!-- #endregion -->
 	{/block:Hidden}
 	
@@ -398,6 +401,15 @@ let lightboxIndex = null;
  */
 let comingFrom = null;
 
+{block:IfFilteredTags}
+/**
+ * For use in tag filtering. The user-provided list of tags to filter for.
+ * All tags converted to lowercase for ease of comparison.
+ * @type {string[]}
+ */
+let filteredTags = "{text:Filtered tags}".split(",").map(el => el.trim().toLowerCase());
+{/block:IfFilteredTags}
+
 /** For use with Tippy tooltips. Standard themeing for all tooltips. */
 let tippyOptions = {
 	// Basic layout
@@ -452,7 +464,7 @@ let posts = [
 
 		{block:HasTags} tags: [
 			{block:Tags} {
-				name: "{Tag}",
+				name: {JSTag},
 				url: {JSTagURL},
 			}, {/block:Tags}
 		], {/block:HasTags}
@@ -580,6 +592,38 @@ posts.forEach(post => {
 
 	if (post.id !== undefined)
 		createPostFooter(article, post);
+
+	{block:IfFilteredTags}
+	// User has provided tags to filter. Check each post's tags and add a filter message
+	let filters = post.tags.filter(tag => filteredTags.includes(tag.name.toLowerCase()));
+	if (filters.length > 0) {
+		// Hide post
+		article.style.display = "none";
+		
+		// Assemble and insert filter message
+		let msg = document.createElement("div"),
+			warning = document.createElement("p"),
+			tagList = document.createElement("p"),
+			btn = document.createElement("button");
+		msg.append(warning, tagList, btn);
+		postContainer.insertBefore(msg, article);
+		
+		// Add classes
+		msg.classList.add("post", "filter");
+		tagList.classList.add("tags");
+		
+		// Add text to all elements
+		warning.innerText = "This post contains filtered tags.";
+		tagList.innerText = "#".concat(filters.map(el => el.name).join(", #"));
+		btn.innerText = "View post";
+		
+		// Set up viewing function
+		btn.addEventListener("click", () => {
+			msg.remove();
+			article.removeAttribute("style");
+		});
+	}
+	{/block:IfFilteredTags}
 });
 // #endregion
 
