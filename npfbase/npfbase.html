@@ -18,6 +18,7 @@
 	{block:Hidden}
 	<!-- #region TODO: Custom variables -->
 	<!-- Post options -->
+	<meta name="if:Use legacy format for post media" content="0">
 	<meta name="if:Post dates" content="1">
 	<meta name="if:Post times" content="1">
 	<meta name="if:Dates formatted month first" content="1">
@@ -973,8 +974,10 @@ document.addEventListener("scroll", () => {
 // #endregion
 
 // #region Visual extras
+{block:IfUseLegacyFormatForPostMedia}
 // Format media in posts in legacy style
 formatLegacyStyle();
+{/block:IfUseLegacyFormatForPostMedia}
 // #endregion
 
 // Set up keyboard navigation
@@ -2510,6 +2513,8 @@ function formatLegacyStyle() {
 		".bodyitem:first-child .bodyitemcontent > video:first-child",
 		".bodyitem:first-child .bodyitemcontent > .audiowrapper:first-child",
 		".bodyitem:first-child .bodyitemcontent > .npf-link-block:first-child",
+		".bodyitem:first-child .bodyitemcontent > iframe:first-child",
+		".bodyitem:first-child .bodyitemcontent > h2:first-child",
 	].join(", ");
 	
 	document.querySelectorAll(selector).forEach(el => {
