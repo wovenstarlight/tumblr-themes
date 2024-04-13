@@ -24,6 +24,8 @@
 	<meta name="if:24 hour times" content="0">
 	<meta name="if:Like buttons" content="1">
 	<meta name="if:Reblog buttons" content="1">
+	<meta name="if:Post tags" content="1">
+	<meta name="text:Filtered tags" content="text post, long post">
 	<!-- #endregion -->
 	{/block:Hidden}
 	{block:IfSyntaxHighlighting}
@@ -715,6 +717,15 @@ let lightboxIndex = null;
  * @type {?HTMLElement}
  */
 let comingFrom = null;
+
+{block:IfFilteredTags}
+/**
+ * For use in tag filtering. The user-provided list of tags to filter for.
+ * All tags converted to lowercase for ease of comparison.
+ * @type {string[]}
+ */
+let filteredTags = "{text:Filtered tags}".split(",").map(el => el.trim().toLowerCase());
+{/block:IfFilteredTags}
 // #endregion
 
 
@@ -757,7 +768,7 @@ let posts = [
 
 		{block:HasTags} tags: [
 			{block:Tags} {
-				name: "{Tag}",
+				name: {JSTag},
 				url: {JSTagURL},
 			}, {/block:Tags}
 		], {/block:HasTags}
@@ -857,6 +868,40 @@ posts.forEach(post => {
 
 	if (post.id !== undefined)
 		createPostFooter(article, post);
+
+	{block:IfFilteredTags}
+	if (post.tags) {
+		// User has provided tags to filter. Check each post's tags and add a filter message
+		let filters = post.tags.filter(tag => filteredTags.includes(tag.name.toLowerCase()));
+		if (filters.length > 0) {
+			// Hide post content
+			article.classList.add("filtered");
+			
+			// Assemble and insert filter message
+			let msg = document.createElement("div"),
+				warning = document.createElement("p"),
+				tagList = document.createElement("p"),
+				btn = document.createElement("button");
+			msg.append(warning, tagList, btn);
+			article.insertBefore(msg, article.firstElementChild);
+			
+			// Add classes
+			msg.classList.add("filter");
+			tagList.classList.add("tags");
+			
+			// Add text to all elements
+			warning.innerText = "This post contains filtered tags.";
+			tagList.innerText = "#".concat(filters.map(el => el.name).join(", #"));
+			btn.innerText = "View post";
+			
+			// Set up viewing function
+			btn.addEventListener("click", () => {
+				msg.remove();
+				article.classList.remove("filtered");
+			});
+		}
+	}
+	{/block:IfFilteredTags}
 });
 // #endregion
 
@@ -944,7 +989,7 @@ function createPostFooter(wrapper, postData) {
 		{block:IfReblogButtons}makeReblog(lr, postData);{/block:IfReblogButtons}
 	}
 
-	makeTags(footer, postData);
+	{block:IfPostTags}makeTags(footer, postData);{/block:IfPostTags}
 }
 
 // #region Helpers
