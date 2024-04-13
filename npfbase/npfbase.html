@@ -737,9 +737,11 @@ let posts = [
 	{
 		npf: {NPF},
 
+		{block:PermalinkPage}
 		// For ask/submit/general blog pages
 		{block:Title} title: {JSTitle}, {/block:Title}
 		body: {JSBody},
+		{/block:PermalinkPage}
 
 		{block:Date}
 		// Post-specific items
@@ -790,7 +792,10 @@ let posts = [
 		},
 		{/block:RebloggedFrom}
 
-		{block:NoteCount} noteCount: {JSNoteCountWithLabel}, {/block:NoteCount}
+		{block:NoteCount}
+		noteCount: {JSNoteCountWithLabel},
+		postNotes: {JSPostNotesURL},
+		{/block:NoteCount}
 		
 		like_html: {JSLikeButton size="30"},
 		reblog_url: {JSReblogURL},
@@ -815,6 +820,34 @@ let posts = [
 		{/block:Date}
 	},
 	{/block:Posts}
+	{block:NoPosts}
+	{
+		npf: {
+			content: [
+				{
+					type: "text",
+					text: "{lang:This Tumblr hasnt posted anything}"
+				}
+			],
+			layout: [],
+			trail: []
+		}
+	}
+	{/block:NoPosts}
+	{block:NoSearchResults}
+	{
+		npf: {
+			content: [
+				{
+					type: "text",
+					text: `{lang:Sorry no results for SearchQuery 2}.`
+				}
+			],
+			layout: [],
+			trail: []
+		}
+	}
+	{/block:NoSearchResults}
 ];
 // #endregion
 
