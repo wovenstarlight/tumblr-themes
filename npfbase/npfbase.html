@@ -109,6 +109,12 @@
 		position: absolute;
 		left: 0;
 	}
+
+	hr.readmore {
+		border-color: rgba(var(--text--rgb), 0.5);
+		border-style: dashed;
+		margin-inline: 0.3em;
+	}
 	
 	.ask {
 		border: solid var(--accent);
@@ -1465,12 +1471,9 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		// cut off the post and add a readmore, if one is present and you aren't currently on the post's permalink page
 		if (i === rows?.truncate_after && !expand) {
 			let readmore = document.createElement("a");
-			readmore.classList.add("read_more");
+			readmore.classList.add("readmore");
 			readmore.innerText = "{lang:Read more}";
-			let readmorecontainer = document.createElement("p");
-			readmorecontainer.classList.add("read_more_container");
-			readmorecontainer.append(readmore);
-			body.append(readmorecontainer);
+			body.append(readmore);
 			
 			let link;
 			if (npf.blog !== undefined) { // blog is extant
@@ -1483,6 +1486,11 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 			// add link if reachable
 			if (link !== null) { readmore.href = link }
 			break; // don't render any more post blocks
+		}
+		else if (i === rows?.truncate_after) {
+			let readmore = document.createElement("hr");
+			readmore.classList.add("readmore");
+			body.append(readmore);
 		}
 	}
 	
