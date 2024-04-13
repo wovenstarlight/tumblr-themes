@@ -652,28 +652,10 @@ const textSubtypes = {
 }
 
 /**
- * URL to the 64x64 avatar for anonymous users.
+ * URL to the 64x64 avatar for anonymous, deactivated, or broken users.
  * @type {string}
  */
 const anonAvatar = "https://assets.tumblr.com/images/anonymous_avatar_64.gif";
-/**
- * URL to the 64x64 avatar for deactivated/broken users.
- * @type {string[]}
- */
-const defaultAvatars = [
-	"https://assets.tumblr.com/images/default_avatar/cone_closed_64.png",
-	"https://assets.tumblr.com/images/default_avatar/cone_open_64.png",
-	"https://assets.tumblr.com/images/default_avatar/cube_closed_64.png",
-	"https://assets.tumblr.com/images/default_avatar/cube_open_64.png",
-	"https://assets.tumblr.com/images/default_avatar/sphere_closed_64.png",
-	"https://assets.tumblr.com/images/default_avatar/sphere_open_64.png",
-]
-/**
- * Contains icons assigned to deactivated/broken users present on this page.
- * To be checked in case the same deactivated/broken user authors multiple trail items
- * @type {Object.<string, string>}
- */
-let brokenIcons = {};
 
 /**
  * For use in trail item body construction. The base element (paragraph, blockquote etc.) as selected from textSubtypes.
@@ -1034,7 +1016,7 @@ function createPostFooter(wrapper, postData) {
  * @param {string} icons.like The icon to use as the "like" button (typically an unfilled heart).
  * @param {string} icons.unlike The icon to use as the "unlike" button (typically a filled heart).
  */
- function makeLike(wrapper, postData, icons = null) {
+function makeLike(wrapper, postData, icons = null) {
 	// Make element
 	let likeButton = document.createElement("a");
 	likeButton.href = "#";
@@ -1095,7 +1077,7 @@ function makeReblog(wrapper, postData, icon = null) {
  * @param {Object} postData This post's data, containing relevant information to create the day page link with.
  * @param {?string} icon An HTML string representing the icon for the day page link, or null if a text label should be used.
  */
- function makeDayLink(wrapper, postData, icon = null) {
+function makeDayLink(wrapper, postData, icon = null) {
 	// Make element
 	let dayLink = document.createElement("a");
 	dayLink.href = postData.date.url;
@@ -1172,8 +1154,7 @@ function makeViaSource(wrapper, postData, icons = false) {
 		via.innerHTML = `<img src="${postData.via.avatar}" />`;
 		via.title = "{lang:Via}";
 		// This might end up being undefined, if the source is broken, but since it isn't added it won't make a difference
-		source.innerHTML = `<img src="${sourceTrail.blog?.avatar?.at(3)?.url}" />`;
-		source.title = "{lang:Source}";
+		source.innerHTML = `<img src="${sourceTrail.blog?.avatar?.find(el => el.height === 64)?.url}" />`;
 	}
 	else {
 		via.innerText = "{lang:Via}";
@@ -1349,12 +1330,11 @@ function createTrailItem(post, npf, postID, expand = false) {
 	// extant blog; create directly
 	if (npf.blog !== undefined) { createTrailItemHeader(item, npf.blog, npf.post) }
 	
-	// deleted/unrecoverable blog; provide an anon avatar
+	// deleted/unrecoverable blog; provide the anon avatar
 	else if (npf.broken_blog_name !== undefined) {
-		brokenIcons[npf.broken_blog_name] ??= defaultAvatars[Math.floor(Math.random() * defaultAvatars.length)];
 		createTrailItemHeader(item, {
-			name: npf.broken_blog_name,
-			avatar: brokenIcons[npf.broken_blog_name]
+			 name: npf.broken_blog_name,
+			 avatar: anonAvatar,
 		});
 	}
 	
@@ -1395,10 +1375,11 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	// The array blog.avatar isn't available sometimes, so include a backup avatar fetch via API
 	let avatar = document.createElement("img");
 	avatar.classList.add("avatar", blogData?.theme?.avatar_shape || "square");
-	avatar.src = blogData.avatar?.at(3)?.url || blogData.avatar || `https://api.tumblr.com/v2/blog/${blogData.name}/avatar/64`;
+	avatar.src = blogData.avatar?.find(el => el.height === 64)?.url || blogData.avatar || `https://api.tumblr.com/v2/blog/${blogData.name}/avatar/64`;
 
 	// put together the header
 	link.append(avatar, username);
+	link.setAttribute("style", `--bg: ${blogData?.theme?.background_color ?? currentUser.theme.background_color}; --text: ${blogData?.theme?.title_color ?? currentUser.theme.title_color}; --accent: ${blogData?.theme?.link_color ?? currentUser.theme.link_color}`)
 
 	// Checkmarks and other badges, pulled from tumblrmart_accessories
 	// https://assets.tumblr.com/images/tumblrmart/badges/blue-checkmark/1.png
@@ -1521,22 +1502,25 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		// Anon or not?
 		let asker = document.createElement("header");
 		asker.classList.add("user");
-		let askerName = document.createElement("a");
-		let askerIcon = document.createElement("img");
+		let askerName = document.createElement("a"),
+			askerIcon = document.createElement("img"),
+			askingLabel = document.createElement("span");
 		askerIcon.classList.add("avatar");
-		askerName.append(askerIcon);
 		if (askNPF.attribution) {
-			askerIcon.src = askNPF.attribution.blog.avatar?.at(3)?.url || `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name}/avatar/64`;
+			askerIcon.src = askNPF.attribution.blog.avatar?.find(el => el.height === 64)?.url || `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name}/avatar/64`;
 			askerIcon.classList.add(askNPF.attribution.blog.theme.avatar_shape || "square");
 			askerName.href = askNPF.attribution.blog.url;
 			askerName.append(askNPF.attribution.blog.name);
 			askerName.classList.add("name");
+			asker.setAttribute("style", `--bg: ${askNPF.attribution.blog.theme?.background_color ?? currentUser.theme.background_color}; --text: ${askNPF.attribution.blog.theme?.title_color ?? currentUser.theme.title_color}; --accent: ${askNPF.attribution.blog.theme?.link_color ?? currentUser.theme.link_color}`)
 		}
 		else {
 			askerIcon.src = anonAvatar;
 			askerName.append("Anonymous");
+			asker.setAttribute("style", `--bg: ${currentUser.theme.background_color}; --text: ${currentUser.theme.title_color}; --accent: ${currentUser.theme.link_color}`)
 		}
-		asker.append(askerName, " asked:");
+		askingLabel.innerText = " asked:";
+		asker.append(askerIcon, askerName, askingLabel);
 		
 		let ask = document.createElement("div");
 		ask.classList.add("ask");
@@ -2391,7 +2375,7 @@ function interactLightbox(e) {
  * @param {string} side Which image to get. Either "left" or "right".
  * @returns {?HTMLImageElement} The previous/next image, or null if the current image is the first/last respectively.
  */
- function getAdjacentImage(side) {
+function getAdjacentImage(side) {
 	if (side === "left" && lightboxIndex !== 0) {
 		let left = lightboxImages[lightboxIndex - 1].cloneNode();
 		left.classList.add("left");
@@ -2508,6 +2492,7 @@ function createPage(wrapper, postData) {
 	avatar.src = currentUser.avatar;
 	// put together the header
 	link.append(avatar, username);
+	link.setAttribute("style", `--bg: ${currentUser.theme.background_color}; --text: ${currentUser.theme.title_color}; --accent: ${currentUser.theme.link_color}`)
 
 	// Create title and body of page
 	// postData.npf is empty; use exclusively .title and .body
