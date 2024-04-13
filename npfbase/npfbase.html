@@ -2065,6 +2065,15 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	let playPause = document.createElement("button");
 	playPause.classList.add("playpause");
 	playPause.innerHTML = icons.play + icons.pause;
+	let times = document.createElement("span"),
+		currTime = document.createElement("span"),
+		totalTime = document.createElement("span");
+	currTime.innerText = "0:00";
+	totalTime.innerText = "0:00";
+	times.classList.add("times");
+	currTime.classList.add("current");
+	totalTime.classList.add("total");
+	times.append(currTime, " / ", totalTime);
 	let skipStart = document.createElement("button");
 	skipStart.classList.add("skipstart");
 	skipStart.innerHTML = icons.toStart;
@@ -2080,13 +2089,14 @@ function createCustomAudio(npf, defaultIcons = {}) {
 
 	buttons.append(volume, skipStart, playPause, skipEnd, loop);
 
-	wrapper.append(seekbar, buttons);
+	wrapper.append(seekbar, times, buttons);
 	// #endregion
 
 	// #region Preload data and set up interactive elements
 	// #region Audio length and ending check
 	audio.addEventListener("loadedmetadata", () => {
 		seekbar.setAttribute("max", audio.duration);
+		totalTime.innerText = calculateTime(audio.duration);
 	});
 	audio.addEventListener("ended", () => {
 		if (!audio.loop) { audio.classList.remove("playing") }
@@ -2138,10 +2148,12 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	// #region Seekbar
 	const whilePlaying = () => {
 		seekbar.value = Math.floor(audio.currentTime);
+		currTime.innerText = calculateTime(seekbar.value);
 		seekbar.style.setProperty("--progress-width", `${(audio.currentTime / audio.duration) * 100}%`);
 		rAF = requestAnimationFrame(whilePlaying);
 	}
 	seekbar.addEventListener("input", () => {
+		currTime.innerText = calculateTime(seekbar.value);
 		if (!audio.paused) {
 			cancelAnimationFrame(rAF);
 		}
@@ -2149,6 +2161,7 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	seekbar.addEventListener("change", () => {
 		audio.currentTime = seekbar.value;
 		seekbar.style.setProperty("--progress-width", `${(audio.currentTime / audio.duration) * 100}%`);
+		currTime.innerText = calculateTime(seekbar.value);
 		if (!audio.paused) {
 			requestAnimationFrame(whilePlaying);
 		}
@@ -2157,6 +2170,20 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	// #endregion
 
 	return wrapper;
+}
+
+
+/** Helper for createCustomAudio. Calculates times and returns it in a MM:SS format.
+ * Pulled from https://css-tricks.com/lets-create-a-custom-audio-player/
+ * @param {number} secs The number of seconds to be converted.
+ * @returns {string} The converted time in minutes and seconds.
+ */
+function calculateTime(secs) {
+	let time = {
+		minutes: Math.floor(secs / 60),
+		seconds: Math.floor(secs % 60),
+	}
+	return `${time.minutes}:${time.seconds < 10 ? "0" : ""}${time.seconds}`;
 }
 
 
