@@ -1362,8 +1362,12 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	// mark broken trail items
 	if (postData === null || blogData.active === false) { header.classList.add("deactivated") }
 	
-	// add link where original posts exist
-	if (blogData.url && blogData.active) {
+	// add link where original posts exist, with safeguards for pages
+	if (postData?.id === undefined && blogData.active != null) {
+		// page! link back to itself
+		link.href = window.location.href;
+	}
+	else if (blogData.url && blogData.active) {
 		link.href = blogData.url.concat(blogData.url.endsWith("/") ? `post/${postData.id}` : `/${postData.id}`);
 	}
 	
@@ -2481,7 +2485,7 @@ function createPage(wrapper, postData) {
 	trailItem.append(header);
 	// Create permalink
 	let link = document.createElement("a");
-	link.href = ""; // gives current URL
+	link.href = window.location.href; // gives current URL
 	header.append(link);
 	// Get the username and avatar
 	let username = document.createElement("span");
