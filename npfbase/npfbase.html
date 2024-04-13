@@ -996,12 +996,16 @@ function createPostFooter(wrapper, postData) {
 	makeNoteCount(vsn, postData);
 	makeViaSource(vsn, postData);
 
-	if ({block:IfLikeButtons}true{/block:IfLikeButtons}{block:IfNotLikeButtons}false{/block:IfNotLikeButtons} || {block:IfReblogButtons}true{/block:IfReblogButtons}{block:IfNotReblogButtons}false{/block:IfNotReblogButtons}) {
-		let lr = document.createElement("span");
-		lr.classList.add("lr");
-		footer.append(lr);
-		{block:IfLikeButtons}makeLike(lr, postData);{/block:IfLikeButtons}
-		{block:IfReblogButtons}makeReblog(lr, postData);{/block:IfReblogButtons}
+	if ({block:IfLikeButtons}true{/block:IfLikeButtons}{block:IfNotLikeButtons}false{/block:IfNotLikeButtons} || {block:IfReblogButtons}true{/block:IfReblogButtons}{block:IfNotReblogButtons}false{/block:IfNotReblogButtons} || {block:IfDayPageLinks}true{/block:IfDayPageLinks}{block:IfNotDayPageLinks}false{/block:IfNotDayPageLinks}) {
+		let lrd = document.createElement("span"),
+			lrdwrapper = document.createElement("span");
+		lrd.classList.add("lrd");
+		lrdwrapper.classList.add("wrapper");
+		footer.append(lrd);
+		lrd.append(lrdwrapper);
+		{block:IfLikeButtons}makeLike(lrdwrapper, postData);{/block:IfLikeButtons}
+		{block:IfReblogButtons}makeReblog(lrdwrapper, postData);{/block:IfReblogButtons}
+		{block:IfDayPageLinks}makeDayLink(lrdwrapper, postData);{/block:IfDayPageLinks}
 	}
 
 	{block:IfPostTags}makeTags(footer, postData);{/block:IfPostTags}
