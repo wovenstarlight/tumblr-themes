@@ -936,7 +936,23 @@ document.querySelectorAll("img.lightboxable").forEach(obj => {
 
 // TODO: Color palette
 
-// TODO: Scroll to top
+// TODO: Add "#scrolltotop" element
+// #region Scroll to top
+(scrolltotop = document.getElementById("scrolltotop")).addEventListener("click", () => {
+	window.scrollTo({
+		top: 0,
+		behavior: "smooth",
+	});
+});
+document.addEventListener("scroll", () => {
+	if (window.pageYOffset <= 100) {
+		scrolltotop.setAttribute("disabled", "true");
+	}
+	else {
+		scrolltotop.removeAttribute("disabled");
+	}
+})
+// #endregion
 // #endregion
 
 // #region Visual extras
