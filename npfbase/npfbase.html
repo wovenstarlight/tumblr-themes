@@ -966,6 +966,30 @@ function makeReblog(wrapper, postData, icon = null) {
 }
 
 /**
+ * Creates a link to the corresponding day page for a given post.
+ * @param {HTMLElement} wrapper The child element of the post to which the day page link will be added. Usually the footer.
+ * @param {Object} postData This post's data, containing relevant information to create the day page link with.
+ * @param {?string} icon An HTML string representing the icon for the day page link, or null if a text label should be used.
+ */
+ function makeDayLink(wrapper, postData, icon = null) {
+	// Make element
+	let dayLink = document.createElement("a");
+	dayLink.href = postData.date.url;
+	dayLink.classList.add("customday");
+	wrapper.append(dayLink);
+
+	// Icon or text, as needed
+	let label = "{lang:Show all posts made on this day}";
+	if (icon !== null) {
+		dayLink.innerHTML = icon;
+		dayLink.setAttribute("data-tippy-content", label);
+	}
+	else {
+		dayLink.innerText = label;
+	}
+}
+
+/**
  * Creates a label indicating that a given post is a pinned post.
  * @param {HTMLElement} wrapper The child element of the post to which the pinned marker will be added. Usually the header.
  * @param {Object} postData This post's data, containing relevant information to create the pinned marker with.
