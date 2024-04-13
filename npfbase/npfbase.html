@@ -806,8 +806,11 @@ let posts = [
 	{/block:Posts}
 ];
 // #endregion
+
 /** The wrapper element in which all posts will be inserted */
 let postContainer = document.getElementById("posts");
+
+// #region The main post creation loop
 posts.forEach(post => {
 	/** The HTML article corresponding to the post currently being created */
 	let article = document.createElement("article");
@@ -841,7 +844,9 @@ posts.forEach(post => {
 
 	createPostFooter(article, post);
 });
+// #endregion
 
+// #region Remaining post functionality
 // Add lightboxes to all applicable images
 document.querySelectorAll("img.lightboxable").forEach(obj => {
 	obj.setAttribute("tabindex", "0");
@@ -850,9 +855,20 @@ document.querySelectorAll("img.lightboxable").forEach(obj => {
 		if (e.key === "Enter" || e.key === " ") { triggerLightbox(e) }
 	});
 });
+// #endregion
 
+// #region Remaining page functionality (accessibility features)
+// Keyboard navigation moved to very end, after the "Visual extras" region, in order to prevent errors being thrown in Customize preview window.
+
+// TODO: Color palette
+
+// TODO: Scroll to top
+// #endregion
+
+// #region Visual extras
 // Format media in posts in legacy style
 formatLegacyStyle();
+// #endregion
 
 // Set up keyboard navigation
 keyboardNav();
