@@ -35,11 +35,23 @@ svg {
 /* Accessibility */
 .hidden {
 	position: fixed;
-	top: -10vh;
+	top: -5em;
 	left: 0;
-	font-size: 1vh;
+	font-size: min(1em, 1vh);
 	line-height: 1;
 }
+#skip {
+	transition: top 0.3s;
+	color: var(--bg);
+	background: var(--accent);
+	font-size: 1em;
+	z-index: 10;
+	padding: 0.75em 1em;
+	text-decoration: none;
+	border-radius: 2em;
+	left: 0.25em;
+}
+#skip:focus { top: 0.25em }
 button { cursor: pointer }
 .tmblr-iframe--unified-controls.iframe-controls--desktop { top: 0.3em }
 body.hasavatar .tmblr-iframe--unified-controls { right: 3.25em }
