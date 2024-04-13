@@ -929,6 +929,17 @@ document.querySelectorAll("img.lightboxable").forEach(obj => {
 		if (e.key === "Enter" || e.key === " ") { triggerLightbox(e) }
 	});
 });
+
+// Add post notes on permalink pages
+if (document.body.classList.contains("permalink") && posts.at(0)?.postNotes) {
+	hideSidebar();
+	document.body.classList.add("hasnotes")
+	createNotes(posts[0].postNotes);
+}
+// #endregion
+
+// #region Remaining page functionality (base features)
+// Any toggling of search bar, sidebar etc.
 // #endregion
 
 // #region Remaining page functionality (accessibility features)
@@ -2518,6 +2529,72 @@ function formatLegacyStyle() {
 		}
 	})
 }
+// #endregion
+
+// #region FOR POST NOTES
+/**
+ * Creates the Notes section for posts on permalink pages.
+ * @param {string} notesURL The URL for the HTML partial of this post's Notes.
+ */
+function createNotes(notesURL) {
+	// Create base notes section
+	let notes = document.createElement("section"),
+		header = document.createElement("h2");
+	notes.id = "notes";
+	header.textContent = "{lang:Notes}";
+	document.getElementById("main").append(notes);
+
+	// Get notes
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(data) {
+		if (this.readyState === 4 && this.status === 200) {
+			notes.innerHTML = data.srcElement.response;
+			cleanNotes();
+		}
+	}
+	xhttp.open("GET", notesURL);
+	xhttp.send();
+
+	// Minimize HTML parsing by prepending header after notes partial is added
+	notes.prepend(header);
+}
+
+/**
+ * Cleans newly added notes in the notes section.
+ */
+function cleanNotes() {
+	document.getElementById("notes").querySelectorAll("li:not(.cleaned)").forEach(note => {
+		// No cleaning to be done on load more button
+		if (note.classList.contains("more_notes_link_container")) { return }
+
+		// Remove avatars and clears
+		note.firstChild.remove();
+		note.querySelector(".clear").remove();
+		
+		// Add specific action wrapper
+		let acted = document.createElement("span");
+		acted.classList.add("acted");
+		acted.innerText = note.firstChild.childNodes[1].textContent.trim();
+		note.firstChild.childNodes[1].replaceWith(acted);
+		
+		// Collapse via into reblog action
+		if (note.classList.contains("reblog") && !note.classList.contains("original_post")) {
+			note.firstChild.childNodes[1].append(note.firstChild.childNodes[2]);
+			// Remove "and added:"
+			if (note.classList.contains("with_commentary"))
+				note.firstChild.childNodes[2].remove();
+		}
+		
+		// Remove colon from "said:"
+		else if (note.classList.contains("reply")) {
+			note.firstChild.children[1].innerText = note.firstChild.children[1].innerText.substring(0, note.firstChild.children[1].innerText.length - 1)
+		}
+
+		// Mark note as cleaned
+		note.classList.add("cleaned");
+	})
+}
+function tumblrNotesInserted() { cleanNotes() }
 // #endregion
 
 // #region FOR NON-POST PAGES
