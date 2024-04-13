@@ -17,6 +17,10 @@
 	<link rel="alternate" type="application/rss+xml" href="{RSS}">
 	{block:Hidden}
 	<!-- #region TODO: Custom variables -->
+	<!-- Color options -->
+	<!-- Alternate palette -->
+	<meta name="if:Palette toggle" content="1">
+
 	<!-- Post options -->
 	<meta name="if:Use legacy format for post media" content="0">
 	<meta name="if:Post dates" content="1">
@@ -952,7 +956,20 @@ if (document.body.classList.contains("permalink") && posts.at(0)?.postNotes) {
 // #region Remaining page functionality (accessibility features)
 // Keyboard navigation moved to very end, after the "Visual extras" region, in order to prevent errors being thrown in Customize preview window.
 
-// TODO: Color palette
+{block:IfPaletteToggle}
+// TODO: Add "#palette" element
+// #region Palette
+document.getElementById("palette").addEventListener("click", () => {
+	let added = document.body.parentElement.classList.toggle("alt");
+
+	// Persistence
+	localStorage.setItem("palette", added ? "alt" : "");
+});
+// Persistence
+if ((palette = localStorage.getItem("palette")) !== null)
+	palette === "alt" ? document.body.parentElement.classList.add("alt") : document.body.parentElement.classList.remove("alt");
+// #endregion
+{/block:IfPaletteToggle}
 
 // TODO: Add "#scrolltotop" element
 // #region Scroll to top
