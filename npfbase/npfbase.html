@@ -1820,26 +1820,38 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 
 		case "poll":
 			bit = document.createElement("div");
-			bit.classList.add("poll-post");
+			bit.classList.add("poll");
 			trailItem.append(bit);
 
 			// Create question, if present
 			if (curr.question !== "") {
 				let question = document.createElement("p");
-				question.classList.add("poll-question");
+				question.classList.add("question");
 				question.innerText = curr.question;
 				bit.append(question);
 			}
 
+			let expiryDate = new Date((curr.timestamp + curr.settings.expire_after) * 1000),
+				hasResults = ((new Date()) > expiryDate) && blogViewLink.length;
+
 			// Create answers
 			let answer, answerText;
+			/* If wanting poll icons...
+			let pollIcons = {
+					timeout: `<i class="ph ph-minus-square"></i>`,
+					option: `<i class="ph ph-square"></i>`,
+					optionChecked: `<i class="ph ph-check-square"></i>`,
+				};
+			*/
 			curr.answers.forEach(a => {
 				answer = document.createElement("a");
-				answer.classList.add("poll-row");
+				answer.classList.add("option");
 				if (blogViewLink.length) {
 					answer.href = blogViewLink;
 					answer.target = "_blank";
 				}
+				// Adding poll icons 
+				// answer.innerHTML = hasResults ? pollIcons.timeout : pollIcons.option + pollIcons.optionChecked;
 				answerText = document.createElement("p");
 				answerText.innerText = a.answer_text;
 				answer.append(answerText);
@@ -1848,20 +1860,20 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 
 			// See results link, if poll is expired
 			// Timestamp/expiry durations are given in seconds; times 1000 for millisecond count
-			let expiryDate = new Date((curr.timestamp + curr.settings.expire_after) * 1000);
-			if (((new Date()) > expiryDate) && blogViewLink.length) {
+			if (hasResults) {
 				let seeResults = document.createElement("a");
-				seeResults.classList.add("poll-see-results");
+				seeResults.classList.add("results");
 				seeResults.href = blogViewLink;
 				seeResults.target = "_blank";
 				seeResults.innerText = "See Results";
 				bit.append(seeResults);
+				bit.classList.add("complete");
 			}
 			break;
 		
 		default:
 			bit = document.createElement("p");
-			bit.innerHTML = `TODO: ${curr.type} block`;
+			bit.innerHTML = `Error! This theme can't currently display ${curr.type} blocks :( Please contact <a href="https://starlightthemes.tumblr.com">the theme maker</a> to let them know about this issue.`;
 			trailItem.append(bit);
 	
 	}
