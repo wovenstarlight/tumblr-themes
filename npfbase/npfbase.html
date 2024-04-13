@@ -817,13 +817,20 @@ posts.forEach(post => {
 	article.classList.add("post");
 	postContainer.append(article);
 
+	// Backup method, using the old "body" T-var
 	if ((post.npf.content.length === 0 && post.npf.trail.length === 0) {block:AskPage}|| true{/block:AskPage}{block:SubmitPage}|| true{/block:SubmitPage}) {
-		article.classList.add("page");
 		createPage(article, post);
 		return;
 	}
+	// Regardless of NPF/.body creation, mark if currently on a custom blog page
+	if (document.querySelector("#pages .current-page") != null)
+		document.body.classList.add("page");
 
-	createPostHeader(article, post);
+	// Content available via NPF
+	// Create, but put guards in for header/footer just in case pages are parsed as NPF too
+	
+	if (post.id !== undefined)
+		createPostHeader(article, post);
 
 	/** The body of the post, to be populated with trail items */
 	let postBody = document.createElement("section");
@@ -831,8 +838,13 @@ posts.forEach(post => {
 	article.append(postBody);
 	// Create each reblog of the post
 	if (!post.npf.trail.length) { article.classList.add("original") }
-	else { post.npf.trail.forEach(trailItem => createTrailItem(postBody, trailItem, null)) }
-	// End with the current blog's addition, if any, and expand if on the permalink page
+	else { post.npf.trail.forEach(trailItem => createTrailItem(
+		postBody,
+		trailItem,
+		null
+		{block:PermalinkPage}, true{/block:PermalinkPage}
+	)) }
+	// End with the current blog's addition, if any
 	if (post.npf.content.length) {
 		createTrailItem(
 			postBody,
@@ -841,8 +853,10 @@ posts.forEach(post => {
 			{block:PermalinkPage}, true{/block:PermalinkPage}
 		);
 	}
+	// In the above, expand any read more links if on the permalink page
 
-	createPostFooter(article, post);
+	if (post.id !== undefined)
+		createPostFooter(article, post);
 });
 // #endregion
 
