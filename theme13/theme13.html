@@ -68,6 +68,9 @@
 	<meta name="if:Day page links" content="1">
 	<meta name="if:Post tags" content="1">
 	<meta name="text:Filtered tags" content="text post, long post">
+	
+	<!-- Other -->
+	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
 	<!-- #endregion -->
 	{/block:Hidden}
 	
@@ -2328,6 +2331,11 @@ function createPage(wrapper, postData) {
 		title.innerHTML = unescapeHTML(postData.title);
 		bodyWrapper.append(title);
 	}
+	{block:AskPage}{block:IfFAQ}
+	let faq = document.createElement("div"),
+	faq.id = "askfaq";
+	faq.innerHTML = `{text:FAQ}`;
+	{/block:IfFAQ}{/block:AskPage}
 	bodyWrapper.innerHTML += unescapeHTML(postData.body);
 
 	// Plug the whole thing in
