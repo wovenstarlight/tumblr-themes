@@ -906,9 +906,11 @@ function createPostFooter(wrapper, postData) {
  * Creates a like button for a given post.
  * @param {HTMLElement} wrapper The child element of the post to which the like button will be added. Usually the footer.
  * @param {Object} postData This post's data, containing relevant information to create the like button with.
- * @param {?string} icon An HTML string representing the icon for the like button, or null if a text label should be used.
+ * @param {Object} [icons=null] HTML strings representing the icons to use for the like and unlike buttons, or null if a text label should be used.
+ * @param {string} icons.like The icon to use as the "like" button (typically an unfilled heart).
+ * @param {string} icons.unlike The icon to use as the "unlike" button (typically a filled heart).
  */
-function makeLike(wrapper, postData, icon = null) {
+ function makeLike(wrapper, postData, icons = null) {
 	// Make element
 	let likeButton = document.createElement("a");
 	likeButton.href = "#";
@@ -917,18 +919,25 @@ function makeLike(wrapper, postData, icon = null) {
 	wrapper.append(likeButton);
 	
 	// Icon or text, as needed
-	let label = `<span class="to-like">{block:English}Like{/block:English}{block:German}Liken{/block:German}{block:French}J'aime{/block:French}{block:Italian}Mi piace{/block:Italian}{block:Japanese}スキ{/block:Japanese}{block:Turkish}Beğen{/block:Turkish}{block:Spanish}Me gusta{/block:Spanish}{block:Russian}Нравится{/block:Russian}{block:Polish}Lubię{/block:Polish}{block:PortuguesePT}Gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir{/block:PortugueseBR}{block:Dutch}Vind ik leuk{/block:Dutch}{block:Korean}좋아요{/block:Korean}{block:ChineseSimplified}喜欢{/block:ChineseSimplified}{block:ChineseTraditional}喜歡{/block:ChineseTraditional}{block:ChineseHK}喜歡{/block:ChineseHK}{block:Indonesian}Suka{/block:Indonesian}{block:Hindi}पसंद करें{/block:Hindi}</span>`;
-	if (icon !== null) {
-		// Assumes icon is an HTML string
-		likeButton.innerHTML += icon;
-		likeButton.title = label;
+	let labels = {
+		like: `{block:English}Like{/block:English}{block:German}Liken{/block:German}{block:French}J'aime{/block:French}{block:Italian}Mi piace{/block:Italian}{block:Japanese}スキ{/block:Japanese}{block:Turkish}Beğen{/block:Turkish}{block:Spanish}Me gusta{/block:Spanish}{block:Russian}Нравится{/block:Russian}{block:Polish}Lubię{/block:Polish}{block:PortuguesePT}Gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir{/block:PortugueseBR}{block:Dutch}Vind ik leuk{/block:Dutch}{block:Korean}좋아요{/block:Korean}{block:ChineseSimplified}喜欢{/block:ChineseSimplified}{block:ChineseTraditional}喜歡{/block:ChineseTraditional}{block:ChineseHK}喜歡{/block:ChineseHK}{block:Indonesian}Suka{/block:Indonesian}{block:Hindi}पसंद करें{/block:Hindi}`,
+		unlike: `{block:English}Unlike{/block:English}{block:German}Entliken{/block:German}{block:French}Je n'aime plus{/block:French}{block:Italian}Non mi piace{/block:Italian}{block:Japanese}スキ解除{/block:Japanese}{block:Turkish}Beğenme{/block:Turkish}{block:Spanish}Ya no me gusta{/block:Spanish}{block:Russian}Не нравится{/block:Russian}{block:Polish}Nie lubię{/block:Polish}{block:PortuguesePT}Deixar de gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir (desfazer){/block:PortugueseBR}{block:Dutch}Vind ik niet meer leuk{/block:Dutch}{block:Korean}좋아요 취소{/block:Korean}{block:ChineseSimplified}取消喜欢{/block:ChineseSimplified}{block:ChineseTraditional}收回喜歡{/block:ChineseTraditional}{block:ChineseHK}收回喜歡{/block:ChineseHK}{block:Indonesian}Tidak Suka{/block:Indonesian}{block:Hindi}पसंद हटाएँ{/block:Hindi}`
+	};
+	if (icons !== null) {
+		let likons = Object.assign({
+			like: `<i class="ph ph-heart"></i>`,
+			unlike: `<i class="ph-fill ph-heart"></i>`,
+		}, icons);
+		likeButton.innerHTML += `<span class="to-like">${likons.like}</span>`
+		likeButton.innerHTML += `<span class="to-unlike">${likons.unlike}</span>`
+		likeButton.setAttribute("data-tippy-content", labels.like);
 	}
 	else {
 		// No icon provided; use text labels
 		// Like text
-		likeButton.innerHTML += label;
+		likeButton.innerHTML += `<span class="to-like">${labels.like}</span>`;
 		// Unlike text
-		likeButton.innerHTML += `<span class="to-unlike">{block:English}Unlike{/block:English}{block:German}Entliken{/block:German}{block:French}Je n'aime plus{/block:French}{block:Italian}Non mi piace{/block:Italian}{block:Japanese}スキ解除{/block:Japanese}{block:Turkish}Beğenme{/block:Turkish}{block:Spanish}Ya no me gusta{/block:Spanish}{block:Russian}Не нравится{/block:Russian}{block:Polish}Nie lubię{/block:Polish}{block:PortuguesePT}Deixar de gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir (desfazer){/block:PortugueseBR}{block:Dutch}Vind ik niet meer leuk{/block:Dutch}{block:Korean}좋아요 취소{/block:Korean}{block:ChineseSimplified}取消喜欢{/block:ChineseSimplified}{block:ChineseTraditional}收回喜歡{/block:ChineseTraditional}{block:ChineseHK}收回喜歡{/block:ChineseHK}{block:Indonesian}Tidak Suka{/block:Indonesian}{block:Hindi}पसंद हटाएँ{/block:Hindi}</span>`;
+		likeButton.innerHTML += `<span class="to-unlike">${labels.unlike}</span>`;
 	}
 }
 
@@ -1095,8 +1104,7 @@ function makeDate(wrapper, postData, dateOptions = {}) {
 	date.innerText += postData.date[options.dateFormat];
 	// Add time, as needed
 	if (options.includeTime) {
-		date.innerText += commaSeparate ? ", " : " at ";
-		date.innerText += postData.date[`time${options.timeFormat}`];
+		date.innerText += (options.commaSeparate ? ", " : " at ").concat(postData.date[`time${options.timeFormat}`]);
 	}
 }
 
