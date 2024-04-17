@@ -9,7 +9,7 @@
 		Tippy.js tooltips by atomiks: https://atomiks.github.io/tippyjs
 		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
 	
-	Last updated 13 April 2024.
+	Last updated 17 April 2024.
 -->
 <!DOCTYPE html>
 <html lang="en" class="{select:Default palette}">
@@ -68,6 +68,7 @@
 	<meta name="if:Day page links" content="1">
 	<meta name="if:Post tags" content="1">
 	<meta name="text:Filtered tags" content="text post, long post">
+	<meta name="if:Shorten long posts" content="0">
 	
 	<!-- Other -->
 	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
@@ -833,6 +834,23 @@ tippy.createSingleton(tippy(".post [data-tippy-content]"), tippyOptions);
 // Prepare variables for notes section's tooltips
 var notesTooltipInstances, notesTooltips;
 // #endregion
+
+{block:IfShortenLongPosts}
+// Shorten long posts
+Array.from(document.querySelectorAll(".post")).filter(el => el.clientHeight >= 2 * window.innerHeight).forEach(post => {
+	let btn = document.createElement("button");
+	btn.classList.add("expand");
+	btn.innerText = "Expand";
+
+	post.classList.add("expandable");
+	post.querySelector(".body").append(btn);
+
+	btn.addEventListener("click", e => {
+		post.classList.remove("expandable");
+		e.currentTarget.remove();
+	})
+});
+{/block:IfShortenLongPosts}
 // #endregion
 
 // Set up keyboard navigation
