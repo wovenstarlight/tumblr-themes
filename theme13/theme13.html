@@ -835,19 +835,21 @@ var notesTooltipInstances, notesTooltips;
 
 {block:IfShortenLongPosts}
 // Shorten long posts
-Array.from(document.querySelectorAll(".post")).filter(el => el.clientHeight >= 2 * window.innerHeight).forEach(post => {
-	let btn = document.createElement("button");
-	btn.classList.add("expand");
-	btn.innerText = "Expand";
+if (!document.body.classList.contains("permalink")) {
+	Array.from(document.querySelectorAll(".post")).filter(el => el.clientHeight >= 2 * window.innerHeight).forEach(post => {
+		let btn = document.createElement("button");
+		btn.classList.add("expand");
+		btn.innerText = "Expand";
 
-	post.classList.add("expandable");
-	post.querySelector(".body").append(btn);
+		post.classList.add("expandable");
+		post.querySelector(".body").append(btn);
 
-	btn.addEventListener("click", e => {
-		post.classList.remove("expandable");
-		e.currentTarget.remove();
-	})
-});
+		btn.addEventListener("click", e => {
+			post.classList.remove("expandable");
+			e.currentTarget.remove();
+		})
+	});
+}
 {/block:IfShortenLongPosts}
 // #endregion
 
