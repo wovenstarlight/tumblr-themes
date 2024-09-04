@@ -38,6 +38,18 @@ li::marker { font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetic
 	font-size: 1px;
 	top: -100rem;
 }
+/* Show skiplink on focus */
+#skip:focus {
+	top: 1em;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 1em;
+	background-color: var(--accent);
+	color: var(--bg);
+	padding: 0.5em 1em;
+	border-radius: 5em;
+	font-weight: bold;
+}
 /* Content/sidebar layout */
 body {
 	display: grid;
