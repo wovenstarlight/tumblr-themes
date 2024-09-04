@@ -146,7 +146,7 @@ body {
 	border-bottom-left-radius: var(--half-roundness);
 	transition: border ease .15s;
 }
-.post header:hover .cornerlink {
+.post header:hover .cornerlink, .post header:focus-within .cornerlink {
 	border-width: 0.5em;
 	border-color: var(--bg) var(--bg) var(--accent) var(--accent);
 }
