@@ -49,9 +49,11 @@ $(document).ready( function() {
 	var form = $("#search");
 	$("#searcher").on("click keypress", function() {
 		form.show();
+		$("#searcher").prop("disabled", true);
 	});
 	$("#close").on("click keypress", function() {
 		form.hide();
+		$("#searcher").removeProp("disabled");
 	});
 
 	$("#showright").on("click keypress", function() {
