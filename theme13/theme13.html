@@ -7,7 +7,7 @@
 		Tippy.js tooltips by atomiks: https://atomiks.github.io/tippyjs
 		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
 	
-	Last updated 17 April 2024.
+	Last updated 9 September 2024.
 -->
 <!DOCTYPE html>
 <html lang="en" class="{select:Default palette}">
@@ -856,6 +856,9 @@ if (!document.body.classList.contains("permalink")) {
 // Set up keyboard navigation
 keyboardNav({
 	postOffset: 110,
+	searchCallback: () => {
+		document.getElementById("search").removeAttribute("data-collapsed");
+	},
 });
 // #endregion
 
