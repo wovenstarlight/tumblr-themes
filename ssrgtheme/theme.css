@@ -44,7 +44,10 @@ body {
   text-align: start;
 }
 #userbadge:hover, #userbadge:focus {
-  background: #5f5f6d;
+  background-color: #363650;
+}
+#userbadge:active {
+  background-color: #5f5f6d;
 }
 #userbadge img {
   width: 3.25em;
@@ -94,6 +97,9 @@ body {
   margin-inline-start: 0.6em;
 }
 #resourcenav a:hover, #resourcenav a:focus {
+  background-color: #363650;
+}
+#resourcenav a:active {
   background-color: #5f5f6d;
 }
 
@@ -112,6 +118,9 @@ body {
   cursor: pointer;
 }
 #moreinfo summary:hover, #moreinfo summary:focus {
+  background-color: #363650;
+}
+#moreinfo summary:active {
   background-color: #5f5f6d;
 }
 #moreinfo summary::before {
@@ -144,7 +153,10 @@ body {
   text-align: center;
 }
 #moreinfo .contents a.contentitem:hover, #moreinfo .contents a.contentitem:focus {
-  background-color: #172039;
+  background-color: #363650;
+}
+#moreinfo .contents a.contentitem:active {
+  background-color: #5f5f6d;
 }
 
 main {

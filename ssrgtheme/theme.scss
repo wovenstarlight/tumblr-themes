@@ -3,7 +3,8 @@ $white: #f2f3f3;
 $lightgray: #a5a6a7;
 $darkblue: #0d1a32;
 $darkblue-variant: #172039;
-$darkblue-hover: #5f5f6d;
+$darkblue-hover: #363650;
+$darkblue-active: #5f5f6d;
 $button-bg: #00619C;
 $button-border: #3AB6FF;
 
@@ -55,9 +56,8 @@ $header-height: 4em;
 	cursor: pointer;
 	text-align: start;
 
-	&:hover, &:focus {
-		background: $darkblue-hover;
-	}
+	&:hover, &:focus { background-color: $darkblue-hover }
+	&:active { background-color: $darkblue-active }
 
 	// User icon
 	img {
@@ -116,6 +116,7 @@ $header-height: 4em;
 		& + a { margin-inline-start: 0.6em }
 
 		&:hover, &:focus { background-color: $darkblue-hover }
+		&:active { background-color: $darkblue-active }
 	}
 }
 
@@ -135,6 +136,7 @@ $header-height: 4em;
 		cursor: pointer;
 
 		&:hover, &:focus { background-color: $darkblue-hover }
+		&:active { background-color: $darkblue-active }
 
 		&::before {
 			box-sizing: content-box;
@@ -166,7 +168,8 @@ $header-height: 4em;
 			text-align: center;
 		}
 
-		a.contentitem:hover, a.contentitem:focus { background-color: $darkblue-variant }
+		a.contentitem:hover, a.contentitem:focus { background-color: $darkblue-hover }
+		a.contentitem:active { background-color: $darkblue-active }
 	}
 }
 // #endregion
