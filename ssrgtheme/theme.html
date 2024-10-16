@@ -81,7 +81,7 @@
 		<!-- RESOURCE COUNTERS: Navigation
 		 Links are given the dropdown content item class to maintain styling when moved into the dropdown. -->
 		<nav id="resourcenav">
-			<a class="contentitem" href="./theme.html" id="home">Home</a>
+			<a class="contentitem" href="/" id="home">Home</a>
 			{block:AskEnabled}<a class="contentitem" href="/ask" id="ask">Message</a>{/block:AskEnabled}
 			{block:SubmissionsEnabled}<a class="contentitem" href="/submit" id="submit">Submit</a>{/block:SubmissionsEnabled}
 			{block:IfRandomPostLink}<a class="contentitem" href="/random" id="random">Random</a>{/block:IfRandomPostLink}
@@ -115,6 +115,7 @@
 		document.querySelector("#userbadge h1").innerText = "bbybread28";
 		document.querySelector("#userbadge p").innerText = "Master III";
 		document.querySelector("#userbadge p").setAttribute("class", "master");
+		document.getElementById("home").setAttribute("href", "./theme.html");
 		document.getElementById("main").setAttribute("style", "--bg-img: url('./ref-assets/bg2.png');");
 		document.querySelectorAll("#resourcenav").forEach(el => {
 			el.innerHTML = el.innerHTML.replace(/\{\/?\w+(:\w+)?\}/g, "");
