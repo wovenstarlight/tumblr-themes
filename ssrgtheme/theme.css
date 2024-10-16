@@ -1,0 +1,157 @@
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #017afb;
+  font-family: "Source Sans 3", sans-serif;
+}
+
+.visually-hidden, #skip:not(:focus-within) {
+  position: fixed;
+  font-size: 1px;
+  top: -100rem;
+}
+
+#skip {
+  color: #f2f3f3;
+  background-color: #00619C;
+  border: 0.1875em solid #3AB6FF;
+  position: absolute;
+  top: 0.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.75em 1em;
+  line-height: 1;
+  text-decoration: none;
+}
+
+#phead {
+  height: 4em;
+  background-color: #0b1832;
+  display: flex;
+}
+
+#userbadge {
+  flex-grow: 1;
+  display: flex;
+  gap: 0.6em;
+  padding: 0 1.3em;
+  align-items: center;
+  text-decoration: none;
+}
+#userbadge img {
+  width: 3.25em;
+  height: 3.25em;
+  border-width: 0.15em;
+  border-style: solid;
+  border-color: #a5a6a7;
+  border-radius: 100%;
+}
+#userbadge hgroup {
+  font-size: 1.3em;
+  line-height: 1.2;
+}
+#userbadge h1 {
+  font-weight: normal;
+  font-size: 1.1em;
+  margin: 0;
+  color: #f2f3f3;
+}
+#userbadge p {
+  margin: 0;
+  color: #a5a6a7;
+}
+#userbadge p.master {
+  color: #debdfd;
+}
+
+#resourcenav {
+  background-color: #192039;
+  display: flex;
+}
+#resourcenav:not(.empty) {
+  padding-inline-start: 1.5em;
+}
+#resourcenav a {
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 1.6em;
+  text-decoration: none;
+  color: #f2f3f3;
+  background-color: #0b1832;
+  font-size: 1.2em;
+}
+#resourcenav a + a {
+  margin-inline-start: 0.6em;
+}
+#resourcenav a:hover, #resourcenav a:focus {
+  background-color: #192039;
+}
+
+#moreinfo {
+  display: contents;
+}
+#moreinfo summary {
+  width: 5.75vw;
+  min-width: 3.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  background-color: #192039;
+  cursor: pointer;
+}
+#moreinfo summary:hover, #moreinfo summary:focus {
+  background-color: #1e2644;
+}
+#moreinfo summary::before {
+  box-sizing: content-box;
+  border-block: medium solid;
+  height: 0.5em;
+}
+#moreinfo summary::after {
+  border-block-end: medium solid;
+}
+#moreinfo summary::before, #moreinfo summary::after {
+  content: "";
+  display: block;
+  width: 2em;
+  border-color: #4A4D63;
+}
+#moreinfo .contents {
+  position: fixed;
+  z-index: 1;
+  top: 4em;
+  right: 0;
+}
+#moreinfo .contents .contentitem {
+  display: block;
+  background-color: #0b1832;
+  color: #f2f3f3;
+  text-decoration: none;
+  padding: 0.75em 1em;
+  font-size: 1.1em;
+  text-align: center;
+}
+#moreinfo .contents a.contentitem:hover, #moreinfo .contents a.contentitem:focus {
+  background-color: #192039;
+}
+
+main {
+  flex-grow: 1;
+  background-image: var(--bg-img);
+  background-size: cover;
+  background-position: center;
+}
+main.top {
+  background-position: top;
+}
+main.bottom {
+  background-position: bottom;
+}
+
+#pfoot {
+  background-color: #3c4c76;
+}

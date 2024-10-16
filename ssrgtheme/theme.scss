@@ -1,0 +1,186 @@
+@use 'sass:color';
+
+$white: #f2f3f3;
+$lightgray: #a5a6a7;
+$header: #0b1832;
+$header-variant: #192039;
+$button-bg: #00619C;
+$button-border: #3AB6FF;
+
+body {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background-color: #017afb;
+	font-family: "Source Sans 3", sans-serif;
+}
+.visually-hidden, #skip:not(:focus-within) {
+	position: fixed;
+	font-size: 1px;
+	top: -100rem;
+}
+
+#skip {
+	color: $white;
+	background-color: $button-bg;
+	border: 0.1875em solid $button-border;
+	position: absolute;
+	top: 0.5em;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 0.75em 1em;
+	line-height: 1;
+	text-decoration: none;
+}
+
+
+
+// #region HEADER
+$header-height: 4em;
+#phead {
+	height: $header-height;
+	background-color: $header;
+	display: flex;
+}
+
+#userbadge {
+	flex-grow: 1;
+	display: flex;
+	gap: 0.6em;
+	padding: 0 1.3em;
+	align-items: center;
+	text-decoration: none;
+
+	// User icon
+	img {
+		$size: 3.25em;
+		width: $size;
+		height: $size;
+		border: {
+			width: 0.15em;
+			style: solid;
+			color: $lightgray;
+			radius: 100%;
+		}
+	}
+
+	hgroup {
+		font-size: 1.3em;
+		line-height: 1.2;
+	}
+
+	// Username
+	h1 {
+		font: {
+			weight: normal;
+			size: 1.1em;
+		}
+		margin: 0;
+		color: $white;
+	}
+
+	// Blog title
+	p {
+		margin: 0;
+		// "League unregistered" by default
+		color: $lightgray;
+
+		&.master { color: #debdfd }
+	}
+}
+
+#resourcenav {
+	background-color: $header-variant;
+	display: flex;
+	&:not(.empty) { padding-inline-start: 1.5em }
+
+	a {
+		height: 100%;
+		display: inline-flex;
+		align-items: center;
+		padding: 0 1.6em;
+		text-decoration: none;
+		color: $white;
+		background-color: $header;
+		font-size: 1.2em;
+
+		& + a { margin-inline-start: 0.6em }
+
+		&:hover, &:focus { background-color: $header-variant }
+	}
+}
+
+#moreinfo {
+	display: contents;
+
+	summary {
+		width: 5.75vw;
+		min-width: 3.5em;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		$spacing: 0.5em;
+		gap: $spacing;
+		background-color: $header-variant;
+		cursor: pointer;
+
+		&:hover, &:focus { background-color: color.adjust($header-variant, $lightness: 3%) }
+
+		&::before {
+			box-sizing: content-box;
+			border-block: medium solid;
+			height: $spacing;
+		}
+		&::after { border-block-end: medium solid }
+		&::before, &::after {
+			content: "";
+			display: block;
+			width: 2em;
+			border-color: #4A4D63;
+		}
+	}
+
+	.contents {
+		position: fixed;
+		z-index: 1;
+		top: $header-height;
+		right: 0;
+
+		.contentitem {
+			display: block;
+			background-color: $header;
+			color: $white;
+			text-decoration: none;
+			padding: 0.75em 1em;
+			font-size: 1.1em;
+			text-align: center;
+		}
+
+		a.contentitem:hover, a.contentitem:focus { background-color: $header-variant }
+	}
+}
+// #endregion
+
+
+
+// #region CENTER
+main {
+	flex-grow: 1;
+	background: {
+		image: var(--bg-img);
+		size: cover;
+		position: center;
+	};
+	&.top { background-position: top }
+	&.bottom { background-position: bottom }
+}
+// #endregion
+
+
+
+// #region FOOTER
+#pfoot {
+	background-color: #3c4c76;
+}
+// #endregion

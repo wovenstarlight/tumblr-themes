@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{Title}{block:TagPage} ({lang:TagResultCount posts tagged Tag}){/block:TagPage}{block:SearchPage} ({lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+	<meta name="description" content="{MetaDescription}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+	<!-- Commented out for local development. TODO: Uncomment this for publishing.
+	{block:Hidden} -->
+	<!-- THEME VARIABLES -->
+	<!-- Text and sizing -->
+	<meta name="text:Font size" content="16px">
+
+	<!-- Title coloration display option -->
+	<meta name="select:Weekly league" content="" title="League unregistered">
+	<meta name="select:Weekly league" content="bronze" title="Bronze">
+	<meta name="select:Weekly league" content="silver" title="Silver">
+	<meta name="select:Weekly league" content="gold" title="Gold">
+	<meta name="select:Weekly league" content="platinum" title="Platinum">
+	<meta name="select:Weekly league" content="master" title="Master">
+
+	<!-- Image options -->
+	<meta name="image:Background" content="{HeaderImage}">
+
+	<!-- General theme options -->
+	<meta name="if:Random post link" content="1">
+	<meta name="if:Archive link" content="1">
+	<!-- TODO: Decide which of these can be used for this theme.
+	<meta name="text:Filtered tags" content="spoiler, spoilers">
+	<meta name="if:Back to top button" content="1">
+	<meta name="if:Search bar" content="1">
+	<meta name="text:Search bar title" content="Search">
+	<meta name="if:Post dates" content="1">
+	<meta name="if:Post times" content="1">
+	<meta name="if:Dates formatted month first" content="0">
+	<meta name="if:24 hour times" content="0">
+	<meta name="if:Like buttons" content="1">
+	<meta name="if:Reblog buttons" content="1">
+	<meta name="if:Post tags" content="1">
+	<meta name="if:Show tags on click" content="0">
+	<meta name="text:Custom links title" content="Navigate">
+	<meta name="if:Show group blog members" content="0">
+	<meta name="text:Group blog members title" content="Group members">
+	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
+	-->
+	<!-- {/block:Hidden} -->
+
+	<!-- Standardization of theme styles -->
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
+
+	<!-- Resource import: SSRG-esque font -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3">
+
+	<!-- Theme styles -->
+	<style>
+		main {
+			--bg-img: url('{image:Background}');
+		}
+	</style>
+	<!-- TODO: update this source link when publishing theme. -->
+	<link rel="stylesheet" href="./theme.css">
+	<style>{CustomCSS}</style>
+</head>
+<body>
+	<a href="#main" id="skip">Skip to main content</a>
+
+	<header id="phead">
+		<!-- USER BADGE: Name and title -->
+		<a href="#" id="userbadge">
+			<img src="{PortraitURL-128}" alt="User icon" />
+			<hgroup>
+				<h1>{Name}</h1>
+				<p class="{select:Weekly league}">{Title}</p>
+			</hgroup>
+		</a>
+
+		<!-- RESOURCE COUNTERS: Navigation
+		 Links are given the dropdown content item class to maintain styling when moved into the dropdown. -->
+		<nav id="resourcenav">
+			<a class="contentitem" href="./theme.html" id="home">Home</a>
+			{block:AskEnabled}<a class="contentitem" href="/ask" id="ask">Message</a>{/block:AskEnabled}
+			{block:SubmissionsEnabled}<a class="contentitem" href="/submit" id="submit">Submit</a>{/block:SubmissionsEnabled}
+			{block:IfRandomPostLink}<a class="contentitem" href="/random" id="random">Random</a>{/block:IfRandomPostLink}
+			{block:IfArchiveLink}<a class="contentitem" href="/archive" id="archive">Archive</a>{/block:IfArchiveLink}
+		</nav>
+
+		<!-- SETTINGS DROPDOWN: Blog info and theme credit -->
+		<details id="moreinfo">
+			<summary><span class="visually-hidden">More information</span></summary>
+			<div class="contents">
+				<span class="contentitem">{Name} © {CopyrightYears}</span>
+				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+				<a class="contentitem" href="https://starlightthemes.tumblr.com">Theme by starlightthemes</a>
+				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+			</div>
+		</details>
+	</header>
+
+	<main id="main">
+		<!-- TODO: main content goes here -->
+	</main>
+	
+	<footer id="pfoot">
+		<!-- TODO: footer goes here -->
+	</footer>
+
+	<!-- For local development only. TODO: Remove on completion. -->
+	<script>
+		document.title = "SSRG Theme";
+		document.querySelector("#userbadge img").setAttribute("src", "https://i.imgur.com/N8AYpD6.png");
+		document.querySelector("#userbadge h1").innerText = "bbybread28";
+		document.querySelector("#userbadge p").innerText = "Master III";
+		document.querySelector("#userbadge p").setAttribute("class", "master");
+		document.getElementById("main").setAttribute("style", "--bg-img: url('./ref-assets/bg2.png');");
+		document.querySelectorAll("#resourcenav").forEach(el => {
+			el.innerHTML = el.innerHTML.replace(/\{\/?\w+(:\w+)?\}/g, "");
+		})
+	</script>
+
+	<!-- TODO: update this source link when publishing theme. -->
+	<script src="./theme.js"></script>
+</body>
+</html>
