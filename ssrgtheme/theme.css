@@ -37,7 +37,14 @@ body {
   gap: 0.6em;
   padding: 0 1.3em;
   align-items: center;
-  text-decoration: none;
+  border: none;
+  border-radius: 0;
+  background: none;
+  cursor: pointer;
+  text-align: start;
+}
+#userbadge:hover, #userbadge:focus {
+  background: #192039;
 }
 #userbadge img {
   width: 3.25em;

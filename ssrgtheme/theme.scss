@@ -49,7 +49,15 @@ $header-height: 4em;
 	gap: 0.6em;
 	padding: 0 1.3em;
 	align-items: center;
-	text-decoration: none;
+	border: none;
+	border-radius: 0;
+	background: none;
+	cursor: pointer;
+	text-align: start;
+
+	&:hover, &:focus {
+		background: $header-variant;
+	}
 
 	// User icon
 	img {
