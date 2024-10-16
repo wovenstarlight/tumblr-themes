@@ -179,10 +179,8 @@ main {
 	background: {
 		image: var(--bg-img);
 		size: cover;
-		position: center;
+		position: var(--bg-position, center);
 	};
-	&.top { background-position: top }
-	&.bottom { background-position: bottom }
 }
 // #endregion
 

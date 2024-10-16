@@ -151,13 +151,7 @@ main {
   flex-grow: 1;
   background-image: var(--bg-img);
   background-size: cover;
-  background-position: center;
-}
-main.top {
-  background-position: top;
-}
-main.bottom {
-  background-position: bottom;
+  background-position: var(--bg-position, center);
 }
 
 #pfoot {

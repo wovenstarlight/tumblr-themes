@@ -25,6 +25,9 @@
 
 	<!-- Image options -->
 	<meta name="image:Background" content="{HeaderImage}">
+	<meta name="select:Background image focus" content="top" title="Top">
+	<meta name="select:Background image focus" content="center" title="Center">
+	<meta name="select:Background image focus" content="bottom" title="Bottom">
 
 	<!-- General theme options -->
 	<meta name="if:Random post link" content="1">
@@ -57,8 +60,9 @@
 
 	<!-- Theme styles -->
 	<style>
-		main {
+		:root {
 			--bg-img: url('{image:Background}');
+			--bg-position: {select:Background image focus};
 		}
 	</style>
 	<!-- TODO: update this source link when publishing theme. -->
@@ -116,7 +120,7 @@
 		document.querySelector("#userbadge p").innerText = "Master III";
 		document.querySelector("#userbadge p").setAttribute("class", "master");
 		document.getElementById("home").setAttribute("href", "./theme.html");
-		document.getElementById("main").setAttribute("style", "--bg-img: url('./ref-assets/bg2.png');");
+		document.body.setAttribute("style", "--bg-img: url('./ref-assets/bg2.png'); --bg-position: center;");
 		document.querySelectorAll("#resourcenav").forEach(el => {
 			el.innerHTML = el.innerHTML.replace(/\{\/?\w+(:\w+)?\}/g, "");
 		})
