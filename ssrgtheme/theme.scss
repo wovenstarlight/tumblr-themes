@@ -1,9 +1,9 @@
 $ssjyp-blue: #017afb;
 $white: #f2f3f3;
 $lightgray: #a5a6a7;
-$header: #0d1a32;
-$header-variant: #172039;
-$header-hover: #5f5f6d;
+$darkblue: #0d1a32;
+$darkblue-variant: #172039;
+$darkblue-hover: #5f5f6d;
 $button-bg: #00619C;
 $button-border: #3AB6FF;
 
@@ -39,7 +39,7 @@ body {
 $header-height: 4em;
 #phead {
 	height: $header-height;
-	background-color: $header;
+	background-color: $darkblue;
 	display: flex;
 }
 
@@ -56,7 +56,7 @@ $header-height: 4em;
 	text-align: start;
 
 	&:hover, &:focus {
-		background: $header-hover;
+		background: $darkblue-hover;
 	}
 
 	// User icon
@@ -98,7 +98,7 @@ $header-height: 4em;
 }
 
 #resourcenav {
-	background-color: $header-variant;
+	background-color: $darkblue-variant;
 	display: flex;
 	padding-block: 0.75em;
 	&:not(.empty) { padding-inline: 1.5em 0.6em }
@@ -110,12 +110,12 @@ $header-height: 4em;
 		padding: 0 1.6em;
 		text-decoration: none;
 		color: $white;
-		background-color: $header;
+		background-color: $darkblue;
 		font-size: 1.2em;
 
 		& + a { margin-inline-start: 0.6em }
 
-		&:hover, &:focus { background-color: $header-hover }
+		&:hover, &:focus { background-color: $darkblue-hover }
 	}
 }
 
@@ -131,10 +131,10 @@ $header-height: 4em;
 		justify-content: center;
 		$spacing: 0.5em;
 		gap: $spacing;
-		background-color: $header-variant;
+		background-color: $darkblue-variant;
 		cursor: pointer;
 
-		&:hover, &:focus { background-color: $header-hover }
+		&:hover, &:focus { background-color: $darkblue-hover }
 
 		&::before {
 			box-sizing: content-box;
@@ -158,7 +158,7 @@ $header-height: 4em;
 
 		.contentitem {
 			display: block;
-			background-color: $header;
+			background-color: $darkblue;
 			color: $white;
 			text-decoration: none;
 			padding: 0.75em 1em;
@@ -166,7 +166,7 @@ $header-height: 4em;
 			text-align: center;
 		}
 
-		a.contentitem:hover, a.contentitem:focus { background-color: $header-variant }
+		a.contentitem:hover, a.contentitem:focus { background-color: $darkblue-variant }
 	}
 }
 // #endregion
