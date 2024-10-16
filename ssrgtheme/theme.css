@@ -27,7 +27,7 @@ body {
 
 #phead {
   height: 4em;
-  background-color: #0b1832;
+  background-color: #0d1a32;
   display: flex;
 }
 
@@ -44,7 +44,7 @@ body {
   text-align: start;
 }
 #userbadge:hover, #userbadge:focus {
-  background: #192039;
+  background: #5f5f6d;
 }
 #userbadge img {
   width: 3.25em;
@@ -73,11 +73,12 @@ body {
 }
 
 #resourcenav {
-  background-color: #192039;
+  background-color: #172039;
   display: flex;
+  padding-block: 0.75em;
 }
 #resourcenav:not(.empty) {
-  padding-inline-start: 1.5em;
+  padding-inline: 1.5em 0.6em;
 }
 #resourcenav a {
   height: 100%;
@@ -86,14 +87,14 @@ body {
   padding: 0 1.6em;
   text-decoration: none;
   color: #f2f3f3;
-  background-color: #0b1832;
+  background-color: #0d1a32;
   font-size: 1.2em;
 }
 #resourcenav a + a {
   margin-inline-start: 0.6em;
 }
 #resourcenav a:hover, #resourcenav a:focus {
-  background-color: #192039;
+  background-color: #5f5f6d;
 }
 
 #moreinfo {
@@ -107,11 +108,11 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5em;
-  background-color: #192039;
+  background-color: #172039;
   cursor: pointer;
 }
 #moreinfo summary:hover, #moreinfo summary:focus {
-  background-color: #1e2644;
+  background-color: #5f5f6d;
 }
 #moreinfo summary::before {
   box-sizing: content-box;
@@ -135,7 +136,7 @@ body {
 }
 #moreinfo .contents .contentitem {
   display: block;
-  background-color: #0b1832;
+  background-color: #0d1a32;
   color: #f2f3f3;
   text-decoration: none;
   padding: 0.75em 1em;
@@ -143,7 +144,7 @@ body {
   text-align: center;
 }
 #moreinfo .contents a.contentitem:hover, #moreinfo .contents a.contentitem:focus {
-  background-color: #192039;
+  background-color: #172039;
 }
 
 main {

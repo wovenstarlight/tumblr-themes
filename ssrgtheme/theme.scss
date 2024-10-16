@@ -1,9 +1,9 @@
-@use 'sass:color';
-
+$ssjyp-blue: #017afb;
 $white: #f2f3f3;
 $lightgray: #a5a6a7;
-$header: #0b1832;
-$header-variant: #192039;
+$header: #0d1a32;
+$header-variant: #172039;
+$header-hover: #5f5f6d;
 $button-bg: #00619C;
 $button-border: #3AB6FF;
 
@@ -11,7 +11,7 @@ body {
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	background-color: #017afb;
+	background-color: $ssjyp-blue;
 	font-family: "Source Sans 3", sans-serif;
 }
 .visually-hidden, #skip:not(:focus-within) {
@@ -56,7 +56,7 @@ $header-height: 4em;
 	text-align: start;
 
 	&:hover, &:focus {
-		background: $header-variant;
+		background: $header-hover;
 	}
 
 	// User icon
@@ -100,7 +100,8 @@ $header-height: 4em;
 #resourcenav {
 	background-color: $header-variant;
 	display: flex;
-	&:not(.empty) { padding-inline-start: 1.5em }
+	padding-block: 0.75em;
+	&:not(.empty) { padding-inline: 1.5em 0.6em }
 
 	a {
 		height: 100%;
@@ -114,7 +115,7 @@ $header-height: 4em;
 
 		& + a { margin-inline-start: 0.6em }
 
-		&:hover, &:focus { background-color: $header-variant }
+		&:hover, &:focus { background-color: $header-hover }
 	}
 }
 
@@ -133,7 +134,7 @@ $header-height: 4em;
 		background-color: $header-variant;
 		cursor: pointer;
 
-		&:hover, &:focus { background-color: color.adjust($header-variant, $lightness: 3%) }
+		&:hover, &:focus { background-color: $header-hover }
 
 		&::before {
 			box-sizing: content-box;
