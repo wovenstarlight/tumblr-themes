@@ -1,6 +1,7 @@
 $ssjyp-blue: #017afb;
 $white: #f2f3f3;
 $lightgray: #a5a6a7;
+$darkgray: #4A4D63;
 $darkblue: #0d1a32;
 $darkblue-variant: #172039;
 $darkblue-hover: #363650;
@@ -44,6 +45,18 @@ $header-height: 4em;
 	display: flex;
 }
 
+.avatar {
+	$size: 3.25em;
+	width: $size;
+	height: $size;
+	border: {
+		width: 0.15em;
+		style: solid;
+		color: $white;
+		radius: 100%;
+	}
+}
+
 #userbadge {
 	flex-grow: 1;
 	display: flex;
@@ -58,19 +71,6 @@ $header-height: 4em;
 
 	&:hover, &:focus { background-color: $darkblue-hover }
 	&:active { background-color: $darkblue-active }
-
-	// User icon
-	img {
-		$size: 3.25em;
-		width: $size;
-		height: $size;
-		border: {
-			width: 0.15em;
-			style: solid;
-			color: $lightgray;
-			radius: 100%;
-		}
-	}
 
 	hgroup {
 		font-size: 1.3em;
@@ -148,7 +148,7 @@ $header-height: 4em;
 			content: "";
 			display: block;
 			width: 2em;
-			border-color: #4A4D63;
+			border-color: $darkgray;
 		}
 	}
 

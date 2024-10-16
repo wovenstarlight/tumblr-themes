@@ -31,6 +31,15 @@ body {
   display: flex;
 }
 
+.avatar {
+  width: 3.25em;
+  height: 3.25em;
+  border-width: 0.15em;
+  border-style: solid;
+  border-color: #f2f3f3;
+  border-radius: 100%;
+}
+
 #userbadge {
   flex-grow: 1;
   display: flex;
@@ -48,14 +57,6 @@ body {
 }
 #userbadge:active {
   background-color: #5f5f6d;
-}
-#userbadge img {
-  width: 3.25em;
-  height: 3.25em;
-  border-width: 0.15em;
-  border-style: solid;
-  border-color: #a5a6a7;
-  border-radius: 100%;
 }
 #userbadge hgroup {
   font-size: 1.3em;

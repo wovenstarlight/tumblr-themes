@@ -75,7 +75,7 @@
 	<header id="phead">
 		<!-- USER BADGE: Name and title -->
 		<button id="userbadge">
-			<img src="{PortraitURL-128}" alt="User icon" />
+			<img src="{PortraitURL-128}" alt="User icon" class="avatar" />
 			<hgroup>
 				<h1>{Name}</h1>
 				<p class="{select:Weekly league}">{Title}</p>
@@ -115,7 +115,7 @@
 	<!-- For local development only. TODO: Remove on completion. -->
 	<script>
 		document.title = "SSRG Theme";
-		document.querySelector("#userbadge img").setAttribute("src", "https://i.imgur.com/N8AYpD6.png");
+		document.querySelector("img[alt='User icon']").setAttribute("src", "https://i.imgur.com/N8AYpD6.png");
 		document.querySelector("#userbadge h1").innerText = "bbybread28";
 		document.querySelector("#userbadge p").innerText = "Master III";
 		document.querySelector("#userbadge p").setAttribute("class", "master");
