@@ -46,6 +46,26 @@ body {
   background-color: #7bc3eb;
 }
 
+.bronze {
+  color: #fe9500;
+}
+
+.silver {
+  color: #c8cde1;
+}
+
+.gold {
+  color: #fee822;
+}
+
+.platinum {
+  color: #5cedfd;
+}
+
+.master {
+  color: #df81ff;
+}
+
 #phead {
   height: 4em;
   background-color: #0d1a32;
@@ -92,21 +112,6 @@ body {
 #userbadge p {
   margin: 0;
   color: #a5a6a7;
-}
-#userbadge p.bronze {
-  color: #fe9500;
-}
-#userbadge p.silver {
-  color: #c8cde1;
-}
-#userbadge p.gold {
-  color: #fee822;
-}
-#userbadge p.platinum {
-  color: #5cedfd;
-}
-#userbadge p.master {
-  color: #df81ff;
 }
 
 #resourcenav {

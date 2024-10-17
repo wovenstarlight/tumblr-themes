@@ -14,12 +14,6 @@ $lightblue: #38b4fe;
 $lightblue-lighten-1: #5fb1e0;
 $lightblue-lighten-2: #7bc3eb;
 $lightblue-darken: #286381;
-// League colors
-$bronze: #fe9500;
-$silver: #c8cde1;
-$gold: #fee822;
-$platinum: #5cedfd;
-$master: #df81ff;
 // #endregion
 
 // #region GLOBAL STYLES
@@ -66,6 +60,12 @@ body {
 	&:hover, &:focus { background-color: $lightblue-lighten-1 }
 	&:active { background-color: $lightblue-lighten-2 }
 }
+// Weekly league colors
+.bronze		{ color: #fe9500 }
+.silver		{ color: #c8cde1 }
+.gold		{ color: #fee822 }
+.platinum	{ color: #5cedfd }
+.master		{ color: #df81ff }
 // #endregion
 
 
@@ -125,12 +125,6 @@ $header-height: 4em;
 		margin: 0;
 		// "League unregistered" by default
 		color: $lightgray;
-
-		&.bronze { color: $bronze }
-		&.silver { color: $silver }
-		&.gold { color: $gold }
-		&.platinum { color: $platinum }
-		&.master { color: $master }
 	}
 }
 
