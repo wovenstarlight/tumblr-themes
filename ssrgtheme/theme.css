@@ -6,7 +6,7 @@ body {
   font-family: "Source Sans 3", sans-serif;
 }
 
-.visually-hidden, #skip:not(:focus-within) {
+.visuallyhidden, #skip:not(:focus-within) {
   position: fixed;
   font-size: 1px;
   top: -100rem;
