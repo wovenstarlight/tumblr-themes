@@ -8,9 +8,12 @@ $darkblue: #0d1a32;
 $darkblue-variant: #172039;
 $darkblue-hover: #363650;
 $darkblue-active: #5f5f6d;
-// Button colors
-$button-bg: #00619C;
-$button-border: #3AB6FF;
+$mediumblue: #015e97;
+$mediumblue-darken: #063b5d;
+$lightblue: #38b4fe;
+$lightblue-lighten-1: #5fb1e0;
+$lightblue-lighten-2: #7bc3eb;
+$lightblue-darken: #286381;
 // League colors
 $bronze: #fe9500;
 $silver: #c8cde1;
@@ -19,6 +22,7 @@ $platinum: #5cedfd;
 $master: #df81ff;
 // #endregion
 
+// #region GLOBAL STYLES
 body {
 	height: 100vh;
 	display: flex;
@@ -31,19 +35,38 @@ body {
 	font-size: 1px;
 	top: -100rem;
 }
-
 #skip {
-	color: $white;
-	background-color: $button-bg;
-	border: 0.1875em solid $button-border;
 	position: absolute;
 	top: 0.5em;
 	left: 50%;
 	transform: translateX(-50%);
+}
+// Buttons
+.button-basic {
+	color: $white;
 	padding: 0.75em 1em;
 	line-height: 1;
 	text-decoration: none;
 }
+.button-outline {
+	@extend .button-basic;
+	background-color: $lightblue;
+	border: 0.1875em solid $mediumblue;
+
+	&:active {
+		background-color: $mediumblue-darken;
+		border-color: $mediumblue;
+	}
+}
+.button-solid {
+	@extend .button-basic;
+	background-color: $lightblue;
+	border: none;
+
+	&:hover, &:focus { background-color: $lightblue-lighten-1 }
+	&:active { background-color: $lightblue-lighten-2 }
+}
+// #endregion
 
 
 

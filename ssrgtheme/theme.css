@@ -13,16 +13,37 @@ body {
 }
 
 #skip {
-  color: #f2f3f3;
-  background-color: #00619C;
-  border: 0.1875em solid #3AB6FF;
   position: absolute;
   top: 0.5em;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.button-basic, .button-solid, .button-outline {
+  color: #f2f3f3;
   padding: 0.75em 1em;
   line-height: 1;
   text-decoration: none;
+}
+
+.button-outline {
+  background-color: #38b4fe;
+  border: 0.1875em solid #015e97;
+}
+.button-outline:active {
+  background-color: #063b5d;
+  border-color: #015e97;
+}
+
+.button-solid {
+  background-color: #38b4fe;
+  border: none;
+}
+.button-solid:hover, .button-solid:focus {
+  background-color: #5fb1e0;
+}
+.button-solid:active {
+  background-color: #7bc3eb;
 }
 
 #phead {
