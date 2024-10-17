@@ -24,7 +24,7 @@ body {
 	background-color: $ssjyp-blue;
 	font-family: "Source Sans 3", sans-serif;
 }
-.visuallyhidden, #skip:not(:focus-within) {
+.visuallyhidden, #skip:not(:focus-within, :focus) {
 	position: fixed;
 	font-size: 1px;
 	top: -100rem;
@@ -44,8 +44,8 @@ body {
 }
 .button-outline {
 	@extend .button-basic;
-	background-color: $lightblue;
-	border: 0.1875em solid $mediumblue;
+	background-color: $mediumblue;
+	border: 0.1875em solid $lightblue;
 
 	&:active {
 		background-color: $mediumblue-darken;

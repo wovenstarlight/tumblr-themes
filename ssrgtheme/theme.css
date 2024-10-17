@@ -6,7 +6,7 @@ body {
   font-family: "Source Sans 3", sans-serif;
 }
 
-.visuallyhidden, #skip:not(:focus-within) {
+.visuallyhidden, #skip:not(:focus-within, :focus) {
   position: fixed;
   font-size: 1px;
   top: -100rem;
@@ -27,8 +27,8 @@ body {
 }
 
 .button-outline {
-  background-color: #38b4fe;
-  border: 0.1875em solid #015e97;
+  background-color: #015e97;
+  border: 0.1875em solid #38b4fe;
 }
 .button-outline:active {
   background-color: #063b5d;
