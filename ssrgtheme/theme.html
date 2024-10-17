@@ -104,10 +104,10 @@
 		<!-- USER PROFILE MODAL -->
 		<dialog id="userprofile">
 			<header>
-				<h2>MY INFO</h2>
+				<h2>{Name}'s INFORMATION</h2>
 				<button class="closeprofile">
 					<span class="visuallyhidden">Close</span>
-					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
+					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
 				</button>
 			</header>
 
@@ -187,7 +187,7 @@
 	<!-- For local development only. TODO: Remove on completion. -->
 	<script>
 		document.title = "SSRG Theme";
-		document.querySelector("img[alt='User icon']").setAttribute("src", "./ref-assets/avatar.png");
+		document.querySelectorAll("img[alt='User icon']").forEach(el => el.setAttribute("src", "./ref-assets/avatar.png"));
 		document.querySelector("#userbadge h1").innerText = "bbybread28";
 		document.querySelector("#userbadge p").innerText = "Master III";
 		document.querySelector("#userbadge p").setAttribute("class", "master");
@@ -198,6 +198,7 @@
 		})
 		const userProfileModal = document.getElementById("userprofile");
 		userProfileModal.showModal();
+		userProfileModal.querySelector("h2").innerText = "bbybread28's INFORMATION";
 		userProfileModal.querySelector("img[alt='User icon']").setAttribute("src", "./ref-assets/avatar.png");
 		userProfileModal.querySelector("#profilename .title").innerText = "bbybread28";
 		userProfileModal.querySelector("#profilename .text").innerText = "Master III";
