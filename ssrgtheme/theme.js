@@ -13,7 +13,7 @@ const topNavChildren = Array.from(topNav.children);
 /** The minimal width of the top navigation bar. */
 const topMinimumWidth = topNavChildren.map(el => el.offsetWidth).reduce((a, b) => a + b, 0)
 		+ (0.6 * (1.2 * em) * (topNavChildren.length - 1))	// Spacing between links
-		+ (2 * em);											// Inline padding of topnav itself, plus a little extra for breathing room
+		+ (2.5 * em);											// Inline padding of topnav itself, plus a little extra for breathing room
 /** The dropdown navigation's toggle, for assisting in the top nav's placement. */
 const dropdownNavToggle = document.getElementById("moreinfo").firstElementChild;
 /** The dropdown navigation's contents, for containing the collapsed top nav's children. */
@@ -38,9 +38,7 @@ function moveTopNav() {
 }
 
 /** Reassess top nav's ideal placement on window resize. */
-window.addEventListener("resize", e => {
-	moveTopNav();
-})
+window.addEventListener("resize", () => { moveTopNav() });
 /** Check top nav's ideal placement upon initial page load. */
 moveTopNav();
 // #endregion
