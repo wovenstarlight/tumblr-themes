@@ -129,6 +129,9 @@ body {
   color: #38b4fe;
   text-underline-offset: 0.1em;
 }
+#userprofile dd {
+  margin-inline-start: 0;
+}
 #userprofile header {
   border-block-end: 0.1em solid #4A4D63;
   --closebtn-size: 4.5em;
@@ -162,10 +165,13 @@ body {
   height: 100%;
   width: 100%;
 }
-#userprofile .contents {
+#userprofile .profilesection {
   margin: 1em;
-  background-color: var(--profile-accent);
+  background-color: #22272b;
   --border: 0.1em solid rgba(242, 243, 243, 0.25);
+}
+#userprofile #about {
+  background-color: var(--profile-accent);
 }
 #userprofile .cards {
   display: grid;

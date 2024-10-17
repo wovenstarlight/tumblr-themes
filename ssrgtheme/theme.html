@@ -111,26 +111,28 @@
 				</button>
 			</header>
 
-			<section class="contents">
+			<dl id="about" class="profilesection">
 				<div class="cards">
 					<div id="profilename" class="card">
 						<img src="{PortraitURL-128}" alt="User icon" class="avatar" />
-						<p class="title">{Name}</p>
-						<p class="text {select:Weekly league}">{Title}</p>
+						<dt class="visuallyhidden">Username</dt>
+						<dd class="title">{Name}</dd>
+						<dt class="visuallyhidden">Blog title</dt>
+						<dd class="text {select:Weekly league}">{Title}</dd>
 					</div>
 					{block:IfProfileStatusMessage}
 					<div id="profilestatus" class="card">
-						<p class="title">Status message</p>
-						<p class="text">{text:Profile status message}</p>
+						<dt class="title">Status message</dt>
+						<dd class="text">{text:Profile status message}</dd>
 					</div>
 					{/block:IfProfileStatusMessage}
 					{block:IfProfileFavoriteCardImage}
 					<div id="profilefavcard" class="card">
-						<p class="title">Favorite card</p>
-						<p class="text">
+						<dt class="title">Favorite card</dt>
+						<dd class="text">
 							{text:Profile favorite card theme}
 							{block:IfProfileFavoriteCardMember}<br />{text:Profile favorite card member}{/block:IfProfileFavoriteCardMember}
-						</p>
+						</dd>
 						<img src="{image:Profile favorite card}" alt="{block:IfProfileFavoriteCardMember}{text:Profile favorite card member} {/block:IfProfileFavoriteCardMember}card from theme '{text:Profile favorite card theme}'">
 					</div>
 					{/block:IfProfileFavoriteCardImage}
@@ -141,11 +143,11 @@
 				{block:Description}{block:ShowDescription}
 				<!-- BLOG DESCRIPTION -->
 				<div id="desc">
-					<p class="title">Description</p>
-					<div class="text">{Description}</div>
+					<dt class="title">Description</dt>
+					<dd class="text">{Description}</dd>
 				</div>
 				{/block:ShowDescription}{/block:Description}
-			</section>
+			</dl>
 
 			<footer>
 				<button class="button-solid closeprofile">OK</button>
@@ -197,12 +199,13 @@
 		const userProfileModal = document.getElementById("userprofile");
 		userProfileModal.showModal();
 		userProfileModal.querySelector("img[alt='User icon']").setAttribute("src", "./ref-assets/avatar.png");
-		userProfileModal.querySelector("#profilename p.title").innerText = "bbybread28";
-		userProfileModal.querySelector("#profilename p.text").innerText = "Master III";
-		userProfileModal.querySelector("#profilename p.text").setAttribute("class", "text master");
-		userProfileModal.querySelector("#profilestatus p.text").innerText = "걷잡을 수 없이 스르륵 녹아내려요";
-		userProfileModal.querySelector("#profilefavcard p.text").innerHTML = "Melt Down<br />SUNGJIN";
+		userProfileModal.querySelector("#profilename .title").innerText = "bbybread28";
+		userProfileModal.querySelector("#profilename .text").innerText = "Master III";
+		userProfileModal.querySelector("#profilename .text").setAttribute("class", "text master");
+		userProfileModal.querySelector("#profilestatus .text").innerText = "걷잡을 수 없이 스르륵 녹아내려요";
+		userProfileModal.querySelector("#profilefavcard .text").innerHTML = "Melt Down<br />SUNGJIN";
 		userProfileModal.querySelector("#profilefavcard img").setAttribute("src", "./ref-assets/favcard.png");
+		userProfileModal.querySelector("#profilebanner").setAttribute("src", "./ref-assets/bg2.png");
 		userProfileModal.querySelector("#desc .text").innerHTML = "<p>Description will go here in the future</p><p>Test</p><p>Test</p>";
 		userProfileModal.innerHTML = userProfileModal.innerHTML.replace(/\{\/?\w+(:\w+)?\}/g, "");
 		userProfileModal.close();

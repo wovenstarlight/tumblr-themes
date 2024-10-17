@@ -3,7 +3,9 @@
 $ssjyp-blue:			#017afb;
 $white:					#f2f3f3;
 $lightgray:				#a5a6a7;
-$darkgray:				#4A4D63;
+$darkgray:				#54595d;
+$darkgrayblue:			#4A4D63;
+$darkestgray:			#22272b;
 $darkblue:				#0d1a32;
 $darkblue-variant:		#172039;
 $darkblue-hover:		#363650;
@@ -144,8 +146,10 @@ $header-height: 4em;
 		text-underline-offset: 0.1em;
 	}
 
+	dd { margin-inline-start: 0 }
+
 	header {
-		border-block-end: 0.1em solid $darkgray;
+		border-block-end: 0.1em solid $darkgrayblue;
 		--closebtn-size: 4.5em;
 		display: grid;
 		grid-template-columns: var(--closebtn-size) 1fr var(--closebtn-size);
@@ -173,7 +177,7 @@ $header-height: 4em;
 			cursor: pointer;
 
 			&:hover, &:focus { color: $lightgray }
-			&:active { color: $darkgray }
+			&:active { color: $darkgrayblue }
 
 			svg {
 				height: 100%;
@@ -182,11 +186,13 @@ $header-height: 4em;
 		}
 	}
 
-	.contents {
+	.profilesection {
 		margin: 1em;
-		background-color: var(--profile-accent);
+		background-color: $darkestgray;
 		--border: 0.1em solid #{adjust-color($color: $white, $alpha: -0.75)};
 	}
+
+	#about { background-color: var(--profile-accent) }
 
 	.cards {
 		display: grid;
@@ -202,7 +208,7 @@ $header-height: 4em;
 	}
 
 	footer {
-		border-block-start: 0.1em solid $darkgray;
+		border-block-start: 0.1em solid $darkgrayblue;
 		padding-block-start: 1em;
 
 		.closeprofile {
@@ -337,7 +343,7 @@ $header-height: 4em;
 			content: "";
 			display: block;
 			width: 2em;
-			border-color: $darkgray;
+			border-color: $darkgrayblue;
 		}
 	}
 
