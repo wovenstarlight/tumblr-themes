@@ -1,19 +1,19 @@
 // #region COLORS
 // Basic colors
-$ssjyp-blue: #017afb;
-$white: #f2f3f3;
-$lightgray: #a5a6a7;
-$darkgray: #4A4D63;
-$darkblue: #0d1a32;
-$darkblue-variant: #172039;
-$darkblue-hover: #363650;
-$darkblue-active: #5f5f6d;
-$mediumblue: #015e97;
-$mediumblue-darken: #063b5d;
-$lightblue: #38b4fe;
-$lightblue-lighten-1: #5fb1e0;
-$lightblue-lighten-2: #7bc3eb;
-$lightblue-darken: #286381;
+$ssjyp-blue:			#017afb;
+$white:					#f2f3f3;
+$lightgray:				#a5a6a7;
+$darkgray:				#4A4D63;
+$darkblue:				#0d1a32;
+$darkblue-variant:		#172039;
+$darkblue-hover:		#363650;
+$darkblue-active:		#5f5f6d;
+$mediumblue:			#015e97;
+$mediumblue-darken:		#063b5d;
+$lightblue:				#38b4fe;
+$lightblue-lighten-1:	#5fb1e0;
+$lightblue-lighten-2:	#7bc3eb;
+$lightblue-darken:		#286381;
 // #endregion
 
 // #region GLOBAL STYLES
@@ -41,6 +41,7 @@ body {
 	padding: 0.75em 1em;
 	line-height: 1;
 	text-decoration: none;
+	cursor: pointer;
 }
 .button-outline {
 	@extend .button-basic;
@@ -61,11 +62,11 @@ body {
 	&:active { background-color: $lightblue-lighten-2 }
 }
 // Weekly league colors
-.bronze		{ color: #fe9500 }
-.silver		{ color: #c8cde1 }
-.gold		{ color: #fee822 }
-.platinum	{ color: #5cedfd }
-.master		{ color: #df81ff }
+.bronze		{ color: #fe9500 !important }
+.silver		{ color: #c8cde1 !important }
+.gold		{ color: #fee822 !important }
+.platinum	{ color: #5cedfd !important }
+.master		{ color: #df81ff !important }
 // #endregion
 
 

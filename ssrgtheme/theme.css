@@ -24,6 +24,7 @@ body {
   padding: 0.75em 1em;
   line-height: 1;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .button-outline {
@@ -47,23 +48,23 @@ body {
 }
 
 .bronze {
-  color: #fe9500;
+  color: #fe9500 !important;
 }
 
 .silver {
-  color: #c8cde1;
+  color: #c8cde1 !important;
 }
 
 .gold {
-  color: #fee822;
+  color: #fee822 !important;
 }
 
 .platinum {
-  color: #5cedfd;
+  color: #5cedfd !important;
 }
 
 .master {
-  color: #df81ff;
+  color: #df81ff !important;
 }
 
 #phead {
