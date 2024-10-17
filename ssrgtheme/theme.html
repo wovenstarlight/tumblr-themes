@@ -136,7 +136,7 @@
 					{/block:IfProfileFavoriteCardImage}
 				</div>
 
-				{block:IfProfileBannerImage}<img id="profilebanner" src="./ref-assets/bg2.png" alt="Banner image">{/block:IfProfileBannerImage}
+				{block:IfProfileBannerImage}<img id="profilebanner" src="{image:Profile banner}" alt="Banner image">{/block:IfProfileBannerImage}
 
 				{block:Description}{block:ShowDescription}
 				<!-- BLOG DESCRIPTION -->
@@ -147,7 +147,9 @@
 				{/block:ShowDescription}{/block:Description}
 			</section>
 
-			<button class="button-solid closeprofile">OK</button>
+			<footer>
+				<button class="button-solid closeprofile">OK</button>
+			</footer>
 		</dialog>
 
 		<!-- RESOURCE COUNTERS: Navigation
@@ -188,7 +190,7 @@
 		document.querySelector("#userbadge p").innerText = "Master III";
 		document.querySelector("#userbadge p").setAttribute("class", "master");
 		document.getElementById("home").setAttribute("href", "./theme.html");
-		document.body.setAttribute("style", "--bg-img: url('./ref-assets/bg2.png'); --bg-position: center;--profile-banner-position: center; --profile-accent: #481f19;");
+		document.body.setAttribute("style", "--bg-img: url('./ref-assets/bg2.png'); --bg-position: center;--profile-banner-position: center; --profile-accent: #1f3853;");
 		document.querySelectorAll("#resourcenav").forEach(el => {
 			el.innerHTML = el.innerHTML.replace(/\{\/?\w+(:\w+)?\}/g, "");
 		})
@@ -201,7 +203,7 @@
 		userProfileModal.querySelector("#profilestatus p.text").innerText = "걷잡을 수 없이 스르륵 녹아내려요";
 		userProfileModal.querySelector("#profilefavcard p.text").innerHTML = "Melt Down<br />SUNGJIN";
 		userProfileModal.querySelector("#profilefavcard img").setAttribute("src", "./ref-assets/favcard.png");
-		userProfileModal.querySelector("#desc .text").innerText = "Description will go here in the future";
+		userProfileModal.querySelector("#desc .text").innerHTML = "<p>Description will go here in the future</p><p>Test</p><p>Test</p>";
 		userProfileModal.innerHTML = userProfileModal.innerHTML.replace(/\{\/?\w+(:\w+)?\}/g, "");
 		userProfileModal.close();
 	</script>
