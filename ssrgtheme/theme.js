@@ -42,3 +42,9 @@ window.addEventListener("resize", () => { moveTopNav() });
 /** Check top nav's ideal placement upon initial page load. */
 moveTopNav();
 // #endregion
+
+// #region Profile modal functionality
+const userProfile = document.getElementById("userprofile");
+document.getElementById("userbadge").addEventListener("click", () => { userProfile.showModal() });
+userProfile.querySelectorAll(".closeprofile").forEach(el => el.addEventListener("click", () => { userProfile.close() }));
+// #endregion

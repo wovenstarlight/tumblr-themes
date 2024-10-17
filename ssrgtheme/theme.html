@@ -1,3 +1,12 @@
+<!--
+	THEME 14: RHYTHMIC by starlightthemes
+
+	Credits:
+		Phosphor Icons: https://phosphoricons.com/
+
+	Last updated 16 Oct 2024.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +21,9 @@
 	<!-- Commented out for local development. TODO: Uncomment this for publishing.
 	{block:Hidden} -->
 	<!-- THEME VARIABLES -->
-	<!-- Text and sizing -->
+	<!-- Text and coloration -->
 	<meta name="text:Font size" content="16px">
+	<meta name="color:Profile accent" content="#481f19">
 
 	<!-- Title coloration display option -->
 	<meta name="select:Weekly league" content="" title="League unregistered">
@@ -28,10 +38,17 @@
 	<meta name="select:Background image focus" content="top" title="Top">
 	<meta name="select:Background image focus" content="center" title="Center">
 	<meta name="select:Background image focus" content="bottom" title="Bottom">
+	<meta name="image:Profile banner" content="{HeaderImage}">
+	<meta name="select:Profile banner image focus" content="top" title="Top">
+	<meta name="select:Profile banner image focus" content="center" title="Center">
+	<meta name="select:Profile banner image focus" content="bottom" title="Bottom">
 
 	<!-- General theme options -->
 	<meta name="if:Random post link" content="1">
 	<meta name="if:Archive link" content="1">
+	<meta name="text:Profile status message" content="Say what you want!">
+	<meta name="text:Profile favorite card theme" content="Melt Down">
+	<meta name="text:Profile favorite card member" content="SUNGJIN">
 	<!-- TODO: Decide which of these can be used for this theme.
 	<meta name="text:Filtered tags" content="spoiler, spoilers">
 	<meta name="if:Back to top button" content="1">
@@ -63,6 +80,8 @@
 		:root {
 			--bg-img: url('{image:Background}');
 			--bg-position: {select:Background image focus};
+			--profile-banner-position: {select:Profile banner image focus};
+			--profile-accent: {color:Profile accent};
 		}
 	</style>
 	<!-- TODO: update this source link when publishing theme. -->
@@ -81,6 +100,55 @@
 				<p class="{select:Weekly league}">{Title}</p>
 			</hgroup>
 		</button>
+
+		<!-- USER PROFILE MODAL -->
+		<dialog id="userprofile">
+			<header>
+				<h2>MY INFO</h2>
+				<button class="closeprofile">
+					<span class="visuallyhidden">Close</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
+				</button>
+			</header>
+
+			<section class="contents">
+				<div class="cards">
+					<div id="profilename" class="card">
+						<img src="{PortraitURL-128}" alt="User icon" class="avatar" />
+						<p class="title">{Name}</p>
+						<p class="text {select:Weekly league}">{Title}</p>
+					</div>
+					{block:IfProfileStatusMessage}
+					<div id="profilestatus" class="card">
+						<p class="title">Status message</p>
+						<p class="text">{text:Profile status message}</p>
+					</div>
+					{/block:IfProfileStatusMessage}
+					{block:IfProfileFavoriteCardImage}
+					<div id="profilefavcard" class="card">
+						<p class="title">Favorite card</p>
+						<p class="text">
+							{text:Profile favorite card theme}
+							{block:IfProfileFavoriteCardMember}<br />{text:Profile favorite card member}{/block:IfProfileFavoriteCardMember}
+						</p>
+						<img src="{image:Profile favorite card}" alt="{block:IfProfileFavoriteCardMember}{text:Profile favorite card member} {/block:IfProfileFavoriteCardMember}card from theme '{text:Profile favorite card theme}'">
+					</div>
+					{/block:IfProfileFavoriteCardImage}
+				</div>
+
+				{block:IfProfileBannerImage}<img id="profilebanner" src="./ref-assets/bg2.png" alt="Banner image">{/block:IfProfileBannerImage}
+
+				{block:Description}{block:ShowDescription}
+				<!-- BLOG DESCRIPTION -->
+				<div id="desc">
+					<p class="title">Description</p>
+					<div class="text">{Description}</div>
+				</div>
+				{/block:ShowDescription}{/block:Description}
+			</section>
+
+			<button class="button-solid closeprofile">OK</button>
+		</dialog>
 
 		<!-- RESOURCE COUNTERS: Navigation
 		 Links are given the dropdown content item class to maintain styling when moved into the dropdown. -->
@@ -115,15 +183,27 @@
 	<!-- For local development only. TODO: Remove on completion. -->
 	<script>
 		document.title = "SSRG Theme";
-		document.querySelector("img[alt='User icon']").setAttribute("src", "https://i.imgur.com/N8AYpD6.png");
+		document.querySelector("img[alt='User icon']").setAttribute("src", "./ref-assets/avatar.png");
 		document.querySelector("#userbadge h1").innerText = "bbybread28";
 		document.querySelector("#userbadge p").innerText = "Master III";
 		document.querySelector("#userbadge p").setAttribute("class", "master");
 		document.getElementById("home").setAttribute("href", "./theme.html");
-		document.body.setAttribute("style", "--bg-img: url('./ref-assets/bg2.png'); --bg-position: center;");
+		document.body.setAttribute("style", "--bg-img: url('./ref-assets/bg2.png'); --bg-position: center;--profile-banner-position: center; --profile-accent: #481f19;");
 		document.querySelectorAll("#resourcenav").forEach(el => {
 			el.innerHTML = el.innerHTML.replace(/\{\/?\w+(:\w+)?\}/g, "");
 		})
+		const userProfileModal = document.getElementById("userprofile");
+		userProfileModal.showModal();
+		userProfileModal.querySelector("img[alt='User icon']").setAttribute("src", "./ref-assets/avatar.png");
+		userProfileModal.querySelector("#profilename p.title").innerText = "bbybread28";
+		userProfileModal.querySelector("#profilename p.text").innerText = "Master III";
+		userProfileModal.querySelector("#profilename p.text").setAttribute("class", "text master");
+		userProfileModal.querySelector("#profilestatus p.text").innerText = "걷잡을 수 없이 스르륵 녹아내려요";
+		userProfileModal.querySelector("#profilefavcard p.text").innerHTML = "Melt Down<br />SUNGJIN";
+		userProfileModal.querySelector("#profilefavcard img").setAttribute("src", "./ref-assets/favcard.png");
+		userProfileModal.querySelector("#desc .text").innerText = "Description will go here in the future";
+		userProfileModal.innerHTML = userProfileModal.innerHTML.replace(/\{\/?\w+(:\w+)?\}/g, "");
+		userProfileModal.close();
 	</script>
 
 	<!-- TODO: update this source link when publishing theme. -->
