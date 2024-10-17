@@ -72,8 +72,20 @@ body {
   margin: 0;
   color: #a5a6a7;
 }
+#userbadge p.bronze {
+  color: #fe9500;
+}
+#userbadge p.silver {
+  color: #c8cde1;
+}
+#userbadge p.gold {
+  color: #fee822;
+}
+#userbadge p.platinum {
+  color: #5cedfd;
+}
 #userbadge p.master {
-  color: #debdfd;
+  color: #df81ff;
 }
 
 #resourcenav {

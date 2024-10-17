@@ -1,3 +1,5 @@
+// #region COLORS
+// Basic colors
 $ssjyp-blue: #017afb;
 $white: #f2f3f3;
 $lightgray: #a5a6a7;
@@ -6,8 +8,16 @@ $darkblue: #0d1a32;
 $darkblue-variant: #172039;
 $darkblue-hover: #363650;
 $darkblue-active: #5f5f6d;
+// Button colors
 $button-bg: #00619C;
 $button-border: #3AB6FF;
+// League colors
+$bronze: #fe9500;
+$silver: #c8cde1;
+$gold: #fee822;
+$platinum: #5cedfd;
+$master: #df81ff;
+// #endregion
 
 body {
 	height: 100vh;
@@ -93,7 +103,11 @@ $header-height: 4em;
 		// "League unregistered" by default
 		color: $lightgray;
 
-		&.master { color: #debdfd }
+		&.bronze { color: $bronze }
+		&.silver { color: $silver }
+		&.gold { color: $gold }
+		&.platinum { color: $platinum }
+		&.master { color: $master }
 	}
 }
 
