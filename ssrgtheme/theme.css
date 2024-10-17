@@ -115,6 +115,157 @@ body {
   color: #a5a6a7;
 }
 
+#userprofile {
+  width: 80vw;
+  border: none;
+  padding: 1em 1.25em;
+  background-color: #0d1a32;
+  color: #f2f3f3;
+}
+#userprofile::backdrop {
+  background-color: #017afb;
+}
+#userprofile a {
+  color: #38b4fe;
+  text-underline-offset: 0.1em;
+}
+#userprofile header {
+  border-block-end: 0.1em solid #4A4D63;
+  --closebtn-size: 4.5em;
+  display: grid;
+  grid-template-columns: var(--closebtn-size) 1fr var(--closebtn-size);
+  align-items: center;
+  padding-block: 0 0.25em;
+}
+#userprofile header h2 {
+  margin: 0;
+  line-height: 1;
+  grid-column: 2;
+  text-align: center;
+  font-size: 2.9em;
+  font-weight: normal;
+}
+#userprofile header .closeprofile {
+  grid-column: 3;
+  border: none;
+  background: none;
+  color: #f2f3f3;
+  cursor: pointer;
+}
+#userprofile header .closeprofile:hover, #userprofile header .closeprofile:focus {
+  color: #a5a6a7;
+}
+#userprofile header .closeprofile:active {
+  color: #4A4D63;
+}
+#userprofile header .closeprofile svg {
+  height: 100%;
+  width: 100%;
+}
+#userprofile .contents {
+  margin: 1em;
+  background-color: var(--profile-accent);
+  --border: 0.1em solid rgba(242, 243, 243, 0.25);
+}
+#userprofile .cards {
+  display: grid;
+  padding: 0.5em 1em;
+}
+#userprofile .cards p {
+  margin: 0;
+}
+#userprofile .cards .card {
+  font-size: 1.4em;
+  color: rgba(242, 243, 243, 0.9);
+  position: relative;
+}
+#userprofile footer {
+  border-block-start: 0.1em solid #4A4D63;
+  padding-block-start: 1em;
+}
+#userprofile footer .closeprofile {
+  display: block;
+  margin-inline: auto;
+  padding: 1em 9vw;
+  font-size: 1.6em;
+}
+
+#profilename {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  -moz-column-gap: 0.6em;
+       column-gap: 0.6em;
+  align-items: center;
+  padding-block: 1em;
+}
+#profilename .avatar {
+  grid-row: 1/span 2;
+}
+
+#profilestatus, #profilefavcard {
+  padding-block: 0.75em;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  row-gap: 0.8em;
+}
+#profilestatus .title, #profilefavcard .title {
+  line-height: 1;
+}
+#profilestatus .text, #profilefavcard .text {
+  font-size: 0.8em;
+  color: #a5a6a7;
+}
+
+#profilefavcard {
+  padding-block: 0.5em;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
+  align-items: center;
+}
+#profilefavcard .title {
+  padding-block-start: 0.25em;
+}
+#profilefavcard .text {
+  padding-block-end: 0.3125em;
+}
+#profilefavcard img {
+  grid-row: 1/span 2;
+  grid-column: 2;
+  max-height: 4.35em;
+  max-width: 6em;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+#profilebanner {
+  display: block;
+  width: 100vw;
+  height: 42.8571428571vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#desc {
+  min-height: 30vh;
+  padding: 1em;
+  font-size: 1.4em;
+}
+#desc .title {
+  line-height: 1;
+  margin: 0;
+}
+#desc .text {
+  font-size: 0.8em;
+  color: #a5a6a7;
+}
+#desc .text > * {
+  margin-block: 0;
+}
+#desc .text > * + * {
+  margin-block-start: 0.6em;
+}
+
 #resourcenav {
   background-color: #172039;
   display: flex;
@@ -208,4 +359,48 @@ main {
 
 #pfoot {
   background-color: #3c4c76;
+}
+
+@media (min-width: 70em) {
+  #userprofile .cards {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+  #userprofile .cards .card:has(+ .card) {
+    margin-inline-end: 0.6em;
+  }
+  #userprofile .cards .card + .card {
+    padding-inline-start: 0.6em;
+  }
+  #userprofile .cards .card + .card::before {
+    content: "";
+    position: absolute;
+    left: -0.05em;
+    top: 0.5em;
+    height: calc(100% - 1em);
+    border-inline-start: var(--border);
+  }
+  #desc {
+    display: grid;
+    grid-template-columns: 14vw 1fr;
+  }
+  #desc .title {
+    padding-inline-end: 0.75em;
+    border-inline-end: var(--border);
+    margin-inline-end: 0.75em;
+  }
+}
+@media (max-width: 70em) {
+  #userprofile .cards .card + .card::before {
+    content: "";
+    position: absolute;
+    top: -0.05em;
+    left: 0.5em;
+    width: calc(100% - 1em);
+    border-block-start: var(--border);
+  }
+  #desc .title {
+    padding-block-end: 0.75em;
+    border-block-end: var(--border);
+    margin-block-end: 0.75em;
+  }
 }

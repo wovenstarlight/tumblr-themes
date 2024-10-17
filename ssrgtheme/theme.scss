@@ -129,6 +129,163 @@ $header-height: 4em;
 	}
 }
 
+// #region Profile modal
+#userprofile {
+	width: 80vw;
+	border: none;
+	padding: 1em 1.25em;
+	background-color: $darkblue;
+	color: $white;
+
+	&::backdrop { background-color: $ssjyp-blue }
+
+	a {
+		color: $lightblue;
+		text-underline-offset: 0.1em;
+	}
+
+	header {
+		border-block-end: 0.1em solid $darkgray;
+		--closebtn-size: 4.5em;
+		display: grid;
+		grid-template-columns: var(--closebtn-size) 1fr var(--closebtn-size);
+		align-items: center;
+		padding-block: 0 0.25em;
+
+		h2 {
+			// Reset
+			margin: 0;
+			line-height: 1;
+			// Style
+			grid-column: 2;
+			text-align: center;
+			font: {
+				size: 2.9em;
+				weight: normal;
+			}
+		}
+
+		.closeprofile {
+			grid-column: 3;
+			border: none;
+			background: none;
+			color: $white;
+			cursor: pointer;
+
+			&:hover, &:focus { color: $lightgray }
+			&:active { color: $darkgray }
+
+			svg {
+				height: 100%;
+				width: 100%;
+			}
+		}
+	}
+
+	.contents {
+		margin: 1em;
+		background-color: var(--profile-accent);
+		--border: 0.1em solid #{adjust-color($color: $white, $alpha: -0.75)};
+	}
+
+	.cards {
+		display: grid;
+		padding: 0.5em 1em;
+
+		p { margin: 0 }
+
+		.card {
+			font-size: 1.4em;
+			color: adjust-color($white, $alpha: -0.1);
+			position: relative;
+		}
+	}
+
+	footer {
+		border-block-start: 0.1em solid $darkgray;
+		padding-block-start: 1em;
+
+		.closeprofile {
+			display: block;
+			margin-inline: auto;
+			padding: 1em 9vw;
+			font-size: 1.6em;
+		}
+	}
+}
+
+#profilename {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	column-gap: 0.6em;
+	align-items: center;
+	padding-block: 1em;
+
+	.avatar { grid-row: 1 / span 2 }
+}
+
+#profilestatus, #profilefavcard {
+	padding-block: 0.75em;
+	display: grid;
+	grid-template-rows: auto 1fr;
+	row-gap: 0.8em;
+
+	.title { line-height: 1 }
+
+	.text {
+		font-size: 0.8em;
+		color: $lightgray;
+	}
+}
+
+#profilefavcard {
+	padding-block: 0.5em;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	grid-template-rows: auto 1fr;
+	align-items: center;
+
+	.title	{ padding-block-start: 0.25em }
+	.text	{ padding-block-end: 0.3125em }
+
+	img {
+		grid-row: 1 / span 2;
+		grid-column: 2;
+		max-height: 4.35em;
+		max-width: 6em;
+		object-fit: contain;
+	}
+}
+
+#profilebanner {
+	display: block;
+	width: 100vw;
+	height: calc((9/21) * 100vw);
+	object-fit: cover;
+}
+
+#desc {
+	min-height: 30vh;
+	padding: 1em;
+	font-size: 1.4em;
+
+	.title {
+		line-height: 1;
+		margin: 0;
+	}
+
+	.text {
+		font-size: 0.8em;
+		color: $lightgray;
+
+		& > * {
+			margin-block: 0;
+			& + * { margin-block-start: 0.6em }
+		}
+	}
+}
+// #endregion
+
 #resourcenav {
 	background-color: $darkblue-variant;
 	display: flex;
@@ -224,5 +381,64 @@ main {
 // #region FOOTER
 #pfoot {
 	background-color: #3c4c76;
+}
+// #endregion
+
+
+
+// #region MEDIA QUERIES
+@media (min-width: 70em) {	// Desktop
+	#userprofile .cards {
+		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+		.card {
+			$card-spacing: 0.6em;
+
+			&:has(+ .card) { margin-inline-end: $card-spacing }
+
+			&+.card {
+				padding-inline-start: $card-spacing;
+
+				&::before {
+					content: "";
+					position: absolute;
+					left: -0.05em;
+					top: 0.5em;
+					height: calc(100% - 1em);
+					border-inline-start: var(--border);
+				}
+			}
+		}
+	}
+	
+	#desc {
+		display: grid;
+		grid-template-columns: 14vw 1fr;
+		
+		.title {
+			$desc-spacing: 0.75em;
+			padding-inline-end: $desc-spacing;
+			border-inline-end: var(--border);
+			margin-inline-end: $desc-spacing;
+		}
+	}
+}
+
+@media (max-width: 70em) {	// Mobile
+	#userprofile .cards .card + .card::before {
+		content: "";
+		position: absolute;
+		top: -0.05em;
+		left: 0.5em;
+		width: calc(100% - 1em);
+		border-block-start: var(--border);
+	}
+
+	#desc .title {
+		$desc-spacing: 0.75em;
+		padding-block-end: $desc-spacing;
+		border-block-end: var(--border);
+		margin-block-end: $desc-spacing;
+	}
 }
 // #endregion
