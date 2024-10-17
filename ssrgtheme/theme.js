@@ -18,15 +18,15 @@ const topMinimumWidth = topNavChildren.map(el => el.offsetWidth).reduce((a, b) =
 const dropdownNavToggle = document.getElementById("moreinfo").firstElementChild;
 /** The dropdown navigation's contents, for containing the collapsed top nav's children. */
 const dropdownNavContents = document.getElementById("moreinfo").lastElementChild;
+const dropdownNavTopItem = dropdownNavContents.firstElementChild;
 
 /** Moves the links in the top nav (home, etc.) to the dropdown if the page size is too small to fit all the links on one line. */
 function moveTopNav() {
 	let topNavAvailableSpace = dropdownNavToggle.offsetLeft - userBadgeMinimumWidth;
 
 	if (topNavAvailableSpace < topMinimumWidth && topNav.childElementCount !== 0) {
-		var topNode = dropdownNavContents.firstElementChild;
 		topNavChildren.forEach(el => {
-			dropdownNavContents.insertBefore(el, topNode);
+			dropdownNavContents.insertBefore(el, dropdownNavTopItem);
 		})
 		topNav.classList.add("empty");
 	} else if (topNavAvailableSpace > topMinimumWidth && topNav.childElementCount === 0) {
