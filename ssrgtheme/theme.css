@@ -250,6 +250,8 @@ body {
   height: 42.8571428571vw;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: var(--profile-banner-position);
+     object-position: var(--profile-banner-position);
 }
 
 #desc {

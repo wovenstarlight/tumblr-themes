@@ -273,6 +273,7 @@ $header-height: 4em;
 	width: 100vw;
 	height: calc((9/21) * 100vw);
 	object-fit: cover;
+	object-position: var(--profile-banner-position);
 }
 
 #desc {
