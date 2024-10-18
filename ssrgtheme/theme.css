@@ -303,6 +303,15 @@ body {
   gap: 0 0.5em;
   align-items: center;
 }
+.weeklytop5 figure::after {
+  content: "";
+  display: block;
+  grid-column: 3;
+  grid-row: 1/span 2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='%23a5a6a7' viewBox='0 0 256 256' aria-hidden='true'%3E%3Cpath d='M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z'%3E%3C/path%3E%3C/svg%3E");
+  width: 2em;
+  height: 2em;
+}
 .weeklytop5 img {
   border: 0.1em solid #54595d;
   background-color: #54595d;
@@ -315,11 +324,6 @@ body {
 .weeklytop5 .name {
   font-size: 0.9em;
   color: #f2f3f3;
-}
-.weeklytop5 svg {
-  grid-column: 3;
-  grid-row: 1/span 2;
-  color: #a5a6a7;
 }
 
 #resourcenav {
