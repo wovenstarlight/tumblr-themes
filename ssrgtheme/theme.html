@@ -353,7 +353,7 @@ if (playlist !== null) {
 			trackArtist.classList.add("score");
 			// Start adding information
 			if (el.LINK != null) track.href = el.LINK;
-			if (el.ICON != null) trackImage.src = el.ICON;
+			trackImage.src = el.ICON ?? "./assets/playlistnoimage.png";
 			if (el.NAME != null) {
 				trackName.innerHTML = el.NAME;
 				trackText.append(trackName);
