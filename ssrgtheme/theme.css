@@ -332,9 +332,11 @@ body {
 }
 #resourcenav a {
   height: 100%;
+  min-width: 9em;
   display: inline-flex;
   align-items: center;
-  padding: 0 1.6em;
+  justify-content: space-between;
+  padding: 0 0.6em;
   text-decoration: none;
   color: #f2f3f3;
   background-color: #0d1a32;
