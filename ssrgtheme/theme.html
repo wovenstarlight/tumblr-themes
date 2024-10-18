@@ -49,6 +49,8 @@
 	<meta name="text:Profile status message" content="Say what you want!">
 	<meta name="text:Profile favorite card theme" content="Melt Down">
 	<meta name="text:Profile favorite card member" content="SUNGJIN">
+	<meta name="text:Playlist title" content="Currently listening to">
+	<meta name="text:Playlist" content="[TRACK]&NewLine;LINK: https://www.youtube.com/watch?v=vnS_jn2uibs&pp=ygUVdGltZSBvZiBvdXIgbGlmZSBkYXk2&NewLine;ICON: https://upload.wikimedia.org/wikipedia/en/5/5d/The_Book_of_Us_Gravity.jpg&NewLine;NAME: Time of Our Life&NewLine;ARTIST: DAY6&NewLine;&NewLine;[TRACK]&NewLine;ICON: https://upload.wikimedia.org/wikipedia/en/5/53/Even_of_Day_-_Right_Through_Me.png&NewLine;NAME: Love Parade&NewLine;ARTIST: DAY6 (Even of Day)">
 	<meta name="if:Show group blog members" content="0">
 	<meta name="text:Group blog members title" content="Group members">
 	<!-- TODO: Decide which of these can be used for this theme.
@@ -148,6 +150,7 @@
 				</div>
 				{/block:ShowDescription}{/block:Description}
 			</dl>
+
 			{block:GroupMembers}{block:IfShowGroupBlogMembers}
 			<!-- WEEKLY TOP 5: Blog members -->
 			<section id="groupmembers" class="profilesection weeklytop5">
@@ -168,6 +171,14 @@
 				</div>
 			</section>
 			{/block:IfShowGroupBlogMembers}{/block:GroupMembers}
+
+			{block:IfPlaylist}
+			<!-- WEEKLY TOP 5: Playlist -->
+			<section id="playlist" class="profilesection weeklytop5">
+				<h3>{block:IfPlaylistTitle}{text:Playlist title}{/block:IfPlaylistTitle}{block:IfNotPlaylistTitle}Playlist{/block:IfNotPlaylistTitle}</h3>
+				<div class="contents">{text:Playlist}</div>
+			</section>
+			{/block:IfPlaylist}
 
 			<footer>
 				<button class="button-solid closeprofile">OK</button>
@@ -254,7 +265,7 @@
 
 <!-- The actual functionality of the theme. -->
 <script>
-// #region TOP NAVIGATION PLACEMENT CALCULATOR
+// #region Top navigation placement calculator
 /** The standard page font size, for calculating padding. */
 const em = parseFloat(getComputedStyle(document.documentElement).fontSize);
 /** The minimal width of the user badge on the left displaying the user's name and title. */
@@ -307,9 +318,49 @@ document.addEventListener("click", e => {
 // #endregion
 
 // #region Profile modal functionality
+// Open/close
 const userProfile = document.getElementById("userprofile");
 document.getElementById("userbadge").addEventListener("click", () => { userProfile.showModal() });
 userProfile.querySelectorAll(".closeprofile").forEach(el => el.addEventListener("click", () => { userProfile.close() }));
+
+// Playlist
+let playlist = document.querySelector("#playlist .contents");
+if (playlist !== null) {
+	let playlistTracks = playlist.innerHTML.split("[TRACK]")
+		.filter(el => el !== "")
+		.map(el => {
+			let arr = el.trim().split(String.fromCharCode(10)),
+				obj = {};
+			arr.forEach(line => {
+				parts = line.trim().split(":");
+				obj[parts[0].trim()] = parts.slice(1).join(":").trim();
+			});
+			return obj;
+		})
+		.map(el => {
+			// Create and assemble HTML element
+			let track = document.createElement("a"),
+				trackInner = document.createElement("figure"),
+				trackImage = document.createElement("img"),
+				trackText = document.createElement("figcaption"),
+				trackName = document.createElement("span"),
+				trackArtist = document.createElement("span");
+			track.append(trackInner);
+			trackInner.append(trackImage, trackText);
+			trackText.append(trackName, trackArtist);
+			trackName.classList.add("name");
+			trackArtist.classList.add("score");
+			// Start adding information
+			if (el.LINK != null)
+				track.href = el.LINK;
+			trackImage.src = el.ICON;
+			trackName.innerText = el.NAME;
+			trackArtist.innerText = el.ARTIST;
+			return track;
+		});
+	playlist.textContent = "";
+	playlistTracks.forEach(el => playlist.append(el));
+}
 // #endregion
 </script>
 
