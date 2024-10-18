@@ -41,6 +41,13 @@ function moveTopNav() {
 window.addEventListener("resize", () => { moveTopNav() });
 /** Check top nav's ideal placement upon initial page load. */
 moveTopNav();
+
+document.addEventListener("click", e => {
+	const moreinfo = document.getElementById("moreinfo");
+	if (moreinfo.getAttribute("open") !== null && e.target.closest("#moreinfo") == null) {
+		moreinfo.removeAttribute("open");
+	}
+})
 // #endregion
 
 // #region Profile modal functionality
