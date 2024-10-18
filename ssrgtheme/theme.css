@@ -272,6 +272,56 @@ body {
   margin-block-start: 0.6em;
 }
 
+#groupmembers {
+  padding: 0.5em;
+  font-size: 1.15em;
+}
+#groupmembers h3 {
+  margin: 0 0 0.6em;
+  font-size: 1em;
+  font-weight: normal;
+  color: #38b4fe;
+}
+#groupmembers a {
+  display: block;
+  text-decoration: none;
+}
+#groupmembers a:hover, #groupmembers a:focus {
+  background-color: rgba(84, 89, 93, 0.5);
+}
+#groupmembers a:active {
+  background-color: #54595d;
+}
+#groupmembers a + a {
+  border-block-start: var(--border);
+}
+#groupmembers figure {
+  margin: 0;
+  padding: 0.6em;
+  display: grid;
+  grid-template-columns: 2.5em 1fr auto;
+  gap: 0 0.5em;
+  align-items: center;
+}
+#groupmembers img {
+  border: 0.1em solid #54595d;
+  background-color: #54595d;
+  grid-row: 1/span 2;
+}
+#groupmembers figcaption {
+  display: contents;
+  line-height: 1;
+}
+#groupmembers .name {
+  font-size: 0.9em;
+  color: #f2f3f3;
+}
+#groupmembers svg {
+  grid-column: 3;
+  grid-row: 1/span 2;
+  color: #a5a6a7;
+}
+
 #resourcenav {
   background-color: #172039;
   display: flex;

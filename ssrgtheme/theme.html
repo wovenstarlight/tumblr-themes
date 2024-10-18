@@ -49,6 +49,8 @@
 	<meta name="text:Profile status message" content="Say what you want!">
 	<meta name="text:Profile favorite card theme" content="Melt Down">
 	<meta name="text:Profile favorite card member" content="SUNGJIN">
+	<meta name="if:Show group blog members" content="0">
+	<meta name="text:Group blog members title" content="Group members">
 	<!-- TODO: Decide which of these can be used for this theme.
 	<meta name="text:Filtered tags" content="spoiler, spoilers">
 	<meta name="if:Back to top button" content="1">
@@ -63,8 +65,6 @@
 	<meta name="if:Post tags" content="1">
 	<meta name="if:Show tags on click" content="0">
 	<meta name="text:Custom links title" content="Navigate">
-	<meta name="if:Show group blog members" content="0">
-	<meta name="text:Group blog members title" content="Group members">
 	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
 	-->
 	<!-- {/block:Hidden} -->
@@ -148,6 +148,27 @@
 				</div>
 				{/block:ShowDescription}{/block:Description}
 			</dl>
+			{block:GroupMembers}{block:IfShowGroupBlogMembers}
+			<!-- WEEKLY TOP 5: Blog members -->
+			<section id="groupmembers" class="profilesection">
+				<h3>{block:IfGroupBlogMembersTitle}{text:Group blog members title}{/block:IfGroupBlogMembersTitle}{block:IfNotGroupBlogMembersTitle}{lang:Group members}{/block:IfNotGroupBlogMembersTitle}</h3>
+				<div class="contents">
+					{block:GroupMember}
+					<a href="{GroupMemberURL}">
+						<figure>
+							<!-- <img src="{GroupMemberPortraitURL-64}" alt="User icon" /> -->
+							<img src="{GroupMemberPortraitURL-64}" />
+							<figcaption>
+								<span class="name">{GroupMemberName}</span>
+								<span class="score">{GroupMemberTitle}</span>
+							</figcaption>
+							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg>
+						</figure>
+					</a>
+					{/block:GroupMember}
+				</div>
+			</section>
+			{/block:IfShowGroupBlogMembers}{/block:GroupMembers}
 
 			<footer>
 				<button class="button-solid closeprofile">OK</button>
@@ -208,7 +229,12 @@
 		userProfileModal.querySelector("#profilefavcard img").setAttribute("src", "./ref-assets/favcard.png");
 		userProfileModal.querySelector("#profilebanner").setAttribute("src", "./ref-assets/bg2.png");
 		userProfileModal.querySelector("#desc .text").innerHTML = "<p>Description will go here in the future</p><p>Test</p><p>Test</p>";
+		userProfileModal.querySelector("#groupmembers h3").innerText = "Group members";
+		userProfileModal.querySelectorAll("#groupmembers img").forEach(el => el.setAttribute("src", "https://api.tumblr.com/v2/blog/wovenstarlight.tumblr.com/avatar"));
+		userProfileModal.querySelector("#groupmembers .name").innerText = "wovenstarlight";
+		userProfileModal.querySelector("#groupmembers .score").innerText = "no one i love like that old bitch elder";
 		userProfileModal.innerHTML = userProfileModal.innerHTML.replace(/\{\/?\w+(:\w+)?\}/g, "");
+		userProfileModal.scrollBy(0, userProfileModal.offsetHeight);
 		userProfileModal.close();
 	</script>
 

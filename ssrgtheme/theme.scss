@@ -290,6 +290,61 @@ $header-height: 4em;
 		}
 	}
 }
+
+#groupmembers {
+	padding: 0.5em;
+	font-size: 1.15em;
+
+	h3 {
+		margin: 0 0 0.6em;
+		font: {
+			size: 1em;
+			weight: normal;
+		}
+		color: $lightblue;
+	}
+
+	a {
+		display: block;
+		text-decoration: none;
+
+		&:hover, &:focus { background-color: adjust-color($darkgray, $alpha: -0.5) }
+		&:active { background-color: $darkgray }
+
+		& + a { border-block-start: var(--border) }
+	}
+
+	figure {
+		margin: 0;
+		padding: 0.6em;
+		display: grid;
+		grid-template-columns: 2.5em 1fr auto;
+		gap: 0 0.5em;
+		align-items: center;
+	}
+
+	img {
+		border: 0.1em solid $darkgray;
+		background-color: $darkgray;
+		grid-row: 1 / span 2;
+	}
+
+	figcaption {
+		display: contents;
+		line-height: 1;
+	}
+
+	.name {
+		font-size: 0.9em;
+		color: $white;
+	}
+
+	svg {
+		grid-column: 3;
+		grid-row: 1 / span 2;
+		color: $lightgray;
+	}
+}
 // #endregion
 
 #resourcenav {
