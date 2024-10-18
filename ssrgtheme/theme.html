@@ -286,6 +286,7 @@ const topMinimumWidth = topNavChildren.map(el => el.offsetWidth).reduce((a, b) =
 const dropdownNavToggle = document.getElementById("moreinfo").firstElementChild;
 /** The dropdown navigation's contents, for containing the collapsed top nav's children. */
 const dropdownNavContents = document.getElementById("moreinfo").lastElementChild;
+/** The dropdown navigation's first item, for reference when moving links. */
 const dropdownNavTopItem = dropdownNavContents.firstElementChild;
 
 /** Moves the links in the top nav (home, etc.) to the dropdown if the page size is too small to fit all the links on one line. */
@@ -305,9 +306,9 @@ function moveTopNav() {
 	}
 }
 
-/** Reassess top nav's ideal placement on window resize. */
+// Reassess top nav's ideal placement on window resize.
 window.addEventListener("resize", () => { moveTopNav() });
-/** Check top nav's ideal placement upon initial page load. */
+// Check top nav's ideal placement upon initial page load.
 moveTopNav();
 
 document.addEventListener("click", e => {
