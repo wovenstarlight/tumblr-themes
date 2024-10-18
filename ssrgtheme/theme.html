@@ -51,7 +51,7 @@
 	<meta name="text:Profile favorite card theme" content="Melt Down">
 	<meta name="text:Profile favorite card member" content="SUNGJIN">
 	<meta name="text:Playlist title" content="Currently listening to">
-	<meta name="text:Playlist" content="[TRACK]&NewLine;LINK: https://www.youtube.com/watch?v=vnS_jn2uibs&pp=ygUVdGltZSBvZiBvdXIgbGlmZSBkYXk2&NewLine;ICON: https://upload.wikimedia.org/wikipedia/en/5/5d/The_Book_of_Us_Gravity.jpg&NewLine;NAME: Time of Our Life&NewLine;ARTIST: DAY6&NewLine;&NewLine;[TRACK]&NewLine;ICON: https://upload.wikimedia.org/wikipedia/en/5/53/Even_of_Day_-_Right_Through_Me.png&NewLine;NAME: Love Parade&NewLine;ARTIST: DAY6 (Even of Day)">
+	<meta name="text:Playlist" content="[TRACK]&NewLine;NAME: Time of Our Life&NewLine;ARTIST: DAY6&NewLine;ICON: https://upload.wikimedia.org/wikipedia/en/5/5d/The_Book_of_Us_Gravity.jpg&NewLine;LINK: https://www.youtube.com/watch?v=vnS_jn2uibs&pp=ygUVdGltZSBvZiBvdXIgbGlmZSBkYXk2&NewLine;&NewLine;[TRACK]&NewLine;NAME: Love Parade&NewLine;ARTIST: DAY6 (Even of Day)&NewLine;ICON: https://upload.wikimedia.org/wikipedia/en/5/53/Even_of_Day_-_Right_Through_Me.png">
 	<meta name="if:Show group blog members" content="0">
 	<meta name="text:Group blog members title" content="Group members">
 	<!-- TODO: Decide which of these can be used for this theme.
@@ -348,19 +348,24 @@ if (playlist !== null) {
 				trackArtist = document.createElement("span");
 			track.append(trackInner);
 			trackInner.append(trackImage, trackText);
-			trackText.append(trackName, trackArtist);
+			trackImage.alt = "";	// Mark as decorative
 			trackName.classList.add("name");
 			trackArtist.classList.add("score");
 			// Start adding information
-			if (el.LINK != null)
-				track.href = el.LINK;
-			trackImage.src = el.ICON;
-			trackName.innerText = el.NAME;
-			trackArtist.innerText = el.ARTIST;
-			return track;
+			if (el.LINK != null) track.href = el.LINK;
+			if (el.ICON != null) trackImage.src = el.ICON;
+			if (el.NAME != null) {
+				trackName.innerHTML = el.NAME;
+				trackText.append(trackName);
+			}
+			if (el.ARTIST != null) {
+				trackArtist.innerHTML = el.ARTIST;
+				trackText.append(trackArtist);
+			}
+			return el.NAME == null && el.ARTIST == null ? null : track;
 		});
 	playlist.textContent = "";
-	playlistTracks.forEach(el => playlist.append(el));
+	playlistTracks.filter(el => el !== null).forEach(el => playlist.append(el));
 }
 // #endregion
 </script>
