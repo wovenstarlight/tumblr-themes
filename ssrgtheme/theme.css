@@ -272,30 +272,30 @@ body {
   margin-block-start: 0.6em;
 }
 
-#groupmembers {
+.weeklytop5 {
   padding: 0.5em;
   font-size: 1.15em;
 }
-#groupmembers h3 {
+.weeklytop5 h3 {
   margin: 0 0 0.6em;
   font-size: 1em;
   font-weight: normal;
   color: #38b4fe;
 }
-#groupmembers a {
+.weeklytop5 a {
   display: block;
   text-decoration: none;
 }
-#groupmembers a:hover, #groupmembers a:focus {
+.weeklytop5 a:hover, .weeklytop5 a:focus {
   background-color: rgba(84, 89, 93, 0.5);
 }
-#groupmembers a:active {
+.weeklytop5 a:active {
   background-color: #54595d;
 }
-#groupmembers a + a {
+.weeklytop5 a + a {
   border-block-start: var(--border);
 }
-#groupmembers figure {
+.weeklytop5 figure {
   margin: 0;
   padding: 0.6em;
   display: grid;
@@ -303,20 +303,20 @@ body {
   gap: 0 0.5em;
   align-items: center;
 }
-#groupmembers img {
+.weeklytop5 img {
   border: 0.1em solid #54595d;
   background-color: #54595d;
   grid-row: 1/span 2;
 }
-#groupmembers figcaption {
+.weeklytop5 figcaption {
   display: contents;
   line-height: 1;
 }
-#groupmembers .name {
+.weeklytop5 .name {
   font-size: 0.9em;
   color: #f2f3f3;
 }
-#groupmembers svg {
+.weeklytop5 svg {
   grid-column: 3;
   grid-row: 1/span 2;
   color: #a5a6a7;
