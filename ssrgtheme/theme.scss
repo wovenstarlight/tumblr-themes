@@ -50,23 +50,34 @@ body {
 	text-decoration: none;
 	cursor: pointer;
 }
+button[disabled] { cursor: initial }
 .button-outline {
 	@extend .button-basic;
 	background-color: $mediumblue;
 	border: 0.1875em solid $lightblue;
 
-	&:active {
+	&:not([disabled]):active {
 		background-color: $mediumblue-darken;
 		border-color: $mediumblue;
 	}
 }
-.button-solid {
+.button-solid-blue {
 	@extend .button-basic;
 	background-color: $lightblue;
 	border: none;
 
-	&:hover, &:focus { background-color: $lightblue-lighten-1 }
-	&:active { background-color: $lightblue-lighten-2 }
+	&:not([disabled]) {
+		&:hover, &:focus { background-color: $lightblue-lighten-1 }
+		&:active { background-color: $lightblue-lighten-2 }
+	}
+}
+.button-solid-gray {
+	background-color: $darkgray;
+
+	&:not([disabled]) {
+		&:hover, &:focus { background-color: $darkblue-active }
+		&:active { background-color: $lightgray }
+	}
 }
 // Weekly league colors
 .bronze		{ color: #fe9500 !important }
@@ -100,7 +111,7 @@ body {
 		grid-template-columns: var(--closebtn-size) 1fr var(--closebtn-size);
 		align-items: center;
 		padding-block: 0 0.25em;
-	
+
 		h2 {
 			// Reset
 			margin: 0;
@@ -113,17 +124,17 @@ body {
 				weight: normal;
 			}
 		}
-	
+
 		.closemodal {
 			grid-column: 3;
 			border: none;
 			background: none;
 			color: $white;
 			cursor: pointer;
-	
+
 			&:hover, &:focus { color: $lightgray }
 			&:active { color: $darkgrayblue }
-	
+
 			svg {
 				height: 100%;
 				width: 100%;
@@ -491,11 +502,11 @@ main {
 			}
 		}
 	}
-	
+
 	#desc {
 		display: grid;
 		grid-template-columns: 14vw 1fr;
-		
+
 		.title {
 			$desc-spacing: 0.75em;
 			padding-inline-end: $desc-spacing;

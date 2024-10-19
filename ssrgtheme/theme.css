@@ -19,7 +19,7 @@ body {
   transform: translateX(-50%);
 }
 
-.button-basic, .button-solid, .button-outline {
+.button-basic, .button-solid-blue, .button-outline {
   color: #f2f3f3;
   padding: 0.75em 1em;
   line-height: 1;
@@ -27,24 +27,38 @@ body {
   cursor: pointer;
 }
 
+button[disabled] {
+  cursor: initial;
+}
+
 .button-outline {
   background-color: #015e97;
   border: 0.1875em solid #38b4fe;
 }
-.button-outline:active {
+.button-outline:not([disabled]):active {
   background-color: #063b5d;
   border-color: #015e97;
 }
 
-.button-solid {
+.button-solid-blue {
   background-color: #38b4fe;
   border: none;
 }
-.button-solid:hover, .button-solid:focus {
+.button-solid-blue:not([disabled]):hover, .button-solid-blue:not([disabled]):focus {
   background-color: #5fb1e0;
 }
-.button-solid:active {
+.button-solid-blue:not([disabled]):active {
   background-color: #7bc3eb;
+}
+
+.button-solid-gray, #search button[type=submit][disabled] {
+  background-color: #54595d;
+}
+.button-solid-gray:not([disabled]):hover, #search button[type=submit][disabled]:not([disabled]):hover, .button-solid-gray:not([disabled]):focus, #search button[type=submit][disabled]:not([disabled]):focus {
+  background-color: #5f5f6d;
+}
+.button-solid-gray:not([disabled]):active, #search button[type=submit][disabled]:not([disabled]):active {
+  background-color: #a5a6a7;
 }
 
 .bronze {
