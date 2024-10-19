@@ -54,11 +54,11 @@
 	<meta name="text:Playlist" content="[TRACK]&NewLine;NAME: Time of Our Life&NewLine;ARTIST: DAY6&NewLine;ICON: https://upload.wikimedia.org/wikipedia/en/5/5d/The_Book_of_Us_Gravity.jpg&NewLine;LINK: https://www.youtube.com/watch?v=vnS_jn2uibs&pp=ygUVdGltZSBvZiBvdXIgbGlmZSBkYXk2&NewLine;&NewLine;[TRACK]&NewLine;NAME: Love Parade&NewLine;ARTIST: DAY6 (Even of Day)&NewLine;ICON: https://upload.wikimedia.org/wikipedia/en/5/53/Even_of_Day_-_Right_Through_Me.png">
 	<meta name="if:Show group blog members" content="0">
 	<meta name="text:Group blog members title" content="Group members">
+	<meta name="if:Search bar" content="1">
+	<meta name="text:Search bar title" content="Search Blog">
 	<!-- TODO: Decide which of these can be used for this theme.
 	<meta name="text:Filtered tags" content="spoiler, spoilers">
 	<meta name="if:Back to top button" content="1">
-	<meta name="if:Search bar" content="1">
-	<meta name="text:Search bar title" content="Search">
 	<meta name="if:Post dates" content="1">
 	<meta name="if:Post times" content="1">
 	<meta name="if:Dates formatted month first" content="0">
@@ -232,7 +232,32 @@
 	</header>
 
 	<main id="main">
-		<!-- TODO: main content goes here -->
+		<header id="mainhead">
+			{block:IfSearchBar}
+			<!-- SEARCH BAR -->
+			<button id="opensearch">Search</button>
+
+			<dialog id="searchmodal" class="modal" aria-labelledby="searchtitle">
+				<header>
+					<h2 id="searchtitle" class="modaltitle">{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</h2>
+					<button class="closemodal">
+						<span class="visuallyhidden">Close</span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
+					</button>
+				</header>
+				
+				<form action="/search" method="get" id="search">
+					<label for="q" class="visuallyhidden">{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
+					<input id="q" type="search" name="q" value="{SearchQuery}" placeholder="Enter query here" required />
+					<button type="submit" class="button-solid-blue">{lang:Search}</button>
+				</form>
+			</dialog>
+			{/block:IfSearchBar}
+
+			<!-- TODO: Page title -->
+		</header>
+
+		<!-- TODO: posts go here -->
 	</main>
 	
 	<footer id="pfoot">
@@ -252,9 +277,7 @@
 			el.innerHTML = el.innerHTML.replace(/\{\/?\w+(:\w+)?\}/g, "");
 		})
 		const userProfileModal = document.getElementById("userprofile");
-		userProfileModal.showModal();
 		userProfileModal.querySelector("h2").innerText = "bbybread28's INFORMATION";
-		userProfileModal.querySelector("img[alt='User icon']").setAttribute("src", "./ref-assets/avatar.png");
 		userProfileModal.querySelector("#profilename .title").innerText = "bbybread28";
 		userProfileModal.querySelector("#profilename .text").innerText = "Master III";
 		userProfileModal.querySelector("#profilename .text").setAttribute("class", "text master");
@@ -267,9 +290,11 @@
 		userProfileModal.querySelectorAll("#groupmembers img").forEach(el => el.setAttribute("src", "https://api.tumblr.com/v2/blog/wovenstarlight.tumblr.com/avatar"));
 		userProfileModal.querySelector("#groupmembers .name").innerText = "wovenstarlight";
 		userProfileModal.querySelector("#groupmembers .score").innerText = "no one i love like that old bitch elder";
-		userProfileModal.innerHTML = userProfileModal.innerHTML.replace(/\{\/?\w+(:\w+)?\}/g, "");
-		userProfileModal.scrollBy(0, userProfileModal.offsetHeight);
-		userProfileModal.close();
+		document.querySelector("#searchmodal h2").innerText = "Search Blog";
+		document.querySelector("#searchmodal form button").innerHTML = "Search";
+		document.querySelectorAll("#userprofile, #mainhead").forEach(el => {
+			el.innerHTML = el.innerHTML.replace(/\{\/?\w+(:[\w\s]+)?\}/g, "");
+		});
 	</script>
 
 <!-- The actual functionality of the theme. -->
@@ -330,6 +355,7 @@ document.addEventListener("click", e => {
 // #region Modals open/close functionality
 // Open: User profile
 document.getElementById("userbadge").addEventListener("click", () => { document.getElementById("userprofile").showModal() });
+document.getElementById("opensearch").addEventListener("click", () => { document.getElementById("searchmodal").showModal() });
 // Close
 document.querySelectorAll(".modal").forEach(modal => {
 	modal.querySelectorAll(".modal .closemodal").forEach(btn => btn.addEventListener("click", () => { modal.close() }));
@@ -379,6 +405,19 @@ if (playlist !== null) {
 	playlist.textContent = "";
 	playlistTracks.filter(el => el !== null).forEach(el => playlist.append(el));
 }
+// #endregion
+
+// #region Search form
+function enableSearch(e) {
+	if (e.currentTarget.value !== "") {
+		e.currentTarget.nextElementSibling.removeAttribute("disabled");
+	}
+	else {
+		e.currentTarget.nextElementSibling.setAttribute("disabled", "true");
+	}
+}
+document.getElementById("q").addEventListener("input", enableSearch);
+enableSearch({ currentTarget: document.getElementById("q") });
 // #endregion
 </script>
 
