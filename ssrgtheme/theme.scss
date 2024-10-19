@@ -182,26 +182,22 @@ $header-height: 4em;
 	&:hover, &:focus { background-color: $darkblue-hover }
 	&:active { background-color: $darkblue-active }
 
-	hgroup {
+	.text {
 		font-size: 1.3em;
 		line-height: 1.2;
+		* { margin: 0 }
 	}
 
-	// Username
-	h1 {
+	.username {
 		font: {
 			weight: normal;
 			size: 1.1em;
 		}
-		margin: 0;
 		color: $white;
 	}
 
-	// Blog title
-	p {
-		margin: 0;
-		// "League unregistered" by default
-		color: $lightgray;
+	.league {	// Blog title
+		color: $lightgray;	// "League unregistered" by default
 	}
 }
 

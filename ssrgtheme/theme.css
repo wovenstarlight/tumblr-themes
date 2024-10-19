@@ -158,18 +158,19 @@ body {
 #userbadge:active {
   background-color: #5f5f6d;
 }
-#userbadge hgroup {
+#userbadge .text {
   font-size: 1.3em;
   line-height: 1.2;
 }
-#userbadge h1 {
+#userbadge .text * {
+  margin: 0;
+}
+#userbadge .username {
   font-weight: normal;
   font-size: 1.1em;
-  margin: 0;
   color: #f2f3f3;
 }
-#userbadge p {
-  margin: 0;
+#userbadge .league {
   color: #a5a6a7;
 }
 

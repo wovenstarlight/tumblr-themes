@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>{Title}{block:TagPage} ({lang:TagResultCount posts tagged Tag}){/block:TagPage}{block:SearchPage} ({lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+	<title>{block:TagPage}{lang:TagResultCount posts tagged Tag} | {/block:TagPage}{block:SearchPage}{lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults} | {/block:SearchPage}{block:PermalinkPage}{block:PostSummary}{PostSummary} | {/block:PostSummary}{/block:PermalinkPage}{Title}</title>
 	<meta name="description" content="{MetaDescription}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link rel="shortcut icon" href="{Favicon}">
@@ -94,20 +94,28 @@
 <body>
 	<a href="#main" id="skip" class="button-outline">Skip to main content</a>
 
+	<!-- PAGE TITLE -->
+	<h1 class="visuallyhidden">
+		{block:TagPage}{lang:TagResultCount posts tagged Tag}{/block:TagPage}
+		{block:SearchPage}{lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults}{/block:SearchPage}
+		{block:PermalinkPage}{block:PostSummary}{PostSummary}{/block:PostSummary}{/block:PermalinkPage}
+		{block:ShowTitle} | {Title}{/block:ShowTitle}
+	</h1>
+
 	<header id="phead">
 		<!-- USER BADGE: Name and title -->
 		<button id="userbadge">
 			<img src="{PortraitURL-128}" alt="User icon" class="avatar" />
-			<hgroup>
-				<h1>{Name}</h1>
-				<p class="{select:Weekly league}">{Title}</p>
-			</hgroup>
+			<div class="text">
+				<p class="username">{Name}</p>
+				<p class="{select:Weekly league} league">{Title}</p>
+			</div>
 		</button>
 
 		<!-- USER PROFILE MODAL -->
-		<dialog id="userprofile" class="modal">
+		<dialog id="userprofile" class="modal" aria-labelledby="userprofiletitle">
 			<header>
-				<h2 class="modaltitle">{Name}'s INFORMATION</h2>
+				<h2 id="userprofiletitle" class="modaltitle">{Name}'s INFORMATION</h2>
 				<button class="closemodal">
 					<span class="visuallyhidden">Close</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
@@ -235,9 +243,9 @@
 	<script>
 		document.title = "SSRG Theme";
 		document.querySelectorAll("img[alt='User icon']").forEach(el => el.setAttribute("src", "./ref-assets/avatar.png"));
-		document.querySelector("#userbadge h1").innerText = "bbybread28";
-		document.querySelector("#userbadge p").innerText = "Master III";
-		document.querySelector("#userbadge p").setAttribute("class", "master");
+		document.querySelector("#userbadge .username").innerText = "bbybread28";
+		document.querySelector("#userbadge .league").innerText = "Master III";
+		document.querySelector("#userbadge .league").setAttribute("class", "master");
 		document.getElementById("home").setAttribute("href", "./theme.html");
 		document.body.setAttribute("style", "--bg-img: url('./ref-assets/bg.png'); --bg-position: center;--profile-banner-position: center; --profile-accent: #1f3853;");
 		document.querySelectorAll("#resourcenav").forEach(el => {
