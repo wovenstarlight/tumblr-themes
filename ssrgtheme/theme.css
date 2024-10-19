@@ -443,6 +443,29 @@ main {
   background-position: var(--bg-position, center);
 }
 
+#mainhead {
+  display: flex;
+  padding: 1.5em;
+  box-sizing: content-box;
+  height: 2.35rem;
+  gap: 1em;
+}
+
+#opensearch {
+  border: none;
+  box-shadow: 1px 1px #a5a6a7;
+  background-color: white;
+  color: #015e97;
+  padding: 0 0.6em;
+  line-height: 1;
+}
+#opensearch:hover, #opensearch:focus {
+  background-color: #f2f3f3;
+}
+#opensearch:active {
+  box-shadow: inset 1px 1px #a5a6a7;
+}
+
 #search {
   margin: 2em 1em 1em;
   display: grid;

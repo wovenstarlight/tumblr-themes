@@ -467,6 +467,26 @@ main {
 	};
 }
 
+#mainhead {
+	display: flex;
+	padding: 1.5em;
+	box-sizing: content-box;
+	height: 2.35rem;
+	gap: 1em;
+}
+
+#opensearch {
+	border: none;
+	box-shadow: 1px 1px $lightgray;
+	background-color: white;
+	color: $mediumblue;
+	padding: 0 0.6em;
+	line-height: 1;
+
+	&:hover, &:focus { background-color: $white }
+	&:active { box-shadow: inset 1px 1px $lightgray }
+}
+
 #search {
 	margin: 2em 1em 1em;
 	display: grid;
