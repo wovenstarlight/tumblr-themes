@@ -105,10 +105,10 @@
 		</button>
 
 		<!-- USER PROFILE MODAL -->
-		<dialog id="userprofile">
+		<dialog id="userprofile" class="modal">
 			<header>
-				<h2>{Name}'s INFORMATION</h2>
-				<button class="closeprofile">
+				<h2 class="modaltitle">{Name}'s INFORMATION</h2>
+				<button class="closemodal">
 					<span class="visuallyhidden">Close</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
 				</button>
@@ -182,7 +182,7 @@
 			{/block:IfPlaylist}
 
 			<footer>
-				<button class="button-solid closeprofile">OK</button>
+				<button class="button-solid closemodal">OK</button>
 			</footer>
 		</dialog>
 
@@ -239,7 +239,7 @@
 		document.querySelector("#userbadge p").innerText = "Master III";
 		document.querySelector("#userbadge p").setAttribute("class", "master");
 		document.getElementById("home").setAttribute("href", "./theme.html");
-		document.body.setAttribute("style", "--bg-img: url('./ref-assets/bg2.png'); --bg-position: center;--profile-banner-position: center; --profile-accent: #1f3853;");
+		document.body.setAttribute("style", "--bg-img: url('./ref-assets/bg.png'); --bg-position: center;--profile-banner-position: center; --profile-accent: #1f3853;");
 		document.querySelectorAll("#resourcenav").forEach(el => {
 			el.innerHTML = el.innerHTML.replace(/\{\/?\w+(:\w+)?\}/g, "");
 		})
@@ -319,13 +319,16 @@ document.addEventListener("click", e => {
 })
 // #endregion
 
-// #region Profile modal functionality
-// Open/close
-const userProfile = document.getElementById("userprofile");
-document.getElementById("userbadge").addEventListener("click", () => { userProfile.showModal() });
-userProfile.querySelectorAll(".closeprofile").forEach(el => el.addEventListener("click", () => { userProfile.close() }));
+// #region Modals open/close functionality
+// Open: User profile
+document.getElementById("userbadge").addEventListener("click", () => { document.getElementById("userprofile").showModal() });
+// Close
+document.querySelectorAll(".modal").forEach(modal => {
+	modal.querySelectorAll(".modal .closemodal").forEach(btn => btn.addEventListener("click", () => { modal.close() }));
+});
+// #endregion
 
-// Playlist
+// #region Playlist
 let playlist = document.querySelector("#playlist .contents");
 if (playlist !== null) {
 	let playlistTracks = playlist.innerHTML.split("[TRACK]")

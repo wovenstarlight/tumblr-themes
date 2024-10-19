@@ -67,6 +67,64 @@ body {
   color: #df81ff !important;
 }
 
+.modal {
+  width: 80vw;
+  border: none;
+  padding: 1em 1.25em;
+  background-color: #0d1a32;
+  color: #f2f3f3;
+}
+.modal::backdrop {
+  background-color: #017afb;
+}
+.modal a {
+  color: #38b4fe;
+  text-underline-offset: 0.1em;
+}
+.modal header {
+  border-block-end: 0.1em solid #4A4D63;
+  --closebtn-size: 4.5em;
+  display: grid;
+  grid-template-columns: var(--closebtn-size) 1fr var(--closebtn-size);
+  align-items: center;
+  padding-block: 0 0.25em;
+}
+.modal header h2 {
+  margin: 0;
+  line-height: 1;
+  grid-column: 2;
+  text-align: center;
+  font-size: 2.9em;
+  font-weight: normal;
+}
+.modal header .closemodal {
+  grid-column: 3;
+  border: none;
+  background: none;
+  color: #f2f3f3;
+  cursor: pointer;
+}
+.modal header .closemodal:hover, .modal header .closemodal:focus {
+  color: #a5a6a7;
+}
+.modal header .closemodal:active {
+  color: #4A4D63;
+}
+.modal header .closemodal svg {
+  height: 100%;
+  width: 100%;
+}
+.modal footer {
+  border-block-start: 0.1em solid #4A4D63;
+  padding-block-start: 1em;
+}
+.modal footer .closemodal {
+  display: block;
+  margin-inline: auto;
+  padding: 1em 9vw;
+  font-size: 1.6em;
+}
+
 #phead {
   height: 4em;
   background-color: #0d1a32;
@@ -115,55 +173,8 @@ body {
   color: #a5a6a7;
 }
 
-#userprofile {
-  width: 80vw;
-  border: none;
-  padding: 1em 1.25em;
-  background-color: #0d1a32;
-  color: #f2f3f3;
-}
-#userprofile::backdrop {
-  background-color: #017afb;
-}
-#userprofile a {
-  color: #38b4fe;
-  text-underline-offset: 0.1em;
-}
 #userprofile dd {
   margin-inline-start: 0;
-}
-#userprofile header {
-  border-block-end: 0.1em solid #4A4D63;
-  --closebtn-size: 4.5em;
-  display: grid;
-  grid-template-columns: var(--closebtn-size) 1fr var(--closebtn-size);
-  align-items: center;
-  padding-block: 0 0.25em;
-}
-#userprofile header h2 {
-  margin: 0;
-  line-height: 1;
-  grid-column: 2;
-  text-align: center;
-  font-size: 2.9em;
-  font-weight: normal;
-}
-#userprofile header .closeprofile {
-  grid-column: 3;
-  border: none;
-  background: none;
-  color: #f2f3f3;
-  cursor: pointer;
-}
-#userprofile header .closeprofile:hover, #userprofile header .closeprofile:focus {
-  color: #a5a6a7;
-}
-#userprofile header .closeprofile:active {
-  color: #4A4D63;
-}
-#userprofile header .closeprofile svg {
-  height: 100%;
-  width: 100%;
 }
 #userprofile .profilesection {
   margin: 1em;
@@ -184,16 +195,6 @@ body {
   font-size: 1.4em;
   color: rgba(242, 243, 243, 0.9);
   position: relative;
-}
-#userprofile footer {
-  border-block-start: 0.1em solid #4A4D63;
-  padding-block-start: 1em;
-}
-#userprofile footer .closeprofile {
-  display: block;
-  margin-inline: auto;
-  padding: 1em 9vw;
-  font-size: 1.6em;
 }
 
 #profilename {

@@ -74,6 +74,75 @@ body {
 .gold		{ color: #fee822 !important }
 .platinum	{ color: #5cedfd !important }
 .master		{ color: #df81ff !important }
+// Links
+@mixin bluelinks {
+	a {
+		color: $lightblue;
+		text-underline-offset: 0.1em;
+	}
+}
+// Modals
+.modal {
+	width: 80vw;
+	border: none;
+	padding: 1em 1.25em;
+	background-color: $darkblue;
+	color: $white;
+
+	&::backdrop { background-color: $ssjyp-blue }
+
+	@include bluelinks();
+
+	header {
+		border-block-end: 0.1em solid $darkgrayblue;
+		--closebtn-size: 4.5em;
+		display: grid;
+		grid-template-columns: var(--closebtn-size) 1fr var(--closebtn-size);
+		align-items: center;
+		padding-block: 0 0.25em;
+	
+		h2 {
+			// Reset
+			margin: 0;
+			line-height: 1;
+			// Style
+			grid-column: 2;
+			text-align: center;
+			font: {
+				size: 2.9em;
+				weight: normal;
+			}
+		}
+	
+		.closemodal {
+			grid-column: 3;
+			border: none;
+			background: none;
+			color: $white;
+			cursor: pointer;
+	
+			&:hover, &:focus { color: $lightgray }
+			&:active { color: $darkgrayblue }
+	
+			svg {
+				height: 100%;
+				width: 100%;
+			}
+		}
+	}
+
+	footer {
+		border-block-start: 0.1em solid $darkgrayblue;
+		padding-block-start: 1em;
+
+		.closemodal {
+			display: block;
+			margin-inline: auto;
+			padding: 1em 9vw;
+			font-size: 1.6em;
+		}
+	}
+}
 // #endregion
 
 
@@ -138,58 +207,7 @@ $header-height: 4em;
 
 // #region Profile modal
 #userprofile {
-	width: 80vw;
-	border: none;
-	padding: 1em 1.25em;
-	background-color: $darkblue;
-	color: $white;
-
-	&::backdrop { background-color: $ssjyp-blue }
-
-	a {
-		color: $lightblue;
-		text-underline-offset: 0.1em;
-	}
-
 	dd { margin-inline-start: 0 }
-
-	header {
-		border-block-end: 0.1em solid $darkgrayblue;
-		--closebtn-size: 4.5em;
-		display: grid;
-		grid-template-columns: var(--closebtn-size) 1fr var(--closebtn-size);
-		align-items: center;
-		padding-block: 0 0.25em;
-
-		h2 {
-			// Reset
-			margin: 0;
-			line-height: 1;
-			// Style
-			grid-column: 2;
-			text-align: center;
-			font: {
-				size: 2.9em;
-				weight: normal;
-			}
-		}
-
-		.closeprofile {
-			grid-column: 3;
-			border: none;
-			background: none;
-			color: $white;
-			cursor: pointer;
-
-			&:hover, &:focus { color: $lightgray }
-			&:active { color: $darkgrayblue }
-
-			svg {
-				height: 100%;
-				width: 100%;
-			}
-		}
-	}
 
 	.profilesection {
 		margin: 1em;
@@ -209,18 +227,6 @@ $header-height: 4em;
 			font-size: 1.4em;
 			color: adjust-color($white, $alpha: -0.1);
 			position: relative;
-		}
-	}
-
-	footer {
-		border-block-start: 0.1em solid $darkgrayblue;
-		padding-block-start: 1em;
-
-		.closeprofile {
-			display: block;
-			margin-inline: auto;
-			padding: 1em 9vw;
-			font-size: 1.6em;
 		}
 	}
 }
