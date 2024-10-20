@@ -105,7 +105,7 @@ button[disabled] { cursor: initial }
 		border-block-end: 0.1em solid $darkgrayblue;
 		--closebtn-size: 4.5em;
 		display: grid;
-		grid-template-columns: var(--closebtn-size) 1fr var(--closebtn-size);
+		grid-template-columns: minmax(0, var(--closebtn-size)) 1fr var(--closebtn-size);
 		align-items: center;
 		padding-block: 0 0.25em;
 
