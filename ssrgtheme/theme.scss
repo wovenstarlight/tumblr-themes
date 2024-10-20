@@ -16,11 +16,6 @@ $lightblue:				#38b4fe;
 $lightblue-lighten-1:	#5fb1e0;
 $lightblue-lighten-2:	#7bc3eb;
 $lightblue-darken:		#286381;
-
-@function encodeColor($color) {
-	$string: "#{$color}";
-	@return "%23" + str-slice($string, 2);
-}
 // #endregion
 
 // #region GLOBAL STYLES
@@ -135,10 +130,7 @@ button[disabled] { cursor: initial }
 			&:hover, &:focus { color: $lightgray }
 			&:active { color: $darkgrayblue }
 
-			svg {
-				height: 100%;
-				width: 100%;
-			}
+			i { font-size: 4em }
 		}
 	}
 
@@ -333,13 +325,13 @@ $header-height: 4em;
 		& + a { border-block-start: var(--border) }
 
 		&[href] figure::after {
-			content: "";
+			content: "\e13a";
+			font-family: "Phosphor" !important;
+			color: $lightgray;
+			font-size: 1.8em;
 			display: block;
 			grid-column: 3;
 			grid-row: 1 / span 2;
-			background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='#{encodeColor($lightgray)}' viewBox='0 0 256 256' aria-hidden='true'%3E%3Cpath d='M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
-			width: 2em;
-			height: 2em;
 		}
 	}
 
@@ -398,6 +390,8 @@ $header-height: 4em;
 
 		&:hover, &:focus { background-color: $darkblue-hover }
 		&:active { background-color: $darkblue-active }
+
+		i[class^="ph"] { font-size: 1.65em }
 	}
 }
 
@@ -438,20 +432,22 @@ $header-height: 4em;
 		z-index: 1;
 		top: $header-height;
 		right: 0;
-
-		.contentitem {
-			display: block;
-			background-color: $darkblue;
-			color: $white;
-			text-decoration: none;
-			padding: 0.75em 1em;
-			font-size: 1.1em;
-			text-align: center;
-		}
-
-		a.contentitem:hover, a.contentitem:focus { background-color: $darkblue-hover }
-		a.contentitem:active { background-color: $darkblue-active }
 	}
+
+	.contentitem {
+		display: block;
+		background-color: $darkblue;
+		color: $white;
+		text-decoration: none;
+		padding: 0.75em 1em;
+		font-size: 1.1em;
+		text-align: center;
+
+		i { display: none }
+	}
+
+	a.contentitem:hover, a.contentitem:focus { background-color: $darkblue-hover }
+	a.contentitem:active { background-color: $darkblue-active }
 }
 // #endregion
 
@@ -482,6 +478,7 @@ main {
 	color: $mediumblue;
 	padding: 0 0.6em;
 	line-height: 1;
+	cursor: pointer;
 
 	&:hover, &:focus { background-color: $white }
 	&:active { box-shadow: inset 1px 1px $lightgray }

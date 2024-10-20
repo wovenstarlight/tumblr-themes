@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   height: 100vh;
   display: flex;
@@ -124,9 +125,8 @@ button[disabled] {
 .modal header .closemodal:active {
   color: #4A4D63;
 }
-.modal header .closemodal svg {
-  height: 100%;
-  width: 100%;
+.modal header .closemodal i {
+  font-size: 4em;
 }
 .modal footer {
   border-block-start: 0.1em solid #4A4D63;
@@ -314,13 +314,13 @@ button[disabled] {
   border-block-start: var(--border);
 }
 .weeklytop5 a[href] figure::after {
-  content: "";
+  content: "\e13a";
+  font-family: "Phosphor" !important;
+  color: #a5a6a7;
+  font-size: 1.8em;
   display: block;
   grid-column: 3;
   grid-row: 1/span 2;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' fill='%23a5a6a7' viewBox='0 0 256 256' aria-hidden='true'%3E%3Cpath d='M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
-  width: 2em;
-  height: 2em;
 }
 .weeklytop5 figure {
   margin: 0;
@@ -379,6 +379,9 @@ button[disabled] {
 #resourcenav a:active {
   background-color: #5f5f6d;
 }
+#resourcenav a i[class^=ph] {
+  font-size: 1.65em;
+}
 
 #moreinfo {
   display: contents;
@@ -420,7 +423,7 @@ button[disabled] {
   top: 4em;
   right: 0;
 }
-#moreinfo .contents .contentitem {
+#moreinfo .contentitem {
   display: block;
   background-color: #0d1a32;
   color: #f2f3f3;
@@ -429,10 +432,13 @@ button[disabled] {
   font-size: 1.1em;
   text-align: center;
 }
-#moreinfo .contents a.contentitem:hover, #moreinfo .contents a.contentitem:focus {
+#moreinfo .contentitem i {
+  display: none;
+}
+#moreinfo a.contentitem:hover, #moreinfo a.contentitem:focus {
   background-color: #363650;
 }
-#moreinfo .contents a.contentitem:active {
+#moreinfo a.contentitem:active {
   background-color: #5f5f6d;
 }
 
@@ -458,6 +464,7 @@ main {
   color: #015e97;
   padding: 0 0.6em;
   line-height: 1;
+  cursor: pointer;
 }
 #opensearch:hover, #opensearch:focus {
   background-color: #f2f3f3;
