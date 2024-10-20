@@ -96,10 +96,12 @@
 
 	<!-- PAGE TITLE -->
 	<h1 class="visuallyhidden">
-		{block:TagPage}{lang:TagResultCount posts tagged Tag}{/block:TagPage}
-		{block:SearchPage}{lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults}{/block:SearchPage}
-		{block:PermalinkPage}{block:PostSummary}{PostSummary}{/block:PostSummary}{/block:PermalinkPage}
-		{block:ShowTitle} | {Title}{/block:ShowTitle}
+		{block:AskPage}{AskLabel}{block:ShowTitle} | {/block:ShowTitle}{/block:AskPage}
+		{block:SubmitPage}{SubmitLabel}{block:ShowTitle} | {/block:ShowTitle}{/block:SubmitPage}
+		{block:TagPage}{lang:TagResultCount posts tagged Tag}{block:ShowTitle} | {/block:ShowTitle}{/block:TagPage}
+		{block:SearchPage}{lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults}{block:ShowTitle} | {/block:ShowTitle}{/block:SearchPage}
+		{block:PermalinkPage}{block:PostSummary}{PostSummary}{/block:PostSummary}{block:ShowTitle} | {/block:ShowTitle}{/block:PermalinkPage}
+		{block:ShowTitle}{Title}{/block:ShowTitle}
 	</h1>
 
 	<header id="phead">
