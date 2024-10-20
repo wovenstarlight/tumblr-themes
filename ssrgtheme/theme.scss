@@ -84,7 +84,7 @@ button[disabled] { cursor: initial }
 .master		{ color: #df81ff !important }
 // Links
 @mixin bluelinks {
-	a:not[class*=button] {
+	a:not([class*=button]) {
 		color: $lightblue;
 		text-underline-offset: 0.1em;
 	}
@@ -332,7 +332,7 @@ $header-height: 4em;
 		& + a { border-block-start: var(--border) }
 
 		&[href] figure::after {
-			content: "\e13a";
+			content: "\e13a";	// caret-right
 			font-family: "Phosphor" !important;
 			color: $lightgray;
 			font-size: 1.8em;
@@ -521,6 +521,100 @@ main {
 		font-size: 1.2em;
 
 		&[disabled] { @extend .button-solid-gray }
+	}
+}
+
+#pagetitle {
+	margin: 0;
+	font: {
+		size: 1em;
+		weight: normal;
+	}
+	
+	.label {
+		backdrop-filter: blur(3px);
+		display: flex;
+		align-items: center;
+		gap: 0.4ch;
+		height: 100%;
+		padding: 0 0.6em;
+		background-color: adjust-color($color: #000000, $alpha: -0.4);
+		color: $white;
+		border: {
+			width: 0.1em;
+			style: solid;
+			color: $lightgray;
+			radius: 0;
+		}
+	}
+
+	button.label {
+		cursor: pointer;
+
+		&:hover, &:focus { background-color: adjust-color($color: #000000, $alpha: -0.3) }
+		&:active { background-color: adjust-color($color: #000000, $alpha: -0.2) }
+
+		&::after {
+			display: block;
+			margin-inline-start: 0.2ch;
+			content: "\e13a";	// caret-right
+			font-family: "Phosphor-Bold" !important;
+			color: $white;
+			font-size: 1.2em;
+		}
+	}
+
+	.tag::before { content: "#" };
+
+	.search_query {
+		&::before { content: "“" }
+		&::after { content: "”" }
+	}
+}
+
+#tagordering {
+	.orderlinks {
+		margin: 1em 2vw 0;
+		display: flex;
+		justify-content: center;
+		gap: 1em;
+	}
+
+	a {
+		display: block;
+		font-size: 1.2em;
+		text-align: center;
+	}
+
+	.button-solid-blue {
+		position: relative;
+
+		&::after {
+			// Position
+			position: absolute;
+			top: -0.1em;
+			right: -0.15em;
+			// Content
+			content: "\eBA6";	// check
+			font-family: "Phosphor-Fill" !important;
+			font-size: 0.6em;
+			// Display
+			display: block;
+			$size: 1em;
+			width: $size;
+			height: $size;
+			padding: 0.3em;
+			border-radius: 100%;
+			background: linear-gradient(
+				to bottom right,
+				adjust-color($color: $ssjyp-blue, $hue: -5, $lightness: +20%),
+				$ssjyp-blue,
+				adjust-color($color: $ssjyp-blue, $hue: +10, $lightness: -10%, $saturation: +30%)
+			);
+			box-shadow:
+				-1px 0 2px rgba(0, 0, 0, 0.5),
+				inset 1px 1px 2px adjust-color($color: $ssjyp-blue, $hue: -5, $lightness: +20%, $alpha: -0.8);
+		}
 	}
 }
 // #endregion

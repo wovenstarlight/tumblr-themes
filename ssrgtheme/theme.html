@@ -206,11 +206,11 @@
 			</a>
 			{block:AskEnabled}<a class="contentitem {block:AskPage}current-page{/block:AskPage}" href="/ask" id="ask">
 				<i class="ph-thin ph-envelope" aria-hidden="true"></i>
-				Message
+				{AskLabel}
 			</a>{/block:AskEnabled}
 			{block:SubmissionsEnabled}<a class="contentitem {block:SubmitPage}current-page{/block:SubmitPage}" href="/submit" id="submit">
 				<i class="ph-thin ph-tray" aria-hidden="true"></i>
-				Submit
+				{SubmitLabel}
 			</a>{/block:SubmissionsEnabled}
 			{block:IfRandomPostLink}<a class="contentitem" href="/random" id="random">
 				<i class="ph-thin ph-shuffle-angular" aria-hidden="true"></i>
@@ -257,7 +257,57 @@
 			</dialog>
 			{/block:IfSearchBar}
 
-			<!-- TODO: Page title -->
+			<!-- GRAY BADGE: Page title -->
+			<h2 id="pagetitle">
+				{block:HomePage}
+				<!-- STANDARD PAGE HEADER -->
+				<span class="label">{lang:Home}</span>
+				{/block:HomePage}
+
+				{block:AskPage}
+				<!-- SPECIAL PAGE HEADER: ASK -->
+				<span class="label">{AskLabel}</span>
+				{/block:AskPage}
+				{block:SubmitPage}
+				<!-- SPECIAL PAGE HEADER: SUBMIT -->
+				<span class="label">{SubmitLabel}</span>
+				{/block:SubmitPage}
+
+				{block:TagPage}
+				<!-- SPECIAL PAGE HEADER: TAG -->
+				<button class="label">{lang:TagResultCount posts tagged Tag 2}</button>
+				{/block:TagPage}
+
+				{block:DayPage}
+				<!-- SPECIAL PAGE HEADER: DAY -->
+				<span class="label">{lang:Viewing everything posted on Month DayOfMonth Year}</span>
+				{/block:DayPage}
+
+				{block:SearchPage}
+				<!-- SPECIAL PAGE HEADER: SEARCH -->
+				<span class="label">
+					{lang:SearchResultCount results for SearchQuery 2}
+					{block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}
+				</span>
+				{/block:SearchPage}
+			</h2>
+
+			{block:TagPage}
+			<dialog id="tagordering" class="modal">
+				<header>
+					<h2 id="searchtitle" class="modaltitle">{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</h2>
+					<button class="closemodal">
+						<span class="visuallyhidden">Close</span>
+						<i class="ph ph-x" aria-hidden="true"></i>
+					</button>
+				</header>
+
+				<p class="orderlinks">
+					<a class="button-solid-gray" href="/tagged/{URLSafeTag}">Newest first</a>
+					<a class="button-solid-gray" href="/tagged/{URLSafeTag}/chrono">Oldest first</a>
+				</p>
+			</dialog>
+			{/block:TagPage}
 		</header>
 
 		<!-- TODO: posts go here -->
