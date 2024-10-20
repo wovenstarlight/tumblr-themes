@@ -1,4 +1,4 @@
-// #region COLORS
+// #region GLOBAL VARIABLES
 // Basic colors
 $ssjyp-blue:			#017afb;
 $white:					#f2f3f3;
@@ -16,6 +16,8 @@ $lightblue:				#38b4fe;
 $lightblue-lighten-1:	#5fb1e0;
 $lightblue-lighten-2:	#7bc3eb;
 $lightblue-darken:		#286381;
+// Footer sizing
+$footer-height: 8.75em;
 // #endregion
 
 // #region GLOBAL STYLES
@@ -468,6 +470,9 @@ main {
 		size: cover;
 		position: var(--bg-position, center);
 	};
+
+	// Space for footer (is overlaid on main, so need to leave room)
+	padding-block-end: $footer-height;
 }
 
 // #region Main section: header
@@ -639,7 +644,16 @@ main {
 
 // #region FOOTER
 #pfoot {
-	background-color: #3c4c76;
+	// Sizing and placement
+	height: $footer-height;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100vw;
+
+	// Display
+	background-color: rgba(0, 0, 0, 0.6);
+	backdrop-filter: blur(3px);
 }
 // #endregion
 

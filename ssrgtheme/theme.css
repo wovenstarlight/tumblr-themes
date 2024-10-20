@@ -453,6 +453,7 @@ main {
   background-image: var(--bg-img);
   background-size: cover;
   background-position: var(--bg-position, center);
+  padding-block-end: 8.75em;
 }
 
 #mainhead {
@@ -594,7 +595,14 @@ main {
 }
 
 #pfoot {
-  background-color: #3c4c76;
+  height: 8.75em;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
 }
 
 @media (min-width: 70em) {
