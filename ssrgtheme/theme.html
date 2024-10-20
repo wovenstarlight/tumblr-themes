@@ -46,10 +46,10 @@
 	<!-- General theme options -->
 	<meta name="if:Random post link" content="1">
 	<meta name="if:Archive link" content="1">
-	<meta name="text:Profile status message" content="Say what you want!">
-	<meta name="image:Profile favorite card" content="">
-	<meta name="text:Profile favorite card theme" content="Melt Down">
-	<meta name="text:Profile favorite card member" content="SUNGJIN">
+	<meta name="text:Status message" content="Say what you want!">
+	<meta name="image:Favorite card" content="">
+	<meta name="text:Favorite card theme" content="Melt Down">
+	<meta name="text:Favorite card member" content="SUNGJIN">
 	<meta name="text:Playlist title" content="Currently listening to">
 	<meta name="text:Playlist" content="[TRACK]&NewLine;NAME: Time of Our Life&NewLine;ARTIST: DAY6&NewLine;ICON: https://upload.wikimedia.org/wikipedia/en/5/5d/The_Book_of_Us_Gravity.jpg&NewLine;LINK: https://www.youtube.com/watch?v=vnS_jn2uibs&pp=ygUVdGltZSBvZiBvdXIgbGlmZSBkYXk2&NewLine;&NewLine;[TRACK]&NewLine;NAME: Love Parade&NewLine;ARTIST: DAY6 (Even of Day)&NewLine;ICON: https://upload.wikimedia.org/wikipedia/en/5/53/Even_of_Day_-_Right_Through_Me.png">
 	<meta name="if:Show group blog members" content="0">
@@ -137,22 +137,22 @@
 						<dt class="visuallyhidden">Blog title</dt>
 						<dd class="text {select:Weekly league}">{Title}</dd>
 					</div>
-					{block:IfProfileStatusMessage}
+					{block:IfStatusMessage}
 					<div id="profilestatus" class="card">
 						<dt class="title">Status message</dt>
-						<dd class="text">{text:Profile status message}</dd>
+						<dd class="text">{text:Status message}</dd>
 					</div>
-					{/block:IfProfileStatusMessage}
-					{block:IfProfileFavoriteCardImage}
+					{/block:IfStatusMessage}
+					{block:IfFavoriteCardImage}
 					<div id="profilefavcard" class="card">
 						<dt class="title">Favorite card</dt>
 						<dd class="text">
-							{text:Profile favorite card theme}
-							{block:IfProfileFavoriteCardMember}<br />{text:Profile favorite card member}{/block:IfProfileFavoriteCardMember}
+							{text:Favorite card theme}
+							{block:IfFavoriteCardMember}<br />{text:Favorite card member}{/block:IfFavoriteCardMember}
 						</dd>
-						<img src="{image:Profile favorite card}" alt="{block:IfProfileFavoriteCardMember}{text:Profile favorite card member} {/block:IfProfileFavoriteCardMember}card from theme '{text:Profile favorite card theme}'">
+						<img src="{image:Favorite card}" alt="{block:IfProfileFavoriteCardMember}{text:Favorite card member} {/block:IfProfileFavoriteCardMember}card from theme '{text:Favorite card theme}'">
 					</div>
-					{/block:IfProfileFavoriteCardImage}
+					{/block:IfFavoriteCardImage}
 				</div>
 
 				{block:IfProfileBannerImage}<img id="profilebanner" src="{image:Profile banner}" alt="Banner image">{/block:IfProfileBannerImage}
