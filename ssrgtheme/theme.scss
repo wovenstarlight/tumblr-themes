@@ -470,6 +470,7 @@ main {
 	};
 }
 
+// #region Main section: header
 #mainhead {
 	display: flex;
 	padding: 1.5em;
@@ -617,6 +618,21 @@ main {
 		}
 	}
 }
+// #endregion
+
+// #region Main section: posts
+#posts {
+	// Horizontal post scroll
+	display: flex;
+	align-items: center;
+	gap: 2em;
+	max-width: 100vw;
+	overflow-x: scroll;
+	// Center when fewer posts than window size
+	width: min-content;
+	margin: auto;
+}
+// #endregion
 // #endregion
 
 
