@@ -4,7 +4,7 @@
 	Credits:
 		Phosphor Icons: https://phosphoricons.com/
 
-	Last updated 16 Oct 2024.
+	Last updated 19 Oct 2024.
 -->
 
 <!DOCTYPE html>
@@ -18,8 +18,7 @@
 	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
 	<link rel="alternate" type="application/rss+xml" href="{RSS}">
 
-	<!-- Commented out for local development. TODO: Uncomment this for publishing.
-	{block:Hidden} -->
+	{block:Hidden}
 	<!-- THEME VARIABLES -->
 	<!-- Text and coloration -->
 	<meta name="text:Font size" content="16px">
@@ -70,7 +69,7 @@
 	<meta name="text:Custom links title" content="Navigate">
 	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
 	-->
-	<!-- {/block:Hidden} -->
+	{/block:Hidden}
 
 	<!-- Standardization of theme styles -->
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
@@ -249,7 +248,7 @@
 						<i class="ph ph-x" aria-hidden="true"></i>
 					</button>
 				</header>
-				
+
 				<form action="/search" method="get" id="search">
 					<label for="q" class="visuallyhidden">{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
 					<input id="q" type="search" name="q" value="{SearchQuery}" placeholder="Enter query here" required />
@@ -263,43 +262,10 @@
 
 		<!-- TODO: posts go here -->
 	</main>
-	
+
 	<footer id="pfoot">
 		<!-- TODO: footer goes here -->
 	</footer>
-
-	<!-- For local development only. TODO: Remove on completion. -->
-	<script>
-		document.title = "SSRG Theme";
-		document.querySelectorAll("img[alt='User icon']").forEach(el => el.setAttribute("src", "./ref-assets/avatar.png"));
-		document.querySelector("#userbadge .username").innerText = "bbybread28";
-		document.querySelector("#userbadge .league").innerText = "Master III";
-		document.querySelector("#userbadge .league").setAttribute("class", "master");
-		document.getElementById("home").setAttribute("href", "./theme.html");
-		document.body.setAttribute("style", "--bg-img: url('./ref-assets/bg.png'); --bg-position: center;--profile-banner-position: center; --profile-accent: #1f3853;");
-		document.querySelectorAll("#resourcenav").forEach(el => {
-			el.innerHTML = el.innerHTML.replace(/\{\/?\w+(:\w+)?\}/g, "");
-		})
-		const userProfileModal = document.getElementById("userprofile");
-		userProfileModal.querySelector("h2").innerText = "bbybread28's INFORMATION";
-		userProfileModal.querySelector("#profilename .title").innerText = "bbybread28";
-		userProfileModal.querySelector("#profilename .text").innerText = "Master III";
-		userProfileModal.querySelector("#profilename .text").setAttribute("class", "text master");
-		userProfileModal.querySelector("#profilestatus .text").innerText = "걷잡을 수 없이 스르륵 녹아내려요";
-		userProfileModal.querySelector("#profilefavcard .text").innerHTML = "Melt Down<br />SUNGJIN";
-		userProfileModal.querySelector("#profilefavcard img").setAttribute("src", "./ref-assets/favcard.png");
-		userProfileModal.querySelector("#profilebanner").setAttribute("src", "./ref-assets/bg2.png");
-		userProfileModal.querySelector("#desc .text").innerHTML = "<p>Description will go here in the future</p><p>Test</p><p>Test</p>";
-		userProfileModal.querySelector("#groupmembers h3").innerText = "Group members";
-		userProfileModal.querySelectorAll("#groupmembers img").forEach(el => el.setAttribute("src", "https://api.tumblr.com/v2/blog/wovenstarlight.tumblr.com/avatar"));
-		userProfileModal.querySelector("#groupmembers .name").innerText = "wovenstarlight";
-		userProfileModal.querySelector("#groupmembers .score").innerText = "no one i love like that old bitch elder";
-		document.querySelector("#searchmodal h2").innerText = "Search Blog";
-		document.querySelector("#searchmodal form button").innerHTML = "Search";
-		document.querySelectorAll("#userprofile, #mainhead").forEach(el => {
-			el.innerHTML = el.innerHTML.replace(/\{\/?\w+(:[\w\s]+)?\}/g, "");
-		});
-	</script>
 
 <!-- The actual functionality of the theme. -->
 <script>
@@ -360,6 +326,9 @@ document.addEventListener("click", e => {
 // Open: User profile
 document.getElementById("userbadge").addEventListener("click", () => { document.getElementById("userprofile").showModal() });
 document.getElementById("opensearch").addEventListener("click", () => { document.getElementById("searchmodal").showModal() });
+{block:TagPage}
+document.querySelector("#pagetitle button").addEventListener("click", () => { document.getElementById("tagordering").showModal() });
+{/block:TagPage}
 // Close
 document.querySelectorAll(".modal").forEach(modal => {
 	modal.querySelectorAll(".modal .closemodal").forEach(btn => btn.addEventListener("click", () => { modal.close() }));
@@ -395,7 +364,7 @@ if (playlist !== null) {
 			trackArtist.classList.add("score");
 			// Start adding information
 			if (el.LINK != null) track.href = el.LINK;
-			trackImage.src = el.ICON ?? "./assets/playlistnoimage.png";
+			trackImage.src = el.ICON ?? "https://wovenstarlight.github.io/tumblr-themes/theme14/assets/playlistnoimage.png";
 			if (el.NAME != null) {
 				trackName.innerHTML = el.NAME;
 				trackText.append(trackName);
@@ -423,6 +392,12 @@ function enableSearch(e) {
 document.getElementById("q").addEventListener("input", enableSearch);
 enableSearch({ currentTarget: document.getElementById("q") });
 // #endregion
+
+{block:TagPage}
+// #region Tag page current selection
+document.querySelectorAll("#tagordering .orderlinks a")[window.location.href.split("/").slice(5)[0] === "chrono" ? 1 : 0].classList.replace("button-solid-gray", "button-solid-blue");
+// #endregion
+{/block:TagPage}
 </script>
 
 </body>
