@@ -139,6 +139,11 @@ button[disabled] {
   font-size: 1.6em;
 }
 
+.tmblr-iframe--unified-controls {
+  top: 5em !important;
+  right: 1em !important;
+}
+
 #phead {
   height: 4em;
   background-color: #0d1a32;
@@ -419,7 +424,7 @@ button[disabled] {
 }
 #moreinfo .contents {
   position: fixed;
-  z-index: 1;
+  z-index: 101;
   top: 4em;
   right: 0;
 }

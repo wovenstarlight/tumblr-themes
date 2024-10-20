@@ -146,6 +146,11 @@ button[disabled] { cursor: initial }
 		}
 	}
 }
+// Tumblr controls
+.tmblr-iframe--unified-controls {
+	top: 5em !important;
+	right: 1em !important;
+}
 // #endregion
 
 
@@ -429,7 +434,7 @@ $header-height: 4em;
 
 	.contents {
 		position: fixed;
-		z-index: 1;
+		z-index: 101;
 		top: $header-height;
 		right: 0;
 	}
