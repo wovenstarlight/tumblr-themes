@@ -67,7 +67,9 @@ button[disabled] { cursor: initial }
 	}
 }
 .button-solid-gray {
+	@extend .button-basic;
 	background-color: $darkgray;
+	border: none;
 
 	&:not([disabled]) {
 		&:hover, &:focus { background-color: $darkblue-active }
@@ -82,7 +84,7 @@ button[disabled] { cursor: initial }
 .master		{ color: #df81ff !important }
 // Links
 @mixin bluelinks {
-	a {
+	a:not[class*=button] {
 		color: $lightblue;
 		text-underline-offset: 0.1em;
 	}

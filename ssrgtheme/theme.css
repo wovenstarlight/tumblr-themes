@@ -20,7 +20,7 @@ body {
   transform: translateX(-50%);
 }
 
-.button-basic, .button-solid-blue, .button-outline {
+.button-basic, .button-solid-gray, #search button[type=submit][disabled], .button-solid-blue, .button-outline {
   color: #f2f3f3;
   padding: 0.75em 1em;
   line-height: 1;
@@ -54,6 +54,7 @@ button[disabled] {
 
 .button-solid-gray, #search button[type=submit][disabled] {
   background-color: #54595d;
+  border: none;
 }
 .button-solid-gray:not([disabled]):hover, #search button[type=submit][disabled]:not([disabled]):hover, .button-solid-gray:not([disabled]):focus, #search button[type=submit][disabled]:not([disabled]):focus {
   background-color: #5f5f6d;
@@ -92,7 +93,7 @@ button[disabled] {
 .modal::backdrop {
   background-color: #017afb;
 }
-.modal a {
+.modal a:not[class*=button] {
   color: #38b4fe;
   text-underline-offset: 0.1em;
 }
