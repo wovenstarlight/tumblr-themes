@@ -1433,8 +1433,11 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	// Generally an active user's nested size-64 URL (index 3 of [512,128,96,64]), or a direct URL for currentUser or anon/broken users
 	// The array blog.avatar isn't available sometimes, so include a backup avatar fetch via API
 	let avatar = document.createElement("img");
-	avatar.classList.add("avatar", blogData?.theme?.avatar_shape || "square");
-	avatar.src = blogData.avatar?.find(el => el.height === 64)?.url || blogData.avatar || `https://api.tumblr.com/v2/blog/${blogData.name}/avatar/64`;
+	avatar.classList.add("avatar", blogData?.theme?.avatar_shape ?? "square");
+	avatar.src = typeof(blogData.avatar) === "object"
+		? blogData.avatar?.find(el => el.height === 64)?.url
+		: blogData.avatar
+		?? `https://api.tumblr.com/v2/blog/${blogData.name}/avatar/64`;
 
 	// put together the header
 	link.append(avatar, username);
@@ -1486,7 +1489,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 				: npf.broken_blog_name === undefined ? `https://tumblr.com/${currentUser.name}/${postData.id}`
 				: "",
 			// For paywall content blocks, the paywaller's info and the post object for the viewer's subscription status
-			npf.blog || currentUser,
+			npf.blog ?? currentUser,
 			npf.post);
 		
 		// cut off the post and add a readmore, if one is present and you aren't currently on the post's permalink page
@@ -1568,8 +1571,8 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 			askingLabel = document.createElement("span");
 		askerIcon.classList.add("avatar");
 		if (askNPF.attribution) {
-			askerIcon.src = askNPF.attribution.blog.avatar?.find(el => el.height === 64)?.url || `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name}/avatar/64`;
-			askerIcon.classList.add(askNPF.attribution.blog.theme.avatar_shape || "square");
+			askerIcon.src = askNPF.attribution.blog.avatar?.find(el => el.height === 64)?.url ?? `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name}/avatar/64`;
+			askerIcon.classList.add(askNPF.attribution.blog.theme.avatar_shape ?? "square");
 			askerName.href = askNPF.attribution.blog.url;
 			askerName.append(askNPF.attribution.blog.name);
 			askerName.classList.add("name");
@@ -1636,7 +1639,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 	switch (curr.type) {
 		
 		case "text":
-			bit = document.createElement(textSubtypes[curr.subtype] || "p");
+			bit = document.createElement(textSubtypes[curr.subtype] ?? "p");
 			
 			bit.innerHTML = formatText(curr);
 			
@@ -1780,7 +1783,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 			}
 			else if (curr.embed_url) {
 				bit = document.createElement("iframe");
-				bit.title = `Audio: ${curr.title || "Unknown title"} — ${curr.artist || "Unknown artist"}`;
+				bit.title = `Audio: ${curr.title ?? "Unknown title"} — ${curr.artist ?? "Unknown artist"}`;
 				if (curr.album) { bit.title += ` (<em>${curr.album}</em>)` }
 				bit.src = curr.embed_url;
 				bit.width = "100%";
@@ -1789,7 +1792,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 				// All else failed; display a plain link to given URL
 				bit = document.createElement("a");
 				bit.href = curr.url;
-				bit.innerText = `${curr.title || "Unknown title"} — ${curr.artist || "Unknown artist"}`;
+				bit.innerText = `${curr.title ?? "Unknown title"} — ${curr.artist ?? "Unknown artist"}`;
 				if (curr.album) { bit.innerHTML += `, <em>${curr.album}</em>` }
 			}
 			trailItem.append(bit);
@@ -1851,8 +1854,8 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 					supportlink = document.createElement("a");
 					title.innerText = content[i].title;
 					label.innerHTML = content[i].text.replace("%s", `<strong>${blogObj.name}</strong>`);
-					supportlink.innerText = blogObj.subscription_plan?.checkout_labels?.support || "Show your Support";
-					supportlink.href = content[i].url || `https://www.tumblr.com/${blogObj.name}/support`;
+					supportlink.innerText = blogObj.subscription_plan?.checkout_labels?.support ?? "Show your Support";
+					supportlink.href = content[i].url ?? `https://www.tumblr.com/${blogObj.name}/support`;
 					bit.append(title, label, supportlink);
 					break;
 				
