@@ -383,7 +383,25 @@ document.querySelector("#pagetitle button").addEventListener("click", () => { do
 {/block:TagPage}
 // Close
 document.querySelectorAll(".modal").forEach(modal => {
+	// On button click
 	modal.querySelectorAll(".modal .closemodal").forEach(btn => btn.addEventListener("click", () => { modal.close() }));
+
+	// On ::backdrop click
+	modal.addEventListener('mousedown', e => {
+		e.currentTarget._offsetX = e.offsetX;
+		e.currentTarget._offsetY = e.offsetY;
+	});
+	modal.addEventListener('click', e => {
+		if ((
+			e.currentTarget._offsetX < 0 || e.currentTarget._offsetX > e.target.offsetWidth ||
+			e.currentTarget._offsetY < 0 || e.currentTarget._offsetY > e.target.offsetHeight
+		) && (
+			e.offsetX < 0 || e.offsetX > e.target.offsetWidth ||
+			e.offsetY < 0 || e.offsetY > e.target.offsetHeight
+		)) {
+			modal.close();
+		}
+	});
 });
 // #endregion
 
