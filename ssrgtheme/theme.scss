@@ -431,6 +431,11 @@ $header-height: 4em;
 		&:active { background-color: $darkblue-active }
 
 		i[class^="ph"] { font-size: 1.65em }
+
+		&.current-page {
+			position: relative;
+			&::after { @include checkmark($vertical: top, $horizontal: left) }
+		}
 	}
 }
 
