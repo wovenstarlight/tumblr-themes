@@ -355,7 +355,8 @@ $header-height: 4em;
 		align-items: center;
 	}
 
-	img {
+	img, svg {
+		color: $lightgray;
 		$size: 2.5em;
 		width: $size;
 		height: $size;

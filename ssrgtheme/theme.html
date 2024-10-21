@@ -476,7 +476,7 @@ if (playlist !== null) {
 			// Create and assemble HTML element
 			let track = document.createElement("a"),
 				trackInner = document.createElement("figure"),
-				trackImage = document.createElement("img"),
+				trackImage = document.createElement(el.ICON != null ? "img" : "svg"),
 				trackText = document.createElement("figcaption"),
 				trackName = document.createElement("span"),
 				trackArtist = document.createElement("span");
@@ -487,7 +487,15 @@ if (playlist !== null) {
 			trackArtist.classList.add("score");
 			// Start adding information
 			if (el.LINK != null) track.href = el.LINK;
-			trackImage.src = el.ICON ?? "https://wovenstarlight.github.io/tumblr-themes/theme14/assets/playlistnoimage.png";
+			if (el.ICON != null) { trackImage.src = el.ICON }
+			else {
+				trackImage.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+				trackImage.setAttribute("version", "1.1");
+				trackImage.setAttribute("width", "108");
+				trackImage.setAttribute("height", "108");
+				trackImage.setAttribute("viewbox", "0 0 108 108");
+				trackImage.innerHTML = '<rect width="24" height="4" x="42" y="52" fill="currentColor" />';
+			}
 			if (el.NAME != null) {
 				trackName.innerHTML = el.NAME;
 				trackText.append(trackName);
