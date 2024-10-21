@@ -698,7 +698,7 @@ main {
   min-width: 1em;
   transition-property: max-width, filter;
   transition-duration: 0.2s;
-  filter: drop-shadow(0 0 0.25em rgba(242, 243, 243, 0.5));
+  filter: drop-shadow(0 0 0.25em rgba(242, 243, 243, 0.75));
   max-width: var(--max-card-width);
   position: relative;
 }

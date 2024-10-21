@@ -756,7 +756,7 @@ main {
 			property: max-width, filter;
 			duration: 0.2s;
 		}
-		filter: drop-shadow(0 0 0.25em adjust-color($color: $white, $alpha: -0.5));
+		filter: drop-shadow(0 0 0.25em adjust-color($color: $white, $alpha: -0.25));
 		max-width: var(--max-card-width);
 
 		// Stacking
