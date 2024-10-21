@@ -5,7 +5,7 @@
 		Layout and design by SUPERSTAR JYPNATION: https://play.google.com/store/apps/details?id=com.dalcomsoft.ss.jyp
 		Phosphor Icons: https://phosphoricons.com/
 
-	Last updated 20 Oct 2024.
+	Last updated 21 Oct 2024.
 -->
 
 <!DOCTYPE html>
@@ -325,6 +325,12 @@
 		<!-- SONG SCROLLER: Posts -->
 		<section id="posts">
 			<noscript><article id="noscriptnotice">Javascript is required to view this blog. Please enable scripting and reload.</article></noscript>
+
+			<!-- JUMP TO START -->
+			<button id="scrolltostart" disabled>
+				<span class="visuallyhidden">{lang:Back to top}</span>
+				<i class="ph-thin ph-caret-left" aria-hidden="true"></i><i class="ph-thin ph-caret-left" aria-hidden="true"></i>
+			</button>
 		</section>
 	</main>
 
@@ -569,9 +575,26 @@ customPageLinks.forEach((el, index) => {
 		el.lastElementChild.remove();	// get rid of the SVG…
 		el.append(img);	// …and replace it with the IMG
 	}
-})
+});
 // #endregion
 {/block:HasPages}{/block:IfCustomPageIcons}
+
+// #region Scroll to start
+(scrollToStart = document.getElementById("scrolltostart")).addEventListener("click", () => {
+	postContainer.scrollTo({
+		left: 0,
+		behavior: "smooth",
+	});
+});
+postContainer.addEventListener("scroll", () => {
+	if (postContainer.scrollLeft <= 200) {
+		scrollToStart.setAttribute("disabled", "true");
+	}
+	else {
+		scrollToStart.removeAttribute("disabled");
+	}
+})
+// #endregion
 </script>
 
 </body>
