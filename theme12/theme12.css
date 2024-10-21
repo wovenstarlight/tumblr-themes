@@ -389,7 +389,7 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 	letter-spacing: 0.1em;
 	text-align-last: center;
 }
-#pages a, #pagination a {
+#pages a, #pagination > * {
 	padding: 0.25em 0.5em;
 	margin-inline: -0.5em;
 }
