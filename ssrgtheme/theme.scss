@@ -557,6 +557,8 @@ main {
 			color: $lightgray;
 			radius: 0;
 		}
+
+		& + .label { display: none }
 	}
 
 	button.label {

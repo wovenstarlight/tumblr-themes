@@ -529,6 +529,9 @@ main {
   border-color: #a5a6a7;
   border-radius: 0;
 }
+#pagetitle .label + .label {
+  display: none;
+}
 #pagetitle button.label {
   cursor: pointer;
 }
