@@ -204,7 +204,7 @@
 
 		<!-- RESOURCE COUNTERS: Navigation
 		 Links are given the dropdown content item class to maintain styling when moved into the dropdown. -->
-		<nav id="resourcenav">
+		<nav id="resourcenav" aria-label="Blog features">
 			<a class="contentitem" href="/" id="home">
 				<i class="ph-thin ph-house" aria-hidden="true"></i>
 				Home
@@ -322,7 +322,40 @@
 	</main>
 
 	<footer id="pfoot">
-		<!-- TODO: footer goes here -->
+		<nav id="pagination" aria-label="Page navigation">
+			<p class="text">
+				<span class="title">{lang:Navigate}</span>
+				{block:IndexPage}<span class="index pagecount">{lang:CurrentPage of TotalPages}</span>{/block:IndexPage}
+				{block:PermalinkPage}<span class="permalink pagecount">{lang:See more posts}</span>{/block:PermalinkPage}
+				{block:DayPage}{block:DayPagination}<span class="day pagecount">{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth},{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}</span>{/block:DayPagination}{/block:DayPage}
+			</p>
+			<div class="pagelinks">
+				<a
+					{block:Pagination}{block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage}{/block:Pagination}
+					{block:PermalinkPagination}{block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost}{/block:PermalinkPagination}
+					{block:DayPage}{block:DayPagination}{block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage}{/block:DayPagination}{/block:DayPage}
+					id="prev" class="button-solid-blue"
+				>
+					{block:IndexPage}<span class="index">{lang:Previous page}</span>{/block:IndexPage}
+					{block:PermalinkPage}<span class="permalink">{lang:Previous post}</span>{/block:PermalinkPage}
+					{block:DayPage}<span class="day">{lang:Previous day}</span>{/block:DayPage}
+				</a>
+				<a
+					{block:Pagination}{block:NextPage}href="{NextPage}"{/block:NextPage}{/block:Pagination}
+					{block:PermalinkPagination}{block:NextPost}href="{NextPost}"{/block:NextPost}{/block:PermalinkPagination}
+					{block:DayPage}{block:DayPagination}{block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage}{/block:DayPagination}{/block:DayPage}
+					id="next" class="button-solid-blue"
+				>
+					{block:IndexPage}<span class="index">{lang:Next page}</span>{/block:IndexPage}
+					{block:PermalinkPage}<span class="permalink">{lang:Next post}</span>{/block:PermalinkPage}
+					{block:DayPage}<span class="day">{lang:Next day}</span>{/block:DayPage}
+				</a>
+			</div>
+		</nav>
+
+		<!-- TODO: Custom pages, displayed as cards -->
+
+		<!-- TODO: Right section? Home button, with likes instead in top nav? -->
 	</footer>
 
 <!-- The actual functionality of the theme. -->

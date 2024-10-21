@@ -17,7 +17,7 @@ $lightblue-lighten-1:	#5fb1e0;
 $lightblue-lighten-2:	#7bc3eb;
 $lightblue-darken:		#286381;
 // Footer sizing
-$footer-height: 8.75em;
+$footer-height: 8.5em;
 // #endregion
 
 // #region GLOBAL STYLES
@@ -46,6 +46,7 @@ body {
 	line-height: 1;
 	text-decoration: none;
 	cursor: pointer;
+	text-align: center;
 }
 button[disabled] { cursor: initial }
 .button-outline {
@@ -593,7 +594,6 @@ main {
 	a {
 		display: block;
 		font-size: 1.2em;
-		text-align: center;
 	}
 
 	.button-solid-blue {
@@ -677,9 +677,53 @@ main {
 	left: 0;
 	width: 100vw;
 
-	// Display
+	// Coloring
 	background-color: rgba(0, 0, 0, 0.6);
 	backdrop-filter: blur(3px);
+
+	// Layout
+	display: grid;
+	$size: 23.5em;
+	grid-template-columns: $size 1fr $size;
+}
+
+#pagination {
+	background-color: $darkblue;
+	color: $white;
+	padding: 0.5em 0.6em;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+
+	.text {
+		margin: 0;
+		flex-grow: 1;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 1.25em;
+	}
+
+	.pagecount { text-transform: uppercase }
+
+	.pagelinks {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.6em;
+	}
+
+	a {
+		display: block;
+		font-size: 1.3em;
+		padding-block: 0.95em;
+	}
+
+	a:not([href]), a:not([href]):is(:hover, :focus, :active) {
+		background-color: $darkgray;
+		cursor: unset;
+	}
+
+	.index:has(+ .day) { display: none }
 }
 // #endregion
 

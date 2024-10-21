@@ -26,6 +26,7 @@ body {
   line-height: 1;
   text-decoration: none;
   cursor: pointer;
+  text-align: center;
 }
 
 button[disabled] {
@@ -455,7 +456,7 @@ main {
   background-position: var(--bg-position, center);
   display: flex;
   flex-direction: column;
-  padding-block-end: 8.75em;
+  padding-block-end: 8.5em;
 }
 
 #mainhead {
@@ -564,7 +565,6 @@ main {
 #tagordering a {
   display: block;
   font-size: 1.2em;
-  text-align: center;
 }
 #tagordering .button-solid-blue {
   position: relative;
@@ -613,7 +613,7 @@ main {
 }
 
 #pfoot {
-  height: 8.75em;
+  height: 8.5em;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -621,6 +621,45 @@ main {
   background-color: rgba(0, 0, 0, 0.6);
   -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
+  display: grid;
+  grid-template-columns: 23.5em 1fr 23.5em;
+}
+
+#pagination {
+  background-color: #0d1a32;
+  color: #f2f3f3;
+  padding: 0.5em 0.6em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+#pagination .text {
+  margin: 0;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25em;
+}
+#pagination .pagecount {
+  text-transform: uppercase;
+}
+#pagination .pagelinks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6em;
+}
+#pagination a {
+  display: block;
+  font-size: 1.3em;
+  padding-block: 0.95em;
+}
+#pagination a:not([href]), #pagination a:not([href]):is(:hover, :focus, :active) {
+  background-color: #54595d;
+  cursor: unset;
+}
+#pagination .index:has(+ .day) {
+  display: none;
 }
 
 @media (min-width: 70em) {
