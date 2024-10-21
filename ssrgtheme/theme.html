@@ -71,6 +71,10 @@
 	<meta name="if:Post tags" content="1">
 	<meta name="text:Filtered tags" content="spoiler, spoilers">
 
+	<!-- Footer options -->
+	<meta name="image:Default custom page icon" content="">
+	<meta name="text:Custom page icons" content="LINK 1: https://64.media.tumblr.com/2e9fe957cf34cd1fa8ba293c8472ca06/92c1be194251d06c-e2/s2048x3072/1e9f63e6cc7fc1f4394aec09389880159bf20864.png&NewLine;LINK 2: https://64.media.tumblr.com/8e4dedbccb7adf157ce6a4e09aaa4530/92c1be194251d06c-a6/s128x128u_c1/09688375d285cd3b1837f3321234c4be939601cd.jpg">
+
 	<!-- Other options -->
 	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
 	{/block:Hidden}
@@ -357,7 +361,16 @@
 			</div>
 		</nav>
 
-		<!-- TODO: Custom pages, displayed as cards -->
+		{block:HasPages}
+		<!-- EQUIPPED CARDS: Custom pages -->
+		<nav id="pages" aria-label="Blog pages">
+			<span id="custompageicons" class="visuallyhidden">{text:Custom page icons}</span>
+			{block:Pages}<a href="{URL}" class="{CurrentState}">
+				<span class="visuallyhidden">{Label}</span>
+				{block:IfDefaultCustomPageIconImage}<img src="{image:Default custom page icon}" alt="" aria-hidden="true" title="{PlaintextLabel}" />{/block:IfDefaultCustomPageIconImage}{block:IfNotDefaultCustomPageIconImage}<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100" height="140" viewBox="0 0 100 140" aria-hidden="true" title="{PlaintextLabel}"><rect x="0" y="0" width="100" height="140" rx="6" fill="#000000" /><g transform="matrix(3.9 0 0 3.9 49.61 69.61)"><path fill="#f2f3f3" transform=" translate(-8.5, -8.5)" d="M 9.9 5.1 c -0.2 0.3 -0.5 1.4 -0.6 2.6 l 1.1 -0.1 c 0.7 -0.1 1.3 -0.3 1.5 -0.5 c 0.6 -0.6 0.6 -1.4 0 -2 c -0.6 -0.5 -1.4 -0.5 -2 0 z M 8.5 0 C 3.8 0 0 3.8 0 8.5 S 3.8 17 8.5 17 S 17 13.2 17 8.5 S 13.2 0 8.5 0 z m 4.4 8.2 c -0.5 0.5 -1.5 0.8 -2.5 0.9 l -1.2 0.2 c -0.1 1.3 -0.4 2.9 -1 3.6 c -1.1 1.1 -3 1.2 -4.1 0 c -1.1 -1.1 -1.1 -3 0 -4.1 c 0.5 -0.5 1.5 -0.8 2.6 -0.9 v 1.5 c -1.2 0.3 -1.5 0.5 -1.6 0.5 c -0.6 0.6 -0.6 1.4 0 2 c 0.5 0.5 1.4 0.5 2 0 c 0.2 -0.2 0.5 -1.1 0.6 -2.5 l 0.1 -0.9 c 0 -1.3 0.2 -3.6 1 -4.4 c 1.1 -1.1 3 -1.2 4.1 0 c 1.2 1.1 1.2 2.9 0 4.1 z" /></g></svg>{/block:IfNotDefaultCustomPageIconImage}
+			</a>{/block:Pages}
+		</nav>
+		{/block:HasPages}
 
 		<!-- START: Home -->
 		<nav id="footright" aria-label="Home page">
@@ -371,13 +384,17 @@
 
 <!-- The actual functionality of the theme. -->
 <script>
+/**
+ * The standard page font size, for calculating padding.
+ * @type {number}
+ */
+const em = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
 // #region Top navigation placement calculator
 /** The top navigation bar visible by default. */
 const topNav = document.getElementById("resourcenav");
 // Check that anything actually needs calculating
 if (topNav.childElementCount > 0) {
-	/** The standard page font size, for calculating padding. */
-	const em = parseFloat(getComputedStyle(document.documentElement).fontSize);
 	/** The minimal width of the user badge on the left displaying the user's name and title. */
 	const userBadgeMinimumWidth = Array.from(document.getElementById("userbadge").children)
 			.map(el => el.offsetWidth).reduce((a, b) => a + b, 0)	// Width of content
@@ -458,6 +475,19 @@ document.querySelectorAll(".modal").forEach(modal => {
 });
 // #endregion
 
+// #region Search form
+function enableSearch(e) {
+	if (e.currentTarget.value !== "") {
+		e.currentTarget.nextElementSibling.removeAttribute("disabled");
+	}
+	else {
+		e.currentTarget.nextElementSibling.setAttribute("disabled", "true");
+	}
+}
+document.getElementById("q").addEventListener("input", enableSearch);
+enableSearch({ currentTarget: document.getElementById("q") });
+// #endregion
+
 // #region Playlist
 let playlist = document.querySelector("#playlist .contents");
 if (playlist !== null) {
@@ -511,24 +541,37 @@ if (playlist !== null) {
 }
 // #endregion
 
-// #region Search form
-function enableSearch(e) {
-	if (e.currentTarget.value !== "") {
-		e.currentTarget.nextElementSibling.removeAttribute("disabled");
-	}
-	else {
-		e.currentTarget.nextElementSibling.setAttribute("disabled", "true");
-	}
-}
-document.getElementById("q").addEventListener("input", enableSearch);
-enableSearch({ currentTarget: document.getElementById("q") });
-// #endregion
-
 {block:TagPage}
 // #region Tag page current selection
 document.querySelectorAll("#tagordering .orderlinks a")[window.location.href.split("/").slice(5)[0] === "chrono" ? 1 : 0].classList.replace("button-solid-gray", "button-solid-blue");
 // #endregion
 {/block:TagPage}
+
+{block:IfCustomPageIcons}{block:HasPages}
+// #region Custom page icon assignment
+const customPageLinks = document.querySelectorAll("#pages a");
+const customPageIcons = document.getElementById("custompageicons").innerHTML
+	.split(/LINK \d+:/i, customPageLinks.length + 1)	// get as many icons as pages (+1 because [0] will be empty string)
+	.slice(1)	// omit the empty string at the start
+	.map(el => el.trim());	// trim whitespace so they're fit for SRCing
+customPageLinks.forEach((el, index) => {
+	if (customPageIcons[index] != null && customPageIcons[index] !== "") {
+		// Icon provided, use it for display
+
+		let img = document.createElement("img");
+		img.src = unescapeHTML(customPageIcons[index]);
+		img.alt = "";	// mark as decorative
+		img.setAttribute("aria-hidden", "true");	// hide img
+		img.setAttribute("title", el.lastElementChild.getAttribute("title"));
+		img.addEventListener("load", () => {
+			el.setAttribute("style", `--max-card-width: ${img.offsetWidth / em}em;`);
+		});
+		el.lastElementChild.remove();	// get rid of the SVG…
+		el.append(img);	// …and replace it with the IMG
+	}
+})
+// #endregion
+{/block:HasPages}{/block:IfCustomPageIcons}
 </script>
 
 </body>

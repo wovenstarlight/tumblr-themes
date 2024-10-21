@@ -630,6 +630,7 @@ main {
 }
 
 #pagination {
+  grid-column: 1;
   background-color: #0d1a32;
   color: #f2f3f3;
   padding: 0.5em 0.6em;
@@ -666,7 +667,60 @@ main {
   display: none;
 }
 
+#pages {
+  grid-column: 2;
+  display: flex;
+  gap: 0.25em;
+  max-height: 8.5em;
+  padding: 0.5em;
+  --max-card-width: 5.5em;
+}
+#pages a {
+  flex-grow: 1;
+  min-width: 1em;
+  transition-property: max-width, filter;
+  transition-duration: 0.2s;
+  filter: drop-shadow(0 0 0.25em rgba(242, 243, 243, 0.5));
+  max-width: var(--max-card-width);
+  position: relative;
+}
+#pages a:not(:hover) {
+  filter: drop-shadow(-0.1em 0 0.25em rgba(242, 243, 243, 0.25));
+}
+#pages a:not(:hover):not(:last-child) {
+  max-width: max(1em, var(--max-card-width) - 1em);
+}
+#pages a:not(:hover):not(:last-child) img, #pages a:not(:hover):not(:last-child) svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+#pages a.current-page::after {
+  color: #f2f3f3;
+  position: absolute;
+  top: -0.1em;
+  left: -0.15em;
+  content: "\eba6";
+  font-family: "Phosphor-Fill" !important;
+  font-size: 0.6em;
+  display: block;
+  width: 1em;
+  height: 1em;
+  padding: 0.3em;
+  border-radius: 100%;
+  background: linear-gradient(to bottom right, #64bbfe, #017afb, #0040c9);
+  box-shadow: -1px 0 2px rgba(0, 0, 0, 0.5), inset 1px 1px 2px rgba(100, 187, 254, 0.2);
+}
+#pages img, #pages svg {
+  height: 100%;
+  width: auto;
+  max-width: var(--max-card-width);
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 #footright {
+  grid-column: 3;
   display: flex;
   flex-direction: column;
   color: #f2f3f3;

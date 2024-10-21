@@ -93,6 +93,33 @@ button[disabled] { cursor: initial }
 		text-underline-offset: 0.1em;
 	}
 }
+// Checkmark icon
+@mixin checkmark($vertical, $horizontal) {
+	// Position
+	position: absolute;
+	#{$vertical}: -0.1em;
+	#{$horizontal}: -0.15em;
+	// Content
+	content: "\eba6";	// check
+	font-family: "Phosphor-Fill" !important;
+	font-size: 0.6em;
+	// Display
+	display: block;
+	$size: 1em;
+	width: $size;
+	height: $size;
+	padding: 0.3em;
+	border-radius: 100%;
+	background: linear-gradient(
+		to bottom right,
+		adjust-color($color: $ssjyp-blue, $hue: -5, $lightness: +20%),
+		$ssjyp-blue,
+		adjust-color($color: $ssjyp-blue, $hue: +10, $lightness: -10%, $saturation: +30%)
+	);
+	box-shadow:
+		-1px 0 2px rgba(0, 0, 0, 0.5),
+		inset 1px 1px 2px adjust-color($color: $ssjyp-blue, $hue: -5, $lightness: +20%, $alpha: -0.8);
+}
 // Modals
 .modal {
 	width: 80vw;
@@ -604,30 +631,7 @@ main {
 		position: relative;
 
 		&::after {
-			// Position
-			position: absolute;
-			top: -0.1em;
-			right: -0.15em;
-			// Content
-			content: "\eBA6";	// check
-			font-family: "Phosphor-Fill" !important;
-			font-size: 0.6em;
-			// Display
-			display: block;
-			$size: 1em;
-			width: $size;
-			height: $size;
-			padding: 0.3em;
-			border-radius: 100%;
-			background: linear-gradient(
-				to bottom right,
-				adjust-color($color: $ssjyp-blue, $hue: -5, $lightness: +20%),
-				$ssjyp-blue,
-				adjust-color($color: $ssjyp-blue, $hue: +10, $lightness: -10%, $saturation: +30%)
-			);
-			box-shadow:
-				-1px 0 2px rgba(0, 0, 0, 0.5),
-				inset 1px 1px 2px adjust-color($color: $ssjyp-blue, $hue: -5, $lightness: +20%, $alpha: -0.8);
+			@include checkmark($vertical: top, $horizontal: right);
 		}
 	}
 }
@@ -692,6 +696,7 @@ main {
 }
 
 #pagination {
+	grid-column: 1;
 	background-color: $darkblue;
 	color: $white;
 	padding: 0.5em 0.6em;
@@ -730,7 +735,60 @@ main {
 	.index:has(+ .day) { display: none }
 }
 
+#pages {
+	grid-column: 2;
+	display: flex;
+	gap: 0.25em;
+	max-height: $footer-height;
+	padding: 0.5em;
+	--max-card-width: 5.5em;
+
+	a {
+		// Sizing
+		flex-grow: 1;
+		min-width: 1em;
+		transition: {
+			property: max-width, filter;
+			duration: 0.2s;
+		}
+		filter: drop-shadow(0 0 0.25em adjust-color($color: $white, $alpha: -0.5));
+		max-width: var(--max-card-width);
+
+		// Stacking
+		// set relative positioning on all, to keep z-indexes right
+		position: relative;
+		// stack cards and dim glow when not hovering
+		&:not(:hover) {
+			filter: drop-shadow(-0.1em 0 0.25em adjust-color($color: $white, $alpha: -0.75));
+
+			&:not(:last-child) {
+				max-width: max(1em, calc(var(--max-card-width) - 1em));
+
+				img, svg {
+					position: absolute;
+					left: 0;
+					top: 0;
+				}
+			}
+		}
+
+		// Mark current page
+		&.current-page::after {
+			color: $white;
+			@include checkmark($vertical: top, $horizontal: left);
+		}
+	}
+
+	img, svg {
+		height: 100%;
+		width: auto;
+		max-width: var(--max-card-width);
+		object-fit: contain;
+	}
+}
+
 #footright {
+	grid-column: 3;
 	display: flex;
 	flex-direction: column;
 	color: $white;
