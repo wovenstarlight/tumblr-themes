@@ -6,6 +6,7 @@ $lightgray:				#a5a6a7;
 $darkgray:				#54595d;
 $darkgrayblue:			#4A4D63;
 $darkestgray:			#22272b;
+$black:					#1b1517;
 $darkblue:				#0d1a32;
 $darkblue-variant:		#172039;
 $darkblue-hover:		#363650;
@@ -382,7 +383,7 @@ $header-height: 4em;
 	background-color: $darkblue-variant;
 	display: flex;
 	padding-block: 0.75em;
-	&:not(.empty) { padding-inline: 1.5em 0.6em }
+	&:is(.ask, .submit, .random, .archive):not(.empty) { padding-inline: 1.5em 0.6em }
 
 	a {
 		height: 100%;
@@ -541,7 +542,7 @@ main {
 		size: 1em;
 		weight: normal;
 	}
-	
+
 	.label {
 		backdrop-filter: blur(3px);
 		display: flex;
@@ -726,6 +727,39 @@ main {
 	}
 
 	.index:has(+ .day) { display: none }
+}
+
+#footright {
+	display: flex;
+	flex-direction: column;
+	color: $white;
+
+	.text {
+		margin: 0;
+		padding: 1em;
+		line-height: 1;
+		background-color: $black;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1em;
+	}
+
+	svg {
+		$size: 1.25em;
+		width: $size;
+		height: $size;
+	}
+}
+#home {
+	display: block;
+	flex-grow: 1;
+	text-transform: uppercase;
+	font-size: 2.75em;
+	padding-block: 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 // #endregion
 

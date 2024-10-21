@@ -204,11 +204,7 @@
 
 		<!-- RESOURCE COUNTERS: Navigation
 		 Links are given the dropdown content item class to maintain styling when moved into the dropdown. -->
-		<nav id="resourcenav" aria-label="Blog features">
-			<a class="contentitem" href="/" id="home">
-				<i class="ph-thin ph-house" aria-hidden="true"></i>
-				Home
-			</a>
+		<nav id="resourcenav" aria-label="Blog features" class="{block:AskEnabled}ask{/block:AskEnabled} {block:SubmissionsEnabled}submit{/block:SubmissionsEnabled} {block:IfRandomPostLink}random{/block:IfRandomPostLink} {block:IfArchiveLink}archive{/block:IfArchiveLink}">
 			{block:AskEnabled}<a class="contentitem {block:AskPage}current-page{/block:AskPage}" href="/ask" id="ask">
 				<i class="ph-thin ph-envelope" aria-hidden="true"></i>
 				{AskLabel}
@@ -329,6 +325,7 @@
 	</main>
 
 	<footer id="pfoot">
+		<!-- SCORE CHALLENGE & RECORDS: Pagination -->
 		<nav id="pagination" aria-label="Page navigation">
 			<p class="text">
 				<span class="title">{lang:Navigate}</span>
@@ -362,55 +359,65 @@
 
 		<!-- TODO: Custom pages, displayed as cards -->
 
-		<!-- TODO: Right section? Home button, with likes instead in top nav? -->
+		<!-- START: Home -->
+		<nav id="footright" aria-label="Home page">
+			<p class="text">
+				<svg fill="currentColor" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M256,0C114.615,0,0,114.615,0,256S114.615,512,256,512,512,397.385,512,256,397.385,0,256,0Zm42.535,401.327c-23.477,4.4-103.885,2.934-103.885-85.1V228.185H164.717V190.822a85.4,85.4,0,0,0,13.123-6.657,104.632,104.632,0,0,0,16.81-12.595c13.98-12.9,27.585-32.973,27.585-62.237h45.592v74.832h58.586v44.02H267.827v88.038c0,24.451,9.966,41.284,51.637,27.586l14.485,42.058S322.012,396.924,298.535,401.327Z"/></svg>
+				<span class="label">{lang:Powered by Tumblr}</span>
+			</p>
+			<a id="home" href="/" class="button-solid-blue">{lang:Home}</a>
+		</nav>
 	</footer>
 
 <!-- The actual functionality of the theme. -->
 <script>
 // #region Top navigation placement calculator
-/** The standard page font size, for calculating padding. */
-const em = parseFloat(getComputedStyle(document.documentElement).fontSize);
-/** The minimal width of the user badge on the left displaying the user's name and title. */
-const userBadgeMinimumWidth = Array.from(document.getElementById("userbadge").children)
-		.map(el => el.offsetWidth).reduce((a, b) => a + b, 0)	// Width of content
-		+ 0.6 * em												// Spacing between icon and text
-		+ (1.3 * em * 2);										// Inline padding of userbadge itself
 /** The top navigation bar visible by default. */
 const topNav = document.getElementById("resourcenav");
-/** The links in the top navigation bar. Will always contain at least the "Home" link. */
-const topNavChildren = Array.from(topNav.children);
-/** The minimal width of the top navigation bar. */
-const topMinimumWidth = topNavChildren.map(el => el.offsetWidth).reduce((a, b) => a + b, 0)
-		+ (0.6 * (1.2 * em) * (topNavChildren.length - 1))		// Spacing between links
-		+ (2.5 * em);											// Inline padding of topnav itself, plus a little extra for breathing room
-/** The dropdown navigation's toggle, for assisting in the top nav's placement. */
-const dropdownNavToggle = document.getElementById("moreinfo").firstElementChild;
-/** The dropdown navigation's contents, for containing the collapsed top nav's children. */
-const dropdownNavContents = document.getElementById("moreinfo").lastElementChild;
-/** The dropdown navigation's first item, for reference when moving links. */
-const dropdownNavTopItem = dropdownNavContents.firstElementChild;
+// Check that anything actually needs calculating
+if (topNav.childElementCount > 0) {
+	/** The standard page font size, for calculating padding. */
+	const em = parseFloat(getComputedStyle(document.documentElement).fontSize);
+	/** The minimal width of the user badge on the left displaying the user's name and title. */
+	const userBadgeMinimumWidth = Array.from(document.getElementById("userbadge").children)
+			.map(el => el.offsetWidth).reduce((a, b) => a + b, 0)	// Width of content
+			+ 0.6 * em												// Spacing between icon and text
+			+ (1.3 * em * 2);										// Inline padding of userbadge itself
+	/** The links in the top navigation bar. Will always contain at least the "Home" link. */
+	const topNavChildren = Array.from(topNav.children);
+	/** The minimal width of the top navigation bar. */
+	const topMinimumWidth = topNavChildren.map(el => el.offsetWidth).reduce((a, b) => a + b, 0)
+			+ (0.6 * (1.2 * em) * (topNavChildren.length - 1))		// Spacing between links
+			+ (2.5 * em);											// Inline padding of topnav itself, plus a little extra for breathing room
+	/** The dropdown navigation's toggle, for assisting in the top nav's placement. */
+	const dropdownNavToggle = document.getElementById("moreinfo").firstElementChild;
+	/** The dropdown navigation's contents, for containing the collapsed top nav's children. */
+	const dropdownNavContents = document.getElementById("moreinfo").lastElementChild;
+	/** The dropdown navigation's first item, for reference when moving links. */
+	const dropdownNavTopItem = dropdownNavContents.firstElementChild;
 
-/** Moves the links in the top nav (home, etc.) to the dropdown if the page size is too small to fit all the links on one line. */
-function moveTopNav() {
-	let topNavAvailableSpace = dropdownNavToggle.offsetLeft - userBadgeMinimumWidth;
+	/** Moves the links in the top nav (home, etc.) to the dropdown if the page size is too small to fit all the links on one line. */
+	function moveTopNav() {
+		let topNavAvailableSpace = dropdownNavToggle.offsetLeft - userBadgeMinimumWidth;
 
-	if (topNavAvailableSpace < topMinimumWidth && topNav.childElementCount !== 0) {
-		topNavChildren.forEach(el => {
-			dropdownNavContents.insertBefore(el, dropdownNavTopItem);
-		})
-		topNav.classList.add("empty");
-	} else if (topNavAvailableSpace > topMinimumWidth && topNav.childElementCount === 0) {
-		topNav.classList.remove("empty");
-		topNavChildren.forEach(el => {
-			topNav.append(el);
-		})
+		if (topNavAvailableSpace < topMinimumWidth && topNav.childElementCount !== 0) {
+			topNavChildren.forEach(el => {
+				dropdownNavContents.insertBefore(el, dropdownNavTopItem);
+			})
+			topNav.classList.add("empty");
+		} else if (topNavAvailableSpace > topMinimumWidth && topNav.childElementCount === 0) {
+			topNav.classList.remove("empty");
+			topNavChildren.forEach(el => {
+				topNav.append(el);
+			})
+		}
 	}
-}
 
-// Reassess top nav's ideal placement on window resize.
-window.addEventListener("resize", () => { moveTopNav() });
-// Check top nav's ideal placement upon initial page load.
-moveTopNav();
+	// Reassess top nav's ideal placement on window resize.
+	window.addEventListener("resize", () => { moveTopNav() });
+	// Check top nav's ideal placement upon initial page load.
+	moveTopNav();
+}
 
 document.addEventListener("click", e => {
 	const moreinfo = document.getElementById("moreinfo");
