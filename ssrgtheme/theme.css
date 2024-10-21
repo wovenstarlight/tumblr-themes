@@ -453,12 +453,14 @@ main {
   background-image: var(--bg-img);
   background-size: cover;
   background-position: var(--bg-position, center);
+  display: flex;
+  flex-direction: column;
   padding-block-end: 8.75em;
 }
 
 #mainhead {
   display: flex;
-  padding: 1.5em;
+  padding: 1.5em 1.5em 0.75em;
   box-sizing: content-box;
   height: 2.35rem;
   gap: 1em;
@@ -584,14 +586,30 @@ main {
 }
 
 #posts {
+  flex-grow: 1;
+  align-self: center;
   display: flex;
   align-items: center;
   gap: 2em;
   max-width: 100vw;
   overflow-x: scroll;
+  padding-inline: 2em;
   width: -moz-min-content;
   width: min-content;
-  margin: auto;
+  margin: 1em auto;
+  padding-block: 1.1em;
+}
+
+.post {
+  width: 15em;
+  height: 21.75em;
+  flex-shrink: 0;
+  transition-property: scale, margin-inline;
+  transition-duration: 0.2s;
+}
+.post:hover, .post:focus {
+  scale: 110%;
+  margin-inline: 0.75em;
 }
 
 #pfoot {

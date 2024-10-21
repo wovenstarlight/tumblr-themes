@@ -471,6 +471,10 @@ main {
 		position: var(--bg-position, center);
 	};
 
+	// Stretch posts container to fill center
+	display: flex;
+	flex-direction: column;
+
 	// Space for footer (is overlaid on main, so need to leave room)
 	padding-block-end: $footer-height;
 }
@@ -478,7 +482,7 @@ main {
 // #region Main section: header
 #mainhead {
 	display: flex;
-	padding: 1.5em;
+	padding: 1.5em 1.5em 0.75em;
 	box-sizing: content-box;
 	height: 2.35rem;
 	gap: 1em;
@@ -627,15 +631,37 @@ main {
 
 // #region Main section: posts
 #posts {
+	// Take up all available space in main
+	flex-grow: 1;
+	align-self: center;
 	// Horizontal post scroll
 	display: flex;
 	align-items: center;
 	gap: 2em;
 	max-width: 100vw;
 	overflow-x: scroll;
+	padding-inline: 2em;
 	// Center when fewer posts than window size
 	width: min-content;
-	margin: auto;
+	margin: 1em auto;
+	// Allow for post scaling
+	padding-block: 1.1em;
+}
+
+.post {
+	width: 15em;
+	height: 21.75em;
+	flex-shrink: 0;
+
+	transition: {
+		property: scale, margin-inline;
+		duration: 0.2s;
+	}
+
+	&:hover, &:focus {
+		scale: 110%;
+		margin-inline: 0.75em;
+	}
 }
 // #endregion
 // #endregion
