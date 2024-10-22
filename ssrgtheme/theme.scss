@@ -77,11 +77,7 @@ button[disabled] { cursor: initial }
 	@extend .button-basic;
 	background-color: $darkgray;
 	border: none;
-
-	&:not([disabled]) {
-		&:hover, &:focus { background-color: $darkblue-active }
-		&:active { background-color: $lightgray }
-	}
+	cursor: initial;
 }
 // Weekly league colors
 .bronze		{ color: #fe9500 !important }

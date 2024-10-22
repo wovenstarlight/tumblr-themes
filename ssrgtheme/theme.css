@@ -56,12 +56,7 @@ button[disabled] {
 .button-solid-gray, #postviewer[open] a:not([href]), #postviewer[open] button[disabled], #search button[type=submit][disabled] {
   background-color: #54595d;
   border: none;
-}
-.button-solid-gray:not([disabled]):hover, #postviewer[open] a:not([disabled]):hover:not([href]), #postviewer[open] button[disabled]:not([disabled]):hover, #search button[type=submit][disabled]:not([disabled]):hover, .button-solid-gray:not([disabled]):focus, #postviewer[open] a:not([disabled]):focus:not([href]), #postviewer[open] button[disabled]:not([disabled]):focus, #search button[type=submit][disabled]:not([disabled]):focus {
-  background-color: #5f5f6d;
-}
-.button-solid-gray:not([disabled]):active, #postviewer[open] a:not([disabled]):active:not([href]), #postviewer[open] button[disabled]:not([disabled]):active, #search button[type=submit][disabled]:not([disabled]):active {
-  background-color: #a5a6a7;
+  cursor: initial;
 }
 
 .bronze {
