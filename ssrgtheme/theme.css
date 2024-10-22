@@ -91,7 +91,10 @@ button[disabled] {
 }
 .modal a:not([class*=button]) {
   color: #38b4fe;
-  text-underline-offset: 0.1em;
+  text-underline-offset: 0.2em;
+}
+.modal a:not([class*=button]):not(:hover) {
+  text-decoration: none;
 }
 .modal header {
   border-block-end: 0.1em solid #4A4D63;

@@ -20,6 +20,7 @@ $lightblue-lighten-2:	#7bc3eb;
 $lightblue-darken:		#286381;
 $red:					#f54034;
 $darkred:				#98110c;
+$green:					#13dd67;
 // Footer sizing
 $footer-height: 8.5em;
 // #endregion
@@ -86,10 +87,15 @@ button[disabled] { cursor: initial }
 .platinum	{ color: #5cedfd !important }
 .master		{ color: #df81ff !important }
 // Links
-@mixin bluelinks {
+@mixin links($color: "blue") {
 	a:not([class*=button]) {
-		color: $lightblue;
-		text-underline-offset: 0.1em;
+		@if $color == "blue" {
+			color: $lightblue;
+		} @else if $color == "green" {
+			color: $green;
+		}
+		text-underline-offset: 0.2em;
+		&:not(:hover) { text-decoration: none }
 	}
 }
 // Checkmark icon
@@ -129,7 +135,7 @@ button[disabled] { cursor: initial }
 
 	&::backdrop { background-color: $ssjyp-blue }
 
-	@include bluelinks();
+	@include links("blue");
 
 	header {
 		border-block-end: 0.1em solid $darkgrayblue;
