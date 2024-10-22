@@ -497,6 +497,12 @@ $header-height: 4em;
 
 	a.contentitem:hover, a.contentitem:focus { background-color: $darkblue-hover }
 	a.contentitem:active { background-color: $darkblue-active }
+
+	a.contentitem.current-page::before {
+		@include checkmark(top, left);
+		position: static;
+		display: inline-block;
+	}
 }
 // #endregion
 
