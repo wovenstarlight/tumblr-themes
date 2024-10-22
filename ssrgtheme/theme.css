@@ -502,7 +502,7 @@ button[disabled] {
   box-sizing: content-box;
   height: 2.35rem;
   gap: 1em;
-  z-index: 100;
+  z-index: 99;
 }
 
 #opensearch {
