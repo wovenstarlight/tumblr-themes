@@ -86,7 +86,9 @@
 	<!-- Phosphor Icons -->
 	<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 	<!-- SSRG-esque font -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
 
 	<!-- Theme styles -->
 	<style>
@@ -443,11 +445,26 @@
 
 <!-- The actual functionality of the theme. -->
 <script>
+// #region CONSTANTS AND GLOBAL VARIABLES
 /**
  * The standard page font size, for calculating padding.
  * @type {number}
  */
 const em = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+/** Labels for different types of posts.
+ * @type {Object}
+ */
+const typeLabels = {
+	"answer": "{lang:Answer}",
+	"video": "{lang:Video post}",
+	"photo": "{lang:Photo post}",
+	"audio": "{lang:Audio post}",
+	"quote": "{lang:Quote post}",
+	"chat": "{lang:Chat post}",
+	"link": "{lang:Link post}",
+	"text": "{lang:Text post}"
+};
 
 /** The modal where posts will be viewed.
  * @type {HTMLElement}
@@ -471,7 +488,152 @@ postViewer._open = (targetPostContent) => {
 
 	if (!postViewer.hasAttribute("open")) postViewer.showModal();
 }
+// #endregion
 
+
+
+// #region POST CREATION
+// #region Post array declaration
+let posts = [
+	{block:Posts}
+	{
+		npf: {NPF},
+
+		{block:PermalinkPage}
+		// For ask/submit/general blog pages
+		{block:Title} title: {JSTitle}, {/block:Title}
+		body: {JSBody},
+		{/block:PermalinkPage}
+
+		{block:Date}
+		// Post-specific items
+
+		id: {JSPostID},
+		permalink: {JSPermalink},
+		
+		date: {
+			day: {JSDayOfWeek},
+			textDM: "{DayOfMonth} {Month}, {Year}",
+			numDM: "{DayOfMonth}/{MonthNumber}/{Year}",
+			textMD: "{Month} {DayOfMonth}, {Year}",
+			numMD: "{MonthNumber}/{DayOfMonth}/{Year}",
+			textDMZ: "{DayOfMonthWithZero} {Month}, {Year}",
+			numDMZ: "{DayOfMonthWithZero}/{MonthNumberWithZero}/{Year}",
+			textMDZ: "{Month} {DayOfMonthWithZero}, {Year}",
+			numMDZ: "{MonthNumberWithZero}/{DayOfMonthWithZero}/{Year}",
+			time12: "{12Hour}:{Minutes} {CapitalAmPm}",
+			time24: "{24Hour}:{Minutes}",
+			time12Z: "{12HourWithZero}:{Minutes} {CapitalAmPm}",
+			time24Z: "{24HourWithZero}:{Minutes}",
+			url: "/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}",
+		},
+
+		{block:PinnedPostLabel} pinned: {JSPinnedPostLabel}, {/block:PinnedPostLabel}
+
+		{block:HasTags} tags: [
+			{block:Tags} {
+				name: {JSTag},
+				url: {JSTagURL},
+			}, {/block:Tags}
+		], {/block:HasTags}
+
+		{block:RebloggedFrom}
+		via: {
+			name: {JSReblogParentName},
+			url: {JSReblogParentURL},
+			avatar: {JSReblogParentPortraitURL-40},
+			label: "{lang:Reblogged from ReblogParentName}",
+			labellink: `{lang:Reblogged from ReblogParentName 2}`,
+		},
+		source: {
+			name: {JSReblogRootName},
+			url: {JSReblogRootURL},
+			avatar: {JSReblogRootPortraitURL-40},
+			label: "{lang:Originally from ReblogRootName}",
+			labellink: `{lang:Originally from ReblogRootName 2}`,
+		},
+		{/block:RebloggedFrom}
+
+		{block:NoteCount}
+		noteCount: {JSNoteCount},
+		noteCountWithLabel: {JSNoteCountWithLabel},
+		postNotes: {JSPostNotesURL},
+		{/block:NoteCount}
+		
+		like_html: {JSLikeButton size="30"},
+		reblog_url: {JSReblogURL},
+
+		{block:Submission} submission: {
+			name: {JSSubmitter},
+			url: {JSSubmitterURL},
+			avatar: {JSSubmitterPortraitURL-64},
+			label: "{lang:Submitted By}",
+		}, {/block:Submission}
+
+		{block:ContentSource} contentSource: {
+			name: {JSSourceTitle},
+			url: {JSSourceURL},
+			{block:SourceLogo} logo: {
+				url: {JSBlackLogoURL},
+				width: {JSLogoWidth},
+				height: {JSLogoHeight},
+			}, {/block:SourceLogo}
+		}, {/block:ContentSource}
+
+		{/block:Date}
+	},
+	{/block:Posts}
+	{block:NoPosts}
+	{
+		npf: {
+			content: [
+				{
+					type: "text",
+					text: "{lang:This Tumblr hasnt posted anything}"
+				}
+			],
+			layout: [],
+			trail: []
+		}
+	},
+	{/block:NoPosts}
+	{block:NoSearchResults}
+	{
+		npf: {
+			content: [
+				{
+					type: "text",
+					text: `{lang:Sorry no results for SearchQuery 2}.`
+				}
+			],
+			layout: [],
+			trail: []
+		}
+	},
+	{/block:NoSearchResults}
+];
+// #endregion
+
+/** The wrapper element in which all posts will be inserted */
+let postContainer = document.getElementById("posts");
+
+// #region The main post creation loop
+posts.forEach(post => {
+	/** The HTML article corresponding to the post currently being created */
+	let article = document.createElement("article");
+	article.classList.add("post");
+	postContainer.insertBefore(article, postContainer.lastElementChild);
+
+	// Clickable element
+	createPostCard(
+		article,
+		post.npf,
+		post.npf.trail?.at(-1)?.blog?.name ?? post.npf.trail?.at(-1)?.broken_blog_name ?? currentUser.name,	// last commenter's name
+		post.noteCount
+	);
+});
+
+// #region Remaining page functionality (base features)
 // #region Top navigation placement calculator
 /** The top navigation bar visible by default. */
 const topNav = document.getElementById("resourcenav");
@@ -667,6 +829,11 @@ customPageLinks.forEach((el, index) => {
 });
 // #endregion
 {/block:HasPages}{/block:IfCustomPageIcons}
+// #endregion
+// #endregion
+
+// #region Remaining page functionality (accessibility features)
+// Keyboard navigation moved to very end, after the "Visual extras" region, in order to prevent errors being thrown in Customize preview window.
 
 // #region Scroll to start
 (scrollToStart = document.getElementById("scrolltostart")).addEventListener("click", () => {
@@ -683,6 +850,170 @@ postContainer.addEventListener("scroll", () => {
 		scrollToStart.classList.remove("disabled");
 	}
 })
+// #endregion
+// #endregion
+
+
+
+// #region CONSTRUCTOR FUNCTIONS
+
+// #region FOR CLICKABLE POST CARDS
+/**
+ * Creates a card containing some information about the post.
+ * @param {HTMLElement} wrapper The HTML object for this post, to which the card will be added.
+ * @param {Object} postData This post's data, containing relevant information to populate the card with.
+ * @param {string} via The person this post was reblogged from on reblogged posts, or the source on original posts.
+ * @param {?string} noteCount This post's note count, not comma-separated.
+ */
+function createPostCard(wrapper, postData, via, noteCount = null) {
+	let postCard = document.createElement("button");
+	postCard.classList.add("postcard");
+	wrapper.append(postCard);
+
+	let top = document.createElement("div"),
+		bottom = document.createElement("div");
+	top.classList.add("top");
+	bottom.classList.add("bottom");
+	postCard.append(top, bottom);
+
+	let postType = getPostType(postData);
+
+	let heading = document.createElement("h3");
+	heading.classList.add("posttitle");
+	heading.innerHTML = postData.trail?.map(trailItem => trailItem.content?.find(el => el.type === "text")?.text).concat([ postData.content?.find(el => el.type === "text")?.text ]).find(el => el != null) ?? typeLabels[postType];
+	let subtitle = document.createElement("p");
+	subtitle.classList.add("subtitle");
+	subtitle.innerText = via;
+	top.append(getPostIcon(postData, postType), heading, subtitle);
+
+	bottom.innerHTML = `<i class="ph-thin ph-pulse"></i> ${noteCount ? truncateNumber(noteCount) : "0"}`;
+}
+// #endregion
+
+// #region Helpers
+/**
+ * Maps an NPF post object to the corresponding legacy post type. Evaluates only original trail items, in the following order:
+ * Answer > Video > Photo > Audio > Quote > Chat > Link > Text
+ * @param {Object} npf A post's NPF object.
+ * @param {?Object[]} npf.trail The trail items, if this post was reblogged. When non-empty, the first of these trail items has its "content" property evaluated to determine the post type.
+ * @param {Object[]} npf.content The current blog's contribution to this post. For original posts, this property is evaluated to determine the post type.
+ * @param {?Object[]} [npf.layout] Checked on original posts to determine if this is an answer post. On reblogged posts, the first trail item may contain a similar property.
+ */
+function getPostType(npf) {
+	// takes post npf object and checks first trail item to determine post type
+	let trailItem = npf.trail[0] ?? npf;
+
+	if (trailItem.layout?.some(el => el.type === "ask")) { return "answer" }
+	else if (trailItem.content.some(el => el.type === "video")) { return "video" }
+	else if (trailItem.content.some(el => el.type === "image")) { return "photo" }
+	else if (trailItem.content.some(el => el.type === "audio")) { return "audio" }
+	else if (trailItem.content.some(el => el.type === "audio" && el.subtype === "quote")) { return "quote" }
+	else if (trailItem.content.filter(el => el.type === "chat").length > 1) { return "chat" }
+	else if (trailItem.content.some(el => el.type === "link")) { return "link" }
+	else { return "text" }
+}
+
+/**
+ * Returns an icon fitting the given post's type. Uses any images featured in the post content, if available.
+ * @param {Object} npf A post's NPF object.
+ * @param {?Object[]} npf.trail The trail items, if this post was reblogged. Images are extracted from the first trail item, if available.
+ * @param {Object[]} npf.content The current blog's contribution to this post. Images are extracted from this on original posts.
+ * @return {HTMLElement} An <img> element if the post contained a usable image, or an <svg> element depicting the post type otherwise.
+ */
+function getPostIcon(npf, postType = null) {
+	// takes post npf object and checks first trail item
+	let trailItem = npf.trail[0] ?? npf;
+	// check the type to see what icon/type of image to retrieve
+	let type = postType ?? getPostType(npf);
+
+	let block, icon;
+	if ((block = trailItem.content.find(el => el.type === "video")) != null && block.poster?.length) {
+		icon = document.createElement("img");
+		icon.src = block.poster[0].url;
+		icon.alt = "";	// mark as decorative
+		return icon;
+	}
+	else if ((block = trailItem.content.find(el => el.type === "image")) != null) {
+		icon = document.createElement("img");
+		icon.src = block.media[0].url;
+		icon.alt = "";	// mark as decorative
+		return icon;
+	}
+	else if ((block = trailItem.content.find(el => el.type === "audio")) != null && block.poster?.length) {
+		icon = document.createElement("img");
+		icon.src = block.poster[0].url;
+		icon.alt = "";	// mark as decorative
+		return icon;
+	}
+	else if ((block = trailItem.content.find(el => el.type === "link")) != null && block.poster?.length) {
+		icon = document.createElement("img");
+		icon.src = block.poster[0].url;
+		icon.alt = "";	// mark as decorative
+		return icon;
+	}
+
+	// Didn't return in any of the above, so default to basic icons
+	icon = document.createElement("div");
+	switch (postType) {
+		case "answer":
+			icon.innerHTML = '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="currentColor"><path d="M10 0C4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10S15.5 0 10 0zM8.7 13.7h2.6v2.5H8.7v-2.5zM14 8.6c-.2.6-.7 1.1-1.2 1.5-.2.2-.5.3-.7.5l-.6.6c-.2.2-.3.5-.3.8v.6H8.9v-.7c0-.5.1-.9.3-1.2.1-.3.3-.6.5-.8l.6-.6c.3-.1.5-.3.7-.5l.5-.5c.1-.2.2-.4.2-.7 0-.5-.1-.9-.4-1.1-.2-.2-.6-.4-1-.4-.3 0-.6.1-.8.2-.3 0-.5.2-.6.4-.2.2-.3.4-.3.7-.1.2-.1.5-.1.8H6c0-.6.1-1.1.3-1.6.2-.5.5-.9.8-1.3.4-.4.8-.7 1.3-.9.5-.2 1.1-.3 1.6-.3.8 0 1.4.1 2 .3.5.2.9.5 1.3.8.3.3.6.7.7 1 .1.4.2.7.2 1 0 .6-.1 1.1-.2 1.4z"></path></svg>';
+			break;
+
+		case "video":
+			icon.innerHTML = '<svg viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="currentColor"><path d="M15.7 7.8c-.2-.1-.5 0-.6.1l-2.9 2.2c-.1.1-.1.1-.2.1V8H0v3h2v3.2c0 .4.3.8.8.8h8.4c.5 0 .8-.4.8-.8V12c0 .1.1.2.2.2l2.9 2.2c.2.2.4.2.6.1.2-.1.3-.3.3-.5V8.4c0-.2-.1-.5-.3-.6zM2.8 6.9c.3 0 .8.1 1.1.1h5.5c.3 0 .8-.1 1-.1 1.6-.3 2.8-1.7 2.8-3.4 0-1.9-1.6-3.5-3.5-3.5-1.2 0-2.4.6-3 1.7h-.1C5.9.6 4.8 0 3.6 0 1.6 0 0 1.6 0 3.5c0 1.7 1.2 3 2.8 3.4zM9 4.2c1 0 1.8-.8 1.8-1.8v-.3c.4.3.6.8.6 1.4 0 1-.8 1.8-1.8 1.8-.9 0-1.6-.6-1.8-1.5.3.3.7.4 1.2.4zm-6.2.1c1 0 1.8-.8 1.8-1.8v-.3c.4.2.6.7.6 1.3 0 1-.8 1.8-1.8 1.8-.9 0-1.6-.6-1.8-1.5.3.3.7.5 1.2.5z"></path></svg>';
+			break;
+
+		case "photo":
+			icon.innerHTML = '<svg viewBox="0 0 17 15" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="currentColor"><path d="M14.6 1h-2.7l-.6-1h-6l-.6 1H2.4C1.1 1 0 2 0 3.3v9.3C0 13.9 1.1 15 2.4 15h12.2c1.3 0 2.4-1.1 2.4-2.4V3.3C17 2 15.9 1 14.6 1zM8.3 13.1c-2.9 0-5.2-2.3-5.2-5.1s2.3-5.1 5.2-5.1c2.9 0 5.2 2.3 5.2 5.1s-2.3 5.1-5.2 5.1zm5.9-8.3c-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1s1.1.5 1.1 1.1c0 .6-.5 1.1-1.1 1.1zm-10 3.1c0 1.2.5 2.2 1.3 3 0-.2 0-.4-.1-.6 0-2.2 1.8-4 4.1-4 1.1 0 2 .4 2.8 1.1-.3-2-2-3.4-4-3.4-2.2-.1-4.1 1.7-4.1 3.9z"></path></svg>';
+			break;
+
+		case "audio":
+			icon.innerHTML = '<svg viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="currentColor"><path d="M17.7 7.3c-.4-4.4-4-7.3-8.3-7.3-4.3 0-7.9 2.9-8.3 7.4C.5 7.4 0 8 0 8.6v5c0 .8.6 1.4 1.3 1.4H4c.2.4.8 1 1.2 1 .6 0 .8-1 .8-1.6V7.8c0-.5-.2-1.6-.8-1.6-.4 0-1 .8-1.2 1.1H2.9c.4-3.5 3.2-5.6 6.5-5.6s6.2 2.1 6.5 5.6H15c0-.3-.7-1.1-1.1-1.1-.6 0-.9 1-.9 1.6v6.6c0 .5.3 1.6.9 1.6.4 0 1.1-.6 1.2-1h2.6c.7 0 1.3-.6 1.3-1.3v-5c0-.8-.6-1.3-1.3-1.4zM3 8.5v1l-2 1.3V8.5h2zm15 .9l-2 1.3V8.5h2v.9zm-6.4.3l-1.6.5V6.4c0-.1-.1-.2-.2-.2s-.2 0-.2.1L7.2 12v.2c.1.1.1.1.2.1L9 12v3.8c0 .1-.2.2-.1.2h.3c.1 0 .2 0 .2-.1l2.4-5.9v-.2c-.1-.1-.2-.1-.2-.1z"></path></svg>';
+			break;
+
+		case "quote":
+			icon.innerHTML = '<svg viewBox="0 0 17 13" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="currentColor"><path d="M3.5 5.5C4 3.7 5.8 2.4 7.2 1.3L5.9 0C3 1.8 0 5 0 8.5 0 11 1.3 13 4 13c2 0 3.7-1.5 3.7-3.6C7.7 7 6 5.5 3.5 5.5zm9.3 0c.4-1.8 2.2-3.1 3.7-4.2L15.2 0c-2.8 1.8-5.9 5-5.9 8.5 0 2.4 1.3 4.5 4 4.5 2 0 3.7-1.5 3.7-3.6 0-2.4-1.7-3.9-4.2-3.9z"></path></svg>';
+			break;
+
+		case "chat":
+			icon.innerHTML = '<svg viewBox="0 0 18.7 17" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="currentColor"><path d="M16 6.1V2.6C16 .8 15 0 13.1 0H2.9C1 0 0 1.1 0 3.3v10.4C0 15.9 1 17 2.9 17h10.2c1.9 0 2.9-.8 2.9-2.6v-2.9l2.7-2.9c0-.1-2.7-2.5-2.7-2.5zm-4.5-.7c0-.5.3-.8.7-.8s.8.3.8.8v1.7l-.3 2.5c0 .3-.2.4-.4.4s-.4-.1-.4-.4l-.3-2.5V5.4zm-3.8 6.4c0 .4-.1.8-.7.8-.5 0-.7-.4-.7-.8V9.1C6.3 8.4 6 8 5.4 8c-.5 0-1 .4-1 1.2v2.6c0 .4-.1.8-.7.8s-.7-.4-.7-.8V5.4c0-.5.3-.8.7-.8.4 0 .7.3.7.8v2.1c.3-.4.7-.8 1.5-.8s1.7.5 1.7 2c.1.1.1 3.1.1 3.1zm2.5 0c0 .4-.1.8-.7.8-.5 0-.7-.4-.7-.8V7.5c0-.4.1-.8.7-.8.5 0 .7.4.7.8v4.3zm-.7-5.6c-.4 0-.7-.4-.7-.8s.3-.8.7-.8c.4 0 .7.4.7.8s-.3.8-.7.8zm2.8 6.3c-.4 0-.8-.4-.8-.9s.3-.9.8-.9.8.4.8.9-.4.9-.8.9z"></path></svg>';
+			break;
+
+		case "link":
+			icon.innerHTML = '<svg viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="currentColor"><path d="M9.9 5.1c-.2.3-.5 1.4-.6 2.6l1.1-.1c.7-.1 1.3-.3 1.5-.5.6-.6.6-1.4 0-2-.6-.5-1.4-.5-2 0zM8.5 0C3.8 0 0 3.8 0 8.5S3.8 17 8.5 17 17 13.2 17 8.5 13.2 0 8.5 0zm4.4 8.2c-.5.5-1.5.8-2.5.9l-1.2.2c-.1 1.3-.4 2.9-1 3.6-1.1 1.1-3 1.2-4.1 0-1.1-1.1-1.1-3 0-4.1.5-.5 1.5-.8 2.6-.9v1.5c-1.2.3-1.5.5-1.6.5-.6.6-.6 1.4 0 2 .5.5 1.4.5 2 0 .2-.2.5-1.1.6-2.5l.1-.9c0-1.3.2-3.6 1-4.4 1.1-1.1 3-1.2 4.1 0 1.2 1.1 1.2 2.9 0 4.1z"></path></svg>';
+			break;
+
+		default:
+			icon.innerHTML = '<svg viewBox="0 0 20.8 13" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="currentColor"><path d="M.1 13h2.8l.9-3h4.7l.8 3h2.9L7.7 0h-3L.1 13zm6-10.1l2 5.1H4.2l1.9-5.1zM20 10V6c0-1.1-.2-1.9-1-2.3-.7-.5-1.7-.7-2.7-.7-1.6 0-2.7.4-3.4 1.2-.4.5-.6 1.2-.7 2h2.4c.1-.4.2-.6.4-.8.2-.3.6-.4 1.2-.4.5 0 .9.1 1.2.2.3.1.4.4.4.8 0 .3-.2.5-.5.7-.2.1-.5.2-1 .2l-.9.1c-1 .1-1.7.3-2.2.6-.9.5-1.4 1.3-1.4 2.5 0 .9.3 1.6.8 2 .6.5 1.3.9 2.2.9.7 0 1.2-.3 1.7-.6.4-.2.8-.6 1.2-.9 0 .2 0 .4.1.6 0 .2.1.8.2 1h2.7v-.8c-.1-.1-.3-.2-.4-.3.1-.3-.3-1.7-.3-2zm-2.2-1.1c0 .8-.3 1.4-.7 1.7-.4.3-1 .5-1.5.5-.3 0-.6-.1-.9-.3-.2-.2-.4-.5-.4-.9 0-.5.2-.8.6-1 .2-.1.6-.2 1.1-.3l.6-.1c.3-.1.5-.1.7-.2.2-.1.3-.1.5-.2v.8z"></path></svg>';
+			break;
+	}
+	return icon.firstElementChild;
+	icon.remove();
+}
+
+/** Rounds a given number and suffixes it with the nearest SI unit.
+ * Taken from https://stackoverflow.com/questions/9461621/format-a-number-as-2-5k-if-a-thousand-or-more-otherwise-900#answer-9462382.
+ * @param {string|number} num The number, not comma-separated.
+ * @param {?number} digits The number of decimal digits to include.
+ * @return {string} The truncated number.
+ */
+function truncateNumber(num, digits = 1) {
+	const lookup = [
+		{ value: 1, symbol: "" },
+		{ value: 1e3, symbol: "k" },
+		{ value: 1e6, symbol: "M" },
+		{ value: 1e9, symbol: "G" },
+		{ value: 1e12, symbol: "T" },
+		{ value: 1e15, symbol: "P" },
+		{ value: 1e18, symbol: "E" }
+	];
+	const regexp = /\.0+$|(?<=\.[0-9]*[1-9])0+$/;
+	const item = lookup.findLast(item => num >= item.value);
+	return item ? (num / item.value).toFixed(digits).replace(regexp, "").concat(item.symbol) : "0";
+}
+// #endregion
+// #endregion
+
 // #endregion
 </script>
 

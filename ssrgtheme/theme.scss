@@ -7,6 +7,7 @@ $darkgray:				#54595d;
 $darkgrayblue:			#4A4D63;
 $darkestgray:			#22272b;
 $black:					#1b1517;
+$blacktranslucent:		rgba(0, 0, 0, 0.6);
 $darkblue:				#0d1a32;
 $darkblue-variant:		#172039;
 $darkblue-hover:		#363650;
@@ -17,6 +18,8 @@ $lightblue:				#38b4fe;
 $lightblue-lighten-1:	#5fb1e0;
 $lightblue-lighten-2:	#7bc3eb;
 $lightblue-darken:		#286381;
+$red:					#f54034;
+$darkred:				#98110c;
 // Footer sizing
 $footer-height: 8.5em;
 // #endregion
@@ -609,7 +612,7 @@ $header-height: 4em;
 		gap: 0.4ch;
 		height: 100%;
 		padding: 0 0.6em;
-		background-color: adjust-color($color: #000000, $alpha: -0.4);
+		background-color: $blacktranslucent;
 		color: $white;
 		border: {
 			width: 0.1em;
@@ -624,8 +627,8 @@ $header-height: 4em;
 	button.label {
 		cursor: pointer;
 
-		&:hover, &:focus { background-color: adjust-color($color: #000000, $alpha: -0.3) }
-		&:active { background-color: adjust-color($color: #000000, $alpha: -0.2) }
+		&:hover, &:focus { background-color: rgba(0, 0, 0, 0.7) }
+		&:active { background-color: rgba(0, 0, 0, 0.8) }
 
 		&::after {
 			display: block;
@@ -680,6 +683,7 @@ $header-height: 4em;
 	max-width: 100vw;
 	overflow-x: scroll;
 	padding-inline: 2em;
+	scrollbar-width: none;
 	// Center when fewer posts than window size
 	width: min-content;
 	margin: 1em auto;
@@ -723,15 +727,115 @@ $header-height: 4em;
 	width: 15em;
 	height: 21.75em;
 	flex-shrink: 0;
-
+	color: $white;
 	transition: {
 		property: scale, margin-inline;
 		duration: 0.2s;
 	}
+	scrollbar-width: none;
 
-	&:hover, &:focus {
+	&:has(.postcard:hover, .postcard:focus) {
 		scale: 110%;
 		margin-inline: 0.75em;
+	}
+
+	.postcontent { display: none }
+}
+
+.postcard {
+	width: 100%;
+	height: 100%;
+	border: 1px solid $lightgray;
+	background: $blacktranslucent;
+	padding: 0;
+	display: grid;
+	grid-template-rows: 1fr auto;
+	color: inherit;
+	cursor: pointer;
+	$max-top-width: 12.75rem;
+
+	.top {
+		background-color: var(--accent);
+		padding: 1em 0;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		position: relative;
+
+		img, svg {
+			display: block;
+			width: $max-top-width;
+			height: $max-top-width;
+			object-fit: cover;
+			margin-block-end: auto;
+		}
+
+		svg {
+			background-color: black;
+			color: $white;
+			padding: 3em;
+		}
+	}
+
+	&:hover .top::after {
+		content: "\e30c";	// magnifying-glass
+		font-family: "Phosphor-Light" !important;
+		font-size: 2em;
+		line-height: 1;
+		color: white;
+		background-color: $red;
+		position: absolute;
+		top: calc($max-top-width - 1.1em);
+		left: calc($max-top-width - 0.4em);
+		border-radius: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.15em 0.2em 0.2em 0.15em;
+		box-shadow: 1px 1px $darkred, 0.1em 0.1em 0.25em $blacktranslucent;
+	}
+
+	.posttitle, .subtitle {
+		width: $max-top-width;
+		text-align: center;
+		margin: 0;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.posttitle {
+		font: {
+			weight: 375;
+			size: 1.4em;
+		}
+	}
+
+	.subtitle {
+		font: {
+			weight: 350;
+			size: 1.2em;
+		}
+	}
+
+	.bottom {
+		margin: 0;
+		color: $lightblue;
+		text-align: start;
+		padding: 0.5em 0.25em;
+
+		i {
+			display: inline-block;
+			font-size: 2em;
+			border: {
+				width: 1px;
+				style: solid;
+				color: $lightblue;
+				radius: 100%;
+			}
+			padding: 0.05em;
+		}
 	}
 }
 // #endregion
@@ -778,7 +882,7 @@ $header-height: 4em;
 	z-index: 3;
 
 	// Coloring
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: $blacktranslucent;
 	backdrop-filter: blur(3px);
 
 	// Layout

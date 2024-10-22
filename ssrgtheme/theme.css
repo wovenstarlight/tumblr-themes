@@ -635,6 +635,7 @@ button[disabled] {
   max-width: 100vw;
   overflow-x: scroll;
   padding-inline: 2em;
+  scrollbar-width: none;
   width: -moz-min-content;
   width: min-content;
   margin: 1em auto;
@@ -675,12 +676,99 @@ button[disabled] {
   width: 15em;
   height: 21.75em;
   flex-shrink: 0;
+  color: #f2f3f3;
   transition-property: scale, margin-inline;
   transition-duration: 0.2s;
+  scrollbar-width: none;
 }
-.post:hover, .post:focus {
+.post:has(.postcard:hover, .postcard:focus) {
   scale: 110%;
   margin-inline: 0.75em;
+}
+.post .postcontent {
+  display: none;
+}
+
+.postcard {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #a5a6a7;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  color: inherit;
+  cursor: pointer;
+}
+.postcard .top {
+  background-color: var(--accent);
+  padding: 1em 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.postcard .top img, .postcard .top svg {
+  display: block;
+  width: 12.75rem;
+  height: 12.75rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-block-end: auto;
+}
+.postcard .top svg {
+  background-color: black;
+  color: #f2f3f3;
+  padding: 3em;
+}
+.postcard:hover .top::after {
+  content: "\e30c";
+  font-family: "Phosphor-Light" !important;
+  font-size: 2em;
+  line-height: 1;
+  color: white;
+  background-color: #f54034;
+  position: absolute;
+  top: calc(12.75rem - 1.1em);
+  left: calc(12.75rem - 0.4em);
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.15em 0.2em 0.2em 0.15em;
+  box-shadow: 1px 1px #98110c, 0.1em 0.1em 0.25em rgba(0, 0, 0, 0.6);
+}
+.postcard .posttitle, .postcard .subtitle {
+  width: 12.75rem;
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.postcard .posttitle {
+  font-weight: 375;
+  font-size: 1.4em;
+}
+.postcard .subtitle {
+  font-weight: 350;
+  font-size: 1.2em;
+}
+.postcard .bottom {
+  margin: 0;
+  color: #38b4fe;
+  text-align: start;
+  padding: 0.5em 0.25em;
+}
+.postcard .bottom i {
+  display: inline-block;
+  font-size: 2em;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #38b4fe;
+  border-radius: 100%;
+  padding: 0.05em;
 }
 
 #postviewer[open] {
