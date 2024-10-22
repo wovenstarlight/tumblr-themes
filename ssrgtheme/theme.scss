@@ -546,7 +546,7 @@ $header-height: 4em;
 	box-sizing: content-box;
 	height: 2.35rem;
 	gap: 1em;
-	z-index: 99;
+	z-index: 3;
 }
 
 #opensearch {
@@ -700,7 +700,7 @@ $header-height: 4em;
 	line-height: 1;
 	display: flex;
 	align-items: center;
-	z-index: 101;
+	z-index: 3;
 	transition: opacity 0.3s, color 0.2s;
 
 	&:not(.disabled) {
@@ -775,7 +775,7 @@ $header-height: 4em;
 	bottom: 0;
 	left: 0;
 	width: 100vw;
-	z-index: 100;
+	z-index: 3;
 
 	// Coloring
 	background-color: rgba(0, 0, 0, 0.6);

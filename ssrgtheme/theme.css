@@ -502,7 +502,7 @@ button[disabled] {
   box-sizing: content-box;
   height: 2.35rem;
   gap: 1em;
-  z-index: 99;
+  z-index: 3;
 }
 
 #opensearch {
@@ -653,7 +653,7 @@ button[disabled] {
   line-height: 1;
   display: flex;
   align-items: center;
-  z-index: 101;
+  z-index: 3;
   transition: opacity 0.3s, color 0.2s;
 }
 #scrolltostart:not(.disabled) {
@@ -708,7 +708,7 @@ button[disabled] {
   bottom: 0;
   left: 0;
   width: 100vw;
-  z-index: 100;
+  z-index: 3;
   background-color: rgba(0, 0, 0, 0.6);
   -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
