@@ -631,7 +631,7 @@ posts.forEach(post => {
 		post.npf.trail?.at(-1)?.blog?.name ?? post.npf.trail?.at(-1)?.broken_blog_name ?? currentUser.name,	// last commenter's name
 		post.noteCount
 	);
-});
+// #endregion
 
 // #region Remaining page functionality (base features)
 // #region Top navigation placement calculator
@@ -1012,6 +1012,20 @@ function truncateNumber(num, digits = 1) {
 	return item ? (num / item.value).toFixed(digits).replace(regexp, "").concat(item.symbol) : "0";
 }
 // #endregion
+
+// #region FOR POST BODY
+/**
+ * Unescapes HTML strings which have quotations, ampersands, or arrow brackets replaced with HTML entities.
+ * @param {string} string The escaped HTML string to unescape.
+ * @returns An unescaped version of the provided HTML string, fit for adding to innerHTML.
+ */
+function unescapeHTML(string) {
+	return string.replaceAll("&amp;", "&")
+				.replaceAll("&#39;", "'")
+				.replaceAll("&quot;", "\"")
+				.replaceAll("&lt;", "<")
+				.replaceAll("&gt;", ">");
+}
 // #endregion
 
 // #endregion
