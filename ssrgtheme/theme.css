@@ -491,7 +491,7 @@ button[disabled] {
   transition-property: opacity, width;
   transition-duration: 0.3s;
 }
-#main:has(#scrolltostart[disabled])::before {
+#main:has(#scrolltostart.disabled)::before {
   opacity: 0;
   width: 0;
 }
@@ -647,8 +647,7 @@ button[disabled] {
   top: calc(50% - 1.8rem);
   transform: translateY(-50%);
   color: #a5a6a7;
-  background: none;
-  border: none;
+  text-decoration: none;
   padding: 1rem;
   font-size: 7em;
   line-height: 1;
@@ -657,13 +656,13 @@ button[disabled] {
   z-index: 101;
   transition: opacity 0.3s, color 0.2s;
 }
-#scrolltostart:not([disabled]) {
+#scrolltostart:not(.disabled) {
   cursor: pointer;
 }
-#scrolltostart:not([disabled]):hover, #scrolltostart:not([disabled]):focus {
+#scrolltostart:not(.disabled):hover, #scrolltostart:not(.disabled):focus {
   color: #f2f3f3;
 }
-#scrolltostart[disabled] {
+#scrolltostart.disabled {
   opacity: 0;
   pointer-events: none;
 }

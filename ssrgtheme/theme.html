@@ -327,10 +327,10 @@
 			<noscript><article id="noscriptnotice">Javascript is required to view this blog. Please enable scripting and reload.</article></noscript>
 
 			<!-- JUMP TO START -->
-			<button id="scrolltostart" disabled>
+			<a id="scrolltostart" class="disabled" href="#posts">
 				<span class="visuallyhidden">{lang:Back to top}</span>
 				<i class="ph-thin ph-caret-left" aria-hidden="true"></i><i class="ph-thin ph-caret-left" aria-hidden="true"></i>
-			</button>
+			</a>
 		</section>
 	</main>
 
@@ -596,10 +596,10 @@ customPageLinks.forEach((el, index) => {
 });
 postContainer.addEventListener("scroll", () => {
 	if (postContainer.scrollLeft <= 200) {
-		scrollToStart.setAttribute("disabled", "true");
+		scrollToStart.classList.add("disabled");
 	}
 	else {
-		scrollToStart.removeAttribute("disabled");
+		scrollToStart.classList.remove("disabled");
 	}
 })
 // #endregion

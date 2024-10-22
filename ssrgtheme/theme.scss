@@ -533,7 +533,7 @@ $header-height: 4em;
 		}
 	}
 
-	&:has(#scrolltostart[disabled])::before {
+	&:has(#scrolltostart.disabled)::before {
 		opacity: 0;
 		width: 0;
 	}
@@ -693,8 +693,7 @@ $header-height: 4em;
 	top: calc(50% - 1.8rem);
 	transform: translateY(-50%);
 	color: $lightgray;
-	background: none;
-	border: none;
+	text-decoration: none;
 	padding: 1rem;
 	font-size: 7em;
 	line-height: 1;
@@ -703,11 +702,11 @@ $header-height: 4em;
 	z-index: 101;
 	transition: opacity 0.3s, color 0.2s;
 
-	&:not([disabled]) {
+	&:not(.disabled) {
 		cursor: pointer;
 		&:hover, &:focus { color: $white }
 	}
-	&[disabled] {
+	&.disabled {
 		opacity: 0;
 		pointer-events: none;
 	}
