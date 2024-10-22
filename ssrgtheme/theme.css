@@ -20,7 +20,7 @@ body {
   transform: translateX(-50%);
 }
 
-.button-basic, .button-solid-gray, #search button[type=submit][disabled], .button-solid-blue, .button-outline {
+.button-basic, .button-solid-gray, #postviewer[open] a:not([href]), #postviewer[open] button[disabled], #search button[type=submit][disabled], .button-solid-blue, .button-outline {
   color: #f2f3f3;
   padding: 0.75em 1em;
   line-height: 1;
@@ -53,14 +53,14 @@ button[disabled] {
   background-color: #7bc3eb;
 }
 
-.button-solid-gray, #search button[type=submit][disabled] {
+.button-solid-gray, #postviewer[open] a:not([href]), #postviewer[open] button[disabled], #search button[type=submit][disabled] {
   background-color: #54595d;
   border: none;
 }
-.button-solid-gray:not([disabled]):hover, #search button[type=submit][disabled]:not([disabled]):hover, .button-solid-gray:not([disabled]):focus, #search button[type=submit][disabled]:not([disabled]):focus {
+.button-solid-gray:not([disabled]):hover, #postviewer[open] a:not([disabled]):hover:not([href]), #postviewer[open] button[disabled]:not([disabled]):hover, #search button[type=submit][disabled]:not([disabled]):hover, .button-solid-gray:not([disabled]):focus, #postviewer[open] a:not([disabled]):focus:not([href]), #postviewer[open] button[disabled]:not([disabled]):focus, #search button[type=submit][disabled]:not([disabled]):focus {
   background-color: #5f5f6d;
 }
-.button-solid-gray:not([disabled]):active, #search button[type=submit][disabled]:not([disabled]):active {
+.button-solid-gray:not([disabled]):active, #postviewer[open] a:not([disabled]):active:not([href]), #postviewer[open] button[disabled]:not([disabled]):active, #search button[type=submit][disabled]:not([disabled]):active {
   background-color: #a5a6a7;
 }
 
@@ -683,6 +683,25 @@ button[disabled] {
   margin-inline: 0.75em;
 }
 
+#postviewer[open] {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+#postviewer[open] .postcontent {
+  overflow-y: scroll;
+}
+#postviewer[open] > footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+#postviewer[open] > footer a, #postviewer[open] > footer button {
+  display: block;
+  font-size: 1.2em;
+  padding-inline: 2em !important;
+}
 #pfoot {
   height: 8.5em;
   position: fixed;

@@ -326,6 +326,51 @@
 		<section id="posts">
 			<noscript><article id="noscriptnotice">Javascript is required to view this blog. Please enable scripting and reload.</article></noscript>
 
+			<dialog class="modal" id="postviewer">
+				<header>
+					<h2 id="searchtitle" class="modaltitle">POST INFORMATION</h2>
+					<button class="closemodal">
+						<span class="visuallyhidden">Close</span>
+						<i class="ph ph-x" aria-hidden="true"></i>
+					</button>
+				</header>
+
+				<footer class="navbuttons">
+					<a
+						{block:Pagination}{block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage}{/block:Pagination}
+						{block:PermalinkPagination}{block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost}{/block:PermalinkPagination}
+						{block:DayPage}{block:DayPagination}{block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage}{/block:DayPagination}{/block:DayPage}
+						class="button-solid-blue"
+					>
+						{block:HomePage}{lang:Previous page}{/block:HomePage}
+						{block:TagPage}{lang:Previous page}{/block:TagPage}
+						{block:SearchPage}{lang:Previous page}{/block:SearchPage}
+						{block:DayPage}{lang:Previous day}{/block:DayPage}
+						{block:PermalinkPage}{lang:Previous post}{/block:PermalinkPage}
+					</a>
+					{block:IndexPage}
+					<button id="prevpost" class="button-solid-blue">
+						{lang:Previous post}
+					</button>
+					<button id="nextpost" class="button-solid-blue">
+						{lang:Next post}
+					</button>
+					{/block:IndexPage}
+					<a
+						{block:Pagination}{block:NextPage}href="{NextPage}"{/block:NextPage}{/block:Pagination}
+						{block:PermalinkPagination}{block:NextPost}href="{NextPost}"{/block:NextPost}{/block:PermalinkPagination}
+						{block:DayPage}{block:DayPagination}{block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage}{/block:DayPagination}{/block:DayPage}
+						class="button-solid-blue"
+					>
+						{block:HomePage}{lang:Next page}{/block:HomePage}
+						{block:TagPage}{lang:Next page}{/block:TagPage}
+						{block:SearchPage}{lang:Next page}{/block:SearchPage}
+						{block:DayPage}{lang:Next day}{/block:DayPage}
+						{block:PermalinkPage}{lang:Next post}{/block:PermalinkPage}
+					</a>
+				</footer>
+			</dialog>
+
 			<!-- JUMP TO START -->
 			<a id="scrolltostart" class="disabled" href="#posts">
 				<span class="visuallyhidden">{lang:Back to top}</span>
@@ -404,6 +449,29 @@
  */
 const em = parseFloat(getComputedStyle(document.documentElement).fontSize);
 
+/** The modal where posts will be viewed.
+ * @type {HTMLElement}
+ */
+let postViewer = document.getElementById("postviewer");
+
+/** Opens a given post in the post viewer, enabling "previous/next post" buttons as necessary.
+ * @param {HTMLElement} targetPostContent The post content to display in the viewer.
+ */
+postViewer._open = (targetPostContent) => {
+	// Put currently-viewed post back in its container
+	if (postViewer.childElementCount > 2) postViewer.children[1]._container.append(postViewer.children[1]);
+
+	postViewer.insertBefore(targetPostContent, postViewer.lastElementChild);
+	{block:IndexPage}
+	let prevbtn = document.getElementById("prevpost"),
+		nextbtn = document.getElementById("nextpost");
+	targetPostContent._previous == null ? prevpost.setAttribute("disabled", "true") : prevpost.removeAttribute("disabled");
+	targetPostContent._next == null ? nextpost.setAttribute("disabled", "true") : nextpost.removeAttribute("disabled");
+	{/block:IndexPage}
+
+	if (!postViewer.hasAttribute("open")) postViewer.showModal();
+}
+
 // #region Top navigation placement calculator
 /** The top navigation bar visible by default. */
 const topNav = document.getElementById("resourcenav");
@@ -468,7 +536,10 @@ document.querySelector("#pagetitle button").addEventListener("click", () => { do
 // Close
 document.querySelectorAll(".modal").forEach(modal => {
 	// On button click
-	modal.querySelectorAll(".modal .closemodal").forEach(btn => btn.addEventListener("click", () => { modal.close() }));
+	modal.querySelectorAll(".closemodal").forEach(btn => btn.addEventListener("click", () => {
+		modal.close();
+		if (modal.id === "postviewer") postViewer.children[1]._container.append(postViewer.children[1]);
+	}));
 
 	// On ::backdrop click
 	modal.addEventListener('mousedown', e => {
@@ -484,9 +555,19 @@ document.querySelectorAll(".modal").forEach(modal => {
 			e.offsetY < 0 || e.offsetY > e.target.offsetHeight
 		)) {
 			modal.close();
+			if (modal.id === "postviewer") postViewer.children[1]._container.append(postViewer.children[1]);
 		}
 	});
 });
+{block:IndexPage}
+// Post viewer's previous/next functionality
+document.getElementById("prevpost").addEventListener("click", e => {
+	postViewer._open(e.currentTarget.parentElement.previousElementSibling._previous);
+});
+document.getElementById("nextpost").addEventListener("click", e => {
+	postViewer._open(e.currentTarget.parentElement.previousElementSibling._next);
+});
+{/block:IndexPage}
 // #endregion
 
 // #region Search form

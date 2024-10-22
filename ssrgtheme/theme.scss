@@ -687,6 +687,7 @@ $header-height: 4em;
 	padding-block: 1.1em;
 }
 
+// #region General post display
 #scrolltostart {
 	position: absolute;
 	left: -2rem;
@@ -733,6 +734,34 @@ $header-height: 4em;
 		margin-inline: 0.75em;
 	}
 }
+// #endregion
+
+// #region Post viewer
+#postviewer[open] {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+
+	.postcontent {
+		overflow-y: scroll;
+	}
+
+	& > footer {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 1em;
+
+		a, button {
+			display: block;
+			font-size: 1.2em;
+			padding-inline: 2em !important;
+		}
+	}
+
+	a:not([href]), button[disabled] { @extend .button-solid-gray; }
+}
+// #endregion
 // #endregion
 // #endregion
 
