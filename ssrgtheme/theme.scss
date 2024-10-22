@@ -795,8 +795,6 @@ $header-height: 4em;
 		background-color: $darkgray;
 		cursor: unset;
 	}
-
-	.index:has(+ .day) { display: none }
 }
 
 #pages {

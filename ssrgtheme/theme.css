@@ -732,9 +732,6 @@ button[disabled] {
   background-color: #54595d;
   cursor: unset;
 }
-#pagination .index:has(+ .day) {
-  display: none;
-}
 
 #pages {
   grid-column: 2;
