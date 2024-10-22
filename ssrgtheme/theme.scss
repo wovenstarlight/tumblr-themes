@@ -252,7 +252,7 @@ $header-height: 4em;
 		--border: 0.1em solid #{adjust-color($color: $white, $alpha: -0.75)};
 	}
 
-	#about { background-color: var(--profile-accent) }
+	#about { background-color: var(--accent) }
 
 	.cards {
 		display: grid;

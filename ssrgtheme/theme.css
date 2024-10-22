@@ -204,7 +204,7 @@ button[disabled] {
   --border: 0.1em solid rgba(242, 243, 243, 0.25);
 }
 #userprofile #about {
-  background-color: var(--profile-accent);
+  background-color: var(--accent);
 }
 #userprofile .cards {
   display: grid;
