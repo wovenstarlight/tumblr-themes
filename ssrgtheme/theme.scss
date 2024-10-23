@@ -1051,6 +1051,33 @@ footer .tags {
 	}
 	@include links("green");
 
+	// Images
+	img {
+		max-width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	// Gridded items
+	.row {
+		display: grid;
+		grid-auto-flow: column;
+		grid-auto-columns: 1fr;
+		$grid-spacing: min(0.2em, 1vw);
+		gap: $grid-spacing;
+		margin-block: $grid-spacing;
+	}
+	.row figure {
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+	}
+	.row img {
+		object-fit: cover;
+		height: 100%;
+		width: 100%;
+	}
+
 	// Read more button
 	.readmore {
 		display: block;

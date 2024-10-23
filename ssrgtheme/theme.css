@@ -974,6 +974,29 @@ footer .tags .notecount {
 .bodyitemcontent a:not([class*=button]):not(:hover) {
   text-decoration: none;
 }
+.bodyitemcontent img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.bodyitemcontent .row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: min(0.2em, 1vw);
+  margin-block: min(0.2em, 1vw);
+}
+.bodyitemcontent .row figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.bodyitemcontent .row img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
 .bodyitemcontent .readmore {
   display: block;
   max-width: 10em;
