@@ -1201,25 +1201,35 @@ function createPostFooter(wrapper, postData) {
 	wrapper.append(footer);
 	
 	// Populate post footer
-	let vsn = document.createElement("span");
-	vsn.classList.add("vsn");
-	footer.append(vsn);
-	makeNoteCount(vsn, postData);
-	makeViaSource(vsn, postData);
+	// Tags
+	{block:IfPostTags}makeTags(footer, postData);{/block:IfPostTags}
 
-	if ({block:IfLikeButtons}true{/block:IfLikeButtons}{block:IfNotLikeButtons}false{/block:IfNotLikeButtons} || {block:IfReblogButtons}true{/block:IfReblogButtons}{block:IfNotReblogButtons}false{/block:IfNotReblogButtons} || {block:IfDayPageLinks}true{/block:IfDayPageLinks}{block:IfNotDayPageLinks}false{/block:IfNotDayPageLinks}) {
-		let lrd = document.createElement("span"),
-			lrdwrapper = document.createElement("span");
-		lrd.classList.add("lrd");
-		lrdwrapper.classList.add("wrapper");
-		footer.append(lrd);
-		lrd.append(lrdwrapper);
-		{block:IfLikeButtons}makeLike(lrdwrapper, postData);{/block:IfLikeButtons}
-		{block:IfReblogButtons}makeReblog(lrdwrapper, postData);{/block:IfReblogButtons}
-		{block:IfDayPageLinks}makeDayLink(lrdwrapper, postData);{/block:IfDayPageLinks}
+	// Note count (move to start of tags paragraph)
+	if (postData.noteCount) {
+		let tagsContainer = footer.firstElementChild;
+		if (tagsContainer == null) {
+			tagsContainer = document.createElement("p");
+			tagsContainer.classList.add("tags");
+			footer.append(tagsContainer);
+		}
+		makeNoteCount(tagsContainer, postData);
+		tagsContainer.prepend(tagsContainer.lastElementChild);
 	}
 
-	{block:IfPostTags}makeTags(footer, postData);{/block:IfPostTags}
+	// Round links; via, source, like, reblog, day page
+	let rounds = document.createElement("p");
+	rounds.classList.add("rounds");
+	footer.append(rounds);
+	makeViaSource(rounds, postData, true);
+
+	if ({block:IfLikeButtons}true{/block:IfLikeButtons}{block:IfNotLikeButtons}false{/block:IfNotLikeButtons} || {block:IfReblogButtons}true{/block:IfReblogButtons}{block:IfNotReblogButtons}false{/block:IfNotReblogButtons} || {block:IfDayPageLinks}true{/block:IfDayPageLinks}{block:IfNotDayPageLinks}false{/block:IfNotDayPageLinks}) {
+		{block:IfLikeButtons}makeLike(rounds, postData, {
+			like: '<i class="ph-thin ph-heart"></i>',
+			unlike: '<i class="ph-fill ph-heart"></i>'
+		});{/block:IfLikeButtons}
+		{block:IfReblogButtons}makeReblog(rounds, postData, '<i class="ph-thin ph-repeat"></i>');{/block:IfReblogButtons}
+		{block:IfDayPageLinks}makeDayLink(rounds, postData, '<i class="ph-thin ph-clock"></i>');{/block:IfDayPageLinks}
+	}
 }
 
 // #region Helpers
@@ -1365,9 +1375,9 @@ function makeViaSource(wrapper, postData, avatars = false) {
 
 	// Avatars or text, as needed
 	if (avatars) {
-		via.innerHTML = `<img src="${postData.via.avatar}" />`;
+		via.innerHTML = `<img class="avatar" src="${postData.via.avatar}" />`;
 		// This might end up being undefined, if the source is broken, but since it isn't added it won't make a difference
-		source.innerHTML = `<img src="${sourceTrail.blog?.avatar?.find(el => el.height === 64)?.url}" />`;
+		source.innerHTML = `<img class="avatar" src="${sourceTrail.blog?.avatar?.find(el => el.height === 64)?.url}" />`;
 	}
 	else {
 		via.innerText = "{lang:Via}";

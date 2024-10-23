@@ -875,6 +875,64 @@ $header-height: 4em;
 // #region Post content itself (NOT POST BODY ITEMS)
 .postcontent {
 	overflow-y: scroll;
+
+	& > footer {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+		padding-block-end: 0.8em;
+
+		* { margin: 0 }
+	}
+
+	.rounds {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 0.6em;
+
+		img {
+			display:block;
+			font-size: 0.75em;
+		}
+
+		a:is(:hover, :focus-within) {
+			text-decoration: none;
+			img { box-shadow: 0 0 0.2em 0.1em adjust-color($white, $alpha: -0.5) }
+			i { box-shadow: inset 0 0 0.2em 0.1em adjust-color($lightblue, $alpha: -0.25), 0 0 0.2em 0.1em adjust-color($white, $alpha: -0.9) }
+		}
+
+		i {
+			border: 1px solid $lightblue;
+			border-radius: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			$size: 2.6em;
+			width: $size;
+			height: $size;
+
+			&::before {
+				font-size: 1.8em;
+			}
+		}
+	}
+}
+
+// Like button
+.like_button.liked ~ .to-like,
+.like_button:not(.liked) ~ .to-unlike { display: none }
+
+// Tags
+footer .tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.1em 0.25em;
+	justify-content: center;
+	text-align: center;
+
+	.notecount { font-weight: 600 }
 }
 // #endregion
 // #endregion

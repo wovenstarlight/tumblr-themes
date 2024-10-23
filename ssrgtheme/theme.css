@@ -20,7 +20,7 @@ body {
   transform: translateX(-50%);
 }
 
-.button-basic, .button-solid-gray, #postviewer[open] a:not([href]), #postviewer[open] button[disabled], #search button[type=submit][disabled], .button-solid-blue, .button-outline {
+.button-basic, .button-solid-gray, #postviewer[open] > footer a:not([href]), #postviewer[open] > footer button[disabled], #search button[type=submit][disabled], .button-solid-blue, .button-outline {
   color: #f2f3f3;
   padding: 0.75em 1em;
   line-height: 1;
@@ -806,6 +806,64 @@ button[disabled] {
 .postcontent {
   overflow-y: scroll;
 }
+.postcontent > footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding-block-end: 0.8em;
+}
+.postcontent > footer * {
+  margin: 0;
+}
+.postcontent .rounds {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+}
+.postcontent .rounds img {
+  display: block;
+  font-size: 0.75em;
+}
+.postcontent .rounds a:is(:hover, :focus-within) {
+  text-decoration: none;
+}
+.postcontent .rounds a:is(:hover, :focus-within) img {
+  box-shadow: 0 0 0.2em 0.1em rgba(242, 243, 243, 0.5);
+}
+.postcontent .rounds a:is(:hover, :focus-within) i {
+  box-shadow: inset 0 0 0.2em 0.1em rgba(56, 180, 254, 0.75), 0 0 0.2em 0.1em rgba(242, 243, 243, 0.1);
+}
+.postcontent .rounds i {
+  border: 1px solid #38b4fe;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6em;
+  height: 2.6em;
+}
+.postcontent .rounds i::before {
+  font-size: 1.8em;
+}
+
+.like_button.liked ~ .to-like,
+.like_button:not(.liked) ~ .to-unlike {
+  display: none;
+}
+
+footer .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1em 0.25em;
+  justify-content: center;
+  text-align: center;
+}
+footer .tags .notecount {
+  font-weight: 600;
+}
+
 #pfoot {
   height: 8.5em;
   position: fixed;
