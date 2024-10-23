@@ -6,7 +6,7 @@
 		Phosphor Icons: https://phosphoricons.com/
 		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
 
-	Last updated 22 Oct 2024.
+	Last updated 23 Oct 2024.
 -->
 
 <!DOCTYPE html>
@@ -1817,7 +1817,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		// cut off the post and add a readmore, if one is present and you aren't currently on the post's permalink page
 		if (i === rows?.truncate_after && !expand) {
 			let readmore = document.createElement("a");
-			readmore.classList.add("readmore");
+			readmore.classList.add("readmore", "button-solid-gray");
 			readmore.innerText = "{lang:Read more}";
 			body.append(readmore);
 			
@@ -1830,7 +1830,10 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 				link = currentUser.url.concat(currentUser.url.endsWith("/") ? `post/${postData.id}` : `/${postData.id}`);
 			}
 			// add link if reachable
-			if (link !== null) { readmore.href = link }
+			if (link !== null) {
+				readmore.href = link;
+				readmore.classList.replace("button-solid-gray", "button-solid-blue");
+			}
 			break; // don't render any more post blocks
 		}
 		else if (i === rows?.truncate_after) {

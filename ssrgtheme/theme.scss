@@ -1033,6 +1033,22 @@ footer .tags {
 		@include modal-border(block-start);
 	}
 }
+.bodyitemcontent {
+	// Standard block spacing
+	padding-block: 1rem;
+	& > :first-child { margin-block-start: 0 !important }
+	& > * + * { margin-block: 1rem }
+	& > :last-child { margin-block-end: 0 !important }
+
+	// Read more button
+	.readmore {
+		display: block;
+		max-width: 10em;
+		font-size: 1.2em;
+		text-transform: uppercase;
+		margin-inline: auto;
+	}
+}
 // #endregion
 // #endregion
 // #endregion

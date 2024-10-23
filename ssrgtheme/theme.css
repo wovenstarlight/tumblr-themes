@@ -947,6 +947,26 @@ footer .tags .notecount {
   border-block-start: 0.1em solid #4a4d63;
 }
 
+.bodyitemcontent {
+  padding-block: 1rem;
+}
+.bodyitemcontent > :first-child {
+  margin-block-start: 0 !important;
+}
+.bodyitemcontent > * + * {
+  margin-block: 1rem;
+}
+.bodyitemcontent > :last-child {
+  margin-block-end: 0 !important;
+}
+.bodyitemcontent .readmore {
+  display: block;
+  max-width: 10em;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  margin-inline: auto;
+}
+
 #pfoot {
   height: 8.5em;
   position: fixed;
