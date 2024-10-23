@@ -604,8 +604,15 @@ let postViewer = document.getElementById("postviewer");
  * @param {HTMLElement} targetPostContent The post content to display in the viewer.
  */
 postViewer._open = (targetPostContent) => {
-	// Put currently-viewed post back in its container
-	if (postViewer.childElementCount > 2) postViewer.children[1]._container.append(postViewer.children[1]);
+	if (postViewer.childElementCount > 2) {
+		// Stop any media from playing
+		postViewer.children[1].querySelectorAll("video, audio").forEach(el => {
+			el.pause();
+			el.classList.remove("playing");
+		});
+		// Put currently-viewed post back in its container
+		postViewer.children[1]._container.append(postViewer.children[1]);
+	}
 
 	postViewer.insertBefore(targetPostContent, postViewer.lastElementChild);
 	{block:IndexPage}
@@ -973,7 +980,13 @@ document.querySelectorAll(".modal").forEach(modal => {
 			e.offsetY < 0 || e.offsetY > e.target.offsetHeight
 		)) {
 			modal.close();
-			if (modal.id === "postviewer") postViewer.children[1]._container.append(postViewer.children[1]);
+			if (modal.id === "postviewer") {
+				postViewer.children[1].querySelectorAll("video, audio").forEach(el => {
+					el.pause();
+					el.classList.remove("playing");
+				});
+				postViewer.children[1]._container.append(postViewer.children[1]);
+			}
 		}
 	});
 });
