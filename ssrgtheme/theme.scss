@@ -1009,6 +1009,31 @@ footer .tags {
 	}
 }
 // #endregion
+
+// #region Post body items
+.bodyitem {
+	& > header {
+		@include modal-border(block-end, 0.25);
+		a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0.5em 1em;
+			gap: 0.5em;
+			font-size: 1.2em;
+
+			.avatar {
+				flex-shrink: 0;
+				font-size: 0.75em;
+			}
+		}
+	}
+
+	& + & > header {
+		@include modal-border(block-start);
+	}
+}
+// #endregion
 // #endregion
 // #endregion
 

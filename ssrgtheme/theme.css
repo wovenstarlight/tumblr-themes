@@ -928,6 +928,25 @@ footer .tags .notecount {
   text-transform: uppercase;
 }
 
+.bodyitem > header {
+  border-block-end: 0.1em solid rgba(74, 77, 99, 0.25);
+}
+.bodyitem > header a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5em 1em;
+  gap: 0.5em;
+  font-size: 1.2em;
+}
+.bodyitem > header a .avatar {
+  flex-shrink: 0;
+  font-size: 0.75em;
+}
+.bodyitem + .bodyitem > header {
+  border-block-start: 0.1em solid #4a4d63;
+}
+
 #pfoot {
   height: 8.5em;
   position: fixed;
