@@ -501,6 +501,15 @@ const currentUser = {
  */
 let iconHolder = null;
 
+{block:IfFilteredTags}
+/**
+ * For use in tag filtering. The user-provided list of tags to filter for.
+ * All tags converted to lowercase for ease of comparison.
+ * @type {string[]}
+ */
+let filteredTags = "{text:Filtered tags}".split(",").map(el => el.trim().toLowerCase());
+{/block:IfFilteredTags}
+
 /**
  * The standard page font size, for calculating padding.
  * @type {number}
@@ -540,6 +549,36 @@ postViewer._open = (targetPostContent) => {
 	targetPostContent._previous == null ? prevpost.setAttribute("disabled", "true") : prevpost.removeAttribute("disabled");
 	targetPostContent._next == null ? nextpost.setAttribute("disabled", "true") : nextpost.removeAttribute("disabled");
 	{/block:IndexPage}
+
+	
+	if (targetPostContent._filteredTags && !targetPostContent.classList.contains("filtered")) {
+		// Hide post content
+		targetPostContent.classList.add("filtered");
+		
+		// Assemble and insert filter message
+		let msg = document.createElement("div"),
+			warning = document.createElement("p"),
+			tagList = document.createElement("p"),
+			btn = document.createElement("button");
+		msg.append(warning, tagList, btn);
+		targetPostContent.insertBefore(msg, targetPostContent.firstElementChild);
+		
+		// Add classes
+		msg.classList.add("filter");
+		tagList.classList.add("tags");
+		btn.classList.add("button-solid-blue");
+		
+		// Add text to all elements
+		warning.innerText = "This post contains filtered tags.";
+		tagList.innerHTML = "<span class='tag'>#".concat(targetPostContent._filteredTags.map(el => el.name).join("</span>, <span class='tag'>#")).concat("</span>");
+		btn.innerText = "View post";
+		
+		// Set up viewing function
+		btn.addEventListener("click", () => {
+			msg.remove();
+			targetPostContent.classList.remove("filtered");
+		});
+	}
 
 	if (!postViewer.hasAttribute("open")) postViewer.showModal();
 }
@@ -679,13 +718,25 @@ posts.forEach(post => {
 	article.classList.add("post");
 	postContainer.insertBefore(article, postContainer.lastElementChild);
 
+	{block:IfFilteredTags}
+	let filters;
+	if (post.tags) {
+		// User has provided tags to filter. Mark filtered posts
+		filters = post.tags.filter(tag => filteredTags.includes(tag.name.toLowerCase()));
+	}
+	{/block:IfFilteredTags}
+
 	// Clickable element
 	createPostCard(
 		article,
 		post.npf,
 		post.npf.trail?.at(-1)?.blog?.name ?? post.npf.trail?.at(-1)?.broken_blog_name ?? currentUser.name,	// last commenter's name
 		post.noteCount
+		{block:IfFilteredTags}
+		, filters.length > 0	// override image retrieval, just in case
+		{/block:IfFilteredTags}
 	);
+});
 // #endregion
 
 // #region Remaining page functionality (base features)
@@ -755,7 +806,13 @@ document.querySelectorAll(".modal").forEach(modal => {
 	// On button click
 	modal.querySelectorAll(".closemodal").forEach(btn => btn.addEventListener("click", () => {
 		modal.close();
-		if (modal.id === "postviewer") postViewer.children[1]._container.append(postViewer.children[1]);
+		if (modal.id === "postviewer") {
+			postViewer.children[1].querySelectorAll("video, audio").forEach(el => {
+				el.pause();
+				el.classList.remove("playing");
+			});
+			postViewer.children[1]._container.append(postViewer.children[1]);
+		}
 	}));
 
 	// On ::backdrop click
@@ -919,8 +976,9 @@ postContainer.addEventListener("scroll", () => {
  * @param {Object} postData This post's data, containing relevant information to populate the card with.
  * @param {string} via The person this post was reblogged from on reblogged posts, or the source on original posts.
  * @param {?string} noteCount This post's note count, not comma-separated.
+ * @param {?boolean} forceSVG True if usage of the type-based SVG should be forced instead of checking the post body for images; false otherwise.
  */
-function createPostCard(wrapper, postData, via, noteCount = null) {
+function createPostCard(wrapper, postData, via, noteCount = null, forceSVG = false) {
 	let postCard = document.createElement("button");
 	postCard.classList.add("postcard");
 	wrapper.append(postCard);
@@ -939,7 +997,7 @@ function createPostCard(wrapper, postData, via, noteCount = null) {
 	let subtitle = document.createElement("p");
 	subtitle.classList.add("subtitle");
 	subtitle.innerText = via;
-	top.append(getPostIcon(postData, postType), heading, subtitle);
+	top.append(getPostIcon(postData, postType, forceSVG), heading, subtitle);
 
 	bottom.innerHTML = `<i class="ph-thin ph-pulse"></i> ${noteCount ? truncateNumber(noteCount) : "0"}`;
 }
@@ -973,38 +1031,41 @@ function getPostType(npf) {
  * @param {Object} npf A post's NPF object.
  * @param {?Object[]} npf.trail The trail items, if this post was reblogged. Images are extracted from the first trail item, if available.
  * @param {Object[]} npf.content The current blog's contribution to this post. Images are extracted from this on original posts.
+ * @param {?boolean} forceSVG True if usage of the type-based SVG should be forced instead of checking the post body for images; false otherwise.
  * @return {HTMLElement} An <img> element if the post contained a usable image, or an <svg> element depicting the post type otherwise.
  */
-function getPostIcon(npf, postType = null) {
+function getPostIcon(npf, postType = null, forceSVG = false) {
 	// takes post npf object and checks first trail item
 	let trailItem = npf.trail[0] ?? npf;
 	// check the type to see what icon/type of image to retrieve
 	let type = postType ?? getPostType(npf);
 
 	let block, icon;
-	if ((block = trailItem.content.find(el => el.type === "video")) != null && block.poster?.length) {
-		icon = document.createElement("img");
-		icon.src = block.poster[0].url;
-		icon.alt = "";	// mark as decorative
-		return icon;
-	}
-	else if ((block = trailItem.content.find(el => el.type === "image")) != null) {
-		icon = document.createElement("img");
-		icon.src = block.media[0].url;
-		icon.alt = "";	// mark as decorative
-		return icon;
-	}
-	else if ((block = trailItem.content.find(el => el.type === "audio")) != null && block.poster?.length) {
-		icon = document.createElement("img");
-		icon.src = block.poster[0].url;
-		icon.alt = "";	// mark as decorative
-		return icon;
-	}
-	else if ((block = trailItem.content.find(el => el.type === "link")) != null && block.poster?.length) {
-		icon = document.createElement("img");
-		icon.src = block.poster[0].url;
-		icon.alt = "";	// mark as decorative
-		return icon;
+	if (!forceSVG) {
+		if ((block = trailItem.content.find(el => el.type === "video")) != null && block.poster?.length) {
+			icon = document.createElement("img");
+			icon.src = block.poster[0].url;
+			icon.alt = "";	// mark as decorative
+			return icon;
+		}
+		else if ((block = trailItem.content.find(el => el.type === "image")) != null) {
+			icon = document.createElement("img");
+			icon.src = block.media[0].url;
+			icon.alt = "";	// mark as decorative
+			return icon;
+		}
+		else if ((block = trailItem.content.find(el => el.type === "audio")) != null && block.poster?.length) {
+			icon = document.createElement("img");
+			icon.src = block.poster[0].url;
+			icon.alt = "";	// mark as decorative
+			return icon;
+		}
+		else if ((block = trailItem.content.find(el => el.type === "link")) != null && block.poster?.length) {
+			icon = document.createElement("img");
+			icon.src = block.poster[0].url;
+			icon.alt = "";	// mark as decorative
+			return icon;
+		}
 	}
 
 	// Didn't return in any of the above, so default to basic icons
