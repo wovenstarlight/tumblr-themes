@@ -1078,6 +1078,15 @@ footer .tags {
 		width: 100%;
 	}
 
+	// Media
+	.video, iframe {
+		width: 100%;
+		min-height: 20vh;
+		max-height: 65vh;
+		margin-inline: auto;
+	}
+	iframe { margin-block: 0 }
+
 	// Read more button
 	.readmore {
 		display: block;

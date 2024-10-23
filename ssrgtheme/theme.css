@@ -997,6 +997,15 @@ footer .tags .notecount {
   height: 100%;
   width: 100%;
 }
+.bodyitemcontent .video, .bodyitemcontent iframe {
+  width: 100%;
+  min-height: 20vh;
+  max-height: 65vh;
+  margin-inline: auto;
+}
+.bodyitemcontent iframe {
+  margin-block: 0;
+}
 .bodyitemcontent .readmore {
   display: block;
   max-width: 10em;
