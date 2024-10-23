@@ -1768,22 +1768,28 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	// Checkmarks and other badges, pulled from tumblrmart_accessories
 	// https://assets.tumblr.com/images/tumblrmart/badges/blue-checkmark/1.png
 	// https://assets.tumblr.com/images/tumblrmart/badges/rainbow/1.png , [1-12].png available
-	let badges = blogData.tumblrmart_accessories?.badges;
-	if (blogData.can_show_badges && badges) {
-		badges.forEach(group => {
-			let badge, badgeWrapper,
-				badgegroup = document.createElement("span");
-			badgegroup.classList.add("badges");
-			link.append(badgegroup);
-			badgegroup.classList.add(group.product_group);
-			group.urls.forEach((url, index) => {
+	if (blogData.can_show_badges && (badgegroups = blogData.tumblrmart_accessories?.badges) != null) {
+		let badges = document.createElement("span");
+		badges.classList.add("badges");
+		link.append(badges);
+
+		badgegroups.forEach(group => {
+			let badge, badgeWrapper;
+			group.urls.forEach(url => {
 				badge = document.createElement("img");
 				badge.src = url;
 				badgeWrapper = document.createElement("span");
 				badgeWrapper.append(badge);
-				badgegroup.append(badgeWrapper);
-			})
-		})
+				badges.append(badgeWrapper);
+			});
+		});
+
+		// Since badges is flex-grow: 1, need to stop it at the limit of the full badge width
+		badges.setAttribute("style", `max-width: ${
+			(((0.875 * em) * badges.childElementCount) +		// the size of the badges themselves
+			((0.15 * em) * (badges.childElementCount - 1)))	/	// the spacing between the badges
+			em
+		}em`);
 	}
 }
 

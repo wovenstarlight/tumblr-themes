@@ -928,10 +928,10 @@ footer .tags .notecount {
   text-transform: uppercase;
 }
 
-.bodyitem > header {
+.bodyitem .user {
   border-block-end: 0.1em solid rgba(74, 77, 99, 0.25);
 }
-.bodyitem > header a {
+.bodyitem .user a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -939,11 +939,36 @@ footer .tags .notecount {
   gap: 0.5em;
   font-size: 1.2em;
 }
-.bodyitem > header a .avatar {
+.bodyitem .user a .avatar {
   flex-shrink: 0;
   font-size: 0.75em;
 }
-.bodyitem + .bodyitem > header {
+.bodyitem .user .badges {
+  --size: 0.875rem;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  height: var(--size);
+}
+.bodyitem .user .badges span {
+  position: relative;
+  flex-grow: 1;
+  max-width: var(--size);
+  height: var(--size);
+}
+.bodyitem .user .badges span:not(:last-child) img {
+  position: absolute;
+  left: 0;
+}
+.bodyitem .user .badges img {
+  width: var(--size);
+  height: var(--size);
+  max-width: unset;
+  filter: drop-shadow(0 0 0.1em var(--bg));
+  display: block;
+}
+.bodyitem + .bodyitem .user {
   border-block-start: 0.1em solid #4a4d63;
 }
 
@@ -953,7 +978,7 @@ footer .tags .notecount {
 .bodyitemcontent > :first-child {
   margin-block-start: 0 !important;
 }
-.bodyitemcontent > * + * {
+.bodyitemcontent > * {
   margin-block: 1rem;
 }
 .bodyitemcontent > :last-child {
@@ -978,6 +1003,9 @@ footer .tags .notecount {
   max-width: 100%;
   height: auto;
   display: block;
+}
+.bodyitemcontent figure {
+  margin-inline: 0;
 }
 .bodyitemcontent .row {
   display: grid;

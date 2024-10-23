@@ -1012,7 +1012,7 @@ footer .tags {
 
 // #region Post body items
 .bodyitem {
-	& > header {
+	.user {
 		@include modal-border(block-end, 0.25);
 		a {
 			display: flex;
@@ -1027,9 +1027,38 @@ footer .tags {
 				font-size: 0.75em;
 			}
 		}
+
+		.badges {
+			--size: 0.875rem;
+			flex-grow: 1;
+			display: flex;
+			align-items: center;
+			gap: 0.15rem;
+			height: var(--size);
+
+			span {
+				position: relative;
+				flex-grow: 1;
+				max-width: var(--size);
+				height: var(--size);
+
+				&:not(:last-child) img {
+					position: absolute;
+					left: 0;
+				}
+			}
+
+			img {
+				width: var(--size);
+				height: var(--size);
+				max-width: unset;
+				filter: drop-shadow(0 0 0.1em var(--bg));
+				display: block;
+			}
+		}
 	}
 
-	& + & > header {
+	& + & .user {
 		@include modal-border(block-start);
 	}
 }
@@ -1037,7 +1066,7 @@ footer .tags {
 	// Standard block spacing
 	padding-block: 1rem;
 	& > :first-child { margin-block-start: 0 !important }
-	& > * + * { margin-block: 1rem }
+	& > * { margin-block: 1rem }
 	& > :last-child { margin-block-end: 0 !important }
 
 	// Text
@@ -1057,6 +1086,7 @@ footer .tags {
 		height: auto;
 		display: block;
 	}
+	figure { margin-inline: 0 }
 
 	// Gridded items
 	.row {
