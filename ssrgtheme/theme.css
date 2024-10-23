@@ -959,6 +959,21 @@ footer .tags .notecount {
 .bodyitemcontent > :last-child {
   margin-block-end: 0 !important;
 }
+.bodyitemcontent h3 {
+  font-weight: 600;
+  font-size: 1.75em;
+}
+.bodyitemcontent h4 {
+  font-weight: 600;
+  font-size: 1.4em;
+}
+.bodyitemcontent a:not([class*=button]) {
+  color: #13dd67;
+  text-underline-offset: 0.2em;
+}
+.bodyitemcontent a:not([class*=button]):not(:hover) {
+  text-decoration: none;
+}
 .bodyitemcontent .readmore {
   display: block;
   max-width: 10em;
