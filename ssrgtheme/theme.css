@@ -806,6 +806,10 @@ button[disabled] {
 .postcontent {
   overflow-y: scroll;
 }
+.postcontent > * {
+  max-width: 33.75rem;
+  margin: auto;
+}
 .postcontent.filtered > :not(:first-child) {
   display: none;
 }

@@ -880,6 +880,11 @@ $header-height: 4em;
 .postcontent {
 	overflow-y: scroll;
 
+	& > * {
+		max-width: 33.75rem;
+		margin: auto;
+	}
+
 	&.filtered > :not(:first-child) { display: none }
 
 	& > header, & > footer {
