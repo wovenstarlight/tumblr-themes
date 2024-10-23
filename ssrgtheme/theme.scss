@@ -4,7 +4,7 @@ $ssjyp-blue:			#017afb;
 $white:					#f2f3f3;
 $lightgray:				#a5a6a7;
 $darkgray:				#54595d;
-$darkgrayblue:			#4A4D63;
+$darkgrayblue:			#4a4d63;
 $darkestgray:			#22272b;
 $black:					#1b1517;
 $blacktranslucent:		rgba(0, 0, 0, 0.6);
@@ -126,6 +126,10 @@ button[disabled] { cursor: initial }
 		inset 1px 1px 2px adjust-color($color: $ssjyp-blue, $hue: -5, $lightness: +20%, $alpha: -0.8);
 }
 // Modals
+@mixin modal-border($placement: block, $opacity: 1) {
+	$alphaval: (1 - $opacity) * -1;
+	border-#{$placement}: 0.1em solid adjust-color($darkgrayblue, $alpha: $alphaval);
+}
 .modal {
 	width: 80vw;
 	border: none;
@@ -137,8 +141,8 @@ button[disabled] { cursor: initial }
 
 	@include links("blue");
 
-	header {
-		border-block-end: 0.1em solid $darkgrayblue;
+	& > header {
+		@include modal-border(block-end);
 		--closebtn-size: 4.5em;
 		display: grid;
 		grid-template-columns: minmax(0, var(--closebtn-size)) 1fr var(--closebtn-size);
@@ -172,8 +176,8 @@ button[disabled] { cursor: initial }
 		}
 	}
 
-	footer {
-		border-block-start: 0.1em solid $darkgrayblue;
+	& > footer {
+		@include modal-border(block-start);
 		padding-block-start: 1em;
 
 		.closemodal {
@@ -878,11 +882,25 @@ $header-height: 4em;
 
 	&.filtered > :not(:first-child) { display: none }
 
-	& > footer {
+	& > header, & > footer {
 		display: flex;
+		text-align: center;
+		padding-block: 0.8em;
+		align-items: center;
+		justify-content: center;
+	}
+
+	& > header {
+		flex-wrap: wrap;
+		gap: 0.1em 1em;
+		@include modal-border(block-end);
+		position: relative;
+	}
+
+	& > footer {
 		flex-direction: column;
 		gap: 1em;
-		padding-block-end: 0.8em;
+		@include modal-border(block-start);
 
 		* { margin: 0 }
 	}
@@ -922,6 +940,30 @@ $header-height: 4em;
 	}
 }
 
+// Pinned posts
+#pinnedpost {
+	// Position
+	position: absolute;
+	top: calc(100% - 0.65em);
+	right: 0.3em;
+	// Display
+	display: flex;
+	$size: fit-content;
+	width: $size;
+	height: $size;
+	padding: 0.2em;
+	border-radius: 100%;
+	background: linear-gradient(
+		to bottom right,
+		adjust-color($color: $ssjyp-blue, $hue: -5, $lightness: +20%),
+		$ssjyp-blue,
+		adjust-color($color: $ssjyp-blue, $hue: +10, $lightness: -10%, $saturation: +30%)
+	);
+	box-shadow:
+		-1px 0 2px rgba(0, 0, 0, 0.5),
+		inset 1px 1px 2px adjust-color($color: $ssjyp-blue, $hue: -5, $lightness: +20%, $alpha: -0.8);
+}
+
 // Like button
 .customlike { position: relative }
 .like_button, .like_button iframe {
@@ -939,9 +981,8 @@ $header-height: 4em;
 footer .tags {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 0.1em 0.25em;
+	gap: 0.1em 0.6em;
 	justify-content: center;
-	text-align: center;
 
 	.notecount { font-weight: 600 }
 }
@@ -954,7 +995,7 @@ footer .tags {
 	p { margin: 0 }
 
 	.tags { margin: 1em }
-	
+
 	.tag { color: $lightblue }
 
 	button {

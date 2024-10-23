@@ -96,15 +96,15 @@ button[disabled] {
 .modal a:not([class*=button]):not(:hover) {
   text-decoration: none;
 }
-.modal header {
-  border-block-end: 0.1em solid #4A4D63;
+.modal > header {
+  border-block-end: 0.1em solid #4a4d63;
   --closebtn-size: 4.5em;
   display: grid;
   grid-template-columns: minmax(0, var(--closebtn-size)) 1fr var(--closebtn-size);
   align-items: center;
   padding-block: 0 0.25em;
 }
-.modal header h2 {
+.modal > header h2 {
   margin: 0;
   line-height: 1;
   grid-column: 2;
@@ -112,27 +112,27 @@ button[disabled] {
   font-size: 2.9em;
   font-weight: normal;
 }
-.modal header .closemodal {
+.modal > header .closemodal {
   grid-column: 3;
   border: none;
   background: none;
   color: #f2f3f3;
   cursor: pointer;
 }
-.modal header .closemodal:hover, .modal header .closemodal:focus {
+.modal > header .closemodal:hover, .modal > header .closemodal:focus {
   color: #a5a6a7;
 }
-.modal header .closemodal:active {
-  color: #4A4D63;
+.modal > header .closemodal:active {
+  color: #4a4d63;
 }
-.modal header .closemodal i {
+.modal > header .closemodal i {
   font-size: 4em;
 }
-.modal footer {
-  border-block-start: 0.1em solid #4A4D63;
+.modal > footer {
+  border-block-start: 0.1em solid #4a4d63;
   padding-block-start: 1em;
 }
-.modal footer .closemodal {
+.modal > footer .closemodal {
   display: block;
   margin-inline: auto;
   padding: 1em 9vw;
@@ -439,7 +439,7 @@ button[disabled] {
   content: "";
   display: block;
   width: 2em;
-  border-color: #4A4D63;
+  border-color: #4a4d63;
 }
 #moreinfo .contents {
   position: fixed;
@@ -809,11 +809,23 @@ button[disabled] {
 .postcontent.filtered > :not(:first-child) {
   display: none;
 }
-.postcontent > footer {
+.postcontent > header, .postcontent > footer {
   display: flex;
+  text-align: center;
+  padding-block: 0.8em;
+  align-items: center;
+  justify-content: center;
+}
+.postcontent > header {
+  flex-wrap: wrap;
+  gap: 0.1em 1em;
+  border-block-end: 0.1em solid #4a4d63;
+  position: relative;
+}
+.postcontent > footer {
   flex-direction: column;
   gap: 1em;
-  padding-block-end: 0.8em;
+  border-block-start: 0.1em solid #4a4d63;
 }
 .postcontent > footer * {
   margin: 0;
@@ -851,6 +863,21 @@ button[disabled] {
   font-size: 1.8em;
 }
 
+#pinnedpost {
+  position: absolute;
+  top: calc(100% - 0.65em);
+  right: 0.3em;
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0.2em;
+  border-radius: 100%;
+  background: linear-gradient(to bottom right, #64bbfe, #017afb, #0040c9);
+  box-shadow: -1px 0 2px rgba(0, 0, 0, 0.5), inset 1px 1px 2px rgba(100, 187, 254, 0.2);
+}
+
 .customlike {
   position: relative;
 }
@@ -872,9 +899,8 @@ button[disabled] {
 footer .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.1em 0.25em;
+  gap: 0.1em 0.6em;
   justify-content: center;
-  text-align: center;
 }
 footer .tags .notecount {
   font-weight: 600;
