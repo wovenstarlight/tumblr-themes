@@ -876,6 +876,8 @@ $header-height: 4em;
 .postcontent {
 	overflow-y: scroll;
 
+	&.filtered > :not(:first-child) { display: none }
+
 	& > footer {
 		display: flex;
 		flex-direction: column;
@@ -933,6 +935,23 @@ footer .tags {
 	text-align: center;
 
 	.notecount { font-weight: 600 }
+}
+
+// Filtered posts
+.filter {
+	padding: 2em;
+	text-align: center;
+
+	p { margin: 0 }
+
+	.tags { margin: 1em }
+	
+	.tag { color: $lightblue }
+
+	button {
+		font-size: 1.2em;
+		text-transform: uppercase;
+	}
 }
 // #endregion
 // #endregion

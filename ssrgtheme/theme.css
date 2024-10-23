@@ -53,7 +53,7 @@ button[disabled] {
   background-color: #7bc3eb;
 }
 
-.button-solid-gray, #postviewer[open] a:not([href]), #postviewer[open] button[disabled], #search button[type=submit][disabled] {
+.button-solid-gray, #postviewer[open] > footer a:not([href]), #postviewer[open] > footer button[disabled], #search button[type=submit][disabled] {
   background-color: #54595d;
   border: none;
   cursor: initial;
@@ -806,6 +806,9 @@ button[disabled] {
 .postcontent {
   overflow-y: scroll;
 }
+.postcontent.filtered > :not(:first-child) {
+  display: none;
+}
 .postcontent > footer {
   display: flex;
   flex-direction: column;
@@ -862,6 +865,24 @@ footer .tags {
 }
 footer .tags .notecount {
   font-weight: 600;
+}
+
+.filter {
+  padding: 2em;
+  text-align: center;
+}
+.filter p {
+  margin: 0;
+}
+.filter .tags {
+  margin: 1em;
+}
+.filter .tag {
+  color: #38b4fe;
+}
+.filter button {
+  font-size: 1.2em;
+  text-transform: uppercase;
 }
 
 #pfoot {
