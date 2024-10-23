@@ -805,7 +805,7 @@ posts.forEach(post => {
 		post.npf.trail?.at(-1)?.blog?.name ?? post.npf.trail?.at(-1)?.broken_blog_name ?? currentUser.name,	// last commenter's name
 		post.noteCount
 		{block:IfFilteredTags}
-		, filters.length > 0	// override image retrieval, just in case
+		, filters?.length > 0	// override image retrieval, just in case
 		{/block:IfFilteredTags}
 	);
 
@@ -863,7 +863,7 @@ posts.forEach(post => {
 
 	{block:IfFilteredTags}
 	// Add filtered tags to post content for post viewer to check
-	if (filters.length) postContent._filteredTags = filters;
+	if (filters?.length) postContent._filteredTags = filters;
 	{/block:IfFilteredTags}
 });
 {block:AskPage}postContainer.querySelector(".post button").click();{/block:AskPage}
