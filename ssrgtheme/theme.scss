@@ -852,10 +852,7 @@ $header-height: 4em;
 #postviewer[open] {
 	display: grid;
 	grid-template-rows: auto 1fr auto;
-
-	.postcontent {
-		overflow-y: scroll;
-	}
+	gap: 0.2em;
 
 	& > footer {
 		display: flex;
@@ -869,9 +866,15 @@ $header-height: 4em;
 			font-size: 1.2em;
 			padding-inline: 2em !important;
 		}
-	}
 
-	a:not([href]), button[disabled] { @extend .button-solid-gray; }
+		a:not([href]), button[disabled] { @extend .button-solid-gray; }
+	}
+}
+// #endregion
+
+// #region Post content itself (NOT POST BODY ITEMS)
+.postcontent {
+	overflow-y: scroll;
 }
 // #endregion
 // #endregion

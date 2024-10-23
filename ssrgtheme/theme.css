@@ -789,9 +789,7 @@ button[disabled] {
 #postviewer[open] {
   display: grid;
   grid-template-rows: auto 1fr auto;
-}
-#postviewer[open] .postcontent {
-  overflow-y: scroll;
+  gap: 0.2em;
 }
 #postviewer[open] > footer {
   display: flex;
@@ -804,6 +802,9 @@ button[disabled] {
   display: block;
   font-size: 1.2em;
   padding-inline: 2em !important;
+}
+.postcontent {
+  overflow-y: scroll;
 }
 #pfoot {
   height: 8.5em;
