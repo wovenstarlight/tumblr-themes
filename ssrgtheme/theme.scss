@@ -1052,7 +1052,7 @@ footer .tags {
 				width: var(--size);
 				height: var(--size);
 				max-width: unset;
-				filter: drop-shadow(0 0 0.1em var(--bg));
+				filter: drop-shadow(0 0 0.1em adjust-color($white, $alpha: -0.5));
 				display: block;
 			}
 		}

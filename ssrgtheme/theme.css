@@ -965,7 +965,7 @@ footer .tags .notecount {
   width: var(--size);
   height: var(--size);
   max-width: unset;
-  filter: drop-shadow(0 0 0.1em var(--bg));
+  filter: drop-shadow(0 0 0.1em rgba(242, 243, 243, 0.5));
   display: block;
 }
 .bodyitem + .bodyitem .user {
