@@ -6,14 +6,14 @@
 		Phosphor Icons: https://phosphoricons.com/
 		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
 
-	Last updated 23 Oct 2024.
+	Last updated 25 Oct 2024.
 -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>{block:TagPage}{lang:TagResultCount posts tagged Tag} | {/block:TagPage}{block:SearchPage}{lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults} | {/block:SearchPage}{block:PermalinkPage}{block:PostSummary}{PostSummary} | {/block:PostSummary}{/block:PermalinkPage}{Title}</title>
+	<title>{block:TagPage}{lang:TagResultCount posts tagged Tag} | {/block:TagPage}{block:SearchPage}{lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults} | {/block:SearchPage}{block:DayPage}{block:IfDatesFormattedMonthFirst}{lang:Posted on Month DayOfMonth Year}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{lang:Posted on DayOfMonth Month Year}{/block:IfNotDatesFormattedMonthFirst} | {/block:DayPage}{block:PermalinkPage}{block:PostSummary}{PostSummary} | {/block:PostSummary}{/block:PermalinkPage}{Title}</title>
 	<meta name="description" content="{MetaDescription}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link rel="shortcut icon" href="{Favicon}">
@@ -116,6 +116,7 @@
 		{block:SubmitPage}{SubmitLabel}{block:ShowTitle} | {/block:ShowTitle}{/block:SubmitPage}
 		{block:TagPage}{lang:TagResultCount posts tagged Tag}{block:ShowTitle} | {/block:ShowTitle}{/block:TagPage}
 		{block:SearchPage}{lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults}{block:ShowTitle} | {/block:ShowTitle}{/block:SearchPage}
+		{block:DayPage}{block:IfDatesFormattedMonthFirst}{lang:Posted on Month DayOfMonth Year}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{lang:Posted on DayOfMonth Month Year}{/block:IfNotDatesFormattedMonthFirst}{block:ShowTitle} | {/block:ShowTitle}{/block:DayPage}
 		{block:PermalinkPage}{block:PostSummary}{PostSummary}{/block:PostSummary}{block:ShowTitle} | {/block:ShowTitle}{/block:PermalinkPage}
 		{block:ShowTitle}{Title}{/block:ShowTitle}
 	</h1>
@@ -290,7 +291,7 @@
 
 				{block:DayPage}
 				<!-- SPECIAL PAGE HEADER: DAY -->
-				<span class="label">{lang:Viewing everything posted on Month DayOfMonth Year}</span>
+				<span class="label">{block:IfDatesFormattedMonthFirst}{lang:Posted on Month DayOfMonth Year}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{lang:Posted on DayOfMonth Month Year}{/block:IfNotDatesFormattedMonthFirst}</span>
 				{/block:DayPage}
 
 				{block:SearchPage}
@@ -396,7 +397,7 @@
 					{block:TagPage}{lang:CurrentPage of TotalPages}{/block:TagPage}
 					{block:SearchPage}{lang:CurrentPage of TotalPages}{/block:SearchPage}
 					{block:PermalinkPage}{lang:See more posts}{/block:PermalinkPage}
-					{block:DayPage}{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth},{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}{/block:DayPage}
+					{block:DayPage}{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth},{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {Month},{/block:IfNotDatesFormattedMonthFirst} {Year}{/block:DayPage}
 				</span>
 			</p>
 			<div class="pagelinks">
@@ -686,11 +687,11 @@ let posts = [
 		
 		date: {
 			day: {JSDayOfWeek},
-			textDM: "{DayOfMonth} {Month} {Year}",
+			textDM: "{DayOfMonth} {Month}, {Year}",
 			numDM: "{DayOfMonth}/{MonthNumber}/{Year}",
 			textMD: "{Month} {DayOfMonth}, {Year}",
 			numMD: "{MonthNumber}/{DayOfMonth}/{Year}",
-			textDMZ: "{DayOfMonthWithZero} {Month} {Year}",
+			textDMZ: "{DayOfMonthWithZero} {Month}, {Year}",
 			numDMZ: "{DayOfMonthWithZero}/{MonthNumberWithZero}/{Year}",
 			textMDZ: "{Month} {DayOfMonthWithZero}, {Year}",
 			numMDZ: "{MonthNumberWithZero}/{DayOfMonthWithZero}/{Year}",
