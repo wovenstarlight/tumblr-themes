@@ -1436,7 +1436,12 @@ function makeViaSource(wrapper, postData, avatars = false) {
 		via.innerHTML = `<img class="avatar" src="${postData.via.avatar}" />`;
 		source.innerHTML = `<img class="avatar" />`;
 		source.firstElementChild.addEventListener("error", e => { e.currentTarget.src = anonAvatar }, { once: true });
-		source.firstElementChild.src = sourceTrail.blog?.avatar?.find(el => el.height === 64)?.url ?? `https://api.tumblr.com/v2/blog/${sourceTrail.blog?.name}/avatar/64`;
+		if (sourceTrail) {
+		source.firstElementChild.src = sourceTrail.blog?.avatar?.find(el => el.height === 64)?.url ?? `https://api.tumblr.com/v2/blog/${sourceTrail.blog?.name ?? ""}/avatar/64`;
+		}
+		else {
+			source.firstElementChild.src = postData.source.avatar;
+		}
 	}
 	else {
 		via.innerText = "{lang:Via}";
@@ -1808,7 +1813,7 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 			: blogData.avatar;
 	} else {
 		avatar.addEventListener("error", e => { e.currentTarget.src = anonAvatar }, { once: true });
-		avatar.src = `https://api.tumblr.com/v2/blog/${blogData.name}/avatar/64`;
+		avatar.src = `https://api.tumblr.com/v2/blog/${blogData.name ?? ""}/avatar/64`;
 	}
 
 	// put together the header
@@ -1954,7 +1959,8 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		askerIcon.classList.add("avatar");
 		askerName.classList.add("name");
 		if (askNPF.attribution) {
-			askerIcon.src = askNPF.attribution.blog.avatar?.find(el => el.height === 64)?.url ?? `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name}/avatar/64`;
+			askerIcon.addEventListener("error", e => { e.currentTarget.src = anonAvatar }, { once: true });
+			askerIcon.src = askNPF.attribution.blog.avatar?.find(el => el.height === 64)?.url ?? `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name ?? ""}/avatar/64`;
 			askerIcon.classList.add(askNPF.attribution.blog.theme.avatar_shape ?? "square");
 			askerWrapper.href = askNPF.attribution.blog.url;
 			askerName.innerText = askNPF.attribution.blog.name;
