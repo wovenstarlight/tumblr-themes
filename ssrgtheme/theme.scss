@@ -704,6 +704,25 @@ $header-height: 4em;
 }
 
 // #region General post display
+.blanknotice {
+	width: 20em;
+	height: 20em;
+	background-color: var(--accent);
+	color: $white;
+	padding: 1em;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1.5;
+	
+	.search_query {
+		&::before { content: "“" }
+		&::after { content: "”" }
+	}
+}
+.noscriptenabled ~ .blanknotice { display: none }
+
 #scrolltostart {
 	position: absolute;
 	left: -2rem;

@@ -657,6 +657,29 @@ button[disabled] {
   padding-block: 1.1em;
 }
 
+.blanknotice {
+  width: 20em;
+  height: 20em;
+  background-color: var(--accent);
+  color: #f2f3f3;
+  padding: 1em;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.5;
+}
+.blanknotice .search_query::before {
+  content: "“";
+}
+.blanknotice .search_query::after {
+  content: "”";
+}
+
+.noscriptenabled ~ .blanknotice {
+  display: none;
+}
+
 #scrolltostart {
   position: absolute;
   left: -2rem;

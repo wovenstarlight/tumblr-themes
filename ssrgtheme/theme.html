@@ -329,7 +329,9 @@
 
 		<!-- SONG SCROLLER: Posts -->
 		<section id="posts">
-			<noscript><article id="noscriptnotice">Javascript is required to view this blog. Please enable scripting and reload.</article></noscript>
+			<noscript class="noscriptenabled"><article class="blanknotice"><p>Javascript is required to view this blog. Please enable scripting and reload.</p></article></noscript>
+			{block:NoPosts}<article class="blanknotice"><p>{lang:This Tumblr hasnt posted anything}</p></article>{/block:NoPosts}
+			{block:NoSearchResults}<article class="blanknotice"><p>{lang:Sorry no results for SearchQuery 2}.</p></article>{/block:NoSearchResults}
 
 			<dialog class="modal" id="postviewer">
 				<header>
@@ -448,6 +450,9 @@
 
 <!-- The actual functionality of the theme. -->
 <script>
+// Mark noscript as not in use
+document.querySelector("noscript.noscriptenabled").classList.remove("noscriptenabled");
+
 // #region CONSTANTS AND GLOBAL VARIABLES
 /**
  * Information of the blog this theme is being used on. For use when this blog makes/adds to posts.
@@ -751,34 +756,6 @@ let posts = [
 		{/block:Date}
 	},
 	{/block:Posts}
-	{block:NoPosts}
-	{
-		npf: {
-			content: [
-				{
-					type: "text",
-					text: "{lang:This Tumblr hasnt posted anything}"
-				}
-			],
-			layout: [],
-			trail: []
-		}
-	},
-	{/block:NoPosts}
-	{block:NoSearchResults}
-	{
-		npf: {
-			content: [
-				{
-					type: "text",
-					text: `{lang:Sorry no results for SearchQuery 2}.`
-				}
-			],
-			layout: [],
-			trail: []
-		}
-	},
-	{/block:NoSearchResults}
 ];
 // #endregion
 
