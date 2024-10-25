@@ -2209,12 +2209,14 @@ function createCustomAudio(npf, defaultIcons = {}) {
 		audio.currentTime = 0;
 		seekbar.value = 0;
 		seekbar.style.setProperty("--progress-width", "0%");
+		currTime.innerText = "0:00";
 		if (audio.classList.contains("playing")) { audio.play() }
 	});
 	skipEnd.addEventListener("click", () => {
 		audio.currentTime = audio.duration;
 		seekbar.value = audio.duration;
 		seekbar.style.setProperty("--progress-width", "100%");
+		currTime.innerText = totalTime.innerText;
 		// Fires "ended" by itself
 	});
 	// #endregion
