@@ -1399,8 +1399,9 @@ function makeViaSource(wrapper, postData, avatars = false) {
 	// Avatars or text, as needed
 	if (avatars) {
 		via.innerHTML = `<img class="avatar" src="${postData.via.avatar}" />`;
-		// This might end up being undefined, if the source is broken, but since it isn't added it won't make a difference
-		source.innerHTML = `<img class="avatar" src="${sourceTrail.blog?.avatar?.find(el => el.height === 64)?.url}" />`;
+		source.innerHTML = `<img class="avatar" />`;
+		source.firstElementChild.addEventListener("error", e => { e.currentTarget.src = anonAvatar }, { once: true });
+		source.firstElementChild.src = sourceTrail.blog?.avatar?.find(el => el.height === 64)?.url ?? `https://api.tumblr.com/v2/blog/${sourceTrail.blog?.name}/avatar/64`;
 	}
 	else {
 		via.innerText = "{lang:Via}";
@@ -1766,10 +1767,14 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	// The array blog.avatar isn't available sometimes, so include a backup avatar fetch via API
 	let avatar = document.createElement("img");
 	avatar.classList.add("avatar", blogData?.theme?.avatar_shape ?? "square");
-	avatar.src = typeof(blogData.avatar) === "object"
-		? blogData.avatar?.find(el => el.height === 64)?.url
-		: blogData.avatar
-		?? `https://api.tumblr.com/v2/blog/${blogData.name}/avatar/64`;
+	if (blogData.avatar) {
+		avatar.src = typeof(blogData.avatar) === "object"
+			? blogData.avatar?.find(el => el.height === 64)?.url
+			: blogData.avatar;
+	} else {
+		avatar.addEventListener("error", e => { e.currentTarget.src = anonAvatar }, { once: true });
+		avatar.src = `https://api.tumblr.com/v2/blog/${blogData.name}/avatar/64`;
+	}
 
 	// put together the header
 	link.append(avatar, username);
