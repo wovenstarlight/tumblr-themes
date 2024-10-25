@@ -2286,7 +2286,8 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 			}
 
 			let expiryDate = new Date((curr.timestamp + curr.settings.expire_after) * 1000),
-				hasResults = ((new Date()) > expiryDate) && blogViewLink.length;
+				timeToClosure = (expiryDate - (new Date())) / 1000,
+				hasResults = (timeToClosure < 0) && blogViewLink.length;
 
 			// Create answers
 			let answer, answerText;
@@ -2312,14 +2313,33 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 
 			// See results link, if poll is expired
 			// Timestamp/expiry durations are given in seconds; times 1000 for millisecond count
+			let moreInfo = document.createElement(hasResults ? "a" : "span");
+			bit.append(moreInfo);
 			if (hasResults) {
-				let seeResults = document.createElement("a");
-				seeResults.classList.add("results");
-				seeResults.href = blogViewLink;
-				seeResults.target = "_blank";
-				seeResults.innerText = "See Results";
-				bit.append(seeResults);
+				moreInfo.classList.add("results");
+				moreInfo.href = blogViewLink;
+				moreInfo.target = "_blank";
+				moreInfo.rel = "noopener";
+				moreInfo.innerText = "See Results";
 				bit.classList.add("complete");
+			}
+			else {
+				let timeLeft = {};
+				timeLeft.days = Math.floor(timeToClosure / 86400);
+				timeLeft.hours = Math.floor((timeToClosure - (timeLeft.days * 86400)) / 3600);
+				timeLeft.minutes = Math.floor((timeToClosure - (timeLeft.days * 86400) - (timeLeft.hours * 3600)) / 60);
+				let timeLabel = "Remaining time:";
+				if (timeLeft.days > 0) {
+					timeLabel += ` ${timeLeft.days} day${timeLeft.days === 1 ? "" : "s"} ${timeLeft.hours} hour${timeLeft.hours === 1 ? "" : "s"}`;
+				} else if (timeLeft.hours > 0) {
+					timeLabel += ` ${timeLeft.hours} hour${timeLeft.hours === 1 ? "" : "s"} ${timeLeft.minutes} minute${timeLeft.minutes === 1 ? "" : "s"}`;
+				} else if (timeLeft.minutes > 0) {
+					timeLabel += ` ${timeLeft.minutes} minute${timeLeft.minutes === 1 ? "" : "s"}`;
+				} else {
+					timeLabel += "less than 1 minute";	// guaranteed since poll hasn't calculated as closed yet
+				}
+				moreInfo.innerText = timeLabel;
+				moreInfo.classList.add("timeleft");
 			}
 			break;
 		

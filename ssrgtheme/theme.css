@@ -1137,9 +1137,13 @@ footer .tags .notecount {
 .postcontent .body .poll .ph-square {
   opacity: 0.6;
 }
-.postcontent .body .poll .results {
+.postcontent .body .poll .results, .postcontent .body .poll .timeleft {
   display: block;
   margin-block-start: 0.75em;
+}
+.postcontent .body .poll .timeleft {
+  color: #a5a6a7;
+  font-style: italic;
 }
 .postcontent .body .npf-link-block {
   border: 0.1em solid #13dd67;

@@ -1209,9 +1209,13 @@ footer .tags {
 			font-size: 1.3em;
 		}
 		.ph-square { opacity: 0.6 }
-		.results {
+		.results, .timeleft {
 			display: block;
 			margin-block-start: 0.75em;
+		}
+		.timeleft {
+			color: $lightgray;
+			font-style: italic;
 		}
 	}
 
