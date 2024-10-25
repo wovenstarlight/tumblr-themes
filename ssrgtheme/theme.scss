@@ -1153,6 +1153,7 @@ footer .tags {
 }
 // Separate selector so that these still apply in legacy format
 .postcontent .body {
+	// Text
 	.heading1 {
 		font-weight: 600;
 		font-size: 1.75em;
@@ -1172,6 +1173,13 @@ footer .tags {
 
 			&::before { opacity: 0.6 }
 		}
+	}
+
+	// Quotes
+	.npf_indented {
+		margin-inline-start: 0.95em;
+		padding-inline-start: 0.95em;
+		border-inline-start: 0.1em solid $lightblue;
 	}
 
 	// Images

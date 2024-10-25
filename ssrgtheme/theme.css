@@ -1100,6 +1100,11 @@ footer .tags .notecount {
 .postcontent .body .npf-link-block .poster::before {
   opacity: 0.6;
 }
+.postcontent .body .npf_indented {
+  margin-inline-start: 0.95em;
+  padding-inline-start: 0.95em;
+  border-inline-start: 0.1em solid #38b4fe;
+}
 .postcontent .body img {
   max-width: 100%;
   height: auto;
