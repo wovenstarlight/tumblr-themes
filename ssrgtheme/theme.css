@@ -834,6 +834,9 @@ button[disabled] {
 .postcontent > footer * {
   margin: 0;
 }
+.postcontent * + .bodyitem .user {
+  border-block-start: 0.1em solid #4a4d63;
+}
 .postcontent .rounds {
   display: flex;
   flex-wrap: wrap;
@@ -974,9 +977,6 @@ footer .tags .notecount {
   filter: drop-shadow(0 0 0.1em rgba(242, 243, 243, 0.5));
   display: block;
 }
-.bodyitem + .bodyitem .user {
-  border-block-start: 0.1em solid #4a4d63;
-}
 .bodyitem .ask {
   margin-block-start: 1rem;
   margin-inline: 0.5rem;
@@ -1013,10 +1013,6 @@ footer .tags .notecount {
 .bodyitemcontent > :last-child {
   margin-block-end: 0 !important;
 }
-.bodyitemcontent h3 {
-  font-weight: 600;
-  font-size: 1.75em;
-}
 .bodyitemcontent h4 {
   font-weight: 600;
   font-size: 1.4em;
@@ -1027,41 +1023,6 @@ footer .tags .notecount {
 }
 .bodyitemcontent a:not([class*=button]):not(:hover, :focus) {
   text-decoration: none;
-}
-.bodyitemcontent img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-.bodyitemcontent figure {
-  margin-inline: 0;
-}
-.bodyitemcontent .row {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  gap: min(0.2em, 1vw);
-  margin-block: min(0.2em, 1vw);
-}
-.bodyitemcontent .row figure {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-.bodyitemcontent .row img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  height: 100%;
-  width: 100%;
-}
-.bodyitemcontent .video, .bodyitemcontent iframe {
-  width: 100%;
-  min-height: 20vh;
-  max-height: 65vh;
-  margin-inline: auto;
-}
-.bodyitemcontent iframe {
-  margin-block: 0;
 }
 .bodyitemcontent a.readmore {
   display: block;
@@ -1088,6 +1049,63 @@ footer .tags .notecount {
   text-transform: lowercase;
   font-style: italic;
   color: #4a4d63;
+}
+
+.postcontent .body h3 {
+  font-weight: 600;
+  font-size: 1.75em;
+}
+.postcontent .body h3 a:not([class*=button]) {
+  color: #13dd67;
+  text-underline-offset: 0.2em;
+}
+.postcontent .body h3 a:not([class*=button]):not(:hover, :focus) {
+  text-decoration: none;
+}
+.postcontent .body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.postcontent .body figure {
+  margin-inline: 0;
+}
+.postcontent .body .row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: min(0.2em, 1vw);
+  margin-block: min(0.2em, 1vw);
+}
+.postcontent .body .row figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.postcontent .body .row img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.postcontent .body .video, .postcontent .body iframe {
+  width: 100%;
+  min-height: 20vh;
+  max-height: 65vh;
+  margin-inline: auto;
+}
+.postcontent .body iframe {
+  margin-block: 0;
+}
+
+.mediawrapper {
+  padding-block: 1rem;
+}
+.mediawrapper > :first-child {
+  margin-block-start: 0 !important;
+}
+.mediawrapper > :last-child {
+  margin-block-end: 0 !important;
 }
 
 #pfoot {

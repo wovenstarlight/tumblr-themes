@@ -910,6 +910,10 @@ $header-height: 4em;
 		* { margin: 0 }
 	}
 
+	* + .bodyitem .user {
+		@include modal-border(block-start);
+	}
+
 	.rounds {
 		display: flex;
 		flex-wrap: wrap;
@@ -1064,10 +1068,6 @@ footer .tags {
 		}
 	}
 
-	& + & .user {
-		@include modal-border(block-start);
-	}
-
 	.ask {
 		margin-block-start: 1rem;
 		margin-inline: 0.5rem;
@@ -1095,15 +1095,49 @@ footer .tags {
 	& > :last-child { margin-block-end: 0 !important }
 
 	// Text
-	h3 {
-		font-weight: 600;
-		font-size: 1.75em;
-	}
 	h4 {
 		font-weight: 600;
 		font-size: 1.4em;
 	}
 	@include links("green");
+
+	// Read more button
+	a.readmore {
+		display: block;
+		max-width: 10em;
+		font-size: 1.2em;
+		text-transform: uppercase;
+		margin-inline: auto;
+	}
+
+	hr.readmore {
+		border: none;
+		border-block-start: 0.1em dotted $darkgrayblue;
+		max-width: 60%;
+		position: relative;
+		margin-block: 1.5em;
+
+		&::after {
+			line-height: 1;
+			position: absolute;
+			top: -1.1em;
+			left: 50%;
+			transform: translateX(-50%);
+			background-color: #0d1a32;
+			padding: 0.5em;
+			text-transform: lowercase;
+			font-style: italic;
+			color: $darkgrayblue;
+		}
+	}
+}
+// Separate selector so that these still apply in legacy format
+.postcontent .body {
+	h3 {
+		font-weight: 600;
+		font-size: 1.75em;
+		@include links("green");
+	}
 
 	// Images
 	img {
@@ -1141,36 +1175,12 @@ footer .tags {
 		margin-inline: auto;
 	}
 	iframe { margin-block: 0 }
-
-	// Read more button
-	a.readmore {
-		display: block;
-		max-width: 10em;
-		font-size: 1.2em;
-		text-transform: uppercase;
-		margin-inline: auto;
-	}
-
-	hr.readmore {
-		border: none;
-		border-block-start: 0.1em dotted $darkgrayblue;
-		max-width: 60%;
-		position: relative;
-		margin-block: 1.5em;
-
-		&::after {
-			line-height: 1;
-			position: absolute;
-			top: -1.1em;
-			left: 50%;
-			transform: translateX(-50%);
-			background-color: #0d1a32;
-			padding: 0.5em;
-			text-transform: lowercase;
-			font-style: italic;
-			color: $darkgrayblue;
-		}
-	}
+}
+// Padding for legacy posts' top media
+.mediawrapper {
+	padding-block: 1rem;
+	& > :first-child { margin-block-start: 0 !important }
+	& > :last-child { margin-block-end: 0 !important }
 }
 // #endregion
 // #endregion
