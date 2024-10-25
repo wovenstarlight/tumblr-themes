@@ -2384,15 +2384,14 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	let playPause = document.createElement("button");
 	playPause.classList.add("playpause");
 	playPause.innerHTML = icons.play + icons.pause;
-	let times = document.createElement("span"),
+	let bottom = document.createElement("div"),
 		currTime = document.createElement("span"),
 		totalTime = document.createElement("span");
 	currTime.innerText = "0:00";
 	totalTime.innerText = "0:00";
-	times.classList.add("times");
-	currTime.classList.add("current");
-	totalTime.classList.add("total");
-	times.append(currTime, " / ", totalTime);
+	bottom.classList.add("bottom");
+	currTime.classList.add("current", "time");
+	totalTime.classList.add("total", "time");
 	let skipStart = document.createElement("button");
 	skipStart.classList.add("skipstart");
 	skipStart.innerHTML = icons.toStart;
@@ -2407,8 +2406,9 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	loop.innerHTML = icons.repeat + icons.unrepeat;
 
 	buttons.append(volume, skipStart, playPause, skipEnd, loop);
+	bottom.append(currTime, buttons, totalTime);
 
-	wrapper.append(seekbar, times, buttons);
+	wrapper.append(seekbar, bottom);
 	// #endregion
 
 	// #region Preload data and set up interactive elements
