@@ -1420,12 +1420,21 @@ function makeViaSource(wrapper, postData, avatars = false) {
 
 	// Check if source blog/post still exists
 	let sourceTrail = postData.npf.trail[0];
-	if (sourceTrail?.blog) {
-		source.href = sourceTrail.blog.url.concat(sourceTrail.blog.url.endsWith("/") ? `post/${sourceTrail.post.id}` : `/${sourceTrail.post.id}`);
-		source.title = postData.source.label;
-		wrapper.append(source);
+	if (sourceTrail) {
+		if (sourceTrail.blog) {
+			source.href = sourceTrail.blog.url.concat(sourceTrail.blog.url.endsWith("/") ? `post/${sourceTrail.post.id}` : `/${sourceTrail.post.id}`);
+			source.title = postData.source.label;
+			wrapper.append(source);
+		}
+		else if (postData.source.url !== "") {
+			source.href = postData.source.url;
+			source.title = postData.source.label;
+			wrapper.append(source);
+		}
 	}
-	else if (postData.source.url !== "") {
+	else {
+		// Some really old posts of types chat/quote didn't have associated posters, so they just get attributed to the current blog even though that's not accurate.
+		// In such cases, npf.trail is empty, so use the old RebloggedFrom block's source object to populate.
 		source.href = postData.source.url;
 		source.title = postData.source.label;
 		wrapper.append(source);
@@ -1437,7 +1446,7 @@ function makeViaSource(wrapper, postData, avatars = false) {
 		source.innerHTML = `<img class="avatar" />`;
 		source.firstElementChild.addEventListener("error", e => { e.currentTarget.src = anonAvatar }, { once: true });
 		if (sourceTrail) {
-		source.firstElementChild.src = sourceTrail.blog?.avatar?.find(el => el.height === 64)?.url ?? `https://api.tumblr.com/v2/blog/${sourceTrail.blog?.name ?? ""}/avatar/64`;
+			source.firstElementChild.src = sourceTrail.blog?.avatar?.find(el => el.height === 64)?.url ?? `https://api.tumblr.com/v2/blog/${sourceTrail.blog?.name ?? ""}/avatar/64`;
 		}
 		else {
 			source.firstElementChild.src = postData.source.avatar;
