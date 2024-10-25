@@ -1136,6 +1136,7 @@ footer .tags .notecount {
   min-height: 20vh;
   max-height: 65vh;
   margin-inline: auto;
+  display: block;
 }
 .postcontent .body iframe {
   margin-block: 0;
