@@ -1107,6 +1107,9 @@ footer .tags .notecount {
 .mediawrapper > :last-child {
   margin-block-end: 0 !important;
 }
+.mediawrapper .heading1 {
+  text-align: center;
+}
 
 #pfoot {
   height: 8.5em;
