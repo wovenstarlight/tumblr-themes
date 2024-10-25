@@ -1000,7 +1000,7 @@ document.querySelectorAll(".bodyitem:first-child .bodyitemcontent > :is(".concat
 	".audiowrapper",
 	".npf-link-block",
 	"iframe",
-	textSubtypes.heading1,
+	".heading1",
 ].join(":first-child, "), ":first-child)")).forEach(el => {
 	// Move el outside its bodyitem into a "mediawrapper" div at the top of the post body
 	let bodyitemcontent = el.parentElement,
@@ -1670,6 +1670,8 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 		
 		case "text":
 			bit = document.createElement(textSubtypes[curr.subtype] ?? "p");
+
+			if (curr.subtype?.startsWith("heading")) bit.classList.add(curr.subtype);
 			
 			bit.innerHTML = formatText(curr);
 			
