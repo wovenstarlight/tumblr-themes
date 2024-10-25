@@ -1139,6 +1139,21 @@ footer .tags {
 		@include links("green");
 	}
 
+	// Links
+	.npf-link-block {
+		border: 0.1em solid $green;
+		border-radius: 0;
+		margin-inline: 0.5em;
+
+		a { color: $green }
+
+		.poster {
+			border-block-end: 0.1em solid $green;
+
+			&::before { opacity: 0.6 }
+		}
+	}
+
 	// Images
 	img {
 		max-width: 100%;

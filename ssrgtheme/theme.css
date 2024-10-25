@@ -1062,6 +1062,20 @@ footer .tags .notecount {
 .postcontent .body .heading1 a:not([class*=button]):not(:hover, :focus) {
   text-decoration: none;
 }
+.postcontent .body .npf-link-block {
+  border: 0.1em solid #13dd67;
+  border-radius: 0;
+  margin-inline: 0.5em;
+}
+.postcontent .body .npf-link-block a {
+  color: #13dd67;
+}
+.postcontent .body .npf-link-block .poster {
+  border-block-end: 0.1em solid #13dd67;
+}
+.postcontent .body .npf-link-block .poster::before {
+  opacity: 0.6;
+}
 .postcontent .body img {
   max-width: 100%;
   height: auto;
