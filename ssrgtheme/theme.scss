@@ -992,6 +992,7 @@ footer .tags {
 	flex-wrap: wrap;
 	gap: 0.1em 0.6em;
 	justify-content: center;
+	word-break: break-word;	// break words in tags that are too long to fit on one line
 
 	.notecount { font-weight: 600 }
 }
