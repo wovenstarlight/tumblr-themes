@@ -95,7 +95,7 @@ button[disabled] { cursor: initial }
 			color: $green;
 		}
 		text-underline-offset: 0.2em;
-		&:not(:hover) { text-decoration: none }
+		&:not(:hover, :focus) { text-decoration: none }
 	}
 }
 // Checkmark icon
@@ -1060,6 +1060,25 @@ footer .tags {
 
 	& + & .user {
 		@include modal-border(block-start);
+	}
+
+	.ask {
+		margin-block-start: 1rem;
+		margin-inline: 0.5rem;
+		border: 0.1em solid $lightblue;
+		padding-inline: 1em;
+		&:last-child { margin-block-end: 1rem }
+
+		.user a {
+			gap: 0.2em;
+			text-decoration: none;
+
+			:first-child { margin-inline-end: 0.3em }
+
+			:last-child { color: $white }
+
+			&:is(:hover, :focus) .name { text-decoration: solid underline }
+		}
 	}
 }
 .bodyitemcontent {

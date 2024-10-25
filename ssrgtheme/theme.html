@@ -1899,25 +1899,27 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		// Anon or not?
 		let asker = document.createElement("header");
 		asker.classList.add("user");
-		let askerName = document.createElement("a"),
+		let askerWrapper = document.createElement("a"),
 			askerIcon = document.createElement("img"),
+			askerName = document.createElement("span"),
 			askingLabel = document.createElement("span");
 		askerIcon.classList.add("avatar");
+		askerName.classList.add("name");
 		if (askNPF.attribution) {
 			askerIcon.src = askNPF.attribution.blog.avatar?.find(el => el.height === 64)?.url ?? `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name}/avatar/64`;
 			askerIcon.classList.add(askNPF.attribution.blog.theme.avatar_shape ?? "square");
-			askerName.href = askNPF.attribution.blog.url;
-			askerName.append(askNPF.attribution.blog.name);
-			askerName.classList.add("name");
-			asker.setAttribute("style", `--bg: ${askNPF.attribution.blog.theme?.background_color ?? currentUser.theme.background_color}; --text: ${askNPF.attribution.blog.theme?.title_color ?? currentUser.theme.title_color}; --accent: ${askNPF.attribution.blog.theme?.link_color ?? currentUser.theme.link_color}`)
+			askerWrapper.href = askNPF.attribution.blog.url;
+			askerName.innerText = askNPF.attribution.blog.name;
+			asker.setAttribute("style", `--bg: ${askNPF.attribution.blog.theme?.background_color ?? currentUser.theme.background_color}; --text: ${askNPF.attribution.blog.theme?.title_color ?? currentUser.theme.title_color}; --accent: ${askNPF.attribution.blog.theme?.link_color ?? currentUser.theme.link_color}`);
 		}
 		else {
 			askerIcon.src = anonAvatar;
-			askerName.append("Anonymous");
-			asker.setAttribute("style", `--bg: ${currentUser.theme.background_color}; --text: ${currentUser.theme.title_color}; --accent: ${currentUser.theme.link_color}`)
+			askerName.innerText = "Anonymous";
+			asker.setAttribute("style", `--bg: ${currentUser.theme.background_color}; --text: ${currentUser.theme.title_color}; --accent: ${currentUser.theme.link_color}`);
 		}
 		askingLabel.innerText = " asked:";
-		asker.append(askerIcon, askerName, askingLabel);
+		asker.append(askerWrapper);
+		askerWrapper.append(askerIcon, askerName, askingLabel);
 		
 		let ask = document.createElement("div");
 		ask.classList.add("ask");
@@ -1939,22 +1941,18 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 			askNPF.blocks.forEach(b => askBody.append(body.children[0]));
 		}
 		
-		// PLACEMENT OPTIONS (note, none of these are inside .bodyitemcontent!):
-		// Case 1. In root post body, above answer trail item
-		trailItem.parentElement.insertBefore(ask, trailItem);
-		// Case 2. Inside same trail item, above answerer's name
-		// trailItem.insertBefore(ask, body.previousElementSibling);
-		// Case 3. Inside same trail item, below answerer's name
-		// trailItem.insertBefore(ask, body);
+		// Place inside same trail item:
+		// - below answerer's name for Neue format
+		// - above answerer's name for legacy format
+		trailItem.insertBefore(ask, body{block:IfUseLegacyFormatForPostMedia}.previousElementSibling{/block:IfUseLegacyFormatForPostMedia});
+		
 		
 		// Sometimes asks have no answer content (i.e. nothing left in body); in this case, clean up answerer section
 		if (body.childElementCount === 0) {
-			// Case 1
-			trailItem.remove();
-			// Case 2
-			// body.previousElementSibling.remove(); // the answerer's name
-			// Case 2 or 3
-			// body.remove(); // the empty answer content
+			{block:IfUseLegacyFormatForPostMedia}
+			body.previousElementSibling.remove();	// the answerer's name
+			{/block:IfUseLegacyFormatForPostMedia}
+			body.remove();							// the empty answer content
 		}
 	}
 }

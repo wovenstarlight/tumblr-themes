@@ -93,7 +93,7 @@ button[disabled] {
   color: #38b4fe;
   text-underline-offset: 0.2em;
 }
-.modal a:not([class*=button]):not(:hover) {
+.modal a:not([class*=button]):not(:hover, :focus) {
   text-decoration: none;
 }
 .modal > header {
@@ -971,6 +971,29 @@ footer .tags .notecount {
 .bodyitem + .bodyitem .user {
   border-block-start: 0.1em solid #4a4d63;
 }
+.bodyitem .ask {
+  margin-block-start: 1rem;
+  margin-inline: 0.5rem;
+  border: 0.1em solid #38b4fe;
+  padding-inline: 1em;
+}
+.bodyitem .ask:last-child {
+  margin-block-end: 1rem;
+}
+.bodyitem .ask .user a {
+  gap: 0.2em;
+  text-decoration: none;
+}
+.bodyitem .ask .user a :first-child {
+  margin-inline-end: 0.3em;
+}
+.bodyitem .ask .user a :last-child {
+  color: #f2f3f3;
+}
+.bodyitem .ask .user a:is(:hover, :focus) .name {
+  -webkit-text-decoration: solid underline;
+          text-decoration: solid underline;
+}
 
 .bodyitemcontent {
   padding-block: 1rem;
@@ -996,7 +1019,7 @@ footer .tags .notecount {
   color: #13dd67;
   text-underline-offset: 0.2em;
 }
-.bodyitemcontent a:not([class*=button]):not(:hover) {
+.bodyitemcontent a:not([class*=button]):not(:hover, :focus) {
   text-decoration: none;
 }
 .bodyitemcontent img {
