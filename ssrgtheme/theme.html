@@ -2290,13 +2290,11 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 
 			// Create answers
 			let answer, answerText;
-			/* If wanting poll icons...
 			let pollIcons = {
-					timeout: `<i class="ph ph-minus-square"></i>`,
-					option: `<i class="ph ph-square"></i>`,
-					optionChecked: `<i class="ph ph-check-square"></i>`,
-				};
-			*/
+				timeout: `<i class="ph ph-minus-square"></i>`,
+				option: `<i class="ph ph-square"></i>`,
+				optionChecked: `<i class="ph ph-check-square"></i>`,
+			};
 			curr.answers.forEach(a => {
 				answer = document.createElement("a");
 				answer.classList.add("option");
@@ -2305,7 +2303,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 					answer.target = "_blank";
 				}
 				// Adding poll icons 
-				// answer.innerHTML = hasResults ? pollIcons.timeout : pollIcons.option + pollIcons.optionChecked;
+				answer.innerHTML = hasResults ? pollIcons.timeout : pollIcons.option + pollIcons.optionChecked;
 				answerText = document.createElement("p");
 				answerText.innerText = a.answer_text;
 				answer.append(answerText);
