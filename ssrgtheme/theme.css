@@ -843,6 +843,9 @@ button[disabled] {
   align-items: center;
   justify-content: center;
 }
+.postcontent > header:empty, .postcontent > footer:empty {
+  display: none;
+}
 .postcontent > header {
   flex-wrap: wrap;
   gap: 0.1em 1em;
@@ -871,13 +874,13 @@ button[disabled] {
   display: block;
   font-size: 0.75em;
 }
-.postcontent .rounds a:is(:hover, :focus-within) {
+.postcontent .rounds a:is(:hover, :focus-within), .postcontent .rounds button:is(:hover, :focus-within) {
   text-decoration: none;
 }
-.postcontent .rounds a:is(:hover, :focus-within) img {
+.postcontent .rounds a:is(:hover, :focus-within) img, .postcontent .rounds button:is(:hover, :focus-within) img {
   box-shadow: 0 0 0.2em 0.1em rgba(242, 243, 243, 0.5);
 }
-.postcontent .rounds a:is(:hover, :focus-within) i {
+.postcontent .rounds a:is(:hover, :focus-within) i, .postcontent .rounds button:is(:hover, :focus-within) i {
   box-shadow: inset 0 0 0.2em 0.1em rgba(56, 180, 254, 0.75), 0 0 0.2em 0.1em rgba(242, 243, 243, 0.1);
 }
 .postcontent .rounds i {
@@ -891,6 +894,17 @@ button[disabled] {
 }
 .postcontent .rounds i::before {
   font-size: 1.8em;
+}
+.postcontent .rounds .tagtoggle {
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 100%;
+  color: #38b4fe;
+  cursor: pointer;
+}
+.postcontent .rounds .tagtoggle:not(.hidden) i {
+  background-color: rgba(56, 180, 254, 0.25);
 }
 
 #pinnedpost {
@@ -932,6 +946,9 @@ footer .tags {
   gap: 0.1em 0.6em;
   justify-content: center;
   word-break: break-word;
+}
+footer .tags.hidden:not(:has(.notecount)), footer .tags.hidden:has(.notecount) a:not(.notecount) {
+  display: none;
 }
 footer .tags .notecount {
   font-weight: 600;

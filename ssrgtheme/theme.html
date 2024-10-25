@@ -70,6 +70,7 @@
 	<meta name="if:Reblog buttons" content="1">
 	<meta name="if:Day page links" content="1">
 	<meta name="if:Post tags" content="1">
+	<meta name="if:Show tags on click" content="0">
 	<meta name="text:Filtered tags" content="spoiler, spoilers">
 
 	<!-- Footer options -->
@@ -1228,8 +1229,8 @@ function createPostFooter(wrapper, postData) {
 	{block:IfPostTags}makeTags(footer, postData);{/block:IfPostTags}
 
 	// Note count (move to start of tags paragraph)
+	let tagsContainer = footer.firstElementChild;
 	if (postData.noteCount) {
-		let tagsContainer = footer.firstElementChild;
 		if (tagsContainer == null) {
 			tagsContainer = document.createElement("p");
 			tagsContainer.classList.add("tags");
@@ -1242,7 +1243,6 @@ function createPostFooter(wrapper, postData) {
 	// Round links; via, source, like, reblog, day page
 	let rounds = document.createElement("p");
 	rounds.classList.add("rounds");
-	footer.append(rounds);
 	makeViaSource(rounds, postData, true);
 
 	if ({block:IfLikeButtons}true{/block:IfLikeButtons}{block:IfNotLikeButtons}false{/block:IfNotLikeButtons} || {block:IfReblogButtons}true{/block:IfReblogButtons}{block:IfNotReblogButtons}false{/block:IfNotReblogButtons} || {block:IfDayPageLinks}true{/block:IfDayPageLinks}{block:IfNotDayPageLinks}false{/block:IfNotDayPageLinks}) {
@@ -1253,6 +1253,13 @@ function createPostFooter(wrapper, postData) {
 		{block:IfReblogButtons}makeReblog(rounds, postData, '<i class="ph-thin ph-repeat"></i>');{/block:IfReblogButtons}
 		{block:IfDayPageLinks}makeDayLink(rounds, postData, '<i class="ph-thin ph-clock"></i>');{/block:IfDayPageLinks}
 	}
+
+	{block:IfPostTags}{block:IfShowTagsOnClick}
+	// Show tags on click
+	makeTagToggle(rounds, tagsContainer, '<i class="ph-thin ph-hash"></i>');
+	{/block:IfShowTagsOnClick}{/block:IfPostTags}
+
+	if (rounds.childElementCount) footer.append(rounds);
 }
 
 // #region Helpers
@@ -1341,6 +1348,34 @@ function makeDayLink(wrapper, postData, icon = null) {
 	}
 	else {
 		dayLink.innerText = label;
+	}
+}
+
+/**
+ * Creates a button that toggles the visibility of the post's tags.
+ * @param {HTMLElement} wrapper The child element of the post to which the tag toggle will be added. Usually the footer.
+ * @param {HTMLElement} tagContainer The element containing the tags, on which to toggle the hide/show class.
+ */
+ function makeTagToggle(wrapper, tagContainer, icon = null) {
+	// Make element
+	let tagToggle = document.createElement("button");
+	tagToggle.classList.add("tagtoggle", "hidden");
+	wrapper.append(tagToggle);
+
+	// Functionality
+	tagToggle.addEventListener("click", e => {
+		e.currentTarget.classList.toggle("hidden");
+		tagContainer.classList.toggle("hidden");
+	});
+
+	// Icon or text, as needed
+	let label = "{lang:Tags}";
+	if (icon !== null) {
+		tagToggle.innerHTML = icon;
+		tagToggle.title = label;
+	}
+	else {
+		tagToggle.innerText = label;
 	}
 }
 
@@ -1441,7 +1476,7 @@ function makeTags(wrapper, postData, tagOptions = {}) {
 	}, tagOptions);
 	// Make element
 	let tags = document.createElement(options.span ? "span" : "p");
-	tags.classList.add("tags");
+	tags.classList.add("tags" {block:IfShowTagsOnClick}, "hidden"{/block:IfShowTagsOnClick} );
 	// Populate with each tag
 	let tagList = postData.tags.map(tag => `<a href="${tag.url}">`.concat(options.hashtags ? "#" : "",`${tag.name}</a>`));
 	tags.innerHTML = tagList.join(options.commas ? ", " : "");

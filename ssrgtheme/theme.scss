@@ -912,6 +912,8 @@ $header-height: 4em;
 		padding-block: 0.8em;
 		align-items: center;
 		justify-content: center;
+
+		&:empty { display: none }
 	}
 
 	& > header {
@@ -945,7 +947,7 @@ $header-height: 4em;
 			font-size: 0.75em;
 		}
 
-		a:is(:hover, :focus-within) {
+		a:is(:hover, :focus-within), button:is(:hover, :focus-within) {
 			text-decoration: none;
 			img { box-shadow: 0 0 0.2em 0.1em adjust-color($white, $alpha: -0.5) }
 			i { box-shadow: inset 0 0 0.2em 0.1em adjust-color($lightblue, $alpha: -0.25), 0 0 0.2em 0.1em adjust-color($white, $alpha: -0.9) }
@@ -964,6 +966,17 @@ $header-height: 4em;
 			&::before {
 				font-size: 1.8em;
 			}
+		}
+
+		.tagtoggle {
+			background: none;
+			border: none;
+			padding: 0;
+			border-radius: 100%;
+			color: $lightblue;
+			cursor: pointer;
+
+			&:not(.hidden) i { background-color: adjust-color($lightblue, $alpha: -0.75) }
 		}
 	}
 }
@@ -1012,6 +1025,9 @@ footer .tags {
 	gap: 0.1em 0.6em;
 	justify-content: center;
 	word-break: break-word;	// break words in tags that are too long to fit on one line
+
+	&.hidden:not(:has(.notecount)),
+	&.hidden:has(.notecount) a:not(.notecount) { display: none }
 
 	.notecount { font-weight: 600 }
 }
