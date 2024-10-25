@@ -1095,7 +1095,7 @@ footer .tags {
 	& > :last-child { margin-block-end: 0 !important }
 
 	// Text
-	h4 {
+	.heading2 {
 		font-weight: 600;
 		font-size: 1.4em;
 	}
@@ -1133,7 +1133,7 @@ footer .tags {
 }
 // Separate selector so that these still apply in legacy format
 .postcontent .body {
-	h3 {
+	.heading1 {
 		font-weight: 600;
 		font-size: 1.75em;
 		@include links("green");

@@ -2001,6 +2001,8 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 		
 		case "text":
 			bit = document.createElement(textSubtypes[curr.subtype] ?? "p");
+
+			if (curr.subtype?.startsWith("heading")) bit.classList.add(curr.subtype);
 			
 			bit.innerHTML = formatText(curr);
 			

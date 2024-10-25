@@ -1013,7 +1013,7 @@ footer .tags .notecount {
 .bodyitemcontent > :last-child {
   margin-block-end: 0 !important;
 }
-.bodyitemcontent h4 {
+.bodyitemcontent .heading2 {
   font-weight: 600;
   font-size: 1.4em;
 }
@@ -1051,15 +1051,15 @@ footer .tags .notecount {
   color: #4a4d63;
 }
 
-.postcontent .body h3 {
+.postcontent .body .heading1 {
   font-weight: 600;
   font-size: 1.75em;
 }
-.postcontent .body h3 a:not([class*=button]) {
+.postcontent .body .heading1 a:not([class*=button]) {
   color: #13dd67;
   text-underline-offset: 0.2em;
 }
-.postcontent .body h3 a:not([class*=button]):not(:hover, :focus) {
+.postcontent .body .heading1 a:not([class*=button]):not(:hover, :focus) {
   text-decoration: none;
 }
 .postcontent .body img {
