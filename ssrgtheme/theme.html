@@ -1128,13 +1128,13 @@ postContainer.addEventListener("scroll", () => {
 {block:IfUseLegacyFormatForPostMedia}
 // Format media in posts in legacy style
 document.querySelectorAll(".bodyitem:first-child .bodyitemcontent > :is(".concat([
-	".row:first-child",
-	"video:first-child",
-	".audiowrapper:first-child",
-	".npf-link-block:first-child",
-	"iframe:first-child",
-	`${textSubtypes.heading1}:first-child`,
-].join(", "), ")")).forEach(el => {
+	".row",
+	"video",
+	".audiowrapper",
+	".npf-link-block",
+	"iframe",
+	".heading1",
+].join(":first-child, "), ":first-child)")).forEach(el => {
 	// Move el outside its bodyitem into a "mediawrapper" div at the top of the post body
 	let bodyitemcontent = el.parentElement,
 		wrapper = document.createElement("div");
