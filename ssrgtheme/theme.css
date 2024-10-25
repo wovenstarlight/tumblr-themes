@@ -931,6 +931,12 @@ footer .tags .notecount {
 .bodyitem .user {
   border-block-end: 0.1em solid rgba(74, 77, 99, 0.25);
 }
+.bodyitem .user.deactivated .name::after {
+  content: "(deactivated)";
+  margin-inline-start: 0.2em;
+  opacity: 0.8;
+  color: #a5a6a7;
+}
 .bodyitem .user a {
   display: flex;
   align-items: center;

@@ -1014,6 +1014,12 @@ footer .tags {
 .bodyitem {
 	.user {
 		@include modal-border(block-end, 0.25);
+		&.deactivated .name::after {
+			content: "(deactivated)";
+			margin-inline-start: 0.2em;
+			opacity: 0.8;
+			color: $lightgray;
+		}
 		a {
 			display: flex;
 			align-items: center;
