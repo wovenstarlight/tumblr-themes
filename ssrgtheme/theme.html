@@ -6,14 +6,14 @@
 		Phosphor Icons: https://phosphoricons.com/
 		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
 
-	Last updated 25 Oct 2024.
+	Last updated 08 Nov 2024.
 -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>{block:TagPage}{lang:TagResultCount posts tagged Tag} | {/block:TagPage}{block:SearchPage}{lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults} | {/block:SearchPage}{block:DayPage}{block:IfDatesFormattedMonthFirst}{lang:Posted on Month DayOfMonth Year}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{lang:Posted on DayOfMonth Month Year}{/block:IfNotDatesFormattedMonthFirst} | {/block:DayPage}{block:PermalinkPage}{block:PostSummary}{PostSummary} | {/block:PostSummary}{/block:PermalinkPage}{Title}</title>
+	<title>{block:TagPage}{lang:TagResultCount posts tagged Tag} | {/block:TagPage}{block:SearchPage}{lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults} | {/block:SearchPage}{block:DayPage}{lang:Posted on DayOfMonth Month Year} | {/block:DayPage}{block:PermalinkPage}{block:PostSummary}{PostSummary} | {/block:PostSummary}{/block:PermalinkPage}{Title}</title>
 	<meta name="description" content="{MetaDescription}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link rel="shortcut icon" href="{Favicon}">
@@ -63,9 +63,16 @@
 	<meta name="text:Search bar title" content="Search Blog">
 	<meta name="if:Use legacy format for post media" content="0">
 	<meta name="if:Post dates" content="1">
+	<meta name="select:Post date formatting" content="numYMDZ" title="Numbers (YYYY.MM.DD)">
+	<meta name="select:Post date formatting" content="numDMYZ" title="Numbers (DD.MM.YYYY)">
+	<meta name="select:Post date formatting" content="numMDYZ" title="Numbers (MM.DD.YYYY)">
+	<meta name="select:Post date formatting" content="textDM" title="Text (DD MMMM, YYYY)">
+	<meta name="select:Post date formatting" content="textMD" title="Text (MMMM DD, YYYY)">
 	<meta name="if:Post times" content="1">
-	<meta name="if:Dates formatted month first" content="0">
-	<meta name="if:24 hour times" content="0">
+	<meta name="select:Post time formatting" content="24SZ" title="24 hour (with seconds)">
+	<meta name="select:Post time formatting" content="12SZ" title="12 hour (with seconds)">
+	<meta name="select:Post time formatting" content="24Z" title="24 hour (no seconds)">
+	<meta name="select:Post time formatting" content="12Z" title="12 hour (no seconds)">
 	<meta name="if:Like buttons" content="1">
 	<meta name="if:Reblog buttons" content="1">
 	<meta name="if:Day page links" content="1">
@@ -117,7 +124,7 @@
 		{block:SubmitPage}{SubmitLabel}{block:ShowTitle} | {/block:ShowTitle}{/block:SubmitPage}
 		{block:TagPage}{lang:TagResultCount posts tagged Tag}{block:ShowTitle} | {/block:ShowTitle}{/block:TagPage}
 		{block:SearchPage}{lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults}{block:ShowTitle} | {/block:ShowTitle}{/block:SearchPage}
-		{block:DayPage}{block:IfDatesFormattedMonthFirst}{lang:Posted on Month DayOfMonth Year}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{lang:Posted on DayOfMonth Month Year}{/block:IfNotDatesFormattedMonthFirst}{block:ShowTitle} | {/block:ShowTitle}{/block:DayPage}
+		{block:DayPage}{lang:Posted on DayOfMonth Month Year}{/block:DayPage}
 		{block:PermalinkPage}{block:PostSummary}{PostSummary}{/block:PostSummary}{block:ShowTitle} | {/block:ShowTitle}{/block:PermalinkPage}
 		{block:ShowTitle}{Title}{/block:ShowTitle}
 	</h1>
@@ -292,7 +299,7 @@
 
 				{block:DayPage}
 				<!-- SPECIAL PAGE HEADER: DAY -->
-				<span class="label">{block:IfDatesFormattedMonthFirst}{lang:Posted on Month DayOfMonth Year}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{lang:Posted on DayOfMonth Month Year}{/block:IfNotDatesFormattedMonthFirst}</span>
+				<span class="label">{lang:Posted on DayOfMonth Month Year}</span>
 				{/block:DayPage}
 
 				{block:SearchPage}
@@ -398,7 +405,7 @@
 					{block:TagPage}{lang:CurrentPage of TotalPages}{/block:TagPage}
 					{block:SearchPage}{lang:CurrentPage of TotalPages}{/block:SearchPage}
 					{block:PermalinkPage}{lang:See more posts}{/block:PermalinkPage}
-					{block:DayPage}{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth},{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {Month},{/block:IfNotDatesFormattedMonthFirst} {Year}{/block:DayPage}
+					{block:DayPage}{Year}.{Month}.{DayOfMonth}{/block:DayPage}
 				</span>
 			</p>
 			<div class="pagelinks">
@@ -689,17 +696,14 @@ let posts = [
 		date: {
 			day: {JSDayOfWeek},
 			textDM: "{DayOfMonth} {Month}, {Year}",
-			numDM: "{DayOfMonth}/{MonthNumber}/{Year}",
 			textMD: "{Month} {DayOfMonth}, {Year}",
-			numMD: "{MonthNumber}/{DayOfMonth}/{Year}",
-			textDMZ: "{DayOfMonthWithZero} {Month}, {Year}",
-			numDMZ: "{DayOfMonthWithZero}/{MonthNumberWithZero}/{Year}",
-			textMDZ: "{Month} {DayOfMonthWithZero}, {Year}",
-			numMDZ: "{MonthNumberWithZero}/{DayOfMonthWithZero}/{Year}",
-			time12: "{12Hour}:{Minutes} {CapitalAmPm}",
-			time24: "{24Hour}:{Minutes}",
+			numDMYZ: "{DayOfMonthWithZero}.{MonthNumberWithZero}.{Year}",
+			numMDYZ: "{MonthNumberWithZero}.{DayOfMonthWithZero}.{Year}",
+			numYMDZ: "{Year}.{MonthNumberWithZero}.{DayOfMonthWithZero}",
 			time12Z: "{12HourWithZero}:{Minutes} {CapitalAmPm}",
+			time12SZ: "{12HourWithZero}:{Minutes}:{Seconds} {CapitalAmPm}",
 			time24Z: "{24HourWithZero}:{Minutes}",
+			time24SZ: "{24HourWithZero}:{Minutes}:{Seconds}",
 			url: "/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}",
 		},
 
@@ -1201,9 +1205,13 @@ function createPostHeader(wrapper, postData) {
 	// Populate post header
 	{block:IfPostDates}
 	makeDate(header, postData, {
-		{block:IfDatesFormattedMonthFirst}dateFormat: "textMD",{/block:IfDatesFormattedMonthFirst}
-		{block:IfPostTimes}includeTime: true,{/block:IfPostTimes}
-		{block:If24HourTimes}timeFormat: "24",{/block:If24HourTimes}
+		{block:IfPostDates}
+		dateFormat: "{select:Post date formatting}",
+		{block:IfPostTimes}
+		includeTime: true,
+		timeFormat: "{select:Post time formatting}",
+		{/block:IfPostTimes}
+		{/block:IfPostDates}
 	});
 	{/block:IfPostDates}
 
@@ -1503,17 +1511,17 @@ function makeTags(wrapper, postData, tagOptions = {}) {
  * @param {Object} postData This post's data, containing relevant information to create the date label with.
  * @param {Object} [dateOptions={}] Options for the formatting of the date.
  * @param {boolean} [dateOptions.includeDay=false] True if the weekday should be included in the date label, false otherwise.
- * @param {string} [dateOptions.dateFormat="textDM"] The format of the date, month, and year portion of the label. Either "text" or "num" (numerical) for the month name, "DM" or "MD" for the date-month ordering, followed by an optional "Z" if dates and months should be zero-padded.
+ * @param {string} [dateOptions.dateFormat="numYMDZ"] The format of the date, month, and year portion of the label. Either "text" or "num" (numerical) for the month name, one of "DMY"/"MDY"/"YDM"/"YMD" depending on the desired (D)ate/(M)onth/(Y)ear ordering, followed by an optional "Z" if dates and months should be zero-padded.
  * @param {boolean} [dateOptions.includeTime=false] True if the time of reblogging/posting should be included in the date label, false otherwise.
- * @param {string} [dateOptions.timeFormat="12"] The format of the time portion of the label. Either "12" or "24" for 12-hour (AM/PM) or 24-hour format, followed by an optional "Z" if hours should be zero-padded.
+ * @param {string} [dateOptions.timeFormat="24SZ"] The format of the time portion of the label. Either "12" or "24" for 12-hour (AM/PM) or 24-hour format, followed by an optional "S" if seconds should be included and "Z" if hours should be zero-padded.
  * @param {boolean} [dateOptions.commaSeparate=true] For when includeTime is set to true. True if the label should be formatted as "[DATE], [TIME]", and false if the label should be formatted as "[DATE] at [TIME]".
  */
 function makeDate(wrapper, postData, dateOptions = {}) {
 	let options = Object.assign({
 		includeDay: false,
-		dateFormat: "textDM",
+		dateFormat: "numYMDZ",
 		includeTime: false,
-		timeFormat: "12",
+		timeFormat: "24SZ",
 		commaSeparate: true,
 	}, dateOptions),
 		date = document.createElement("a");
@@ -1527,6 +1535,9 @@ function makeDate(wrapper, postData, dateOptions = {}) {
 	};
 	// Add date
 	date.innerText += postData.date[options.dateFormat];
+	if (options.dateFormat.startsWith("num")) {
+		date.title = postData.date[options.dateFormat.replace("num", "text").replace(/(Y|Z)/g, "")];
+	}
 	// Add time, as needed
 	if (options.includeTime) {
 		date.innerText += (options.commaSeparate ? ", " : " at ").concat(postData.date[`time${options.timeFormat}`]);
