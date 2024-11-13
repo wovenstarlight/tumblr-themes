@@ -1665,7 +1665,7 @@ function makeTags(wrapper, postData, tagOptions = {}) {
  * @param {string} [dateOptions.dateFormat="numYMDZ"] The format of the date, month, and year portion of the label. Either "text" or "num" (numerical) for the month name, one of "DMY"/"MDY"/"YDM"/"YMD" depending on the desired (D)ate/(M)onth/(Y)ear ordering, followed by an optional "Z" if dates and months should be zero-padded.
  * @param {boolean} [dateOptions.includeTime=false] True if the time of reblogging/posting should be included in the date label, false otherwise.
  * @param {string} [dateOptions.timeFormat="24SZ"] The format of the time portion of the label. Either "12" or "24" for 12-hour (AM/PM) or 24-hour format, followed by an optional "S" if seconds should be included and "Z" if hours should be zero-padded.
- * @param {boolean} [dateOptions.commaSeparate=true] For when includeTime is set to true. True if the label should be formatted as "[DATE], [TIME]", and false if the label should be formatted as "[DATE] at [TIME]".
+ * @param {string} [dateOptions.separator=" "] For when includeTime is set to true. Is used in the format `[DATE]${separator}[TIME]`
  */
 function makeDate(wrapper, postData, dateOptions = {}) {
 	let options = Object.assign({
@@ -1673,7 +1673,7 @@ function makeDate(wrapper, postData, dateOptions = {}) {
 		dateFormat: "numYMDZ",
 		includeTime: false,
 		timeFormat: "24SZ",
-		commaSeparate: true,
+		separator: " ",
 	}, dateOptions),
 		date = document.createElement("a");
 	// Make element
@@ -1691,7 +1691,7 @@ function makeDate(wrapper, postData, dateOptions = {}) {
 	}
 	// Add time, as needed
 	if (options.includeTime) {
-		date.innerText += (options.commaSeparate ? ", " : " at ").concat(postData.date[`time${options.timeFormat}`]);
+		date.innerText += options.separator.concat(postData.date[`time${options.timeFormat}`]);
 	}
 }
 
@@ -2491,13 +2491,13 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 				timeLeft.minutes = Math.floor((timeToClosure - (timeLeft.days * 86400) - (timeLeft.hours * 3600)) / 60);
 				let timeLabel = "Remaining time:";
 				if (timeLeft.days > 0) {
-					timeLabel += ` ${timeLeft.days} day${timeLeft.days === 1 ? "" : "s"} ${timeLeft.hours} hour${timeLeft.hours === 1 ? "" : "s"}`;
+					timeLabel += ` ${timeLeft.days}d ${timeLeft.hours}h`;
 				} else if (timeLeft.hours > 0) {
-					timeLabel += ` ${timeLeft.hours} hour${timeLeft.hours === 1 ? "" : "s"} ${timeLeft.minutes} minute${timeLeft.minutes === 1 ? "" : "s"}`;
+					timeLabel += ` ${timeLeft.hours}h ${timeLeft.minutes}m`;
 				} else if (timeLeft.minutes > 0) {
-					timeLabel += ` ${timeLeft.minutes} minute${timeLeft.minutes === 1 ? "" : "s"}`;
+					timeLabel += ` ${timeLeft.minutes}m`;
 				} else {
-					timeLabel += "less than 1 minute";	// guaranteed since poll hasn't calculated as closed yet
+					timeLabel += "less than 1m";	// guaranteed since poll hasn't calculated as closed yet
 				}
 				moreInfo.innerText = timeLabel;
 				moreInfo.classList.add("timeleft");
