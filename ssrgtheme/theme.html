@@ -386,6 +386,13 @@
 					</a>
 				</footer>
 			</dialog>
+			
+			<dialog id="lightbox">
+				<button class="closemodal">
+					<span class="visuallyhidden">Close</span>
+					<i class="ph ph-x" aria-hidden="true"></i>
+				</button>
+			</dialog>
 
 			<!-- JUMP TO START -->
 			<a id="scrolltostart" class="disabled" href="#posts">
@@ -557,10 +564,10 @@ let rAF = null;
 let currentlyPlaying = null;
 
 /**
- * The currently active lightbox, if any.
- * @type {?HTMLElement}
+ * The lightbox dialog.
+ * @type {HTMLElement}
  */
-let lightbox;
+let lightbox = document.getElementById("lightbox");
 /**
  * All images from the trail item currently being represented in the lightbox. Null if no lightbox is active.
  * @type {?HTMLElement[]}
@@ -938,7 +945,7 @@ document.getElementById("opensearch").addEventListener("click", () => { document
 document.querySelector("#pagetitle button").addEventListener("click", () => { document.getElementById("tagordering").showModal() });
 {/block:TagPage}
 // Close
-document.querySelectorAll(".modal").forEach(modal => {
+document.querySelectorAll(".modal, #lightbox").forEach(modal => {
 	// Define the modal-specific closure function
 	modal.closeSelf = () => {
 		switch (modal.id) {
@@ -950,6 +957,17 @@ document.querySelectorAll(".modal").forEach(modal => {
 					el.classList.remove("playing");
 				});
 				postViewer.children[1]._container.append(postViewer.children[1]);
+				break;
+			
+			case "lightbox":
+				modal.close();
+				// Remove the images in the lightbox
+				modal.querySelectorAll("img").forEach(el => el.remove());
+				// Reset the internal lightbox counters
+				lightboxImages = null;
+				lightboxIndex = null;
+				// Go back to the image the lightbox was opened from
+				comingFrom.focus();
 				break;
 			
 			default:
@@ -2739,7 +2757,7 @@ function interactLightbox(e) {
 		else if (e.type === "click") {
 			// No image to advance to
 			// If this is a click event, close the lightbox
-			e.target.parentElement.firstChild.click();
+			lightbox.closeSelf();
 		}
 	}
 	
@@ -2819,20 +2837,6 @@ function getAdjacentImage(side) {
  */
 function interactLightboxKeyboard(e) {
 	if (e.key === "Enter" || e.key === " ") { interactLightbox(e) }
-}
-
-/**
- * Closes the active lightbox and returns to the part of the page the lightbox was opened from.
- */
-function closeLightbox() {
-	document.body.classList.remove("lightboxed");
-	lightbox.remove();
-	lightboxImages = null;
-	lightboxIndex = null;
-	lightbox = null;
-	// Go back to the image the lightbox was opened from
-	Array.from(document.body.children).forEach(el => el.removeAttribute("inert"));
-	comingFrom.focus();
 }
 // #endregion
 // #endregion
