@@ -1295,13 +1295,104 @@ document.querySelectorAll(".bodyitem:first-child .bodyitemcontent > :is(".concat
 // #endregion
 
 // Set up keyboard navigation
-/* TODO: keyboardNav will need to be reworked for this theme
-keyboardNav({
-	searchCallback: () => {
-		document.getElementById("searchmodal").showModal();
-	},
-});
-*/
+// Given the unusual design of this theme, instead of using my usual script, the section below is a rewritten version
+{
+	keyboardNavOptions = {
+		postSelector: ".post",
+		nextPageSelector: "#next",
+		prevPageSelector: "#prev",
+		searchSelector: "#q",
+		reblogSelector: ".customreblog",
+	}
+	let next = document.querySelector(keyboardNavOptions.nextPageSelector),
+		prev = document.querySelector(keyboardNavOptions.prevPageSelector),
+		search = document.querySelector(keyboardNavOptions.searchSelector),
+		sections = document.querySelectorAll(keyboardNavOptions.postSelector),
+		currPost;
+
+	document.addEventListener('keydown', (e) => {
+		// Cancel if the user is typing in a search bar or other textbox
+		if (document.activeElement.tagName === 'INPUT') { return }
+
+		let key = e.key.toUpperCase();
+
+		// post navigation
+		if (key === 'J') {
+			switch (postViewer.getAttribute("open") == null) {
+				case true:
+					if (document.activeElement.classList.contains("post")) currPost = document.activeElement;
+					else if (document.activeElement.classList.contains("postcard")) currPost = document.activeElement.parentElement;
+					if (currPost == null) {
+						currPost = sections[0];
+						currPost.scrollIntoView();
+						currPost.firstElementChild.focus();
+					}
+					else if (currPost.nextElementSibling != null) {
+						currPost.nextElementSibling.scrollIntoView();
+						currPost = currPost.nextElementSibling;
+						currPost.firstElementChild.focus();
+					}
+					break;
+				
+				case false:
+					document.getElementById("nextpost").click();
+					break;
+			
+				default:
+					break;
+			}
+		}
+		else if (key === 'K') {
+			switch (postViewer.getAttribute("open") == null) {
+				case true:
+					if (document.activeElement.classList.contains("post")) currPost = document.activeElement;
+					else if (document.activeElement.classList.contains("postcard")) currPost = document.activeElement.parentElement;
+					if (currPost == null) {
+						currPost = sections[0];
+						currPost.scrollIntoView();
+						currPost.firstElementChild.focus();
+					}
+					else if (currPost.previousElementSibling != null) {
+						currPost.previousElementSibling.scrollIntoView();
+						currPost = currPost.previousElementSibling;
+						currPost.firstElementChild.focus();
+					}
+					break;
+				
+				case false:
+					document.getElementById("prevpost").click();
+					break;
+			
+				default:
+					break;
+			}
+		}
+
+		// scroll to start
+		else if (key === '.') {
+			scrollToStart.click();
+			currPost = sections[0];
+			currPost.firstElementChild.focus();
+		}
+
+		// reblog
+		else if (keyboardNavOptions.reblogSelector != null && e.shiftKey && key === 'R')
+			(postViewer.getAttribute("open") != null ? postViewer : currPost).querySelector(keyboardNavOptions.reblogSelector).click();
+
+		// search
+		else if (search != null && key === '?') {
+			document.getElementById("opensearch").click()
+			search.focus();
+			e.preventDefault(); // Don't type the ? in the input field
+		}
+
+		// pagination
+		else if (next != null && document.querySelector("dialog[open]") == null && e.ctrlKey && e.key === 'ArrowRight')
+			next.click();
+		else if (prev != null && document.querySelector("dialog[open]") == null && e.ctrlKey && e.key === 'ArrowLeft')
+			prev.click();
+	})
+}
 // #endregion
 
 
