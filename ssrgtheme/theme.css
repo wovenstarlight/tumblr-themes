@@ -94,7 +94,12 @@ button[disabled] { cursor: initial }
 	background-color: var(--darkblue);
 	color: var(--white);
 
-	&::backdrop { background-color: var(--ssjyp-blue) }
+	&::backdrop {
+		background-color: var(--ssjyp-blue);
+		background-image: var(--bg-img);
+		background-size: cover;
+		background-position: var(--bg-position, center);
+	}
 
 	a:not([class*=button]) {
 		color: var(--lightblue);
