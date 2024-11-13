@@ -1,6 +1,6 @@
 # Theme 13: Document
 
-A Javascript-based theme, powered by [the NPF variable](https://github.com/tumblr/docs/blob/master/npf-spec.md) offered by Tumblr.
+A Javascript-based theme styled after Google Docs, powered by [the NPF variable](https://github.com/tumblr/docs/blob/master/npf-spec.md) offered by Tumblr.
 
 <!-- PREVIEWS: [Live preview](https://themenametheme.tumblr.com), [(static) index page](https://starlightpreviews.tumblr.com/theme13), [(static) permalink](https://starlightpreviews.tumblr.com/theme13/permalink) -->
 
