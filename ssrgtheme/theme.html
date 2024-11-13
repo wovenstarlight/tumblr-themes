@@ -6,7 +6,7 @@
 		Phosphor Icons: https://phosphoricons.com/
 		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
 
-	Last updated 08 Nov 2024.
+	Last updated 12 Nov 2024.
 -->
 
 <!DOCTYPE html>
@@ -939,24 +939,34 @@ document.querySelector("#pagetitle button").addEventListener("click", () => { do
 {/block:TagPage}
 // Close
 document.querySelectorAll(".modal").forEach(modal => {
-	// On button click
-	modal.querySelectorAll(".closemodal").forEach(btn => btn.addEventListener("click", () => {
-		modal.close();
-		if (modal.id === "postviewer") {
-			postViewer.children[1].querySelectorAll("video, audio").forEach(el => {
-				el.pause();
-				el.classList.remove("playing");
-			});
-			postViewer.children[1]._container.append(postViewer.children[1]);
+	// Define the modal-specific closure function
+	modal.closeSelf = () => {
+		switch (modal.id) {
+			case "postviewer":
+				modal.close();
+				// Pause any audio playing within the modal
+				postViewer.children[1].querySelectorAll("video, audio").forEach(el => {
+					el.pause();
+					el.classList.remove("playing");
+				});
+				postViewer.children[1]._container.append(postViewer.children[1]);
+				break;
+			
+			default:
+				modal.close();
+				break;
 		}
-	}));
+	}
+
+	// On button click
+	modal.querySelectorAll(".closemodal").forEach(btn => btn.addEventListener("click", () => { modal.closeSelf() }));
 
 	// On ::backdrop click
-	modal.addEventListener('mousedown', e => {
+	modal.addEventListener("mousedown", e => {
 		e.currentTarget._offsetX = e.offsetX;
 		e.currentTarget._offsetY = e.offsetY;
 	});
-	modal.addEventListener('click', e => {
+	modal.addEventListener("click", e => {
 		if ((
 			e.currentTarget._offsetX < 0 || e.currentTarget._offsetX > e.target.offsetWidth ||
 			e.currentTarget._offsetY < 0 || e.currentTarget._offsetY > e.target.offsetHeight
@@ -964,14 +974,7 @@ document.querySelectorAll(".modal").forEach(modal => {
 			e.offsetX < 0 || e.offsetX > e.target.offsetWidth ||
 			e.offsetY < 0 || e.offsetY > e.target.offsetHeight
 		)) {
-			modal.close();
-			if (modal.id === "postviewer") {
-				postViewer.children[1].querySelectorAll("video, audio").forEach(el => {
-					el.pause();
-					el.classList.remove("playing");
-				});
-				postViewer.children[1]._container.append(postViewer.children[1]);
-			}
+			modal.closeSelf();
 		}
 	});
 });
