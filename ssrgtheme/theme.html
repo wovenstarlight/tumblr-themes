@@ -867,9 +867,9 @@ posts.forEach(post => {
 // Add lightboxes to all applicable images
 document.querySelectorAll("img.lightboxable").forEach(obj => {
 	obj.setAttribute("tabindex", "0");
-	obj.addEventListener("click", triggerLightbox);
+	obj.addEventListener("click", openLightbox);
 	obj.addEventListener("keydown", e => {
-		if (e.key === "Enter" || e.key === " ") { triggerLightbox(e) }
+		if (e.key === "Enter" || e.key === " ") { openLightbox(e) }
 	});
 });
 
@@ -2671,26 +2671,15 @@ function formatText(content) {
 /**
  * Creates and opens a lightbox using the images from the target image's trail item.
  */
-function triggerLightbox(e) {
-	document.body.classList.add("lightboxed");
+function openLightbox(e) {
 	comingFrom = e.target;
 	
 	// Lightboxes only trigger on images in the structure .bodyitemcontent > .row > figure > img.lightboxable (this is also applicable to all images sized >= breakpoint).
 	// Lightboxes should only include other lightbox-capable images.
-	lightbox = document.createElement("div");
-	lightbox.role = "dialog";
-	lightbox.setAttribute("aria-modal", "true");
-	lightbox.id = "lightbox";
-	lightbox.setAttribute("tabindex", "-1");
-	Array.from(document.body.children).forEach(el => el.setAttribute("inert", "true"));
-	document.body.append(lightbox);
-	// Hit Esc to close lightbox
+	
+	// Navigate through lightbox
 	lightbox.addEventListener("keydown", e => {
-		if (e.key === "Escape") {
-			// Close lightbox
-			lightbox.firstChild.click();
-		}
-		else if (e.key === "ArrowRight") {
+		if (e.key === "ArrowRight") {
 			// Fake key event to advance
 			lightbox.querySelector(".center")?.dispatchEvent(new KeyboardEvent("keydown", {"key": "Enter"}));
 		}
@@ -2701,17 +2690,7 @@ function triggerLightbox(e) {
 		}
 	});
 	
-	// Close lightbox
-	let closeButton = document.createElement("div");
-	closeButton.id = "close";
-	closeButton.setAttribute("tabindex", "0");
-	lightbox.prepend(closeButton);
-	closeButton.addEventListener("click", closeLightbox);
-	closeButton.addEventListener("keydown", e => {
-		if (e.key === "Enter" || e.key === " ") { closeLightbox(e) }
-	});
-	
-	// Actual images
+	// Retrieve images
 	lightboxImages = Array.from(e.target.parentElement.parentElement.parentElement.querySelectorAll("img.lightboxable"));
 	lightboxIndex = lightboxImages.findIndex(el => el === e.target);
 	let center = e.target.cloneNode();
@@ -2719,10 +2698,13 @@ function triggerLightbox(e) {
 	center.addEventListener("click", interactLightbox);
 	center.addEventListener("keydown", interactLightboxKeyboard);
 	lightbox.append(center);
-	center.focus();
+	center.setAttribute("autofocus", "true");
 	
 	getAdjacentImage("left");
 	getAdjacentImage("right");
+
+	// Images prepared, show lightbox
+	lightbox.showModal();
 }
 
 /**
