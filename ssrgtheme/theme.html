@@ -1145,8 +1145,7 @@ document.querySelectorAll(".bodyitem:first-child .bodyitemcontent > :is(".concat
 	wrapper.classList.add("mediawrapper");
 	
 	// Put wrapper in post body
-	// .bodyitemcontent to .bodyitem to .body
-	bodyitemcontent.parentElement.parentElement.prepend(wrapper);
+	bodyitemcontent.closest(".body").prepend(wrapper);
 	
 	// Add this element
 	wrapper.prepend(el);
@@ -2691,7 +2690,7 @@ function openLightbox(e) {
 	});
 	
 	// Retrieve images
-	lightboxImages = Array.from(e.target.parentElement.parentElement.parentElement.querySelectorAll("img.lightboxable"));
+	lightboxImages = Array.from(e.target.closest(".bodyitemcontent, .mediawrapper").querySelectorAll("img.lightboxable"));
 	lightboxIndex = lightboxImages.findIndex(el => el === e.target);
 	let center = e.target.cloneNode();
 	center.classList.add("center");
