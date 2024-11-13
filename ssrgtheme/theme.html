@@ -613,6 +613,7 @@ const typeLabels = {
 	"text": "{lang:Text post}"
 };
 
+// #region Post viewer setup
 /** The modal where posts will be viewed.
  * @type {HTMLElement}
  */
@@ -672,6 +673,7 @@ postViewer._open = (targetPostContent) => {
 
 	if (!postViewer.hasAttribute("open")) postViewer.showModal();
 }
+// #endregion
 // #endregion
 
 
@@ -942,7 +944,7 @@ document.querySelector("#pagetitle button").addEventListener("click", () => { do
 // Close
 document.querySelectorAll(".modal, #lightbox").forEach(modal => {
 	// Define the modal-specific closure function
-	modal.closeSelf = () => {
+	modal._close = () => {
 		switch (modal.id) {
 			case "postviewer":
 				modal.close();
@@ -970,7 +972,7 @@ document.querySelectorAll(".modal, #lightbox").forEach(modal => {
 	}
 
 	// On button click
-	modal.querySelectorAll(".closemodal").forEach(btn => btn.addEventListener("click", () => { modal.closeSelf() }));
+	modal.querySelectorAll(".closemodal").forEach(btn => btn.addEventListener("click", () => { modal._close() }));
 
 	// On ::backdrop click
 	modal.addEventListener("mousedown", e => {
@@ -985,7 +987,7 @@ document.querySelectorAll(".modal, #lightbox").forEach(modal => {
 			e.offsetX < 0 || e.offsetX > e.target.offsetWidth ||
 			e.offsetY < 0 || e.offsetY > e.target.offsetHeight
 		)) {
-			modal.closeSelf();
+			modal._close();
 		}
 	});
 });
@@ -1098,7 +1100,6 @@ customPageLinks.forEach((el, index) => {
 // #endregion
 {/block:HasPages}{/block:IfCustomPageIcons}
 // #endregion
-// #endregion
 
 // #region Remaining page functionality (accessibility features)
 // Keyboard navigation moved to very end, after the "Visual extras" region, in order to prevent errors being thrown in Customize preview window.
@@ -1165,6 +1166,7 @@ keyboardNav({
 	},
 });
 */
+// #endregion
 
 
 
@@ -2729,7 +2731,7 @@ function interactLightbox(e) {
 		else if (e.type === "click") {
 			// No image to advance to
 			// If this is a click event, close the lightbox
-			lightbox.closeSelf();
+			lightbox._close();
 		}
 	}
 	
