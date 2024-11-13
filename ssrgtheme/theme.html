@@ -2792,24 +2792,28 @@ function interactLightbox(e) {
  * @returns {?HTMLImageElement} The previous/next image, or null if the current image is the first/last respectively.
  */
 function getAdjacentImage(side) {
-	if (side === "left" && lightboxIndex !== 0) {
-		let left = lightboxImages[lightboxIndex - 1].cloneNode();
-		left.classList.add("left");
-		lightbox.firstChild.insertAdjacentElement("afterend", left);
-		left.addEventListener("click", interactLightbox);
-		left.addEventListener("keydown", interactLightboxKeyboard);
-		return left;
-	}
-	else if (side === "right" && lightboxIndex !== lightboxImages.length - 1) {
-		let right = lightboxImages[lightboxIndex + 1].cloneNode();
-		right.classList.add("right");
-		lightbox.lastChild.insertAdjacentElement("afterend", right);
-		right.addEventListener("click", interactLightbox);
-		right.addEventListener("keydown", interactLightboxKeyboard);
-		return right;
-	}
-	else {
-		return null;
+	switch (side) {
+		case "left":
+			if (lightboxIndex === 0) break;
+			let left = lightboxImages[lightboxIndex - 1].cloneNode();
+			left.classList.add("left");
+			lightbox.firstElementChild.insertAdjacentElement("afterend", left);
+			left.addEventListener("click", interactLightbox);
+			left.addEventListener("keydown", interactLightboxKeyboard);
+			return left;
+			break;
+		
+		case "right":
+			if (lightboxIndex === lightboxImages.length - 1) break;
+			let right = lightboxImages[lightboxIndex + 1].cloneNode();
+			right.classList.add("right");
+			lightbox.lastElementChild.insertAdjacentElement("afterend", right);
+			right.addEventListener("click", interactLightbox);
+			right.addEventListener("keydown", interactLightboxKeyboard);
+			return right;
+	
+		default:
+			break;
 	}
 }
 
