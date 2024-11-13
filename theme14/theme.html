@@ -1,0 +1,3027 @@
+<!--
+	THEME 14: RHYTHMIC by starlightthemes
+
+	Credits:
+		Layout and design by SUPERSTAR JYPNATION: https://play.google.com/store/apps/details?id=com.dalcomsoft.ss.jyp
+		Phosphor Icons: https://phosphoricons.com/
+		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
+
+	Last updated 13 Nov 2024.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{block:TagPage}{lang:TagResultCount posts tagged Tag} | {/block:TagPage}{block:SearchPage}{lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults} | {/block:SearchPage}{block:DayPage}{lang:Posted on DayOfMonth Month Year} | {/block:DayPage}{block:PermalinkPage}{block:PostSummary}{PostSummary} | {/block:PostSummary}{/block:PermalinkPage}{Title}</title>
+	<meta name="description" content="{MetaDescription}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+	{block:Hidden}
+	<!-- THEME VARIABLES -->
+	<!-- Text and coloration -->
+	<meta name="text:Font size" content="16px">
+	<meta name="color:Accent" content="#481f19">
+
+	<!-- Title coloration display option -->
+	<meta name="select:Weekly league" content="" title="League unregistered">
+	<meta name="select:Weekly league" content="bronze" title="Bronze">
+	<meta name="select:Weekly league" content="silver" title="Silver">
+	<meta name="select:Weekly league" content="gold" title="Gold">
+	<meta name="select:Weekly league" content="platinum" title="Platinum">
+	<meta name="select:Weekly league" content="master" title="Master">
+
+	<!-- Image options -->
+	<meta name="image:Background" content="{HeaderImage}">
+	<meta name="select:Background image focus" content="center" title="Center">
+	<meta name="select:Background image focus" content="top" title="Top">
+	<meta name="select:Background image focus" content="bottom" title="Bottom">
+	<meta name="image:Profile banner" content="{HeaderImage}">
+	<meta name="select:Profile banner image focus" content="center" title="Center">
+	<meta name="select:Profile banner image focus" content="top" title="Top">
+	<meta name="select:Profile banner image focus" content="bottom" title="Bottom">
+
+	<!-- Top navigation options -->
+	<meta name="if:Random post link" content="1">
+	<meta name="if:Archive link" content="1">
+
+	<!-- User profile options -->
+	<meta name="text:Status message" content="Say what you want!">
+	<meta name="image:Favorite card" content="">
+	<meta name="text:Favorite card theme" content="Melt Down">
+	<meta name="text:Favorite card member" content="SUNGJIN">
+	<meta name="text:Playlist title" content="Currently listening to">
+	<meta name="text:Playlist" content="[TRACK]&NewLine;NAME: Time of Our Life&NewLine;ARTIST: DAY6&NewLine;ICON: https://upload.wikimedia.org/wikipedia/en/5/5d/The_Book_of_Us_Gravity.jpg&NewLine;LINK: https://www.youtube.com/watch?v=vnS_jn2uibs&pp=ygUVdGltZSBvZiBvdXIgbGlmZSBkYXk2&NewLine;&NewLine;[TRACK]&NewLine;NAME: Love Parade&NewLine;ARTIST: DAY6 (Even of Day)&NewLine;ICON: https://upload.wikimedia.org/wikipedia/en/5/53/Even_of_Day_-_Right_Through_Me.png">
+	<meta name="if:Show group blog members" content="0">
+	<meta name="text:Group blog members title" content="Group members">
+
+	<!-- Main content options -->
+	<meta name="if:Search bar" content="1">
+	<meta name="text:Search bar title" content="Search Blog">
+	<meta name="if:Use legacy format for post media" content="0">
+	<meta name="if:Post dates" content="1">
+	<meta name="select:Post date formatting" content="numYMDZ" title="Numbers (YYYY.MM.DD)">
+	<meta name="select:Post date formatting" content="numDMYZ" title="Numbers (DD.MM.YYYY)">
+	<meta name="select:Post date formatting" content="numMDYZ" title="Numbers (MM.DD.YYYY)">
+	<meta name="select:Post date formatting" content="textDM" title="Text (DD MMMM, YYYY)">
+	<meta name="select:Post date formatting" content="textMD" title="Text (MMMM DD, YYYY)">
+	<meta name="if:Post times" content="1">
+	<meta name="select:Post time formatting" content="24SZ" title="24 hour (with seconds)">
+	<meta name="select:Post time formatting" content="12SZ" title="12 hour (with seconds)">
+	<meta name="select:Post time formatting" content="24Z" title="24 hour (no seconds)">
+	<meta name="select:Post time formatting" content="12Z" title="12 hour (no seconds)">
+	<meta name="if:Like buttons" content="1">
+	<meta name="if:Reblog buttons" content="1">
+	<meta name="if:Day page links" content="1">
+	<meta name="if:Post tags" content="1">
+	<meta name="if:Show tags on click" content="0">
+	<meta name="text:Filtered tags" content="spoiler, spoilers">
+
+	<!-- Footer options -->
+	<meta name="image:Default custom page icon" content="">
+	<meta name="text:Custom page icons" content="LINK 1: https://64.media.tumblr.com/2e9fe957cf34cd1fa8ba293c8472ca06/92c1be194251d06c-e2/s2048x3072/1e9f63e6cc7fc1f4394aec09389880159bf20864.png&NewLine;LINK 2: https://64.media.tumblr.com/8e4dedbccb7adf157ce6a4e09aaa4530/92c1be194251d06c-a6/s128x128u_c1/09688375d285cd3b1837f3321234c4be939601cd.jpg">
+
+	<!-- Other options -->
+	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
+	{/block:Hidden}
+
+	<!-- Standardization of theme styles -->
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
+
+	<!-- Resource imports -->
+	<!-- Phosphor Icons -->
+	<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+	<!-- SSRG-esque font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+
+	<!-- Theme styles -->
+	<style>
+		:root {
+			font-size: {text:Font size};
+			--bg-img: url('{image:Background}');
+			--bg-position: {select:Background image focus};
+			--profile-banner-position: {select:Profile banner image focus};
+			--accent: {color:Accent};
+		}
+
+		hr.readmore::after { content: "{lang:More}" }
+	</style>
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme14/theme14.min.css">
+	<style>{CustomCSS}</style>
+</head>
+<body{block:PermalinkPage} class="permalink"{/block:PermalinkPage}>
+	<a href="#main" id="skip" class="button-outline">Skip to main content</a>
+
+	<!-- PAGE TITLE -->
+	<h1 class="visuallyhidden">
+		{block:AskPage}{AskLabel}{block:ShowTitle} | {/block:ShowTitle}{/block:AskPage}
+		{block:SubmitPage}{SubmitLabel}{block:ShowTitle} | {/block:ShowTitle}{/block:SubmitPage}
+		{block:TagPage}{lang:TagResultCount posts tagged Tag}{block:ShowTitle} | {/block:ShowTitle}{/block:TagPage}
+		{block:SearchPage}{lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults}{block:ShowTitle} | {/block:ShowTitle}{/block:SearchPage}
+		{block:DayPage}{lang:Posted on DayOfMonth Month Year}{/block:DayPage}
+		{block:PermalinkPage}{block:PostSummary}{PostSummary}{/block:PostSummary}{block:ShowTitle} | {/block:ShowTitle}{/block:PermalinkPage}
+		{block:ShowTitle}{Title}{/block:ShowTitle}
+	</h1>
+
+	<header id="phead">
+		<!-- USER BADGE: Name and title -->
+		<button id="userbadge">
+			<img src="{PortraitURL-128}" alt="User icon" class="avatar" />
+			<div class="text">
+				<p class="username">{Name}</p>
+				<p class="{select:Weekly league} league">{Title}</p>
+			</div>
+		</button>
+
+		<!-- USER PROFILE MODAL -->
+		<dialog id="userprofile" class="modal" aria-labelledby="userprofiletitle">
+			<header>
+				<h2 id="userprofiletitle" class="modaltitle">{Name}'s INFORMATION</h2>
+				<button class="closemodal">
+					<span class="visuallyhidden">Close</span>
+					<i class="ph ph-x" aria-hidden="true"></i>
+				</button>
+			</header>
+
+			<dl id="about" class="profilesection">
+				<div class="cards">
+					<div id="profilename" class="card">
+						<img src="{PortraitURL-128}" alt="User icon" class="avatar" />
+						<dt class="visuallyhidden">Username</dt>
+						<dd class="title">{Name}</dd>
+						<dt class="visuallyhidden">Blog title</dt>
+						<dd class="text {select:Weekly league}">{Title}</dd>
+					</div>
+					{block:IfStatusMessage}
+					<div id="profilestatus" class="card">
+						<dt class="title">Status message</dt>
+						<dd class="text">{text:Status message}</dd>
+					</div>
+					{/block:IfStatusMessage}
+					{block:IfFavoriteCardImage}
+					<div id="profilefavcard" class="card">
+						<dt class="title">Favorite card</dt>
+						<dd class="text">
+							{text:Favorite card theme}
+							{block:IfFavoriteCardMember}<br />{text:Favorite card member}{/block:IfFavoriteCardMember}
+						</dd>
+						<img src="{image:Favorite card}" alt="{block:IfProfileFavoriteCardMember}{text:Favorite card member} {/block:IfProfileFavoriteCardMember}card from theme '{text:Favorite card theme}'">
+					</div>
+					{/block:IfFavoriteCardImage}
+				</div>
+
+				{block:IfProfileBannerImage}<img id="profilebanner" src="{image:Profile banner}" alt="Banner image">{/block:IfProfileBannerImage}
+
+				{block:Description}{block:ShowDescription}
+				<!-- BLOG DESCRIPTION -->
+				<div id="desc">
+					<dt class="title">Description</dt>
+					<dd class="text">{Description}</dd>
+				</div>
+				{/block:ShowDescription}{/block:Description}
+			</dl>
+
+			{block:GroupMembers}{block:IfShowGroupBlogMembers}
+			<!-- WEEKLY TOP 5: Blog members -->
+			<section id="groupmembers" class="profilesection weeklytop5">
+				<h3>{block:IfGroupBlogMembersTitle}{text:Group blog members title}{/block:IfGroupBlogMembersTitle}{block:IfNotGroupBlogMembersTitle}{lang:Group members}{/block:IfNotGroupBlogMembersTitle}</h3>
+				<div class="contents">
+					{block:GroupMember}
+					<a href="{GroupMemberURL}">
+						<figure>
+							<img src="{GroupMemberPortraitURL-64}" alt="User icon" />
+							<figcaption>
+								<span class="name">{GroupMemberName}</span>
+								<span class="score">{GroupMemberTitle}</span>
+							</figcaption>
+						</figure>
+					</a>
+					{/block:GroupMember}
+				</div>
+			</section>
+			{/block:IfShowGroupBlogMembers}{/block:GroupMembers}
+
+			{block:IfPlaylist}
+			<!-- WEEKLY TOP 5: Playlist -->
+			<section id="playlist" class="profilesection weeklytop5">
+				<h3>{block:IfPlaylistTitle}{text:Playlist title}{/block:IfPlaylistTitle}{block:IfNotPlaylistTitle}Playlist{/block:IfNotPlaylistTitle}</h3>
+				<div class="contents">{text:Playlist}</div>
+			</section>
+			{/block:IfPlaylist}
+
+			<footer>
+				<button class="button-solid-blue closemodal">OK</button>
+			</footer>
+		</dialog>
+
+		<!-- RESOURCE COUNTERS: Navigation
+		 Links are given the dropdown content item class to maintain styling when moved into the dropdown. -->
+		<nav id="resourcenav" aria-label="Blog features" class="{block:AskEnabled}ask{/block:AskEnabled} {block:SubmissionsEnabled}submit{/block:SubmissionsEnabled} {block:IfRandomPostLink}random{/block:IfRandomPostLink} {block:IfArchiveLink}archive{/block:IfArchiveLink}">
+			{block:AskEnabled}<a class="contentitem {block:AskPage}current-page{/block:AskPage}" href="/ask" id="ask">
+				<i class="ph-thin ph-envelope" aria-hidden="true"></i>
+				{AskLabel}
+			</a>{/block:AskEnabled}
+			{block:SubmissionsEnabled}<a class="contentitem {block:SubmitPage}current-page{/block:SubmitPage}" href="/submit" id="submit">
+				<i class="ph-thin ph-tray" aria-hidden="true"></i>
+				{SubmitLabel}
+			</a>{/block:SubmissionsEnabled}
+			{block:IfRandomPostLink}<a class="contentitem" href="/random" id="random">
+				<i class="ph-thin ph-shuffle-angular" aria-hidden="true"></i>
+				Random
+			</a>{/block:IfRandomPostLink}
+			{block:IfArchiveLink}<a class="contentitem" href="/archive" id="archive">
+				<i class="ph-thin ph-calendar-check" aria-hidden="true"></i>
+				Archive
+			</a>{/block:IfArchiveLink}
+		</nav>
+
+		<!-- SETTINGS DROPDOWN: Blog info and theme credit -->
+		<details id="moreinfo">
+			<summary><span class="visuallyhidden">More information</span></summary>
+			<div class="contents">
+				<span class="contentitem">{Name} © {CopyrightYears}</span>
+				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+				<a class="contentitem" href="https://starlightthemes.tumblr.com/theme14">{lang:Install this theme}</a>
+				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+			</div>
+		</details>
+	</header>
+
+	<main id="main">
+		<header id="mainhead">
+			{block:IfSearchBar}
+			<!-- SEARCH BAR -->
+			<button id="opensearch">Search</button>
+
+			<dialog id="searchmodal" class="modal" aria-labelledby="searchtitle">
+				<header>
+					<h2 id="searchtitle" class="modaltitle">{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</h2>
+					<button class="closemodal">
+						<span class="visuallyhidden">Close</span>
+						<i class="ph ph-x" aria-hidden="true"></i>
+					</button>
+				</header>
+
+				<form action="/search" method="get" id="search">
+					<label for="q" class="visuallyhidden">{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
+					<input id="q" type="search" name="q" value="{SearchQuery}" placeholder="Enter query here" required />
+					<button type="submit" class="button-solid-blue">{lang:Search}</button>
+				</form>
+			</dialog>
+			{/block:IfSearchBar}
+
+			<!-- GRAY BADGE: Page title -->
+			<h2 id="pagetitle">
+				{block:HomePage}
+				<!-- STANDARD PAGE HEADER -->
+				<span class="label">{lang:Home}</span>
+				{/block:HomePage}
+
+				{block:AskPage}
+				<!-- SPECIAL PAGE HEADER: ASK -->
+				<span class="label">{AskLabel}</span>
+				{/block:AskPage}
+				{block:SubmitPage}
+				<!-- SPECIAL PAGE HEADER: SUBMIT -->
+				<span class="label">{SubmitLabel}</span>
+				{/block:SubmitPage}
+
+				{block:TagPage}
+				<!-- SPECIAL PAGE HEADER: TAG -->
+				<button class="label">{lang:TagResultCount posts tagged Tag 2}</button>
+				{/block:TagPage}
+
+				{block:DayPage}
+				<!-- SPECIAL PAGE HEADER: DAY -->
+				<span class="label">{lang:Posted on DayOfMonth Month Year}</span>
+				{/block:DayPage}
+
+				{block:SearchPage}
+				<!-- SPECIAL PAGE HEADER: SEARCH -->
+				<span class="label">
+					{lang:SearchResultCount results for SearchQuery 2}
+					{block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}
+				</span>
+				{/block:SearchPage}
+
+				{block:PermalinkPage}
+				<!-- SPECIAL PAGE HEADER: PERMALINK -->
+				<span class="label">
+					{lang:Permalink}
+				</span>
+				{/block:PermalinkPage}
+			</h2>
+
+			{block:TagPage}
+			<dialog id="tagordering" class="modal">
+				<header>
+					<h2 id="searchtitle" class="modaltitle">{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</h2>
+					<button class="closemodal">
+						<span class="visuallyhidden">Close</span>
+						<i class="ph ph-x" aria-hidden="true"></i>
+					</button>
+				</header>
+
+				<p class="orderlinks">
+					<a class="button-solid-gray" href="/tagged/{URLSafeTag}">Newest first</a>
+					<a class="button-solid-gray" href="/tagged/{URLSafeTag}/chrono">Oldest first</a>
+				</p>
+			</dialog>
+			{/block:TagPage}
+		</header>
+
+		<!-- SONG SCROLLER: Posts -->
+		<section id="posts">
+			<noscript class="noscriptenabled"><article class="blanknotice"><p>Javascript is required to view this blog. Please enable scripting and reload.</p></article></noscript>
+			{block:NoPosts}<article class="blanknotice"><p>{lang:This Tumblr hasnt posted anything}</p></article>{/block:NoPosts}
+			{block:NoSearchResults}<article class="blanknotice"><p>{lang:Sorry no results for SearchQuery 2}.</p></article>{/block:NoSearchResults}
+
+			<dialog class="modal" id="postviewer">
+				<header>
+					<h2 id="searchtitle" class="modaltitle">POST INFORMATION</h2>
+					<button class="closemodal">
+						<span class="visuallyhidden">Close</span>
+						<i class="ph ph-x" aria-hidden="true"></i>
+					</button>
+				</header>
+
+				<footer class="navbuttons">
+					<a
+						{block:Pagination}{block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage}{/block:Pagination}
+						{block:PermalinkPagination}{block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost}{/block:PermalinkPagination}
+						{block:DayPage}{block:DayPagination}{block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage}{/block:DayPagination}{/block:DayPage}
+						class="button-solid-blue"
+					>
+						{block:HomePage}{lang:Previous page}{/block:HomePage}
+						{block:TagPage}{lang:Previous page}{/block:TagPage}
+						{block:SearchPage}{lang:Previous page}{/block:SearchPage}
+						{block:DayPage}{lang:Previous day}{/block:DayPage}
+						{block:PermalinkPage}{lang:Previous post}{/block:PermalinkPage}
+					</a>
+					{block:IndexPage}
+					<button id="prevpost" class="button-solid-blue">
+						{lang:Previous post}
+					</button>
+					<button id="nextpost" class="button-solid-blue">
+						{lang:Next post}
+					</button>
+					{/block:IndexPage}
+					<a
+						{block:Pagination}{block:NextPage}href="{NextPage}"{/block:NextPage}{/block:Pagination}
+						{block:PermalinkPagination}{block:NextPost}href="{NextPost}"{/block:NextPost}{/block:PermalinkPagination}
+						{block:DayPage}{block:DayPagination}{block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage}{/block:DayPagination}{/block:DayPage}
+						class="button-solid-blue"
+					>
+						{block:HomePage}{lang:Next page}{/block:HomePage}
+						{block:TagPage}{lang:Next page}{/block:TagPage}
+						{block:SearchPage}{lang:Next page}{/block:SearchPage}
+						{block:DayPage}{lang:Next day}{/block:DayPage}
+						{block:PermalinkPage}{lang:Next post}{/block:PermalinkPage}
+					</a>
+				</footer>
+			</dialog>
+			
+			<dialog id="lightbox">
+				<button class="closemodal">
+					<span class="visuallyhidden">Close</span>
+					<i class="ph ph-x" aria-hidden="true"></i>
+				</button>
+			</dialog>
+
+			<!-- JUMP TO START -->
+			<a id="scrolltostart" class="disabled" href="#posts">
+				<span class="visuallyhidden">{lang:Back to top}</span>
+				<i class="ph-thin ph-caret-left" aria-hidden="true"></i><i class="ph-thin ph-caret-left" aria-hidden="true"></i>
+			</a>
+		</section>
+	</main>
+
+	<footer id="pfoot">
+		<!-- SCORE CHALLENGE & RECORDS: Pagination -->
+		<nav id="pagination" aria-label="Page navigation">
+			<p class="text">
+				<span class="title">{lang:Navigate}</span>
+				<span class="pagecount">
+					{block:HomePage}{lang:CurrentPage of TotalPages}{/block:HomePage}
+					{block:TagPage}{lang:CurrentPage of TotalPages}{/block:TagPage}
+					{block:SearchPage}{lang:CurrentPage of TotalPages}{/block:SearchPage}
+					{block:PermalinkPage}{lang:See more posts}{/block:PermalinkPage}
+					{block:DayPage}{Year}.{Month}.{DayOfMonth}{/block:DayPage}
+				</span>
+			</p>
+			<div class="pagelinks">
+				<a
+					{block:Pagination}{block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage}{/block:Pagination}
+					{block:PermalinkPagination}{block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost}{/block:PermalinkPagination}
+					{block:DayPage}{block:DayPagination}{block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage}{/block:DayPagination}{/block:DayPage}
+					id="prev" class="button-solid-blue"
+				>
+					{block:HomePage}{lang:Previous page}{/block:HomePage}
+					{block:TagPage}{lang:Previous page}{/block:TagPage}
+					{block:SearchPage}{lang:Previous page}{/block:SearchPage}
+					{block:PermalinkPage}{lang:Previous post}{/block:PermalinkPage}
+					{block:DayPage}{lang:Previous day}{/block:DayPage}
+				</a>
+				<a
+					{block:Pagination}{block:NextPage}href="{NextPage}"{/block:NextPage}{/block:Pagination}
+					{block:PermalinkPagination}{block:NextPost}href="{NextPost}"{/block:NextPost}{/block:PermalinkPagination}
+					{block:DayPage}{block:DayPagination}{block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage}{/block:DayPagination}{/block:DayPage}
+					id="next" class="button-solid-blue"
+				>
+					{block:HomePage}{lang:Next page}{/block:HomePage}
+					{block:TagPage}{lang:Next page}{/block:TagPage}
+					{block:SearchPage}{lang:Next page}{/block:SearchPage}
+					{block:PermalinkPage}{lang:Next post}{/block:PermalinkPage}
+					{block:DayPage}{lang:Next day}{/block:DayPage}
+				</a>
+			</div>
+		</nav>
+
+		{block:HasPages}
+		<!-- EQUIPPED CARDS: Custom pages -->
+		<nav id="pages" aria-label="Blog pages">
+			<span id="custompageicons" class="visuallyhidden">{text:Custom page icons}</span>
+			{block:Pages}<a href="{URL}" class="{CurrentState}">
+				<span class="visuallyhidden">{Label}</span>
+				{block:IfDefaultCustomPageIconImage}<img src="{image:Default custom page icon}" alt="" aria-hidden="true" title="{PlaintextLabel}" />{/block:IfDefaultCustomPageIconImage}{block:IfNotDefaultCustomPageIconImage}<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100" height="140" viewBox="0 0 100 140" aria-hidden="true" title="{PlaintextLabel}"><rect x="0" y="0" width="100" height="140" rx="6" fill="#000000" /><g transform="matrix(3.9 0 0 3.9 49.61 69.61)"><path fill="#f2f3f3" transform=" translate(-8.5, -8.5)" d="M 9.9 5.1 c -0.2 0.3 -0.5 1.4 -0.6 2.6 l 1.1 -0.1 c 0.7 -0.1 1.3 -0.3 1.5 -0.5 c 0.6 -0.6 0.6 -1.4 0 -2 c -0.6 -0.5 -1.4 -0.5 -2 0 z M 8.5 0 C 3.8 0 0 3.8 0 8.5 S 3.8 17 8.5 17 S 17 13.2 17 8.5 S 13.2 0 8.5 0 z m 4.4 8.2 c -0.5 0.5 -1.5 0.8 -2.5 0.9 l -1.2 0.2 c -0.1 1.3 -0.4 2.9 -1 3.6 c -1.1 1.1 -3 1.2 -4.1 0 c -1.1 -1.1 -1.1 -3 0 -4.1 c 0.5 -0.5 1.5 -0.8 2.6 -0.9 v 1.5 c -1.2 0.3 -1.5 0.5 -1.6 0.5 c -0.6 0.6 -0.6 1.4 0 2 c 0.5 0.5 1.4 0.5 2 0 c 0.2 -0.2 0.5 -1.1 0.6 -2.5 l 0.1 -0.9 c 0 -1.3 0.2 -3.6 1 -4.4 c 1.1 -1.1 3 -1.2 4.1 0 c 1.2 1.1 1.2 2.9 0 4.1 z" /></g></svg>{/block:IfNotDefaultCustomPageIconImage}
+			</a>{/block:Pages}
+		</nav>
+		{/block:HasPages}
+
+		<!-- START: Home -->
+		<nav id="footright" aria-label="Home page">
+			<p class="text">
+				<svg fill="currentColor" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M256,0C114.615,0,0,114.615,0,256S114.615,512,256,512,512,397.385,512,256,397.385,0,256,0Zm42.535,401.327c-23.477,4.4-103.885,2.934-103.885-85.1V228.185H164.717V190.822a85.4,85.4,0,0,0,13.123-6.657,104.632,104.632,0,0,0,16.81-12.595c13.98-12.9,27.585-32.973,27.585-62.237h45.592v74.832h58.586v44.02H267.827v88.038c0,24.451,9.966,41.284,51.637,27.586l14.485,42.058S322.012,396.924,298.535,401.327Z"/></svg>
+				<span class="label">{lang:Powered by Tumblr}</span>
+			</p>
+			<a id="home" href="/" class="button-solid-blue">{lang:Home}</a>
+		</nav>
+	</footer>
+
+<!-- The actual functionality of the theme. -->
+<script>
+// Mark noscript as not in use
+document.querySelector("noscript.noscriptenabled").classList.remove("noscriptenabled");
+
+// #region CONSTANTS AND GLOBAL VARIABLES
+/**
+ * Information of the blog this theme is being used on. For use when this blog makes/adds to posts.
+ */
+const currentUser = {
+	/**
+	 * Blog username
+	 * @type {string}
+	 */
+	name: {JSName},
+	/**
+	 * Blog title
+	 * @type {string}
+	 */
+	title: {JSTitle},
+	/**
+	 * Blog description. May contain HTML
+	 * @type {string}
+	 */
+	description: {JSDescription},
+	/**
+	 * URL to the blog avatar, size 64x64
+	 * @type {string}
+	 */
+	avatar: {JSPortraitURL-64},
+	/**
+	 * URL to the blog (in the format https://username.tumblr.com)
+	 * @type {string}
+	 */
+	url: {JSBlogURL},
+	/**
+	 * Whether the blog is active. Always true
+	 * @type {boolean}
+	 */
+	active: true,
+	/**
+	 * Blog theme object. Contains information about colors/blog layout
+	 */
+	theme: {
+		/**
+		 * Shape of the blog avatar. Either "square" or "circle"
+		 * @type {string}
+		 */
+		avatar_shape: {JSAvatarShape},
+		background_color: {JSBackgroundColor},
+		title_color: {JSTitleColor},
+		link_color: {JSAccentColor},
+		title_font: {JSTitleFont},
+	},
+}
+
+/**
+ * Default HTML tags to wrap specific text content block types in.
+ * @type {Object.<string, string>}
+ */
+const textSubtypes = {
+	"heading1": "h3",
+	"heading2": "h4",
+	"quirky": "p",
+	"quote": "p",
+	"indented": "blockquote",
+	"chat": "p",
+	"ordered-list-item": "li",
+	"unordered-list-item": "li",
+}
+
+/**
+ * URL to the 64x64 avatar for anonymous, deactivated, or broken users.
+ * @type {string}
+ */
+const anonAvatar = "https://assets.tumblr.com/images/anonymous_avatar_64.gif";
+
+/**
+ * For use in trail item body construction. The base element (paragraph, blockquote etc.) as selected from textSubtypes.
+ * @type {HTMLElement}
+ */
+let bit;
+/**
+ * For use in trail item body construction. The parent element for list items. Null when no list is being constructed.
+ * @type {?string}
+ */
+let list;
+
+/**
+ * For use in audio posts. Stores the request ID for the animation frames.
+ * @type {?long}
+ */
+let rAF = null;
+/**
+ * For use in audio posts. Stores the currently playing audio element, if any.
+ * @type {?HTMLElement}
+ */
+let currentlyPlaying = null;
+
+/** A wrapper for creating SVG icons for posts with no included image.
+ * @type {?HTMLElement}
+ */
+let iconHolder = null;
+
+{block:IfFilteredTags}
+/**
+ * For use in tag filtering. The user-provided list of tags to filter for.
+ * All tags converted to lowercase for ease of comparison.
+ * @type {string[]}
+ */
+let filteredTags = "{text:Filtered tags}".split(",").map(el => el.trim().toLowerCase());
+{/block:IfFilteredTags}
+
+/**
+ * The standard page font size, for calculating padding.
+ * @type {number}
+ */
+const em = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+/** Labels for different types of posts.
+ * @type {Object}
+ */
+const typeLabels = {
+	"answer": "{lang:Answer}",
+	"video": "{lang:Video post}",
+	"photo": "{lang:Photo post}",
+	"audio": "{lang:Audio post}",
+	"quote": "{lang:Quote post}",
+	"chat": "{lang:Chat post}",
+	"link": "{lang:Link post}",
+	"text": "{lang:Text post}"
+};
+
+// #region Post viewer setup
+/** The modal where posts will be viewed.
+ * @type {HTMLElement}
+ */
+let postViewer = document.getElementById("postviewer");
+
+/** Opens a given post in the post viewer, enabling "previous/next post" buttons as necessary.
+ * @param {HTMLElement} targetPostContent The post content to display in the viewer.
+ */
+postViewer._open = (targetPostContent) => {
+	if (postViewer.childElementCount > 2) {
+		// Stop any media from playing
+		postViewer.children[1].querySelectorAll("video, audio").forEach(el => {
+			el.pause();
+			el.classList.remove("playing");
+		});
+		// Put currently-viewed post back in its container
+		postViewer.children[1]._container.append(postViewer.children[1]);
+	}
+
+	postViewer.insertBefore(targetPostContent, postViewer.lastElementChild);
+	{block:IndexPage}
+	let prevbtn = document.getElementById("prevpost"),
+		nextbtn = document.getElementById("nextpost");
+	targetPostContent._previous == null ? prevpost.setAttribute("disabled", "true") : prevpost.removeAttribute("disabled");
+	targetPostContent._next == null ? nextpost.setAttribute("disabled", "true") : nextpost.removeAttribute("disabled");
+	{/block:IndexPage}
+
+	
+	if (targetPostContent._filteredTags && !targetPostContent.classList.contains("filtered")) {
+		// Hide post content
+		targetPostContent.classList.add("filtered");
+		
+		// Assemble and insert filter message
+		let msg = document.createElement("div"),
+			warning = document.createElement("p"),
+			tagList = document.createElement("p"),
+			btn = document.createElement("button");
+		msg.append(warning, tagList, btn);
+		targetPostContent.insertBefore(msg, targetPostContent.firstElementChild);
+		
+		// Add classes
+		msg.classList.add("filter");
+		tagList.classList.add("tags");
+		btn.classList.add("button-solid-blue");
+		
+		// Add text to all elements
+		warning.innerText = "This post contains filtered tags.";
+		tagList.innerHTML = "<span class='tag'>#".concat(targetPostContent._filteredTags.map(el => el.name).join("</span>, <span class='tag'>#")).concat("</span>");
+		btn.innerText = "View post";
+		
+		// Set up viewing function
+		btn.addEventListener("click", () => {
+			msg.remove();
+			targetPostContent.classList.remove("filtered");
+		});
+	}
+
+	if (!postViewer.hasAttribute("open")) postViewer.showModal();
+}
+// #endregion
+
+// #region Lightbox setup
+/**
+ * The lightbox dialog.
+ * @type {HTMLElement}
+ */
+let lightbox = document.getElementById("lightbox");
+
+/**
+ * All images from the trail item currently being represented in the lightbox. Null if no lightbox is active.
+ * @type {?HTMLElement[]}
+ */
+lightbox._images = null;
+
+/**
+ * The index in lightbox._images of the image currently being viewed in the lightbox. Null if no lightbox is active.
+ * @type {?number}
+ */
+lightbox._index = null;
+
+lightbox._addImage = (img, position, autofocus = false) => {
+	if (img == null) return;
+	let adjacents = {
+		"left": "center",
+		"center": "right",
+		"right": "NA"
+	};
+	img.setAttribute("class", position);
+	if (autofocus) img.setAttribute("autofocus", "true");
+	lightbox.insertBefore(img, lightbox.querySelector(".".concat(adjacents[position])));
+}
+
+lightbox._removeImage = (img) => {
+	if (img == null) return;
+	img.removeAttribute("class");
+	img.remove();
+}
+
+/** Creates and opens a lightbox using the images from the target image's trail item.
+ * @param [HTMLImageElement] targetImage The image selected to be opened in the lightbox
+ */
+lightbox._open = (targetImage) => {
+	// Clear anything previously in the lightbox
+	lightbox.querySelectorAll("img").forEach(el => el.remove());
+
+	// Fetch the lightbox-ready images in this body item and check which to display
+	// To avoid cloning images more than once, have each block of content hold its own image set once cloned
+	let contentBlock = targetImage.closest(".bodyitemcontent, .mediawrapper");
+	let imagegroup = Array.from(contentBlock.querySelectorAll("img.lightboxable"));
+	if (!contentBlock._imageGroup) {
+		contentBlock._imageGroup = imagegroup.map(el => el.cloneNode());
+		contentBlock._imageGroup.forEach(el => el.classList.remove("lightboxable"));
+	}
+	lightbox._images = contentBlock._imageGroup;
+	lightbox._index = imagegroup.findIndex(el => el === targetImage);
+
+	// Prep images
+	lightbox._addImage(lightbox._images[lightbox._index - 1], "left");
+	lightbox._addImage(lightbox._images[lightbox._index], "center", true);
+	lightbox._addImage(lightbox._images[lightbox._index + 1], "right");
+
+	// Lightbox ready, show content
+	lightbox.showModal();
+}
+
+/** Moves through lightbox images in a given direction.
+ * @param {"left"|"right"}	direction	The direction to move in.
+ * @param {HTMLElement}		focusTarget	The element on which to focus after moving.
+ * @param {?"arrow"}		eventType	"arrow" if the move was triggered by an arrow key press; null otherwise.
+ */
+lightbox._moveTo = (direction, focusTarget, eventType = null) => {
+	switch (direction) {
+		case "left":
+			if (lightbox._index === 0) break;
+			// Previous image exists
+			lightbox._index -= 1;
+			lightbox._removeImage(lightbox.querySelector(".right"));
+			lightbox.querySelector(".center")?.classList.replace("center", "right");
+			lightbox.querySelector(".left")?.classList.replace("left", "center");
+			lightbox._addImage(lightbox._images[lightbox._index - 1], "left");
+			lightbox.querySelector(".".concat(focusTarget))?.focus();
+			break;
+		
+		case "right":
+			if (lightbox._index + 1 === lightbox._images.length) {
+				if (eventType !== "arrow") lightbox._close();
+				break;
+			}
+			// Next image exists
+			lightbox._index += 1;
+			lightbox._removeImage(lightbox.querySelector(".left"));
+			lightbox.querySelector(".center")?.classList.replace("center", "left");
+			lightbox.querySelector(".right")?.classList.replace("right", "center");
+			lightbox._addImage(lightbox._images[lightbox._index + 1], "right");
+			lightbox.querySelector(".".concat(focusTarget))?.focus();
+			break;
+		
+		default:
+			break;
+	}
+}
+
+// Set up click events for image navigation
+lightbox.addEventListener("click", e => {
+	switch (e.target.className) {
+		case "left":
+			lightbox._moveTo("left", "left");
+			break;
+		
+		case "center":
+			lightbox._moveTo("right", "center");
+			break;
+		
+		case "right":
+			lightbox._moveTo("right", "right");
+			break;
+		
+		// Don't add event handler for the close button; that's already taken care of
+		
+		default:
+			break;
+	}
+});
+// Set up keyboard events for image navigation
+lightbox.addEventListener("keydown", e => {
+	let currFocus = document.activeElement.className;
+	if (e.key === "ArrowLeft") {
+		lightbox._moveTo("left", currFocus, "arrow");
+		return;
+	}
+	else if (e.key === "ArrowRight") {
+		lightbox._moveTo("right", currFocus, "arrow");
+		return;
+	}
+	if (e.key !== "Enter" && e.key !== " ") return;
+	e.preventDefault();
+	switch (e.target.className) {
+		case "left":
+			lightbox._moveTo("left", currFocus);
+			break;
+		
+		case "center":
+			lightbox._moveTo("right", currFocus);
+			break;
+		
+		case "right":
+			lightbox._moveTo("right", currFocus);
+			break;
+		
+		// Don't add event handler for the close button; that's already taken care of
+		
+		default:
+			break;
+	}
+});
+// #endregion
+// #endregion
+
+
+
+// #region POST CREATION
+// #region Post array declaration
+let posts = [
+	{block:Posts}
+	{
+		npf: {NPF},
+
+		{block:PermalinkPage}
+		// For ask/submit/general blog pages
+		{block:Title} title: {JSTitle}, {/block:Title}
+		body: {JSBody},
+		{/block:PermalinkPage}
+
+		{block:Date}
+		// Post-specific items
+
+		id: {JSPostID},
+		permalink: {JSPermalink},
+		
+		date: {
+			day: {JSDayOfWeek},
+			textDM: "{DayOfMonth} {Month}, {Year}",
+			textMD: "{Month} {DayOfMonth}, {Year}",
+			numDMYZ: "{DayOfMonthWithZero}.{MonthNumberWithZero}.{Year}",
+			numMDYZ: "{MonthNumberWithZero}.{DayOfMonthWithZero}.{Year}",
+			numYMDZ: "{Year}.{MonthNumberWithZero}.{DayOfMonthWithZero}",
+			time12Z: "{12HourWithZero}:{Minutes} {CapitalAmPm}",
+			time12SZ: "{12HourWithZero}:{Minutes}:{Seconds} {CapitalAmPm}",
+			time24Z: "{24HourWithZero}:{Minutes}",
+			time24SZ: "{24HourWithZero}:{Minutes}:{Seconds}",
+			url: "/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}",
+		},
+
+		{block:PinnedPostLabel} pinned: {JSPinnedPostLabel}, {/block:PinnedPostLabel}
+
+		{block:HasTags} tags: [
+			{block:Tags} {
+				name: {JSTag},
+				url: {JSTagURL},
+			}, {/block:Tags}
+		], {/block:HasTags}
+
+		{block:RebloggedFrom}
+		via: {
+			name: {JSReblogParentName},
+			url: {JSReblogParentURL},
+			avatar: {JSReblogParentPortraitURL-40},
+			label: "{lang:Reblogged from ReblogParentName}",
+			labellink: `{lang:Reblogged from ReblogParentName 2}`,
+		},
+		source: {
+			name: {JSReblogRootName},
+			url: {JSReblogRootURL},
+			avatar: {JSReblogRootPortraitURL-40},
+			label: "{lang:Originally from ReblogRootName}",
+			labellink: `{lang:Originally from ReblogRootName 2}`,
+		},
+		{/block:RebloggedFrom}
+
+		{block:NoteCount}
+		noteCount: {JSNoteCount},
+		noteCountWithLabel: {JSNoteCountWithLabel},
+		postNotes: {JSPostNotesURL},
+		{/block:NoteCount}
+		
+		like_html: {JSLikeButton size="30"},
+		reblog_url: {JSReblogURL},
+
+		{block:Submission} submission: {
+			name: {JSSubmitter},
+			url: {JSSubmitterURL},
+			avatar: {JSSubmitterPortraitURL-64},
+			label: "{lang:Submitted By}",
+		}, {/block:Submission}
+
+		{block:ContentSource} contentSource: {
+			name: {JSSourceTitle},
+			url: {JSSourceURL},
+			{block:SourceLogo} logo: {
+				url: {JSBlackLogoURL},
+				width: {JSLogoWidth},
+				height: {JSLogoHeight},
+			}, {/block:SourceLogo}
+		}, {/block:ContentSource}
+
+		{/block:Date}
+	},
+	{/block:Posts}
+];
+// #endregion
+
+/** The wrapper element in which all posts will be inserted */
+let postContainer = document.getElementById("posts");
+
+// #region The main post creation loop
+posts.forEach(post => {
+	/** The HTML article corresponding to the post currently being created */
+	let article = document.createElement("article");
+	article.classList.add("post");
+	postContainer.insertBefore(article, postContainer.lastElementChild);
+
+	{block:IfFilteredTags}
+	let filters;
+	if (post.tags) {
+		// User has provided tags to filter. Mark filtered posts
+		filters = post.tags.filter(tag => filteredTags.includes(tag.name.toLowerCase()));
+	}
+	{/block:IfFilteredTags}
+
+	// Clickable element
+	createPostCard(
+		article,
+		post.npf,
+		post.npf.trail?.at(-1)?.blog?.name ?? post.npf.trail?.at(-1)?.broken_blog_name ?? currentUser.name,	// last commenter's name
+		post.noteCount
+		{block:IfFilteredTags}
+		, filters?.length > 0	// override image retrieval, just in case
+		{/block:IfFilteredTags}
+	);
+
+	let postContent = document.createElement("section");
+	postContent.classList.add("postcontent");
+	postContent._container = article;
+	if (article.previousElementSibling.classList.contains("post")) {
+		postContent._previous = article.previousElementSibling.lastElementChild;
+		postContent._previous._next = postContent;
+	}
+	article.append(postContent);
+
+	article.firstElementChild.addEventListener("click", () => { postViewer._open(postContent) });
+
+	// Backup method, using the old "body" T-var
+	if ((post.npf.content.length === 0 && post.npf.trail.length === 0) {block:AskPage}|| true{/block:AskPage}{block:SubmitPage}|| true{/block:SubmitPage}) {
+		createPage(postContent, post);
+		return;
+	}
+	// Regardless of NPF/.body creation, mark if currently on a custom blog page
+	if (document.querySelector("#pages .current-page") != null)
+		document.body.classList.add("page");
+
+	// Content available via NPF
+	// Create, but put guards in for header/footer just in case pages are parsed as NPF too
+	
+	if (post.id !== undefined)
+		createPostHeader(postContent, post);
+
+	/** The body of the post, to be populated with trail items */
+	let postBody = document.createElement("section");
+	postBody.classList.add("body");
+	postContent.append(postBody);
+	// Create each reblog of the post
+	if (!post.npf.trail.length) { postContent.classList.add("original") }
+	else { post.npf.trail.forEach(trailItem => createTrailItem(
+		postBody,
+		trailItem,
+		null
+		{block:PermalinkPage}, true{/block:PermalinkPage}
+	)) }
+	// End with the current blog's addition, if any
+	if (post.npf.content.length) {
+		createTrailItem(
+			postBody,
+			post.npf,
+			post.id
+			{block:PermalinkPage}, true{/block:PermalinkPage}
+		);
+	}
+	// In the above, expand any read more links if on the permalink page
+
+	if (post.id !== undefined)
+		createPostFooter(postContent, post);
+
+	// Add post notes on permalink pages
+	if (document.body.classList.contains("permalink") && post.postNotes)
+		postContent.append(createNotes(post.postNotes));
+
+	{block:IfFilteredTags}
+	// Add filtered tags to post content for post viewer to check
+	if (filters?.length) postContent._filteredTags = filters;
+	{/block:IfFilteredTags}
+});
+{block:AskPage}postContainer.querySelector(".post button").click();{/block:AskPage}
+{block:SubmitPage}postContainer.querySelector(".post button").click();{/block:SubmitPage}
+{block:PermalinkPage}postContainer.querySelector(".post button").click();{/block:PermalinkPage}
+// #endregion
+
+// #region Remaining post functionality
+// Add lightboxes to all applicable images
+document.querySelectorAll("img.lightboxable").forEach(obj => {
+	obj.setAttribute("tabindex", "0");
+	obj.addEventListener("click", e => { lightbox._open(e.currentTarget) });
+	obj.addEventListener("keydown", e => {
+		if (e.key === "Enter" || e.key === " ") { lightbox._open(e.currentTarget) }
+	});
+});
+// #endregion
+
+// #region Remaining page functionality (base features)
+// #region Top navigation placement calculator
+/** The top navigation bar visible by default. */
+const topNav = document.getElementById("resourcenav");
+// Check that anything actually needs calculating
+if (topNav.childElementCount > 0) {
+	/** The minimal width of the user badge on the left displaying the user's name and title. */
+	const userBadgeMinimumWidth = Array.from(document.getElementById("userbadge").children)
+			.map(el => el.offsetWidth).reduce((a, b) => a + b, 0)	// Width of content
+			+ 0.6 * em												// Spacing between icon and text
+			+ (1.3 * em * 2);										// Inline padding of userbadge itself
+	/** The links in the top navigation bar. Will always contain at least the "Home" link. */
+	const topNavChildren = Array.from(topNav.children);
+	/** The minimal width of the top navigation bar. */
+	const topMinimumWidth = topNavChildren.map(el => el.offsetWidth).reduce((a, b) => a + b, 0)
+			+ (0.6 * (1.2 * em) * (topNavChildren.length - 1))		// Spacing between links
+			+ (2.5 * em);											// Inline padding of topnav itself, plus a little extra for breathing room
+	/** The dropdown navigation's toggle, for assisting in the top nav's placement. */
+	const dropdownNavToggle = document.getElementById("moreinfo").firstElementChild;
+	/** The dropdown navigation's contents, for containing the collapsed top nav's children. */
+	const dropdownNavContents = document.getElementById("moreinfo").lastElementChild;
+	/** The dropdown navigation's first item, for reference when moving links. */
+	const dropdownNavTopItem = dropdownNavContents.firstElementChild;
+
+	/** Moves the links in the top nav (home, etc.) to the dropdown if the page size is too small to fit all the links on one line. */
+	function moveTopNav() {
+		let topNavAvailableSpace = dropdownNavToggle.offsetLeft - userBadgeMinimumWidth;
+
+		if (topNavAvailableSpace < topMinimumWidth && topNav.childElementCount !== 0) {
+			topNavChildren.forEach(el => {
+				dropdownNavContents.insertBefore(el, dropdownNavTopItem);
+			})
+			topNav.classList.add("empty");
+		} else if (topNavAvailableSpace > topMinimumWidth && topNav.childElementCount === 0) {
+			topNav.classList.remove("empty");
+			topNavChildren.forEach(el => {
+				topNav.append(el);
+			})
+		}
+	}
+
+	// Reassess top nav's ideal placement on window resize.
+	window.addEventListener("resize", () => { moveTopNav() });
+	// Check top nav's ideal placement upon initial page load.
+	moveTopNav();
+}
+
+document.addEventListener("click", e => {
+	const moreinfo = document.getElementById("moreinfo");
+	if (moreinfo.getAttribute("open") !== null && e.target.closest("#moreinfo") == null) {
+		moreinfo.removeAttribute("open");
+	}
+})
+// #endregion
+
+// #region Modals open/close functionality
+// Open: User profile
+document.getElementById("userbadge").addEventListener("click", () => { document.getElementById("userprofile").showModal() });
+document.getElementById("opensearch").addEventListener("click", () => { document.getElementById("searchmodal").showModal() });
+{block:TagPage}
+document.querySelector("#pagetitle button").addEventListener("click", () => { document.getElementById("tagordering").showModal() });
+{/block:TagPage}
+// Close
+document.querySelectorAll(".modal, #lightbox").forEach(modal => {
+	// Define the modal-specific closure function
+	modal._close = () => {
+		switch (modal.id) {
+			case "postviewer":
+				modal.close();
+				// Pause any audio playing within the modal
+				postViewer.children[1].querySelectorAll("video, audio").forEach(el => {
+					el.pause();
+					el.classList.remove("playing");
+				});
+				postViewer.children[1]._container.append(postViewer.children[1]);
+				break;
+			
+			case "lightbox":
+				modal.close();
+				// Remove the images in the lightbox
+				modal.querySelectorAll("img").forEach(el => el.remove());
+				// Reset the internal lightbox counters
+				lightbox._images = null;
+				lightbox._index = null;
+				break;
+			
+			default:
+				modal.close();
+				break;
+		}
+	}
+
+	// On button click
+	modal.querySelectorAll(".closemodal").forEach(btn => btn.addEventListener("click", () => { modal._close() }));
+
+	// On ::backdrop click
+	modal.addEventListener("mousedown", e => {
+		e.currentTarget._offsetX = e.offsetX;
+		e.currentTarget._offsetY = e.offsetY;
+	});
+	modal.addEventListener("click", e => {
+		if ((
+			e.currentTarget._offsetX < 0 || e.currentTarget._offsetX > e.target.offsetWidth ||
+			e.currentTarget._offsetY < 0 || e.currentTarget._offsetY > e.target.offsetHeight
+		) && (
+			e.offsetX < 0 || e.offsetX > e.target.offsetWidth ||
+			e.offsetY < 0 || e.offsetY > e.target.offsetHeight
+		)) {
+			modal._close();
+		}
+	});
+});
+{block:IndexPage}
+// Post viewer's previous/next functionality
+document.getElementById("prevpost").addEventListener("click", e => {
+	postViewer._open(e.currentTarget.parentElement.previousElementSibling._previous);
+});
+document.getElementById("nextpost").addEventListener("click", e => {
+	postViewer._open(e.currentTarget.parentElement.previousElementSibling._next);
+});
+{/block:IndexPage}
+// #endregion
+
+// #region Search form
+function enableSearch(e) {
+	if (e.currentTarget.value !== "") {
+		e.currentTarget.nextElementSibling.removeAttribute("disabled");
+	}
+	else {
+		e.currentTarget.nextElementSibling.setAttribute("disabled", "true");
+	}
+}
+document.getElementById("q").addEventListener("input", enableSearch);
+enableSearch({ currentTarget: document.getElementById("q") });
+// #endregion
+
+// #region Playlist
+let playlist = document.querySelector("#playlist .contents");
+if (playlist !== null) {
+	let playlistTracks = playlist.innerHTML.split("[TRACK]")
+		.filter(el => el !== "")
+		.map(el => {
+			let arr = el.trim().split(String.fromCharCode(10)),
+				obj = {};
+			arr.forEach(line => {
+				parts = line.trim().split(":");
+				obj[parts[0].trim()] = parts.slice(1).join(":").trim();
+			});
+			return obj;
+		})
+		.map(el => {
+			// Create and assemble HTML element
+			let track = document.createElement("a"),
+				trackInner = document.createElement("figure"),
+				trackImage = document.createElement(el.ICON != null ? "img" : "svg"),
+				trackText = document.createElement("figcaption"),
+				trackName = document.createElement("span"),
+				trackArtist = document.createElement("span");
+			track.append(trackInner);
+			trackInner.append(trackImage, trackText);
+			trackImage.alt = "";	// Mark as decorative
+			trackName.classList.add("name");
+			trackArtist.classList.add("score");
+			// Start adding information
+			if (el.LINK != null) track.href = el.LINK;
+			if (el.ICON != null) { trackImage.src = el.ICON }
+			else {
+				trackImage.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+				trackImage.setAttribute("version", "1.1");
+				trackImage.setAttribute("width", "108");
+				trackImage.setAttribute("height", "108");
+				trackImage.setAttribute("viewbox", "0 0 108 108");
+				trackImage.innerHTML = '<rect width="24" height="4" x="42" y="52" fill="currentColor" />';
+			}
+			if (el.NAME != null) {
+				trackName.innerHTML = el.NAME;
+				trackText.append(trackName);
+			}
+			if (el.ARTIST != null) {
+				trackArtist.innerHTML = el.ARTIST;
+				trackText.append(trackArtist);
+			}
+			return el.NAME == null && el.ARTIST == null ? null : track;
+		});
+	playlist.textContent = "";
+	playlistTracks.filter(el => el !== null).forEach(el => playlist.append(el));
+}
+// #endregion
+
+{block:TagPage}
+// #region Tag page current selection
+document.querySelectorAll("#tagordering .orderlinks a")[window.location.href.split("/").slice(5)[0] === "chrono" ? 1 : 0].classList.replace("button-solid-gray", "button-solid-blue");
+// #endregion
+{/block:TagPage}
+
+{block:IfCustomPageIcons}{block:HasPages}
+// #region Custom page icon assignment
+const customPageLinks = document.querySelectorAll("#pages a");
+const customPageIcons = document.getElementById("custompageicons").innerHTML
+	.split(/LINK \d+:/i, customPageLinks.length + 1)	// get as many icons as pages (+1 because [0] will be empty string)
+	.slice(1)	// omit the empty string at the start
+	.map(el => el.trim());	// trim whitespace so they're fit for SRCing
+customPageLinks.forEach((el, index) => {
+	if (customPageIcons[index] != null && customPageIcons[index] !== "") {
+		// Icon provided, use it for display
+
+		let img = document.createElement("img");
+		img.src = unescapeHTML(customPageIcons[index]);
+		img.alt = "";	// mark as decorative
+		img.setAttribute("aria-hidden", "true");	// hide img
+		img.setAttribute("title", el.lastElementChild.getAttribute("title"));
+		img.addEventListener("load", () => {
+			el.setAttribute("style", `--max-card-width: ${img.offsetWidth / em}em;`);
+		});
+		el.lastElementChild.remove();	// get rid of the SVG…
+		el.append(img);	// …and replace it with the IMG
+	}
+});
+// #endregion
+{/block:HasPages}{/block:IfCustomPageIcons}
+// #endregion
+
+// #region Remaining page functionality (accessibility features)
+// Keyboard navigation moved to very end, after the "Visual extras" region, in order to prevent errors being thrown in Customize preview window.
+
+// #region Scroll to start
+(scrollToStart = document.getElementById("scrolltostart")).addEventListener("click", () => {
+	postContainer.scrollTo({
+		left: 0,
+		behavior: "smooth",
+	});
+});
+postContainer.addEventListener("scroll", () => {
+	if (postContainer.scrollLeft <= 200) {
+		scrollToStart.classList.add("disabled");
+	}
+	else {
+		scrollToStart.classList.remove("disabled");
+	}
+})
+// #endregion
+// #endregion
+
+// #region Visual extras
+{block:IfUseLegacyFormatForPostMedia}
+// Format media in posts in legacy style
+document.querySelectorAll(".bodyitem:first-child .bodyitemcontent > :is(".concat([
+	".row",
+	"video",
+	".audiowrapper",
+	".npf-link-block",
+	"iframe",
+	".heading1",
+].join(":first-child, "), ":first-child)")).forEach(el => {
+	// Move el outside its bodyitem into a "mediawrapper" div at the top of the post body
+	let bodyitemcontent = el.parentElement,
+		wrapper = document.createElement("div");
+	wrapper.classList.add("mediawrapper");
+	
+	// Put wrapper in post body
+	bodyitemcontent.closest(".body").prepend(wrapper);
+	
+	// Add this element
+	wrapper.prepend(el);
+	
+	// If this is a photoset element, check for additional rows in the photoset and add them
+	if (el.classList.contains("row")) {
+		while (bodyitemcontent.childElementCount !== 0 && bodyitemcontent.children[0].classList.contains("row")) {
+			wrapper.append(bodyitemcontent.children[0]);
+		}
+	}
+	// Remove the parent body item if it's empty
+	if (bodyitemcontent.childElementCount === 0) {
+		bodyitemcontent.parentElement.remove();
+	}
+});
+{/block:IfUseLegacyFormatForPostMedia}
+// #endregion
+
+// Set up keyboard navigation
+// Given the unusual design of this theme, instead of using my usual script, the section below is a rewritten version
+{
+	keyboardNavOptions = {
+		postSelector: ".post",
+		nextPageSelector: "#next",
+		prevPageSelector: "#prev",
+		searchSelector: "#q",
+		reblogSelector: ".customreblog",
+	}
+	let next = document.querySelector(keyboardNavOptions.nextPageSelector),
+		prev = document.querySelector(keyboardNavOptions.prevPageSelector),
+		search = document.querySelector(keyboardNavOptions.searchSelector),
+		sections = document.querySelectorAll(keyboardNavOptions.postSelector),
+		currPost;
+
+	document.addEventListener('keydown', (e) => {
+		// Cancel if the user is typing in a search bar or other textbox
+		if (document.activeElement.tagName === 'INPUT') { return }
+
+		let key = e.key.toUpperCase();
+
+		// post navigation
+		if (key === 'J') {
+			switch (postViewer.getAttribute("open") == null) {
+				case true:
+					if (document.activeElement.classList.contains("post")) currPost = document.activeElement;
+					else if (document.activeElement.classList.contains("postcard")) currPost = document.activeElement.parentElement;
+					if (currPost == null) {
+						currPost = sections[0];
+						currPost.scrollIntoView();
+						currPost.firstElementChild.focus();
+					}
+					else if (currPost.nextElementSibling != null) {
+						currPost.nextElementSibling.scrollIntoView();
+						currPost = currPost.nextElementSibling;
+						currPost.firstElementChild.focus();
+					}
+					break;
+				
+				case false:
+					document.getElementById("nextpost").click();
+					break;
+			
+				default:
+					break;
+			}
+		}
+		else if (key === 'K') {
+			switch (postViewer.getAttribute("open") == null) {
+				case true:
+					if (document.activeElement.classList.contains("post")) currPost = document.activeElement;
+					else if (document.activeElement.classList.contains("postcard")) currPost = document.activeElement.parentElement;
+					if (currPost == null) {
+						currPost = sections[0];
+						currPost.scrollIntoView();
+						currPost.firstElementChild.focus();
+					}
+					else if (currPost.previousElementSibling != null) {
+						currPost.previousElementSibling.scrollIntoView();
+						currPost = currPost.previousElementSibling;
+						currPost.firstElementChild.focus();
+					}
+					break;
+				
+				case false:
+					document.getElementById("prevpost").click();
+					break;
+			
+				default:
+					break;
+			}
+		}
+
+		// scroll to start
+		else if (key === '.') {
+			scrollToStart.click();
+			currPost = sections[0];
+			currPost.firstElementChild.focus();
+		}
+
+		// reblog
+		else if (keyboardNavOptions.reblogSelector != null && e.shiftKey && key === 'R')
+			(postViewer.getAttribute("open") != null ? postViewer : currPost).querySelector(keyboardNavOptions.reblogSelector).click();
+
+		// search
+		else if (search != null && key === '?') {
+			document.getElementById("opensearch").click()
+			search.focus();
+			e.preventDefault(); // Don't type the ? in the input field
+		}
+
+		// pagination
+		else if (next != null && document.querySelector("dialog[open]") == null && e.ctrlKey && e.key === 'ArrowRight')
+			next.click();
+		else if (prev != null && document.querySelector("dialog[open]") == null && e.ctrlKey && e.key === 'ArrowLeft')
+			prev.click();
+	})
+}
+// #endregion
+
+
+
+// #region CONSTRUCTOR FUNCTIONS
+
+// #region FOR CLICKABLE POST CARDS
+/**
+ * Creates a card containing some information about the post.
+ * @param {HTMLElement} wrapper The HTML object for this post, to which the card will be added.
+ * @param {Object} postData This post's data, containing relevant information to populate the card with.
+ * @param {string} via The person this post was reblogged from on reblogged posts, or the source on original posts.
+ * @param {?string} noteCount This post's note count, not comma-separated.
+ * @param {?boolean} forceSVG True if usage of the type-based SVG should be forced instead of checking the post body for images; false otherwise.
+ */
+function createPostCard(wrapper, postData, via, noteCount = null, forceSVG = false) {
+	let postCard = document.createElement("button");
+	postCard.classList.add("postcard");
+	wrapper.append(postCard);
+
+	let top = document.createElement("div"),
+		bottom = document.createElement("div");
+	top.classList.add("top");
+	bottom.classList.add("bottom");
+	postCard.append(top, bottom);
+
+	let postType = getPostType(postData);
+
+	let heading = document.createElement("h3");
+	heading.classList.add("posttitle");
+	heading.innerHTML = postData.trail?.map(trailItem => trailItem.content?.find(el => el.type === "text")?.text).concat([ postData.content?.find(el => el.type === "text")?.text ]).find(el => el != null) ?? typeLabels[postType];
+	let subtitle = document.createElement("p");
+	subtitle.classList.add("subtitle");
+	subtitle.innerText = via;
+	top.append(getPostIcon(postData, postType, forceSVG), heading, subtitle);
+
+	bottom.innerHTML = `<i class="ph-thin ph-pulse"></i> ${noteCount ? truncateNumber(noteCount) : "0"}`;
+}
+// #endregion
+
+// #region FOR POST HEADER/FOOTER
+/**
+ * Creates a post header object and appends it to the given post object.
+ * The individual elements in the header can be rearranged as per theme preference.
+ * @param {HTMLElement} wrapper The HTML object for this post, to which the header will be added.
+ * @param {Object} postData This post's data, containing relevant information to populate the header with.
+ */
+function createPostHeader(wrapper, postData) {
+	let header = document.createElement("header");
+	wrapper.append(header);
+
+	// Populate post header
+	{block:IfPostDates}
+	makeDate(header, postData, {
+		{block:IfPostDates}
+		dateFormat: "{select:Post date formatting}",
+		{block:IfPostTimes}
+		includeTime: true,
+		timeFormat: "{select:Post time formatting}",
+		{/block:IfPostTimes}
+		{/block:IfPostDates}
+	});
+	{/block:IfPostDates}
+
+	makePin(header, postData, '<i class="ph-fill ph-push-pin"></i>');
+
+	makeContentSource(header, postData);
+
+	makeSubmitter(header, postData);
+}
+
+/**
+ * Creates a post footer object and appends it to the given post object.
+ * The individual elements in the footer can be rearranged as per theme preference.
+ * @param {HTMLElement} wrapper The HTML object for this post, to which the footer will be added.
+ * @param {Object} postData This post's data, containing relevant information to populate the footer with.
+ */
+function createPostFooter(wrapper, postData) {
+	let footer = document.createElement("footer");
+	wrapper.append(footer);
+	
+	// Populate post footer
+	// Tags
+	{block:IfPostTags}makeTags(footer, postData);{/block:IfPostTags}
+
+	// Note count (move to start of tags paragraph)
+	let tagsContainer = footer.firstElementChild;
+	if (postData.noteCount) {
+		if (tagsContainer == null) {
+			tagsContainer = document.createElement("p");
+			tagsContainer.classList.add("tags");
+			footer.append(tagsContainer);
+		}
+		makeNoteCount(tagsContainer, postData);
+		tagsContainer.prepend(tagsContainer.lastElementChild);
+	}
+
+	// Round links; via, source, like, reblog, day page
+	let rounds = document.createElement("p");
+	rounds.classList.add("rounds");
+	makeViaSource(rounds, postData, true);
+
+	if ({block:IfLikeButtons}true{/block:IfLikeButtons}{block:IfNotLikeButtons}false{/block:IfNotLikeButtons} || {block:IfReblogButtons}true{/block:IfReblogButtons}{block:IfNotReblogButtons}false{/block:IfNotReblogButtons} || {block:IfDayPageLinks}true{/block:IfDayPageLinks}{block:IfNotDayPageLinks}false{/block:IfNotDayPageLinks}) {
+		{block:IfLikeButtons}makeLike(rounds, postData, {
+			like: '<i class="ph-thin ph-heart"></i>',
+			unlike: '<i class="ph-fill ph-heart"></i>'
+		});{/block:IfLikeButtons}
+		{block:IfReblogButtons}makeReblog(rounds, postData, '<i class="ph-thin ph-repeat"></i>');{/block:IfReblogButtons}
+		{block:IfDayPageLinks}makeDayLink(rounds, postData, '<i class="ph-thin ph-clock"></i>');{/block:IfDayPageLinks}
+	}
+
+	{block:IfPostTags}{block:IfShowTagsOnClick}
+	// Show tags on click
+	makeTagToggle(rounds, tagsContainer, '<i class="ph-thin ph-hash"></i>');
+	{/block:IfShowTagsOnClick}{/block:IfPostTags}
+
+	if (rounds.childElementCount) footer.append(rounds);
+}
+
+// #region Helpers
+/**
+ * Creates a like button for a given post.
+ * @param {HTMLElement} wrapper The child element of the post to which the like button will be added. Usually the footer.
+ * @param {Object} postData This post's data, containing relevant information to create the like button with.
+ * @param {Object} [icons=null] HTML strings representing the icons to use for the like and unlike buttons, or null if a text label should be used.
+ * @param {string} icons.like The icon to use as the "like" button (typically an unfilled heart).
+ * @param {string} icons.unlike The icon to use as the "unlike" button (typically a filled heart).
+ */
+function makeLike(wrapper, postData, icons = null) {
+	// Make element
+	let likeButton = document.createElement("a");
+	likeButton.href = "#";
+	likeButton.classList.add("customlike");
+	likeButton.innerHTML = postData.like_html;
+	wrapper.append(likeButton);
+	
+	// Icon or text, as needed
+	let labels = {
+		like: `{block:English}Like{/block:English}{block:German}Liken{/block:German}{block:French}J'aime{/block:French}{block:Italian}Mi piace{/block:Italian}{block:Japanese}スキ{/block:Japanese}{block:Turkish}Beğen{/block:Turkish}{block:Spanish}Me gusta{/block:Spanish}{block:Russian}Нравится{/block:Russian}{block:Polish}Lubię{/block:Polish}{block:PortuguesePT}Gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir{/block:PortugueseBR}{block:Dutch}Vind ik leuk{/block:Dutch}{block:Korean}좋아요{/block:Korean}{block:ChineseSimplified}喜欢{/block:ChineseSimplified}{block:ChineseTraditional}喜歡{/block:ChineseTraditional}{block:ChineseHK}喜歡{/block:ChineseHK}{block:Indonesian}Suka{/block:Indonesian}{block:Hindi}पसंद करें{/block:Hindi}`,
+		unlike: `{block:English}Unlike{/block:English}{block:German}Entliken{/block:German}{block:French}Je n'aime plus{/block:French}{block:Italian}Non mi piace{/block:Italian}{block:Japanese}スキ解除{/block:Japanese}{block:Turkish}Beğenme{/block:Turkish}{block:Spanish}Ya no me gusta{/block:Spanish}{block:Russian}Не нравится{/block:Russian}{block:Polish}Nie lubię{/block:Polish}{block:PortuguesePT}Deixar de gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir (desfazer){/block:PortugueseBR}{block:Dutch}Vind ik niet meer leuk{/block:Dutch}{block:Korean}좋아요 취소{/block:Korean}{block:ChineseSimplified}取消喜欢{/block:ChineseSimplified}{block:ChineseTraditional}收回喜歡{/block:ChineseTraditional}{block:ChineseHK}收回喜歡{/block:ChineseHK}{block:Indonesian}Tidak Suka{/block:Indonesian}{block:Hindi}पसंद हटाएँ{/block:Hindi}`
+	};
+	if (icons !== null) {
+		let likons = Object.assign({
+			like: `<i class="ph ph-heart"></i>`,
+			unlike: `<i class="ph-fill ph-heart"></i>`,
+		}, icons);
+		likeButton.innerHTML += `<span class="to-like">${likons.like}</span>`
+		likeButton.innerHTML += `<span class="to-unlike">${likons.unlike}</span>`
+		likeButton.lastElementChild.previousElementSibling.title = labels.like;
+		likeButton.lastElementChild.title = labels.unlike;
+	}
+	else {
+		// No icon provided; use text labels
+		// Like text
+		likeButton.innerHTML += `<span class="to-like">${labels.like}</span>`;
+		// Unlike text
+		likeButton.innerHTML += `<span class="to-unlike">${labels.unlike}</span>`;
+	}
+}
+
+/**
+ * Creates a reblog button for a given post.
+ * @param {HTMLElement} wrapper The child element of the post to which the reblog button will be added. Usually the footer.
+ * @param {Object} postData This post's data, containing relevant information to create the reblog button with.
+ * @param {?string} icon An HTML string representing the icon for the reblog button, or null if a text label should be used.
+ */
+function makeReblog(wrapper, postData, icon = null) {
+	// Make element
+	let reblogButton = document.createElement("a");
+	reblogButton.href = postData.reblog_url;
+	reblogButton.classList.add("customreblog");
+	wrapper.append(reblogButton);
+
+	// Icon or text, as needed
+	let label = "{block:English}Reblog{/block:English}{block:German}Rebloggen{/block:German}{block:French}Rebloguer{/block:French}{block:Italian}Reblogga{/block:Italian}{block:Japanese}リブログ{/block:Japanese}{block:Turkish}Yeniden Blogla{/block:Turkish}{block:Spanish}Rebloguear{/block:Spanish}{block:Russian}Реблог{/block:Russian}{block:Polish}Rebloguj{/block:Polish}{block:PortuguesePT}Reblogar{/block:PortuguesePT}{block:PortugueseBR}Reblogar{/block:PortugueseBR}{block:Dutch}Rebloggen{/block:Dutch}{block:Korean}리블로그{/block:Korean}{block:ChineseSimplified}转发{/block:ChineseSimplified}{block:ChineseTraditional}轉格{/block:ChineseTraditional}{block:ChineseHK}轉載{/block:ChineseHK}{block:Indonesian}Reblog{/block:Indonesian}{block:Hindi}रीब्लॉग करें{/block:Hindi}";
+	if (icon !== null) {
+		reblogButton.innerHTML = icon;
+		reblogButton.title = label;
+	}
+	else {
+		reblogButton.innerText = label;
+	}
+}
+
+/**
+ * Creates a link to the corresponding day page for a given post.
+ * @param {HTMLElement} wrapper The child element of the post to which the day page link will be added. Usually the footer.
+ * @param {Object} postData This post's data, containing relevant information to create the day page link with.
+ * @param {?string} icon An HTML string representing the icon for the day page link, or null if a text label should be used.
+ */
+function makeDayLink(wrapper, postData, icon = null) {
+	// Make element
+	let dayLink = document.createElement("a");
+	dayLink.href = postData.date.url;
+	dayLink.classList.add("customday");
+	wrapper.append(dayLink);
+
+	// Icon or text, as needed
+	let label = "{lang:Show all posts made on this day}";
+	if (icon !== null) {
+		dayLink.innerHTML = icon;
+		dayLink.title = label;
+	}
+	else {
+		dayLink.innerText = label;
+	}
+}
+
+/**
+ * Creates a button that toggles the visibility of the post's tags.
+ * @param {HTMLElement} wrapper The child element of the post to which the tag toggle will be added. Usually the footer.
+ * @param {HTMLElement} tagContainer The element containing the tags, on which to toggle the hide/show class.
+ */
+ function makeTagToggle(wrapper, tagContainer, icon = null) {
+	// Make element
+	let tagToggle = document.createElement("button");
+	tagToggle.classList.add("tagtoggle", "hidden");
+	wrapper.append(tagToggle);
+
+	// Functionality
+	tagToggle.addEventListener("click", e => {
+		e.currentTarget.classList.toggle("hidden");
+		tagContainer.classList.toggle("hidden");
+	});
+
+	// Icon or text, as needed
+	let label = "{lang:Tags}";
+	if (icon !== null) {
+		tagToggle.innerHTML = icon;
+		tagToggle.title = label;
+	}
+	else {
+		tagToggle.innerText = label;
+	}
+}
+
+/**
+ * Creates a label indicating that a given post is a pinned post.
+ * @param {HTMLElement} wrapper The child element of the post to which the pinned marker will be added. Usually the header.
+ * @param {Object} postData This post's data, containing relevant information to create the pinned marker with.
+ * @param {?string} icon An HTML string representing the icon for the pinned marker, or null if a text label should be used.
+ */
+function makePin(wrapper, postData, icon = null) {
+	if (!postData.pinned) { return; }
+	// Make element
+	let pin = document.createElement("span");
+	pin.id = "pinnedpost";
+	wrapper.append(pin);
+	// Icon or text, as needed
+	if (icon !== null) {
+		pin.innerHTML = icon;
+		pin.title = postData.pinned;
+	}
+	else {
+		pin.innerText = postData.pinned;
+	}
+}
+
+/**
+ * Creates links to the blogs that a given post was reblogged from (via) and originally made by (source).
+ * @param {HTMLElement} wrapper The child element of the post to which the via/source links will be added. Usually the footer.
+ * @param {Object} postData This post's data, containing relevant information to create the via/source links with.
+ * @param {boolean} [avatars=false] True if the links should consist of the users' avatars, or false if text labels should be used.
+ */
+function makeViaSource(wrapper, postData, avatars = false) {
+	if (!postData.via) { return; }
+	// Via and source links
+	let via = document.createElement("a"),
+		source = document.createElement("a");
+
+	// Via URL always exists; add
+	via.href = postData.via.url;
+	via.title = postData.via.label;
+	wrapper.append(via);
+
+	// Check if source blog/post still exists
+	let sourceTrail = postData.npf.trail[0];
+	if (sourceTrail) {
+		if (sourceTrail.blog) {
+			source.href = sourceTrail.blog.url.concat(sourceTrail.blog.url.endsWith("/") ? `post/${sourceTrail.post.id}` : `/${sourceTrail.post.id}`);
+			source.title = postData.source.label;
+			wrapper.append(source);
+		}
+		else if (postData.source.url !== "") {
+			source.href = postData.source.url;
+			source.title = postData.source.label;
+			wrapper.append(source);
+		}
+	}
+	else {
+		// Some really old posts of types chat/quote didn't have associated posters, so they just get attributed to the current blog even though that's not accurate.
+		// In such cases, npf.trail is empty, so use the old RebloggedFrom block's source object to populate.
+		source.href = postData.source.url;
+		source.title = postData.source.label;
+		wrapper.append(source);
+	}
+
+	// Avatars or text, as needed
+	if (avatars) {
+		via.innerHTML = `<img class="avatar" src="${postData.via.avatar}" />`;
+		source.innerHTML = `<img class="avatar" />`;
+		source.firstElementChild.addEventListener("error", e => { e.currentTarget.src = anonAvatar }, { once: true });
+		if (sourceTrail) {
+			source.firstElementChild.src = sourceTrail.blog?.avatar?.find(el => el.height === 64)?.url ?? `https://api.tumblr.com/v2/blog/${sourceTrail.blog?.name ?? ""}/avatar/64`;
+		}
+		else {
+			source.firstElementChild.src = postData.source.avatar;
+		}
+	}
+	else {
+		via.innerText = "{lang:Via}";
+		source.innerText = "{lang:Source}";
+	}
+}
+
+/**
+ * Creates a label for the number of notes on a given post.
+ * @param {HTMLElement} wrapper The child element of the post to which the note count will be added. Usually the footer.
+ * @param {Object} postData This post's data, containing relevant information to create the note count with.
+ */
+function makeNoteCount(wrapper, postData) {
+	if (!postData.noteCount) { return; }
+	let notes = document.createElement("a");
+	notes.href = postData.permalink.concat("#notes");
+	notes.classList.add("notecount");
+	notes.innerText = postData.noteCountWithLabel;
+	wrapper.append(notes);
+}
+
+/**
+ * Creates links to the tags a given post was tagged with.
+ * @param {HTMLElement} wrapper The child element of the post to which the tags will be added. Usually the footer.
+ * @param {Object} postData This post's data, containing relevant information to create the tag links with.
+ * @param {Object} [tagOptions={}] Options for how to display the tags.
+ * @param {boolean} [tagOptions.span=false] True if the tags should be contained in a <span> element. False if the container should be a <p> element.
+ * @param {boolean} [tagOptions.commas=false] True if the tags should be separated by commas, false otherwise.
+ * @param {boolean} [tagOptions.hashtags=true] True if the tags should be prefixed by hashtags, false otherwise.
+ */
+function makeTags(wrapper, postData, tagOptions = {}) {
+	if (!postData.tags) { return; }
+	let options = Object.assign({
+		span: false,
+		commas: false,
+		hashtags: true,
+	}, tagOptions);
+	// Make element
+	let tags = document.createElement(options.span ? "span" : "p");
+	tags.classList.add("tags" {block:IfShowTagsOnClick}, "hidden"{/block:IfShowTagsOnClick} );
+	// Populate with each tag
+	let tagList = postData.tags.map(tag => `<a href="${tag.url}">`.concat(options.hashtags ? "#" : "",`${tag.name}</a>`));
+	tags.innerHTML = tagList.join(options.commas ? ", " : "");
+	wrapper.append(tags);
+}
+
+/**
+ * Creates a date label showing when a given post was posted/reblogged.
+ * @param {HTMLElement} wrapper The child element of the post to which the date label will be added. Usually the header.
+ * @param {Object} postData This post's data, containing relevant information to create the date label with.
+ * @param {Object} [dateOptions={}] Options for the formatting of the date.
+ * @param {boolean} [dateOptions.includeDay=false] True if the weekday should be included in the date label, false otherwise.
+ * @param {string} [dateOptions.dateFormat="numYMDZ"] The format of the date, month, and year portion of the label. Either "text" or "num" (numerical) for the month name, one of "DMY"/"MDY"/"YDM"/"YMD" depending on the desired (D)ate/(M)onth/(Y)ear ordering, followed by an optional "Z" if dates and months should be zero-padded.
+ * @param {boolean} [dateOptions.includeTime=false] True if the time of reblogging/posting should be included in the date label, false otherwise.
+ * @param {string} [dateOptions.timeFormat="24SZ"] The format of the time portion of the label. Either "12" or "24" for 12-hour (AM/PM) or 24-hour format, followed by an optional "S" if seconds should be included and "Z" if hours should be zero-padded.
+ * @param {string} [dateOptions.separator=" "] For when includeTime is set to true. Is used in the format `[DATE]${separator}[TIME]`
+ */
+function makeDate(wrapper, postData, dateOptions = {}) {
+	let options = Object.assign({
+		includeDay: false,
+		dateFormat: "numYMDZ",
+		includeTime: false,
+		timeFormat: "24SZ",
+		separator: " ",
+	}, dateOptions),
+		date = document.createElement("a");
+	// Make element
+	date.href = postData.permalink;
+	date.classList.add("date");
+	wrapper.append(date);
+	// Add day, as needed
+	if (options.includeDay) {
+		date.innerText = postData.date.day.concat(", ");
+	};
+	// Add date
+	date.innerText += postData.date[options.dateFormat];
+	if (options.dateFormat.startsWith("num")) {
+		date.title = postData.date[options.dateFormat.replace("num", "text").replace(/(Y|Z)/g, "")];
+	}
+	// Add time, as needed
+	if (options.includeTime) {
+		date.innerText += options.separator.concat(postData.date[`time${options.timeFormat}`]);
+	}
+}
+
+/**
+ * Creates a label indicating a given post is a submission.
+ * @param {HTMLElement} wrapper The child element of the post to which the submission label will be added. Usually the header.
+ * @param {Object} postData This post's data, containing relevant information to create the submission label with.
+ * @param {boolean} [label=true] True if a text label should be included giving the submitter's name, potentially with a link to their blog
+ * @param {boolean} [avatar=false] True if the submitter's avatar should be included.
+ */
+function makeSubmitter(wrapper, postData, label = true, avatar = false) {
+	if (!(subData = postData.submission)) { return; }
+	let sublabel = document.createElement("span");
+	sublabel.classList.add("sublabel");
+	wrapper.append(sublabel);
+	// Include avatar?
+	if (avatar) { sublabel.innerHTML = `<img src="${subData.avatar}" />` }
+	// Submitter name, with link to blog if provided
+	// (only if labels are requested!)
+	if (label) {
+		if (subData.url.length) {
+			sublabel.innerHTML += subData.label.replace(subData.name, `<a href="${subData.url}">${subData.name}</a>`);
+		}
+		else {
+			sublabel.innerHTML += subData.label.replace(subData.name, `<a>${subData.name}</a>`);
+		}
+	}
+	else {
+		sublabel.title = subData.label;
+	}
+}
+
+/**
+ * Creates a label indicating the source of a given post's content.
+ * @param {HTMLElement} wrapper The child element of the post to which the content source label will be added. Usually the header.
+ * @param {Object} postData This post's data, containing relevant information to create the content source with.
+ * @param {boolean} [label=true] True if a "Source:" prefix should be included before the link to the source, false otherwise
+ * @param {boolean} [logo=false] True if any provided logos should be displayed on the link instead of the source's text name, false otherwise
+ */
+function makeContentSource(wrapper, postData, label = true, logo = false) {
+	if (!(sourceData = postData.contentSource)) { return; }
+	let source = document.createElement("span");
+	source.classList.add("source");
+	wrapper.append(source);
+	// Include label?
+	if (label) { source.innerText = "{lang:Source}: " }
+	// Display as...
+	if (logo && sourceData.logo) {
+		// Image, no text
+		source.innerHTML += `<a href="${sourceData.url}"><img src="${sourceData.logo.url}" width="${sourceData.logo.width}" height="${sourceData.logo.height}" alt="${sourceData.name}" /></a>`;
+	}
+	else {
+		// Text, no image
+		source.innerHTML += `<a href="${sourceData.url}">${sourceData.name}</a>`;
+	}
+}
+
+/**
+ * Maps an NPF post object to the corresponding legacy post type. Evaluates only original trail items, in the following order:
+ * Answer > Video > Photo > Audio > Quote > Chat > Link > Text
+ * @param {Object} npf A post's NPF object.
+ * @param {?Object[]} npf.trail The trail items, if this post was reblogged. When non-empty, the first of these trail items has its "content" property evaluated to determine the post type.
+ * @param {Object[]} npf.content The current blog's contribution to this post. For original posts, this property is evaluated to determine the post type.
+ * @param {?Object[]} [npf.layout] Checked on original posts to determine if this is an answer post. On reblogged posts, the first trail item may contain a similar property.
+ */
+function getPostType(npf) {
+	// takes post npf object and checks first trail item to determine post type
+	let trailItem = npf.trail[0] ?? npf;
+
+	if (trailItem.layout?.some(el => el.type === "ask")) { return "answer" }
+	else if (trailItem.content.some(el => el.type === "video")) { return "video" }
+	else if (trailItem.content.some(el => el.type === "image")) { return "photo" }
+	else if (trailItem.content.some(el => el.type === "audio")) { return "audio" }
+	else if (trailItem.content.some(el => el.type === "audio" && el.subtype === "quote")) { return "quote" }
+	else if (trailItem.content.filter(el => el.type === "chat").length > 1) { return "chat" }
+	else if (trailItem.content.some(el => el.type === "link")) { return "link" }
+	else { return "text" }
+}
+
+/**
+ * Returns an icon fitting the given post's type. Uses any images featured in the post content, if available.
+ * @param {Object} npf A post's NPF object.
+ * @param {?Object[]} npf.trail The trail items, if this post was reblogged. Images are extracted from the first trail item, if available.
+ * @param {Object[]} npf.content The current blog's contribution to this post. Images are extracted from this on original posts.
+ * @param {?boolean} forceSVG True if usage of the type-based SVG should be forced instead of checking the post body for images; false otherwise.
+ * @return {HTMLElement} An <img> element if the post contained a usable image, or an <svg> element depicting the post type otherwise.
+ */
+function getPostIcon(npf, postType = null, forceSVG = false) {
+	// takes post npf object and checks first trail item
+	let trailItem = npf.trail[0] ?? npf;
+	// check the type to see what icon/type of image to retrieve
+	let type = postType ?? getPostType(npf);
+
+	let block, icon;
+	if (!forceSVG) {
+		if ((block = trailItem.content.find(el => el.type === "video")) != null && block.poster?.length) {
+			icon = document.createElement("img");
+			icon.src = block.poster[0].url;
+			icon.alt = "";	// mark as decorative
+			return icon;
+		}
+		else if ((block = trailItem.content.find(el => el.type === "image")) != null) {
+			icon = document.createElement("img");
+			icon.src = block.media[0].url;
+			icon.alt = "";	// mark as decorative
+			return icon;
+		}
+		else if ((block = trailItem.content.find(el => el.type === "audio")) != null && block.poster?.length) {
+			icon = document.createElement("img");
+			icon.src = block.poster[0].url;
+			icon.alt = "";	// mark as decorative
+			return icon;
+		}
+		else if ((block = trailItem.content.find(el => el.type === "link")) != null && block.poster?.length) {
+			icon = document.createElement("img");
+			icon.src = block.poster[0].url;
+			icon.alt = "";	// mark as decorative
+			return icon;
+		}
+	}
+
+	// Didn't return in any of the above, so default to basic icons
+	if (!iconHolder) iconHolder = document.createElement("div");
+	switch (postType) {
+		case "answer":
+			if (!iconHolder._answer) {
+				iconHolder.innerHTML = '<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="currentColor"><path d="M10 0C4.5 0 0 4.5 0 10s4.5 10 10 10 10-4.5 10-10S15.5 0 10 0zM8.7 13.7h2.6v2.5H8.7v-2.5zM14 8.6c-.2.6-.7 1.1-1.2 1.5-.2.2-.5.3-.7.5l-.6.6c-.2.2-.3.5-.3.8v.6H8.9v-.7c0-.5.1-.9.3-1.2.1-.3.3-.6.5-.8l.6-.6c.3-.1.5-.3.7-.5l.5-.5c.1-.2.2-.4.2-.7 0-.5-.1-.9-.4-1.1-.2-.2-.6-.4-1-.4-.3 0-.6.1-.8.2-.3 0-.5.2-.6.4-.2.2-.3.4-.3.7-.1.2-.1.5-.1.8H6c0-.6.1-1.1.3-1.6.2-.5.5-.9.8-1.3.4-.4.8-.7 1.3-.9.5-.2 1.1-.3 1.6-.3.8 0 1.4.1 2 .3.5.2.9.5 1.3.8.3.3.6.7.7 1 .1.4.2.7.2 1 0 .6-.1 1.1-.2 1.4z"></path></svg>';
+				iconHolder._answer = iconHolder.firstElementChild;
+			} else {
+				iconHolder.append(iconHolder._answer.cloneNode(true));
+			}
+			break;
+
+		case "video":
+			if (!iconHolder._video) {
+				iconHolder.innerHTML = '<svg viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="currentColor"><path d="M15.7 7.8c-.2-.1-.5 0-.6.1l-2.9 2.2c-.1.1-.1.1-.2.1V8H0v3h2v3.2c0 .4.3.8.8.8h8.4c.5 0 .8-.4.8-.8V12c0 .1.1.2.2.2l2.9 2.2c.2.2.4.2.6.1.2-.1.3-.3.3-.5V8.4c0-.2-.1-.5-.3-.6zM2.8 6.9c.3 0 .8.1 1.1.1h5.5c.3 0 .8-.1 1-.1 1.6-.3 2.8-1.7 2.8-3.4 0-1.9-1.6-3.5-3.5-3.5-1.2 0-2.4.6-3 1.7h-.1C5.9.6 4.8 0 3.6 0 1.6 0 0 1.6 0 3.5c0 1.7 1.2 3 2.8 3.4zM9 4.2c1 0 1.8-.8 1.8-1.8v-.3c.4.3.6.8.6 1.4 0 1-.8 1.8-1.8 1.8-.9 0-1.6-.6-1.8-1.5.3.3.7.4 1.2.4zm-6.2.1c1 0 1.8-.8 1.8-1.8v-.3c.4.2.6.7.6 1.3 0 1-.8 1.8-1.8 1.8-.9 0-1.6-.6-1.8-1.5.3.3.7.5 1.2.5z"></path></svg>';
+				iconHolder._video = iconHolder.firstElementChild;
+			} else {
+				iconHolder.append(iconHolder._video.cloneNode(true));
+			}
+			break;
+
+		case "photo":
+			if (!iconHolder._photo) {
+				iconHolder.innerHTML = '<svg viewBox="0 0 17 15" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="currentColor"><path d="M14.6 1h-2.7l-.6-1h-6l-.6 1H2.4C1.1 1 0 2 0 3.3v9.3C0 13.9 1.1 15 2.4 15h12.2c1.3 0 2.4-1.1 2.4-2.4V3.3C17 2 15.9 1 14.6 1zM8.3 13.1c-2.9 0-5.2-2.3-5.2-5.1s2.3-5.1 5.2-5.1c2.9 0 5.2 2.3 5.2 5.1s-2.3 5.1-5.2 5.1zm5.9-8.3c-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1s1.1.5 1.1 1.1c0 .6-.5 1.1-1.1 1.1zm-10 3.1c0 1.2.5 2.2 1.3 3 0-.2 0-.4-.1-.6 0-2.2 1.8-4 4.1-4 1.1 0 2 .4 2.8 1.1-.3-2-2-3.4-4-3.4-2.2-.1-4.1 1.7-4.1 3.9z"></path></svg>';
+				iconHolder._photo = iconHolder.firstElementChild;
+			} else {
+				iconHolder.append(iconHolder._photo.cloneNode(true));
+			}
+			break;
+
+		case "audio":
+			if (!iconHolder._audio) {
+				iconHolder.innerHTML = '<svg viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="currentColor"><path d="M17.7 7.3c-.4-4.4-4-7.3-8.3-7.3-4.3 0-7.9 2.9-8.3 7.4C.5 7.4 0 8 0 8.6v5c0 .8.6 1.4 1.3 1.4H4c.2.4.8 1 1.2 1 .6 0 .8-1 .8-1.6V7.8c0-.5-.2-1.6-.8-1.6-.4 0-1 .8-1.2 1.1H2.9c.4-3.5 3.2-5.6 6.5-5.6s6.2 2.1 6.5 5.6H15c0-.3-.7-1.1-1.1-1.1-.6 0-.9 1-.9 1.6v6.6c0 .5.3 1.6.9 1.6.4 0 1.1-.6 1.2-1h2.6c.7 0 1.3-.6 1.3-1.3v-5c0-.8-.6-1.3-1.3-1.4zM3 8.5v1l-2 1.3V8.5h2zm15 .9l-2 1.3V8.5h2v.9zm-6.4.3l-1.6.5V6.4c0-.1-.1-.2-.2-.2s-.2 0-.2.1L7.2 12v.2c.1.1.1.1.2.1L9 12v3.8c0 .1-.2.2-.1.2h.3c.1 0 .2 0 .2-.1l2.4-5.9v-.2c-.1-.1-.2-.1-.2-.1z"></path></svg>';
+				iconHolder._audio = iconHolder.firstElementChild;
+			} else {
+				iconHolder.append(iconHolder._audio.cloneNode(true));
+			}
+			break;
+
+		case "quote":
+			if (!iconHolder._quote) {
+				iconHolder.innerHTML = '<svg viewBox="0 0 17 13" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="currentColor"><path d="M3.5 5.5C4 3.7 5.8 2.4 7.2 1.3L5.9 0C3 1.8 0 5 0 8.5 0 11 1.3 13 4 13c2 0 3.7-1.5 3.7-3.6C7.7 7 6 5.5 3.5 5.5zm9.3 0c.4-1.8 2.2-3.1 3.7-4.2L15.2 0c-2.8 1.8-5.9 5-5.9 8.5 0 2.4 1.3 4.5 4 4.5 2 0 3.7-1.5 3.7-3.6 0-2.4-1.7-3.9-4.2-3.9z"></path></svg>';
+				iconHolder._quote = iconHolder.firstElementChild;
+			} else {
+				iconHolder.append(iconHolder._quote.cloneNode(true));
+			}
+			break;
+
+		case "chat":
+			if (!iconHolder._chat) {
+				iconHolder.innerHTML = '<svg viewBox="0 0 18.7 17" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="currentColor"><path d="M16 6.1V2.6C16 .8 15 0 13.1 0H2.9C1 0 0 1.1 0 3.3v10.4C0 15.9 1 17 2.9 17h10.2c1.9 0 2.9-.8 2.9-2.6v-2.9l2.7-2.9c0-.1-2.7-2.5-2.7-2.5zm-4.5-.7c0-.5.3-.8.7-.8s.8.3.8.8v1.7l-.3 2.5c0 .3-.2.4-.4.4s-.4-.1-.4-.4l-.3-2.5V5.4zm-3.8 6.4c0 .4-.1.8-.7.8-.5 0-.7-.4-.7-.8V9.1C6.3 8.4 6 8 5.4 8c-.5 0-1 .4-1 1.2v2.6c0 .4-.1.8-.7.8s-.7-.4-.7-.8V5.4c0-.5.3-.8.7-.8.4 0 .7.3.7.8v2.1c.3-.4.7-.8 1.5-.8s1.7.5 1.7 2c.1.1.1 3.1.1 3.1zm2.5 0c0 .4-.1.8-.7.8-.5 0-.7-.4-.7-.8V7.5c0-.4.1-.8.7-.8.5 0 .7.4.7.8v4.3zm-.7-5.6c-.4 0-.7-.4-.7-.8s.3-.8.7-.8c.4 0 .7.4.7.8s-.3.8-.7.8zm2.8 6.3c-.4 0-.8-.4-.8-.9s.3-.9.8-.9.8.4.8.9-.4.9-.8.9z"></path></svg>';
+				iconHolder._chat = iconHolder.firstElementChild;
+			} else {
+				iconHolder.append(iconHolder._chat.cloneNode(true));
+			}
+			break;
+
+		case "link":
+			if (!iconHolder._link) {
+				iconHolder.innerHTML = '<svg viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="currentColor"><path d="M9.9 5.1c-.2.3-.5 1.4-.6 2.6l1.1-.1c.7-.1 1.3-.3 1.5-.5.6-.6.6-1.4 0-2-.6-.5-1.4-.5-2 0zM8.5 0C3.8 0 0 3.8 0 8.5S3.8 17 8.5 17 17 13.2 17 8.5 13.2 0 8.5 0zm4.4 8.2c-.5.5-1.5.8-2.5.9l-1.2.2c-.1 1.3-.4 2.9-1 3.6-1.1 1.1-3 1.2-4.1 0-1.1-1.1-1.1-3 0-4.1.5-.5 1.5-.8 2.6-.9v1.5c-1.2.3-1.5.5-1.6.5-.6.6-.6 1.4 0 2 .5.5 1.4.5 2 0 .2-.2.5-1.1.6-2.5l.1-.9c0-1.3.2-3.6 1-4.4 1.1-1.1 3-1.2 4.1 0 1.2 1.1 1.2 2.9 0 4.1z"></path></svg>';
+				iconHolder._link = iconHolder.firstElementChild;
+			} else {
+				iconHolder.append(iconHolder._link.cloneNode(true));
+			}
+			break;
+
+		default:
+			if (!iconHolder._text) {
+				iconHolder.innerHTML = '<svg viewBox="0 0 20.8 13" xmlns="http://www.w3.org/2000/svg" version="1.1" fill="currentColor"><path d="M.1 13h2.8l.9-3h4.7l.8 3h2.9L7.7 0h-3L.1 13zm6-10.1l2 5.1H4.2l1.9-5.1zM20 10V6c0-1.1-.2-1.9-1-2.3-.7-.5-1.7-.7-2.7-.7-1.6 0-2.7.4-3.4 1.2-.4.5-.6 1.2-.7 2h2.4c.1-.4.2-.6.4-.8.2-.3.6-.4 1.2-.4.5 0 .9.1 1.2.2.3.1.4.4.4.8 0 .3-.2.5-.5.7-.2.1-.5.2-1 .2l-.9.1c-1 .1-1.7.3-2.2.6-.9.5-1.4 1.3-1.4 2.5 0 .9.3 1.6.8 2 .6.5 1.3.9 2.2.9.7 0 1.2-.3 1.7-.6.4-.2.8-.6 1.2-.9 0 .2 0 .4.1.6 0 .2.1.8.2 1h2.7v-.8c-.1-.1-.3-.2-.4-.3.1-.3-.3-1.7-.3-2zm-2.2-1.1c0 .8-.3 1.4-.7 1.7-.4.3-1 .5-1.5.5-.3 0-.6-.1-.9-.3-.2-.2-.4-.5-.4-.9 0-.5.2-.8.6-1 .2-.1.6-.2 1.1-.3l.6-.1c.3-.1.5-.1.7-.2.2-.1.3-.1.5-.2v.8z"></path></svg>';
+				iconHolder._text = iconHolder.firstElementChild;
+			} else {
+				iconHolder.append(iconHolder._text.cloneNode(true));
+			}
+			break;
+	}
+	return iconHolder.firstElementChild;
+}
+
+/** Rounds a given number and suffixes it with the nearest SI unit.
+ * Taken from https://stackoverflow.com/questions/9461621/format-a-number-as-2-5k-if-a-thousand-or-more-otherwise-900#answer-9462382.
+ * @param {string|number} num The number, not comma-separated.
+ * @param {?number} digits The number of decimal digits to include.
+ * @return {string} The truncated number.
+ */
+function truncateNumber(num, digits = 1) {
+	const lookup = [
+		{ value: 1, symbol: "" },
+		{ value: 1e3, symbol: "k" },
+		{ value: 1e6, symbol: "M" },
+		{ value: 1e9, symbol: "G" },
+		{ value: 1e12, symbol: "T" },
+		{ value: 1e15, symbol: "P" },
+		{ value: 1e18, symbol: "E" }
+	];
+	const regexp = /\.0+$|(?<=\.[0-9]*[1-9])0+$/;
+	const item = lookup.findLast(item => num >= item.value);
+	return item ? (num / item.value).toFixed(digits).replace(regexp, "").concat(item.symbol) : "0";
+}
+// #endregion
+// #endregion
+
+// #region FOR POST BODY
+/** Creates a trail item in the body of a post, containing a single blog's contribution to that post.
+ * @param {HTMLElement} post The wrapper into which to insert the complete trail item, usually a post body element.
+ * @param {Object} npf The NPF object containing information about this trail item.
+ * @param {string} postID The ID of this specific iteration of the post, as seen in the URL.
+ * @param {boolean} [expand=false] True if any "read more" dividers in a post should be skipped and the full post rendered; false if the "read more" should be rendered and subsequent content hidden.
+ */
+function createTrailItem(post, npf, postID, expand = false) {
+	let item = document.createElement("div");
+	item.classList.add("bodyitem");
+	post.append(item);
+	
+	// extant blog; create directly
+	if (npf.blog !== undefined) { createTrailItemHeader(item, npf.blog, npf.post) }
+	
+	// deleted/unrecoverable blog; provide the anon avatar
+	else if (npf.broken_blog_name !== undefined) {
+		createTrailItemHeader(item, {
+			 name: npf.broken_blog_name,
+			 avatar: anonAvatar,
+		});
+	}
+	
+	// blog is currentUser; provide directly-pulled info
+	else { createTrailItemHeader(item, currentUser, { id: postID }) }
+	
+	// create the body of their contribution
+	createTrailItemBody(item, npf, { id: postID }, expand);
+}
+
+
+/**
+ * Creates the header for a specific trail item, rendering the blog that authored this trail item (and any badges/accessories they use). Includes links to the versions of the post on the contributing blogs, where available.
+ * @param {HTMLElement} trailItem The trail item wrapper into which to insert the header.
+ * @param {Object} blogData Information about the user that authored this trail item.
+ * @param {Object} [postData=null] Information about this iteration of the post; null if the blog that authored this iteration is deactivated/broken or if the post is otherwise unavailable.
+ */
+function createTrailItemHeader(trailItem, blogData, postData = null) {
+	let header = document.createElement("header");
+	header.classList.add("user");
+	trailItem.append(header);
+	let link = document.createElement("a");
+	header.append(link);
+	
+	// mark broken trail items
+	if (postData === null || blogData.active === false) { header.classList.add("deactivated") }
+	
+	// add link where original posts exist, with safeguards for pages
+	if (postData?.id === undefined && blogData.active != null) {
+		// page! link back to itself
+		link.href = window.location.href;
+	}
+	else if (blogData.url && blogData.active) {
+		link.href = blogData.url.concat(blogData.url.endsWith("/") ? `post/${postData.id}` : `/${postData.id}`);
+	}
+	
+	// Get the username and avatar
+	let username = document.createElement("span");
+	username.classList.add("name");
+	username.innerHTML = blogData.name;
+	// Generally an active user's nested size-64 URL (index 3 of [512,128,96,64]), or a direct URL for currentUser or anon/broken users
+	// The array blog.avatar isn't available sometimes, so include a backup avatar fetch via API
+	let avatar = document.createElement("img");
+	avatar.classList.add("avatar", blogData?.theme?.avatar_shape ?? "square");
+	if (blogData.avatar) {
+		avatar.src = typeof(blogData.avatar) === "object"
+			? blogData.avatar?.find(el => el.height === 64)?.url
+			: blogData.avatar;
+	} else {
+		avatar.addEventListener("error", e => { e.currentTarget.src = anonAvatar }, { once: true });
+		avatar.src = `https://api.tumblr.com/v2/blog/${blogData.name ?? ""}/avatar/64`;
+	}
+
+	// put together the header
+	link.append(avatar, username);
+	link.setAttribute("style", `--bg: ${blogData?.theme?.background_color ?? currentUser.theme.background_color}; --text: ${blogData?.theme?.title_color ?? currentUser.theme.title_color}; --accent: ${blogData?.theme?.link_color ?? currentUser.theme.link_color}`)
+
+	// Checkmarks and other badges, pulled from tumblrmart_accessories
+	// https://assets.tumblr.com/images/tumblrmart/badges/blue-checkmark/1.png
+	// https://assets.tumblr.com/images/tumblrmart/badges/rainbow/1.png , [1-12].png available
+	if (blogData.can_show_badges && (badgegroups = blogData.tumblrmart_accessories?.badges) != null) {
+		let badges = document.createElement("span");
+		badges.classList.add("badges");
+		link.append(badges);
+
+		badgegroups.forEach(group => {
+			let badge, badgeWrapper;
+			group.urls.forEach(url => {
+				badge = document.createElement("img");
+				badge.src = url;
+				badgeWrapper = document.createElement("span");
+				badgeWrapper.append(badge);
+				badges.append(badgeWrapper);
+			});
+		});
+
+		// Since badges is flex-grow: 1, need to stop it at the limit of the full badge width
+		badges.setAttribute("style", `max-width: ${
+			(((0.875 * em) * badges.childElementCount) +		// the size of the badges themselves
+			((0.15 * em) * (badges.childElementCount - 1)))	/	// the spacing between the badges
+			em
+		}em`);
+	}
+}
+
+
+/**
+ * Renders the body of each individual trail item.
+ * @param {HTMLElement} trailItem The trail item wrapper into which to insert the body.
+ * @param {Object} npf The NPF object containing information about this trail item.
+ * @param {string} postID The ID of this specific iteration of the post, as seen in the URL.
+ * @param {boolean} expand True if any "read more" dividers in a post should be skipped and the full post rendered; false if the "read more" should be rendered and subsequent content hidden.
+ */
+function createTrailItemBody(trailItem, npf, postData, expand) {
+	let content = npf.content;
+	let rows = npf.layout.find(l => l.type === "rows");
+	let body = document.createElement("div");
+	body.classList.add("bodyitemcontent");
+	trailItem.append(body);
+
+	for (let i = 0; i < content.length; i ++) {
+		// figure out the content type and create the block based on that
+		createContentBlock(
+			body, content, i,
+			// For poll content blocks, a link to the in-dashboard view
+			npf.blog !== undefined ? npf.blog.blog_view_url.concat("/", npf.post.id)
+				: npf.broken_blog_name === undefined ? `https://tumblr.com/${currentUser.name}/${postData.id}`
+				: "",
+			// For paywall content blocks, the paywaller's info and the post object for the viewer's subscription status
+			npf.blog ?? currentUser,
+			npf.post);
+		
+		// cut off the post and add a readmore, if one is present and you aren't currently on the post's permalink page
+		if (i === rows?.truncate_after && !expand) {
+			let readmore = document.createElement("a");
+			readmore.classList.add("readmore", "button-solid-gray");
+			readmore.innerText = "{lang:Read more}";
+			body.append(readmore);
+			
+			let link;
+			if (npf.blog !== undefined) { // blog is extant
+				link = npf.blog.url.concat(npf.blog.url.endsWith("/") ? `post/${npf.post.id}` : `/${npf.post.id}`);
+			} else if (npf.broken_blog_name !== undefined) { // blog is unreachable; no link
+				link = null;
+			} else { // blog is current user's
+				link = currentUser.url.concat(currentUser.url.endsWith("/") ? `post/${postData.id}` : `/${postData.id}`);
+			}
+			// add link if reachable
+			if (link !== null) {
+				readmore.href = link;
+				readmore.classList.replace("button-solid-gray", "button-solid-blue");
+			}
+			break; // don't render any more post blocks
+		}
+		else if (i === rows?.truncate_after) {
+			let readmore = document.createElement("hr");
+			readmore.classList.add("readmore");
+			body.append(readmore);
+		}
+	}
+	
+	// All base content blocks are done. Adjust layout
+	// Put columns into rows
+	if (rows) {
+		let offset = 0;
+		rows.display.filter(i => (i.blocks.length > 1)).forEach((iRow, index) => {
+			// Need to move further columns out of their rows into the first column
+			// the -offset is because of however many items being put inside rows and therefore being removed from the indices
+			
+			// Narrow images might not be in NPF rows, so wrap the first element in a row+col if it's not
+			var row = body.children[iRow.blocks[0] - offset];
+			if (!row.classList.contains("row")) {
+				// Make sure to make it lightbox-capable
+				row.children[0].classList.add("lightboxable");
+				let newRow = document.createElement("div");
+				newRow.classList.add("row");
+				// Insert in place of element
+				row.parentElement.insertBefore(newRow, row);
+				newRow.append(row);
+				row = newRow;
+			}
+			
+			// and now, move the corresponding columns inside the row
+			// skipping the first element, which is already in the row
+			for (let i = 1; i < iRow.blocks.length; i ++) {
+				if (row.nextElementSibling.classList.contains("row")) {
+					// Move next column into row
+					row.append(row.nextElementSibling.children[0]);
+					// Delete now-empty next row
+					row.nextElementSibling.remove();
+				}
+				else {
+					// Image-figure, not row
+					// Make sure to make it lightbox-capable
+					row.nextElementSibling.children[0].classList.add("lightboxable");
+					// Move into row
+					row.append(row.nextElementSibling);
+				}
+			}
+			offset += iRow.blocks.length - 1;
+		})
+	}
+	
+	// If there's an ask, separate it from its answer, if any
+	let askNPF = npf.layout.find(l => l.type === "ask");
+	if (askNPF) {
+		// Anon or not?
+		let asker = document.createElement("header");
+		asker.classList.add("user");
+		let askerWrapper = document.createElement("a"),
+			askerIcon = document.createElement("img"),
+			askerName = document.createElement("span"),
+			askingLabel = document.createElement("span");
+		askerIcon.classList.add("avatar");
+		askerName.classList.add("name");
+		if (askNPF.attribution) {
+			askerIcon.addEventListener("error", e => { e.currentTarget.src = anonAvatar }, { once: true });
+			askerIcon.src = askNPF.attribution.blog.avatar?.find(el => el.height === 64)?.url ?? `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name ?? ""}/avatar/64`;
+			askerIcon.classList.add(askNPF.attribution.blog.theme.avatar_shape ?? "square");
+			askerWrapper.href = askNPF.attribution.blog.url;
+			askerName.innerText = askNPF.attribution.blog.name;
+			asker.setAttribute("style", `--bg: ${askNPF.attribution.blog.theme?.background_color ?? currentUser.theme.background_color}; --text: ${askNPF.attribution.blog.theme?.title_color ?? currentUser.theme.title_color}; --accent: ${askNPF.attribution.blog.theme?.link_color ?? currentUser.theme.link_color}`);
+		}
+		else {
+			askerIcon.src = anonAvatar;
+			askerName.innerText = "Anonymous";
+			asker.setAttribute("style", `--bg: ${currentUser.theme.background_color}; --text: ${currentUser.theme.title_color}; --accent: ${currentUser.theme.link_color}`);
+		}
+		askingLabel.innerText = " asked:";
+		asker.append(askerWrapper);
+		askerWrapper.append(askerIcon, askerName, askingLabel);
+		
+		let ask = document.createElement("div");
+		ask.classList.add("ask");
+		ask.append(asker);
+		let askBody = document.createElement("div");
+		askBody.classList.add("bodyitemcontent");
+		ask.append(askBody);
+		
+		if (rows) {
+			// Blocks may already be nested in rows; count off how many should be in the ask
+			let i = askNPF.blocks.length;
+			while (i > 0) {
+				i -= Math.max(1, body.children[0].childElementCount);
+				askBody.append(body.children[0]);
+			}
+		}
+		else {
+			// just a simple stack. take however many off the top and put them in the ask
+			askNPF.blocks.forEach(b => askBody.append(body.children[0]));
+		}
+		
+		// Place inside same trail item:
+		// - below answerer's name for Neue format
+		// - above answerer's name for legacy format
+		trailItem.insertBefore(ask, body{block:IfUseLegacyFormatForPostMedia}.previousElementSibling{/block:IfUseLegacyFormatForPostMedia});
+		
+		
+		// Sometimes asks have no answer content (i.e. nothing left in body); in this case, clean up answerer section
+		if (body.childElementCount === 0) {
+			{block:IfUseLegacyFormatForPostMedia}
+			body.previousElementSibling.remove();	// the answerer's name
+			{/block:IfUseLegacyFormatForPostMedia}
+			body.remove();							// the empty answer content
+		}
+	}
+}
+
+
+/**
+ * Renders a single content block in the body of a trail item.
+ * @param {HTMLElement} trailItem The trail item body wrapper into which to insert this content block.
+ * @param {Object} content The NPF content for the entire trail item, to assist in rendering certain content block types in relation to others in the trail item.
+ * @param {number} i The index of this content block in the "content" object, i.e. this block's position in relation to other blocks.
+ * @param {string} [blogViewLink=""] The URL to this post in the in-dashboard view, i.e. a link formatted in the style "https://tumblr.com/username/1234567890".
+ */
+function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = {}, postObj = {}) {
+	let curr = content[i];
+	switch (curr.type) {
+		
+		case "text":
+			bit = document.createElement(textSubtypes[curr.subtype] ?? "p");
+
+			if (curr.subtype?.startsWith("heading")) bit.classList.add(curr.subtype);
+			
+			bit.innerHTML = formatText(curr);
+			
+			if (curr.subtype?.includes("ordered-list-item")) {
+				// if first bullet point of a type, start a new list
+				if (content[i - 1]?.subtype !== curr.subtype) {
+					if (list) { trailItem.append(list); }
+					list = document.createElement(curr.subtype === "ordered-list-item" ? "ol" : "ul")
+				}
+				
+				list.append(bit); // continue the list
+				
+				// if last item in the list, or a last list, end the list and add the whole thing
+				if (content[i + 1]?.subtype !== curr.subtype || i + 1 === content.length) {
+					trailItem.append(list);
+					list = null;
+				}
+			}
+			else if ( ["quirky", "quote", "indented", "chat"].includes(curr.subtype) ) {
+				bit.classList.add("npf_".concat(curr.subtype));
+				trailItem.append(bit);
+			}
+			// otherwise it's a simple paragraph or blockquote or whatever. add
+			else { trailItem.append(bit) }
+			
+			break;
+		
+		case "image":
+			let breakpoint = 300;
+			// wrappers
+			// for some reason this breaks if col/row are also in the >=540 block
+			let row = document.createElement("div");
+			row.classList.add("row");
+			let fig = document.createElement("figure");
+			if (curr.media[0].width >= breakpoint) {
+				fig.classList.add("tmblr-full");
+			}
+			
+			// actual image
+			bit = document.createElement("img");
+			bit.src = curr.media[0].url;
+			bit.width = curr.media[0].width;
+			bit.height = curr.media[0].height;
+			// add alt text, if present
+			if (curr.alt_text) { bit.setAttribute("alt", curr.alt_text) }
+			// include colors, if present
+			for (color in curr.colors) {
+				bit.setAttribute("data-".concat(color), "#".concat(curr.colors[color]));
+			}
+			// nest the structure and append it to the post
+			fig.append(bit);
+			if (curr.media[0].width >= breakpoint) {
+				// Make large images lightbox-capable
+				bit.classList.add("lightboxable");
+				
+				row.append(fig);
+				trailItem.append(row);
+			}
+			else {
+				trailItem.append(fig);
+			}
+			
+			if (curr.caption) { // add caption, if present
+				let caption = document.createElement("p");
+				caption.innerText = curr.caption;
+				fig.insertBefore(caption, bit.nextElementSibling);
+			}
+			
+			if (curr.attribution) {
+				let attrib = document.createElement("p");
+				attrib.classList.add("tmblr-attribution");
+				switch (curr.attribution.type) {
+					case "post":
+						attrib.innerHTML = `<a href="${curr.attribution.url}">{lang:Via} ${curr.attribution.blog.name}</a>`;
+						break;
+					case "link":
+						attrib.innerHTML = `<a href="${curr.attribution.url}">{lang:Source}</a>`;
+						break;
+				}
+				fig.insertBefore(attrib, bit.nextElementSibling);
+			}
+			break;
+		
+		case "link":
+			bit = document.createElement("div");
+			bit.classList.add("npf-link-block");
+			let link = document.createElement("a");
+			let poster;
+			if (curr.poster) {
+				bit.classList.add("has-poster");
+				poster = document.createElement("div");
+				poster.classList.add("poster");
+				poster.style.backgroundImage = `url(${curr.poster[0].url})`;
+				link.append(poster);
+			} else {
+				bit.classList.add("no-poster");
+			}
+			if (curr.title) {
+				let title = document.createElement("div");
+				title.classList.add("title");
+				title.innerText = curr.title;
+				if (curr.poster) { poster.append(title) }
+				else { link.append(title) }
+			}
+			let bottom = document.createElement("div");
+			bottom.classList.add("bottom");
+			if (curr.description) {
+				let desc = document.createElement("div");
+				desc.classList.add("description");
+				desc.innerText = curr.description;
+				bottom.append(desc);
+			}
+			// get "site name" - just the base url without the https
+			let sitename = document.createElement("div");
+			sitename.classList.add("site-name");
+			// use display url if sitename is absent, as in older links
+			sitename.innerText = curr.site_name ? curr.site_name : curr.display_url;
+			bottom.append(sitename);
+			
+			link.append(bottom);
+			link.href = curr.url;
+			bit.append(link);
+			trailItem.append(bit);
+			break;
+		
+		case "audio":
+			// Soundcloud links keep throwing 401 errors for some reason, so exclude
+			if (curr.media && curr.provider !== "soundcloud") {
+				// Use media object to display a custom player with several options
+				bit = createCustomAudio(curr);
+			}
+			// TODO: else if client side SDK... need examples of metadata object
+			// If embeds are present, use those
+			else if (curr.embed_html) {
+				bit = document.createElement("div");
+				bit.innerHTML = curr.embed_html.trim();
+				bit = bit.firstChild;
+			}
+			else if (curr.embed_url) {
+				bit = document.createElement("iframe");
+				bit.title = `Audio: ${curr.title ?? "Unknown title"} — ${curr.artist ?? "Unknown artist"}`;
+				if (curr.album) { bit.title += ` (<em>${curr.album}</em>)` }
+				bit.src = curr.embed_url;
+				bit.width = "100%";
+			}
+			else {
+				// All else failed; display a plain link to given URL
+				bit = document.createElement("a");
+				bit.href = curr.url;
+				bit.innerText = `${curr.title ?? "Unknown title"} — ${curr.artist ?? "Unknown artist"}`;
+				if (curr.album) { bit.innerHTML += `, <em>${curr.album}</em>` }
+			}
+			trailItem.append(bit);
+			break;
+		
+		case "video":
+			// Use media object to display default video player
+			if (curr.media) {
+				bit = document.createElement("video");
+				bit.classList.add("video");
+				bit.preload = "metadata";
+				bit.controls = true;
+				if (curr.poster) { bit.poster = curr.poster[0].url }
+				bit.src = curr.media.url;
+			}
+			// TODO: else if client side SDK... need examples of metadata object
+			// If embeds are present, use those
+			else if (curr.embed_html) {
+				bit = document.createElement("div");
+				bit.innerHTML = curr.embed_html.trim();
+				bit = bit.firstChild;
+			}
+			else if (curr.embed_url) {
+				bit = document.createElement("iframe");
+				bit.src = curr.embed_url;
+				bit.width = "100%";
+			}
+			// All else failed; display a plain link to given URL
+			else {
+				bit = document.createElement("a");
+				bit.href = curr.url;
+				bit.innerText = curr.url;
+			}
+			trailItem.append(bit);
+			break;
+
+		case "paywall":
+			bit = document.createElement("div");
+			let title, label;
+			bit.classList.add("paywall");
+			bit.style.setProperty("--bg", blogObj.theme.background_color);
+			bit.style.setProperty("--text", blogObj.theme.title_color);
+			bit.style.setProperty("--accent", blogObj.theme.link_color);
+			bit.style.setProperty("--font", blogObj.theme.title_font);
+			
+			if (postObj.paywall_access === "member") {
+				// Shouldn't see this block at all! No need to render anything inside
+				bit.style.setProperty("display", "none");
+				trailItem.append(bit);
+				break;
+			}
+			
+			// Block should be visible. Format as appropriate
+			switch (content[i].subtype) {
+				case "cta":
+					// For supportable blogs
+					title = document.createElement("h2");
+					label = document.createElement("p");
+					supportlink = document.createElement("a");
+					title.innerText = content[i].title;
+					label.innerHTML = content[i].text.replace("%s", `<strong>${blogObj.name}</strong>`);
+					supportlink.innerText = blogObj.subscription_plan?.checkout_labels?.support ?? "Show your Support";
+					supportlink.href = content[i].url ?? `https://www.tumblr.com/${blogObj.name}/support`;
+					bit.append(title, label, supportlink);
+					break;
+				
+				case "divider":
+					// For creators looking at own +Posts
+					bit.classList.add("divider");
+					bit.style.setProperty("--color", content[i].color);
+					bit.innerText = content[i].text;
+					break;
+				
+				case "disabled":
+					// For blogs that have disabled Post+
+					title = document.createElement("h2");
+					label = document.createElement("p");
+					title.innerText = content[i].title;
+					label.innerHTML = content[i].text.replace("%s", `<strong>${blogObj.name}</strong>`);
+					bit.append(title, label);
+					break;
+			}
+			
+			trailItem.append(bit);
+			break;
+
+		case "poll":
+			bit = document.createElement("div");
+			bit.classList.add("poll");
+			trailItem.append(bit);
+
+			// Create question, if present
+			if (curr.question !== "") {
+				let question = document.createElement("p");
+				question.classList.add("question");
+				question.innerText = curr.question;
+				bit.append(question);
+			}
+
+			let expiryDate = new Date((curr.timestamp + curr.settings.expire_after) * 1000),
+				timeToClosure = (expiryDate - (new Date())) / 1000,
+				hasResults = (timeToClosure < 0) && blogViewLink.length;
+
+			// Create answers
+			let answer, answerText;
+			let pollIcons = {
+				timeout: `<i class="ph ph-x"></i>`,
+				check: `<i class="ph ph-check"></i>`,
+			};
+			curr.answers.forEach(a => {
+				answer = document.createElement("a");
+				answer.classList.add("option");
+				if (blogViewLink.length) {
+					answer.href = blogViewLink;
+					answer.target = "_blank";
+				}
+				// Adding poll icons 
+				answer.innerHTML = `<span class="icon">${hasResults ? pollIcons.timeout : pollIcons.check}</span>`;
+				answerText = document.createElement("p");
+				answerText.innerText = a.answer_text;
+				answer.append(answerText);
+				bit.append(answer);
+			});
+
+			// See results link, if poll is expired
+			// Timestamp/expiry durations are given in seconds; times 1000 for millisecond count
+			let moreInfo = document.createElement(hasResults ? "a" : "span");
+			bit.append(moreInfo);
+			if (hasResults) {
+				moreInfo.classList.add("results");
+				moreInfo.href = blogViewLink;
+				moreInfo.target = "_blank";
+				moreInfo.rel = "noopener";
+				moreInfo.innerText = "See Results";
+				bit.classList.add("complete");
+			}
+			else {
+				let timeLeft = {};
+				timeLeft.days = Math.floor(timeToClosure / 86400);
+				timeLeft.hours = Math.floor((timeToClosure - (timeLeft.days * 86400)) / 3600);
+				timeLeft.minutes = Math.floor((timeToClosure - (timeLeft.days * 86400) - (timeLeft.hours * 3600)) / 60);
+				let timeLabel = "Remaining time:";
+				if (timeLeft.days > 0) {
+					timeLabel += ` ${timeLeft.days}d ${timeLeft.hours}h`;
+				} else if (timeLeft.hours > 0) {
+					timeLabel += ` ${timeLeft.hours}h ${timeLeft.minutes}m`;
+				} else if (timeLeft.minutes > 0) {
+					timeLabel += ` ${timeLeft.minutes}m`;
+				} else {
+					timeLabel += "less than 1m";	// guaranteed since poll hasn't calculated as closed yet
+				}
+				moreInfo.innerText = timeLabel;
+				moreInfo.classList.add("timeleft");
+			}
+			break;
+		
+		default:
+			bit = document.createElement("p");
+			bit.innerHTML = `Error! This theme can't currently display ${curr.type} blocks :( Please contact <a href="https://starlightthemes.tumblr.com">the theme maker</a> to let them know about this issue.`;
+			trailItem.append(bit);
+	
+	}
+}
+
+/**
+ * Helper function for createContentBlock, specifically for audio content blocks.
+ * Renders an audio player in a custom style, with pause/play, skip to start/end, muting, and looping functionality.
+ * @param {Object} npf The NPF object with links to and data on the audio file.
+ * @param {Object} [defaultIcons={}] HTML strings representing the icons to use for the audio player.
+ * @param {string} defaultIcons.play The icon to use as the "play" (⏵︎) button.
+ * @param {string} defaultIcons.pause The icon to use as the "pause" (⏸︎) button.
+ * @param {string} defaultIcons.toStart The icon to use as the "skip to start" (⏮︎) button.
+ * @param {string} defaultIcons.toEnd The icon to use as the "skip to end" (⏭︎) button.
+ * @param {string} defaultIcons.mute The icon to use as the "mute" (🔇) button.
+ * @param {string} defaultIcons.unmute The icon to use as the "unmute" (🔊) button.
+ * @param {string} defaultIcons.repeat The icon to use as the "loop" (🔁) button.
+ * @param {string} defaultIcons.unrepeat The icon to use as the "stop looping" button.
+ * @returns {HTMLElement} The complete audio element with attached event listeners.
+ */
+function createCustomAudio(npf, defaultIcons = {}) {
+	// #region Basic blocks setup: icons, audio wrapper, and audio
+	// Uses Phosphor icons by default
+	// All icons need matching classes, except for skip to start/end
+	let icons = Object.assign({
+		play: '<i class="play ph ph-play"></i>',
+		pause: '<i class="pause ph ph-pause"></i>',
+		toStart: '<i class="ph ph-skip-back"></i>',
+		toEnd: '<i class="ph ph-skip-forward"></i>',
+		mute: '<i class="mute ph ph-speaker-simple-high"></i>',
+		unmute: '<i class="unmute ph ph-speaker-simple-slash"></i>',
+		repeat: '<i class="repeat ph ph-repeat"></i>',
+		unrepeat: '<i class="unrepeat ph ph-repeat-once"></i>',
+	}, defaultIcons);
+
+	wrapper = document.createElement("div");
+	wrapper.classList.add("audiowrapper");
+
+	let audio = document.createElement("audio");
+	audio.src = npf.media.url;
+	audio.preload = "metadata";
+	wrapper.append(audio);
+	// #endregion
+
+	// #region Audio information
+	let top = document.createElement("div");
+	top.classList.add("top");
+
+	let textInfo = document.createElement("div");
+	textInfo.classList.add("textinfo");
+	if (npf.title) { textInfo.innerHTML += `<span class="trackname">${npf.title}</span>` }
+	if (npf.artist) { textInfo.innerHTML += `<span class="artist">${npf.artist}</span>` }
+	if (npf.album) { textInfo.innerHTML += `<span class="album">${npf.album}</span>` }
+	if (textInfo.childElementCount > 0) { top.append(textInfo) }
+
+	if (npf.poster) {
+		let hasArt = document.createElement("div");
+		hasArt.classList.add("hasart");
+		hasArt.style.setProperty("background-image", `url('${npf.poster[0].url}')`);
+
+		let art = document.createElement("img");
+		art.classList.add("albumart");
+		art.src = npf.poster[0].url;
+		art.width = npf.poster[0].width;
+		art.height = npf.poster[0].height;
+
+		top.prepend(art);
+		hasArt.append(top);
+		wrapper.append(hasArt);
+	}
+	else if (top.childElementCount > 0 ) {
+		wrapper.append(top);
+	}
+	// #endregion
+
+	// #region Audio controls
+	let seekbar = document.createElement("input");
+	seekbar.type = "range";
+	seekbar.min = 0;
+	seekbar.setAttribute("value", "0");
+	seekbar.max = 100;
+	seekbar.classList.add("seekbar");
+
+	let buttons = document.createElement("div");
+	buttons.classList.add("buttons");
+
+	let playPause = document.createElement("button");
+	playPause.classList.add("playpause");
+	playPause.innerHTML = icons.play + icons.pause;
+	let bottom = document.createElement("div"),
+		currTime = document.createElement("span"),
+		totalTime = document.createElement("span");
+	currTime.innerText = "0:00";
+	totalTime.innerText = "0:00";
+	bottom.classList.add("bottom");
+	currTime.classList.add("current", "time");
+	totalTime.classList.add("total", "time");
+	let skipStart = document.createElement("button");
+	skipStart.classList.add("skipstart");
+	skipStart.innerHTML = icons.toStart;
+	let skipEnd = document.createElement("button");
+	skipEnd.classList.add("skipend");
+	skipEnd.innerHTML = icons.toEnd;
+	let volume = document.createElement("button");
+	volume.classList.add("volume");
+	volume.innerHTML = icons.mute + icons.unmute;
+	let loop = document.createElement("button");
+	loop.classList.add("loop");
+	loop.innerHTML = icons.repeat + icons.unrepeat;
+
+	buttons.append(volume, skipStart, playPause, skipEnd, loop);
+	bottom.append(currTime, buttons, totalTime);
+
+	wrapper.append(seekbar, bottom);
+	// #endregion
+
+	// #region Preload data and set up interactive elements
+	// #region Audio length and ending check
+	audio.addEventListener("loadedmetadata", () => {
+		seekbar.setAttribute("max", audio.duration);
+		totalTime.innerText = calculateTime(audio.duration);
+	});
+	audio.addEventListener("ended", () => {
+		if (!audio.loop) { audio.classList.remove("playing") }
+		currentlyPlaying = null;
+	})
+	// #endregion
+	// #region Buttons
+	playPause.addEventListener("click", () => {
+		// Pause any other audio on the page
+		if (currentlyPlaying !== null && currentlyPlaying !== audio) {
+			currentlyPlaying.pause();
+			currentlyPlaying.classList.remove("playing");
+			cancelAnimationFrame(rAF); // in case the previous one had an rAF going on
+		}
+		// Play/pause current audio as necessary
+		if (audio.classList.contains("playing")) {
+			currentlyPlaying = null;
+			audio.pause();
+			cancelAnimationFrame(rAF);
+		} else {
+			currentlyPlaying = audio;
+			audio.play();
+			requestAnimationFrame(whilePlaying);
+		}
+		audio.classList.toggle("playing");
+	})
+	volume.addEventListener("click", () => {
+		audio.muted = !audio.muted;
+		volume.classList.toggle("active");
+	});
+	loop.addEventListener("click", () => {
+		audio.loop = !audio.loop;
+		loop.classList.toggle("active");
+	});
+	skipStart.addEventListener("click", () => {
+		if (audio.classList.contains("playing")) { audio.pause() }
+		audio.currentTime = 0;
+		seekbar.value = 0;
+		seekbar.style.setProperty("--progress-width", "0%");
+		currTime.innerText = "0:00";
+		if (audio.classList.contains("playing")) { audio.play() }
+	});
+	skipEnd.addEventListener("click", () => {
+		audio.currentTime = audio.duration;
+		seekbar.value = audio.duration;
+		seekbar.style.setProperty("--progress-width", "100%");
+		currTime.innerText = totalTime.innerText;
+		// Fires "ended" by itself
+	});
+	// #endregion
+	// #region Seekbar
+	const whilePlaying = () => {
+		seekbar.value = Math.floor(audio.currentTime);
+		currTime.innerText = calculateTime(seekbar.value);
+		seekbar.style.setProperty("--progress-width", `${(audio.currentTime / audio.duration) * 100}%`);
+		rAF = requestAnimationFrame(whilePlaying);
+	}
+	seekbar.addEventListener("input", () => {
+		currTime.innerText = calculateTime(seekbar.value);
+		if (!audio.paused) {
+			cancelAnimationFrame(rAF);
+		}
+	});
+	seekbar.addEventListener("change", () => {
+		audio.currentTime = seekbar.value;
+		seekbar.style.setProperty("--progress-width", `${(audio.currentTime / audio.duration) * 100}%`);
+		currTime.innerText = calculateTime(seekbar.value);
+		if (!audio.paused) {
+			requestAnimationFrame(whilePlaying);
+		}
+	});
+	// #endregion
+	// #endregion
+
+	return wrapper;
+}
+
+
+/** Helper for createCustomAudio. Calculates times and returns it in a MM:SS format.
+ * Pulled from https://css-tricks.com/lets-create-a-custom-audio-player/
+ * @param {number} secs The number of seconds to be converted.
+ * @returns {string} The converted time in minutes and seconds.
+ */
+function calculateTime(secs) {
+	let time = {
+		minutes: Math.floor(secs / 60),
+		seconds: Math.floor(secs % 60),
+	}
+	return `${time.minutes}:${time.seconds < 10 ? "0" : ""}${time.seconds}`;
+}
+
+
+/**
+ * Renders text block content with inline formatting applied.
+ * @param {Object} content The NPF object representing this content block.
+ * @param {string} content.text The actual string of text to be displayed in this text block.
+ * @param {Object[]} content.formatting An array of objects representing formatting applied to this text block, with start/end indices.
+ * @returns An HTML string with inline formatting applied.
+ */
+function formatText(content) {
+	let base = content.text;
+	if (!content.formatting)
+		return base.replaceAll(String.fromCharCode(10), "<br />");
+	
+	let text = "",
+		formats = new Array(),
+		i = 0;
+	// Manually incrementing i instead of a full for-i loop so that emoji unicode combos aren't split up
+	for (const char of base) {
+		// open any formatting tags
+		formats = content.formatting.filter(f => (f.start === i));
+		formats.forEach(f => {
+			switch (f.type) {
+				case "bold":
+					text += "<strong>";
+					break;
+				case "italic":
+					text += "<em>";
+					break;
+				case "small":
+					text += "<small>";
+					break;
+				case "link":
+					text += `<a href='${f.url}'>`;
+					break;
+				case "mention":
+					text += `<a href='${f.blog.url}'>`;
+					break;
+				case "color":
+					text += `<span style='color: ${f.hex};'>`;
+					break;
+			}
+		})
+		
+		// add the actual character, subbing in linebreaks
+		if (char === String.fromCharCode(10)) { text += "<br />" }
+		else { text += char }
+		
+		// close any formatting tags
+		formats = content.formatting.filter(f => (f.end === i + 1));
+		formats.forEach(f => {
+			switch (f.type) {
+				case "bold":
+					text += "</strong>";
+					break;
+				case "italic":
+					text += "</em>";
+					break;
+				case "small":
+					text += "</small>";
+					break;
+				case "link":
+					text += "</a>";
+					break;
+				case "mention":
+					text += "</a>";
+					break;
+				case "color":
+					text += "</span>";
+					break;
+			}
+		})
+		
+		i ++;
+	}
+	return text;
+}
+// #endregion
+
+// #region FOR POST NOTES
+/**
+ * Creates the Notes section for posts on permalink pages.
+ * @param {string} notesURL The URL for the HTML partial of this post's Notes.
+ * @returns {HTMLElement} The newly created Notes section.
+ */
+function createNotes(notesURL) {
+	// Create base notes section
+	let notes = document.createElement("section"),
+		header = document.createElement("h3");
+	notes.id = "notes";
+	header.textContent = "{lang:Notes}";
+	document.getElementById("main").append(notes);
+
+	// Get notes
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(data) {
+		if (this.readyState === 4 && this.status === 200) {
+			notes.innerHTML = data.srcElement.response;
+			cleanNotes();
+		}
+	}
+	xhttp.open("GET", notesURL);
+	xhttp.send();
+
+	// Minimize HTML parsing by prepending header after notes partial is added
+	notes.prepend(header);
+	return notes;
+}
+
+/**
+ * Cleans newly added notes in the notes section.
+ */
+function cleanNotes() {
+	document.getElementById("notes").querySelectorAll("li:not(.cleaned)").forEach(note => {
+		let action = note.querySelector(".action");
+
+		// No cleaning to be done on load more button
+		if (note.classList.contains("more_notes_link_container")) { return }
+
+		// Remove clears
+		note.querySelector(".clear").remove();
+		
+		// Add specific action wrapper
+		let acted = document.createElement("span");
+		acted.classList.add("acted");
+		acted.innerText = action.childNodes[1].textContent;
+		action.childNodes[1].replaceWith(acted);
+		
+		// Collapse via, addition label into reblog action
+		if (note.classList.contains("reblog") && !note.classList.contains("original_post")) {
+			action.childNodes[1].append(action.childNodes[2]);
+		}
+		if (note.classList.contains("with_commentary") && !note.classList.contains("original_post")) {
+			action.childNodes[1].append(action.childNodes[2]);
+		}
+		
+		// Remove colon from "said:"
+		else if (note.classList.contains("reply")) {
+			action.children[1].innerText = action.children[1].innerText.substring(0, action.children[1].innerText.length - 1)
+		}
+
+		// Mark note as cleaned
+		note.classList.add("cleaned");
+	})
+}
+function tumblrNotesInserted() { cleanNotes() }
+// #endregion
+
+// #region FOR NON-POST PAGES
+/**
+ * Renders page content on non-post pages.
+ * @param {HTMLElement} wrapper The HTML element in which to insert the page content.
+ * @param {Object} postData The object containing relevant info with which to populate the page
+ * @param {string} postData.title An HTML string containing the title of this page
+ * @param {string} postData.body An HTML string containing the body of this page
+ */
+function createPage(wrapper, postData) {
+	let postBody = document.createElement("section");
+	postBody.classList.add("body");
+	let trailItem = document.createElement("div");
+	trailItem.classList.add("bodyitem");
+	postBody.append(trailItem);
+	wrapper.append(postBody);
+
+	// Create user
+	let header = document.createElement("header");
+	header.classList.add("user");
+	trailItem.append(header);
+	// Create permalink
+	let link = document.createElement("a");
+	link.href = window.location.href; // gives current URL
+	header.append(link);
+	// Get the username and avatar
+	let username = document.createElement("span");
+	username.classList.add("name");
+	username.innerHTML = currentUser.name;
+	let avatar = document.createElement("img");
+	avatar.classList.add("avatar", currentUser.theme.avatar_shape);
+	avatar.src = currentUser.avatar;
+	// put together the header
+	link.append(avatar, username);
+	link.setAttribute("style", `--bg: ${currentUser.theme.background_color}; --text: ${currentUser.theme.title_color}; --accent: ${currentUser.theme.link_color}`)
+
+	// Create title and body of page
+	// postData.npf is empty; use exclusively .title and .body
+	let bodyWrapper = document.createElement("div");
+	bodyWrapper.classList.add("bodyitemcontent");
+	if (postData.title) {
+		let title = document.createElement(textSubtypes.heading1);
+		title.innerHTML = unescapeHTML(postData.title);
+		bodyWrapper.append(title);
+	}
+	bodyWrapper.innerHTML += unescapeHTML(postData.body);
+
+	// Plug the whole thing in
+	trailItem.append(bodyWrapper);
+}
+
+/**
+ * Unescapes HTML strings which have quotations, ampersands, or arrow brackets replaced with HTML entities.
+ * @param {string} string The escaped HTML string to unescape.
+ * @returns An unescaped version of the provided HTML string, fit for adding to innerHTML.
+ */
+function unescapeHTML(string) {
+	return string.replaceAll("&amp;", "&")
+				.replaceAll("&#39;", "'")
+				.replaceAll("&quot;", "\"")
+				.replaceAll("&lt;", "<")
+				.replaceAll("&gt;", ">");
+}
+// #endregion
+
+// #endregion
+</script>
+
+</body>
+</html>
