@@ -152,6 +152,65 @@ button[disabled] { cursor: initial }
 		}
 	}
 }
+#lightbox {
+	border: none;
+	background: none;
+	padding: 0;
+	overflow: visible;
+
+	&::backdrop {
+		background-color: rgb(from var(--darkblue) r g b / 0.9);
+	}
+
+	.closemodal {
+		position: fixed;
+		top: min(1em, 2.5vh);
+		right: min(1em, 2.5vw);
+		border: none;
+		background: none;
+		padding: 0;
+		color: var(--white);
+		cursor: pointer;
+
+		&:hover, &:focus { color: var(--lightgray) }
+		&:active { color: var(--darkgrayblue) }
+
+		i { font-size: 4em }
+	}
+
+	img {
+		cursor: pointer;
+		box-shadow: 0 0 1em var(--black);
+		display: block;
+
+		&.left, &.right {
+			position: fixed;
+			top: 50%;
+			transform: translateY(-50%);
+			--positioning: calc(100vw - 2em);
+
+			&:hover {
+				--positioning: calc(100vw - 3em);
+				transition-duration: 0.2s;
+			}
+		}
+		&.left {
+			right: var(--positioning);
+			transition: right;
+		}
+		&.right {
+			left: var(--positioning);
+			transition: left;
+		}
+
+		&.center {
+			max-width: calc(100vw - 10em);
+			max-height: 90vh;
+			width: auto;
+			height: auto;
+		}
+	}
+}
 /* Tumblr controls */
 .tmblr-iframe--unified-controls {
 	top: 5em !important;
