@@ -704,10 +704,15 @@ lightbox._open = (targetImage) => {
 	lightbox.querySelectorAll("img").forEach(el => el.remove());
 
 	// Fetch the lightbox-ready images in this body item and check which to display
-	lightbox._images = Array.from(targetImage.closest(".bodyitemcontent, .mediawrapper").querySelectorAll("img.lightboxable"));
-	lightbox._index = lightbox._images.findIndex(el => el === targetImage);
-	lightbox._images = lightbox._images.map(el => el.cloneNode());
-	lightbox._images.forEach(el => el.classList.remove("lightboxable"));
+	// To avoid cloning images more than once, have each block of content hold its own image set once cloned
+	let contentBlock = targetImage.closest(".bodyitemcontent, .mediawrapper");
+	let imagegroup = Array.from(contentBlock.querySelectorAll("img.lightboxable"));
+	if (!contentBlock._imageGroup) {
+		contentBlock._imageGroup = imagegroup.map(el => el.cloneNode());
+		contentBlock._imageGroup.forEach(el => el.classList.remove("lightboxable"));
+	}
+	lightbox._images = contentBlock._imageGroup;
+	lightbox._index = imagegroup.findIndex(el => el === targetImage);
 
 	// Prep images
 	lightbox._addImage(lightbox._images[lightbox._index - 1], "left");
