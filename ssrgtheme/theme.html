@@ -578,11 +578,6 @@ let lightboxImages = null;
  * @type {?number}
  */
 let lightboxIndex = null;
-/**
- * The image the currently active lightbox was opened from. Null if no lightbox is active.
- * @type {?HTMLElement}
- */
-let comingFrom = null;
 
 /** A wrapper for creating SVG icons for posts with no included image.
  * @type {?HTMLElement}
@@ -966,8 +961,6 @@ document.querySelectorAll(".modal, #lightbox").forEach(modal => {
 				// Reset the internal lightbox counters
 				lightboxImages = null;
 				lightboxIndex = null;
-				// Go back to the image the lightbox was opened from
-				comingFrom.focus();
 				break;
 			
 			default:
@@ -2671,8 +2664,6 @@ function formatText(content) {
  * Creates and opens a lightbox using the images from the target image's trail item.
  */
 function openLightbox(e) {
-	comingFrom = e.target;
-	
 	// Lightboxes only trigger on images in the structure .bodyitemcontent > .row > figure > img.lightboxable (this is also applicable to all images sized >= breakpoint).
 	// Lightboxes should only include other lightbox-capable images.
 	
