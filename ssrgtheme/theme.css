@@ -93,6 +93,7 @@ button[disabled] { cursor: initial }
 	padding: 1em 1.25em;
 	background-color: var(--darkblue);
 	color: var(--white);
+	--modal-border: 0.1em solid var(--darkgrayblue);
 
 	&::backdrop {
 		background-color: var(--ssjyp-blue);
@@ -108,7 +109,7 @@ button[disabled] { cursor: initial }
 	}
 
 	& > header {
-		border-block-end: 0.1em solid var(--darkgrayblue);
+		border-block-end: var(--modal-border);
 		--closebtn-size: 4.5em;
 		display: grid;
 		grid-template-columns: minmax(0, var(--closebtn-size)) 1fr var(--closebtn-size);
@@ -141,7 +142,7 @@ button[disabled] { cursor: initial }
 	}
 
 	& > footer {
-		border-block-start: 0.1em solid var(--darkgrayblue);
+		border-block-start: var(--modal-border);
 		padding-block-start: 1em;
 
 		.closemodal {
@@ -993,20 +994,20 @@ button[disabled] { cursor: initial }
 	& > header {
 		flex-wrap: wrap;
 		gap: 0.1em 1em;
-		border-block-end: 0.1em solid var(--darkgrayblue);
+		border-block-end: var(--modal-border);
 		position: relative;
 	}
 
 	& > footer {
 		flex-direction: column;
 		gap: 1em;
-		border-block-start: 0.1em solid var(--darkgrayblue);
+		border-block-start: var(--modal-border);
 
 		* { margin: 0 }
 	}
 
 	* + .bodyitem .user {
-		border-block-start: 0.1em solid var(--darkgrayblue);
+		border-block-start: var(--modal-border);
 	}
 
 	.rounds {
