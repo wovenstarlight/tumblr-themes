@@ -6,7 +6,7 @@
 		Phosphor Icons: https://phosphoricons.com/
 		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
 
-	Last updated 12 Nov 2024.
+	Last updated 13 Nov 2024.
 -->
 
 <!DOCTYPE html>
@@ -115,7 +115,7 @@
 	<link rel="stylesheet" href="./theme.css">
 	<style>{CustomCSS}</style>
 </head>
-<body>
+<body{block:PermalinkPage} class="permalink"{/block:PermalinkPage}>
 	<a href="#main" id="skip" class="button-outline">Skip to main content</a>
 
 	<!-- PAGE TITLE -->
@@ -990,6 +990,10 @@ posts.forEach(post => {
 	if (post.id !== undefined)
 		createPostFooter(postContent, post);
 
+	// Add post notes on permalink pages
+	if (document.body.classList.contains("permalink") && post.postNotes)
+		postContent.append(createNotes(post.postNotes));
+
 	{block:IfFilteredTags}
 	// Add filtered tags to post content for post viewer to check
 	if (filters?.length) postContent._filteredTags = filters;
@@ -1009,14 +1013,6 @@ document.querySelectorAll("img.lightboxable").forEach(obj => {
 		if (e.key === "Enter" || e.key === " ") { lightbox._open(e.currentTarget) }
 	});
 });
-
-// Add post notes on permalink pages
-if (document.body.classList.contains("permalink") && posts.at(0)?.postNotes) {
-	// TODO: update this to work with this theme
-	// hideSidebar();
-	// document.body.classList.add("hasnotes");
-	createNotes(posts[0].postNotes);
-}
 // #endregion
 
 // #region Remaining page functionality (base features)
@@ -2805,11 +2801,12 @@ function formatText(content) {
 /**
  * Creates the Notes section for posts on permalink pages.
  * @param {string} notesURL The URL for the HTML partial of this post's Notes.
+ * @returns {HTMLElement} The newly created Notes section.
  */
 function createNotes(notesURL) {
 	// Create base notes section
 	let notes = document.createElement("section"),
-		header = document.createElement("h2");
+		header = document.createElement("h3");
 	notes.id = "notes";
 	header.textContent = "{lang:Notes}";
 	document.getElementById("main").append(notes);
@@ -2827,6 +2824,7 @@ function createNotes(notesURL) {
 
 	// Minimize HTML parsing by prepending header after notes partial is added
 	notes.prepend(header);
+	return notes;
 }
 
 /**
@@ -2834,30 +2832,31 @@ function createNotes(notesURL) {
  */
 function cleanNotes() {
 	document.getElementById("notes").querySelectorAll("li:not(.cleaned)").forEach(note => {
+		let action = note.querySelector(".action");
+
 		// No cleaning to be done on load more button
 		if (note.classList.contains("more_notes_link_container")) { return }
 
-		// Remove avatars and clears
-		note.firstChild.remove();
+		// Remove clears
 		note.querySelector(".clear").remove();
 		
 		// Add specific action wrapper
 		let acted = document.createElement("span");
 		acted.classList.add("acted");
-		acted.innerText = note.firstChild.childNodes[1].textContent.trim();
-		note.firstChild.childNodes[1].replaceWith(acted);
+		acted.innerText = action.childNodes[1].textContent;
+		action.childNodes[1].replaceWith(acted);
 		
-		// Collapse via into reblog action
+		// Collapse via, addition label into reblog action
 		if (note.classList.contains("reblog") && !note.classList.contains("original_post")) {
-			note.firstChild.childNodes[1].append(note.firstChild.childNodes[2]);
-			// Remove "and added:"
-			if (note.classList.contains("with_commentary"))
-				note.firstChild.childNodes[2].remove();
+			action.childNodes[1].append(action.childNodes[2]);
+		}
+		if (note.classList.contains("with_commentary") && !note.classList.contains("original_post")) {
+			action.childNodes[1].append(action.childNodes[2]);
 		}
 		
 		// Remove colon from "said:"
 		else if (note.classList.contains("reply")) {
-			note.firstChild.children[1].innerText = note.firstChild.children[1].innerText.substring(0, note.firstChild.children[1].innerText.length - 1)
+			action.children[1].innerText = action.children[1].innerText.substring(0, action.children[1].innerText.length - 1)
 		}
 
 		// Mark note as cleaned

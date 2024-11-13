@@ -1587,6 +1587,75 @@ footer .tags {
 	.heading1 { text-align: center }
 }
 /* #endregion */
+
+/* #region Post notes section */
+#notes {
+	h3 {
+		text-transform: uppercase;
+		font-weight: normal;
+		font-size: 2em;
+		margin-block-end: 0.25em;
+		text-align: center;
+	}
+	
+	ol {
+		list-style-type: "";
+		margin: 0 0 0.5em;
+		padding: 0;
+	}
+	
+	li {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0 1em;
+		line-height: 1.2;
+		padding: 0.25em 1em;
+		border-block-start: var(--modal-border);
+		
+		&.more_notes_link_container {
+			display: block;
+			padding: 0;
+		}
+	}
+	
+	.avatar_frame { grid-row: 1 / span 2 }
+	.avatar { display: block }
+	
+	.action {
+		display: contents;
+		& > a:first-child {
+			font-size: 1.3em;
+			align-self: center;
+			padding-block-start: 0.15em;
+		}
+	}
+	.acted {
+		grid-row: 2;
+		color: var(--lightgray);
+	}
+
+	a:not(:hover, :focus) { color: inherit }
+	
+	.more_notes_link, .notes_loading {
+		display: block;
+		text-align: center;
+		padding: 0.5em 1em;
+		text-transform: uppercase;
+		font-size: 1.3em;
+	}
+	
+	blockquote, .answer_content {
+		grid-column: 1 / span 2;
+		margin-block: 0.5em;
+		margin-inline: 1.575em 0;
+		padding-inline-start: 2.575em;
+		padding-block: 0.25em;
+		border-inline-start: 0.1em solid var(--darkgray);
+	}
+	blockquote a { color: var(--green) }
+	
+}
+/* #endregion */
 /* #endregion */
 /* #endregion */
 
