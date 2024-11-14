@@ -114,7 +114,7 @@
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme14/theme14.min.css">
 	<style>{CustomCSS}</style>
 </head>
-<body{block:PermalinkPage} class="permalink"{/block:PermalinkPage}>
+<body>
 	<a href="#main" id="skip" class="button-outline">Skip to main content</a>
 
 	<!-- PAGE TITLE -->
@@ -989,18 +989,19 @@ posts.forEach(post => {
 	if (post.id !== undefined)
 		createPostFooter(postContent, post);
 
-	// Add post notes on permalink pages
-	if (document.body.classList.contains("permalink") && post.postNotes)
+	{block:PermalinkPage}
+	// Add post notes on permalink pages and open post viewer
+	if (post.postNotes) {
 		postContent.append(createNotes(post.postNotes));
+	}
+	{/block:PermalinkPage}
 
 	{block:IfFilteredTags}
 	// Add filtered tags to post content for post viewer to check
 	if (filters?.length) postContent._filteredTags = filters;
 	{/block:IfFilteredTags}
 });
-{block:AskPage}postContainer.querySelector(".post button").click();{/block:AskPage}
-{block:SubmitPage}postContainer.querySelector(".post button").click();{/block:SubmitPage}
-{block:PermalinkPage}postContainer.querySelector(".post button").click();{/block:PermalinkPage}
+{block:PermalinkPage}postViewer._open(document.querySelector(".postcontent"));{/block:PermalinkPage}
 // #endregion
 
 // #region Remaining post functionality
