@@ -43,6 +43,7 @@ Designed for my sister, with love.
 
 ## Credits
 - Layout and design by [SUPERSTAR JYPNATION](https://play.google.com/store/apps/details?id=com.dalcomsoft.ss.jyp)
+- [Tippy.js tooltips](https://atomiks.github.io/tippyjs) by atomiks
 - [Phosphor Icons](https://phosphoricons.com/)
 - [Expanded Tumblr localization](https://github.com/boscoxvi/expandedtumblrlocalization) by codematurgy
 
