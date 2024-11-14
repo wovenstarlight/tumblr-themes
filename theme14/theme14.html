@@ -3,6 +3,7 @@
 
 	Credits:
 		Layout and design by SUPERSTAR JYPNATION: https://play.google.com/store/apps/details?id=com.dalcomsoft.ss.jyp
+		Tippy.js tooltips by atomiks: https://atomiks.github.io/tippyjs
 		Phosphor Icons: https://phosphoricons.com/
 		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
 
@@ -92,6 +93,9 @@
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
 
 	<!-- Resource imports -->
+	<!-- Tippy.js tooltips by atomiks -->
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
 	<!-- Phosphor Icons -->
 	<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 	<!-- SSRG-esque font -->
@@ -596,6 +600,23 @@ const typeLabels = {
 	"text": "{lang:Text post}"
 };
 
+// Default settings for tooltips
+// Can't use tippy.setDefaultProps because it breaks the overrides :(
+const tippyOptions = {
+	theme: "ssrg",
+	content: (reference) => {
+		let text = reference.getAttribute("title");
+		reference.removeAttribute("title");
+		return text;
+	},
+	followCursor: true,
+	appendTo: "parent",
+	onDestroy: (instance) => {
+		instance.reference.setAttribute("title", instance.props.content);
+	},
+	overrides: ["offset"],	// necessary for post header elements
+}
+
 // #region Post viewer setup
 /** The modal where posts will be viewed.
  * @type {HTMLElement}
@@ -624,7 +645,6 @@ postViewer._open = (targetPostContent) => {
 	targetPostContent._next == null ? nextpost.setAttribute("disabled", "true") : nextpost.removeAttribute("disabled");
 	{/block:IndexPage}
 
-	
 	if (targetPostContent._filteredTags && !targetPostContent.classList.contains("filtered")) {
 		// Hide post content
 		targetPostContent.classList.add("filtered");
@@ -653,6 +673,11 @@ postViewer._open = (targetPostContent) => {
 			targetPostContent.classList.remove("filtered");
 		});
 	}
+
+	// Set up newest tooltips
+	postViewer._tippySingleton ??= tippy.createSingleton(tippy("#postviewer [data-tippy-content]", tippyOptions), tippyOptions)
+	targetPostContent._tippyInstances ??= tippy("#postviewer .postcontent [title]", tippyOptions);
+	postViewer._tippySingleton.setInstances(targetPostContent._tippyInstances);
 
 	if (!postViewer.hasAttribute("open")) postViewer.showModal();
 }
@@ -1293,6 +1318,9 @@ document.querySelectorAll(".bodyitem:first-child .bodyitemcontent > :is(".concat
 	}
 });
 {/block:IfUseLegacyFormatForPostMedia}
+
+// Set up tooltips for page links in footer
+tippy.createSingleton(tippy("#pfoot [title]", tippyOptions), tippyOptions);
 // #endregion
 
 // Set up keyboard navigation
@@ -1641,6 +1669,7 @@ function makePin(wrapper, postData, icon = null) {
 	// Make element
 	let pin = document.createElement("span");
 	pin.id = "pinnedpost";
+	pin.setAttribute("data-tippy-offset", "[0, 30]");
 	wrapper.append(pin);
 	// Icon or text, as needed
 	if (icon !== null) {
@@ -1771,6 +1800,7 @@ function makeDate(wrapper, postData, dateOptions = {}) {
 	// Make element
 	date.href = postData.permalink;
 	date.classList.add("date");
+	date.setAttribute("data-tippy-offset", "[0, 30]");
 	wrapper.append(date);
 	// Add day, as needed
 	if (options.includeDay) {
@@ -2951,6 +2981,19 @@ function cleanNotes(initial = false) {
 
 		// Mark note as cleaned
 		note.classList.add("cleaned");
+	});
+	// Get newest tooltips when more notes are loaded
+	if (!initial) {
+		let postContent = notes.closest(".postcontent");
+		postContent._tippyInstances.forEach(tippy => tippy.destroy());
+		postContent._tippyInstances = tippy(postContent.querySelectorAll("[title]"), tippyOptions);
+		if (postViewer.getAttribute("open") != null) postViewer._tippySingleton.setInstances(postContent._tippyInstances);
+	}
+}
+/** Add tooltip text back to the elements and destroy the old Tippys when about to reparse the #notes container */
+function tumblrNotesLoaded() {
+	document.querySelectorAll("#notes li.cleaned a").forEach(link => {
+		link._tippy.destroy();
 	});
 }
 function tumblrNotesInserted() { cleanNotes() }
