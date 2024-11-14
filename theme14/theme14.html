@@ -955,7 +955,6 @@ posts.forEach(post => {
 	createPostCard(
 		article,
 		post.npf,
-		post.npf.trail?.at(-1)?.blog?.name ?? post.npf.trail?.at(-1)?.broken_blog_name ?? currentUser.name,	// last commenter's name
 		post.noteCount
 		{block:IfFilteredTags}
 		, filters?.length > 0	// override image retrieval, just in case
@@ -1433,11 +1432,10 @@ tippy.createSingleton(tippy("#pfoot [title]", tippyOptions), tippyOptions);
  * Creates a card containing some information about the post.
  * @param {HTMLElement} wrapper The HTML object for this post, to which the card will be added.
  * @param {Object} postData This post's data, containing relevant information to populate the card with.
- * @param {string} via The person this post was reblogged from on reblogged posts, or the source on original posts.
  * @param {?string} noteCount This post's note count, not comma-separated.
  * @param {?boolean} forceSVG True if usage of the type-based SVG should be forced instead of checking the post body for images; false otherwise.
  */
-function createPostCard(wrapper, postData, via, noteCount = null, forceSVG = false) {
+function createPostCard(wrapper, postData, noteCount = null, forceSVG = false) {
 	let postCard = document.createElement("button");
 	postCard.classList.add("postcard");
 	wrapper.append(postCard);
@@ -1452,10 +1450,22 @@ function createPostCard(wrapper, postData, via, noteCount = null, forceSVG = fal
 
 	let heading = document.createElement("h3");
 	heading.classList.add("posttitle");
-	heading.innerHTML = postData.trail?.map(trailItem => trailItem.content?.find(el => el.type === "text")?.text).concat([ postData.content?.find(el => el.type === "text")?.text ]).find(el => el != null) ?? typeLabels[postType];
 	let subtitle = document.createElement("p");
 	subtitle.classList.add("subtitle");
-	subtitle.innerText = via;
+
+	if (postData.content?.length) {
+		// Post which current user contributed to. Get latest info
+		heading.innerHTML = postData.content.find(el => el.type === "text")?.text ?? typeLabels[postType];
+		subtitle.innerText = currentUser.name;
+	}
+	else {
+		// Reblogged post. Check for last user's info
+		let trailItem = postData.trail.at(-1);
+		heading.innerHTML = trailItem.content.find(el => el.type === "text")?.text ?? typeLabels[postType];
+		subtitle.innerText = trailItem.blog?.name ?? trailItem.broken_blog_name ?? currentUser.name;
+		// ^ Use currentUser as a last-ditch fallback
+	}
+
 	top.append(getPostIcon(postData, postType, forceSVG), heading, subtitle);
 
 	bottom.innerHTML = `<i class="ph-thin ph-pulse"></i> ${noteCount ? truncateNumber(noteCount) : "0"}`;
