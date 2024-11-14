@@ -612,6 +612,7 @@ body[data-sidebar-collapsed] #left #showleft {
 .row figure {
 	display: flex;
 	flex-direction: column;
+	margin-block: 0;
 }
 .row img {
 	object-fit: cover;
@@ -676,6 +677,7 @@ img.lightboxable { cursor: pointer }
 	color: rgba(var(--text--rgb), 0.75);
 	margin-block: 0.75em 0.5em;
 }
+.poll:first-child .question { margin-block-start: 0 }
 .poll .option {
 	display: grid;
 	grid-template-columns: 2.5em 1fr;
@@ -712,6 +714,7 @@ img.lightboxable { cursor: pointer }
 	line-height: 1.5;
 	margin-block: 0.5em;
 }
+.filechip:last-child { margin-block-end: 0 }
 .filechip:hover { background-color: rgba(var(--text--rgb), 0.2) }
 .filechip svg {
 	color: var(--accent);
