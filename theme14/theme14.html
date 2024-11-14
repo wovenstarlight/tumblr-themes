@@ -993,6 +993,7 @@ posts.forEach(post => {
 	// Add post notes on permalink pages and open post viewer
 	if (post.postNotes) {
 		postContent.append(createNotes(post.postNotes));
+		cleanNotes(true);
 	}
 	{/block:PermalinkPage}
 
@@ -2900,14 +2901,11 @@ function createNotes(notesURL) {
 		header = document.createElement("h3");
 	notes.id = "notes";
 	header.textContent = "{lang:Notes}";
-	document.getElementById("main").append(notes);
-
 	// Get notes
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(data) {
 		if (this.readyState === 4 && this.status === 200) {
 			notes.innerHTML = data.srcElement.response;
-			cleanNotes();
 		}
 	}
 	xhttp.open("GET", notesURL);
@@ -2921,8 +2919,9 @@ function createNotes(notesURL) {
 /**
  * Cleans newly added notes in the notes section.
  */
-function cleanNotes() {
-	document.getElementById("notes").querySelectorAll("li:not(.cleaned)").forEach(note => {
+function cleanNotes(initial = false) {
+	let notes = document.getElementById("notes");
+	notes.querySelectorAll("li:not(.cleaned)").forEach(note => {
 		let action = note.querySelector(".action");
 
 		// No cleaning to be done on load more button
@@ -2952,7 +2951,7 @@ function cleanNotes() {
 
 		// Mark note as cleaned
 		note.classList.add("cleaned");
-	})
+	});
 }
 function tumblrNotesInserted() { cleanNotes() }
 // #endregion
