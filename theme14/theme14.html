@@ -7,7 +7,7 @@
 		Phosphor Icons: https://phosphoricons.com/
 		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
 
-	Last updated 13 Nov 2024.
+	Last updated 14 Nov 2024.
 -->
 
 <!DOCTYPE html>
@@ -245,15 +245,13 @@
 		</nav>
 
 		<!-- SETTINGS DROPDOWN: Blog info and theme credit -->
-		<details id="moreinfo">
-			<summary><span class="visuallyhidden">More information</span></summary>
-			<div class="contents">
-				<span class="contentitem">{Name} © {CopyrightYears}</span>
-				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
-				<a class="contentitem" href="https://starlightthemes.tumblr.com/theme14">{lang:Install this theme}</a>
-				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
-			</div>
-		</details>
+		<button id="moreinfo" popovertarget="moreinfopopover"><span class="visuallyhidden">More information</span></button>
+		<div id="moreinfopopover" popover>
+			<span class="contentitem">{Name} © {CopyrightYears}</span>
+			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+			<a class="contentitem" href="https://starlightthemes.tumblr.com/theme14">{lang:Install this theme}</a>
+			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
+		</div>
 	</header>
 
 	<main id="main">
@@ -1086,13 +1084,6 @@ if (topNav.childElementCount > 0) {
 	// Check top nav's ideal placement upon initial page load.
 	moveTopNav();
 }
-
-document.addEventListener("click", e => {
-	const moreinfo = document.getElementById("moreinfo");
-	if (moreinfo.getAttribute("open") !== null && e.target.closest("#moreinfo") == null) {
-		moreinfo.removeAttribute("open");
-	}
-})
 // #endregion
 
 // #region Modals open/close functionality

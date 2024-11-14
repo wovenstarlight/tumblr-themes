@@ -23,6 +23,8 @@
 	--red:					#f54034;
 	--darkred:				#98110c;
 	--green:				#13dd67;
+	/* Header sizing */
+	--header-height: 4em;
 	/* Footer sizing */
 	--footer-height: 8.5em;
 }
@@ -233,7 +235,6 @@ button[disabled] { cursor: initial }
 
 /* #region HEADER */
 #phead {
-	--header-height: 4em;
 	height: var(--header-height);
 	background-color: var(--darkblue);
 	display: flex;
@@ -501,44 +502,46 @@ button[disabled] { cursor: initial }
 }
 
 #moreinfo {
-	display: contents;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	width: 5.75vw;
+	min-width: 3.5em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	--spacing: 0.5em;
+	gap: var(--spacing);
+	background-color: var(--darkblue-variant);
+	cursor: pointer;
 
-	summary {
-		width: 5.75vw;
-		min-width: 3.5em;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		--spacing: 0.5em;
-		gap: var(--spacing);
-		background-color: var(--darkblue-variant);
-		cursor: pointer;
+	&:hover, &:focus { background-color: var(--darkblue-hover) }
+	&:active { background-color: var(--darkblue-active) }
 
-		&:hover, &:focus { background-color: var(--darkblue-hover) }
-		&:active { background-color: var(--darkblue-active) }
-
-		&::before {
-			box-sizing: content-box;
-			border-block: medium solid;
-			height: var(--spacing);
-		}
-		&::after { border-block-end: medium solid }
-		&::before, &::after {
-			content: "";
-			display: block;
-			width: 2em;
-			border-color: var(--darkgrayblue);
-		}
+	&::before {
+		box-sizing: content-box;
+		border-block: medium solid;
+		height: var(--spacing);
 	}
-
-	.contents {
-		position: fixed;
-		z-index: 101;
-		top: var(--header-height);
-		right: 0;
+	&::after { border-block-end: medium solid }
+	&::before, &::after {
+		content: "";
+		display: block;
+		width: 2em;
+		border-color: var(--darkgrayblue);
 	}
+}
 
+#moreinfopopover {
+	border: none;
+	padding: 0;
+	margin: 0;
+	margin-inline-start: auto;
+	z-index: 101;
+	top: var(--header-height);
+	right: 0;
+	
 	.contentitem {
 		display: block;
 		background-color: var(--darkblue);
@@ -547,13 +550,13 @@ button[disabled] { cursor: initial }
 		padding: 0.75em 1em;
 		font-size: 1.1em;
 		text-align: center;
-
+	
 		i { display: none }
 	}
-
+	
 	a.contentitem:hover, a.contentitem:focus { background-color: var(--darkblue-hover) }
 	a.contentitem:active { background-color: var(--darkblue-active) }
-
+	
 	a.contentitem.current-page::before {
 		/* Content */
 		content: "\eba6";	/* check */
