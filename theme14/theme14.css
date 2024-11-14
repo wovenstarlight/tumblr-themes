@@ -1089,6 +1089,7 @@ button[disabled] { cursor: initial }
 	box-shadow:
 		-1px 0 2px rgb(0, 0, 0, 0.5),
 		inset 1px 1px 2px hsl(from var(--ssjyp-blue) calc(h - 5) s calc(l + 20) / 0.2);
+	cursor: help;
 }
 
 /* Like button */
