@@ -314,6 +314,13 @@
 
 	<section id="posts">
 		<noscript><article>Javascript is required to view this blog. Please enable scripting and reload.</article></noscript>
+
+		<dialog id="lightbox">
+			<button id="close">
+				<span class="hidden">Close lightbox</span>
+				<span aria-hidden="true">🗙</span>
+			</button>
+		</dialog>
 	</section>
 
 <script>
@@ -395,26 +402,189 @@ let rAF = null;
  */
 let currentlyPlaying = null;
 
+// #region Lightbox
 /**
- * The currently active lightbox, if any.
- * @type {?HTMLElement}
+ * The lightbox dialog.
+ * @type {HTMLElement}
  */
-let lightbox;
+let lightbox = document.getElementById("lightbox");
+
 /**
  * All images from the trail item currently being represented in the lightbox. Null if no lightbox is active.
  * @type {?HTMLElement[]}
  */
-let lightboxImages = null;
+lightbox._images = null;
+
 /**
- * The index in lightboxImages of the image currently being viewed in the lightbox. Null if no lightbox is active.
+ * The index in lightbox._images of the image currently being viewed in the lightbox. Null if no lightbox is active.
  * @type {?number}
  */
-let lightboxIndex = null;
-/**
- * The image the currently active lightbox was opened from. Null if no lightbox is active.
- * @type {?HTMLElement}
+lightbox._index = null;
+
+lightbox._addImage = (img, position, autofocus = false) => {
+	if (img == null) return;
+	let adjacents = {
+		"left": "center",
+		"center": "right",
+		"right": "NA"
+	};
+	img.setAttribute("class", position);
+	if (autofocus) img.setAttribute("autofocus", "true");
+	lightbox.insertBefore(img, lightbox.querySelector(".".concat(adjacents[position])));
+}
+
+lightbox._removeImage = (img) => {
+	if (img == null) return;
+	img.removeAttribute("class");
+	img.remove();
+}
+
+/** Creates and opens a lightbox using the images from the target image's trail item.
+ * @param [HTMLImageElement] targetImage The image selected to be opened in the lightbox
  */
-let comingFrom = null;
+lightbox._open = (targetImage) => {
+	// Clear anything previously in the lightbox
+	lightbox.querySelectorAll("img").forEach(el => el.remove());
+
+	// Fetch the lightbox-ready images in this body item and check which to display
+	// To avoid cloning images more than once, have each block of content hold its own image set once cloned
+	let contentBlock = targetImage.closest(".bodyitemcontent, .mediawrapper");
+	let imagegroup = Array.from(contentBlock.querySelectorAll("img.lightboxable"));
+	if (!contentBlock._imageGroup) {
+		contentBlock._imageGroup = imagegroup.map(el => el.cloneNode());
+		contentBlock._imageGroup.forEach(el => el.classList.remove("lightboxable"));
+	}
+	lightbox._images = contentBlock._imageGroup;
+	lightbox._index = imagegroup.findIndex(el => el === targetImage);
+
+	// Prep images
+	lightbox._addImage(lightbox._images[lightbox._index - 1], "left");
+	lightbox._addImage(lightbox._images[lightbox._index], "center", true);
+	lightbox._addImage(lightbox._images[lightbox._index + 1], "right");
+
+	// Lightbox ready, show content
+	lightbox.showModal();
+}
+
+/** Moves through lightbox images in a given direction.
+ * @param {"left"|"right"}	direction	The direction to move in.
+ * @param {HTMLElement}		focusTarget	The element on which to focus after moving.
+ * @param {?"arrow"}		eventType	"arrow" if the move was triggered by an arrow key press; null otherwise.
+ */
+lightbox._moveTo = (direction, focusTarget, eventType = null) => {
+	switch (direction) {
+		case "left":
+			if (lightbox._index === 0) break;
+			// Previous image exists
+			lightbox._index -= 1;
+			lightbox._removeImage(lightbox.querySelector(".right"));
+			lightbox.querySelector(".center")?.classList.replace("center", "right");
+			lightbox.querySelector(".left")?.classList.replace("left", "center");
+			lightbox._addImage(lightbox._images[lightbox._index - 1], "left");
+			lightbox.querySelector(".".concat(focusTarget))?.focus();
+			break;
+		
+		case "right":
+			if (lightbox._index + 1 === lightbox._images.length) {
+				if (eventType !== "arrow") lightbox._close();
+				break;
+			}
+			// Next image exists
+			lightbox._index += 1;
+			lightbox._removeImage(lightbox.querySelector(".left"));
+			lightbox.querySelector(".center")?.classList.replace("center", "left");
+			lightbox.querySelector(".right")?.classList.replace("right", "center");
+			lightbox._addImage(lightbox._images[lightbox._index + 1], "right");
+			lightbox.querySelector(".".concat(focusTarget))?.focus();
+			break;
+		
+		default:
+			break;
+	}
+}
+
+/** Closes the lightbox and resets internal counters. */
+lightbox._close = () => {
+	lightbox.close();
+	// Remove the images in the lightbox
+	lightbox.querySelectorAll("img").forEach(el => el.remove());
+	// Reset the internal lightbox counters
+	lightbox._images = null;
+	lightbox._index = null;
+}
+
+// Set up click events for image navigation
+lightbox.addEventListener("click", e => {
+	switch (e.target.className) {
+		case "left":
+			lightbox._moveTo("left", "left");
+			break;
+		
+		case "center":
+			lightbox._moveTo("right", "center");
+			break;
+		
+		case "right":
+			lightbox._moveTo("right", "right");
+			break;
+		
+		// Don't add event handler for the close button; that's already taken care of
+		
+		default:
+			break;
+	}
+});
+// Set up keyboard events for image navigation
+lightbox.addEventListener("keydown", e => {
+	let currFocus = document.activeElement.className;
+	if (e.key === "ArrowLeft") {
+		lightbox._moveTo("left", currFocus, "arrow");
+		return;
+	}
+	else if (e.key === "ArrowRight") {
+		lightbox._moveTo("right", currFocus, "arrow");
+		return;
+	}
+	if (e.key !== "Enter" && e.key !== " ") return;
+	e.preventDefault();
+	switch (e.target.className) {
+		case "left":
+			lightbox._moveTo("left", currFocus);
+			break;
+		
+		case "center":
+			lightbox._moveTo("right", currFocus);
+			break;
+		
+		case "right":
+			lightbox._moveTo("right", currFocus);
+			break;
+		
+		// Don't add event handler for the close button; that's already taken care of
+		
+		default:
+			break;
+	}
+});
+// Set up lightbox closure on button click
+document.getElementById("close").addEventListener("click", () => lightbox._close());
+// Set up lightbox closure on ::backdrop click
+lightbox.addEventListener("mousedown", e => {
+	e.currentTarget._offsetX = e.offsetX;
+	e.currentTarget._offsetY = e.offsetY;
+});
+lightbox.addEventListener("click", e => {
+	if ((
+		e.currentTarget._offsetX < 0 || e.currentTarget._offsetX > e.target.offsetWidth ||
+		e.currentTarget._offsetY < 0 || e.currentTarget._offsetY > e.target.offsetHeight
+	) && (
+		e.offsetX < 0 || e.offsetX > e.target.offsetWidth ||
+		e.offsetY < 0 || e.offsetY > e.target.offsetHeight
+	)) {
+		lightbox._close();
+	}
+});
+// #endregion
 
 /**
  * For use with the sidebar. The "open sidebar" button.
@@ -659,9 +829,9 @@ posts.forEach(post => {
 // Add lightboxes to all applicable images
 document.querySelectorAll("img.lightboxable").forEach(obj => {
 	obj.setAttribute("tabindex", "0");
-	obj.addEventListener("click", triggerLightbox);
+	obj.addEventListener("click", e => { lightbox._open(e.currentTarget) });
 	obj.addEventListener("keydown", e => {
-		if (e.key === "Enter" || e.key === " ") { triggerLightbox(e) }
+		if (e.key === "Enter" || e.key === " ") { lightbox._open(e.currentTarget) }
 	});
 });
 
@@ -1998,193 +2168,6 @@ function formatText(content) {
 	return text;
 }
 
-
-// #region Lightbox
-/**
- * Creates and opens a lightbox using the images from the target image's trail item.
- */
-function triggerLightbox(e) {
-	document.body.classList.add("lightboxed");
-	comingFrom = e.target;
-	
-	// Lightboxes only trigger on images in the structure .bodyitemcontent > .row > figure > img.lightboxable (this is also applicable to all images sized >= breakpoint).
-	// Lightboxes should only include other lightbox-capable images.
-	lightbox = document.createElement("div");
-	lightbox.role = "dialog";
-	lightbox.setAttribute("aria-modal", "true");
-	lightbox.id = "lightbox";
-	lightbox.setAttribute("tabindex", "-1");
-	Array.from(document.body.children).forEach(el => el.setAttribute("inert", "true"));
-	document.body.append(lightbox);
-	// Hit Esc to close lightbox
-	lightbox.addEventListener("keydown", e => {
-		if (e.key === "Escape") {
-			// Close lightbox
-			lightbox.firstChild.click();
-		}
-		else if (e.key === "ArrowRight") {
-			// Fake key event to advance
-			lightbox.querySelector(".center")?.dispatchEvent(new KeyboardEvent("keydown", {"key": "Enter"}));
-		}
-		else if (e.key === "ArrowLeft") {
-			// Fake key event to regress
-			lightbox.querySelector(".left")?.dispatchEvent(new KeyboardEvent("keydown", {"key": "Enter"}));
-			lightbox.querySelector(".center")?.focus();
-		}
-	});
-	
-	// Close lightbox
-	let closeButton = document.createElement("div");
-	closeButton.id = "close";
-	closeButton.setAttribute("tabindex", "0");
-	lightbox.prepend(closeButton);
-	closeButton.addEventListener("click", closeLightbox);
-	closeButton.addEventListener("keydown", e => {
-		if (e.key === "Enter" || e.key === " ") { closeLightbox(e) }
-	});
-	
-	// Actual images
-	lightboxImages = Array.from(e.target.parentElement.parentElement.parentElement.querySelectorAll("img.lightboxable"));
-	lightboxIndex = lightboxImages.findIndex(el => el === e.target);
-	let center = e.target.cloneNode();
-	center.classList.add("center");
-	center.addEventListener("click", interactLightbox);
-	center.addEventListener("keydown", interactLightboxKeyboard);
-	lightbox.append(center);
-	center.focus();
-	
-	getAdjacentImage("left");
-	getAdjacentImage("right");
-}
-
-/**
- * Interaction handler for the images in the lightbox. Moves forward/back in the lightbox depending on which image was clicked, or closes the lightbox if out of images.
- * @param {Event} e The event object, to check for type and the image interacted with.
- */
-function interactLightbox(e) {
-	if (e.target.classList.contains("center")) {
-		if (e.target.nextElementSibling) {
-			// Has an image to advance to
-			
-			// Advance to next image
-			lightboxIndex ++;
-			
-			// Delete the left image, if any
-			if (e.target.previousElementSibling.classList.contains("left")) {
-				e.target.previousElementSibling.remove();
-			}
-			
-			// Move current image to the left
-			e.target.classList.remove("center");
-			e.target.classList.add("left");
-			
-			// Move right image to center
-			e.target.nextElementSibling.classList.remove("right");
-			e.target.nextElementSibling.classList.add("center");
-			e.target.nextElementSibling.focus();
-			
-			// Get new next
-			getAdjacentImage("right");
-		}
-		else if (e.type === "click") {
-			// No image to advance to
-			// If this is a click event, close the lightbox
-			e.target.parentElement.firstChild.click();
-		}
-	}
-	
-	else if (e.target.classList.contains("right")) {
-		// Advance to next image
-		lightboxIndex ++;
-		
-		// Delete the left image, if any
-		if (e.target.previousElementSibling.previousElementSibling.classList.contains("left")) {
-			e.target.previousElementSibling.previousElementSibling.remove();
-		}
-		
-		// Move center image to left
-		e.target.previousElementSibling.classList.remove("center");
-		e.target.previousElementSibling.classList.add("left");
-		
-		// Move this image to center
-		e.target.classList.remove("right");
-		e.target.classList.add("center");
-		
-		// Get new next and focus on it
-		getAdjacentImage("right")?.focus();
-	}
-	
-	else { // e.target.classList.contains("left")
-		// Go back to previous image
-		lightboxIndex --;
-		
-		// Delete the right image, if any
-		if (e.target.nextElementSibling.nextElementSibling) {
-			e.target.nextElementSibling.nextElementSibling.remove();
-		}
-		
-		// Move center image to right
-		e.target.nextElementSibling.classList.remove("center");
-		e.target.nextElementSibling.classList.add("right");
-		
-		// Move this image to center
-		e.target.classList.remove("left");
-		e.target.classList.add("center");
-		
-		// Get new previous and focus on it
-		getAdjacentImage("left")?.focus();
-	}
-}
-
-/**
- * Gets the preceding or succeeding image in the same trail item as the current lightbox image.
- * @param {string} side Which image to get. Either "left" or "right".
- * @returns {?HTMLImageElement} The previous/next image, or null if the current image is the first/last respectively.
- */
-function getAdjacentImage(side) {
-	if (side === "left" && lightboxIndex !== 0) {
-		let left = lightboxImages[lightboxIndex - 1].cloneNode();
-		left.classList.add("left");
-		lightbox.firstChild.insertAdjacentElement("afterend", left);
-		left.addEventListener("click", interactLightbox);
-		left.addEventListener("keydown", interactLightboxKeyboard);
-		return left;
-	}
-	else if (side === "right" && lightboxIndex !== lightboxImages.length - 1) {
-		let right = lightboxImages[lightboxIndex + 1].cloneNode();
-		right.classList.add("right");
-		lightbox.lastChild.insertAdjacentElement("afterend", right);
-		right.addEventListener("click", interactLightbox);
-		right.addEventListener("keydown", interactLightboxKeyboard);
-		return right;
-	}
-	else {
-		return null;
-	}
-}
-
-/**
- * Triggers lightbox interaction for specific keyboard events, and traps focus inside the lightbox.
- * @param {Event} e The event object, to check for keyboard events and the keys pressed.
- */
-function interactLightboxKeyboard(e) {
-	if (e.key === "Enter" || e.key === " ") { interactLightbox(e) }
-}
-
-/**
- * Closes the active lightbox and returns to the part of the page the lightbox was opened from.
- */
-function closeLightbox() {
-	document.body.classList.remove("lightboxed");
-	lightbox.remove();
-	lightboxImages = null;
-	lightboxIndex = null;
-	lightbox = null;
-	// Go back to the image the lightbox was opened from
-	Array.from(document.body.children).forEach(el => el.removeAttribute("inert"));
-	comingFrom.focus();
-}
-// #endregion
 
 /**
  * Moves any media at the start of posts to the top of the post body, as in legacy formatting.
