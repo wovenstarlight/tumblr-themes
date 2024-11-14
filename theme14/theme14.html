@@ -1414,7 +1414,7 @@ tippy.createSingleton(tippy("#pfoot [title]", tippyOptions), tippyOptions);
 			e.preventDefault(); // Don't type the ? in the input field
 		}
 
-		// pagination
+		// pagination (+Ctrl since arrows might be used for horizontal scroll)
 		else if (next != null && document.querySelector("dialog[open]") == null && e.ctrlKey && e.key === 'ArrowRight')
 			next.click();
 		else if (prev != null && document.querySelector("dialog[open]") == null && e.ctrlKey && e.key === 'ArrowLeft')
