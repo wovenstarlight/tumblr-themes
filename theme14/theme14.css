@@ -155,6 +155,7 @@ button[disabled] { cursor: initial }
 		}
 	}
 }
+img.lightboxable { cursor: pointer }
 #lightbox {
 	border: none;
 	background: none;
@@ -185,6 +186,11 @@ button[disabled] { cursor: initial }
 		cursor: pointer;
 		box-shadow: 0 0 1em var(--black);
 		display: block;
+		max-width: calc(100vw - 10em);
+		max-height: 90vh;
+		width: auto;
+		height: auto;
+		transition-property: none;
 
 		&.left, &.right {
 			position: fixed;
@@ -199,18 +205,11 @@ button[disabled] { cursor: initial }
 		}
 		&.left {
 			right: var(--positioning);
-			transition: right;
+			transition-property: right;
 		}
 		&.right {
 			left: var(--positioning);
-			transition: left;
-		}
-
-		&.center {
-			max-width: calc(100vw - 10em);
-			max-height: 90vh;
-			width: auto;
-			height: auto;
+			transition-property: left;
 		}
 	}
 }
