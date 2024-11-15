@@ -1056,9 +1056,9 @@ if (topNav.childElementCount > 0) {
 			+ (0.6 * (1.2 * em) * (topNavChildren.length - 1))		// Spacing between links
 			+ (2.5 * em);											// Inline padding of topnav itself, plus a little extra for breathing room
 	/** The dropdown navigation's toggle, for assisting in the top nav's placement. */
-	const dropdownNavToggle = document.getElementById("moreinfo").firstElementChild;
+	const dropdownNavToggle = document.getElementById("moreinfo");
 	/** The dropdown navigation's contents, for containing the collapsed top nav's children. */
-	const dropdownNavContents = document.getElementById("moreinfo").lastElementChild;
+	const dropdownNavContents = document.getElementById("moreinfopopover");
 	/** The dropdown navigation's first item, for reference when moving links. */
 	const dropdownNavTopItem = dropdownNavContents.firstElementChild;
 
@@ -1271,6 +1271,14 @@ postContainer.addEventListener("scroll", () => {
 	}
 })
 // #endregion
+
+// Close popovers on losing focus
+document.querySelectorAll("#moreinfopopover, #moreinfo").forEach(el => {
+	let moreinfopopover = document.getElementById("moreinfopopover");
+	el.addEventListener("focusout", e => {
+		if (!e.relatedTarget.closest("[popover]") && moreinfopopover.matches(":popover-open")) moreinfopopover.hidePopover();
+	});
+});
 // #endregion
 
 // #region Visual extras
