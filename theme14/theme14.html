@@ -1315,7 +1315,7 @@ tippy.createSingleton(tippy("#pfoot [title]", tippyOptions), tippyOptions);
 // Set up keyboard navigation
 // Given the unusual design of this theme, instead of using my usual script, the section below is a rewritten version
 {
-	keyboardNavOptions = {
+	let keyboardNavOptions = {
 		postSelector: ".post",
 		nextPageSelector: "#next",
 		prevPageSelector: "#prev",
@@ -1334,8 +1334,9 @@ tippy.createSingleton(tippy("#pfoot [title]", tippyOptions), tippyOptions);
 
 		let key = e.key.toUpperCase();
 
+		if (!sections.length && ["J", "K", ".", "R"].includes(key)) /* do nothing since no posts are available to interact with */ ;
 		// post navigation
-		if (key === 'J') {
+		else if (key === 'J') {
 			switch (postViewer.getAttribute("open") == null) {
 				case true:
 					if (document.activeElement.classList.contains("post")) currPost = document.activeElement;
