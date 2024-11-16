@@ -24,7 +24,7 @@
 	{block:Hidden}
 	<!-- THEME VARIABLES -->
 	<!-- Text and coloration -->
-	<meta name="text:Font size" content="16px">
+	<meta name="text:Font size" content="16">
 	<meta name="color:Accent" content="#481f19">
 
 	<!-- Title coloration display option -->
@@ -106,7 +106,8 @@
 	<!-- Theme styles -->
 	<style>
 		:root {
-			font-size: {text:Font size};
+			font-size: {text:Font size}px;
+			--font-size: {text:Font size};
 			--bg-img: url('{image:Background}');
 			--bg-position: {select:Background image focus};
 			--profile-banner-position: {select:Profile banner image focus};

@@ -217,6 +217,8 @@ img.lightboxable { cursor: pointer }
 .tmblr-iframe--unified-controls {
 	top: 5em !important;
 	right: 1em !important;
+	transform: scale(calc(var(--font-size) / 16));
+	transform-origin: top right;
 }
 /* Tooltips */
 .tippy-box[data-theme~="ssrg"] {
