@@ -1406,7 +1406,6 @@ footer .tags {
 		margin-inline: auto;
 		display: block;
 	}
-	iframe { margin-block: 0 }
 }
 /* #region Custom audio block (separate section for length) */
 .audiowrapper {
