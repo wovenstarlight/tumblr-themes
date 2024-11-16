@@ -1194,12 +1194,8 @@ if (playlist !== null) {
 			if (el.LINK != null) track.href = el.LINK;
 			if (el.ICON != null) { trackImage.src = el.ICON }
 			else {
-				trackImage.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-				trackImage.setAttribute("version", "1.1");
-				trackImage.setAttribute("width", "108");
-				trackImage.setAttribute("height", "108");
-				trackImage.setAttribute("viewbox", "0 0 108 108");
-				trackImage.innerHTML = '<rect width="24" height="4" x="42" y="52" fill="currentColor" />';
+				trackImage.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="108" height="108" viewbox="0 0 108 108"><rect width="24" height="4" x="42" y="52" fill="currentColor"></rect></svg>`;
+				trackImage.replaceWith(trackImage.firstElementChild);
 			}
 			if (el.NAME != null) {
 				trackName.innerHTML = el.NAME;
