@@ -7,7 +7,7 @@
 		Phosphor Icons: https://phosphoricons.com/
 		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
 
-	Last updated 15 Nov 2024.
+	Last updated 16 Nov 2024.
 -->
 
 <!DOCTYPE html>
@@ -1225,16 +1225,19 @@ document.querySelectorAll("#tagordering .orderlinks a")[window.location.href.spl
 {block:IfCustomPageIcons}{block:HasPages}
 // #region Custom page icon assignment
 const customPageLinks = document.querySelectorAll("#pages a");
-const customPageIcons = document.getElementById("custompageicons").innerHTML
-	.split(/LINK \d+:/i, customPageLinks.length + 1)	// get as many icons as pages (+1 because [0] will be empty string)
+let customPageIcons = {};
+document.getElementById("custompageicons").innerHTML
+	.split(/LINK/i, customPageLinks.length + 1)	// get as many icons as pages (+1 because [0] will be empty string)
 	.slice(1)	// omit the empty string at the start
-	.map(el => el.trim());	// trim whitespace so they're fit for SRCing
+	.forEach(iconpair => {
+		let parts = iconpair.split(":");
+		customPageIcons[parseInt(parts[0].trim())] = parts.slice(1).join(":").trim();
+	});
 customPageLinks.forEach((el, index) => {
-	if (customPageIcons[index] != null && customPageIcons[index] !== "") {
+	if (customPageIcons[index + 1] != null && customPageIcons[index + 1].length) {
 		// Icon provided, use it for display
-
 		let img = document.createElement("img");
-		img.src = unescapeHTML(customPageIcons[index]);
+		img.src = unescapeHTML(customPageIcons[index + 1]);
 		img.alt = "";	// mark as decorative
 		img.setAttribute("aria-hidden", "true");	// hide img
 		img.addEventListener("load", () => {
