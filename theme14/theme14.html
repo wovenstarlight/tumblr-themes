@@ -949,16 +949,6 @@ posts.forEach(post => {
 	}
 	{/block:IfFilteredTags}
 
-	// Clickable element
-	createPostCard(
-		article,
-		post.npf,
-		post.noteCount
-		{block:IfFilteredTags}
-		, filters?.length > 0	// override image retrieval, just in case
-		{/block:IfFilteredTags}
-	);
-
 	let postContent = document.createElement("section");
 	postContent.classList.add("postcontent");
 	postContent._container = article;
@@ -968,61 +958,66 @@ posts.forEach(post => {
 	}
 	article.append(postContent);
 
-	article.firstElementChild.addEventListener("click", () => { postViewer._open(postContent) });
-
 	// Backup method, using the old "body" T-var
 	if ((post.npf.content.length === 0 && post.npf.trail.length === 0) {block:AskPage}|| true{/block:AskPage}{block:SubmitPage}|| true{/block:SubmitPage}) {
 		createPage(postContent, post);
-		return;
 	}
-	// Regardless of NPF/.body creation, mark if currently on a custom blog page
-	if (document.querySelector("#pages .current-page") != null)
-		document.body.classList.add("page");
 
-	// Content available via NPF
-	// Create, but put guards in for header/footer just in case pages are parsed as NPF too
-	
-	if (post.id !== undefined)
-		createPostHeader(postContent, post);
+	else {
+		// Content available via NPF
+		// Create, but put guards in for header/footer just in case pages are parsed as NPF too
+		
+		if (post.id !== undefined)
+			createPostHeader(postContent, post);
 
-	/** The body of the post, to be populated with trail items */
-	let postBody = document.createElement("section");
-	postBody.classList.add("body");
-	postContent.append(postBody);
-	// Create each reblog of the post
-	if (!post.npf.trail.length) { postContent.classList.add("original") }
-	else { post.npf.trail.forEach(trailItem => createTrailItem(
-		postBody,
-		trailItem,
-		null
-		{block:PermalinkPage}, true{/block:PermalinkPage}
-	)) }
-	// End with the current blog's addition, if any
-	if (post.npf.content.length) {
-		createTrailItem(
+		/** The body of the post, to be populated with trail items */
+		let postBody = document.createElement("section");
+		postBody.classList.add("body");
+		postContent.append(postBody);
+		// Create each reblog of the post
+		if (!post.npf.trail.length) { postContent.classList.add("original") }
+		else { post.npf.trail.forEach(trailItem => createTrailItem(
 			postBody,
-			post.npf,
-			post.id
+			trailItem,
+			null
 			{block:PermalinkPage}, true{/block:PermalinkPage}
-		);
+		)) }
+		// End with the current blog's addition, if any
+		if (post.npf.content.length) {
+			createTrailItem(
+				postBody,
+				post.npf,
+				post.id
+				{block:PermalinkPage}, true{/block:PermalinkPage}
+			);
+		}
+		// In the above, expand any read more links if on the permalink page
+
+		if (post.id !== undefined)
+			createPostFooter(postContent, post);
+
+		{block:PermalinkPage}
+		// Add post notes on permalink pages and open post viewer
+		if (post.postNotes) {
+			postContent.append(createNotes(post.postNotes));
+			cleanNotes(true);
+		}
+		{/block:PermalinkPage}
+
+		{block:IfFilteredTags}
+		// Add filtered tags to post content for post viewer to check
+		if (filters?.length) postContent._filteredTags = filters;
+		{/block:IfFilteredTags}
 	}
-	// In the above, expand any read more links if on the permalink page
 
-	if (post.id !== undefined)
-		createPostFooter(postContent, post);
-
-	{block:PermalinkPage}
-	// Add post notes on permalink pages and open post viewer
-	if (post.postNotes) {
-		postContent.append(createNotes(post.postNotes));
-		cleanNotes(true);
-	}
-	{/block:PermalinkPage}
-
-	{block:IfFilteredTags}
-	// Add filtered tags to post content for post viewer to check
-	if (filters?.length) postContent._filteredTags = filters;
-	{/block:IfFilteredTags}
+	// Add clickable element
+	createPostCard(
+		article,
+		post
+		{block:IfFilteredTags}
+		, filters?.length > 0	// override image retrieval, just in case
+		{/block:IfFilteredTags}
+	).addEventListener("click", () => { postViewer._open(postContent) });
 });
 {block:PermalinkPage}postViewer._open(document.querySelector(".postcontent"));{/block:PermalinkPage}
 // #endregion
@@ -1430,14 +1425,14 @@ tippy.createSingleton(tippy("#pfoot [title]", tippyOptions), tippyOptions);
 /**
  * Creates a card containing some information about the post.
  * @param {HTMLElement} wrapper The HTML object for this post, to which the card will be added.
- * @param {Object} postData This post's data, containing relevant information to populate the card with.
- * @param {?string} noteCount This post's note count, not comma-separated.
+ * @param {Object} postObj This post's data, containing relevant information to populate the card with.
  * @param {?boolean} forceSVG True if usage of the type-based SVG should be forced instead of checking the post body for images; false otherwise.
+ * @returns The newly created clickable post card.
  */
-function createPostCard(wrapper, postData, noteCount = null, forceSVG = false) {
+function createPostCard(wrapper, postObj, forceSVG = false) {
 	let postCard = document.createElement("button");
 	postCard.classList.add("postcard");
-	wrapper.append(postCard);
+	wrapper.prepend(postCard);
 
 	let top = document.createElement("div"),
 		bottom = document.createElement("div");
@@ -1445,29 +1440,42 @@ function createPostCard(wrapper, postData, noteCount = null, forceSVG = false) {
 	bottom.classList.add("bottom");
 	postCard.append(top, bottom);
 
-	let postType = getPostType(postData);
+	// Pass the post content to get the post type
+	let postType = getPostType(postCard.nextElementSibling);
 
 	let heading = document.createElement("h3");
 	heading.classList.add("posttitle");
 	let subtitle = document.createElement("p");
 	subtitle.classList.add("subtitle");
 
-	if (postData.content?.length) {
+	if (postObj.npf?.content?.length) {
 		// Post which current user contributed to. Get latest info
-		heading.innerHTML = postData.content.find(el => el.type === "text")?.text ?? typeLabels[postType];
+		heading.innerHTML = postObj.npf?.content.find(el => el.type === "text")?.text ?? typeLabels[postType];
 		subtitle.innerText = currentUser.name;
 	}
-	else {
+	else if (postObj.npf?.trail?.length) {
 		// Reblogged post. Check for last user's info
-		let trailItem = postData.trail.at(-1);
+		let trailItem = postObj.npf?.trail.at(-1);
 		heading.innerHTML = trailItem.content.find(el => el.type === "text")?.text ?? typeLabels[postType];
 		subtitle.innerText = trailItem.blog?.name ?? trailItem.broken_blog_name ?? currentUser.name;
 		// ^ Use currentUser as a last-ditch fallback
 	}
+	else {
+		// Default to legacy title/body variables
+		if (postObj.title) heading.innerHTML = postObj.title ?? typeLabels[postType];
+		else {
+			let temp = document.createElement("div");
+			temp.innerHTML = unescapeHTML(postObj.body);
+			heading.innerHTML = Array.from(temp.querySelectorAll(Object.values(textSubtypes).filter((el, index, arr) => arr.indexOf(el) === index).join(", ")))?.filter(el => el.innerText.trim().length > 0)[0]?.innerHTML ?? temp.innerText ?? typeLabels[postType];
+		}
+		subtitle.innerText = currentUser.name;
+	}
 
-	top.append(getPostIcon(postData, postType, forceSVG), heading, subtitle);
+	top.append(getPostIcon(postObj.npf, postCard.nextElementSibling, postType, forceSVG), heading, subtitle);
 
-	bottom.innerHTML = `<i class="ph-thin ph-pulse"></i> ${noteCount ? truncateNumber(noteCount) : "0"}`;
+	bottom.innerHTML = `<i class="ph-thin ph-pulse"></i> ${postObj.noteCount ? truncateNumber(postObj.noteCount) : "0"}`;
+
+	return postCard;
 }
 // #endregion
 
@@ -1863,22 +1871,21 @@ function makeContentSource(wrapper, postData, label = true, logo = false) {
 /**
  * Maps an NPF post object to the corresponding legacy post type. Evaluates only original trail items, in the following order:
  * Answer > Video > Photo > Audio > Quote > Chat > Link > Text
- * @param {Object} npf A post's NPF object.
- * @param {?Object[]} npf.trail The trail items, if this post was reblogged. When non-empty, the first of these trail items has its "content" property evaluated to determine the post type.
- * @param {Object[]} npf.content The current blog's contribution to this post. For original posts, this property is evaluated to determine the post type.
- * @param {?Object[]} [npf.layout] Checked on original posts to determine if this is an answer post. On reblogged posts, the first trail item may contain a similar property.
+ * @param {Object} postContent The post element to check the type of.
  */
-function getPostType(npf) {
-	// takes post npf object and checks first trail item to determine post type
-	let trailItem = npf.trail[0] ?? npf;
+function getPostType(postContent) {
+	// check the first trail item or media block to determine the post type
+	let content = postContent.querySelector(".bodyitemcontent, .mediawrapper, .ask");
+	if (content.classList.contains("mediaWrapper") && content.firstElementChild.tagName.toLowerCase() === textSubtypes.heading1) // post title, not actual media
+		content = postContent.querySelector(".bodyitemcontent, .ask");
 
-	if (trailItem.layout?.some(el => el.type === "ask")) { return "answer" }
-	else if (trailItem.content.some(el => el.type === "video")) { return "video" }
-	else if (trailItem.content.some(el => el.type === "image")) { return "photo" }
-	else if (trailItem.content.some(el => el.type === "audio")) { return "audio" }
-	else if (trailItem.content.some(el => el.type === "audio" && el.subtype === "quote")) { return "quote" }
-	else if (trailItem.content.filter(el => el.type === "chat").length > 1) { return "chat" }
-	else if (trailItem.content.some(el => el.type === "link")) { return "link" }
+	if (content.classList.contains("ask")) { return "answer" }
+	else if (content.querySelector("video, iframe:not([class*='audio'])")) { return "video" }
+	else if (content.querySelector("img")) { return "photo" }
+	else if (content.querySelector("audio, iframe[class*='audio']")) { return "audio" }
+	else if (content.querySelector("blockquote, .npf_indented, .npf_quote")) { return "quote" }
+	else if (content.querySelector(".npf_chat")) { return "chat" }
+	else if (content.querySelector(".npf-link-block")) { return "link" }
 	else { return "text" }
 }
 
@@ -1887,44 +1894,86 @@ function getPostType(npf) {
  * @param {Object} npf A post's NPF object.
  * @param {?Object[]} npf.trail The trail items, if this post was reblogged. Images are extracted from the first trail item, if available.
  * @param {Object[]} npf.content The current blog's contribution to this post. Images are extracted from this on original posts.
+ * @param {HTMLElement} postContent The post content element, useful on custom blog pages where the NPF object is unavailable.
  * @param {?boolean} forceSVG True if usage of the type-based SVG should be forced instead of checking the post body for images; false otherwise.
  * @return {HTMLElement} An <img> element if the post contained a usable image, or an <svg> element depicting the post type otherwise.
  */
-function getPostIcon(npf, postType = null, forceSVG = false) {
-	// takes post npf object and checks first trail item
-	let trailItem = npf.trail[0] ?? npf;
+function getPostIcon(npf, postContent = null, postType = null, forceSVG = false) {
 	// check the type to see what icon/type of image to retrieve
-	let type = postType ?? getPostType(npf);
+	let type = postType ?? getPostType(postContent);
+	// Return early if forcing SVGs
+	if (forceSVG) { return getPostIconSVG(type) }
 
-	let block, icon;
-	if (!forceSVG) {
-		if ((block = trailItem.content.find(el => el.type === "video")) != null && block.poster?.length) {
-			icon = document.createElement("img");
-			icon.src = block.poster[0].url;
-			icon.alt = "";	// mark as decorative
-			return icon;
-		}
-		else if ((block = trailItem.content.find(el => el.type === "image")) != null) {
-			icon = document.createElement("img");
-			icon.src = block.media[0].url;
-			icon.alt = "";	// mark as decorative
-			return icon;
-		}
-		else if ((block = trailItem.content.find(el => el.type === "audio")) != null && block.poster?.length) {
-			icon = document.createElement("img");
-			icon.src = block.poster[0].url;
-			icon.alt = "";	// mark as decorative
-			return icon;
-		}
-		else if ((block = trailItem.content.find(el => el.type === "link")) != null && block.poster?.length) {
-			icon = document.createElement("img");
-			icon.src = block.poster[0].url;
-			icon.alt = "";	// mark as decorative
-			return icon;
-		}
+	// Need to check for an actual image. Switch up depending on whether to check npf or postContent
+	let block, icon, trailItem;
+	switch (!npf.trail.length && !npf.content.length) {
+		case true:
+			trailItem = postContent.querySelector(".bodyitemcontent, .mediawrapper, .ask");
+			if (trailItem.classList.contains("mediaWrapper") && trailItem.firstElementChild.tagName.toLowerCase() === textSubtypes.heading1) // post title, not actual media
+				trailItem = postContent.querySelector(".bodyitemcontent, .ask");
+			if (type === "video") {
+				// No real way to check for posters here, so return the SVG
+				return getPostIconSVG("video");
+			}
+			else if ((block = trailItem.querySelector("img")) != null && block.closest(".audiowrapper, .npf-link-block, header.user") == null) {
+				icon = block.cloneNode();
+				icon.alt = "";	// mark as decorative
+				return icon;
+			}
+			else if ((block = trailItem.querySelector(".audiowrapper .albumart")) != null) {
+				icon = block.cloneNode();
+				icon.alt = "";	// mark as decorative
+				return icon;
+			}
+			else if ((block = trailItem.querySelector(".postcontent .npf-link-block.has-poster .poster")) != null) {
+				icon = document.createElement("img");
+				icon.src = block.style.backgroundImage.slice(5, -2);
+				icon.alt = "";	// mark as decorative
+				return icon;
+			}
+			// Didn't return at any point above, so no image found. Use SVG
+			return getPostIconSVG(type);
+			break;
+	
+		case false:
+			trailItem = npf.trail[0] ?? npf;
+			if ((block = trailItem.content.find(el => el.type === "video")) != null && block.poster?.length) {
+				icon = document.createElement("img");
+				icon.src = block.poster[0].url;
+				icon.alt = "";	// mark as decorative
+				return icon;
+			}
+			else if ((block = trailItem.content.find(el => el.type === "image")) != null) {
+				icon = document.createElement("img");
+				icon.src = block.media[0].url;
+				icon.alt = "";	// mark as decorative
+				return icon;
+			}
+			else if ((block = trailItem.content.find(el => el.type === "audio")) != null && block.poster?.length) {
+				icon = document.createElement("img");
+				icon.src = block.poster[0].url;
+				icon.alt = "";	// mark as decorative
+				return icon;
+			}
+			else if ((block = trailItem.content.find(el => el.type === "link")) != null && block.poster?.length) {
+				icon = document.createElement("img");
+				icon.src = block.poster[0].url;
+				icon.alt = "";	// mark as decorative
+				return icon;
+			}
+			// Didn't return at any point above, so no image found. Use SVG
+			return getPostIconSVG(type);
+			break;
+	
+		default:
+			break;
 	}
+}
 
-	// Didn't return in any of the above, so default to basic icons
+/** Helper for getPostIcon. Returns the SVG icon corresponding to the provided post type.
+ * @param [string] postType The post type for which to fetch the SVG icon.
+ */
+function getPostIconSVG(postType) {
 	if (!iconHolder) iconHolder = document.createElement("div");
 	switch (postType) {
 		case "answer":
@@ -2997,6 +3046,7 @@ function tumblrNotesInserted() { cleanNotes() }
  * @param {string} postData.body An HTML string containing the body of this page
  */
 function createPage(wrapper, postData) {
+	// No header or footer needed, just body.
 	let postBody = document.createElement("section");
 	postBody.classList.add("body");
 	let trailItem = document.createElement("div");
@@ -3005,37 +3055,19 @@ function createPage(wrapper, postData) {
 	wrapper.append(postBody);
 
 	// Create user
-	let header = document.createElement("header");
-	header.classList.add("user");
-	trailItem.append(header);
-	// Create permalink
-	let link = document.createElement("a");
-	link.href = window.location.href; // gives current URL
-	header.append(link);
-	// Get the username and avatar
-	let username = document.createElement("span");
-	username.classList.add("name");
-	username.innerHTML = currentUser.name;
-	let avatar = document.createElement("img");
-	avatar.classList.add("avatar", currentUser.theme.avatar_shape);
-	avatar.src = currentUser.avatar;
-	// put together the header
-	link.append(avatar, username);
-	link.setAttribute("style", `--bg: ${currentUser.theme.background_color}; --text: ${currentUser.theme.title_color}; --accent: ${currentUser.theme.link_color}`)
+	createTrailItemHeader(trailItem, currentUser, {});
 
 	// Create title and body of page
 	// postData.npf is empty; use exclusively .title and .body
 	let bodyWrapper = document.createElement("div");
 	bodyWrapper.classList.add("bodyitemcontent");
+	trailItem.append(bodyWrapper);
 	if (postData.title) {
 		let title = document.createElement(textSubtypes.heading1);
 		title.innerHTML = unescapeHTML(postData.title);
 		bodyWrapper.append(title);
 	}
 	bodyWrapper.innerHTML += unescapeHTML(postData.body);
-
-	// Plug the whole thing in
-	trailItem.append(bodyWrapper);
 }
 
 /**
