@@ -2995,6 +2995,11 @@ function cleanNotes(initial = false) {
 		// No cleaning to be done on load more button
 		if (note.classList.contains("more_notes_link_container")) { return }
 
+		// Get higher-resolution avatar
+		let avatar = note.querySelector("img");
+		avatar.addEventListener("error", e => { e.currentTarget.src = anonAvatar }, { once: true });
+		avatar.src = `https://api.tumblr.com/v2/blog/${action.firstElementChild.innerText ?? ""}/avatar/64`;
+
 		// Remove clears
 		note.querySelector(".clear").remove();
 		
