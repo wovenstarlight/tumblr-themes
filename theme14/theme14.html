@@ -7,7 +7,7 @@
 		Phosphor Icons: https://phosphoricons.com/
 		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
 
-	Last updated 16 Nov 2024.
+	Last updated 18 Nov 2024.
 -->
 
 <!DOCTYPE html>
@@ -1881,7 +1881,7 @@ function getPostType(postContent) {
 
 	if (content.classList.contains("ask")) { return "answer" }
 	else if (content.querySelector("video, iframe:not([class*='audio'])")) { return "video" }
-	else if (content.querySelector("img")) { return "photo" }
+	else if ((temp = content.querySelector("img")) && temp.closest(".audiowrapper, .npf-link-block, header.user") == null) { return "photo" }
 	else if (content.querySelector("audio, iframe[class*='audio']")) { return "audio" }
 	else if (content.querySelector("blockquote, .npf_indented, .npf_quote")) { return "quote" }
 	else if (content.querySelector(".npf_chat")) { return "chat" }
