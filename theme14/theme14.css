@@ -197,6 +197,7 @@ img.lightboxable { cursor: pointer }
 			top: 50%;
 			transform: translateY(-50%);
 			--positioning: calc(100vw - 2em);
+			max-height: 75vh;
 
 			&:hover {
 				--positioning: calc(100vw - 3em);
