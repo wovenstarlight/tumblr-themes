@@ -36,7 +36,6 @@ Designed for my sister, with love.
 - Custom font size
 <!-- - [Collapsible sections](https://wovenstarlight.github.io/tumblr-themes/collapsibles/) for use on custom blog pages
 	- [Preview here](https://starlightpreviews.tumblr.com/theme14/collapsibles) -->
-- Responsive
 - Supports new post types (NPF) and pinned posts
 - Unnested captions
 - Optional FAQ for Ask pages
