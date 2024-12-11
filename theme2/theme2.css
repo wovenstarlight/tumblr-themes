@@ -19,7 +19,8 @@ a:not(:hover) { text-decoration: none }
 .post .title a:hover,
 .post.notes .more_notes_link:hover, .post#notes .more_notes_link:hover,
 #navigation a:hover,
-.bodyitemcontent .read_more:hover {
+.bodyitemcontent .read_more:hover,
+.bodyitemcontent .poll-post a.poll-row:is(:hover, :focus) {
 	filter: contrast(1.2)
 }
 /* Overall styles setup - Special bold/italic colors */
@@ -290,6 +291,23 @@ main .post:first-child { margin-top: 0 }
 	height: 2em;
 	margin-right: 0.5em
 }
+/* Post type-specific styles: Poll blocks */
+.bodyitemcontent .poll-post a.poll-row {
+	display: block;
+	padding: 0.5em;
+	text-align: center;
+	background: var(--accent2);
+	color: var(--links);
+	border-radius: var(--roundness);
+}
+.bodyitemcontent .poll-post a.poll-row:is(:hover, :focus) { color: var(--links-hover) }
+.bodyitemcontent .poll-post a.poll-row:has(~ .poll-see-results) {
+	text-decoration: line-through;
+	text-decoration-thickness: 0.1em;
+	text-decoration-color: rgb(from currentColor r g b / 0.5);
+}
+.bodyitemcontent .poll-post a.poll-see-results { transition-property: color, text-decoration-color }
+.bodyitemcontent .poll-post a.poll-see-results:not(:hover) { text-decoration-color: transparent }
 /* Post type-specific styles: Photo posts */
 .postbody img.photopost { width: 100%; }
 .postbody .photowrapper { position: relative }

@@ -255,8 +255,7 @@ body:not(.sidebarleft) main {
 }
 /* Read more */
 .read_more {
-	border-top: double var(--accent2);
-	border-bottom: double var(--accent2);
+	border-block: double var(--accent2);
 	padding: 0.25em 1.25em;
 	width: -webkit-fit-content;
 	width: -moz-fit-content;
@@ -321,6 +320,25 @@ blockquote {
 	border-left: solid;
 	margin: 0 0.5em;
 	padding-left: 1em;
+}
+/* Poll blocks */
+.bodyitemcontent .poll-post a.poll-row {
+	border-block: double var(--accent2);
+	padding: 0.25em 1.25em;
+	min-height: unset;
+	background-color: transparent;
+	border-radius: 0;
+	font-weight: normal;
+	color: var(--links);
+}
+.bodyitemcontent .poll-post a.poll-row:is(:hover, :focus) {
+	color: var(--links-hover);
+	text-decoration: underline;
+}
+.bodyitemcontent .poll-post a.poll-row:has(~ .poll-see-results) {
+	text-decoration: line-through;
+	text-decoration-thickness: 0.1em;
+	text-decoration-color: rgb(from currentColor r g b / 0.3);
 }
 /* Photo posts */
 .photowrapper { position: relative }

@@ -64,7 +64,8 @@ body.lower .page.title a, body.lower #curr {
 .page.title a, #pagination > *, .post.notes .more_notes_link_container > *,
 #desc::before, #blognav a, #blognav a::before,
 #search, #search input, #pages a, #pages a::before,
-#buttons a, #buttons a::before, #scrolltotop_arrow, #scrolltotop_arrow::before {
+#buttons a, #buttons a::before, #scrolltotop_arrow, #scrolltotop_arrow::before,
+.bodyitemcontent .poll-post a.poll-row {
 	border-radius: var(--roundness)
 }
 
@@ -103,7 +104,8 @@ body.alltapes .post .bodyitem:nth-of-type(3n+1) .user,
 blockquote:nth-of-type(3n+1)::before, body.alltapes .post:nth-child(3n+1) .quote .separator,
 .seekbar span::after, body.alltapes .ask .user,
 body.alltapes #prev::before, body.alltapes .post.notes li:nth-of-type(3n+1)::before,
-#scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow::before {
+#scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow::before,
+.bodyitemcontent .poll-post a.poll-row:nth-of-type(3n+1)::before {
 	background-image: var(--t1-image);
 	background-repeat: var(--t1-repeat);
 	background-size: var(--t1-size);
@@ -114,7 +116,8 @@ body.alltapes #prev::before, body.alltapes .post.notes li:nth-of-type(3n+1)::bef
 blockquote:nth-of-type(3n+1)::before, .post:nth-child(3n+1) .quote .separator,
 .post:nth-child(3n+1) .quote .separator i, .seekbar span, .ask .user, .ask .username,
 #prev, .post.notes li:nth-of-type(3n+1)::before,
-#scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow {
+#scrolltotop_parent:nth-last-child(3) #scrolltotop_arrow,
+.bodyitemcontent .poll-post a.poll-row:nth-of-type(3n+1) {
 	background-color: var(--t1-bg);
 	color: var(--t1-text);
 }
@@ -127,7 +130,8 @@ body.alltapes .post .bodyitem:nth-of-type(3n+2) .user,
 blockquote:nth-of-type(3n+2)::before, body.alltapes .post:nth-child(3n+2) .quote .separator,
 .link .name::before, .chat li:nth-child(odd)::before,
 body.alltapes .page.title a:first-child::before,
-body.alltapes #curr::before, body.alltapes .post.notes li:nth-of-type(3n+2)::before {
+body.alltapes #curr::before, body.alltapes .post.notes li:nth-of-type(3n+2)::before,
+.bodyitemcontent .poll-post a.poll-row:nth-of-type(3n+2)::before {
 	background-image: var(--t2-image);
 	background-repeat: var(--t2-repeat);
 	background-size: var(--t2-size);
@@ -138,7 +142,8 @@ body.alltapes #curr::before, body.alltapes .post.notes li:nth-of-type(3n+2)::bef
 .post .bodyitem:nth-of-type(3n+2) .user, .post .bodyitem:nth-of-type(3n+2) .username,
 blockquote:nth-of-type(3n+2)::before, .post:nth-child(3n+2) .quote .separator,
 .post:nth-child(3n+2) .quote .separator i, .link .name, .chat li:nth-child(odd),
-.page.title a:first-child, #curr, .post.notes li:nth-of-type(3n+2)::before {
+.page.title a:first-child, #curr, .post.notes li:nth-of-type(3n+2)::before,
+.bodyitemcontent .poll-post a.poll-row:nth-of-type(3n+2) {
 	background-color: var(--t2-bg);
 	color: var(--t2-text);
 }
@@ -152,7 +157,8 @@ body.alltapes .post:nth-child(3n) .quote .separator,
 .link .excerpt::before, .chat li:nth-child(even)::before,
 body.alltapes .custom_audio_seekbar_progress,
 body.alltapes .page.title a:last-child::before,
-body.alltapes #next::before, body.alltapes .post.notes li:nth-of-type(3n)::before {
+body.alltapes #next::before, body.alltapes .post.notes li:nth-of-type(3n)::before,
+.bodyitemcontent .poll-post a.poll-row:nth-of-type(3n)::before {
 	background-image: var(--t3-image);
 	background-repeat: var(--t3-repeat);
 	background-size: var(--t3-size);
@@ -165,7 +171,8 @@ blockquote:nth-of-type(3n)::before,
 .post:nth-child(3n) .quote .separator, .post:nth-child(3n) .quote .separator i,
 .link .excerpt, .chat li:nth-child(even),
 .custom_audio_seekbar,
-.page.title a:last-child, #next, .post.notes li:nth-of-type(3n)::before {
+.page.title a:last-child, #next, .post.notes li:nth-of-type(3n)::before,
+.bodyitemcontent .poll-post a.poll-row:nth-of-type(3n) {
 	background-color: var(--t3-bg);
 	color: var(--t3-text);
 }
@@ -186,7 +193,8 @@ blockquote:nth-of-type(3n)::before,
 .link .name::before, .link .excerpt::before,
 .chat li::before, .seekbar span::after,
 .page.title a::before, #pagination > *::before,
-.post.titled.pinned #pinnedpost::before {
+.post.titled.pinned #pinnedpost::before,
+.bodyitemcontent .poll-post a.poll-row::before {
 	content: "";
 	display: block;
 	width: 100%;
@@ -578,6 +586,13 @@ footer .stickies { margin-top: -0.75em }
 
 
 /********************************* POST TYPES ********************************/
+/* Poll blocks */
+.bodyitemcontent .poll-post a.poll-row { font-weight: normal }
+.bodyitemcontent .poll-post a.poll-row:has(~ .poll-see-results) {
+	text-decoration: line-through;
+	text-decoration-color: rgb(from currentColor r g b / 0.3);
+	text-decoration-thickness: 0.1em;
+}
 /* Photo posts */
 .photowrapper { position: relative }
 .photowrapper a[href*="image"], .photopost { display: flex }
