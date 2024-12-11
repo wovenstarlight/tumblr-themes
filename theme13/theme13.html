@@ -1265,8 +1265,13 @@ function makeTags(wrapper, postData, tagOptions = {}) {
 	let tags = document.createElement(options.span ? "span" : "p");
 	tags.classList.add("tags");
 	// Populate with each tag
-	let tagList = postData.tags.map(tag => `<a href="${tag.url}">`.concat(options.hashtags ? "#" : "",`${tag.name}</a>`));
-	tags.innerHTML = tagList.join(options.commas ? ", " : "");
+	postData.tags.forEach((tag, arr, index) => {
+		let a = document.createElement("a");
+		a.href = tag.url;
+		a.innerHTML = (options.hashtags ? "#" : "").concat(unescapeHTML(tag.name));
+		tags.append(a);
+		if (options.commas && index < arr.length - 1) tags.append(", ");
+	});
 	wrapper.append(tags);
 }
 
