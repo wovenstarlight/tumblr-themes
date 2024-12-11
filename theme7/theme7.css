@@ -324,6 +324,16 @@ body {
 
 
 /************************************* POSTS *************************************/
+/* Poll blocks */
+.bodyitemcontent .poll-post a.poll-row {
+	background-color: transparent;
+	border: 0.125em solid rgba(var(--accent--rgb), 0.4);
+	color: var(--accent);
+}
+#main .poll-post a.poll-row:is(:hover, :focus) {
+	border-color: var(--accent);
+	text-decoration: none;
+}
 /* Photo posts */
 a[href*='image'], .photopost, .videowrapper { display: flex }
 a[href*='image'] + .bodyitem,
@@ -467,7 +477,8 @@ span[id*='audio_player'] { display: none }
 	margin-top: 1em;
 }
 #blognav .texts { padding: 0.475em 0.9em } /* Text padding */
-#pagination a:hover, #blognav .rounds:hover {
+#pagination a:hover, #blognav .rounds:hover,
+.bodyitemcontent .poll-post a.poll-row:is(:hover, :focus) {
 	background-color: rgba(var(--accent--rgb), 0.15);
 	border-color: var(--accent);
 }

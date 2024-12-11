@@ -13,7 +13,8 @@ a {
 }
 main a[href]:hover, #right a[href]:hover { color: rgba(var(--text--rgb), 0.65) }
 .button, .custom_audio_buttons div,
-.notes .more_notes_link, .notes .notes_loading {
+.notes .more_notes_link, .notes .notes_loading,
+.bodyitemcontent .poll-post a.poll-row {
 	cursor: pointer;
 	display: inline-block;
 	border-radius: 0.3em;
@@ -26,11 +27,12 @@ main a[href]:hover, #right a[href]:hover { color: rgba(var(--text--rgb), 0.65) }
 .button:hover, .button:focus, .button.active,
 #search input:hover, #search input:focus,
 .custom_audio_buttons div:hover,
-.notes .more_notes_link:hover {
+.notes .more_notes_link:hover,
+.bodyitemcontent .poll-post a.poll-row:is(:hover, :focus, :active) {
 	box-shadow: inset 0.25em 0.25em 0.25em var(--bg2)
 }
-.button:hover, .notes .more_notes_link:hover { color: var(--accent) }
-.button:active, .notes .more_notes_link:active {
+.button:hover, .notes .more_notes_link:hover, .bodyitemcontent .poll-post a.poll-row:hover { color: var(--accent) }
+.button:active, .notes .more_notes_link:active, .bodyitemcontent .poll-post a.poll-row:active {
 	color: var(--text);
 	background-image: unset;
 }
@@ -685,6 +687,23 @@ html.alt .altinvert .post .icons a[href]:active {
 
 
 /* #region POST TYPES */
+/* Polls */
+.bodyitemcontent .poll-post a.poll-row {
+	min-height: unset;
+	font-weight: normal;
+	text-align: center;
+}
+.bodyitemcontent .poll-post a.poll-see-results {
+	display: block;
+	margin: 1em auto 0;
+	width: fit-content;
+	border-bottom-style: dotted;
+	padding: 0.25em 0.5em;
+}
+.bodyitemcontent .poll-post a.poll-see-results:is(:hover, :focus) {
+	background-color: var(--accent);
+	color: var(--bg);
+}
 /* Photo */
 .photowrapper {
 	position: relative;

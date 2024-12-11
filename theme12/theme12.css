@@ -60,7 +60,8 @@ body.upper .post header, body.upper .post footer .topline,
 body.upper .post .user,
 body.upper .post .body .read_more, body.upper .more_notes_link_container > *,
 body.upper .post .notes .action a,
-body.upper .photowrapper .highres, body.upper .ask .asker {
+body.upper .photowrapper .highres, body.upper .ask .asker,
+body.upper a.poll-see-results {
 	text-transform: uppercase;
 }
 body.upper .post .body > a.title h4, body.upper .post#notes .title { font-variant: small-caps }
@@ -70,7 +71,8 @@ body.lower #pages, body.lower #pagination,
 body.lower #hdr, body.lower .newdate,
 body.lower .post header, body.lower .post footer .topline,
 body.lower .post .body .read_more, body.lower .more_notes_link_container > *,
-body.lower .photowrapper .highres, body.lower .ask .asker {
+body.lower .photowrapper .highres, body.lower .ask .asker,
+body.lower a.poll-see-results {
 	text-transform: lowercase;
 }
 /* #endregion */
@@ -586,6 +588,23 @@ html:not(.alt) #sidebarimg img.alt, html.alt #sidebarimg img.og, #sidebarimg:emp
 /* #region POST TYPES */
 /* Ask guidelines */
 .askwrapper { margin-block-end: 0.5em }
+/* Poll blocks */
+.bodyitemcontent .poll-post a.poll-row {
+	background-color: transparent;
+	border-radius: 0;
+	border-block: 0.1em solid var(--accent);
+	color: inherit;
+	transition-property: background-color;
+}
+.bodyitemcontent .poll-post a.poll-row:is(:hover, :focus) {
+	background-color: rgb(from var(--accent) r g b / 0.1);
+	color: var(--accent);
+}
+.bodyitemcontent .poll-post a.poll-row:has(~ .poll-see-results) {
+	text-decoration: line-through;
+	text-decoration-thickness: 0.1em;
+	text-decoration-color: rgb(from currentColor r g b / 0.5)
+}
 /* #region Photo posts */
 .photowrapper {
 	position: relative;
