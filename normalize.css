@@ -379,8 +379,11 @@ img.circle {
 }
 
 /**
-* Ensure poll option text is wrapped.
+* Ensure poll option text is wrapped and centered.
 */
+.poll-row {
+	text-align: center;
+}
 .poll-row p {
 	overflow-wrap: anywhere;
 }
