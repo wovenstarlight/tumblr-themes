@@ -379,6 +379,17 @@ main {
 /***************************** SPECIAL POST STYLES *****************************/
 /* Special post margins - chats, photos, videos */
 .postbody .quote, .postbody .chat, .photowrapper, .npf_photoset, .videowrapper { margin: 0.75em 1em 0 }
+/* Poll blocks */
+.postbody .poll-post a.poll-row {
+	background-color: var(--accent2);
+	color: var(--links);
+	border-radius: var(--roundness);
+	font-weight: normal;
+}
+.postbody .poll-post a.poll-row:is(:hover, :focus) {
+	color: var(--links-hover);
+	text-decoration: underline;
+}
 /* Quote posts */
 .postbody .quote h2 { margin: 0 }
 .postbody .quote p {

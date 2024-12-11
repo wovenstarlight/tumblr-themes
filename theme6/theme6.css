@@ -117,7 +117,8 @@ aside div, #search, #search input, #pages a,
 .bodyitem:last-child::after, .ask::after,
 .post .quote i, .quote .separator::before, .quote .separator::after,
 .postbody .link[href], .read_more, .more_notes_link, .notes_loading,
-.audiowrapper .custom_audio_buttons, .audiowrapper .albumart, .audiowrapper .custom_audio_seekbar_progress::after {
+.audiowrapper .custom_audio_buttons, .audiowrapper .albumart, .audiowrapper .custom_audio_seekbar_progress::after,
+.postbody .bodyitemcontent a.poll-row, .postbody .bodyitemcontent a.poll-see-results{
 	border-radius: var(--roundness);
 }
 /* Roundness: bottom */
@@ -131,12 +132,14 @@ aside div, #search, #search input, #pages a,
 .lowercase #pages a,
 .lowercase .post header, .lowercase .post footer,
 .lowercase .highres, .lowercase .chat .label, .lowercase .link .name, .lowercase .audiowrapper .textinfo,
-.lowercase .read_more, .lowercase .jump, .lowercase .more_notes_link_container { text-transform: lowercase }
+.lowercase .read_more, .lowercase .jump, .lowercase .more_notes_link_container,
+.lowercase a.poll-see-results { text-transform: lowercase }
 /* Casing: upper */
 .uppercase #title,
 .uppercase .user,
 .uppercase .chat .label, .uppercase .audiowrapper .textinfo .trackname,
-.uppercase .read_more, .uppercase #notes .action > a { text-transform: uppercase }
+.uppercase .read_more, .uppercase #notes .action > a,
+.uppercase a.poll-see-results { text-transform: uppercase }
 .uppercase #s-m-t-tooltip,
 .uppercase .title,
 .uppercase #pages a,
@@ -315,7 +318,8 @@ aside.desc.pages div {
 	margin: 0;
 	font-size: 1.75em;
 }
-.post h2.title a[href], .postbody .read_more[href], #notes .more_notes_link, .notes_loading {
+.post h2.title a[href], .postbody .read_more[href], #notes .more_notes_link, .notes_loading,
+.postbody .bodyitemcontent a.poll-row {
 	text-align: center;
 	display: block;
 	padding: 0.25em 0.5em 0.5em;
@@ -537,6 +541,25 @@ aside.desc.pages div {
 	margin: 0.1em 0 0;
 	font-size: 0.75em;
 	font-style: italic;
+}
+/* Poll blocks */
+.postbody .poll-post a.poll-row {
+	font-size: inherit;
+	font-weight: inherit;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: unset;
+}
+.poll-post a.poll-row:has(~ .poll-see-results) {
+	text-decoration: line-through;
+	text-decoration-thickness: 0.1em;
+	text-decoration-color: rgb(from var(--text2) r g b / 0.5);
+}
+.poll-post a.poll-see-results {
+	display: block;
+	width: fit-content;
+	margin: 1.5em auto 0;
 }
 /* Photo posts */
 .photowrapper { position: relative }

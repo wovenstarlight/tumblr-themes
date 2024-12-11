@@ -182,14 +182,16 @@ pre {
 .uppercase .post header,
 .uppercase .post .user,
 .uppercase .post .tags,
-.uppercase #notes .title, .uppercase .notes .action a { font-variant: small-caps }
+.uppercase #notes .title, .uppercase .notes .action a,
+.uppercase .poll-see-results { font-variant: small-caps }
 .uppercase .post .showtags { text-transform: uppercase }
 /* Lowercase variants */
 .lowercase .page.title,
 .lowercase .post header,
 .lowercase .post .user,
 .lowercase .post .tags,
-.lowercase #notes .title, .lowercase .notes .action a { text-transform: lowercase }
+.lowercase #notes .title, .lowercase .notes .action a,
+.lowercase .poll-see-results { text-transform: lowercase }
 .lowercase .post .showtags i { align-items: baseline }
 /* Like/reblog buttons and pinned post icon */
 .likereblog {
@@ -367,6 +369,17 @@ pre {
 
 
 /******************************** POST SPECIFIC ********************************/
+/* Poll blocks */
+.bodyitemcontent .poll-post a.poll-row {
+	background-color: rgb(from var(--accent) r g b / 0.15);
+	color: var(--links);
+	border-radius: 0;
+	font-weight: normal;
+}
+.bodyitemcontent .poll-post a.poll-row:is(:hover, :focus) {
+	text-decoration: underline;
+	color: var(--links-hover);
+}
 /* Photo posts */
 .photopost { width: 100% }
 .photowrapper { position: relative }
