@@ -379,6 +379,16 @@ img.circle {
 }
 
 /**
+* Remove excess margins from polls.
+*/
+.poll-post .poll-question {
+	margin-block-start: 0;
+}
+.poll-post > :last-child {
+	margin-block-end: 0;
+}
+
+/**
 * Ensure poll option text is wrapped and centered.
 */
 .poll-row {
