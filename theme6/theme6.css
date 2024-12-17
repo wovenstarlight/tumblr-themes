@@ -20,6 +20,8 @@ aside a[href], .postbody a[href], .page.title a[href], .post .title a[href],
 	/* Make stronger highlight collapse towards the right, for not:hover */
 	background-position: 0% 100%, 100% 100%;
 	background-repeat: no-repeat;
+	/* ONLY transition width of highlight, not position */
+	transition-property: background-size;
 }
 aside a[href]:hover, .postbody a[href]:hover, .page.title a[href]:hover, .post .title a[href]:hover,
 #notes a:hover, .notes_loading:hover {
