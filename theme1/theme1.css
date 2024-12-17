@@ -67,8 +67,8 @@ body.dark {
 	--text-normal: #dcddde;
 	--text-muted: #72767d;
 	--channels: #8e9297;
-	--channels-hover: rgba(79,84,92,0.16);
-	--channels-active: rgba(79,84,92,0.32);
+	--channels-hover: rgb(79 84 92 / 0.16);
+	--channels-active: rgb(79 84 92 / 0.32);
 	--paginate: #40444b;
 }
 body.light {
@@ -81,8 +81,8 @@ body.light {
 	--text-normal: #2e3338;
 	--text-muted: #747f8d;
 	--channels: #6a7480;
-	--channels-hover: rgba(116,127,141,0.08);
-	--channels-active: rgba(116,127,141,0.24);
+	--channels-hover: rgb(116 127 141 / 0.08);
+	--channels-active: rgb(116 127 141 / 0.24);
 	--paginate: #ebedef;
 }
 

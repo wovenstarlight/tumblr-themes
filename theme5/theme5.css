@@ -30,19 +30,19 @@ pre {
 	padding: 0.5em 0.75em;
 }
 :not(pre) > code {
-	background-color: rgba(var(--accent--rgb), 0.2);
+	background-color: rgb(from var(--accent) r g b / 0.2);
 	padding: 0.1em 0.2em;
 }
 /* Scrollbar */
 * {
 	scrollbar-width: thin;
-	scrollbar-color: var(--accent) rgba(var(--accent--rgb), 0.2);
+	scrollbar-color: var(--accent) rgb(from var(--accent) r g b / 0.2);
 	overflow-wrap: break-word; /* Wrap text by default */
 }
 ::-webkit-scrollbar {
     width: 0.5em;
     height: 0.5em;
-    background-color: rgba(var(--accent--rgb), 0.2);
+    background-color: rgb(from var(--accent) r g b / 0.2);
 }
 ::-webkit-scrollbar-corner { background-color: var(--bg) }
 ::-webkit-scrollbar-thumb { background-color: var(--links) }
@@ -114,24 +114,24 @@ pre {
 .tippy-box[data-theme~="standard"] {
 	background-color: var(--post);
 	color: var(--text);
-	border: 0.1em solid rgba(var(--accent--rgb), 0.5);
+	border: 0.1em solid rgb(from var(--accent) r g b / 0.5);
 	text-align: center;
 }
 .tippy-box[data-theme~="standard"][data-placement^="top"] > .tippy-arrow::before {
 	border-top-color: var(--post);
-	filter: drop-shadow(0 0.15em rgba(var(--accent--rgb), 0.5))
+	filter: drop-shadow(0 0.15em rgb(from var(--accent) r g b / 0.5))
 }
 .tippy-box[data-theme~="standard"][data-placement^="bottom"] > .tippy-arrow::before {
 	border-bottom-color: var(--post);
-	filter: drop-shadow(0 -0.15em rgba(var(--accent--rgb), 0.5))
+	filter: drop-shadow(0 -0.15em rgb(from var(--accent) r g b / 0.5))
 }
 .tippy-box[data-theme~="standard"][data-placement^="left"] > .tippy-arrow::before {
 	border-left-color: var(--post);
-	filter: drop-shadow(0.15em 0 rgba(var(--accent--rgb), 0.5))
+	filter: drop-shadow(0.15em 0 rgb(from var(--accent) r g b / 0.5))
 }
 .tippy-box[data-theme~="standard"][data-placement^="right"] > .tippy-arrow::before {
 	border-right-color: var(--post);
-	filter: drop-shadow(-0.15em 0 rgba(var(--accent--rgb), 0.5))
+	filter: drop-shadow(-0.15em 0 rgb(from var(--accent) r g b / 0.5))
 }
 
 
@@ -230,7 +230,7 @@ pre {
 .bodyitem { padding: 0.75em 0 }
 .bodyitem:first-child { padding-top: 0.25em }
 .bodyitem:last-child, .ask .question :first-child { padding-bottom: 0.25em }
-.bodyitem:not(:last-child) { border-bottom: 0.07em solid rgba(var(--accent--rgb), 0.5) }
+.bodyitem:not(:last-child) { border-bottom: 0.07em solid rgb(from var(--accent) r g b / 0.5) }
 .bodyitemcontent :first-child, .ask .question :first-child { margin-top: 0 }
 .bodyitemcontent :last-child, .ask .question :last-child { margin-bottom: 0 }
 .audiowrapper + .bodyitemcontent, .videowrapper + .bodyitemcontent { margin-top: 0.75em }
@@ -249,7 +249,7 @@ pre {
 }
 .username {
 	z-index: 0;
-	background-color: rgba(var(--accent--rgb), 0.15);
+	background-color: rgb(from var(--accent) r g b / 0.15);
 	padding: 0.25em 0.75em 0.25em 2em;
 	border-radius: 2em;
 	margin-left: -1.6em;
@@ -277,7 +277,7 @@ pre {
 }
 .page.title, .post .title a, .ask, .read_more, .more_notes_link, .notes_loading {
 	position: relative;
-	--color: rgba(var(--accent--rgb), 0.6);
+	--color: rgb(from var(--accent) r g b / 0.6);
 	--size: 1.5em;
 	--displacement: -0.075em;
 	padding: 0.5em 0.75em;
@@ -287,7 +287,7 @@ pre {
 	margin-bottom: 0.5em;
 }
 .post .title a:hover, .read_more:hover, .more_notes_link:hover, .notes_loading { --size: 2em; --color: var(--links-hover) }
-.page.title, .read_more, .more_notes_link, .notes_loading { background-color: rgba(var(--accent--rgb), 0.15)}
+.page.title, .read_more, .more_notes_link, .notes_loading { background-color: rgb(from var(--accent) r g b / 0.15)}
 .page.title::before, .page.title::after,
 .post .title a::before, .post .title a::after,
 .ask::before, .ask::after,
@@ -336,7 +336,7 @@ pre {
 }
 .notes .clear { display: none }
 .notes blockquote { grid-column: 2 }
-.notes .note:not(:first-child, .more_notes_link_container:last-child) { border-top: thin solid rgba(var(--accent--rgb), 0.5) }
+.notes .note:not(:first-child, .more_notes_link_container:last-child) { border-top: thin solid rgb(from var(--accent) r g b / 0.5) }
 .note .avatar_frame { align-self: start }
 .note .avatar { border-radius: 100% }
 /* Ask page */
@@ -352,7 +352,7 @@ pre {
 #pagination hr {
 	margin: 0;
 	border-width: 0.0625em;
-	border-color: rgba(var(--accent--rgb), 0.5);
+	border-color: rgb(from var(--accent) r g b / 0.5);
 	position: absolute;
 	z-index: -1;
 }
@@ -362,7 +362,7 @@ pre {
 }
 /* For current page, both in page-wise navigation and custom blog page navigation */
 .current-page, .current-page:hover {
-	background: linear-gradient(rgba(var(--accent--rgb), 0.8) 0 0), var(--post);
+	background: linear-gradient(rgb(from var(--accent) r g b / 0.8) 0 0), var(--post);
 	color: var(--bg);
 }
 
@@ -411,7 +411,7 @@ pre {
 	content: "";
 	width: 100%;
 	height: 0.07em;
-	background-color: rgba(var(--accent--rgb), 0.5);
+	background-color: rgb(from var(--accent) r g b / 0.5);
 }
 .quote p { margin: 0 0 0.25em }
 /* Chat posts */
@@ -440,20 +440,20 @@ pre {
 	display: block;
 	padding: 0.25em 0.5em;
 }
-.chat li:nth-child(odd) .line { background-color: rgba(var(--accent--rgb), 0.1); margin-right: 2em; }
-.chat li:nth-child(even) .line { background-color: rgba(var(--accent--rgb), 0.2); margin-left: 2em; }
+.chat li:nth-child(odd) .line { background-color: rgb(from var(--accent) r g b / 0.1); margin-right: 2em; }
+.chat li:nth-child(even) .line { background-color: rgb(from var(--accent) r g b / 0.2); margin-left: 2em; }
 /* Link posts */
 .link {
 	display: flex;
 	flex-direction: column;
-	border: 0.15em solid rgba(var(--accent--rgb), 0.5);
+	border: 0.15em solid rgb(from var(--accent) r g b / 0.5);
 	text-decoration: none;
 	transition: .2s;
 }
-.link:hover { border-color: rgba(var(--accent--rgb), 0.7) }
+.link:hover { border-color: rgb(from var(--accent) r g b / 0.7) }
 .link span {
 	padding: 0.5em;
-	background: rgba(var(--accent--rgb), 0.1);
+	background: rgb(from var(--accent) r g b / 0.1);
 }
 .uppercase .link span { font-variant: small-caps }
 .lowercase .link span { text-transform: lowercase }
@@ -471,7 +471,7 @@ pre {
 /* Audio posts */
 .audiowrapper {
 	--albumsize: 4.5em;
-	background: rgba(var(--accent--rgb), 0.1);
+	background: rgb(from var(--accent) r g b / 0.1);
 	display: grid;
 	grid-template-columns: 1fr var(--albumsize);
 	margin: 1em 1em 0;
@@ -541,7 +541,7 @@ pre {
 .audiowrapper .custom_audio_seekbar { /* Audio progress bar */
 	width: 100%;
 	grid-column: 1 / span 2;
-	background-color: rgba(var(--accent--rgb), 0.2);
+	background-color: rgb(from var(--accent) r g b / 0.2);
 	height: 0.5em;
 	overflow: hidden;
 	cursor: pointer;
@@ -592,7 +592,7 @@ pre {
 	display: block;
 	width: 10em;
 	height: 2.5em;
-	border: 0.125em solid rgba(var(--accent--rgb), 0.7);
+	border: 0.125em solid rgb(from var(--accent) r g b / 0.7);
 	position: absolute;
 	top: 25%;
 	transform: rotate(-15deg);
@@ -646,7 +646,7 @@ pre {
 #homelinks hr, #pages hr {
 	margin: 0;
 	border-width: 0.0625em;
-	border-color: rgba(var(--accent--rgb), 0.5);
+	border-color: rgb(from var(--accent) r g b / 0.5);
 	position: absolute;
 	width: 100%;
 	z-index: -1;

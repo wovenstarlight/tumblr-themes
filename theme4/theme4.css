@@ -139,7 +139,7 @@ form,
 
 /***************************** MAIN CONTENT SECTION *****************************/
 main {
-	background: rgba(var(--bg--rgb), var(--bg-opacity));
+	background: rgb(from var(--bg) r g b / var(--bg-opacity));
 	padding: 0.75em 0.5em;
 }
 /* Special page titles */
@@ -415,9 +415,9 @@ p.npf_chat {
 	padding: 0.25em 0.5em;
 }
 .postbody .chat li:nth-child(odd),
-p.npf_chat:nth-child(odd) { background: rgba(var(--accent1--rgb), 0.75) }
+p.npf_chat:nth-child(odd) { background: rgb(from var(--accent1) r g b / 0.75) }
 .postbody .chat li:nth-child(even),
-p.npf_chat:nth-child(even){ background: rgba(var(--accent1--rgb), 0.25) }
+p.npf_chat:nth-child(even){ background: rgb(from var(--accent1) r g b / 0.25) }
 p.npf_chat { margin: 0 }
 /* Link posts */
 .postbody .link {
@@ -560,7 +560,7 @@ p.npf_chat { margin: 0 }
 
 /*********************************** SIDEBAR ***********************************/
 aside {
-	background: rgba(var(--bg--rgb), var(--bg-opacity));
+	background: rgb(from var(--bg) r g b / var(--bg-opacity));
 	display: flex;
 	flex-direction: column;
 	padding: 0.75em 0.5em;

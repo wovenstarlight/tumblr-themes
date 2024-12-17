@@ -31,18 +31,18 @@ pre {
 	padding: 0.5em 0.75em;
 }
 :not(pre) > code {
-	background-color: rgba(var(--accent--rgb), 0.2);
+	background-color: rgb(from var(--accent) r g b / 0.2);
 	padding: 0.1em 0.2em;
 }
 /* Scrollbar */
 * {
 	scrollbar-width: thin;
-	scrollbar-color: var(--accent) rgba(var(--accent--rgb), 0.2);
+	scrollbar-color: var(--accent) rgb(from var(--accent) r g b / 0.2);
 }
 ::-webkit-scrollbar {
 	width: 0.5em;
 	height: 0.5em;
-	background-color: rgba(var(--accent--rgb), 0.2);
+	background-color: rgb(from var(--accent) r g b / 0.2);
 }
 ::-webkit-scrollbar-corner { background-color: var(--bg) }
 ::-webkit-scrollbar-thumb { background-color: var(--links) }
@@ -134,28 +134,28 @@ pre {
 .tippy-box[data-theme~="standard"] {
 	background-color: var(--post);
 	color: var(--text);
-	border: 0.1em solid rgba(var(--accent--rgb), 0.5);
+	border: 0.1em solid rgb(from var(--accent) r g b / 0.5);
 	text-align: center;
 }
 .tippy-box[data-theme~="standard"][data-placement^="top"] > .tippy-arrow::before {
 	border-top-color: var(--post);
-	-webkit-filter: drop-shadow(0 0.15em rgba(var(--accent--rgb), 0.5));
-			filter: drop-shadow(0 0.15em rgba(var(--accent--rgb), 0.5))
+	-webkit-filter: drop-shadow(0 0.15em rgb(from var(--accent) r g b / 0.5));
+			filter: drop-shadow(0 0.15em rgb(from var(--accent) r g b / 0.5))
 }
 .tippy-box[data-theme~="standard"][data-placement^="bottom"] > .tippy-arrow::before {
 	border-bottom-color: var(--post);
-	-webkit-filter: drop-shadow(0 -0.15em rgba(var(--accent--rgb), 0.5));
-			filter: drop-shadow(0 -0.15em rgba(var(--accent--rgb), 0.5))
+	-webkit-filter: drop-shadow(0 -0.15em rgb(from var(--accent) r g b / 0.5));
+			filter: drop-shadow(0 -0.15em rgb(from var(--accent) r g b / 0.5))
 }
 .tippy-box[data-theme~="standard"][data-placement^="left"] > .tippy-arrow::before {
 	border-left-color: var(--post);
-	-webkit-filter: drop-shadow(0.15em 0 rgba(var(--accent--rgb), 0.5));
-			filter: drop-shadow(0.15em 0 rgba(var(--accent--rgb), 0.5))
+	-webkit-filter: drop-shadow(0.15em 0 rgb(from var(--accent) r g b / 0.5));
+			filter: drop-shadow(0.15em 0 rgb(from var(--accent) r g b / 0.5))
 }
 .tippy-box[data-theme~="standard"][data-placement^="right"] > .tippy-arrow::before {
 	border-right-color: var(--post);
-	-webkit-filter: drop-shadow(-0.15em 0 rgba(var(--accent--rgb), 0.5));
-			filter: drop-shadow(-0.15em 0 rgba(var(--accent--rgb), 0.5))
+	-webkit-filter: drop-shadow(-0.15em 0 rgb(from var(--accent) r g b / 0.5));
+			filter: drop-shadow(-0.15em 0 rgb(from var(--accent) r g b / 0.5))
 }
 
 
@@ -169,7 +169,7 @@ header {
 	max-width: 50em;
 	padding: 0 1em;
 	margin: 2em auto 1em;
-	border-bottom: 0.125em solid rgba(var(--accent--rgb), 0.5);
+	border-bottom: 0.125em solid rgb(from var(--accent) r g b / 0.5);
 	gap: 1em;
 }
 #left {
@@ -201,7 +201,7 @@ h1 { margin: 0 }
 	display: block;
 	width: 7em;
 	height: 1.5em;
-	border: 0.125em solid rgba(var(--accent--rgb), 0.7);
+	border: 0.125em solid rgb(from var(--accent) r g b / 0.7);
 	position: absolute;
 	top: 25%;
 	-webkit-transform: rotate(-15deg);
@@ -251,7 +251,7 @@ html.light #darklight .cp-sun { display: none }
 	display: block;
 	text-align: center;
 	position: relative;
-	--color: rgba(var(--accent--rgb), 0.6);
+	--color: rgb(from var(--accent) r g b / 0.6);
 	--size: 1.5em;
 	--displacement: -0.075em;
 	padding: 0.5em 0.75em;
@@ -276,9 +276,9 @@ ul.links a {
 	display: block;
 	text-decoration: none;
 	position: relative;
-	background-color: rgba(var(--accent--rgb), 0.05);
+	background-color: rgb(from var(--accent) r g b / 0.05);
 	--displacement: 0;
-	--color: rgba(var(--accent--rgb), 0.5);
+	--color: rgb(from var(--accent) r g b / 0.5);
 	--size: 0.3em;
 }
 .post .title a::before, .post .title a::after,

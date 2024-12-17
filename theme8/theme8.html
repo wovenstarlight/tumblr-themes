@@ -11,7 +11,7 @@
 		Tag filtering by glenthemes: https://glenthemes.tumblr.com/spoilertags
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 17 Sep 2022.
+	Last updated 16 Dec 2024.
 -->
 
 <!DOCTYPE html>
@@ -146,8 +146,6 @@ html:not(.alt) { /* REGULAR PALETTE */
 	--tt-image: url("{image:Title tape}");
 	--tt-bg: {color:Title tape};
 	--tt-text: {color:Title tape text};
-	--tt-bg--rgb: {RGBcolor:Title tape};
-	--tt-text--rgb: {RGBcolor:Title tape text};
 	{block:IfTitleTapeImageTiling}
 	--tt-repeat: repeat;
 	--tt-size: contain;
@@ -199,8 +197,6 @@ html.alt { /* ALTERNATE PALETTE */
 	--tt-image: url("{image:ALT Title tape}");
 	--tt-bg: {color:ALT Title tape};
 	--tt-text: {color:ALT Title tape text};
-	--tt-bg--rgb: {RGBcolor:ALT Title tape};
-	--tt-text--rgb: {RGBcolor:ALT Title tape text};
 	{block:IfAltTitleTapeImageTiling}
 	--tt-repeat: repeat;
 	--tt-size: contain;
@@ -312,7 +308,7 @@ html.alt { /* ALTERNATE PALETTE */
 	.view-button:hover { text-shadow: 0 0 0.2em; cursor: pointer }
 	[posts-selector][style*='max-height'] { overflow-x: hidden }
 	[posts-selector]:not([style*='max-height']) { overflow: visible !important }
-	.sp { background-color: rgba(var(--tt-bg--rgb), 0.1); border-radius: var(--roundness) }
+	.sp { background-color: rgb(from var(--tt-bg) r g b / 0.1); border-radius: var(--roundness) }
 	.warning-text { padding: 1em }
 	.warning-text p { margin: 0 }
 	.warning-text .sp-tags { margin: 0.5em 0 }

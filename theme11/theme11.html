@@ -12,7 +12,7 @@
 		Palette toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 8 Dec 2022.
+	Last updated 16 Dec 2024.
 -->
 
 <!DOCTYPE html>
@@ -134,10 +134,6 @@
 		--bg: {color:Background};
 		--bg2: {color:Secondary background};
 		--accent: {color:Accent};
-		--text--rgb: {RGBcolor:Text};
-		--bg--rgb: {RGBcolor:Background};
-		--bg2--rgb: {RGBcolor:Secondary background};
-		--accent--rgb: {RGBcolor:Accent};
 	}
 
 	html.alt { /* ALTERNATE PALETTE */
@@ -145,10 +141,6 @@
 		--bg: {color:ALT Background};
 		--bg2: {color:ALT Secondary background};
 		--accent: {color:ALT Accent};
-		--text--rgb: {RGBcolor:ALT Text};
-		--bg--rgb: {RGBcolor:ALT Background};
-		--bg2--rgb: {RGBcolor:ALT Secondary background};
-		--accent--rgb: {RGBcolor:ALT Accent};
 	}
 	</style>
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme11/theme11.min.css">
@@ -213,7 +205,7 @@
 	}
 
 	/* Give filtered original posts shaded background */
-	.post.original { --Spoiler-Overlay-Color: var(--bg) linear-gradient(rgba(var(--bg2--rgb), 0.5), rgba(var(--bg2--rgb), 0.5)) }
+	.post.original { --Spoiler-Overlay-Color: var(--bg) linear-gradient(rgb(from var(--bg2) r g b / 0.5), rgb(from var(--bg2) r g b / 0.5)) }
 	/* Match button styling */
 	.view-button { transition: unset }
 	.view-button:hover { box-shadow: inset .25em .25em .25em var(--bg2) }

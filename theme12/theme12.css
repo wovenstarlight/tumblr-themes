@@ -48,7 +48,7 @@ blockquote > :last-child { margin-block-end: 0 }
 	padding: 0.25em 0.5em;
 	background-color: var(--bg);
 	color: var(--text);
-	box-shadow: 0.1em 0.1em 0.5em rgba(var(--text--rgb), 0.25);
+	box-shadow: 0.1em 0.1em 0.5em rgb(from var(--text) r g b / 0.25);
 }
 /* #region Casing */
 body.upper #footer,
@@ -121,7 +121,7 @@ body.nright { margin-right: var(--navbar-size) }
 	padding: .25em;
 	line-height: 1;
 }
-#banner span.bg { background: rgba(var(--bg--rgb), var(--hbg)) }
+#banner span.bg { background: rgb(from var(--bg) r g b / var(--hbg)) }
 html:not(.alt) #banner .alt, html.alt #banner .og { display: none }
 /* #endregion */
 /* Footer */
@@ -234,7 +234,7 @@ body.nright #blognav::before {
 	padding-inline: 0.3em;
 	margin-inline: -0.3em;
 }
-#dropnav.active #dropper { box-shadow: 0 0 0.5em rgba(var(--text--rgb), 0.25) }
+#dropnav.active #dropper { box-shadow: 0 0 0.5em rgb(from var(--text) r g b / 0.25) }
 body:not(.nright) #scrolltotop_parent { order: -1 }
 body.nright #scrolltotop_parent { order: 1 }
 .tmblr-iframe--unified-controls { z-index: 5 !important }
@@ -642,7 +642,7 @@ div.npf-link-block:not(.has-poster) .bottom:empty { padding-top: 0 }
 }
 .audiowrapper span[id^='audio_player'] { display: none }
 .audiowrapper .top {
-	background-color: rgba(var(--bg-pg--rgb), 0.75);
+	background-color: rgb(from var(--bg-pg) r g b / 0.75);
 	display: grid;
 	grid-template-columns: 5em 1fr;
 	width: 100%;
@@ -650,7 +650,7 @@ div.npf-link-block:not(.has-poster) .bottom:empty { padding-top: 0 }
 .audiowrapper.hasart .top {
 	grid-template-columns: 5em 1fr 5em;
 	backdrop-filter: blur(15px);
-	background-color: rgba(var(--bg-pg--rgb), 0.75);
+	background-color: rgb(from var(--bg-pg) r g b / 0.75);
 }
 .audiowrapper .custom_audio_buttons {
 	display: flex;

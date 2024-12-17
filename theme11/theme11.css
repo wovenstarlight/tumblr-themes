@@ -11,7 +11,7 @@ a {
 	text-decoration: none;
 	border-bottom: 1px solid;
 }
-main a[href]:hover, #right a[href]:hover { color: rgba(var(--text--rgb), 0.65) }
+main a[href]:hover, #right a[href]:hover { color: rgb(from var(--text) r g b / 0.65) }
 .button, .custom_audio_buttons div,
 .notes .more_notes_link, .notes .notes_loading,
 .bodyitemcontent .poll-post a.poll-row {
@@ -49,7 +49,7 @@ h1, h2, h3, h4 { font-family: var(--tfont) }
 	padding: 0.25em 0.5em;
 	background: var(--bg);
 	border: thin solid var(--bg2);
-	box-shadow: 0.1em 0.1em 0.25em -0.1em rgba(var(--text--rgb), 0.75);
+	box-shadow: 0.1em 0.1em 0.25em -0.1em rgb(from var(--text) r g b / 0.75);
 }
 /* #region Casing */
 body.upper h1, body.upper h2, body.upper h3, body.upper h4, body.upper .pagination,
@@ -98,7 +98,7 @@ body.lower .audiowrapper .trackname, body.lower .custom_audio_buttons {
 .padded#logo { padding: 0.4em 0 }
 /* #region Links/search bar */
 #links-search {
-	background: var(--accent) linear-gradient(var(--accent) 50%, rgba(var(--text--rgb), 0.3));
+	background: var(--accent) linear-gradient(var(--accent) 50%, rgb(from var(--text) r g b / 0.3));
 	display: flex;
 	flex-flow: row wrap;
 	align-items: center;
@@ -106,7 +106,7 @@ body.lower .audiowrapper .trackname, body.lower .custom_audio_buttons {
 	padding: 0 0.7em 0 2em;
 }
 html:not(.alt) .invert #links-search, html.alt .altinvert #links-search {
-	background: var(--bg2) linear-gradient(rgba(var(--text--rgb), 0.2), rgba(var(--bg--rgb), 0.5) 90%);
+	background: var(--bg2) linear-gradient(rgb(from var(--text) r g b / 0.2), rgb(from var(--bg) r g b / 0.5) 90%);
 }
 html:not(.alt) .invert #links-search *, html.alt .altinvert #links-search * { color: var(--text) !important }
 #links span {
@@ -133,7 +133,7 @@ html:not(.alt) .invert #links-search *, html.alt .altinvert #links-search * { co
 	flex-direction: column;
 	background-color: var(--bg2);
 	padding: 0.25em;
-	box-shadow: 0.1em 0.1em 0.25em -0.1em rgba(var(--text--rgb), 0.75);
+	box-shadow: 0.1em 0.1em 0.25em -0.1em rgb(from var(--text) r g b / 0.75);
 	z-index: 4;
 }
 #pages span { cursor: help }
@@ -144,7 +144,7 @@ html:not(.alt) .invert #links-search *, html.alt .altinvert #links-search * { co
 #pages .dropdown a:last-child { border-bottom: none }
 #pages .dropdown a:hover {
 	color: inherit;
-	background-color: rgba(var(--bg--rgb), 0.25);
+	background-color: rgb(from var(--bg) r g b / 0.25);
 }
 /* #endregion */
 /* #region Search bar */
@@ -208,7 +208,7 @@ html:not(.alt) .invert #links-search *, html.alt .altinvert #links-search * { co
 #actions .button { margin-inline: 0.25em }
 .button.active, .pagination a.curr:not([href]):hover {
 	box-shadow: inset 0.25em 0.25em 0.25em var(--bg2);
-	background: rgba(var(--bg2--rgb), 0.5) linear-gradient(var(--bg), var(--bg)); /* linear gradient to avoid About button becoming translucent when About sidebar is open */
+	background: rgb(from var(--bg2) r g b / 0.5) linear-gradient(var(--bg), var(--bg)); /* linear gradient to avoid About button becoming translucent when About sidebar is open */
 }
 #scrolltotop_parent { display: inline-block }
 #page:not(.desc, .rules, .faq, .updates, .togs, .progs) :is(#sidebar, #right) { display: none }
@@ -235,8 +235,8 @@ span.curr { margin: 0 0.75em }
 #right {
 	background-color: var(--bg2);
 	padding: 1.25em 3%;
-	border: 0.1em solid rgba(var(--text--rgb), 0.1);
-	box-shadow: inset 0.1em 0 0.25em rgba(var(--text--rgb), 0.1);
+	border: 0.1em solid rgb(from var(--text) r g b / 0.1);
+	box-shadow: inset 0.1em 0 0.25em rgb(from var(--text) r g b / 0.1);
 	line-height: 1.3;
 }
 #right a { display: inline-block }
@@ -254,12 +254,12 @@ span.curr { margin: 0 0.75em }
 	gap: 0.4em;
 }
 .dropper li {
-	border-top: thin solid rgba(var(--bg--rgb), 0.65);
+	border-top: thin solid rgb(from var(--bg) r g b / 0.65);
 	padding: 0.4em 0 0 1.25em;
 }
 .dropper li:last-child, #updates li:last-child {
 	padding-bottom: 0.4em;
-	border-bottom: thin solid rgba(var(--bg--rgb), 0.65);
+	border-bottom: thin solid rgb(from var(--bg) r g b / 0.65);
 }
 .dropper .label { position: relative; display: block }
 .dropper li.hasmore .label {
@@ -267,7 +267,7 @@ span.curr { margin: 0 0.75em }
 	text-decoration: 1px dotted underline;
 	text-underline-offset: 0.25em;
 }
-.dropper li.hasmore .label:hover { color: rgba(var(--text--rgb), 0.65) }
+.dropper li.hasmore .label:hover { color: rgb(from var(--text) r g b / 0.65) }
 .dropper .label::before {
 	content: "";
 	display: block;
@@ -295,7 +295,7 @@ span.curr { margin: 0 0.75em }
 	padding: 0;
 }
 #updates li {
-	border-top: thin solid rgba(var(--bg--rgb), 0.65);
+	border-top: thin solid rgb(from var(--bg) r g b / 0.65);
 	padding: 0.4em 0;
 }
 #updates li .date {
@@ -313,7 +313,7 @@ span.curr { margin: 0 0.75em }
 	gap: 0.6em;
 }
 #toggles h3, #progbars h3 {
-	border-bottom: thin solid rgba(var(--bg--rgb), 0.65);
+	border-bottom: thin solid rgb(from var(--bg) r g b / 0.65);
 	margin-bottom: 0.3em;
 }
 #toggles li::before {
@@ -324,19 +324,19 @@ span.curr { margin: 0 0.75em }
 	height: var(--size);
 	align-items: end;
 	justify-content: center;
-	background: var(--bg) linear-gradient(var(--bg), rgba(var(--color), 0.125));
-	border: thin solid rgba(var(--text--rgb), 0.7);
+	background: var(--bg) linear-gradient(var(--bg), rgb(from var(--color) r g b / 0.125));
+	border: thin solid rgb(from var(--text) r g b / 0.7);
 	border-radius: 0.25em;
-	color: rgba(var(--color));
+	color: var(--color);
 	margin-right: 0.4em;
 }
 #toggles li.on {
 	--content: "\2713";
-	--color: 0, 128, 0;
+	--color: #008000;
 }
 #toggles li.off {
 	--content: "\2715";
-	--color: 255, 0, 0;
+	--color: #ff0000;
 }
 #progbars li {
 	display: grid;
@@ -377,7 +377,7 @@ span.curr { margin: 0 0.75em }
 	border-radius: 0.25em;
 }
 #left a:hover {
-	background-color: rgba(var(--bg2--rgb), 0.5);
+	background-color: rgb(from var(--bg2) r g b / 0.5);
 	color: var(--accent);
 }
 #left a.current-page {
@@ -428,7 +428,7 @@ html, body {
 	padding: 0.5em 0;
 	writing-mode: horizontal-tb;
 }
-#footer span { color: rgba(var(--bg--rgb), 0.9) }
+#footer span { color: rgb(from var(--bg) r g b / 0.9) }
 #footer a {
 	color: var(--bg);
 	text-decoration: underline;
@@ -447,7 +447,7 @@ html, body {
 	padding: 0.75em;
 	border: thin solid var(--bg2);
 }
-.post.original, .note.original_post { background-color: rgba(var(--bg2--rgb), 0.5) }
+.post.original, .note.original_post { background-color: rgb(from var(--bg2) r g b / 0.5) }
 /* #region Post header */
 .post header {
 	display: grid;
@@ -476,31 +476,31 @@ html, body {
 	cursor: help;
 	text-shadow: 0 0 1px var(--text);
 }
-.post .icons a[href] { background-image: linear-gradient(rgba(var(--bg--rgb), 0.3), transparent 60%) }
+.post .icons a[href] { background-image: linear-gradient(rgb(from var(--bg) r g b / 0.3), transparent 60%) }
 .post .icons a[href]:hover {
 	color: var(--bg);
 	cursor: pointer;
-	background-image: linear-gradient(rgba(var(--bg--rgb), 0.5), transparent 60%);
+	background-image: linear-gradient(rgb(from var(--bg) r g b / 0.5), transparent 60%);
 }
-.post .icons a[href]:active { background-image: linear-gradient(transparent 40%, rgba(var(--bg--rgb), 0.5)) }
+.post .icons a[href]:active { background-image: linear-gradient(transparent 40%, rgb(from var(--bg) r g b / 0.5)) }
 /* Icons with inverted palette */
 html:not(.alt) .invert .post .icons a,
 html.alt .altinvert .post .icons a {
 	background: var(--bg2);
 	color: var(--accent);
-	text-shadow: 0 0 1px rgba(var(--text--rgb), 0.4);
+	text-shadow: 0 0 1px rgb(from var(--text) r g b / 0.4);
 }
 html:not(.alt) .invert .post .icons a[href],
 html.alt .altinvert .post .icons a[href] {
-	background-image: linear-gradient(rgba(var(--text--rgb), 0.2), transparent 60%)
+	background-image: linear-gradient(rgb(from var(--text) r g b / 0.2), transparent 60%)
 }
 html:not(.alt) .invert .post .icons a[href]:hover,
 html.alt .altinvert .post .icons a[href]:hover {
-	background-image: linear-gradient(rgba(var(--text--rgb), 0.3), transparent 60%)
+	background-image: linear-gradient(rgb(from var(--text) r g b / 0.3), transparent 60%)
 }
 html:not(.alt) .invert .post .icons a[href]:active,
 html.alt .altinvert .post .icons a[href]:active {
-	background-image: linear-gradient(transparent 40%, rgba(var(--text--rgb), 0.3))
+	background-image: linear-gradient(transparent 40%, rgb(from var(--text) r g b / 0.3))
 }
 /* Text */
 .post .text { font-family: var(--tfont) }
@@ -515,8 +515,8 @@ html.alt .altinvert .post .icons a[href]:active {
 	padding-bottom: 0;
 }
 .post header .title a:visited { color: var(--text) }
-.post header .title a:hover { color: rgba(var(--accent--rgb), 0.75) }
-.post header .title a:visited:hover { color: rgba(var(--text--rgb), 0.75) }
+.post header .title a:hover { color: rgb(from var(--accent) r g b / 0.75) }
+.post header .title a:visited:hover { color: rgb(from var(--text) r g b / 0.75) }
 .post .subtitle {
 	display: block;
 	margin-top: .375em;
@@ -574,7 +574,7 @@ html.alt .altinvert .post .icons a[href]:active {
 	margin-inline-start: 1.5em;
 	padding: 0.75em;
 }
-.original.post blockquote { border-inline-start-color: rgba(var(--text--rgb), 0.5) }
+.original.post blockquote { border-inline-start-color: rgb(from var(--text) r g b / 0.5) }
 .bodyitemcontent {
 	line-height: 1.5;
 	overflow-wrap: anywhere;
@@ -734,7 +734,7 @@ html.alt .altinvert .post .icons a[href]:active {
 	border: thin solid;
 	padding: 0 0.4em;
 	border-radius: 0.75em;
-	box-shadow: -1px -1px 2px rgba(0, 0, 0, 0.25);
+	box-shadow: -1px -1px 2px rgb(0 0 0 / 0.25);
 	cursor: help;
 	margin-inline-end: 0.5em;
 }
@@ -799,7 +799,7 @@ p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 }
 .custom_audio_buttons div { margin: 0 }
 .custom_audio_seekbar {
-	background: var(--bg2) linear-gradient(transparent, rgba(var(--bg--rgb), 0.5));
+	background: var(--bg2) linear-gradient(transparent, rgb(from var(--bg) r g b / 0.5));
 	display: block;
 	height: 1em;
 	width: 100%;
@@ -809,13 +809,13 @@ p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 }
 .custom_audio_seekbar_progress {
 	background-color: var(--accent);
-	background-image: linear-gradient(transparent, rgba(var(--text--rgb), 0.5));
+	background-image: linear-gradient(transparent, rgb(from var(--text) r g b / 0.5));
 	height: 100%;
 }
 .custom_audio_current_time, .custom_audio_time_left {
 	min-width: 4.5em;
 	border: thin solid var(--bg2);
-	background: var(--bg) linear-gradient(transparent, rgba(var(--bg2--rgb), 0.5));
+	background: var(--bg) linear-gradient(transparent, rgb(from var(--bg2) r g b / 0.5));
 	border-radius: 0.25em;
 	padding: 0.35em 0.8em;
 }
@@ -923,7 +923,7 @@ p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 		flex-direction: column;
 		background-color: var(--bg2);
 		padding: 0.25em;
-		box-shadow: 0.1em 0.1em 0.25em -0.1em rgba(var(--text--rgb), 0.75);
+		box-shadow: 0.1em 0.1em 0.25em -0.1em rgb(from var(--text) r g b / 0.75);
 		z-index: 4;
 	}
 	#mobnav .dropdown a {
@@ -933,7 +933,7 @@ p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 	#mobnav .dropdown a:last-child { border-bottom: none }
 	#mobnav .dropdown a:hover {
 		color: inherit;
-		background-color: rgba(var(--bg--rgb), 0.25);
+		background-color: rgb(from var(--bg) r g b / 0.25);
 	}
 	#links .dropdown { width: 100% }
 	

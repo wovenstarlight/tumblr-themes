@@ -36,7 +36,7 @@ blockquote {
 /* Scrollbar */
 * {
 	scrollbar-width: thin;
-	scrollbar-color: rgba(var(--bg2--rgb), 0.8) var(--text2);
+	scrollbar-color: rgb(from var(--bg2) r g b / 0.8) var(--text2);
 }
 ::-webkit-scrollbar {
 	width: 0.5em;
@@ -44,7 +44,7 @@ blockquote {
 	background-color: var(--text2);
 }
 ::-webkit-scrollbar-corner { background-color: var(--bg2) }
-::-webkit-scrollbar-thumb { background-color: rgba(var(--bg2--rgb), 0.8) }
+::-webkit-scrollbar-thumb { background-color: rgb(from var(--bg2) r g b / 0.8) }
 /* Text highlighting */
 ::selection {
 	background-color: var(--highlight-bg);
@@ -242,7 +242,7 @@ aside div {
 	/* position */
 	position: relative;
 	/* appearance */
-	background: rgba(var(--bg--rgb), 0.8);
+	background: rgb(from var(--bg) r g b / 0.8);
 	text-align: center;
 	font-size: 0.9em;
 }
@@ -271,7 +271,7 @@ aside.desc.pages div {
 	flex-wrap: wrap;
 }
 #pages a {
-	background-color: rgba(var(--bg--rgb), 0.2);
+	background-color: rgb(from var(--bg) r g b / 0.2);
 	flex-grow: 1;
 	text-decoration: none;
 	padding: 0.1em 0.5em;
@@ -279,12 +279,12 @@ aside.desc.pages div {
 	transition-duration: .4s;
 	--height: 100%;
 	--og: transparent;
-	--hover: rgba(var(--bg--rgb), 0.4)
+	--hover: rgb(from var(--bg) r g b / 0.4)
 }
 #pages a.current-page { background-color: var(--bg) }
 /* Search bar */
 #search {
-	background-color: rgba(var(--bg--rgb), 0.8);
+	background-color: rgb(from var(--bg) r g b / 0.8);
 	padding: 0.5em 0.6em;
 	margin-top: 1em;
 	width: 20em;
@@ -328,7 +328,7 @@ aside.desc.pages div {
 	padding: 0.25em 0.5em 0.5em;
 	background-color: var(--bg2);
 	color: var(--text2);
-	--og: rgba(var(--links--rgb), 0.6);
+	--og: rgb(from var(--links) r g b / 0.6);
 	--hover: var(--links);
 	--height: 0.35em;
 }
@@ -342,14 +342,14 @@ aside.desc.pages div {
 }
 /* Individual posts */
 .post {
-	box-shadow: 0 0 0.25em rgba(var(--bg2--rgb), 0.75);
+	box-shadow: 0 0 0.25em rgb(from var(--bg2) r g b / 0.75);
 	margin: 2em 0;
 	overflow: hidden;
 }
 /* Post headers and footers */
 .post header, .post footer {
 	padding: 0.6em;
-	background-color: rgba(var(--bg2--rgb), 0.85);
+	background-color: rgb(from var(--bg2) r g b / 0.85);
 	color: var(--text2);
 	font-size: 0.9em;
 }
@@ -366,7 +366,7 @@ aside.desc.pages div {
 	font-size: 1.25em;
 	color: var(--bg);
 }
-.post header > a:hover { box-shadow: 0 0 0.3em rgba(var(--bg--rgb), 0.5) }
+.post header > a:hover { box-shadow: 0 0 0.3em rgb(from var(--bg) r g b / 0.5) }
 /* Date/notes and via/source container */
 .post header div {
 	display: flex;
@@ -481,7 +481,7 @@ aside.desc.pages div {
 .pagination .current-page { color: var(--links) }
 .pagination .next { grid-column: 3 }
 .pagination .arrows { font-size: 0.8em }
-.pagination .arrows:hover { box-shadow: 0 0 0.5em rgba(var(--bg--rgb), 0.75) }
+.pagination .arrows:hover { box-shadow: 0 0 0.5em rgb(from var(--bg) r g b / 0.75) }
 
 
 
@@ -598,9 +598,9 @@ aside.desc.pages div {
 .postbody .link[href] {
 	display: flex;
 	flex-direction: column;
-	background-color: rgba(var(--bg2--rgb), 0.8);
+	background-color: rgb(from var(--bg2) r g b / 0.8);
 	color: var(--text2);
-	--og: rgba(var(--links--rgb), 0.5);
+	--og: rgb(from var(--links) r g b / 0.5);
 	--hover: var(--links);
 	--height: 0.75em;
 	padding-bottom: var(--height);
@@ -624,7 +624,7 @@ aside.desc.pages div {
 .chat li { padding: 0.25em 0.5em }
 .uppercase .chat .label { font-size: 0.9em }
 .chat li:nth-child(even) {
-	background-color: rgba(var(--bg2--rgb), 0.1);
+	background-color: rgb(from var(--bg2) r g b / 0.1);
 	padding-left: 1.5em;
 }
 /* Audio posts */

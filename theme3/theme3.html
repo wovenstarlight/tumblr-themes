@@ -11,7 +11,7 @@
 		Custom audio posts by annasthms: https://annasthms.tumblr.com/more/js/customaudio/new
 		Tag filtering plugin by glenthemes: https://glenthemes.tumblr.com/spoilertags
 
-	Last updated 7 Nov 2022.
+	Last updated 16 Dec 2024.
 -->
 
 <!DOCTYPE html>
@@ -80,7 +80,7 @@
 		--ViewPost-Button-Padding: 0.625rem;
 		--ViewPost-Button-Border: var(--accent2);
 		--ViewPost-Button-Roundness: 0;
-		--ViewPost-Button-Background: rgba(var(--links--rgb), 0.1);
+		--ViewPost-Button-Background: rgb(from var(--links) r g b / 0.1);
 		--ViewPost-Button-FontSize: 85%;
 		--ViewPost-Button-Text-Color: var(--links);
 		
@@ -176,10 +176,8 @@
 /* DEFAULT VARIABLES */
 body {
 	--text: {color:Text};
-	--text--rgb: {RGBcolor:Text};
 	--headings: {color:Headings};
 	--links: {color:Links};
-	--links--rgb: {RGBcolor:Links};
 	--links-hover: {color:Links hover};
 	--bold: {color:Bold};
 	--italics: {color:Italics};
@@ -195,10 +193,8 @@ body {
 }
 body.light {
 	--text: {color:LM Text};
-	--text--rgb: {RGBcolor:LM Text};
 	--headings: {color:LM Headings};
 	--links: {color:LM Links};
-	--links--rgb: {RGBcolor:LM Links};
 	--links-hover: {color:LM Links hover};
 	--bold: {color:LM Bold};
 	--italics: {color:LM Italics};

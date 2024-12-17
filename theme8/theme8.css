@@ -236,7 +236,7 @@ html.alt body.noaimg2 .post:nth-child(3n+2) .quote .separator i,
 html.alt body.noaimg3 .post:nth-child(3n) .quote .separator i { border: double; border-width: 0 0.3em }
 body.maintapes #search input,
 html:not(.alt) body.noimgt #search input,
-html.alt body.noaimgt #search input { background-color: rgba(var(--tt-text--rgb), 0.1) }
+html.alt body.noaimgt #search input { background-color: rgb(from var(--tt-text) r g b / 0.1) }
 
 
 
@@ -413,7 +413,7 @@ nav.tape a {
 #no-posts .body { padding: 0.25em 1em; text-align: center }
 /* Reblogs */
 .post .body {
-	background-color: rgba(var(--tt-bg--rgb), 0.1);
+	background-color: rgb(from var(--tt-bg) r g b / 0.1);
 	padding: 1.75em 0 2em;
 }
 .post .bodyitem + .bodyitem { margin-top: 1em }
@@ -655,7 +655,7 @@ footer .stickies { margin-top: -0.75em }
 	display: grid;
 	grid-template-columns: 4em 1fr auto;
 	column-gap: 1em;
-	background: rgba(var(--tt-bg--rgb), 0.1);
+	background: rgb(from var(--tt-bg) r g b / 0.1);
 	padding: 0.5em;
 }
 .audiowrapper span[id*='audio_player'] { display: none }
@@ -712,7 +712,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 /* Ask posts */
 .ask {
 	margin: 0 1em 0.75em;
-	background-color: rgba(var(--tt-bg--rgb), 0.1);
+	background-color: rgb(from var(--tt-bg) r g b / 0.1);
 	overflow: hidden;
 }
 .ask .user i { margin-right: 0.5em }

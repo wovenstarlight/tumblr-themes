@@ -10,7 +10,7 @@
 		Palette toggle by eggdesign: https://eggdesign.tumblr.com/post/186889223257/day-night-mode-tutorial-after-featuring-a
 		Scroll to top by Fabian Lins: https://github.com/FabianLins/scrolltotop_arrow_jquery
 
-	Last updated 4 Oct 2022.
+	Last updated 16 Dec 2024.
 -->
 
 <!DOCTYPE html>
@@ -171,9 +171,7 @@
 		--t3-repeat: {block:IfNotTape3ImageTiling}no-{/block:IfNotTape3ImageTiling}repeat;
 		--t3-size: {block:IfTape3ImageTiling}contain{/block:IfTape3ImageTiling}{block:IfNotTape3ImageTiling}cover{/block:IfNotTape3ImageTiling};
 		--ta-bg: {color:Accent tape};
-		--ta-bg--rgb: {RGBcolor:Accent tape};
 		--ta-text: {color:Accent tape text};
-		--ta-text--rgb: {RGBcolor:Accent tape text};
 		--ta-img: url("{image:Accent tape}");
 		--ta-repeat: {block:IfNotAccentTapeImageTiling}no-{/block:IfNotAccentTapeImageTiling}repeat;
 		--ta-size: {block:IfAccentTapeImageTiling}contain{/block:IfAccentTapeImageTiling}{block:IfNotAccentTapeImageTiling}cover{/block:IfNotAccentTapeImageTiling};
@@ -203,9 +201,7 @@
 		--t3-repeat: {block:IfNotAltTape3ImageTiling}no-{/block:IfNotAltTape3ImageTiling}repeat;
 		--t3-size: {block:IfAltTape3ImageTiling}contain{/block:IfAltTape3ImageTiling}{block:IfNotAltTape3ImageTiling}cover{/block:IfNotAltTape3ImageTiling};
 		--ta-bg: {color:ALT Accent tape};
-		--ta-bg--rgb: {RGBcolor:ALT Accent tape};
 		--ta-text: {color:ALT Accent tape text};
-		--ta-text--rgb: {RGBcolor:ALT Accent tape text};
 		--ta-img: url("{image:ALT Accent tape}");
 		--ta-repeat: {block:IfNotAltAccentTapeImageTiling}no-{/block:IfNotAltAccentTapeImageTiling}repeat;
 		--ta-size: {block:IfAltAccentTapeImageTiling}contain{/block:IfAltAccentTapeImageTiling}{block:IfNotAltAccentTapeImageTiling}cover{/block:IfNotAltAccentTapeImageTiling};
@@ -285,7 +281,7 @@
 	[posts-selector]:not([style*='max-height']) { overflow: visible !important }
 	/* Spoiler overlay */
 	.sp {
-		background-color: rgba(var(--ta-bg--rgb), 0.1);
+		background-color: rgb(from var(--ta-bg) r g b / 0.1);
 		border-radius: var(--roundness);
 		z-index: 2 !important;
 	}

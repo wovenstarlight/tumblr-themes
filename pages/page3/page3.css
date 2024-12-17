@@ -11,7 +11,7 @@ a {
 	text-decoration: none;
 	border-bottom: 1px solid;
 }
-main a[href]:hover, #right a[href]:hover { color: rgba(var(--text--rgb), 0.65) }
+main a[href]:hover, #right a[href]:hover { color: rgb(from var(--text) r g b / 0.65) }
 .button {
 	cursor: pointer;
 	display: inline-block;
@@ -74,7 +74,7 @@ hr {
 	padding: 0.25em 0.5em;
 	background: var(--bg);
 	border: thin solid var(--bg2);
-	box-shadow: 0.1em 0.1em 0.25em -0.1em rgba(var(--text--rgb), 0.75);
+	box-shadow: 0.1em 0.1em 0.25em -0.1em rgb(from var(--text) r g b / 0.75);
 }
 /* #region Casing */
 body.upper h1, body.upper h2, body.upper h3, body.upper h4,
@@ -117,7 +117,7 @@ body.lower .button, body.lower #links-search, body.lower footer {
 .padded#logo { padding: 0.4em 0 }
 /* #region Links/search bar */
 #links-search {
-	background: var(--accent) linear-gradient(var(--accent) 50%, rgba(var(--text--rgb), 0.3));
+	background: var(--accent) linear-gradient(var(--accent) 50%, rgb(from var(--text) r g b / 0.3));
 	display: flex;
 	flex-flow: row wrap;
 	align-items: center;
@@ -125,7 +125,7 @@ body.lower .button, body.lower #links-search, body.lower footer {
 	padding: 0 0.7em 0 2em;
 }
 html:not(.alt) .invert #links-search, html.alt .altinvert #links-search {
-	background: var(--bg2) linear-gradient(rgba(var(--text--rgb), 0.2), rgba(var(--bg--rgb), 0.5) 90%);
+	background: var(--bg2) linear-gradient(rgb(from var(--text) r g b / 0.2), rgb(var(--bg) r g b / 0.5) 90%);
 }
 html:not(.alt) .invert #links-search *, html.alt .altinvert #links-search * { color: var(--text) !important }
 #links span {
@@ -152,7 +152,7 @@ html:not(.alt) .invert #links-search *, html.alt .altinvert #links-search * { co
 	flex-direction: column;
 	background-color: var(--bg2);
 	padding: 0.25em;
-	box-shadow: 0.1em 0.1em 0.25em -0.1em rgba(var(--text--rgb), 0.75);
+	box-shadow: 0.1em 0.1em 0.25em -0.1em rgb(from var(--text) r g b / 0.75);
 	z-index: 4;
 }
 #pages span { cursor: help }
@@ -163,7 +163,7 @@ html:not(.alt) .invert #links-search *, html.alt .altinvert #links-search * { co
 #pages .dropdown a:last-child { border-bottom: none }
 #pages .dropdown a:hover {
 	color: inherit;
-	background-color: rgba(var(--bg--rgb), 0.25);
+	background-color: rgb(var(--bg) r g b / 0.25);
 }
 /* #endregion */
 /* #region Search bar */
@@ -209,7 +209,7 @@ html:not(.alt) .invert #links-search *, html.alt .altinvert #links-search * { co
 }
 #actions .button { margin-inline: 0.25em }
 .button.active, .pagination a.curr:not([href]):hover {
-	box-shadow: inset 0.25em 0.25em 0.25em rgba(var(--text--rgb), 0.2);
+	box-shadow: inset 0.25em 0.25em 0.25em rgb(from var(--text) r g b / 0.2);
 	background: var(--bg2);
 }
 #scrolltotop_parent { display: inline-block }
@@ -254,7 +254,7 @@ html, body { height: 100vh }
 	padding: 0.5em 0;
 	writing-mode: horizontal-tb;
 }
-#footer span { color: rgba(var(--bg--rgb), 0.9) }
+#footer span { color: rgb(var(--bg) r g b / 0.9) }
 #footer a {
 	color: var(--bg);
 	text-decoration: underline;
@@ -270,7 +270,7 @@ html, body { height: 100vh }
 /* #region Tags */
 #worktags {
 	border: thin solid var(--bg2);
-	box-shadow: 0.1em 0.1em 0.356em rgba(var(--text--rgb), 0.5);
+	box-shadow: 0.1em 0.1em 0.356em rgb(from var(--text) r g b / 0.5);
 	padding: 1.25em 0.75em;
 	line-height: 1.286;
 	display: grid;
@@ -289,7 +289,7 @@ html, body { height: 100vh }
 .series .separator::before {
 	content: "\25CF";
 	margin: 0 0.35em;
-	color: rgba(var(--text--rgb), 0.6);
+	color: rgb(from var(--text) r g b / 0.6);
 }
 .series .prev::before { content: "← " }
 .series .next::after { content: " →" }
@@ -333,13 +333,13 @@ h3.heading {
 	text-align: center;
 }
 #workbody h2 {
-	color: rgba(var(--text--rgb), 0.9);
+	color: rgb(from var(--text) r g b / 0.9);
 	margin: 1.3em 0;
 }
 #workbody h3 {
 	line-height: 1;
 	padding: .125em;
-	border-block-end: 0.25em double rgba(var(--text--rgb), 0.9);
+	border-block-end: 0.25em double rgb(from var(--text) r g b / 0.9);
 	margin: 0.5em 0;
 }
 #workbody h4 {
@@ -400,7 +400,7 @@ h3.heading {
 		flex-direction: column;
 		background-color: var(--bg2);
 		padding: 0.25em;
-		box-shadow: 0.1em 0.1em 0.25em -0.1em rgba(var(--text--rgb), 0.75);
+		box-shadow: 0.1em 0.1em 0.25em -0.1em rgb(from var(--text) r g b / 0.75);
 		z-index: 4;
 	}
 	#mobnav .dropdown a {
@@ -410,7 +410,7 @@ h3.heading {
 	#mobnav .dropdown a:last-child { border-bottom: none }
 	#mobnav .dropdown a:hover {
 		color: inherit;
-		background-color: rgba(var(--bg--rgb), 0.25);
+		background-color: rgb(var(--bg) r g b / 0.25);
 	}
 	#links .dropdown { width: 100% }
 	

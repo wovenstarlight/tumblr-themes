@@ -263,14 +263,14 @@ main .post:first-child { margin-top: 0 }
 .postbody { padding: 1em }
 /* Bodyitems are items in the reblog chain */
 .bodyitem { padding: 1em 0 }
-.bodyitem:not(:last-of-type) { border-bottom: thin solid rgba(var(--links--rgb), 0.3) }
+.bodyitem:not(:last-of-type) { border-bottom: thin solid rgb(from var(--links) r g b / 0.3) }
 .bodyitem:first-of-type { padding-top: 0 }
 .bodyitem:last-of-type { padding-bottom: 0 }
 .bodyitemcontent > *:first-child, .question :first-child { margin-top: 0.25em }
 .bodyitemcontent > *:last-child, .question :last-child { margin-bottom: 0.25em }
 .bodyitemcontent p { margin: 0.5em 0 }
 .bodyitemcontent hr {
-    color: rgba(var(--text--rgb), 0.5);
+    color: rgb(from var(--text) r g b / 0.5);
     width: 80%;
 }
 /* Username/icon in a single bodyitem */
@@ -436,7 +436,7 @@ iframe { max-width: 100% }
 blockquote {
 	margin: 0.5em;
 	padding-left: 0.75em;
-	border-left: 0.2em solid rgba(var(--links--rgb), 0.6);
+	border-left: 0.2em solid rgb(from var(--links) r g b / 0.6);
 }
 .post.notes .more_notes_link, .post#notes .more_notes_link,
 .post.notes .notes_loading, .post#notes .notes_loading {

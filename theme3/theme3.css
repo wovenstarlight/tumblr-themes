@@ -102,8 +102,8 @@ header a { color: var(--headings) }
 	padding: 0.5em 0.625em;
 	background: white;
 	position: relative;
-	-webkit-filter: drop-shadow(0 0 0.25em rgba(var(--text--rgb),0.5));
-	filter: drop-shadow(0 0 0.25em rgba(var(--text--rgb),0.5));
+	-webkit-filter: drop-shadow(0 0 0.25em rgb(from var(--text) r g b /0.5));
+	filter: drop-shadow(0 0 0.25em rgb(from var(--text) r g b /0.5));
 	/*The stamp cutout will be created using crisp radial gradients*/
 	background: radial-gradient(
 		transparent 0px, 
@@ -208,7 +208,7 @@ body:not(.sidebarleft) main {
 /* Space out post and line up top and bottom elements flush to edges */
 .postbody { margin: 0.75em 0 }
 .bodyitem { padding: 0.75em 0 }
-.bodyitem + .bodyitem { border-top: thin solid rgba(var(--text--rgb), 0.25) }
+.bodyitem + .bodyitem { border-top: thin solid rgb(from var(--text) r g b / 0.25) }
 .user + .bodyitemcontent { margin-left: 1em }
 .bodyitemcontent > :first-child { margin-top: 0 }
 .bodyitemcontent > :last-child { margin-bottom: 0 }
@@ -294,7 +294,7 @@ body:not(.sidebarleft) main {
 .tags a:not(:last-child)::after { content: ", " }
 /* Permalink posts: notes section */
 .post.notes { padding-bottom: 1em }
-.post.notes li:nth-child(even) { background:rgba(var(--text--rgb),.05) }
+.post.notes li:nth-child(even) { background:rgb(from var(--text) r g b /.05) }
 .post.notes li .avatar_frame { display: none }
 .post.notes li .action a { font-weight: bold }
 .post.notes li blockquote { margin: 0.5em }
@@ -389,7 +389,7 @@ ol.chat li,
 p.npf_chat:nth-child(even),
 ol.chat li:nth-child(even) {
 	padding-left: 1.5em;
-	background: rgba(var(--text--rgb), 0.05)
+	background: rgb(from var(--text) r g b / 0.05)
 }
 /* Audio posts */
 .audiowrapper {
@@ -421,7 +421,7 @@ ol.chat li:nth-child(even) {
 	height: 100%;
 }
 .audiowrapper .custom_audio_buttons { /* Play/pause buttons */
-	background: rgba(var(--text--rgb), 0.85);
+	background: rgb(from var(--text) r g b / 0.85);
 	--size: 40%;
 	width: var(--size);
 	height: var(--size);
@@ -477,7 +477,7 @@ ol.chat li:nth-child(even) {
 }
 /* Ask posts */
 .post .ask {
-	background: rgba(var(--text--rgb), 0.1);
+	background: rgb(from var(--text) r g b / 0.1);
 	padding: 0.75em 1em;
 	margin-bottom: 0.5em;
 }
@@ -590,12 +590,12 @@ body.sidebarleft #sidebar { /* ...on left */
 #pages a:last-child {
 	border-bottom: thin solid var(--accent2);
 }
-#pages a:hover { background-color: rgba(var(--links--rgb), 0.05) }
+#pages a:hover { background-color: rgb(from var(--links) r g b / 0.05) }
 form div { position: relative }
 form input {
 	width: 100%;
 	border: thin solid var(--accent2);
-	background: rgba(var(--links--rgb), 0.1);
+	background: rgb(from var(--links) r g b / 0.1);
 	color: var(--text);
 	height: 1.5em;
 	padding: 0.25em;

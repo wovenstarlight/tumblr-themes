@@ -1118,7 +1118,7 @@ body.hasnotes #posts { margin-right: 1.25em }
 			linear-gradient(
 				to bottom,
 				var(--shadow),
-				rgba(0, 0, 0, 0)
+				transparent
 			) center top;
 
 		background-repeat: no-repeat;
@@ -1166,14 +1166,14 @@ body.hasnotes #posts { margin-right: 1.25em }
 			linear-gradient(
 				to bottom,
 				var(--shadow),
-				rgba(0, 0, 0, 0)
+				transparent
 			) center top,
 
 			/* Shadow BOTTOM */
 			linear-gradient(
 				to top,
 				var(--shadow),
-				rgba(0, 0, 0, 0)
+				transparent
 			) center bottom;
 
 		background-repeat: no-repeat;
@@ -1241,14 +1241,14 @@ body.hasnotes #posts { margin-right: 1.25em }
 			linear-gradient(
 				to bottom,
 				var(--shadow),
-				rgba(0, 0, 0, 0)
+				transparent
 			) center top,
 
 			/* Shadow BOTTOM */
 			linear-gradient(
 				to top,
 				var(--shadow),
-				rgba(0, 0, 0, 0)
+				transparent
 			) center bottom;
 
 		background-repeat: no-repeat;

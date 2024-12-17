@@ -182,7 +182,7 @@ body.alltapes .note:nth-child(3n)::before, body.alltapes #credit,
 /* #region No-image alternatives */
 html:not(.alt) body.noimga #search input,
 html.alt body.noaimga #search input {
-	background-color: rgba(var(--ta-text--rgb), 0.1);
+	background-color: rgb(from var(--ta-text) r g b / 0.1);
 }
 body.maintapes .user::before,
 html:not(.alt) body.noimg1 .bodyitem:nth-of-type(3n+1) .user::before,
@@ -319,7 +319,7 @@ aside.collapsed #top, aside.collapsed #pages { display: none !important }
 /* Header image */
 .header {
 	max-height: 13em;
-	background-color: rgba(var(--ta-bg--rgb), 0.1);
+	background-color: rgb(from var(--ta-bg) r g b / 0.1);
 	object-fit: var(--h-size);
 	object-position: var(--h-position);
 }
@@ -340,7 +340,7 @@ aside.collapsed #top, aside.collapsed #pages { display: none !important }
 }
 /* Description */
 #desc {
-	background-color: rgba(var(--ta-bg--rgb), 0.1);
+	background-color: rgb(from var(--ta-bg) r g b / 0.1);
 	padding: 0.75em 1em 2em;
 	text-align: center;
 }
@@ -407,7 +407,7 @@ html.alt .og, html:not(.alt) .alt { display: none }
 #no-posts .body { padding: 0.25em 1em; text-align: center }
 /* Reblogs */
 .post .body {
-	background-color: rgba(var(--ta-bg--rgb), 0.1);
+	background-color: rgb(from var(--ta-bg) r g b / 0.1);
 	padding: 1.75em 0 2em;
 }
 .post .bodyitem + .bodyitem { margin-top: 1em }
@@ -634,7 +634,7 @@ footer .stickies { margin-top: -0.75em }
 	display: grid;
 	grid-template-columns: 4em 1fr auto;
 	column-gap: 1em;
-	background: rgba(var(--ta-bg--rgb), 0.1);
+	background: rgb(from var(--ta-bg) r g b / 0.1);
 	padding: 0.5em;
 }
 .audiowrapper span[id*='audio_player'] { display: none }
@@ -691,7 +691,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 /* Ask posts */
 .ask {
 	margin: 0 1em 0.75em;
-	background-color: rgba(var(--ta-bg--rgb), 0.1);
+	background-color: rgb(from var(--ta-bg) r g b / 0.1);
 	overflow: hidden;
 }
 .ask .user i { margin-right: 0.5em }
