@@ -12,17 +12,20 @@ a {
 aside a[href], .postbody a[href], .page.title a[href], .post .title a[href],
 #notes a, .notes_loading {
 	--height: 0.3em;
-	--og: rgba(var(--links--rgb), 0.1);
-	--hover: rgba(var(--links--rgb), 0.3);
+	--og: rgb(from var(--links) r g b / 0.1);
+	--hover: rgb(from var(--links) r g b / 0.2);
 	background-image: linear-gradient(var(--og), var(--og)),
 		linear-gradient(var(--hover), var(--hover));
 	background-size: 100% var(--height), 0 var(--height);
-	background-position: 100% 100%, 0 100%;
+	/* Make stronger highlight collapse towards the right, for not:hover */
+	background-position: 0% 100%, 100% 100%;
 	background-repeat: no-repeat;
 }
 aside a[href]:hover, .postbody a[href]:hover, .page.title a[href]:hover, .post .title a[href]:hover,
 #notes a:hover, .notes_loading:hover {
-	background-size: 0 var(--height), 100% var(--height);
+	background-size: 100% var(--height);
+	/* Make stronger highlight expand from the left */
+	background-position-x: 0%, 0%;
 }
 /* Blockquotes */
 blockquote {
