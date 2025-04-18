@@ -1,12 +1,5 @@
 /* Colors */
-html {
-	--text: {TitleColor};
-	--text--rgb: {RGBTitleColor};
-	--bg: {BackgroundColor};
-	--bg--rgb: {RGBBackgroundColor};
-	--accent: {AccentColor};
-	--accent--rgb: {RGBAccentColor};
-}
+
 body {
 	background: var(--bg);
 	color: var(--text);
@@ -14,8 +7,8 @@ body {
 * { box-sizing: border-box }
 
 .blog-title {
-	font-family: {TitleFont}, "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
-	font-weight: {TitleFontWeight};
+	font-family: var(--title-font), "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
+	font-weight: var(--title-font-weight);
 }
 
 a { color: var(--accent) }
