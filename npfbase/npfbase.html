@@ -587,8 +587,8 @@ posts.forEach(post => {
 			// Assemble and insert filter message
 			let msg = filterMessage.content.cloneNode(true);
 			msg.querySelector(".tags").textContent = "#".concat(filters.map(el => el.name).join(", #"));
-			msg.querySelector("button").addEventListener("click", () => {
-				msg.remove();
+			msg.querySelector("button").addEventListener("click", (e) => {
+				e.currentTarget.closest(".filter").remove();
 				article.classList.remove("filtered");
 			});
 			article.insertBefore(msg, article.firstElementChild);

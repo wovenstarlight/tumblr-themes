@@ -29,12 +29,19 @@ a { color: var(--accent) }
 	--padding: 0.5em;
 	padding: 0.5em var(--padding);
 	max-width: calc(33.75em + (var(--padding) * 2));
+
+	&.filtered .filter ~ * { display: none }
 }
 .user {
 	a {
 		display: flex;
 		align-items: center;
 		gap: 0.4em;
+		text-decoration: none;
+	}
+
+	.name {
+		font-family: "Squeezed Pixels", var(--font);
 	}
 
 	&.deactivated .name::after {
