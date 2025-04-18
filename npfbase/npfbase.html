@@ -53,11 +53,8 @@
 		/* Variables */
 		html {
 			--text: {TitleColor};
-			--text--rgb: {RGBTitleColor};
 			--bg: {BackgroundColor};
-			--bg--rgb: {RGBBackgroundColor};
 			--accent: {AccentColor};
-			--accent--rgb: {RGBAccentColor};
 			--title-font: {TitleFont};
 			--title-font-weight: {TitleFontWeight};
 		}
@@ -82,7 +79,9 @@
 		</section>
 
 		<dialog id="lightbox">
-			<button class="closemodal">Close</button>
+			<button id="close">
+				<span class="visually-hidden">Close</span>
+			</button>
 		</dialog>
 
 		{block:Pagination}<nav>
@@ -320,6 +319,16 @@ lightbox._moveTo = (direction, focusTarget, eventType = null) => {
 	}
 }
 
+/** Closes the lightbox and resets internal counters. */
+lightbox._close = () => {
+	lightbox.close();
+	// Remove the images in the lightbox
+	lightbox.querySelectorAll("img").forEach(el => el.remove());
+	// Reset the internal lightbox counters
+	lightbox._images = null;
+	lightbox._index = null;
+}
+
 // Set up click events for image navigation
 lightbox.addEventListener("click", e => {
 	switch (e.target.className) {
@@ -371,6 +380,24 @@ lightbox.addEventListener("keydown", e => {
 		
 		default:
 			break;
+	}
+});
+// Set up lightbox closure on button click
+document.getElementById("close").addEventListener("click", () => lightbox._close());
+// Set up lightbox closure on ::backdrop click
+lightbox.addEventListener("mousedown", e => {
+	e.currentTarget._offsetX = e.offsetX;
+	e.currentTarget._offsetY = e.offsetY;
+});
+lightbox.addEventListener("click", e => {
+	if ((
+		e.currentTarget._offsetX < 0 || e.currentTarget._offsetX > e.target.offsetWidth ||
+		e.currentTarget._offsetY < 0 || e.currentTarget._offsetY > e.target.offsetHeight
+	) && (
+		e.offsetX < 0 || e.offsetX > e.target.offsetWidth ||
+		e.offsetY < 0 || e.offsetY > e.target.offsetHeight
+	)) {
+		lightbox._close();
 	}
 });
 // #endregion
