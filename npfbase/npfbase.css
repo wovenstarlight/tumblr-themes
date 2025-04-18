@@ -1,0 +1,522 @@
+/* Colors */
+html {
+	--text: {TitleColor};
+	--text--rgb: {RGBTitleColor};
+	--bg: {BackgroundColor};
+	--bg--rgb: {RGBBackgroundColor};
+	--accent: {AccentColor};
+	--accent--rgb: {RGBAccentColor};
+}
+body {
+	background: var(--bg);
+	color: var(--text);
+}
+* { box-sizing: border-box }
+
+.blog-title {
+	font-family: {TitleFont}, "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
+	font-weight: {TitleFontWeight};
+}
+
+a { color: var(--accent) }
+
+.deactivated.user .name::after {
+	content: "deactivated";
+	opacity: 0.6;
+	margin-left: 0.25em;
+}
+.post {
+	border: solid var(--accent);
+	margin: 1em auto;
+	--padding: 0.5em;
+	padding: 0.5em var(--padding);
+	max-width: calc(33.75em + (var(--padding) * 2));
+}
+.user a {
+	display: flex;
+	align-items: center;
+	gap: 0.4em;
+}
+.user .avatar {
+	--size: 2.5em;
+	width: var(--size);
+	height: var(--size);
+	border-radius: 0.25em;
+}
+.user .circle.avatar { border-radius: 100% }
+.user .badges {
+	--size: 0.875em;
+	flex-grow: 1;
+	display: flex;
+	align-items: center;
+	gap: 0.15em;
+	height: var(--size);
+}
+.user .badges span {
+	position: relative;
+	flex-grow: 1;
+	max-width: var(--size);
+	height: var(--size);
+}
+.user .badges img {
+	width: var(--size);
+	height: var(--size);
+	max-width: unset;
+	filter: drop-shadow(0 0 0.1em var(--bg));
+	display: block;
+}
+.user .badges span:not(:last-child) img {
+	position: absolute;
+	left: 0;
+}
+
+hr.readmore {
+	border-color: rgba(var(--text--rgb), 0.5);
+	border-style: dashed;
+	margin-inline: 0.3em;
+}
+
+.ask {
+	border: solid var(--accent);
+	padding: 0.5em;
+	white-space: pre-line;
+	margin-bottom: 1em;
+}
+.ask .user {
+	display: flex;
+	align-items: center;
+}
+.ask .user a { margin-inline-end: 0.2em }
+
+.video {
+	width: 100%;
+	min-height: 20vh;
+	max-height: 80vh;
+	background: rgba(var(--accent--rgb), 0.2);
+}
+
+/* #region Images and image rows */
+img {
+	max-width: 100%;
+	height: auto;
+}
+figure { margin: 0 }
+.row {
+	display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 1fr;
+	--spacing: min(0.2em, 1vw);
+	gap: var(--spacing);
+	margin-block: var(--spacing);
+}
+.row figure {
+	display: flex;
+	flex-direction: column;
+}
+.row img {
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
+}
+/* #endregion */
+/* #region Lightbox */
+body.lightboxed { overflow: hidden }
+#lightbox {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.75);
+	z-index: 2;
+}
+#lightbox img {
+	position: absolute;
+	top: 50%;
+	max-width: 90vw;
+	max-height: 90vh;
+	width: auto;
+	height: auto;
+	box-shadow: 0 0 0.5em rgba(0, 0, 0);
+}
+#lightbox img.center {
+	left: 50%;
+	z-index: 2;
+	transform: translate(-50%, -50%);
+}
+#lightbox img.left {
+	left: 0;
+	transform: translate(-80%, -50%);
+}
+#lightbox img.right {
+	left: 100%;
+	transform: translate(-20%, -50%);
+}
+#lightbox #close {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	line-height: 1;
+	color: #fff;
+}
+#lightbox #close::before {
+	content: "🗙";
+	font-size: 1.5em;
+	cursor: pointer;
+	padding: 0.5em;
+	display: inline-block;
+}
+#lightbox #close:focus::before { color: #acacac }
+/* #endregion */
+
+/* Align poll colors to theme colors */
+div.poll-post a.poll-row {
+	color: var(--text);
+	background-color: rgba(var(--accent--rgb), 0.2);
+}
+
+/* #region Default Tumblr audio block */
+.audiowrapper {
+	--box: 5.3125em;
+	background-color: var(--accent);
+	color: var(--bg);
+	display: grid;
+	grid-template-columns: 1fr auto;
+	min-height: var(--box);
+}
+.audiowrapper .left {
+	position: relative;
+	display: grid;
+	grid-template-columns: var(--box) 1fr;
+}
+.audiowrapper .textinfo {
+	display: flex;
+	flex-direction: column;
+	line-height: 1;
+	align-self: center;
+	gap: 0.4em;
+}
+.audiowrapper .trackname { font-weight: 700 }
+.audiowrapper .artist, .audiowrapper .album { font-size: 0.875em }
+.audiowrapper .buttons {
+	align-self: center;
+	justify-self: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font: inherit;
+	padding: 0.1em;
+	border: none;
+	background-color: transparent;
+	color: inherit;
+	position: relative;
+	z-index: 2;
+	cursor: pointer;
+}
+.audiowrapper audio,
+.audiowrapper audio.playing ~ .left .buttons .play,
+.audiowrapper audio:not(.playing) ~ .left .buttons .pause {
+	display: none;
+}
+.audiowrapper .albumart {
+	width: var(--box);
+	height: max(var(--box), 100%);
+	object-fit: cover;
+}
+
+/* Seekbar styling */
+.seekbar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	background-color: transparent;
+	-webkit-appearance: none;
+	--progress-bg: rgba(var(--bg--rgb), 0.15);
+}
+.seekbar:focus { outline: none }
+.seekbar::before {
+	content: "";
+	background-color: var(--progress-bg);
+	display: block;
+	height: 100%;
+	width: var(--progress-width);
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.seekbar::-webkit-slider-runnable-track {
+	background: transparent;
+	border: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+.seekbar::-webkit-slider-thumb {
+	width: 0px;
+	height: 0px;
+	border: 0;
+	cursor: pointer;
+	-webkit-appearance: none;
+}
+
+.seekbar::-moz-range-track {
+	background: transparent;
+	border: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+.seekbar::-moz-range-thumb {
+	width: 0px;
+	height: 0px;
+	border: 0;
+	cursor: pointer;
+}
+.seekbar::-moz-range-progress {
+	background-color: var(--progress-bg);
+	height: 100%;
+}
+
+.seekbar::-ms-track {
+	background: transparent;
+	border-color: transparent;
+	border-width: 0 0;
+	color: transparent;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+.seekbar::-ms-fill-lower {
+	background: var(--progress-bg);
+	border: 0;
+}
+.seekbar::-ms-fill-upper {
+	background: transparent;
+	border: 0;
+}
+.seekbar::-ms-thumb {
+	width: 0px;
+	height: 0px;
+	border: 0;
+	cursor: pointer;
+	margin-top: 0px;
+	/* Needed to keep the Edge thumb centered */
+}
+/* #endregion */
+
+/* #region Custom audio block */
+.audiowrapper {
+	background-color: var(--bg);
+	color: var(--text);
+	display: flex;
+	flex-direction: column;
+}
+.audiowrapper .top {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1em;
+	padding: 1em 2em;
+}
+.audiowrapper .hasart {
+	background-position: center;
+	background-size: cover;
+}
+.audiowrapper .hasart .top {
+	backdrop-filter: blur(1em);
+	background-color: rgba(var(--bg--rgb), 0.75);
+}
+.audiowrapper .albumart {
+	--size: 5em;
+	max-width: var(--size);
+	max-height: var(--size);
+	border-radius: 100%;
+}
+.audiowrapper .textinfo {
+	display: flex;
+	flex-direction: column;
+	line-height: 1;
+	align-self: center;
+	gap: 0.4em;
+}
+.audiowrapper .textinfo:empty { display: none }
+.audiowrapper .trackname { font-weight: 700 }
+.audiowrapper .artist, .audiowrapper .album { font-size: 0.875em }
+.audiowrapper .buttons {
+	padding-block: 0.75em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	line-height: 1;
+	gap: 0.5em;
+}
+.audiowrapper .buttons button {
+	--size: 2em;
+	width: var(--size);
+	height: var(--size);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	font: inherit;
+	font-size: 1.25em;
+	border: none;
+	border-radius: 100%;
+	background-color: transparent;
+	color: inherit;
+}
+.audiowrapper .buttons button:hover {
+	color: rgba(var(--text--rgb), 0.5);
+	text-shadow: 0 0 var(--accent);
+}
+.audiowrapper .buttons .playpause {
+	background-color: var(--text);
+	color: var(--bg);
+	margin-inline: 0.25em;
+}
+.audiowrapper .buttons .playpause:hover {
+	color: var(--bg);
+	text-shadow: unset;
+	background-color: var(--accent);
+	background-image: linear-gradient(rgba(var(--text--rgb), 0.75), rgba(var(--text--rgb), 0.75))
+}
+.audiowrapper .buttons button.active {
+	color: var(--accent);
+}
+.audiowrapper audio,
+.audiowrapper audio.playing ~ .buttons .play,
+.audiowrapper audio:not(.playing) ~ .buttons .pause,
+.audiowrapper .volume.active .mute,
+.audiowrapper .volume:not(.active) .unmute,
+.audiowrapper .loop.active .repeat,
+.audiowrapper .loop:not(.active) .unrepeat {
+	display: none;
+}
+
+/* Seekbar styling */
+.seekbar {
+	width: 100%;
+	height: 0.5em;
+	margin: 0;
+	background-color: rgba(var(--text--rgb), 0.15);
+	-webkit-appearance: none;
+	--progress-bg: var(--accent);
+	position: relative;
+}
+.seekbar:focus { outline: none }
+.seekbar::before {
+	content: "";
+	background-color: var(--progress-bg);
+	display: block;
+	height: 100%;
+	width: var(--progress-width);
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+
+.seekbar::-webkit-slider-runnable-track {
+	background: transparent;
+	border: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+.seekbar::-webkit-slider-thumb {
+	width: 0px;
+	height: 0px;
+	border: 0;
+	cursor: pointer;
+	-webkit-appearance: none;
+}
+
+.seekbar::-moz-range-track {
+	background: transparent;
+	border: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+.seekbar::-moz-range-thumb {
+	width: 0px;
+	height: 0px;
+	border: 0;
+	cursor: pointer;
+}
+.seekbar::-moz-range-progress {
+	background-color: var(--progress-bg);
+	height: 100%;
+}
+
+.seekbar::-ms-track {
+	background: transparent;
+	border-color: transparent;
+	border-width: 0 0;
+	color: transparent;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+.seekbar::-ms-fill-lower {
+	background: var(--progress-bg);
+	border: 0;
+}
+.seekbar::-ms-fill-upper {
+	background: transparent;
+	border: 0;
+}
+.seekbar::-ms-thumb {
+	width: 0px;
+	height: 0px;
+	border: 0;
+	cursor: pointer;
+	margin-top: 0px;
+	/* Needed to keep the Edge thumb centered */
+}
+/* #endregion */
+
+/* #region Paywall block */
+.paywall {
+	background-color: var(--bg);
+	color: var(--text);
+	padding: 1em 5%;
+	margin-block: 1em;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	gap: 1em;
+}
+.paywall * { margin-block: 0 }
+.paywall h2 { font-family: var(--font) }
+.paywall h2, .paywall strong, .paywall a { color: var(--accent) }
+.paywall a {
+	text-decoration: none;
+	border: solid var(--accent);
+	padding: 0.5em 1em;
+	display: block;
+	border-radius: 5em;
+}
+.paywall.divider {
+	padding: unset;
+	background-color: unset;
+	color: var(--color);
+	flex-direction: row;
+	gap: 0.25em;
+}
+.paywall.divider::before, .paywall.divider::after {
+	content: "";
+	flex-grow: 1;
+	display: block;
+	border: thin solid var(--color);
+}
+/* #endregion */

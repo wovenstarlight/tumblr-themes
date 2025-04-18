@@ -8,20 +8,22 @@
 <head>
 	{MobileAppHeaders}
 	<meta charset="utf-8">
-	<title>{Title}{block:TagPage} ({lang:TagResultCount posts tagged Tag}){/block:TagPage}{block:SearchPage} ({lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults}){/block:SearchPage}{block:PermalinkPage}{block:PostSummary} — {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+	<title>{block:TagPage}{lang:TagResultCount posts tagged Tag} | {/block:TagPage}{block:SearchPage}{lang:SearchResultCount results for SearchQuery}{block:NoSearchResults}{lang:No results for SearchQuery}{/block:NoSearchResults} | {/block:SearchPage}{block:DayPage}{lang:Posted on DayOfMonth Month Year} | {/block:DayPage}{block:PermalinkPage}{block:PostSummary}{PostSummary} | {/block:PostSummary}{/block:PermalinkPage}{Title}</title>
 	<meta name="description" content="{MetaDescription}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<meta name="theme-color" content="#35465D">
 	<link rel="shortcut icon" href="{Favicon}">
 	<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
 	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+
 	{block:Hidden}
 	<!-- #region TODO: Custom variables -->
 	<!-- Color options -->
 	<!-- Alternate palette -->
 	<meta name="if:Palette toggle" content="1">
 
-	<!-- Post options -->
+	<!-- Main content options -->
+	<meta name="if:Search bar" content="1">
+	<meta name="text:Search bar title" content="Search Blog">
 	<meta name="if:Use legacy format for post media" content="0">
 	<meta name="if:Post dates" content="1">
 	<meta name="if:Post times" content="1">
@@ -29,573 +31,68 @@
 	<meta name="if:24 hour times" content="0">
 	<meta name="if:Like buttons" content="1">
 	<meta name="if:Reblog buttons" content="1">
-	<meta name="if:Post tags" content="1">
 	<meta name="if:Day page links" content="1">
-	<meta name="text:Filtered tags" content="text post, long post">
+	<meta name="if:Post tags" content="1">
+	<meta name="if:Show tags on click" content="0">
+	<meta name="text:Filtered tags" content="spoiler, spoilers">
+
+	<!-- Other options -->
+	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
 	<!-- #endregion -->
 	{/block:Hidden}
-	{block:IfSyntaxHighlighting}
-	<link rel="stylesheet" href="https://static.tumblr.com/ehm1tdz/2VWnye81h/tumblr-highlightjs.css">
-	{/block:IfSyntaxHighlighting}
+
+	<!-- TODO: Resource imports -->
+
+	<!-- Standardization of theme styles -->
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
+
 	{PostTypographyStyles}
 
-	<!-- Phosphor icons -->
-	<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+	<!-- Theme styles -->
+	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/npfbase/npfbase.min.css">
 
-	<style>
-	{NewPostStyles}
-	/* Colors */
-	html {
-		--text: {TitleColor};
-		--text--rgb: {RGBTitleColor};
-		--bg: {BackgroundColor};
-		--bg--rgb: {RGBBackgroundColor};
-		--accent: {AccentColor};
-		--accent--rgb: {RGBAccentColor};
-	}
-	body {
-		background: var(--bg);
-		color: var(--text);
-	}
-	* { box-sizing: border-box }
-
-	.blog-title {
-		font-family: {TitleFont}, "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
-		font-weight: {TitleFontWeight};
-	}
-
-	a { color: var(--accent) }
-
-	.deactivated.user .name::after {
-		content: "deactivated";
-		opacity: 0.6;
-		margin-left: 0.25em;
-	}
-	.post {
-		border: solid var(--accent);
-		margin: 1em auto;
-		--padding: 0.5em;
-		padding: 0.5em var(--padding);
-		max-width: calc(33.75em + (var(--padding) * 2));
-	}
-	.user a {
-		display: flex;
-		align-items: center;
-		gap: 0.4em;
-	}
-	.user .avatar {
-		--size: 2.5em;
-		width: var(--size);
-		height: var(--size);
-		border-radius: 0.25em;
-	}
-	.user .circle.avatar { border-radius: 100% }
-	.user .badges {
-		--size: 0.875em;
-		flex-grow: 1;
-		display: flex;
-		align-items: center;
-		gap: 0.15em;
-		height: var(--size);
-	}
-	.user .badges span {
-		position: relative;
-		flex-grow: 1;
-		max-width: var(--size);
-		height: var(--size);
-	}
-	.user .badges img {
-		width: var(--size);
-		height: var(--size);
-		max-width: unset;
-		filter: drop-shadow(0 0 0.1em var(--bg));
-		display: block;
-	}
-	.user .badges span:not(:last-child) img {
-		position: absolute;
-		left: 0;
-	}
-
-	hr.readmore {
-		border-color: rgba(var(--text--rgb), 0.5);
-		border-style: dashed;
-		margin-inline: 0.3em;
-	}
-	
-	.ask {
-		border: solid var(--accent);
-		padding: 0.5em;
-		white-space: pre-line;
-		margin-bottom: 1em;
-	}
-	.ask .user {
-		display: flex;
-		align-items: center;
-	}
-	.ask .user a { margin-inline-end: 0.2em }
-	
-	.video {
-		width: 100%;
-		min-height: 20vh;
-		max-height: 80vh;
-		background: rgba(var(--accent--rgb), 0.2);
-	}
-
-	/* #region Images and image rows */
-	img {
-		max-width: 100%;
-		height: auto;
-	}
-	figure { margin: 0 }
-	.row {
-		display: grid;
-		grid-auto-flow: column;
-		grid-auto-columns: 1fr;
-		--spacing: min(0.2em, 1vw);
-		gap: var(--spacing);
-		margin-block: var(--spacing);
-	}
-	.row figure {
-		display: flex;
-		flex-direction: column;
-	}
-	.row img {
-		object-fit: cover;
-		height: 100%;
-		width: 100%;
-	}
-	/* #endregion */
-	/* #region Lightbox */
-	body.lightboxed { overflow: hidden }
-	#lightbox {
-		position: fixed;
-		left: 0;
-		top: 0;
-		width: 100vw;
-		height: 100vh;
-		background: rgba(0, 0, 0, 0.75);
-		z-index: 2;
-	}
-	#lightbox img {
-		position: absolute;
-		top: 50%;
-		max-width: 90vw;
-		max-height: 90vh;
-		width: auto;
-		height: auto;
-		box-shadow: 0 0 0.5em rgba(0, 0, 0);
-	}
-	#lightbox img.center {
-		left: 50%;
-		z-index: 2;
-		transform: translate(-50%, -50%);
-	}
-	#lightbox img.left {
-		left: 0;
-		transform: translate(-80%, -50%);
-	}
-	#lightbox img.right {
-		left: 100%;
-		transform: translate(-20%, -50%);
-	}
-	#lightbox #close {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		line-height: 1;
-		color: #fff;
-	}
-	#lightbox #close::before {
-		content: "🗙";
-		font-size: 1.5em;
-		cursor: pointer;
-		padding: 0.5em;
-		display: inline-block;
-	}
-	#lightbox #close:focus::before { color: #acacac }
-	/* #endregion */
-
-	/* Align poll colors to theme colors */
-	div.poll-post a.poll-row {
-		color: var(--text);
-		background-color: rgba(var(--accent--rgb), 0.2);
-	}
-
-	/* #region Default Tumblr audio block */
-	.audiowrapper {
-		--box: 5.3125em;
-		background-color: var(--accent);
-		color: var(--bg);
-		display: grid;
-		grid-template-columns: 1fr auto;
-		min-height: var(--box);
-	}
-	.audiowrapper .left {
-		position: relative;
-		display: grid;
-		grid-template-columns: var(--box) 1fr;
-	}
-	.audiowrapper .textinfo {
-		display: flex;
-		flex-direction: column;
-		line-height: 1;
-		align-self: center;
-		gap: 0.4em;
-	}
-	.audiowrapper .trackname { font-weight: 700 }
-	.audiowrapper .artist, .audiowrapper .album { font-size: 0.875em }
-	.audiowrapper .buttons {
-		align-self: center;
-		justify-self: center;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		font: inherit;
-		padding: 0.1em;
-		border: none;
-		background-color: transparent;
-		color: inherit;
-		position: relative;
-		z-index: 2;
-		cursor: pointer;
-	}
-	.audiowrapper audio,
-	.audiowrapper audio.playing ~ .left .buttons .play,
-	.audiowrapper audio:not(.playing) ~ .left .buttons .pause {
-		display: none;
-	}
-	.audiowrapper .albumart {
-		width: var(--box);
-		height: max(var(--box), 100%);
-		object-fit: cover;
-	}
-
-	/* Seekbar styling */
-	.seekbar {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		margin: 0;
-		background-color: transparent;
-		-webkit-appearance: none;
-		--progress-bg: rgba(var(--bg--rgb), 0.15);
-	}
-	.seekbar:focus { outline: none }
-	.seekbar::before {
-		content: "";
-		background-color: var(--progress-bg);
-		display: block;
-		height: 100%;
-		width: var(--progress-width);
-		position: absolute;
-		top: 0;
-		left: 0;
-	}
-
-	.seekbar::-webkit-slider-runnable-track {
-		background: transparent;
-		border: 0;
-		width: 100%;
-		height: 100%;
-		cursor: pointer;
-	}
-	.seekbar::-webkit-slider-thumb {
-		width: 0px;
-		height: 0px;
-		border: 0;
-		cursor: pointer;
-		-webkit-appearance: none;
-	}
-
-	.seekbar::-moz-range-track {
-		background: transparent;
-		border: 0;
-		width: 100%;
-		height: 100%;
-		cursor: pointer;
-	}
-	.seekbar::-moz-range-thumb {
-		width: 0px;
-		height: 0px;
-		border: 0;
-		cursor: pointer;
-	}
-	.seekbar::-moz-range-progress {
-		background-color: var(--progress-bg);
-		height: 100%;
-	}
-
-	.seekbar::-ms-track {
-		background: transparent;
-		border-color: transparent;
-		border-width: 0 0;
-		color: transparent;
-		width: 100%;
-		height: 100%;
-		cursor: pointer;
-	}
-	.seekbar::-ms-fill-lower {
-		background: var(--progress-bg);
-		border: 0;
-	}
-	.seekbar::-ms-fill-upper {
-		background: transparent;
-		border: 0;
-	}
-	.seekbar::-ms-thumb {
-		width: 0px;
-		height: 0px;
-		border: 0;
-		cursor: pointer;
-		margin-top: 0px;
-		/* Needed to keep the Edge thumb centered */
-	}
-	/* #endregion */
-
-	/* #region Custom audio block */
-	.audiowrapper {
-		background-color: var(--bg);
-		color: var(--text);
-		display: flex;
-		flex-direction: column;
-	}
-	.audiowrapper .top {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 1em;
-		padding: 1em 2em;
-	}
-	.audiowrapper .hasart {
-		background-position: center;
-		background-size: cover;
-	}
-	.audiowrapper .hasart .top {
-		backdrop-filter: blur(1em);
-		background-color: rgba(var(--bg--rgb), 0.75);
-	}
-	.audiowrapper .albumart {
-		--size: 5em;
-		max-width: var(--size);
-		max-height: var(--size);
-		border-radius: 100%;
-	}
-	.audiowrapper .textinfo {
-		display: flex;
-		flex-direction: column;
-		line-height: 1;
-		align-self: center;
-		gap: 0.4em;
-	}
-	.audiowrapper .textinfo:empty { display: none }
-	.audiowrapper .trackname { font-weight: 700 }
-	.audiowrapper .artist, .audiowrapper .album { font-size: 0.875em }
-	.audiowrapper .buttons {
-		padding-block: 0.75em;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		line-height: 1;
-		gap: 0.5em;
-	}
-	.audiowrapper .buttons button {
-		--size: 2em;
-		width: var(--size);
-		height: var(--size);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-		font: inherit;
-		font-size: 1.25em;
-		border: none;
-		border-radius: 100%;
-		background-color: transparent;
-		color: inherit;
-	}
-	.audiowrapper .buttons button:hover {
-		color: rgba(var(--text--rgb), 0.5);
-		text-shadow: 0 0 var(--accent);
-	}
-	.audiowrapper .buttons .playpause {
-		background-color: var(--text);
-		color: var(--bg);
-		margin-inline: 0.25em;
-	}
-	.audiowrapper .buttons .playpause:hover {
-		color: var(--bg);
-		text-shadow: unset;
-		background-color: var(--accent);
-		background-image: linear-gradient(rgba(var(--text--rgb), 0.75), rgba(var(--text--rgb), 0.75))
-	}
-	.audiowrapper .buttons button.active {
-		color: var(--accent);
-	}
-	.audiowrapper audio,
-	.audiowrapper audio.playing ~ .buttons .play,
-	.audiowrapper audio:not(.playing) ~ .buttons .pause,
-	.audiowrapper .volume.active .mute,
-	.audiowrapper .volume:not(.active) .unmute,
-	.audiowrapper .loop.active .repeat,
-	.audiowrapper .loop:not(.active) .unrepeat {
-		display: none;
-	}
-
-	/* Seekbar styling */
-	.seekbar {
-		width: 100%;
-		height: 0.5em;
-		margin: 0;
-		background-color: rgba(var(--text--rgb), 0.15);
-		-webkit-appearance: none;
-		--progress-bg: var(--accent);
-		position: relative;
-	}
-	.seekbar:focus { outline: none }
-	.seekbar::before {
-		content: "";
-		background-color: var(--progress-bg);
-		display: block;
-		height: 100%;
-		width: var(--progress-width);
-		position: absolute;
-		top: 0;
-		left: 0;
-		cursor: pointer;
-	}
-
-	.seekbar::-webkit-slider-runnable-track {
-		background: transparent;
-		border: 0;
-		width: 100%;
-		height: 100%;
-		cursor: pointer;
-	}
-	.seekbar::-webkit-slider-thumb {
-		width: 0px;
-		height: 0px;
-		border: 0;
-		cursor: pointer;
-		-webkit-appearance: none;
-	}
-
-	.seekbar::-moz-range-track {
-		background: transparent;
-		border: 0;
-		width: 100%;
-		height: 100%;
-		cursor: pointer;
-	}
-	.seekbar::-moz-range-thumb {
-		width: 0px;
-		height: 0px;
-		border: 0;
-		cursor: pointer;
-	}
-	.seekbar::-moz-range-progress {
-		background-color: var(--progress-bg);
-		height: 100%;
-	}
-
-	.seekbar::-ms-track {
-		background: transparent;
-		border-color: transparent;
-		border-width: 0 0;
-		color: transparent;
-		width: 100%;
-		height: 100%;
-		cursor: pointer;
-	}
-	.seekbar::-ms-fill-lower {
-		background: var(--progress-bg);
-		border: 0;
-	}
-	.seekbar::-ms-fill-upper {
-		background: transparent;
-		border: 0;
-	}
-	.seekbar::-ms-thumb {
-		width: 0px;
-		height: 0px;
-		border: 0;
-		cursor: pointer;
-		margin-top: 0px;
-		/* Needed to keep the Edge thumb centered */
-	}
-	/* #endregion */
-
-	/* #region Paywall block */
-	.paywall {
-		background-color: var(--bg);
-		color: var(--text);
-		padding: 1em 5%;
-		margin-block: 1em;
-		display: flex;
-		flex-direction: column;
-		text-align: center;
-		align-items: center;
-		gap: 1em;
-	}
-	.paywall * { margin-block: 0 }
-	.paywall h2 { font-family: var(--font) }
-	.paywall h2, .paywall strong, .paywall a { color: var(--accent) }
-	.paywall a {
-		text-decoration: none;
-		border: solid var(--accent);
-		padding: 0.5em 1em;
-		display: block;
-		border-radius: 5em;
-	}
-	.paywall.divider {
-		padding: unset;
-		background-color: unset;
-		color: var(--color);
-		flex-direction: row;
-		gap: 0.25em;
-	}
-	.paywall.divider::before, .paywall.divider::after {
-		content: "";
-		flex-grow: 1;
-		display: block;
-		border: thin solid var(--color);
-	}
-	/* #endregion */
-
-	/* Custom CSS */
-	{CustomCSS}
-	</style>
+	<style>{CustomCSS}</style>
 	
 	<!-- Keyboard navigation -->
-	<script src="https://static.tumblr.com/h7vugp8/f44ryxhhy/keyboardnav.js"></script>
+	<script src="https://wovenstarlight.github.io/tumblr-themes/keyboardnav.min.js"></script>
 </head>
 
 
 
-<body class="{block:IndexPage} index-page{/block:IndexPage}{block:PermalinkPage} permalink{/block:PermalinkPage}{block:LikesPage} likes-page{/block:LikesPage}{block:FollowingPage} following-page{/block:FollowingPage}{block:SearchPage} search-page{block:NoSearchResults} no-results{/block:NoSearchResults}{block:NoLikes} no-likes{/block:NoLikes}{block:NoPosts} no-posts{/block:NoPosts}{block:NoFollowing} no-following{/block:NoFollowing}{/block:SearchPage}">
+<body>
+	<a href="#main" id="skip">Skip to main content</a>
+
+	<main id="main">
+
+		<section id="posts">
+			<noscript><article><p>Javascript is required to view this blog. Please enable scripting and reload.</p></article></noscript>
+		</section>
+
+		<dialog id="lightbox">
+			<button class="closemodal">Close</button>
+		</dialog>
+
+		{block:Pagination}<nav>
+			{block:PreviousPage}<a href="{PreviousPage}" id="prev">Previous</a>{/block:PreviousPage}
+			{block:JumpPagination length="7"}
+				{block:CurrentPage}<a>{PageNumber}</a>{/block:CurrentPage}
+				{block:JumpPage}<a href="{URL}">{PageNumber}</a>{/block:JumpPage}
+			{/block:JumpPagination}
+			{block:NextPage}<a href="{NextPage}" id="next">Next</a>{/block:NextPage}
+		</nav>{/block:Pagination}
+
+	</main>
 
 
-<main id="main">
+<template id="filtermessage">
+	<div class="filter">
+		<p>This post contains filtered tags.</p>
+		<p class="tags">#filtered tag</p>
+		<button>View post</button>
+	</div>
+</template>
 
-	<section id="posts">
-		<noscript><article>Javascript is required to view this blog. Please enable scripting and reload.</article></noscript>
-	</section>
-
-	{block:Pagination}<nav>
-		{block:PreviousPage}<a href="{PreviousPage}" id="prev">Previous</a>{/block:PreviousPage}
-		{block:JumpPagination length="7"}
-			{block:CurrentPage}<a>{PageNumber}</a>{/block:CurrentPage}
-			{block:JumpPage}<a href="{URL}">{PageNumber}</a>{/block:JumpPage}
-		{/block:JumpPagination}
-		{block:NextPage}<a href="{NextPage}" id="next">Next</a>{/block:NextPage}
-	</nav>{/block:Pagination}
-
-
+<!-- The actual functionality of the theme. -->
 <script>
 // #region CONSTANTS AND GLOBAL VARIABLES
 /**
@@ -691,35 +188,179 @@ let rAF = null;
  */
 let currentlyPlaying = null;
 
-/**
- * The currently active lightbox, if any.
- * @type {?HTMLElement}
- */
-let lightbox;
-/**
- * All images from the trail item currently being represented in the lightbox. Null if no lightbox is active.
- * @type {?HTMLElement[]}
- */
-let lightboxImages = null;
-/**
- * The index in lightboxImages of the image currently being viewed in the lightbox. Null if no lightbox is active.
- * @type {?number}
- */
-let lightboxIndex = null;
-/**
- * The image the currently active lightbox was opened from. Null if no lightbox is active.
- * @type {?HTMLElement}
- */
-let comingFrom = null;
-
-{block:IfFilteredTags}
+/*{block:IfFilteredTags}*/
 /**
  * For use in tag filtering. The user-provided list of tags to filter for.
  * All tags converted to lowercase for ease of comparison.
  * @type {string[]}
  */
-let filteredTags = "{text:Filtered tags}".split(",").map(el => el.trim().toLowerCase());
-{/block:IfFilteredTags}
+let filteredTags = "{text:Filtered tags}".toLowerCase().split(",").map(el => el.trim());
+/** For use in tag filtering. The template for the warning to display over filtered posts.
+ */
+let filterMessage = document.getElementById("filtermessage");
+/*{/block:IfFilteredTags}*/
+
+/**
+ * The standard page font size, for calculating padding.
+ * @type {number}
+ */
+const em = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+// #region Lightbox setup
+/**
+ * The lightbox dialog.
+ * @type {HTMLElement}
+ */
+let lightbox = document.getElementById("lightbox");
+
+/**
+ * All images from the trail item currently being represented in the lightbox. Null if no lightbox is active.
+ * @type {?HTMLElement[]}
+ */
+lightbox._images = null;
+
+/**
+ * The index in lightbox._images of the image currently being viewed in the lightbox. Null if no lightbox is active.
+ * @type {?number}
+ */
+lightbox._index = null;
+
+lightbox._addImage = (img, position, autofocus = false) => {
+	if (img == null) return;
+	let adjacents = {
+		"left": "center",
+		"center": "right",
+		"right": "NA"
+	};
+	img.setAttribute("class", position);
+	if (autofocus) img.setAttribute("autofocus", "true");
+	lightbox.insertBefore(img, lightbox.querySelector(".".concat(adjacents[position])));
+}
+
+lightbox._removeImage = (img) => {
+	if (img == null) return;
+	img.removeAttribute("class");
+	img.remove();
+}
+
+/** Creates and opens a lightbox using the images from the target image's trail item.
+ * @param [HTMLImageElement] targetImage The image selected to be opened in the lightbox
+ */
+lightbox._open = (targetImage) => {
+	// Clear anything previously in the lightbox
+	lightbox.querySelectorAll("img").forEach(el => el.remove());
+
+	// Fetch the lightbox-ready images in this body item and check which to display
+	// To avoid cloning images more than once, have each block of content hold its own image set once cloned
+	let contentBlock = targetImage.closest(".bodyitemcontent, .mediawrapper");
+	let imagegroup = Array.from(contentBlock.querySelectorAll("img.lightboxable"));
+	if (!contentBlock._imageGroup) {
+		contentBlock._imageGroup = imagegroup.map(el => el.cloneNode());
+		contentBlock._imageGroup.forEach(el => el.classList.remove("lightboxable"));
+	}
+	lightbox._images = contentBlock._imageGroup;
+	lightbox._index = imagegroup.findIndex(el => el === targetImage);
+
+	// Prep images
+	lightbox._addImage(lightbox._images[lightbox._index - 1], "left");
+	lightbox._addImage(lightbox._images[lightbox._index], "center", true);
+	lightbox._addImage(lightbox._images[lightbox._index + 1], "right");
+
+	// Lightbox ready, show content
+	lightbox.showModal();
+}
+
+/** Moves through lightbox images in a given direction.
+ * @param {"left"|"right"}	direction	The direction to move in.
+ * @param {HTMLElement}		focusTarget	The element on which to focus after moving.
+ * @param {?"arrow"}		eventType	"arrow" if the move was triggered by an arrow key press; null otherwise.
+ */
+lightbox._moveTo = (direction, focusTarget, eventType = null) => {
+	switch (direction) {
+		case "left":
+			if (lightbox._index === 0) break;
+			// Previous image exists
+			lightbox._index -= 1;
+			lightbox._removeImage(lightbox.querySelector(".right"));
+			lightbox.querySelector(".center")?.classList.replace("center", "right");
+			lightbox.querySelector(".left")?.classList.replace("left", "center");
+			lightbox._addImage(lightbox._images[lightbox._index - 1], "left");
+			lightbox.querySelector(".".concat(focusTarget))?.focus();
+			break;
+		
+		case "right":
+			if (lightbox._index + 1 === lightbox._images.length) {
+				if (eventType !== "arrow") lightbox._close();
+				break;
+			}
+			// Next image exists
+			lightbox._index += 1;
+			lightbox._removeImage(lightbox.querySelector(".left"));
+			lightbox.querySelector(".center")?.classList.replace("center", "left");
+			lightbox.querySelector(".right")?.classList.replace("right", "center");
+			lightbox._addImage(lightbox._images[lightbox._index + 1], "right");
+			lightbox.querySelector(".".concat(focusTarget))?.focus();
+			break;
+		
+		default:
+			break;
+	}
+}
+
+// Set up click events for image navigation
+lightbox.addEventListener("click", e => {
+	switch (e.target.className) {
+		case "left":
+			lightbox._moveTo("left", "left");
+			break;
+		
+		case "center":
+			lightbox._moveTo("right", "center");
+			break;
+		
+		case "right":
+			lightbox._moveTo("right", "right");
+			break;
+		
+		// Don't add event handler for the close button; that's already taken care of
+		
+		default:
+			break;
+	}
+});
+// Set up keyboard events for image navigation
+lightbox.addEventListener("keydown", e => {
+	let currFocus = document.activeElement.className;
+	if (e.key === "ArrowLeft") {
+		lightbox._moveTo("left", currFocus, "arrow");
+		return;
+	}
+	else if (e.key === "ArrowRight") {
+		lightbox._moveTo("right", currFocus, "arrow");
+		return;
+	}
+	if (e.key !== "Enter" && e.key !== " ") return;
+	e.preventDefault();
+	switch (e.target.className) {
+		case "left":
+			lightbox._moveTo("left", currFocus);
+			break;
+		
+		case "center":
+			lightbox._moveTo("right", currFocus);
+			break;
+		
+		case "right":
+			lightbox._moveTo("right", currFocus);
+			break;
+		
+		// Don't add event handler for the close button; that's already taken care of
+		
+		default:
+			break;
+	}
+});
+// #endregion
 // #endregion
 
 
@@ -727,17 +368,16 @@ let filteredTags = "{text:Filtered tags}".split(",").map(el => el.trim().toLower
 // #region POST CREATION
 // #region Post array declaration
 let posts = [
-	{block:Posts}
-	{
+	/*{block:Posts}*/{
 		npf: {NPF},
 
-		{block:PermalinkPage}
+		/*{block:PermalinkPage}*/
 		// For ask/submit/general blog pages
-		{block:Title} title: {JSTitle}, {/block:Title}
+		/*{block:Title}*/ title: {JSTitle}, /*{/block:Title}*/
 		body: {JSBody},
-		{/block:PermalinkPage}
+		/*{/block:PermalinkPage}*/
 
-		{block:Date}
+		/*{block:Date}*/
 		// Post-specific items
 
 		id: {JSPostID},
@@ -760,16 +400,16 @@ let posts = [
 			url: "/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}",
 		},
 
-		{block:PinnedPostLabel} pinned: {JSPinnedPostLabel}, {/block:PinnedPostLabel}
+		/*{block:PinnedPostLabel}*/ pinned: {JSPinnedPostLabel}, /*{/block:PinnedPostLabel}*/
 
-		{block:HasTags} tags: [
+		/*{block:HasTags}*/ tags: [
 			{block:Tags} {
 				name: {JSTag},
 				url: {JSTagURL},
 			}, {/block:Tags}
-		], {/block:HasTags}
+		], /*{/block:HasTags}*/
 
-		{block:RebloggedFrom}
+		/*{block:RebloggedFrom}*/
 		via: {
 			name: {JSReblogParentName},
 			url: {JSReblogParentURL},
@@ -784,38 +424,37 @@ let posts = [
 			label: "{lang:Originally from ReblogRootName}",
 			labellink: `{lang:Originally from ReblogRootName 2}`,
 		},
-		{/block:RebloggedFrom}
+		/*{/block:RebloggedFrom}*/
 
-		{block:NoteCount}
-		noteCount: {JSNoteCountWithLabel},
+		/*{block:NoteCount}*/
+		noteCount: {JSNoteCount},
+		noteCountWithLabel: {JSNoteCountWithLabel},
 		postNotes: {JSPostNotesURL},
-		{/block:NoteCount}
+		/*{/block:NoteCount}*/
 		
 		like_html: {JSLikeButton size="30"},
 		reblog_url: {JSReblogURL},
 
-		{block:Submission} submission: {
+		/*{block:Submission}*/ submission: {
 			name: {JSSubmitter},
 			url: {JSSubmitterURL},
 			avatar: {JSSubmitterPortraitURL-64},
 			label: "{lang:Submitted By}",
-		}, {/block:Submission}
+		}, /*{/block:Submission}*/
 
-		{block:ContentSource} contentSource: {
+		/*{block:ContentSource}*/ contentSource: {
 			name: {JSSourceTitle},
 			url: {JSSourceURL},
-			{block:SourceLogo} logo: {
+			/*{block:SourceLogo}*/ logo: {
 				url: {JSBlackLogoURL},
 				width: {JSLogoWidth},
 				height: {JSLogoHeight},
-			}, {/block:SourceLogo}
-		}, {/block:ContentSource}
+			}, /*{/block:SourceLogo}*/
+		}, /*{/block:ContentSource}*/
 
-		{/block:Date}
-	},
-	{/block:Posts}
-	{block:NoPosts}
-	{
+		/*{/block:Date}*/
+	},/*{/block:Posts}*/
+	/*{block:NoPosts}*/{
 		npf: {
 			content: [
 				{
@@ -826,10 +465,8 @@ let posts = [
 			layout: [],
 			trail: []
 		}
-	}
-	{/block:NoPosts}
-	{block:NoSearchResults}
-	{
+	},/*{/block:NoPosts}*/
+	/*{block:NoSearchResults}*/{
 		npf: {
 			content: [
 				{
@@ -840,8 +477,7 @@ let posts = [
 			layout: [],
 			trail: []
 		}
-	}
-	{/block:NoSearchResults}
+	},/*{/block:NoSearchResults}*/
 ];
 // #endregion
 
@@ -856,7 +492,11 @@ posts.forEach(post => {
 	postContainer.append(article);
 
 	// Backup method, using the old "body" T-var
-	if ((post.npf.content.length === 0 && post.npf.trail.length === 0) {block:AskPage}|| true{/block:AskPage}{block:SubmitPage}|| true{/block:SubmitPage}) {
+	if (
+		(post.npf.content.length === 0 && post.npf.trail.length === 0)
+		/*{block:AskPage}*/|| true/*{/block:AskPage}*/
+		/*{block:SubmitPage}*/|| true/*{/block:SubmitPage}*/
+	) {
 		createPage(article, post);
 		return;
 	}
@@ -880,7 +520,7 @@ posts.forEach(post => {
 		postBody,
 		trailItem,
 		null
-		{block:PermalinkPage}, true{/block:PermalinkPage}
+		/*{block:PermalinkPage}*/, true/*{/block:PermalinkPage}*/
 	)) }
 	// End with the current blog's addition, if any
 	if (post.npf.content.length) {
@@ -888,7 +528,7 @@ posts.forEach(post => {
 			postBody,
 			post.npf,
 			post.id
-			{block:PermalinkPage}, true{/block:PermalinkPage}
+			/*{block:PermalinkPage}*/, true/*{/block:PermalinkPage}*/
 		);
 	}
 	// In the above, expand any read more links if on the permalink page
@@ -896,39 +536,25 @@ posts.forEach(post => {
 	if (post.id !== undefined)
 		createPostFooter(article, post);
 
-	{block:IfFilteredTags}
+	/*{block:IfFilteredTags}*/
 	if (post.tags) {
 		// User has provided tags to filter. Check each post's tags and add a filter message
 		let filters = post.tags.filter(tag => filteredTags.includes(tag.name.toLowerCase()));
 		if (filters.length > 0) {
 			// Hide post content
 			article.classList.add("filtered");
-			
+
 			// Assemble and insert filter message
-			let msg = document.createElement("div"),
-				warning = document.createElement("p"),
-				tagList = document.createElement("p"),
-				btn = document.createElement("button");
-			msg.append(warning, tagList, btn);
-			article.insertBefore(msg, article.firstElementChild);
-			
-			// Add classes
-			msg.classList.add("filter");
-			tagList.classList.add("tags");
-			
-			// Add text to all elements
-			warning.innerText = "This post contains filtered tags.";
-			tagList.innerText = "#".concat(filters.map(el => el.name).join(", #"));
-			btn.innerText = "View post";
-			
-			// Set up viewing function
-			btn.addEventListener("click", () => {
+			let msg = filterMessage.content.cloneNode(true);
+			msg.querySelector(".tags").textContent = "#".concat(filters.map(el => el.name).join(", #"));
+			msg.querySelector("button").addEventListener("click", () => {
 				msg.remove();
 				article.classList.remove("filtered");
 			});
+			article.insertBefore(msg, article.firstElementChild);
 		}
 	}
-	{/block:IfFilteredTags}
+	/*{/block:IfFilteredTags}*/
 });
 // #endregion
 
@@ -936,28 +562,29 @@ posts.forEach(post => {
 // Add lightboxes to all applicable images
 document.querySelectorAll("img.lightboxable").forEach(obj => {
 	obj.setAttribute("tabindex", "0");
-	obj.addEventListener("click", triggerLightbox);
+	obj.addEventListener("click", e => { lightbox._open(e.currentTarget) });
 	obj.addEventListener("keydown", e => {
-		if (e.key === "Enter" || e.key === " ") { triggerLightbox(e) }
+		if (e.key === "Enter" || e.key === " ") { lightbox._open(e.currentTarget) }
 	});
 });
 
+/*{block:PermalinkPage}*/
 // Add post notes on permalink pages
-if (document.body.classList.contains("permalink") && posts.at(0)?.postNotes) {
-	hideSidebar();
+if (posts.at(0)?.postNotes) {
 	document.body.classList.add("hasnotes")
 	createNotes(posts[0].postNotes);
 }
+/*{/block:PermalinkPage}*/
 // #endregion
 
 // #region Remaining page functionality (base features)
-// Any toggling of search bar, sidebar etc.
+// TODO: Any toggling of search bar/sidebar, resizing of top nav etc.
 // #endregion
 
 // #region Remaining page functionality (accessibility features)
 // Keyboard navigation moved to very end, after the "Visual extras" region, in order to prevent errors being thrown in Customize preview window.
 
-{block:IfPaletteToggle}
+/*{block:IfPaletteToggle}*/
 // TODO: Add "#palette" element
 // #region Palette
 document.getElementById("palette").addEventListener("click", () => {
@@ -970,7 +597,7 @@ document.getElementById("palette").addEventListener("click", () => {
 if ((palette = localStorage.getItem("palette")) !== null)
 	palette === "alt" ? document.body.parentElement.classList.add("alt") : document.body.parentElement.classList.remove("alt");
 // #endregion
-{/block:IfPaletteToggle}
+/*{/block:IfPaletteToggle}*/
 
 // TODO: Add "#scrolltotop" element
 // #region Scroll to top
@@ -992,7 +619,7 @@ document.addEventListener("scroll", () => {
 // #endregion
 
 // #region Visual extras
-{block:IfUseLegacyFormatForPostMedia}
+/*{block:IfUseLegacyFormatForPostMedia}*/
 // Format media in posts in legacy style
 document.querySelectorAll(".bodyitem:first-child .bodyitemcontent > :is(".concat([
 	".row",
@@ -1008,8 +635,7 @@ document.querySelectorAll(".bodyitem:first-child .bodyitemcontent > :is(".concat
 	wrapper.classList.add("mediawrapper");
 	
 	// Put wrapper in post body
-	// .bodyitemcontent to .bodyitem to .body
-	bodyitemcontent.parentElement.parentElement.prepend(wrapper);
+	bodyitemcontent.closest(".body").prepend(wrapper);
 	
 	// Add this element
 	wrapper.prepend(el);
@@ -1025,7 +651,7 @@ document.querySelectorAll(".bodyitem:first-child .bodyitemcontent > :is(".concat
 		bodyitemcontent.parentElement.remove();
 	}
 });
-{/block:IfUseLegacyFormatForPostMedia}
+/*{/block:IfUseLegacyFormatForPostMedia}*/
 // #endregion
 
 // Set up keyboard navigation
@@ -1048,13 +674,13 @@ function createPostHeader(wrapper, postData) {
 	wrapper.append(header);
 
 	// Populate post header
-	{block:IfPostDates}
+	/*{block:IfPostDates}*/
 	makeDate(header, postData, {
-		{block:IfDatesFormattedMonthFirst}dateFormat: "textMD",{/block:IfDatesFormattedMonthFirst}
-		{block:IfPostTimes}includeTime: true,{/block:IfPostTimes}
-		{block:If24HourTimes}timeFormat: "24",{/block:If24HourTimes}
+		/*{block:IfDatesFormattedMonthFirst}*/dateFormat: "textMD",/*{/block:IfDatesFormattedMonthFirst}*/
+		/*{block:IfPostTimes}*/includeTime: true,/*{/block:IfPostTimes}*/
+		/*{block:If24HourTimes}*/timeFormat: "24",/*{/block:If24HourTimes}*/
 	});
-	{/block:IfPostDates}
+	/*{/block:IfPostDates}*/
 
 	makePin(header, postData);
 
@@ -1080,19 +706,27 @@ function createPostFooter(wrapper, postData) {
 	makeNoteCount(vsn, postData);
 	makeViaSource(vsn, postData);
 
-	if ({block:IfLikeButtons}true{/block:IfLikeButtons}{block:IfNotLikeButtons}false{/block:IfNotLikeButtons} || {block:IfReblogButtons}true{/block:IfReblogButtons}{block:IfNotReblogButtons}false{/block:IfNotReblogButtons} || {block:IfDayPageLinks}true{/block:IfDayPageLinks}{block:IfNotDayPageLinks}false{/block:IfNotDayPageLinks}) {
+	if (
+		/*{block:IfLikeButtons}*/true/*{/block:IfLikeButtons}{block:IfNotLikeButtons}*/false/*{/block:IfNotLikeButtons}*/ ||
+		/*{block:IfReblogButtons}*/true/*{/block:IfReblogButtons}{block:IfNotReblogButtons}*/false/*{/block:IfNotReblogButtons}*/ ||
+		/*{block:IfDayPageLinks}*/true/*{/block:IfDayPageLinks}{block:IfNotDayPageLinks}*/false/*{/block:IfNotDayPageLinks}*/
+	) {
 		let lrd = document.createElement("span"),
 			lrdwrapper = document.createElement("span");
 		lrd.classList.add("lrd");
 		lrdwrapper.classList.add("wrapper");
 		footer.append(lrd);
 		lrd.append(lrdwrapper);
-		{block:IfLikeButtons}makeLike(lrdwrapper, postData);{/block:IfLikeButtons}
-		{block:IfReblogButtons}makeReblog(lrdwrapper, postData);{/block:IfReblogButtons}
-		{block:IfDayPageLinks}makeDayLink(lrdwrapper, postData);{/block:IfDayPageLinks}
+		/*{block:IfLikeButtons}*/makeLike(lrdwrapper, postData);/*{/block:IfLikeButtons}*/
+		/*{block:IfReblogButtons}*/makeReblog(lrdwrapper, postData);/*{/block:IfReblogButtons}*/
+		/*{block:IfDayPageLinks}*/makeDayLink(lrdwrapper, postData);/*{/block:IfDayPageLinks}*/
 	}
 
-	{block:IfPostTags}makeTags(footer, postData);{/block:IfPostTags}
+	/*{block:IfPostTags}*/
+	/*{block:IfShowTagsOnClick}*/makeTagToggle(footer, /*{/block:IfShowTagsOnClick}*/
+		makeTags(footer, postData)
+	/*{block:IfShowTagsOnClick}*/);/*{/block:IfShowTagsOnClick}*/
+	/*{/block:IfPostTags}*/
 }
 
 // #region Helpers
@@ -1122,9 +756,14 @@ function makeLike(wrapper, postData, icons = null) {
 			like: `<i class="ph ph-heart"></i>`,
 			unlike: `<i class="ph-fill ph-heart"></i>`,
 		}, icons);
-		likeButton.innerHTML += `<span class="to-like">${likons.like}</span>`
-		likeButton.innerHTML += `<span class="to-unlike">${likons.unlike}</span>`
-		likeButton.setAttribute("data-tippy-content", labels.like);
+		likeButton.innerHTML += (
+			`<span class="to-like" data-tippy-content="${labels.like}">${
+				likons.like
+			}</span>${""
+			}<span class="to-unlike" data-tippy-content="${labels.unlike}">${
+				likons.unlike
+			}</span>`
+		);
 	}
 	else {
 		// No icon provided; use text labels
@@ -1184,6 +823,36 @@ function makeDayLink(wrapper, postData, icon = null) {
 }
 
 /**
+ * Creates a button that toggles the visibility of the post's tags.
+ * @param {HTMLElement} wrapper The child element of the post to which the tag toggle will be added. Usually the footer.
+ * @param {HTMLElement} tagContainer The element containing the tags, on which to toggle the hide/show class.
+ */
+ function makeTagToggle(wrapper, tagContainer, icon = null) {
+	if (!tagContainer) return;
+
+	// Make element
+	let tagToggle = document.createElement("button");
+	tagToggle.classList.add("tagtoggle", "hidden");
+	wrapper.append(tagToggle);
+
+	// Functionality
+	tagToggle.addEventListener("click", e => {
+		e.currentTarget.classList.toggle("hidden");
+		tagContainer.classList.toggle("hidden");
+	});
+
+	// Icon or text, as needed
+	let label = "{lang:Tags}";
+	if (icon !== null) {
+		tagToggle.innerHTML = icon;
+		tagToggle.setAttribute("data-tippy-content", label);
+	}
+	else {
+		tagToggle.innerText = label;
+	}
+}
+
+/**
  * Creates a label indicating that a given post is a pinned post.
  * @param {HTMLElement} wrapper The child element of the post to which the pinned marker will be added. Usually the header.
  * @param {Object} postData This post's data, containing relevant information to create the pinned marker with.
@@ -1217,7 +886,7 @@ function makeViaSource(wrapper, postData, avatars = false) {
 	let via = document.createElement("a"),
 		source = document.createElement("a");
 
-	// Via URL always exists; add
+	// Add via
 	via.href = postData.via.url;
 	via.title = postData.via.label;
 	wrapper.append(via);
@@ -1237,9 +906,10 @@ function makeViaSource(wrapper, postData, avatars = false) {
 
 	// Avatars or text, as needed
 	if (avatars) {
-		via.innerHTML = `<img src="${postData.via.avatar}" />`;
-		// This might end up being undefined, if the source is broken, but since it isn't added it won't make a difference
-		source.innerHTML = `<img src="${sourceTrail.blog?.avatar?.find(el => el.height === 64)?.url}" />`;
+		via.innerHTML = `<img class="avatar" />`;
+		safeSetAvatar(via.firstElementChild, postData.via.avatar);
+		source.innerHTML = `<img class="avatar" />`;
+		safeSetAvatar(source.firstElementChild, postData.source.avatar);
 	}
 	else {
 		via.innerText = "{lang:Via}";
@@ -1251,13 +921,14 @@ function makeViaSource(wrapper, postData, avatars = false) {
  * Creates a label for the number of notes on a given post.
  * @param {HTMLElement} wrapper The child element of the post to which the note count will be added. Usually the footer.
  * @param {Object} postData This post's data, containing relevant information to create the note count with.
+ * @param {boolean} [includeLabel=false] `true` to include the text label (e.g. "12 notes" instead of "12").
  */
-function makeNoteCount(wrapper, postData) {
+function makeNoteCount(wrapper, postData, includeLabel = false) {
 	if (!postData.noteCount) { return; }
 	let notes = document.createElement("a");
 	notes.href = postData.permalink.concat("#notes");
 	notes.classList.add("notecount");
-	notes.innerText = postData.noteCount;
+	notes.innerText = includeLabel ? postData.noteCountWithLabel : postData.noteCount;
 	wrapper.append(notes);
 }
 
@@ -1279,11 +950,17 @@ function makeTags(wrapper, postData, tagOptions = {}) {
 	}, tagOptions);
 	// Make element
 	let tags = document.createElement(options.span ? "span" : "p");
-	tags.classList.add("tags");
+	tags.classList.add("tags" /*{block:IfShowTagsOnClick}*/, "hidden"/*{/block:IfShowTagsOnClick}*/ );
 	// Populate with each tag
-	let tagList = postData.tags.map(tag => `<a href="${tag.url}">`.concat(options.hashtags ? "#" : "",`${tag.name}</a>`));
-	tags.innerHTML = tagList.join(options.commas ? ", " : "");
+	postData.tags.forEach((tag, arr, index) => {
+		let a = document.createElement("a");
+		a.href = tag.url;
+		a.innerHTML = (options.hashtags ? "#" : "").concat(unescapeHTML(tag.name));
+		tags.append(a);
+		if (options.commas && index < arr.length - 1) tags.append(", ");
+	});
 	wrapper.append(tags);
+	return tags;
 }
 
 /**
@@ -1464,10 +1141,14 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	// The array blog.avatar isn't available sometimes, so include a backup avatar fetch via API
 	let avatar = document.createElement("img");
 	avatar.classList.add("avatar", blogData?.theme?.avatar_shape ?? "square");
-	avatar.src = typeof(blogData.avatar) === "object"
-		? blogData.avatar?.find(el => el.height === 64)?.url
-		: blogData.avatar
-		?? `https://api.tumblr.com/v2/blog/${blogData.name}/avatar/64`;
+	safeSetAvatar(
+		avatar,
+		blogData.avatar
+		? typeof(blogData.avatar) === "object"
+			? blogData.avatar?.find(el => el.height === 64)?.url
+			: blogData.avatar
+		: `https://api.tumblr.com/v2/blog/${blogData.name ?? ""}/avatar/64`,
+	);
 
 	// put together the header
 	link.append(avatar, username);
@@ -1476,21 +1157,20 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	// Checkmarks and other badges, pulled from tumblrmart_accessories
 	// https://assets.tumblr.com/images/tumblrmart/badges/blue-checkmark/1.png
 	// https://assets.tumblr.com/images/tumblrmart/badges/rainbow/1.png , [1-12].png available
-	let badges = blogData.tumblrmart_accessories?.badges;
-	if (blogData.can_show_badges && badges) {
-		badges.forEach(group => {
-			let badge, badgeWrapper,
-				badgegroup = document.createElement("span");
-			badgegroup.classList.add("badges");
-			link.append(badgegroup);
-			badgegroup.classList.add(group.product_group);
-			group.urls.forEach((url, index) => {
+	if (blogData.can_show_badges && (badgegroups = blogData.tumblrmart_accessories?.badges) != null) {
+		let badges = document.createElement("span");
+		badges.classList.add("badges");
+		link.append(badges);
+
+		badgegroups.forEach(group => {
+			let badge, badgeWrapper;
+			group.urls.forEach(url => {
 				badge = document.createElement("img");
 				badge.src = url;
 				badgeWrapper = document.createElement("span");
 				badgeWrapper.append(badge);
-				badgegroup.append(badgeWrapper);
-			})
+				badges.append(badgeWrapper);
+			});
 		})
 	}
 }
@@ -1596,25 +1276,27 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		// Anon or not?
 		let asker = document.createElement("header");
 		asker.classList.add("user");
-		let askerName = document.createElement("a"),
+		let askerWrapper = document.createElement("a"),
 			askerIcon = document.createElement("img"),
+			askerName = document.createElement("span"),
 			askingLabel = document.createElement("span");
 		askerIcon.classList.add("avatar");
+		askerName.classList.add("name");
 		if (askNPF.attribution) {
-			askerIcon.src = askNPF.attribution.blog.avatar?.find(el => el.height === 64)?.url ?? `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name}/avatar/64`;
+			safeSetAvatar(askerIcon, askNPF.attribution.blog.avatar?.find(el => el.height === 64)?.url ?? `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name ?? ""}/avatar/64`);
 			askerIcon.classList.add(askNPF.attribution.blog.theme.avatar_shape ?? "square");
-			askerName.href = askNPF.attribution.blog.url;
-			askerName.append(askNPF.attribution.blog.name);
-			askerName.classList.add("name");
-			asker.setAttribute("style", `--bg: ${askNPF.attribution.blog.theme?.background_color ?? currentUser.theme.background_color}; --text: ${askNPF.attribution.blog.theme?.title_color ?? currentUser.theme.title_color}; --accent: ${askNPF.attribution.blog.theme?.link_color ?? currentUser.theme.link_color}`)
+			askerWrapper.href = askNPF.attribution.blog.url;
+			askerName.innerText = askNPF.attribution.blog.name;
+			asker.setAttribute("style", `--bg: ${askNPF.attribution.blog.theme?.background_color ?? currentUser.theme.background_color}; --text: ${askNPF.attribution.blog.theme?.title_color ?? currentUser.theme.title_color}; --accent: ${askNPF.attribution.blog.theme?.link_color ?? currentUser.theme.link_color}`);
 		}
 		else {
 			askerIcon.src = anonAvatar;
-			askerName.append("Anonymous");
-			asker.setAttribute("style", `--bg: ${currentUser.theme.background_color}; --text: ${currentUser.theme.title_color}; --accent: ${currentUser.theme.link_color}`)
+			askerName.innerText = "Anonymous";
+			asker.setAttribute("style", `--bg: ${currentUser.theme.background_color}; --text: ${currentUser.theme.title_color}; --accent: ${currentUser.theme.link_color}`);
 		}
 		askingLabel.innerText = " asked:";
-		asker.append(askerIcon, askerName, askingLabel);
+		asker.append(askerWrapper);
+		askerWrapper.append(askerIcon, askerName, askingLabel);
 		
 		let ask = document.createElement("div");
 		ask.classList.add("ask");
@@ -1639,18 +1321,18 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		// PLACEMENT OPTIONS (note, none of these are inside .bodyitemcontent!):
 		// Case 1. In root post body, above answer trail item
 		trailItem.parentElement.insertBefore(ask, trailItem);
-		// Case 2. Inside same trail item, above answerer's name
+		// Case 2. Inside same trail item, above answerer's name (legacy format)
 		// trailItem.insertBefore(ask, body.previousElementSibling);
-		// Case 3. Inside same trail item, below answerer's name
+		// Case 3. Inside same trail item, below answerer's name (Neue format)
 		// trailItem.insertBefore(ask, body);
-		
+
 		// Sometimes asks have no answer content (i.e. nothing left in body); in this case, clean up answerer section
 		if (body.childElementCount === 0) {
 			// Case 1
 			trailItem.remove();
-			// Case 2
+			// Case 2 (legacy format)
 			// body.previousElementSibling.remove(); // the answerer's name
-			// Case 2 or 3
+			// Case 2 or 3 (legacy and neue format)
 			// body.remove(); // the empty answer content
 		}
 	}
@@ -1925,7 +1607,8 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 			}
 
 			let expiryDate = new Date((curr.timestamp + curr.settings.expire_after) * 1000),
-				hasResults = ((new Date()) > expiryDate) && blogViewLink.length;
+				timeToClosure = (expiryDate - (new Date())) / 1000,
+				hasResults = (timeToClosure < 0) && blogViewLink.length;
 
 			// Create answers
 			let answer, answerText;
@@ -1953,14 +1636,33 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 
 			// See results link, if poll is expired
 			// Timestamp/expiry durations are given in seconds; times 1000 for millisecond count
+			let moreInfo = document.createElement(hasResults ? "a" : "span");
+			bit.append(moreInfo);
 			if (hasResults) {
-				let seeResults = document.createElement("a");
-				seeResults.classList.add("results");
-				seeResults.href = blogViewLink;
-				seeResults.target = "_blank";
-				seeResults.innerText = "See Results";
-				bit.append(seeResults);
+				moreInfo.classList.add("results");
+				moreInfo.href = blogViewLink;
+				moreInfo.target = "_blank";
+				moreInfo.rel = "noopener";
+				moreInfo.innerText = "See Results";
 				bit.classList.add("complete");
+			}
+			else {
+				let timeLeft = {};
+				timeLeft.days = Math.floor(timeToClosure / 86400);
+				timeLeft.hours = Math.floor((timeToClosure - (timeLeft.days * 86400)) / 3600);
+				timeLeft.minutes = Math.floor((timeToClosure - (timeLeft.days * 86400) - (timeLeft.hours * 3600)) / 60);
+				let timeLabel = "Remaining time:";
+				if (timeLeft.days > 0) {
+					timeLabel += ` ${timeLeft.days} day${timeLeft.days === 1 ? "" : "s"}, ${timeLeft.hours} hour${timeLeft.hours === 1 ? "" : "s"}`;
+				} else if (timeLeft.hours > 0) {
+					timeLabel += ` ${timeLeft.hours} hour${timeLeft.hours === 1 ? "" : "s"}, ${timeLeft.minutes} minute${timeLeft.minutes === 1 ? "" : "s"}`;
+				} else if (timeLeft.minutes > 0) {
+					timeLabel += ` ${timeLeft.minutes} minute${timeLeft.minutes === 1 ? "" : "s"}`;
+				} else {
+					timeLabel += "less than 1 minute";	// guaranteed since poll hasn't calculated as closed yet
+				}
+				moreInfo.innerText = timeLabel;
+				moreInfo.classList.add("timeleft");
 			}
 			break;
 		
@@ -2369,194 +2071,6 @@ function formatText(content) {
 	}
 	return text;
 }
-
-
-// #region Lightbox
-/**
- * Creates and opens a lightbox using the images from the target image's trail item.
- */
-function triggerLightbox(e) {
-	document.body.classList.add("lightboxed");
-	comingFrom = e.target;
-	
-	// Lightboxes only trigger on images in the structure .bodyitemcontent > .row > figure > img.lightboxable (this is also applicable to all images sized >= breakpoint).
-	// Lightboxes should only include other lightbox-capable images.
-	lightbox = document.createElement("div");
-	lightbox.role = "dialog";
-	lightbox.setAttribute("aria-modal", "true");
-	lightbox.id = "lightbox";
-	lightbox.setAttribute("tabindex", "-1");
-	Array.from(document.body.children).forEach(el => el.setAttribute("inert", "true"));
-	document.body.append(lightbox);
-	// Hit Esc to close lightbox
-	lightbox.addEventListener("keydown", e => {
-		if (e.key === "Escape") {
-			// Close lightbox
-			lightbox.firstChild.click();
-		}
-		else if (e.key === "ArrowRight") {
-			// Fake key event to advance
-			lightbox.querySelector(".center")?.dispatchEvent(new KeyboardEvent("keydown", {"key": "Enter"}));
-		}
-		else if (e.key === "ArrowLeft") {
-			// Fake key event to regress
-			lightbox.querySelector(".left")?.dispatchEvent(new KeyboardEvent("keydown", {"key": "Enter"}));
-			lightbox.querySelector(".center")?.focus();
-		}
-	});
-	
-	// Close lightbox
-	let closeButton = document.createElement("div");
-	closeButton.id = "close";
-	closeButton.setAttribute("tabindex", "0");
-	lightbox.prepend(closeButton);
-	closeButton.addEventListener("click", closeLightbox);
-	closeButton.addEventListener("keydown", e => {
-		if (e.key === "Enter" || e.key === " ") { closeLightbox(e) }
-	});
-	
-	// Actual images
-	lightboxImages = Array.from(e.target.parentElement.parentElement.parentElement.querySelectorAll("img.lightboxable"));
-	lightboxIndex = lightboxImages.findIndex(el => el === e.target);
-	let center = e.target.cloneNode();
-	center.classList.add("center");
-	center.addEventListener("click", interactLightbox);
-	center.addEventListener("keydown", interactLightboxKeyboard);
-	lightbox.append(center);
-	center.focus();
-	
-	getAdjacentImage("left");
-	getAdjacentImage("right");
-}
-
-/**
- * Interaction handler for the images in the lightbox. Moves forward/back in the lightbox depending on which image was clicked, or closes the lightbox if out of images.
- * @param {Event} e The event object, to check for type and the image interacted with.
- */
-function interactLightbox(e) {
-	if (e.target.classList.contains("center")) {
-		if (e.target.nextElementSibling) {
-			// Has an image to advance to
-			
-			// Advance to next image
-			lightboxIndex ++;
-			
-			// Delete the left image, if any
-			if (e.target.previousElementSibling.classList.contains("left")) {
-				e.target.previousElementSibling.remove();
-			}
-			
-			// Move current image to the left
-			e.target.classList.remove("center");
-			e.target.classList.add("left");
-			
-			// Move right image to center
-			e.target.nextElementSibling.classList.remove("right");
-			e.target.nextElementSibling.classList.add("center");
-			e.target.nextElementSibling.focus();
-			
-			// Get new next
-			getAdjacentImage("right");
-		}
-		else if (e.type === "click") {
-			// No image to advance to
-			// If this is a click event, close the lightbox
-			e.target.parentElement.firstChild.click();
-		}
-	}
-	
-	else if (e.target.classList.contains("right")) {
-		// Advance to next image
-		lightboxIndex ++;
-		
-		// Delete the left image, if any
-		if (e.target.previousElementSibling.previousElementSibling.classList.contains("left")) {
-			e.target.previousElementSibling.previousElementSibling.remove();
-		}
-		
-		// Move center image to left
-		e.target.previousElementSibling.classList.remove("center");
-		e.target.previousElementSibling.classList.add("left");
-		
-		// Move this image to center
-		e.target.classList.remove("right");
-		e.target.classList.add("center");
-		
-		// Get new next and focus on it
-		getAdjacentImage("right")?.focus();
-	}
-	
-	else { // e.target.classList.contains("left")
-		// Go back to previous image
-		lightboxIndex --;
-		
-		// Delete the right image, if any
-		if (e.target.nextElementSibling.nextElementSibling) {
-			e.target.nextElementSibling.nextElementSibling.remove();
-		}
-		
-		// Move center image to right
-		e.target.nextElementSibling.classList.remove("center");
-		e.target.nextElementSibling.classList.add("right");
-		
-		// Move this image to center
-		e.target.classList.remove("left");
-		e.target.classList.add("center");
-		
-		// Get new previous and focus on it
-		getAdjacentImage("left")?.focus();
-	}
-}
-
-/**
- * Gets the preceding or succeeding image in the same trail item as the current lightbox image.
- * @param {string} side Which image to get. Either "left" or "right".
- * @returns {?HTMLImageElement} The previous/next image, or null if the current image is the first/last respectively.
- */
-function getAdjacentImage(side) {
-	if (side === "left" && lightboxIndex !== 0) {
-		let left = lightboxImages[lightboxIndex - 1].cloneNode();
-		left.classList.add("left");
-		lightbox.firstChild.insertAdjacentElement("afterend", left);
-		left.addEventListener("click", interactLightbox);
-		left.addEventListener("keydown", interactLightboxKeyboard);
-		return left;
-	}
-	else if (side === "right" && lightboxIndex !== lightboxImages.length - 1) {
-		let right = lightboxImages[lightboxIndex + 1].cloneNode();
-		right.classList.add("right");
-		lightbox.lastChild.insertAdjacentElement("afterend", right);
-		right.addEventListener("click", interactLightbox);
-		right.addEventListener("keydown", interactLightboxKeyboard);
-		return right;
-	}
-	else {
-		return null;
-	}
-}
-
-/**
- * Triggers lightbox interaction for specific keyboard events, and traps focus inside the lightbox.
- * @param {Event} e The event object, to check for keyboard events and the keys pressed.
- */
-function interactLightboxKeyboard(e) {
-	if (e.key === "Enter" || e.key === " ") { interactLightbox(e) }
-}
-
-/**
- * Closes the active lightbox and returns to the part of the page the lightbox was opened from.
- */
-function closeLightbox() {
-	document.body.classList.remove("lightboxed");
-	lightbox.remove();
-	lightboxImages = null;
-	lightboxIndex = null;
-	lightbox = null;
-	// Go back to the image the lightbox was opened from
-	Array.from(document.body.children).forEach(el => el.removeAttribute("inert"));
-	comingFrom.focus();
-}
-// #endregion
 // #endregion
 
 // #region FOR POST NOTES
@@ -2567,7 +2081,7 @@ function closeLightbox() {
 function createNotes(notesURL) {
 	// Create base notes section
 	let notes = document.createElement("section"),
-		header = document.createElement("h2");
+		header = document.createElement(textSubtypes.heading1);
 	notes.id = "notes";
 	header.textContent = "{lang:Notes}";
 	document.getElementById("main").append(notes);
@@ -2592,30 +2106,37 @@ function createNotes(notesURL) {
  */
 function cleanNotes() {
 	document.getElementById("notes").querySelectorAll("li:not(.cleaned)").forEach(note => {
+		let action = note.querySelector(".action");
+
 		// No cleaning to be done on load more button
 		if (note.classList.contains("more_notes_link_container")) { return }
 
-		// Remove avatars and clears
-		note.firstChild.remove();
+		// Get higher-resolution avatar
+		let avatar = note.querySelector("img");
+		safeSetAvatar(avatar, `https://api.tumblr.com/v2/blog/${action.firstElementChild.innerText ?? ""}/avatar/64`);
+		// ...or remove avatars
+		// note.firstChild.remove();
+
+		// Remove clears
 		note.querySelector(".clear").remove();
 		
 		// Add specific action wrapper
 		let acted = document.createElement("span");
 		acted.classList.add("acted");
-		acted.innerText = note.firstChild.childNodes[1].textContent.trim();
-		note.firstChild.childNodes[1].replaceWith(acted);
+		acted.innerText = action.childNodes[1].textContent;
+		action.childNodes[1].replaceWith(acted);
 		
-		// Collapse via into reblog action
+		// Collapse via, addition label into reblog action
 		if (note.classList.contains("reblog") && !note.classList.contains("original_post")) {
-			note.firstChild.childNodes[1].append(note.firstChild.childNodes[2]);
-			// Remove "and added:"
-			if (note.classList.contains("with_commentary"))
-				note.firstChild.childNodes[2].remove();
+			action.childNodes[1].append(action.childNodes[2]);
+		}
+		if (note.classList.contains("with_commentary") && !note.classList.contains("original_post")) {
+			action.childNodes[1].append(action.childNodes[2]);
 		}
 		
 		// Remove colon from "said:"
 		else if (note.classList.contains("reply")) {
-			note.firstChild.children[1].innerText = note.firstChild.children[1].innerText.substring(0, note.firstChild.children[1].innerText.length - 1)
+			action.children[1].innerText = action.children[1].innerText.substring(0, action.children[1].innerText.length - 1)
 		}
 
 		// Mark note as cleaned
@@ -2689,11 +2210,39 @@ function unescapeHTML(string) {
 }
 // #endregion
 
+// #region MISCELLANEOUS HELPERS
+/** Rounds a given number and suffixes it with the nearest SI unit.
+ * Taken from https://stackoverflow.com/questions/9461621/format-a-number-as-2-5k-if-a-thousand-or-more-otherwise-900#answer-9462382.
+ * @param {string|number} num The number, not comma-separated.
+ * @param {?number} digits The number of decimal digits to include.
+ * @return {string} The truncated number.
+ */
+function truncateNumber(num, digits = 1) {
+	const lookup = [
+		{ value: 1, symbol: "" },
+		{ value: 1e3, symbol: "k" },
+		{ value: 1e6, symbol: "M" },
+		{ value: 1e9, symbol: "G" },
+		{ value: 1e12, symbol: "T" },
+		{ value: 1e15, symbol: "P" },
+		{ value: 1e18, symbol: "E" }
+	];
+	const regexp = /\.0+$|(?<=\.[0-9]*[1-9])0+$/;
+	const item = lookup.findLast(item => num >= item.value);
+	return item ? (num / item.value).toFixed(digits).replace(regexp, "").concat(item.symbol) : "0";
+}
+
+/** Sets an avatar's source URL, falling back to `anonAvatar` if the desired image doesn't load.
+ * @param {HTMLImageElement} img The image to set the `src` attribute of.
+ * @param {string} url The URL of the desired image.
+ */
+function safeSetAvatar(img, url) {
+	img.addEventListener("error", e => { e.currentTarget.src = anonAvatar }, { once: true });
+	img.src = url;
+}
+//#endregion
 // #endregion
 </script>
-
-
-</main>
 
 </body>
 </html>
