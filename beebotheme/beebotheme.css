@@ -355,7 +355,7 @@ a { color: var(--accent) }
 .bodyitemcontent {
 	color: var(--text);
 	background-color: var(--bg);
-	padding: 1em var(--post-content-spacing);
+	padding: 0.6em var(--post-content-spacing);
 	width: 100%;
 	border: var(--border-width) solid var(--text);
 	font-family: var(--font);
