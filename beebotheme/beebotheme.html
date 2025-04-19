@@ -108,6 +108,7 @@
 	{block:IfPaletteToggle}<button id="palette">Toggle palette</button>{/block:IfPaletteToggle}
 </footer>
 
+<!-- #region Templates -->
 <template id="curlyborder">
 	<svg class="separator" xmlns="http://www.w3.org/2000/svg" width="84" height="7" viewBox="0 0 84 7" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
 		<!-- Left curly -->
@@ -163,6 +164,9 @@
 		<button>View post</button>
 	</div>
 </template>
+
+<template id="questionmarker"><span class="question" aria-hidden="true">?</span></template>
+<!-- #endregion -->
 
 <!-- The actual functionality of the theme. -->
 <script>
@@ -261,11 +265,14 @@ let currentlyPlaying = null;
 let filteredTags = "{text:Filtered tags}".toLowerCase().split(",").map(el => el.trim());
 /** For use in tag filtering. The template for the warning to display over filtered posts.
  */
-let filterMessage = document.getElementById("filtermessage");
+let filterMessage = document.getElementById("filtermessage").content;
 /*{/block:IfFilteredTags}*/
 
 /** Post separation border. */
 let postSeparator = document.getElementById("curlyborder").content;
+
+/** Username question marker. */
+let questionMark = document.getElementById("questionmarker").content;
 
 /** The standard page font size, for calculating padding.
  * @type {number}
@@ -636,7 +643,7 @@ posts.forEach((post, index) => {
 			article.classList.add("filtered");
 
 			// Assemble and insert filter message
-			let msg = filterMessage.content.cloneNode(true);
+			let msg = filterMessage.cloneNode(true);
 			msg.querySelector(".tags").textContent = "#".concat(filters.map(el => el.name).join(", #"));
 			msg.querySelector("button").addEventListener("click", (e) => {
 				e.currentTarget.closest(".filter").remove();
@@ -1176,11 +1183,7 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	else if (blogData.url && blogData.active) {
 		link.href = blogData.url.concat(blogData.url.endsWith("/") ? `post/${postData.id}` : `/${postData.id}`);
 	}
-	
-	let question = document.createElement("span");
-	question.classList.add("question");
-	question.setAttribute("aria-hidden", "true");
-	question.textContent = "?";
+
 	// Get the username and avatar
 	let username = document.createElement("span");
 	username.classList.add("name");
@@ -1200,7 +1203,7 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	);
 
 	// put together the header
-	link.append(question, username)
+	link.append(questionMark.cloneNode(true), username)
 	header.append(link, avatar);
 }
 
@@ -1306,7 +1309,6 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		asker.classList.add("user");
 		let askerLink = document.createElement("a"),
 			askerIcon = document.createElement("img"),
-			askerMarker = document.createElement("span"),
 			askerName = document.createElement("span"),
 			askingLabel = document.createElement("span");
 
@@ -1315,9 +1317,6 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		askerIcon.classList.add("avatar");
 		askerName.classList.add("name");
 		// Question icon
-		askerMarker.classList.add("question");
-		askerMarker.setAttribute("aria-hidden", "true");
-		askerMarker.textContent = "?";
 		if (askNPF.attribution) {
 			// Set avatar
 			safeSetAvatar(askerIcon, askNPF.attribution.blog.avatar?.find(el => el.height === 128)?.url ?? `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name ?? ""}/avatar/128`);
@@ -1335,7 +1334,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 			askerName.innerText = "Anonymous";
 		}
 		askingLabel.textContent = " asked:";
-		askerLink.append(askerMarker, askerName, askingLabel);
+		askerLink.append(questionMark.cloneNode(true), askerName, askingLabel);
 		asker.append(askerLink, askerIcon);
 		
 		let ask = document.createElement("div");
@@ -2199,7 +2198,7 @@ function createPage(wrapper, postData) {
 	avatar.classList.add("avatar", currentUser.theme.avatar_shape);
 	avatar.src = currentUser.avatar;
 	// put together the header
-	link.append(avatar, username);
+	link.append(questionMark.cloneNode(true), username);
 
 	// Create title and body of page
 	// postData.npf is empty; use exclusively .title and .body
