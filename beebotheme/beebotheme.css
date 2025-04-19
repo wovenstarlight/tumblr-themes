@@ -73,14 +73,19 @@ html {
 	}
 }
 body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 	background: var(--bg);
 	color: var(--text);
 	--font: var(--title-font), "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
 	font-family: "Nokia", var(--font);
-	--border-width: 0.21875em;
+	--border-width: 0.21875rem;
 	--tx-time: 0.2s;
 }
+/* Links */
 a { color: var(--accent) }
+/* A11y: Hidden */
 .visually-hidden {
 	position: fixed;
 	top: 100vh;
@@ -90,6 +95,7 @@ a { color: var(--accent) }
 	padding: 0 !important;
 	clip-path: rect(0 0 0 0);
 }
+/* Skip to content link */
 #skip {
 	position: fixed;
 	top: 0.5em;
@@ -114,15 +120,26 @@ a { color: var(--accent) }
 }
 /* #endregion */
 
+/* #region Center */
+#main {
+	flex-grow: 1;
+}
+/* #endregion */
+
 /* #region Footer */
 #options {
-	position: sticky;
+	position: fixed;
 	bottom: 0.5em;
 	left: 0.5em;
 	display: flex;
 	flex-direction: column;
 	gap: 0.6em;
-	max-width: 15em;
+	max-width: min(20em, 45vw);
+	z-index: 2;
+
+	@media (max-width: 42rem) {
+		font-size: 0.8em;
+	}
 
 	button, label, a {
 		display: block;
@@ -152,39 +169,61 @@ a { color: var(--accent) }
 	flex-direction: column;
 	align-items: center;
 	gap: 2em;
+	padding: 2vh 2vw;
 
 	.separator {
-		margin-block-start: 1.25em;
-		margin-inline-start: 5em;
 		height: min(1.5em,5vmin);
 		width: auto;
+		
+		@media (min-width: 42rem) {
+			margin-block-start: 1.25em;
+			margin-inline-start: 5em;
+		}
 	}
 }
 .post {
 	color: var(--text);
 	background-color: var(--bg);
 	width: 100%;
-	max-width: 40.35em;
+	--post-content-spacing: 0.5em;
+
+	@media (max-width: 42rem) {
+		max-width: calc(34.25em + (var(--post-content-spacing) * 2));
+	}
+	@media (min-width: 42rem) {
+		max-width: 40.35em;
+	}
 
 	&.filtered .filter ~ * { display: none }
 
 	.body {
 		display: flex;
 		flex-direction: column;
-		gap: 0.6em;
+		gap: 1em;
 	}
 }
 .bodyitem {
-	--spacing: 0.5em;
 	display: grid;
 	grid-template-columns: auto 1fr;
-	gap: 0 var(--spacing);
+	
+	@media (max-width: 42rem) {
+		gap: var(--post-content-spacing) var(--post-content-spacing);
+		align-items: center;
+	}
+	@media (min-width: 42rem) {
+		gap: 0 var(--post-content-spacing);
+	}
 }
 .bodyitemcontent {
-	padding: 0.5em var(--spacing);
+	padding: 0.5em var(--post-content-spacing);
 	width: 100%;
 	border: var(--border-width) solid var(--text);
 	font-family: var(--font);
+
+	@media (max-width: 42rem) {
+		grid-row: 2;
+		grid-column: 1 / span 2;
+	}
 
 	p:empty { min-height: 1em }
 
@@ -195,13 +234,21 @@ a { color: var(--accent) }
 	display: contents;
 
 	a {
-		font-size: 1.5em;
 		font-family: "Squeezed Pixels", var(--font);
-		grid-row: 1;
-		grid-column: 1 / span 2;
 		margin-block: 0;
 		text-decoration: none;
 		color: var(--text);
+		
+		@media (max-width: 42rem) {
+			font-size: 1.25em;
+			grid-row: 1;
+			grid-column: 2;
+		}
+		@media (min-width: 42rem) {
+			font-size: 1.5em;
+			grid-row: 1;
+			grid-column: 1 / span 2;
+		}
 
 		&[href]:is(:hover, :focus-within) { --text: var(--accent) }
 
@@ -240,12 +287,21 @@ a { color: var(--accent) }
 	}
 
 	.avatar {
-		--size: calc(4.25em + (var(--border-width) * 2));
+		--size: calc(var(--base-size) + (var(--border-width) * 2));
 		width: var(--size);
 		height: var(--size);
 		border: var(--border-width) solid var(--text);
-		grid-row: 2;
-		grid-column: 1;
+		
+		@media (max-width: 42rem) {
+			--base-size: 2.5em;
+			grid-row: 1;
+			grid-column: 1;
+		}
+		@media (min-width: 42rem) {
+			--base-size: 4.25em;
+			grid-row: 2;
+			grid-column: 1;
+		}
 	}
 
 	.badges {
@@ -284,6 +340,7 @@ hr.readmore {
 	margin-inline: 0.3em;
 }
 
+/* Video blocks */
 .video {
 	width: 100%;
 	min-height: 20vh;
@@ -301,9 +358,9 @@ figure { margin: 0 }
 	display: grid;
 	grid-auto-flow: column;
 	grid-auto-columns: 1fr;
-	--spacing: min(0.2em, 1vw);
-	gap: var(--spacing);
-	margin-block: var(--spacing);
+	--post-content-spacing: min(0.2em, 1vw);
+	gap: var(--post-content-spacing);
+	margin-block: var(--post-content-spacing);
 
 	figure {
 		display: flex;
@@ -385,7 +442,7 @@ body:has(#lightbox[open]) { overflow: hidden }
 }
 /* #endregion */
 
-/* Align poll colors to theme colors */
+/* Poll block */
 .poll {
 	display: flex;
 	flex-direction: column;
@@ -414,6 +471,7 @@ body:has(#lightbox[open]) { overflow: hidden }
 		.option {
 			color: var(--text);
 			text-decoration: rgb(from currentColor r g b / 0.5) var(--border-width) line-through;
+			font-size: 0.9em;
 		}
 	}
 	&.complete .results,
@@ -428,6 +486,7 @@ body:has(#lightbox[open]) { overflow: hidden }
 	}
 }
 
+/* TODO: Choose one of the following */
 /* #region Default Tumblr audio block */
 .audiowrapper {
 	--box: 5.3125em;
