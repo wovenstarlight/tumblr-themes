@@ -38,6 +38,11 @@
 	<meta name="color:Custom text" content="{TitleColor}">
 	<meta name="color:Custom accent" content="{AccentColor}">
 
+	<!-- Sidebar options -->
+	<meta name="if:Avatar border" content="1">
+	<meta name="if:Random post link" content="1">
+	<meta name="if:Archive link" content="1">
+
 	<!-- Main content options -->
 	<meta name="if:Search bar" content="1">
 	<meta name="text:Search bar title" content="Search Blog">
@@ -100,18 +105,105 @@
 <body>
 <a href="#main" id="skip">Skip to main content</a>
 
-<header id="bloghead">
-	<!-- TODO: Title and other blog info -->
+{block:HideTitle}
+<!-- Accessibility: HIDDEN TITLE -->
+<h1 class="visually-hidden">{Title}</h1>
+{/block:HideTitle}
 
-	<!-- PAGINATION -->
-	{block:Pagination}<nav>
-		{block:PreviousPage}<a href="{PreviousPage}" id="prev">Previous</a>{/block:PreviousPage}
-		{block:JumpPagination length="7"}
-			{block:CurrentPage}<a>{PageNumber}</a>{/block:CurrentPage}
-			{block:JumpPage}<a href="{URL}">{PageNumber}</a>{/block:JumpPage}
-		{/block:JumpPagination}
-		{block:NextPage}<a href="{NextPage}" id="next">Next</a>{/block:NextPage}
-	</nav>{/block:Pagination}
+
+<header id="bloghead">
+	<a href="/" id="title">
+		{block:ShowAvatar}<img src="{PortraitURL-128}" class="{AvatarShape}{block:IfAvatarBorder} border{/block:IfAvatarBorder}" />{/block:ShowAvatar}
+		{block:ShowTitle}<h1>{Title}</h1>{/block:ShowTitle}
+	</a>
+
+	<nav id="blognav">
+		{block:HideTitle}{block:HideAvatar}<a href="/">{lang:Home}</a>{/block:HideAvatar}{/block:HideTitle}
+		<!-- TODO: Add notepad-styled about modal and attach it to this button -->
+		<button id="openabout">{lang:About}</button>
+		{block:AskEnabled}<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}">{AskLabel}</a>{/block:AskEnabled}
+		{block:SubmissionsEnabled}<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+		{block:IfRandomPostLink}<a href="/random" class="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
+		{block:IfArchiveLink}<a href="/archive" class="archivelink">{lang:Archive}</a>{/block:IfArchiveLink}
+
+		<!-- #region PAGINATION -->
+		{block:Pagination}<section id="pagination">
+			<a {block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage} id="prev">
+				<span class="visually-hidden">{lang:Previous page}</span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="6" height="9" viewBox="0 0 6 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+					<rect x="0" y="4" width="2" height="1" />
+					<rect x="1" y="3" width="2" height="3" />
+					<rect x="2" y="2" width="2" height="5" />
+					<rect x="3" y="1" width="2" height="7" />
+					<rect x="4" y="0" width="2" height="9" />
+				</svg>
+			</a>
+			{block:JumpPagination length="7"}
+				{block:CurrentPage}<span id="curr">{PageNumber}</span>{/block:CurrentPage}
+				{block:JumpPage}<a href="{URL}">{PageNumber}</a>{/block:JumpPage}
+			{/block:JumpPagination}
+			<a {block:NextPage}href="{NextPage}"{/block:NextPage} id="next">
+				<span class="visually-hidden">{lang:Next page}</span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="6" height="9" viewBox="0 0 6 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+					<rect x="0" y="0" width="2" height="9" />
+					<rect x="1" y="1" width="2" height="7" />
+					<rect x="2" y="2" width="2" height="5" />
+					<rect x="3" y="3" width="2" height="3" />
+					<rect x="4" y="4" width="2" height="1" />
+				</svg>
+			</a>
+		</section>{/block:Pagination}
+		
+		{block:PermalinkPagination}<section id="pagination">
+			<a {block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost} id="prev">
+				<span class="visually-hidden">{lang:Previous post}</span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="6" height="9" viewBox="0 0 6 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+					<rect x="0" y="4" width="2" height="1" />
+					<rect x="1" y="3" width="2" height="3" />
+					<rect x="2" y="2" width="2" height="5" />
+					<rect x="3" y="1" width="2" height="7" />
+					<rect x="4" y="0" width="2" height="9" />
+				</svg>
+			</a>
+			<span>{lang:See more posts}</span>
+			<a {block:NextPost}href="{NextPost}"{/block:NextPost} id="next">
+				<span class="visually-hidden">{lang:Next post}</span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="6" height="9" viewBox="0 0 6 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+					<rect x="0" y="0" width="2" height="9" />
+					<rect x="1" y="1" width="2" height="7" />
+					<rect x="2" y="2" width="2" height="5" />
+					<rect x="3" y="3" width="2" height="3" />
+					<rect x="4" y="4" width="2" height="1" />
+				</svg>
+			</a>
+		</section>{/block:PermalinkPagination}
+		
+		{block:DayPage}{block:DayPagination}<section id="pagination">
+			<a {block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage} id="prev">
+				<span class="visually-hidden">{lang:Previous day}</span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="6" height="9" viewBox="0 0 6 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+					<rect x="0" y="4" width="2" height="1" />
+					<rect x="1" y="3" width="2" height="3" />
+					<rect x="2" y="2" width="2" height="5" />
+					<rect x="3" y="1" width="2" height="7" />
+					<rect x="4" y="0" width="2" height="9" />
+				</svg>
+			</a>
+			<span>{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst}, {Year}</span>
+			<a {block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage} id="next">
+				<span class="visually-hidden">{lang:Next day}</span>
+				<svg xmlns="http://www.w3.org/2000/svg" width="6" height="9" viewBox="0 0 6 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+					<rect x="0" y="0" width="2" height="9" />
+					<rect x="1" y="1" width="2" height="7" />
+					<rect x="2" y="2" width="2" height="5" />
+					<rect x="3" y="3" width="2" height="3" />
+					<rect x="4" y="4" width="2" height="1" />
+				</svg>
+			</a>
+		</section>{/block:DayPagination}{/block:DayPage}
+		<!-- #endregion -->
+	</nav>
+
 
 	<section id="options">
 		<input type="checkbox" id="speakerlabels" class="visually-hidden" />

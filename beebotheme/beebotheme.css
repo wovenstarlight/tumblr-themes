@@ -82,9 +82,9 @@ body {
 	--border-width: 0.21875rem;
 	--tx-time: 0.2s;
 
-	@media (min-width: 42rem) {
+	@media (min-width: 70rem) {
 		display: grid;
-		grid-template-columns: auto 1fr;
+		grid-template-columns: 2fr 3fr;
 		justify-content: center;
 		gap: 1em;
 	}
@@ -133,62 +133,143 @@ a { color: var(--accent) }
 ::-webkit-scrollbar-thumb { background-color: var(--text) }
 /* #endregion */
 
-/* #region Header */
+/* #region Left */
 #bloghead {
-	@media (min-width: 42rem) {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0.5em;
+	width: 100%;
+	max-width: 30em;
+
+	@media (max-width: 70rem) {
+		margin: 0 auto 5vh;
+	}
+	@media (min-width: 70rem) {
+		justify-self: center;
+		height: fit-content;
+		min-height: 96vh;
 		position: sticky;
 		top: 2vh;
-		height: fit-content;
 	}
-	h1 { font-weight: var(--title-font-weight) }
+}
+#title {
+	text-decoration: none;
+	text-align: center;
 
-	#options {
+	h1 {
+		margin: 0;
+		font-weight: var(--title-font-weight);
+	}
+	
+	img {
+		display: block;
+		width: 5em;
+		height: 5em;
+		margin: 0 auto 0.5em;
+		
+		&.border { border: var(--border-width) solid var(--text) }
+	}
+}
+#blognav {
+	display: flex;
+	flex-direction: column;
+	border: calc(3 * var(--border-width)) double;
+	--border: thin solid rgb(from var(--text) r g b / 0.3);
+
+	button, & > a {
+		display: block;
+		border: none;
+		background-color: unset;
+		color: var(--accent);
+		padding: 0.4em 0.75em;
+		text-decoration: none;
+		text-align: center;
+		cursor: pointer;
+
+		&:not(:first-child) { border-block-start: var(--border) }
+		&:is(:hover, :focus) { background-color: var(--text) }
+	}
+}
+#pagination {
+	display: flex;
+	text-align: center;
+	border-block-start: var(--border);
+
+	a, span {
+		padding: 0.75em 0.25em;
+		flex-grow: 1;
+		text-decoration: none;
 		display: flex;
-		flex-direction: column;
-		gap: 0.6em;
+		align-items: center;
+		justify-content: center;
+		line-height: 1;
+
+		&:not(:first-child, :last-child) { border-inline-end: var(--border) }
+		&:nth-child(2) { border-inline-start: var(--border) }
+	}
+
+	a {
+		&[href]:is(:hover, :focus) { background-color: var(--text) }
+		&:not([href]) { opacity: 0.25 }
+	}
 	
-		@media (min-width: 42rem) {
-			align-self: start;
-		}
-		@media (max-width: 42rem) {
-			position: fixed;
-			bottom: 0.5em;
-			left: 0.5em;
-			z-index: 2;
-			font-size: 0.8em;
-			max-width: min(20em, 45vw);
-			flex-direction: column-reverse;
-		}
-	
-		button, label, a {
-			display: block;
-			text-align: center;
-			padding: 0.2em 0.75em;
-			color: var(--accent);
-			background-color: var(--bg);
-			border: var(--border-width) solid var(--text);
-			cursor: pointer;
-	
-			&:not([disabled]):is(:hover, :focus-within) { background-color: var(--text) }
+	#prev, #next {
+		max-width: 4em;
+
+		svg {
+			height: 1em;
+			width: auto;
 		}
 	}
-	#scrolltotop {
-		transition: opacity var(--tx-time);
 	
-		&[disabled] {
-			opacity: 0;
-			pointer-events: none;
-		}
+	#curr {
+		background-color: var(--text);
+		color: var(--bg);
+	}
+
+	span:not(#curr) { color: var(--accent) }
+}
+#options {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6em;
+
+	@media (min-width: 70rem) { margin-block-start: 0.5em }
+	@media (max-width: 70rem) {
+		position: fixed;
+		bottom: 0.5em;
+		left: 0.5em;
+		z-index: 2;
+		font-size: 0.8em;
+		max-width: min(20em, 45vw);
+		flex-direction: column-reverse;
+	}
+
+	button, label, a {
+		display: block;
+		text-align: center;
+		padding: 0.2em 0.75em;
+		color: var(--accent);
+		background-color: var(--bg);
+		border: var(--border-width) solid var(--text);
+		cursor: pointer;
+
+		&:not([disabled]):is(:hover, :focus-within) { background-color: var(--text) }
+	}
+}
+#scrolltotop {
+	transition: opacity var(--tx-time);
+
+	&[disabled] {
+		opacity: 0;
+		pointer-events: none;
 	}
 }
 /* #endregion */
 
 /* #region Center */
-#main {
-	@media (max-width: 42rem) {
-		flex-grow: 1;
-	}
-}
+#main {}
 /* #endregion */
 
 /* #region Posts */
@@ -243,7 +324,7 @@ a { color: var(--accent) }
 .bodyitemcontent {
 	color: var(--text);
 	background-color: var(--bg);
-	padding: 0.5em var(--post-content-spacing);
+	padding: 1em var(--post-content-spacing);
 	width: 100%;
 	border: var(--border-width) solid var(--text);
 	font-family: var(--font);
