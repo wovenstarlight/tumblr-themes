@@ -210,8 +210,6 @@ a { color: var(--accent) }
 	}
 }
 .post {
-	color: var(--text);
-	background-color: var(--bg);
 	width: 100%;
 	--post-content-spacing: 0.5em;
 
@@ -243,6 +241,8 @@ a { color: var(--accent) }
 	}
 }
 .bodyitemcontent {
+	color: var(--text);
+	background-color: var(--bg);
 	padding: 0.5em var(--post-content-spacing);
 	width: 100%;
 	border: var(--border-width) solid var(--text);
