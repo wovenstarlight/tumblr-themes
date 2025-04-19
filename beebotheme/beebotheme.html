@@ -100,6 +100,27 @@
 <body>
 <a href="#main" id="skip">Skip to main content</a>
 
+<header id="bloghead">
+	<!-- TODO: Title and other blog info -->
+
+	<!-- PAGINATION -->
+	{block:Pagination}<nav>
+		{block:PreviousPage}<a href="{PreviousPage}" id="prev">Previous</a>{/block:PreviousPage}
+		{block:JumpPagination length="7"}
+			{block:CurrentPage}<a>{PageNumber}</a>{/block:CurrentPage}
+			{block:JumpPage}<a href="{URL}">{PageNumber}</a>{/block:JumpPage}
+		{/block:JumpPagination}
+		{block:NextPage}<a href="{NextPage}" id="next">Next</a>{/block:NextPage}
+	</nav>{/block:Pagination}
+
+	<section id="options">
+		<input type="checkbox" id="speakerlabels" class="visually-hidden" />
+		<label for="speakerlabels">Toggle comic speaker labels</label>
+
+		<button href="#top" id="scrolltotop" disabled>Back to top</button>
+	</section>
+</header>
+
 <main id="main">
 
 	<section id="posts">
@@ -111,21 +132,7 @@
 			<span class="visually-hidden">Close</span>
 		</button>
 	</dialog>
-
-	{block:Pagination}<nav>
-		{block:PreviousPage}<a href="{PreviousPage}" id="prev">Previous</a>{/block:PreviousPage}
-		{block:JumpPagination length="7"}
-			{block:CurrentPage}<a>{PageNumber}</a>{/block:CurrentPage}
-			{block:JumpPage}<a href="{URL}">{PageNumber}</a>{/block:JumpPage}
-		{/block:JumpPagination}
-		{block:NextPage}<a href="{NextPage}" id="next">Next</a>{/block:NextPage}
-	</nav>{/block:Pagination}
 </main>
-
-<footer id="options">
-	<button href="#top" id="scrolltotop" disabled>Back to top</button>
-	{block:IfPaletteToggle}<button id="palette">Toggle palette</button>{/block:IfPaletteToggle}
-</footer>
 
 <!-- #region Templates -->
 <template id="curlyborder">
