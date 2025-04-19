@@ -293,25 +293,14 @@ a { color: var(--accent) }
 		margin-left: 0.25em;
 	}
 
-	.question {
+	svg {
+		background-color: var(--text);
 		color: var(--bg);
-		padding-inline: 3px;
-		margin-inline: 3px;
-		z-index: 0;
-		-webkit-user-select: none; /* Safari */
-		user-select: none;
-
-		&::before {
-			content: "";
-			display: block;
-			width: 75%;
-			height: 75%;
-			background-color: var(--text);
-			position: absolute;
-			top: -0.2125em;
-			left: 1px;
-			z-index: -1;
-		}
+		height: 0.775em;
+		width: auto;
+		position: relative;
+		top: 0.05rem;
+		margin-inline-end: 0.6ch;
 	}
 
 	.avatar {
@@ -433,18 +422,21 @@ body:has(#lightbox[open]) { overflow: hidden }
 		border: none;
 		background: none;
 		padding: 0;
-		color: #fff;
+		background-color: var(--text);
+		color: var(--bg);
 		cursor: pointer;
+		display: flex;
 
-		&::before {
-			content: "🗙";
-			font-size: 1.5em;
+		svg {
+			display: block;
+			width: 2em;
+			height: auto;
 			cursor: pointer;
 			padding: 0.5em;
 			display: inline-block;
 		}
 
-		&:hover, &:focus { color: #acacac }
+		&:hover, &:focus { color: var(--accent) }
 
 		i { font-size: 4em }
 	}
