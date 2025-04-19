@@ -188,7 +188,14 @@ a { color: var(--accent) }
 		cursor: pointer;
 
 		&:not(:first-child) { border-block-start: var(--border) }
-		&:is(:hover, :focus) { background-color: var(--text) }
+		&.current-page {
+			background-color: var(--text);
+			color: var(--bg);
+		}
+		&:is(:hover, :focus) {
+			background-color: var(--text);
+			color: var(--accent);
+		}
 	}
 }
 #pagination {

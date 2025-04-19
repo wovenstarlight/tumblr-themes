@@ -126,6 +126,11 @@
 		{block:IfRandomPostLink}<a href="/random" class="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
 		{block:IfArchiveLink}<a href="/archive" class="archivelink">{lang:Archive}</a>{/block:IfArchiveLink}
 
+		{block:HasPages}
+		<!-- CUSTOM PAGES -->
+		{block:Pages}<a href="{URL}" class="{CurrentState}">{Label}</a>{/block:Pages}
+		{/block:HasPages}
+
 		<!-- #region PAGINATION -->
 		{block:Pagination}<section id="pagination">
 			<a {block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage} id="prev">
