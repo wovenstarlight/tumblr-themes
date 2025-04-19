@@ -24,7 +24,6 @@
 	<!-- Main content options -->
 	<meta name="if:Search bar" content="1">
 	<meta name="text:Search bar title" content="Search Blog">
-	<meta name="if:Use legacy format for post media" content="0">
 	<meta name="if:Post dates" content="1">
 	<meta name="if:Post times" content="1">
 	<meta name="if:Dates formatted month first" content="1">
@@ -70,30 +69,30 @@
 
 
 <body>
-	<a href="#main" id="skip">Skip to main content</a>
+<a href="#main" id="skip">Skip to main content</a>
 
-	<main id="main">
+<main id="main">
 
-		<section id="posts">
-			<noscript><article><p>Javascript is required to view this blog. Please enable scripting and reload.</p></article></noscript>
-		</section>
+	<section id="posts">
+		<noscript><article><p>Javascript is required to view this blog. Please enable scripting and reload.</p></article></noscript>
+	</section>
 
-		<dialog id="lightbox">
-			<button id="close">
-				<span class="visually-hidden">Close</span>
-			</button>
-		</dialog>
+	<dialog id="lightbox">
+		<button id="close">
+			<span class="visually-hidden">Close</span>
+		</button>
+	</dialog>
 
-		{block:Pagination}<nav>
-			{block:PreviousPage}<a href="{PreviousPage}" id="prev">Previous</a>{/block:PreviousPage}
-			{block:JumpPagination length="7"}
-				{block:CurrentPage}<a>{PageNumber}</a>{/block:CurrentPage}
-				{block:JumpPage}<a href="{URL}">{PageNumber}</a>{/block:JumpPage}
-			{/block:JumpPagination}
-			{block:NextPage}<a href="{NextPage}" id="next">Next</a>{/block:NextPage}
-		</nav>{/block:Pagination}
+	{block:Pagination}<nav>
+		{block:PreviousPage}<a href="{PreviousPage}" id="prev">Previous</a>{/block:PreviousPage}
+		{block:JumpPagination length="7"}
+			{block:CurrentPage}<a>{PageNumber}</a>{/block:CurrentPage}
+			{block:JumpPage}<a href="{URL}">{PageNumber}</a>{/block:JumpPage}
+		{/block:JumpPagination}
+		{block:NextPage}<a href="{NextPage}" id="next">Next</a>{/block:NextPage}
+	</nav>{/block:Pagination}
 
-	</main>
+</main>
 
 
 <template id="filtermessage">
@@ -646,40 +645,6 @@ document.addEventListener("scroll", () => {
 // #endregion
 // #endregion
 
-// #region Visual extras
-/*{block:IfUseLegacyFormatForPostMedia}*/
-// Format media in posts in legacy style
-document.querySelectorAll(".bodyitem:first-child .bodyitemcontent > :is(".concat([
-	".row",
-	"video",
-	".audiowrapper",
-	".npf-link-block",
-	"iframe",
-	".heading1",
-].join(":first-child, "), ":first-child)")).forEach(el => {
-	// Move el outside its bodyitem into a "mediawrapper" div at the top of the post body
-	let bodyitemcontent = el.parentElement,
-		wrapper = document.createElement("div");
-	wrapper.classList.add("mediawrapper");
-	
-	// Put wrapper in post body
-	bodyitemcontent.closest(".body").prepend(wrapper);
-	
-	// Add this element
-	wrapper.prepend(el);
-	
-	// If this is a photoset element, check for additional rows in the photoset and add them
-	if (el.classList.contains("row")) {
-		while (bodyitemcontent.childElementCount !== 0 && bodyitemcontent.children[0].classList.contains("row")) {
-			wrapper.append(bodyitemcontent.children[0]);
-		}
-	}
-	// Remove the parent body item if it's empty
-	if (bodyitemcontent.childElementCount === 0) {
-		bodyitemcontent.parentElement.remove();
-	}
-});
-/*{/block:IfUseLegacyFormatForPostMedia}*/
 // #endregion
 
 // Set up keyboard navigation
@@ -1330,23 +1295,11 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 			askNPF.blocks.forEach(b => askBody.append(body.children[0]));
 		}
 		
-		// PLACEMENT OPTIONS (note, none of these are inside .bodyitemcontent!):
-		// Case 1. In root post body, above answer trail item
+		// Place in root post body, above answer trail item
 		trailItem.parentElement.insertBefore(ask, trailItem);
-		// Case 2. Inside same trail item, above answerer's name (legacy format)
-		// trailItem.insertBefore(ask, body.previousElementSibling);
-		// Case 3. Inside same trail item, below answerer's name (Neue format)
-		// trailItem.insertBefore(ask, body);
 
 		// Sometimes asks have no answer content (i.e. nothing left in body); in this case, clean up answerer section
-		if (body.childElementCount === 0) {
-			// Case 1
-			trailItem.remove();
-			// Case 2 (legacy format)
-			// body.previousElementSibling.remove(); // the answerer's name
-			// Case 2 or 3 (legacy and neue format)
-			// body.remove(); // the empty answer content
-		}
+		if (body.childElementCount === 0) trailItem.remove();
 	}
 }
 
