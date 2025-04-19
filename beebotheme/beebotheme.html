@@ -135,10 +135,10 @@ const currentUser = {
 	 */
 	description: {JSDescription},
 	/**
-	 * URL to the blog avatar, size 64x64
+	 * URL to the blog avatar, size 128x128
 	 * @type {string}
 	 */
-	avatar: {JSPortraitURL-64},
+	avatar: {JSPortraitURL-128},
 	/**
 	 * URL to the blog (in the format https://username.tumblr.com)
 	 * @type {string}
@@ -179,10 +179,10 @@ const textSubtypes = {
 	"unordered-list-item": "li",
 }
 
-/** URL to the 64x64 avatar for anonymous, deactivated, or broken users.
+/** URL to the 128x128 avatar for anonymous, deactivated, or broken users.
  * @type {string}
  */
-const anonAvatar = "https://assets.tumblr.com/images/anonymous_avatar_64.gif";
+const anonAvatar = "https://assets.tumblr.com/images/anonymous_avatar_128.gif";
 
 /** For use in trail item body construction. The base element (paragraph, blockquote etc.) as selected from textSubtypes.
  * @type {HTMLElement}
@@ -475,7 +475,7 @@ let posts = [
 		/*{block:Submission}*/ submission: {
 			name: {JSSubmitter},
 			url: {JSSubmitterURL},
-			avatar: {JSSubmitterPortraitURL-64},
+			avatar: {JSSubmitterPortraitURL-128},
 			label: "{lang:Submitted By}",
 		}, /*{/block:Submission}*/
 
@@ -1097,7 +1097,7 @@ function createTrailItem(post, npf, postID, expand = false) {
 }
 
 
-/** Creates the header for a specific trail item, rendering the blog that authored this trail item (and any badges/accessories they use). Includes links to the versions of the post on the contributing blogs, where available.
+/** Creates the header for a specific trail item, rendering the blog that authored this trail item. Includes links to the versions of the post on the contributing blogs, where available.
  * @param {HTMLElement} trailItem The trail item wrapper into which to insert the header.
  * @param {Object} blogData Information about the user that authored this trail item.
  * @param {Object} [postData=null] Information about this iteration of the post; null if the blog that authored this iteration is deactivated/broken or if the post is otherwise unavailable.
@@ -1125,42 +1125,22 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	let username = document.createElement("span");
 	username.classList.add("name");
 	username.innerHTML = blogData.name;
-	// Generally an active user's nested size-64 URL (index 3 of [512,128,96,64]), or a direct URL for currentUser or anon/broken users
+	// Generally an active user's nested size-128 URL (index 1 of [512,128,96,64]), or a direct URL for currentUser or anon/broken users
 	// The array blog.avatar isn't available sometimes, so include a backup avatar fetch via API
 	let avatar = document.createElement("img");
-	avatar.classList.add("avatar", blogData?.theme?.avatar_shape ?? "square");
+	avatar.classList.add("avatar");
 	safeSetAvatar(
 		avatar,
 		blogData.avatar
 		? typeof(blogData.avatar) === "object"
-			? blogData.avatar?.find(el => el.height === 64)?.url
+			? blogData.avatar?.find(el => el.height === 128)?.url
 			: blogData.avatar
-		: `https://api.tumblr.com/v2/blog/${blogData.name ?? ""}/avatar/64`,
+		: `https://api.tumblr.com/v2/blog/${blogData.name ?? ""}/avatar/128`,
 	);
 
 	// put together the header
 	link.append(avatar, username);
 	link.setAttribute("style", `--bg: ${blogData?.theme?.background_color ?? currentUser.theme.background_color}; --text: ${blogData?.theme?.title_color ?? currentUser.theme.title_color}; --accent: ${blogData?.theme?.link_color ?? currentUser.theme.link_color}`)
-
-	// Checkmarks and other badges, pulled from tumblrmart_accessories
-	// https://assets.tumblr.com/images/tumblrmart/badges/blue-checkmark/1.png
-	// https://assets.tumblr.com/images/tumblrmart/badges/rainbow/1.png , [1-12].png available
-	if (blogData.can_show_badges && (badgegroups = blogData.tumblrmart_accessories?.badges) != null) {
-		let badges = document.createElement("span");
-		badges.classList.add("badges");
-		link.append(badges);
-
-		badgegroups.forEach(group => {
-			let badge, badgeWrapper;
-			group.urls.forEach(url => {
-				badge = document.createElement("img");
-				badge.src = url;
-				badgeWrapper = document.createElement("span");
-				badgeWrapper.append(badge);
-				badges.append(badgeWrapper);
-			});
-		})
-	}
 }
 
 
@@ -1270,8 +1250,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		askerIcon.classList.add("avatar");
 		askerName.classList.add("name");
 		if (askNPF.attribution) {
-			safeSetAvatar(askerIcon, askNPF.attribution.blog.avatar?.find(el => el.height === 64)?.url ?? `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name ?? ""}/avatar/64`);
-			askerIcon.classList.add(askNPF.attribution.blog.theme.avatar_shape ?? "square");
+			safeSetAvatar(askerIcon, askNPF.attribution.blog.avatar?.find(el => el.height === 128)?.url ?? `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name ?? ""}/avatar/128`);
 			askerWrapper.href = askNPF.attribution.blog.url;
 			askerName.innerText = askNPF.attribution.blog.name;
 			asker.setAttribute("style", `--bg: ${askNPF.attribution.blog.theme?.background_color ?? currentUser.theme.background_color}; --text: ${askNPF.attribution.blog.theme?.title_color ?? currentUser.theme.title_color}; --accent: ${askNPF.attribution.blog.theme?.link_color ?? currentUser.theme.link_color}`);
@@ -2082,7 +2061,7 @@ function cleanNotes() {
 
 		// Get higher-resolution avatar
 		let avatar = note.querySelector("img");
-		safeSetAvatar(avatar, `https://api.tumblr.com/v2/blog/${action.firstElementChild.innerText ?? ""}/avatar/64`);
+		safeSetAvatar(avatar, `https://api.tumblr.com/v2/blog/${action.firstElementChild.innerText ?? ""}/avatar/128`);
 		// ...or remove avatars
 		// note.firstChild.remove();
 
