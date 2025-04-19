@@ -278,9 +278,46 @@ body:has(#lightbox[open]) { overflow: hidden }
 /* #endregion */
 
 /* Align poll colors to theme colors */
-div.poll-post a.poll-row {
-	color: var(--text);
-	background-color: rgb(from var(--accent) r g b / 0.2);
+.poll {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6em;
+
+	.question {
+		margin-block: 0;
+		font-size: 1.5em;
+	}
+
+	.option, .results {
+		display: block;
+		text-decoration: none;
+		background-color: var(--bg);
+		color: var(--accent);
+		border: var(--border-width) solid var(--text);
+		text-align: center;
+		padding: 0.2em 0.75em;
+		font-family: "Nokia", var(--font);
+
+		& > :first-child { margin-block-start: 0 }
+		& > :last-child { margin-block-end: 0 }
+	}
+	
+	&.complete {
+		.option {
+			color: var(--text);
+			text-decoration: rgb(from currentColor r g b / 0.5) var(--border-width) line-through;
+		}
+	}
+	&.complete .results,
+	&:not(.complete) .option {
+		&:is(:hover, :focus-within) {background-color: var(--text) }
+	}
+
+	.timeleft {
+		font-family: "Squeezed Pixels", var(--font);
+		display: block;
+		text-align: center;
+	}
 }
 
 /* #region Default Tumblr audio block */
