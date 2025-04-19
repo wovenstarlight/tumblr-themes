@@ -39,6 +39,8 @@
 	<meta name="color:Custom accent" content="{AccentColor}">
 
 	<!-- Sidebar options -->
+	<meta name="select:Sidebar placement" content="left" title="Left">
+	<meta name="select:Sidebar placement" content="right" title="Right">
 	<meta name="if:Avatar border" content="1">
 	<meta name="if:Random post link" content="1">
 	<meta name="if:Archive link" content="1">
@@ -102,7 +104,7 @@
 
 
 
-<body>
+<body class="sidebar{select:Sidebar placement}">
 <a href="#main" id="skip">Skip to main content</a>
 
 {block:HideTitle}
