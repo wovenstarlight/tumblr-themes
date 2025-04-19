@@ -3,7 +3,7 @@
 	https://github.com/tumblr/docs/blob/master/npf-spec.md
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="{select:Color palette}">
 
 <head>
 	{MobileAppHeaders}
@@ -18,8 +18,25 @@
 	{block:Hidden}
 	<!-- #region TODO: Custom variables -->
 	<!-- Color options -->
-	<!-- Alternate palette -->
-	<meta name="if:Palette toggle" content="1">
+	<meta name="select:Color palette" content="house" title="House of Vera">
+	<meta name="select:Color palette" content="gallery" title="Art gallery">
+	<meta name="select:Color palette" content="city" title="City">
+	<meta name="select:Color palette" content="trueending" title="True ending">
+	<meta name="select:Color palette" content="train" title="Overnight train">
+	<meta name="select:Color palette" content="oliver" title="Beebo">
+	<meta name="select:Color palette" content="angel" title="Ángel">
+	<meta name="select:Color palette" content="vivi" title="Vivi">
+	<meta name="select:Color palette" content="marigold" title="Marigold">
+	<meta name="select:Color palette" content="nina" title="Nina">
+	<meta name="select:Color palette" content="nadia" title="Nadia">
+	<meta name="select:Color palette" content="simon" title="Simon">
+	<meta name="select:Color palette" content="owen" title="Owen">
+	<meta name="select:Color palette" content="police" title="Police">
+	<meta name="select:Color palette" content="custom" title="Custom">
+	<!-- Custom palette -->
+	<meta name="color:Custom background" content="{BackgroundColor}">
+	<meta name="color:Custom text" content="{TitleColor}">
+	<meta name="color:Custom accent" content="{AccentColor}">
 
 	<!-- Main content options -->
 	<meta name="if:Search bar" content="1">
@@ -51,11 +68,13 @@
 	<style>
 		/* Variables */
 		html {
-			--text: {TitleColor};
-			--bg: {BackgroundColor};
-			--accent: {AccentColor};
 			--title-font: {TitleFont};
 			--title-font-weight: {TitleFontWeight};
+			&.custom {
+				--bg: {color:Custom background};
+				--text: {color:Custom text};
+				--accent: {color:Custom accent};
+			}
 		}
 		
 		@font-face {
@@ -684,22 +703,6 @@ if (posts.at(0)?.postNotes) {
 // #region Remaining page functionality (accessibility features)
 // Keyboard navigation moved to very end, after the "Visual extras" region, in order to prevent errors being thrown in Customize preview window.
 
-/*{block:IfPaletteToggle}*/
-// TODO: Add "#palette" element
-// #region Palette
-document.getElementById("palette").addEventListener("click", () => {
-	let added = document.body.parentElement.classList.toggle("alt");
-
-	// Persistence
-	localStorage.setItem("palette", added ? "alt" : "");
-});
-// Persistence
-if ((palette = localStorage.getItem("palette")) !== null)
-	palette === "alt" ? document.body.parentElement.classList.add("alt") : document.body.parentElement.classList.remove("alt");
-// #endregion
-/*{/block:IfPaletteToggle}*/
-
-// TODO: Add "#scrolltotop" element
 // #region Scroll to top
 (scrolltotop = document.getElementById("scrolltotop")).addEventListener("click", () => {
 	window.scrollTo({
@@ -715,7 +718,6 @@ document.addEventListener("scroll", () => {
 		scrolltotop.removeAttribute("disabled");
 	}
 })
-// #endregion
 // #endregion
 
 // #endregion

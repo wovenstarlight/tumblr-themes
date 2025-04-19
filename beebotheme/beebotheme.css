@@ -1,4 +1,77 @@
 /* #region Global */
+html {
+	--accent: #ffffff;
+
+	&.oliver {
+		--text: #a97844;
+		--bg: #311a05;
+	}
+
+	&.angel {
+		--text: #7f8a93;
+		--bg: #32383e;
+	}
+
+	&.vivi {
+		--text: #a24759;
+		--bg: #2e0b13;
+	}
+
+	&.marigold {
+		--text: #739cb5;
+		--bg: #121b4f;
+	}
+
+	&.nina {
+		--text: #8b6fb9;
+		--bg: #25163e;
+	}
+
+	&.nadia {
+		--text: #b273a1;
+		--bg: #3c193e;
+	}
+
+	&.owen {
+		--text: #8089b2;
+		--bg: #202a55;
+	}
+
+	&.simon {
+		--text: #809b64;
+		--bg: #30361f;
+	}
+
+	&.house {
+		--text: #87588a;
+		--bg: #27002a;
+	}
+
+	&.gallery {
+		--text: #ab9343;
+		--bg: #2c2305;
+	}
+
+	&.city {
+		--text: #625565;
+		--bg: #231e23;
+	}
+
+	&.police {
+		--text: #91ab81;
+		--bg: #282d30;
+	}
+
+	&.trueending {
+		--text: #a6bec9;
+		--bg: #2f4b55;
+	}
+
+	&.train {
+		--text: #fac15a;
+		--bg: #7d122c;
+	}
+}
 body {
 	background: var(--bg);
 	color: var(--text);
