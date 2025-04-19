@@ -59,7 +59,7 @@ function keyboardNav(customOptions) {
 		search = document.querySelector(options.searchSelector);
 	let currPost, oldPost, y;
 	
-	offset = options.postOffset ?? 0;
+	offset = options.postOffset === null ? 0 : options.postOffset;
 
 	// attach observers
 	const observer = new IntersectionObserver(
@@ -165,9 +165,9 @@ function keyboardNav(customOptions) {
 		}
 
 		// optional pagination
-		else if (next != null && !document.body.classList.contains('lightboxed') && e.key === 'ArrowRight')
+		else if (next != null && !(document.body.classList.contains('lightboxed') || document.querySelector("#lightbox[open]")) && e.key === 'ArrowRight')
 			next.click();
-		else if (prev != null && !document.body.classList.contains('lightboxed') && e.key === 'ArrowLeft')
+		else if (prev != null && !(document.body.classList.contains('lightboxed') || document.querySelector("#lightbox[open]")) && e.key === 'ArrowLeft')
 			prev.click();
 
 		// optional palette toggle
