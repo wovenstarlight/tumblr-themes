@@ -108,6 +108,54 @@
 	{block:IfPaletteToggle}<button id="palette">Toggle palette</button>{/block:IfPaletteToggle}
 </footer>
 
+<template id="curlyborder">
+	<svg class="separator" xmlns="http://www.w3.org/2000/svg" width="84" height="7" viewBox="0 0 84 7" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+		<!-- Left curly -->
+		<rect x="5" y="2" width="2" height="1" />
+		<rect x="7" y="1" width="1" height="1" />
+		<rect x="2" y="0" width="5" height="1" />
+		<rect x="1" y="1" width="1" height="1" />
+		<rect x="0" y="2" width="1" height="1" />
+		<rect x="1" y="3" width="1" height="1" />
+		<rect x="2" y="4" width="3" height="1" />
+		<rect x="5" y="5" width="14" height="1" />
+		<rect x="19" y="4" width="2" height="1" />
+		<rect x="21" y="3" width="3" height="1" />
+		<rect x="24" y="2" width="4" height="1" />
+		<rect x="28" y="1" width="7" height="1" />
+		<rect x="35" y="2" width="2" height="1" />
+		<rect x="37" y="3" width="1" height="3" />
+		<rect x="34" y="6" width="3" height="1" />
+		<rect x="33" y="5" width="1" height="1" />
+		<rect x="34" y="4" width="2" height="1" />
+	
+		<!-- Center circle -->
+		<rect x="41" y="2" width="2" height="1" />
+		<rect x="40" y="3" width="1" height="3" />
+		<rect x="43" y="3" width="1" height="3" />
+		<rect x="41" y="6" width="2" height="1" />
+	
+		<!-- Right curly -->
+		<rect x="77" y="2" width="2" height="1" />
+		<rect x="76" y="1" width="1" height="1" />
+		<rect x="77" y="0" width="5" height="1" />
+		<rect x="82" y="1" width="1" height="1" />
+		<rect x="83" y="2" width="1" height="1" />
+		<rect x="82" y="3" width="1" height="1" />
+		<rect x="79" y="4" width="3" height="1" />
+		<rect x="65" y="5" width="14" height="1" />
+		<rect x="63" y="4" width="2" height="1" />
+		<rect x="60" y="3" width="3" height="1" />
+		<rect x="56" y="2" width="4" height="1" />
+		<rect x="49" y="1" width="7" height="1" />
+		<rect x="47" y="2" width="2" height="1" />
+		<rect x="46" y="3" width="1" height="3" />
+		<rect x="47" y="6" width="3" height="1" />
+		<rect x="50" y="5" width="1" height="1" />
+		<rect x="48" y="4" width="2" height="1" />
+	</svg>
+</template>
+
 <template id="filtermessage">
 	<div class="filter">
 		<p>This post contains filtered tags.</p>
@@ -215,6 +263,9 @@ let filteredTags = "{text:Filtered tags}".toLowerCase().split(",").map(el => el.
  */
 let filterMessage = document.getElementById("filtermessage");
 /*{/block:IfFilteredTags}*/
+
+/** Post separation border. */
+let postSeparator = document.getElementById("curlyborder").content;
 
 /** The standard page font size, for calculating padding.
  * @type {number}
@@ -525,7 +576,7 @@ let posts = [
 let postContainer = document.getElementById("posts");
 
 // #region The main post creation loop
-posts.forEach(post => {
+posts.forEach((post, index) => {
 	/** The HTML article corresponding to the post currently being created */
 	let article = document.createElement("article");
 	article.classList.add("post");
@@ -595,6 +646,8 @@ posts.forEach(post => {
 		}
 	}
 	/*{/block:IfFilteredTags}*/
+
+	if (index !== posts.length - 1) postContainer.append(postSeparator.cloneNode(true));
 });
 // #endregion
 
