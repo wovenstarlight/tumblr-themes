@@ -1192,7 +1192,6 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	// The array blog.avatar isn't available sometimes, so include a backup avatar fetch via API
 	let avatar = document.createElement("img");
 	avatar.classList.add("avatar");
-	avatar.setAttribute("style", `--text: ${blogData?.theme?.title_color ?? currentUser.theme.title_color}`)
 	safeSetAvatar(
 		avatar,
 		blogData.avatar
@@ -1320,7 +1319,6 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		if (askNPF.attribution) {
 			// Set avatar
 			safeSetAvatar(askerIcon, askNPF.attribution.blog.avatar?.find(el => el.height === 128)?.url ?? `https://api.tumblr.com/v2/blog/${askNPF.attribution.blog.name ?? ""}/avatar/128`);
-			askerIcon.setAttribute("style", `--text: ${askNPF.attribution.blog.theme?.title_color ?? currentUser.theme.title_color}`);
 			// Set link
 			askerLink.href = askNPF.attribution.blog.url;
 			// Set username
@@ -1329,7 +1327,6 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		else {
 			// Set avatar
 			askerIcon.src = anonAvatar;
-			askerIcon.setAttribute("style", `--text: ${currentUser.theme.title_color}`);
 			// Set username
 			askerName.innerText = "Anonymous";
 		}
