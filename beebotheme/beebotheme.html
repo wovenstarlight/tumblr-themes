@@ -2188,17 +2188,18 @@ function createPage(wrapper, postData) {
 	trailItem.append(header);
 	// Create permalink
 	let link = document.createElement("a");
+	link.classList.add("usertext");
 	link.href = window.location.href; // gives current URL
-	header.append(link);
 	// Get the username and avatar
 	let username = document.createElement("span");
 	username.classList.add("name");
 	username.innerHTML = currentUser.name;
 	let avatar = document.createElement("img");
-	avatar.classList.add("avatar", currentUser.theme.avatar_shape);
+	avatar.classList.add("avatar");
 	avatar.src = currentUser.avatar;
 	// put together the header
-	link.append(questionMark.cloneNode(true), username);
+	link.append(questionMark.cloneNode(true), username)
+	header.append(link, avatar);
 
 	// Create title and body of page
 	// postData.npf is empty; use exclusively .title and .body
