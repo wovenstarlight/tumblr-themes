@@ -42,10 +42,10 @@
 	<meta name="if:Avatar border" content="1">
 	<meta name="if:Random post link" content="1">
 	<meta name="if:Archive link" content="1">
-
-	<!-- Main content options -->
 	<meta name="if:Search bar" content="1">
 	<meta name="text:Search bar title" content="Search Blog">
+
+	<!-- Main content options -->
 	<meta name="if:Post dates" content="1">
 	<meta name="if:Post times" content="1">
 	<meta name="if:Dates formatted month first" content="1">
@@ -209,6 +209,14 @@
 		<!-- #endregion -->
 	</nav>
 
+	{block:IfSearchBar}
+	<!-- SEARCH BAR -->
+	<form action="/search" method="get" id="search">
+		<i class="ph-magnifying-glass"></i>
+		<label for="q" class="visually-hidden">{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
+		<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}"/>
+	</form>
+	{/block:IfSearchBar}
 
 	<section id="options">
 		<input type="checkbox" id="speakerlabels" class="visually-hidden" />

@@ -237,6 +237,14 @@ a { color: var(--accent) }
 
 	span:not(#curr) { color: var(--accent) }
 }
+#q {
+	border: var(--border-width) solid;
+	background-color: var(--bg);
+	color: var(--text);
+	width: 100%;
+	padding: 0.25em 0.75em;
+	text-align: center;
+}
 #options {
 	display: flex;
 	flex-direction: column;
@@ -250,6 +258,10 @@ a { color: var(--accent) }
 		font-size: 0.8em;
 		max-width: min(20em, 45vw);
 		flex-direction: column-reverse;
+	}
+
+	@media (min-width: 70rem) {
+		#search + & { margin-block-start: -0.4em }
 	}
 
 	button, label, a {
