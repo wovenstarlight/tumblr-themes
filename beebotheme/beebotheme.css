@@ -270,7 +270,8 @@ a { color: var(--accent) }
 /* #endregion */
 
 /* #region Center */
-#main {}
+/* Center posts when smaller than screen */
+#main { align-self: center }
 /* Skip to content link */
 #skip {
 	position: fixed;
