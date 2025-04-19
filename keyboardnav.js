@@ -59,7 +59,7 @@ function keyboardNav(customOptions) {
 		search = document.querySelector(options.searchSelector);
 	let currPost, oldPost, y;
 	
-	offset = options.postOffset === null ? 0 : options.postOffset;
+	offset = options.postOffset ?? 0;
 
 	// attach observers
 	const observer = new IntersectionObserver(
