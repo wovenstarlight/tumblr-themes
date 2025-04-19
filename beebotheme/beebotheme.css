@@ -112,6 +112,19 @@ a { color: var(--accent) }
 		clip-path: rect(0 0 0 0);
 	}
 }
+/* Scrollbar */
+* {
+	scrollbar-color: var(--text) var(--bg);
+	scrollbar-width: thin;
+	background-position: center !important;
+}
+::-webkit-scrollbar {
+	width: 0.5em;
+	height: 0.5em;
+	background-color: var(--bg);
+}
+::-webkit-scrollbar-corner { background-color: var(--text) }
+::-webkit-scrollbar-thumb { background-color: var(--text) }
 /* #endregion */
 
 /* #region Header */
@@ -334,10 +347,23 @@ a { color: var(--accent) }
 	}
 }
 
-hr.readmore {
-	border-color: rgb(from var(--text) r g b / 0.5);
-	border-style: dashed;
-	margin-inline: 0.3em;
+.readmore {
+	hr& {
+		border-color: rgb(from var(--text) r g b / 0.5);
+		border-style: dashed;
+		margin-inline: 0.3em;
+	}
+
+	a& {
+		display: block;
+		text-align: center;
+		font-family: "Nokia", var(--font);
+		font-size: 0.9em;
+		background-color: var(--bg);
+		border: var(--border-width) solid var(--text);
+		padding: 0.25em 0.75em;
+		text-decoration: none;
+	}
 }
 
 /* Video blocks */
