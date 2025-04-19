@@ -101,9 +101,12 @@
 		{/block:JumpPagination}
 		{block:NextPage}<a href="{NextPage}" id="next">Next</a>{/block:NextPage}
 	</nav>{/block:Pagination}
-
 </main>
 
+<footer id="options">
+	<button href="#top" id="scrolltotop" disabled>Back to top</button>
+	{block:IfPaletteToggle}<button id="palette">Toggle palette</button>{/block:IfPaletteToggle}
+</footer>
 
 <template id="filtermessage">
 	<div class="filter">

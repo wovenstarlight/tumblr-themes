@@ -17,11 +17,59 @@ a { color: var(--accent) }
 	padding: 0 !important;
 	clip-path: rect(0 0 0 0);
 }
+#skip {
+	position: fixed;
+	top: 0.5em;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: var(--bg);
+	border: var(--border-width) solid var(--text);
+	padding: 0.25em 0.75em;
+	text-decoration: none;
+
+	&:not(:hover, :focus-within) {
+		top: 100vh;
+		left: 100vw;
+		clip-path: rect(0 0 0 0);
+	}
+}
 /* #endregion */
 
 /* #region Header */
 .blog-title {
 	font-weight: var(--title-font-weight);
+}
+/* #endregion */
+
+/* #region Footer */
+#options {
+	position: sticky;
+	bottom: 0.5em;
+	left: 0.5em;
+	display: flex;
+	flex-direction: column;
+	gap: 0.6em;
+	max-width: 15em;
+
+	button, label, a {
+		display: block;
+		text-align: center;
+		padding: 0.2em 0.75em;
+		color: var(--accent);
+		background-color: var(--bg);
+		border: var(--border-width) solid var(--text);
+		cursor: pointer;
+
+		&:not([disabled]):is(:hover, :focus-within) { background-color: var(--text) }
+	}
+}
+#scrolltotop {
+	transition: opacity var(--tx-time);
+
+	&[disabled] {
+		opacity: 0;
+		pointer-events: none;
+	}
 }
 /* #endregion */
 
