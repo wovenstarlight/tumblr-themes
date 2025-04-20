@@ -339,6 +339,43 @@ dialog .closebtn {
 		line-height: 1;
 	}
 }
+#notepadtabs {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	padding-inline: 4em;
+	display: flex;
+	gap: 2em;
+
+	label {
+		background-color: var(--bg);
+		color: var(--text);
+		border: var(--border-width) solid transparent;
+		padding: 0.3em 1em;
+		min-width: 5em;
+		text-align: center;
+		box-shadow: 0 0 0 var(--border-width) var(--text);
+	}
+
+	/* Extra span due to font placement issues */
+	span {
+		font-family: "Squeezed Pixels", var(--font);
+		line-height: 1;
+		position: relative;
+		top: 0.25em;
+		font-size: 1.2em;
+	}
+
+	input:checked + label {
+		background-color: var(--text);
+		color: var(--bg);
+		border-color: var(--bg);
+	}
+
+	/* Actual tab controls */
+	&:has(#tab-about:not(:checked)) ~ #about,
+	&:has(#tab-featured:not(:checked)) ~ #featured { display: none }
+}
 /* About */
 #about {
 	display: grid;
@@ -471,6 +508,14 @@ dialog .closebtn {
 		}
 	}
 
+	#notepadtabs {
+		top: 100%;
+		margin-block-start: 3em;
+
+		/* Hide if only one option */
+		&:has(label:only-of-type) { display: none }
+	}
+
 	#about {
 		grid-template-columns: 1fr;
 		grid-template-rows: auto auto 1fr;
@@ -513,6 +558,13 @@ dialog .closebtn {
 		}
 
 		h2 { padding-inline: 0.2em }
+	}
+
+	#notepadtabs {
+		bottom: 100%;
+		margin-block-end: calc(1.75 * var(--border-width));
+
+		label { border-block-end-width: 0 }
 	}
 
 	#about {
