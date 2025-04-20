@@ -121,8 +121,7 @@
 
 	<nav id="blognav">
 		{block:HideTitle}{block:HideAvatar}<a href="/">{lang:Home}</a>{/block:HideAvatar}{/block:HideTitle}
-		<!-- TODO: Add notepad-styled about modal and attach it to this button -->
-		<button id="openabout">{lang:About}</button>
+		{block:Description}{block:ShowDescription}<button id="openabout">{lang:About}</button>{/block:ShowDescription}{/block:Description}
 		{block:AskEnabled}<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}">{AskLabel}</a>{/block:AskEnabled}
 		{block:SubmissionsEnabled}<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
 		{block:IfRandomPostLink}<a href="/random" class="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
@@ -211,6 +210,29 @@
 		<!-- #endregion -->
 	</nav>
 
+	{block:Description}{block:ShowDescription}
+	<dialog id="about">
+		<h2>{lang:About}</h2>
+		<img src="{PortraitURL-128}" class="{AvatarShape}{block:IfAvatarBorder} border{/block:IfAvatarBorder}" />
+		<div id="description">{Description}</div>
+
+		<button class="closebtn">
+			<span class="visually-hidden">Close</span>
+			<svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" viewBox="0 0 5 5" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+				<rect x="0" y="0" width="1" height="1" />
+				<rect x="1" y="1" width="1" height="1" />
+				<rect x="2" y="2" width="1" height="1" />
+				<rect x="3" y="3" width="1" height="1" />
+				<rect x="4" y="4" width="1" height="1" />
+				<rect x="0" y="4" width="1" height="1" />
+				<rect x="1" y="3" width="1" height="1" />
+				<rect x="3" y="1" width="1" height="1" />
+				<rect x="4" y="0" width="1" height="1" />
+			</svg>
+		</button>
+	</dialog>
+	{/block:ShowDescription}{/block:Description}
+
 	{block:IfSearchBar}
 	<!-- SEARCH BAR -->
 	<form action="/search" method="get" id="search">
@@ -232,7 +254,7 @@
 	</section>
 
 	<dialog id="lightbox">
-		<button id="close">
+		<button class="closebtn">
 			<span class="visually-hidden">Close</span>
 			<svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" viewBox="0 0 5 5" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
 				<rect x="0" y="0" width="1" height="1" />
@@ -591,25 +613,6 @@ lightbox.addEventListener("keydown", e => {
 			break;
 	}
 });
-// Set up lightbox closure on button click
-document.getElementById("close").addEventListener("click", () => lightbox._close());
-document.getElementById("close").addEventListener("keydown", (e) => e.key === "Enter" || e.key === " " ? lightbox._close() : null);
-// Set up lightbox closure on ::backdrop click
-lightbox.addEventListener("mousedown", e => {
-	e.currentTarget._offsetX = e.offsetX;
-	e.currentTarget._offsetY = e.offsetY;
-});
-lightbox.addEventListener("click", e => {
-	if ((
-		e.currentTarget._offsetX < 0 || e.currentTarget._offsetX > e.target.offsetWidth ||
-		e.currentTarget._offsetY < 0 || e.currentTarget._offsetY > e.target.offsetHeight
-	) && (
-		e.offsetX < 0 || e.offsetX > e.target.offsetWidth ||
-		e.offsetY < 0 || e.offsetY > e.target.offsetHeight
-	)) {
-		lightbox._close();
-	}
-});
 // #endregion
 // #endregion
 
@@ -830,7 +833,40 @@ if (posts.at(0)?.postNotes) {
 // #endregion
 
 // #region Remaining page functionality (base features)
-// TODO: Any toggling of search bar/sidebar, resizing of top nav etc.
+/*{block:Description}{block:ShowDescription}*/
+document.getElementById("openabout").addEventListener("click", () => document.getElementById("about").showModal());
+/*{/block:ShowDescription}{/block:Description}*/
+
+// #region Dialog closure
+// Set up closure on button click
+document.querySelectorAll("dialog .closebtn").forEach(btn => {
+	const dialog = btn.closest("dialog");
+	btn.addEventListener("click", (e) => (
+		dialog._close ? dialog._close() : dialog.close()
+	));
+	btn.addEventListener("keydown", (e) => e.key === "Enter" || e.key === " " ? (
+		dialog._close ? dialog._close() : dialog.close()
+	) : null);
+})
+// Set up closure on ::backdrop click
+document.querySelectorAll("dialog").forEach(dialog => {
+	dialog.addEventListener("mousedown", e => {
+		e.currentTarget._offsetX = e.offsetX;
+		e.currentTarget._offsetY = e.offsetY;
+	});
+	dialog.addEventListener("click", e => {
+		if ((
+			e.currentTarget._offsetX < 0 || e.currentTarget._offsetX > e.target.offsetWidth ||
+			e.currentTarget._offsetY < 0 || e.currentTarget._offsetY > e.target.offsetHeight
+		) && (
+			e.offsetX < 0 || e.offsetX > e.target.offsetWidth ||
+			e.offsetY < 0 || e.offsetY > e.target.offsetHeight
+		)) {
+			dialog._close ? dialog._close() : dialog.close();
+		}
+	});
+});
+// #endregion
 // #endregion
 
 // #region Remaining page functionality (accessibility features)
