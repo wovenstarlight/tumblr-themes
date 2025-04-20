@@ -266,7 +266,7 @@
 
 	{block:IfSearchBar}
 	<!-- SEARCH BAR -->
-	<form action="/search" method="get" id="search">
+	<form action="/search" method="get" id="search" {block:HideFromSearchEnabled}disabled hidden{/block:HideFromSearchEnabled}>
 		<i class="ph-magnifying-glass"></i>
 		<label for="q" class="visually-hidden">{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
 		<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}"/>
