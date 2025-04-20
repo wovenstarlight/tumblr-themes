@@ -281,6 +281,46 @@
 <main id="main">
 
 	<section id="posts">
+		{block:HomePage}
+		{block:Hidden}<!-- STANDARD PAGE HEADER -->{/block:Hidden}
+		<hgroup class="page title visually-hidden"><h2>{lang:Posts}</h2></hgroup>
+		{/block:HomePage}
+
+		{block:PermalinkPage}
+		{block:Hidden}<!-- SPECIAL PAGE HEADER: PERMALINK. also includes ask and submit pages -->{/block:Hidden}
+		<hgroup class="page title visually-hidden"><h2>
+			{block:AskPage}<span class="ask">{AskLabel}</span>{/block:AskPage}
+			{block:SubmitPage}<span class="submit">{SubmitLabel}</span>{/block:SubmitPage}
+			<span class="permalink">{lang:Permalink}</span>
+		</h2></hgroup>
+		{/block:PermalinkPage}
+
+		{block:TagPage}
+		{block:Hidden}<!-- PAGE HEADER: TAG -->{/block:Hidden}
+		<hgroup class="page title">
+			<h2>{lang:TagResultCount posts tagged Tag 2}</h2>
+			<p>
+				<a href="/tagged/{URLSafeTag}">Newest first</a>
+				<a href="/tagged/{URLSafeTag}/chrono">Oldest first</a>
+			</p>
+		</hgroup>
+		{/block:TagPage}
+		
+		{block:DayPage}
+		{block:Hidden}<!-- PAGE HEADER: DAY -->{/block:Hidden}
+		<hgroup class="page title"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></hgroup>
+		{/block:DayPage}
+		
+		{block:SearchPage}
+		{block:Hidden}<!-- PAGE HEADER: SEARCH -->{/block:Hidden}
+		<hgroup class="page title">
+			<h2>
+				{lang:SearchResultCount results for SearchQuery 2}
+				{block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}
+			</h2>
+		</hgroup>
+		{/block:SearchPage}
+
 		<noscript><article><p>Javascript is required to view this blog. Please enable scripting and reload.</p></article></noscript>
 	</section>
 

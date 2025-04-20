@@ -615,6 +615,35 @@ dialog .closebtn {
 	body.sidebarleft & { grid-column: 2 }
 	body.sidebarright & { grid-column: 1 }
 }
+.page.title {
+	h2 { margin-block: 0 }
+
+	/* Hide duplicate title on permalink pages */
+	:is(.ask, .submit) ~ .permalink { display: none }
+	
+	.tag, .search_query { color: var(--accent) }
+	
+	.tag::before { content: "#" }
+	.search_query::before, .search_query::after {
+		content: '"';
+		color: var(--text);
+	}
+	
+	p:has(a) {
+		display: flex;
+		text-align: center;
+		justify-content: center;
+		gap: 1em;
+	}
+	
+	a {
+		border: var(--border-width) solid var(--text);
+		padding: 0.25em 0.75em;
+		text-decoration: none;
+		
+		&:hover, &:focus { background-color: var(--text) }
+	}
+}
 /* Skip to content link */
 #skip {
 	position: fixed;
