@@ -954,150 +954,13 @@ body:has(dialog[open]) { overflow: hidden }
 	}
 }
 
-/* TODO: Choose one of the following */
-/* #region Default Tumblr audio block */
-.audiowrapper {
-	--box: 5.3125em;
-	background-color: var(--accent);
-	color: var(--bg);
-	display: grid;
-	grid-template-columns: 1fr auto;
-	min-height: var(--box);
-
-	.left {
-		position: relative;
-		display: grid;
-		grid-template-columns: var(--box) 1fr;
-	}
-	.textinfo {
-		display: flex;
-		flex-direction: column;
-		line-height: 1;
-		align-self: center;
-		gap: 0.4em;
-	}
-	.trackname { font-weight: 700 }
-	.artist, .album { font-size: 0.875em }
-	.buttons {
-		align-self: center;
-		justify-self: center;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		font: inherit;
-		padding: 0.1em;
-		border: none;
-		background-color: transparent;
-		color: inherit;
-		position: relative;
-		z-index: 2;
-		cursor: pointer;
-	}
-	audio,
-	audio.playing ~ .left .buttons .play,
-	audio:not(.playing) ~ .left .buttons .pause {
-		display: none;
-	}
-	.albumart {
-		width: var(--box);
-		height: max(var(--box), 100%);
-		object-fit: cover;
-	}
-}
-
-/* Seekbar styling */
-.seekbar {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	background-color: transparent;
-	-webkit-appearance: none;
-	--progress-bg: rgb(from var(--bg) r g b / 0.15);
-
-	&:focus { outline: none }
-
-	&::before {
-		content: "";
-		background-color: var(--progress-bg);
-		display: block;
-		height: 100%;
-		width: var(--progress-width);
-		position: absolute;
-		top: 0;
-		left: 0;
-	}
-
-	&::-webkit-slider-runnable-track {
-		background: transparent;
-		border: 0;
-		width: 100%;
-		height: 100%;
-		cursor: pointer;
-	}
-	&::-webkit-slider-thumb {
-		width: 0px;
-		height: 0px;
-		border: 0;
-		cursor: pointer;
-		-webkit-appearance: none;
-	}
-
-	&::-moz-range-track {
-		background: transparent;
-		border: 0;
-		width: 100%;
-		height: 100%;
-		cursor: pointer;
-	}
-	&::-moz-range-thumb {
-		width: 0px;
-		height: 0px;
-		border: 0;
-		cursor: pointer;
-	}
-	&::-moz-range-progress {
-		background-color: var(--progress-bg);
-		height: 100%;
-	}
-
-	&::-ms-track {
-		background: transparent;
-		border-color: transparent;
-		border-width: 0 0;
-		color: transparent;
-		width: 100%;
-		height: 100%;
-		cursor: pointer;
-	}
-	&::-ms-fill-lower {
-		background: var(--progress-bg);
-		border: 0;
-	}
-	&::-ms-fill-upper {
-		background: transparent;
-		border: 0;
-	}
-	&::-ms-thumb {
-		width: 0px;
-		height: 0px;
-		border: 0;
-		cursor: pointer;
-		margin-top: 0px;
-		/* Needed to keep the Edge thumb centered */
-	}
-}
-/* #endregion */
-
 /* #region Custom audio block */
 .audiowrapper {
-	background-color: var(--bg);
-	color: var(--text);
+	border: calc(3 * var(--border-width)) double var(--text);
 	display: flex;
 	flex-direction: column;
+	font-family: "Nokia", var(--font);
+	font-size: 0.9em;
 
 	.top {
 		display: flex;
@@ -1109,31 +972,39 @@ body:has(dialog[open]) { overflow: hidden }
 	.hasart {
 		background-position: center;
 		background-size: cover;
+		background-repeat: no-repeat;
 
 		.top {
 			backdrop-filter: blur(1em);
-			background-color: rgb(from var(--bg) r g b / 0.75);
+			background-color: rgb(from var(--bg) r g b / 0.8);
 		}
 	}
 	.albumart {
 		--size: 5em;
 		max-width: var(--size);
 		max-height: var(--size);
-		border-radius: 100%;
 	}
 	.textinfo {
+		color: var(--accent);
+		letter-spacing: 0.05ch;
 		display: flex;
 		flex-direction: column;
-		line-height: 1;
 		align-self: center;
 		gap: 0.4em;
 
 		&:empty { display: none }
 	}
-	.trackname { font-weight: 700 }
 	.artist, .album { font-size: 0.875em }
+	.bottom {
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		align-items: center;
+		padding: 0.75em 1em;
+		gap: 1em;
+
+		.total.time { justify-self: end }
+	}
 	.buttons {
-		padding-block: 0.75em;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -1152,35 +1023,33 @@ body:has(dialog[open]) { overflow: hidden }
 			font: inherit;
 			font-size: 1.25em;
 			border: none;
-			border-radius: 100%;
 			background-color: transparent;
 			color: inherit;
 
-			&:hover {
-				color: rgb(from var(--text) r g b / 0.5);
-				text-shadow: 0 0 var(--accent);
-			}
-
+			&:hover { color: color-mix(in srgb, var(--text) 40%, var(--accent)) }
 			&.active { color: var(--accent) }
 		}
-
 		.playpause {
-			background-color: var(--text);
-			color: var(--bg);
+			border: var(--border-width) solid var(--text);
+			color: var(--accent);
 			margin-inline: 0.25em;
-
+			padding: 0.55em;
 			&:hover {
-				color: var(--bg);
-				text-shadow: unset;
-				background-color: var(--accent);
-				background-image: linear-gradient(rgb(from var(--text) r g b / 0.75), rgb(from var(--text) r g b / 0.75))
+				background-color: var(--text);
+				color: var(--accent);
 			}
 		}
 	}
+	
+	svg {
+		width: 0.8em;
+		height: auto;
+		&.repeat, &.unrepeat { font-size: 1.25em }
+	}
 
 	audio,
-	audio.playing ~ .buttons .play,
-	audio:not(.playing) ~ .buttons .pause,
+	audio.playing ~ .bottom .buttons .play,
+	audio:not(.playing) ~ .bottom .buttons .pause,
 	.volume.active .mute,
 	.volume:not(.active) .unmute,
 	.loop.active .repeat,
@@ -1192,11 +1061,11 @@ body:has(dialog[open]) { overflow: hidden }
 /* Seekbar styling */
 .seekbar {
 	width: 100%;
-	height: 0.5em;
+	height: calc(3 * var(--border-width));
 	margin: 0;
-	background-color: rgb(from var(--text) r g b / 0.15);
+	background-color: rgb(from var(--accent) r g b / 0.15);
 	-webkit-appearance: none;
-	--progress-bg: var(--accent);
+	--progress-bg: var(--text);
 	position: relative;
 
 	&:focus { outline: none }

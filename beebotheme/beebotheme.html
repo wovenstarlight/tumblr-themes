@@ -1827,11 +1827,8 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 		case "audio":
 			// Soundcloud links keep throwing 401 errors for some reason, so exclude
 			if (curr.media && curr.provider !== "soundcloud") {
-				// Use media object to display default Tumblr audio player
-				bit = createTumblrAudio(curr);
-
-				// ...or, display a custom player with more options
-				// bit = createCustomAudio(curr);
+				// Display a custom player with more options
+				bit = createCustomAudio(curr);
 			}
 			// TODO: else if client side SDK... need examples of metadata object
 			// If embeds are present, use those
@@ -2020,119 +2017,6 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 }
 
 /** Helper function for createContentBlock, specifically for audio content blocks.
- * Renders an audio player in the style of default Tumblr audio players, with basic pause and play functionality.
- * @param {Object} npf The NPF object with links to and data on the audio file.
- * @param {Object} [defaultIcons={}] HTML strings representing the icons to use for the audio player.
- * @param {string} defaultIcons.play The icon to use as the "play" (⏵︎) button.
- * @param {string} defaultIcons.pause The icon to use as the "pause" (⏸︎) button.
- * @returns {HTMLElement} The complete audio element with attached event listeners.
- */
-function createTumblrAudio(npf, defaultIcons = {}) {
-	// #region Basic blocks setup: icons, audio wrapper, and audio
-	let icons = Object.assign({
-		play: '<svg class="play" height="1.5em" fill="currentColor" viewBox="18 15 13 16"><path d="M30.592 23.578L19.52 30.3a1 1 0 0 1-1.52-.854V16a1 1 0 0 1 1.519-.855l11.073 6.723a1 1 0 0 1 0 1.71z"></path></svg>',
-		pause: '<svg class="pause" height="1.5em" fill="currentColor" viewBox="0 0 24 24"><rect width="4" height="16" x="15" y="4" rx="1"></rect><rect width="4" height="16" x="5" y="4" rx="1"></rect></svg>',
-	}, defaultIcons);
-
-	wrapper = document.createElement("div");
-	wrapper.classList.add("audiowrapper");
-
-	let audio = document.createElement("audio");
-	audio.src = npf.media.url;
-	audio.preload = "metadata";
-	// #endregion
-
-	// #region Left side: play/pause buttons, title/artist/album info, and seekbar
-	let left = document.createElement("div");
-	left.classList.add("left");
-
-	let playPause = document.createElement("button");
-	playPause.classList.add("buttons");
-	playPause.innerHTML = icons.play + icons.pause;
-
-	let textInfo = document.createElement("div");
-	textInfo.classList.add("textinfo");
-	if (npf.title) { textInfo.innerHTML += `<span class="trackname">${npf.title}</span>` }
-	if (npf.artist) { textInfo.innerHTML += `<span class="artist">${npf.artist}</span>` }
-	if (npf.album) { textInfo.innerHTML += `<span class="album">${npf.album}</span>` }
-
-	let seekbar = document.createElement("input");
-	seekbar.type = "range";
-	seekbar.min = 0;
-	seekbar.setAttribute("value", "0");
-	seekbar.max = 100;
-	seekbar.classList.add("seekbar");
-	// #endregion
-
-	// #region Preload data and set up interactive elements
-	// #region Audio length and ending check
-	audio.addEventListener("loadedmetadata", () => {
-		seekbar.setAttribute("max", audio.duration);
-	});
-	audio.addEventListener("ended", () => {
-		if (!audio.loop) { audio.classList.remove("playing") }
-		currentlyPlaying = null;
-	})
-	// #endregion
-	// #region Play/pause
-	playPause.addEventListener("click", () => {
-		// Pause any other audio on the page
-		if (currentlyPlaying !== null && currentlyPlaying !== audio) {
-			currentlyPlaying.pause();
-			currentlyPlaying.classList.remove("playing");
-			cancelAnimationFrame(rAF); // in case the previous one had an rAF going on
-		}
-		// Play/pause current audio as necessary
-		if (audio.classList.contains("playing")) {
-			currentlyPlaying = null;
-			audio.pause();
-			cancelAnimationFrame(rAF);
-		} else {
-			currentlyPlaying = audio;
-			audio.play();
-			requestAnimationFrame(whilePlaying);
-		}
-		audio.classList.toggle("playing");
-	})
-	// #endregion
-	// #region Seekbar
-	const whilePlaying = () => {
-		seekbar.value = Math.floor(audio.currentTime);
-		seekbar.style.setProperty("--progress-width", `${(audio.currentTime / audio.duration) * 100}%`);
-		rAF = requestAnimationFrame(whilePlaying);
-	}
-	seekbar.addEventListener("input", () => {
-		if (!audio.paused) {
-			cancelAnimationFrame(rAF);
-		}
-	});
-	seekbar.addEventListener("change", () => {
-		audio.currentTime = seekbar.value;
-		seekbar.style.setProperty("--progress-width", `${(audio.currentTime / audio.duration) * 100}%`);
-		if (!audio.paused) {
-			requestAnimationFrame(whilePlaying);
-		}
-	});
-	// #endregion
-	// #endregion
-
-	left.append(playPause, textInfo, seekbar);
-	
-	wrapper.append(audio, left);
-
-	// Add album art, if any
-	if (npf.poster) {
-		let art = document.createElement("img");
-		art.classList.add("albumart");
-		art.src = npf.poster[0].url;
-		art.width = npf.poster[0].width;
-		art.height = npf.poster[0].height;
-		wrapper.append(art);
-	}
-
-	return wrapper;
-}
-/** Helper function for createContentBlock, specifically for audio content blocks.
  * Renders an audio player in a custom style, with pause/play, skip to start/end, muting, and looping functionality.
  * @param {Object} npf The NPF object with links to and data on the audio file.
  * @param {Object} [defaultIcons={}] HTML strings representing the icons to use for the audio player.
@@ -2150,15 +2034,91 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	// #region Basic blocks setup: icons, audio wrapper, and audio
 	// Uses Phosphor icons by default
 	// All icons need matching classes, except for skip to start/end
-	let icons = Object.assign({
-		play: '<i class="play ph ph-play"></i>',
-		pause: '<i class="pause ph ph-pause"></i>',
-		toStart: '<i class="ph ph-skip-back"></i>',
-		toEnd: '<i class="ph ph-skip-forward"></i>',
-		mute: '<i class="mute ph ph-speaker-simple-high"></i>',
-		unmute: '<i class="unmute ph ph-speaker-simple-slash"></i>',
-		repeat: '<i class="repeat ph ph-repeat"></i>',
-		unrepeat: '<i class="unrepeat ph ph-repeat-once"></i>',
+	let audicons = Object.assign({
+		play: `<svg class="play" xmlns="http://www.w3.org/2000/svg" width="6" height="9" viewBox="0 0 6 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+			<rect x="0" y="0" width="2" height="9" />
+			<rect x="1" y="1" width="2" height="7" />
+			<rect x="2" y="2" width="2" height="5" />
+			<rect x="3" y="3" width="2" height="3" />
+			<rect x="4" y="4" width="2" height="1" />
+		</svg>`,
+		pause: `<svg class="pause" xmlns="http://www.w3.org/2000/svg" width="6" height="9" viewBox="0 0 6 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+			<rect x="0" y="0" width="2" height="9" />
+			<rect y="0" width="2" height="9" x="4" />
+		</svg>`,
+		toStart: `<svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+			<rect x="0" y="0" width="2" height="9" />
+			<rect x="3" y="4" width="2" height="1" />
+			<rect x="4" y="3" width="2" height="3" />
+			<rect x="5" y="2" width="2" height="5" />
+			<rect x="6" y="1" width="2" height="7" />
+			<rect x="7" y="0" width="2" height="9" />
+		</svg>`,
+		toEnd: `<svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+			<rect x="0" y="0" width="2" height="9" />
+			<rect x="1" y="1" width="2" height="7" />
+			<rect x="2" y="2" width="2" height="5" />
+			<rect x="3" y="3" width="2" height="3" />
+			<rect x="4" y="4" width="2" height="1" />
+			<rect x="7" y="0" width="2" height="9" />
+		</svg>`,
+		mute: `<svg class="mute" xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+			<rect x="0" y="3" width="3" height="3" />
+			<rect x="2" y="2" width="2" height="5" />
+			<rect x="3" y="1" width="2" height="7" />
+			<rect x="4" y="0" width="1" height="9" />
+
+			<rect x="6" y="3" width="1" height="3" />
+			<rect x="8" y="1" width="1" height="7" />
+		</svg>`,
+		unmute: `<svg class="unmute" xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+			<rect x="0" y="3" width="3" height="3" />
+			<rect x="2" y="2" width="2" height="5" />
+			<rect x="3" y="1" width="2" height="7" />
+			<rect x="4" y="0" width="1" height="9" />
+
+			<rect x="6" y="3" width="1" height="1" />
+			<rect x="8" y="3" width="1" height="1" />
+			<rect x="7" y="4" width="1" height="1" />
+			<rect x="6" y="5" width="1" height="1" />
+			<rect x="8" y="5" width="1" height="1" />
+		</svg>`,
+		repeat: `<svg class="repeat" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+			<rect x="0" y="3" width="1" height="5" />
+			<rect x="1" y="2" height="1" width="5" />
+			<rect x="5" y="1" width="1" height="2" />
+			<rect x="4" y="0" width="1" height="1" />
+			<rect x="10" y="3" width="1" height="5" />
+			<rect x="5" y="8" height="1" width="5" />
+			<rect x="5" y="8" width="1" height="2" />
+			<rect x="6" y="10" width="1" height="1" />
+			<rect x="0" y="10" width="1" height="1" />
+			<rect x="1" y="9" width="1" height="1" />
+			<rect x="2" y="8" width="1" height="1" />
+			<rect x="3" y="7" width="1" height="1" />
+			<rect x="4" y="6" width="1" height="1" />
+			<rect x="5" y="5" width="1" height="1" />
+			<rect x="6" y="4" width="1" height="1" />
+			<rect x="7" y="3" width="1" height="1" />
+			<rect x="8" y="2" width="1" height="1" />
+			<rect x="9" y="1" width="1" height="1" />
+			<rect x="10" y="0" width="1" height="1" />
+			</svg>`,
+		unrepeat: `<svg class="unrepeat" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+			<rect x="1" y="8" width="2" height="1"/>
+			<rect x="0" y="3" width="1" height="5"/>
+			<rect x="1" y="2" width="6" height="1"/>
+			<rect x="5" y="1" width="1" height="3"/>
+			<rect x="4" y="0" width="1" height="1"/>
+			<rect x="4" y="4" width="1" height="1"/>
+
+			<rect x="8" y="2" width="2" height="1"/>
+			<rect x="10" y="3" width="1" height="5"/>
+			<rect x="4" y="8" width="6" height="1"/>
+			<rect x="5" y="7" width="1" height="3"/>
+			<rect x="6" y="6" width="1" height="1"/>
+			<rect x="6" y="10" width="1" height="1"/>
+		</svg>`,
 	}, defaultIcons);
 
 	wrapper = document.createElement("div");
@@ -2209,37 +2169,36 @@ function createCustomAudio(npf, defaultIcons = {}) {
 	seekbar.max = 100;
 	seekbar.classList.add("seekbar");
 
+	let bottom = document.createElement("div");
+	bottom.classList.add("bottom");
 	let buttons = document.createElement("div");
 	buttons.classList.add("buttons");
 
 	let playPause = document.createElement("button");
 	playPause.classList.add("playpause");
-	playPause.innerHTML = icons.play + icons.pause;
-	let times = document.createElement("span"),
-		currTime = document.createElement("span"),
+	playPause.innerHTML = audicons.play + audicons.pause;
+	let currTime = document.createElement("span"),
 		totalTime = document.createElement("span");
 	currTime.innerText = "0:00";
 	totalTime.innerText = "0:00";
-	times.classList.add("times");
-	currTime.classList.add("current");
-	totalTime.classList.add("total");
-	times.append(currTime, " / ", totalTime);
+	currTime.classList.add("current", "time");
+	totalTime.classList.add("total", "time");
 	let skipStart = document.createElement("button");
 	skipStart.classList.add("skipstart");
-	skipStart.innerHTML = icons.toStart;
+	skipStart.innerHTML = audicons.toStart;
 	let skipEnd = document.createElement("button");
 	skipEnd.classList.add("skipend");
-	skipEnd.innerHTML = icons.toEnd;
+	skipEnd.innerHTML = audicons.toEnd;
 	let volume = document.createElement("button");
 	volume.classList.add("volume");
-	volume.innerHTML = icons.mute + icons.unmute;
+	volume.innerHTML = audicons.mute + audicons.unmute;
 	let loop = document.createElement("button");
 	loop.classList.add("loop");
-	loop.innerHTML = icons.repeat + icons.unrepeat;
+	loop.innerHTML = audicons.repeat + audicons.unrepeat;
 
 	buttons.append(volume, skipStart, playPause, skipEnd, loop);
-
-	wrapper.append(seekbar, times, buttons);
+	bottom.append(currTime, buttons, totalTime);
+	wrapper.append(seekbar, bottom);
 	// #endregion
 
 	// #region Preload data and set up interactive elements
