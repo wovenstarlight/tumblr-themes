@@ -677,12 +677,34 @@ dialog .closebtn {
 		--avatar-size: 4.25em;
 	}
 
-	&.filtered .filter ~ * { display: none }
+	/* Filtered posts */
+	&.filtered {
 
-	.body {
-		display: flex;
-		flex-direction: column;
-		gap: 1em;
+		.filter ~ * { display: none }
+
+		.filter {
+			border: calc(3 * var(--border-width)) double var(--text);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 1em;
+			gap: 0.75em;
+		}
+		
+		p { margin: 0 }
+		
+		.tags { color: var(--accent) }
+		
+		button {
+			border: var(--border-width) solid var(--text);
+			background-color: var(--bg);
+			color: var(--accent);
+			padding: 0.5em 1em;
+			cursor: pointer;
+			
+			&:hover, &:focus { background-color: var(--text) }
+		}
 	}
 }
 
