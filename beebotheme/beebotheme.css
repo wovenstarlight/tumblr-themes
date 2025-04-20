@@ -652,10 +652,12 @@ dialog .closebtn {
 	--post-content-spacing: 0.5em;
 
 	@container posts (max-width: 42rem) {
-		max-width: calc(34.25em + (var(--post-content-spacing) * 2));
+		max-width: calc(34.15em + (var(--post-content-spacing) * 2));
+		--avatar-size: 2.5em;
 	}
 	@container posts (min-width: 42rem) {
-		max-width: 40.35em;
+		max-width: 39.9em;
+		--avatar-size: 4.25em;
 	}
 
 	&.filtered .filter ~ * { display: none }
@@ -666,6 +668,8 @@ dialog .closebtn {
 		gap: 1em;
 	}
 }
+
+/* #region Post body */
 .bodyitem {
 	display: grid;
 	grid-template-columns: auto 1fr;
@@ -743,18 +747,15 @@ dialog .closebtn {
 	}
 
 	.avatar {
-		--size: calc(var(--base-size) + (var(--border-width) * 2));
-		width: var(--size);
-		height: var(--size);
+		width: var(--avatar-size);
+		height: var(--avatar-size);
 		border: var(--border-width) solid var(--text);
 
 		@container posts (max-width: 42rem) {
-			--base-size: 2.5em;
 			grid-row: 1;
 			grid-column: 1;
 		}
 		@container posts (min-width: 42rem) {
-			--base-size: 4.25em;
 			grid-row: 2;
 			grid-column: 1;
 		}
@@ -789,7 +790,9 @@ dialog .closebtn {
 		}
 	}
 }
+/* #endregion */
 
+/* #region Block types */
 .readmore {
 	hr& {
 		border-color: rgb(from var(--text) r g b / 0.5);
@@ -1289,6 +1292,151 @@ body:has(dialog[open]) { overflow: hidden }
 		padding: 0.5em 1em;
 		display: block;
 		border-radius: 5em;
+	}
+}
+/* #endregion */
+/* #endregion */
+
+/* #region Post footers */
+.post footer {
+	margin-block-start: calc(2.5 * var(--post-content-spacing));
+	display: flex;
+	flex-direction: column;
+	gap: var(--post-content-spacing);
+
+	@container posts (min-width: 42rem) {
+		margin-inline-start: calc(var(--avatar-size) + var(--post-content-spacing));
+	}
+	
+	p { margin: 0 }
+}
+.topbar {
+	font-family: "Squeezed Pixels", var(--font);
+	border: var(--border-width) solid var(--text);
+	display: flex;
+	
+	@container posts (max-width: 32.5rem) {
+		flex-direction: column;
+		
+		.left { justify-content: center }
+		.right { border-block-start: thin solid rgb(from var(--text) r g b / 0.3) }
+	}
+
+	.left {
+		flex-grow: 1;
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+		text-align: center;
+
+		/* Divider when there's both permalink and notes */
+		&:has(a:nth-child(2))::after {
+			content: "";
+			display: block;
+			--size: var(--border-width);
+			width: var(--size);
+			height: var(--size);
+			border-radius: 100%;
+			align-self: center;
+			background-color: var(--text);
+			order: 1;
+		}
+		:first-child { order: 0 }
+		:last-child { order: 2 }
+		
+		/* Hide when empty */
+		&:empty {
+			display: none;
+			& + .right { flex-grow: 1 }
+		}
+		
+		a {
+			position: relative;
+			top: 0.3em;
+
+			&:hover, &:focus-within { color: var(--text) }
+		}
+	}
+
+	a, button, #pinnedpost {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		padding: 0.5em;
+		
+		&.viasource {
+			img {
+				width: 1.5em;
+				height: auto;
+			}
+		}
+	}
+	.right {
+		display: flex;
+
+		a, span, button {
+			flex-grow: 1;
+			border-inline-start: thin solid rgb(from var(--text) r g b / 0.3);
+			padding-inline: 0.5em;
+
+			&:hover, &:focus-within { background-color: var(--text) }
+		}
+	}
+
+	svg {
+		width: 1.25em;
+		height: auto;
+	}
+}
+#pinnedpost {
+	color: var(--accent);
+	cursor: help;
+}
+.tagtoggle {
+	border: none;
+	background: unset;
+	color: var(--accent);
+	font-size: inherit;
+	cursor: pointer;
+	
+	&:not(.hidden) {
+		background-color: var(--text);
+		color: var(--bg);
+	}
+	
+	&:hover, &:focus { color: var(--accent) }
+}
+.customlike {
+	position: relative;
+
+	.like_button, iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: red;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+	}
+
+	.like_button:not(.liked) ~ .liked,
+	.like_button.liked ~ .like { display: none }
+}
+.tags:not([hidden]) {
+	display: flex;
+	flex-flow: row wrap;
+	gap: var(--post-content-spacing);
+
+	a {
+		border: var(--border-width) solid var(--text);
+		padding: 0.5em 0.75em;
+		font-size: 0.8em;
+		flex-grow: 1;
+		text-align: center;
+		text-decoration: none;
+		
+		&:hover, &:focus { background-color: var(--text) }
 	}
 }
 /* #endregion */

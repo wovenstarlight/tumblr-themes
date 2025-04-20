@@ -1081,15 +1081,6 @@ function createPostHeader(wrapper, postData) {
 	wrapper.append(header);
 
 	// Populate post header
-	/*{block:IfPostDates}*/
-	makeDate(header, postData, {
-		/*{block:IfDatesFormattedMonthFirst}*/dateFormat: "textMD",/*{/block:IfDatesFormattedMonthFirst}*/
-		/*{block:IfPostTimes}*/includeTime: true,/*{/block:IfPostTimes}*/
-		/*{block:If24HourTimes}*/timeFormat: "24",/*{/block:If24HourTimes}*/
-	});
-	/*{/block:IfPostDates}*/
-
-	makePin(header, postData);
 
 	makeContentSource(header, postData);
 
@@ -1104,35 +1095,43 @@ function createPostHeader(wrapper, postData) {
 function createPostFooter(wrapper, postData) {
 	let footer = document.createElement("footer");
 	wrapper.append(footer);
+
+	let topBar = document.createElement("p");
+	topBar.classList.add("topbar");
+	footer.append(topBar);
+
+	let topLeft = document.createElement("span");
+	topLeft.classList.add("left");
+	let topRight = document.createElement("span");
+	topRight.classList.add("right");
+	topBar.append(topLeft, topRight);
+
+	// Date
+	/*{block:IfPostDates}*/
+	makeDate(topLeft, postData, {
+		/*{block:IfDatesFormattedMonthFirst}*/dateFormat: "textMD",/*{/block:IfDatesFormattedMonthFirst}*/
+		/*{block:IfPostTimes}*/includeTime: true,/*{/block:IfPostTimes}*/
+		/*{block:If24HourTimes}*/timeFormat: "24",/*{/block:If24HourTimes}*/
+	});
+	/*{/block:IfPostDates}*/
 	
-	// Populate post footer
-	let vsn = document.createElement("span");
-	vsn.classList.add("vsn");
-	footer.append(vsn);
-	makeNoteCount(vsn, postData);
-	makeViaSource(vsn, postData);
-
-	if (
-		/*{block:IfLikeButtons}*/true/*{/block:IfLikeButtons}{block:IfNotLikeButtons}*/false/*{/block:IfNotLikeButtons}*/ ||
-		/*{block:IfReblogButtons}*/true/*{/block:IfReblogButtons}{block:IfNotReblogButtons}*/false/*{/block:IfNotReblogButtons}*/ ||
-		/*{block:IfDayPageLinks}*/true/*{/block:IfDayPageLinks}{block:IfNotDayPageLinks}*/false/*{/block:IfNotDayPageLinks}*/
-	) {
-		let lrd = document.createElement("span"),
-			lrdwrapper = document.createElement("span");
-		lrd.classList.add("lrd");
-		lrdwrapper.classList.add("wrapper");
-		footer.append(lrd);
-		lrd.append(lrdwrapper);
-		/*{block:IfLikeButtons}*/makeLike(lrdwrapper, postData);/*{/block:IfLikeButtons}*/
-		/*{block:IfReblogButtons}*/makeReblog(lrdwrapper, postData);/*{/block:IfReblogButtons}*/
-		/*{block:IfDayPageLinks}*/makeDayLink(lrdwrapper, postData);/*{/block:IfDayPageLinks}*/
-	}
-
+	// Notes
+	makeNoteCount(topLeft, postData, true);
+	
+	// Icons
+	makePin(topRight, postData);
+	
+	makeViaSource(topRight, postData, true);
+	
+	/*{block:IfDayPageLinks}*/makeDayLink(topRight, postData);/*{/block:IfDayPageLinks}*/
 	/*{block:IfPostTags}*/
-	/*{block:IfShowTagsOnClick}*/makeTagToggle(footer, /*{/block:IfShowTagsOnClick}*/
-		makeTags(footer, postData)
+	/*{block:IfShowTagsOnClick}*/makeTagToggle(topRight, /*{/block:IfShowTagsOnClick}*/
+		makeTags(footer, postData, { hashtags: false })
 	/*{block:IfShowTagsOnClick}*/);/*{/block:IfShowTagsOnClick}*/
 	/*{/block:IfPostTags}*/
+	/*{block:IfReblogButtons}*/makeReblog(topRight, postData);/*{/block:IfReblogButtons}*/
+	/*{block:IfLikeButtons}*/makeLike(topRight, postData);/*{/block:IfLikeButtons}*/
+
 }
 
 // #region Helpers
@@ -1202,7 +1201,7 @@ function makeDayLink(wrapper, postData) {
 	// Functionality
 	tagToggle.addEventListener("click", e => {
 		e.currentTarget.classList.toggle("hidden");
-		tagContainer.classList.toggle("hidden");
+		tagContainer.toggleAttribute("hidden");
 	});
 
 	// Icon and text
@@ -1235,6 +1234,8 @@ function makeViaSource(wrapper, postData, avatars = false) {
 	// Via and source links
 	let via = document.createElement("a"),
 		source = document.createElement("a");
+	via.classList.add("viasource");
+	source.classList.add("viasource");
 
 	// Add via
 	via.href = postData.via.url;
@@ -1298,7 +1299,8 @@ function makeTags(wrapper, postData, tagOptions = {}) {
 	}, tagOptions);
 	// Make element
 	let tags = document.createElement(options.span ? "span" : "p");
-	tags.classList.add("tags" /*{block:IfShowTagsOnClick}*/, "hidden"/*{/block:IfShowTagsOnClick}*/ );
+	tags.classList.add("tags");
+	/*{block:IfShowTagsOnClick}*/tags.setAttribute("hidden", "hidden");/*{/block:IfShowTagsOnClick}*/
 	// Populate with each tag
 	postData.tags.forEach((tag, arr, index) => {
 		let a = document.createElement("a");
