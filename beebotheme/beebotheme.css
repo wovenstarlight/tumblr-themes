@@ -425,6 +425,13 @@ dialog .closebtn {
 	/* For excessive length */
 	overflow-y: scroll;
 	word-break: break-word;
+	
+	a {
+		color: var(--text);
+		text-decoration: none;
+
+		&:hover, &:focus { color: var(--bg) }
+	}
 }
 /* Featured tags */
 #featured {
