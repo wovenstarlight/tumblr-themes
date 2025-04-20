@@ -1123,6 +1123,7 @@ function createPostFooter(wrapper, postData) {
 	
 	makeViaSource(topRight, postData, true);
 	
+	/*{block:IfNotPostDates}*/makePermalink(topRight, postData);/*{/block:IfNotPostDates}*/
 	/*{block:IfDayPageLinks}*/makeDayLink(topRight, postData);/*{/block:IfDayPageLinks}*/
 	/*{block:IfPostTags}*/
 	/*{block:IfShowTagsOnClick}*/makeTagToggle(topRight, /*{/block:IfShowTagsOnClick}*/
@@ -1346,6 +1347,20 @@ function makeDate(wrapper, postData, dateOptions = {}) {
 	if (options.includeTime) {
 		date.innerText += (options.commaSeparate ? ", " : " at ").concat(postData.date[`time${options.timeFormat}`]);
 	}
+}
+
+/** Creates a permalink for a given post, without any date.
+ * @param {HTMLElement} wrapper The child element of the post to which the permalink will be added. Usually the header.
+ * @param {Object} postData This post's data, containing relevant information to create the permalink with.
+ */
+function makePermalink(wrapper, postData) {
+	let link = document.createElement("a");
+	link.href = postData.permalink;
+	link.classList.add("permalink");
+	wrapper.append(link);
+	// Icon and text
+	link.append(icons.link.cloneNode(true));
+	link.setAttribute("data-tippy-content", "{lang:Permalink}");
 }
 
 /** Creates a label indicating a given post is a submission.
