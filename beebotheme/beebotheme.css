@@ -213,6 +213,9 @@ dialog .closebtn {
 		}
 	}
 }
+#opennotepad:not(.hasdesc, .hasfeatured) {
+	&, #blognav:has(&:only-child) { display: none }
+}
 #pagination {
 	display: flex;
 	text-align: center;

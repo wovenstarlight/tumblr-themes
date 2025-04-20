@@ -864,9 +864,9 @@ if (posts.at(0)?.postNotes) {
 // #endregion
 
 // #region Remaining page functionality (base features)
-/*{block:Description}{block:ShowDescription}*/
-document.getElementById("opennotepad").addEventListener("click", () => document.getElementById("notepad").showModal());
-/*{/block:ShowDescription}{/block:Description}*/
+document.getElementById("opennotepad")?.addEventListener("click", () => document.getElementById("notepad")?.showModal());
+// Since description might be absent, force the first tab to be selected
+document.querySelector("#notepad input:first-of-type")?.setAttribute("checked", "checked");	// Null-safe for Tumblr preview
 
 // #region Dialog closure
 // Set up closure on button click
