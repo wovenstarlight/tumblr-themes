@@ -68,17 +68,16 @@
 	<!-- #endregion -->
 	{/block:Hidden}
 
-	<!-- TODO: Resource imports -->
-	<!-- Tippy.js tooltips by atomiks -->
+	{block:Hidden}<!-- Tippy.js tooltips by atomiks -->{/block:Hidden}
 	<script src="https://unpkg.com/@popperjs/core@2"></script>
 	<script src="https://unpkg.com/tippy.js@6"></script>
 
-	<!-- Standardization of theme styles -->
+	{block:Hidden}<!-- Standardization of theme styles -->{/block:Hidden}
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
 
 	{PostTypographyStyles}
 
-	<!-- Theme styles -->
+	{block:Hidden}<!-- Theme styles -->{/block:Hidden}
 	<style>
 		/* Variables */
 		html {
@@ -105,7 +104,7 @@
 
 	<style>{CustomCSS}</style>
 	
-	<!-- Keyboard navigation -->
+	{block:Hidden}<!-- Keyboard navigation -->{/block:Hidden}
 	<script src="https://wovenstarlight.github.io/tumblr-themes/keyboardnav.min.js"></script>
 </head>
 
@@ -115,7 +114,7 @@
 <a href="#main" id="skip">Skip to main content</a>
 
 {block:HideTitle}
-<!-- Accessibility: HIDDEN TITLE -->
+{block:Hidden}<!-- Accessibility: HIDDEN TITLE -->{/block:Hidden}
 <h1 class="visually-hidden">{Title}</h1>
 {/block:HideTitle}
 
@@ -135,11 +134,11 @@
 		{block:IfArchiveLink}<a href="/archive" class="archivelink">{lang:Archive}</a>{/block:IfArchiveLink}
 
 		{block:HasPages}
-		<!-- CUSTOM PAGES -->
+		{block:Hidden}<!-- CUSTOM PAGES -->{/block:Hidden}
 		{block:Pages}<a href="{URL}" class="{CurrentState}">{Label}</a>{/block:Pages}
 		{/block:HasPages}
 
-		<!-- #region PAGINATION -->
+		{block:Hidden}<!-- #region PAGINATION -->{/block:Hidden}
 		{block:Pagination}<section id="pagination">
 			<a {block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage} id="prev">
 				<span class="visually-hidden">{lang:Previous page}</span>
@@ -214,7 +213,7 @@
 				</svg>
 			</a>
 		</section>{/block:DayPagination}{/block:DayPage}
-		<!-- #endregion -->
+		{block:Hidden}<!-- #endregion -->{/block:Hidden}
 	</nav>
 
 	<dialog id="notepad">
@@ -272,7 +271,7 @@
 	</dialog>
 
 	{block:IfSearchBar}
-	<!-- SEARCH BAR -->
+	{block:Hidden}<!-- SEARCH BAR -->{/block:Hidden}
 	<form action="/search" method="get" id="search" {block:HideFromSearchEnabled}disabled hidden{/block:HideFromSearchEnabled}>
 		<i class="ph-magnifying-glass"></i>
 		<label for="q" class="visually-hidden">{block:IfSearchBarTitle}{text:Search bar title}{/block:IfSearchBarTitle}{block:IfNotSearchBarTitle}{lang:Search}{/block:IfNotSearchBarTitle}</label>
@@ -311,10 +310,10 @@
 
 <a id="credit" href="https://starlightthemes.tumblr.com/beebotheme">{lang:Install this theme}</a>
 
-<!-- #region Templates -->
+{block:Hidden}<!-- #region Templates -->{/block:Hidden}
 <template id="curlyborder">
 	<svg class="separator" xmlns="http://www.w3.org/2000/svg" width="84" height="7" viewBox="0 0 84 7" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
-		<!-- Left curly -->
+		{block:Hidden}<!-- Left curly -->{/block:Hidden}
 		<rect x="5" y="2" width="2" height="1" />
 		<rect x="7" y="1" width="1" height="1" />
 		<rect x="2" y="0" width="5" height="1" />
@@ -333,13 +332,13 @@
 		<rect x="33" y="5" width="1" height="1" />
 		<rect x="34" y="4" width="2" height="1" />
 	
-		<!-- Center circle -->
+		{block:Hidden}<!-- Center circle -->{/block:Hidden}
 		<rect x="41" y="2" width="2" height="1" />
 		<rect x="40" y="3" width="1" height="3" />
 		<rect x="43" y="3" width="1" height="3" />
 		<rect x="41" y="6" width="2" height="1" />
 	
-		<!-- Right curly -->
+		{block:Hidden}<!-- Right curly -->{/block:Hidden}
 		<rect x="77" y="2" width="2" height="1" />
 		<rect x="76" y="1" width="1" height="1" />
 		<rect x="77" y="0" width="5" height="1" />
@@ -378,7 +377,7 @@
 	</svg>
 </template>
 
-<!-- Icons below all made by me. -->
+{block:Hidden}<!-- Icons below all made by me. -->{/block:Hidden}
 <template id="icondate">
 	<svg xmlns="http://www.w3.org/2000/svg" width="11" height="9" viewBox="0 0 11 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
 		<rect x="0" y="1" width="11" height="1"/>
@@ -495,9 +494,9 @@
 		<rect x="0" y="7" width="11" height="1"/>
 	</svg>
 </template>
-<!-- #endregion -->
+{block:Hidden}<!-- #endregion -->{/block:Hidden}
 
-<!-- The actual functionality of the theme. -->
+{block:Hidden}<!-- The actual functionality of the theme. -->{/block:Hidden}
 <script>
 // #region CONSTANTS AND GLOBAL VARIABLES
 /** Information of the blog this theme is being used on. For use when this blog makes/adds to posts.
