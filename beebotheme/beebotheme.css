@@ -91,7 +91,10 @@ body {
 	}
 }
 /* Links */
-a { color: var(--accent) }
+a {
+	color: var(--accent);
+	&:not(:hover, :focus) { text-decoration: none }
+}
 /* A11y: Hidden */
 .visually-hidden {
 	position: fixed;
@@ -538,11 +541,12 @@ dialog .closebtn {
 .user {
 	display: contents;
 
-	a {
+	.usertext {
 		font-family: "Squeezed Pixels", var(--font);
 		margin-block: 0;
 		text-decoration: none;
 		color: var(--text);
+		width: fit-content;
 		
 		@container posts (max-width: 42rem) {
 			font-size: 1.25em;
