@@ -648,6 +648,8 @@ dialog .closebtn {
 		border: var(--border-width) solid var(--text);
 		padding: 0.25em 0.75em;
 		text-decoration: none;
+
+		&:is(:hover, :focus) { background-color: var(--text) }
 	}
 }
 
