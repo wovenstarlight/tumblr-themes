@@ -176,13 +176,13 @@ dialog .closebtn {
 		margin: 0;
 		font-weight: var(--title-font-weight);
 	}
-	
+
 	img {
 		display: block;
 		width: 5em;
 		height: 5em;
 		margin: 0 auto 0.5em;
-		
+
 		&.border { border: var(--border-width) solid var(--text) }
 	}
 }
@@ -235,7 +235,7 @@ dialog .closebtn {
 		&[href]:is(:hover, :focus) { background-color: var(--text) }
 		&:not([href]) { opacity: 0.25 }
 	}
-	
+
 	#prev, #next {
 		max-width: 4em;
 
@@ -244,7 +244,7 @@ dialog .closebtn {
 			width: auto;
 		}
 	}
-	
+
 	#curr {
 		background-color: var(--text);
 		color: var(--bg);
@@ -300,21 +300,21 @@ dialog .closebtn {
 	}
 }
 
-#notepad[open] {
+/* #region Notepad */
+#notepad {
 	border: calc(2 * var(--border-width)) solid var(--text);
 	background-color: var(--accent);
 	color: var(--bg);
-	display: grid;
-	grid-template-columns: auto 1fr;
-	gap: 0.5em 1.5em;
 	overflow: visible;
-	
+
+	/* Spiral binding */
 	&::before {
 		content: "";
 		display: block;
 		position: absolute;
 	}
-	
+
+	/* Notepad pages */
 	&::after {
 		content: "";
 		display: block;
@@ -327,9 +327,9 @@ dialog .closebtn {
 		border-block-start: calc(2 * var(--border-width)) solid var(--text);
 		border-block-end: calc(3 * var(--border-width)) double var(--text);
 	}
-	
+
 	&::backdrop { background-color: var(--bg) }
-	
+
 	h2 {
 		border-block-end: var(--border-width) solid var(--text);
 		grid-column: 1 / span 2;
@@ -338,38 +338,45 @@ dialog .closebtn {
 		font-weight: normal;
 		line-height: 1;
 	}
-	
-	img {
-		border: calc(4 * var(--border-width)) solid var(--text);
-		width: 9em;
-		align-self: center;
-	}
-	
-	#description {
-		height: 11em;
-		max-width: 23em;
-		line-height: 1.6em;
-		--percent: 87%;
-		background-image: linear-gradient(
-			transparent calc(var(--percent) - var(--border-width)),
-			var(--text) calc(var(--percent) - var(--border-width)),
-			var(--text) var(--percent),
-			transparent var(--percent)
-		);
-		background-size: 100% 1.6em;
-		background-position: center top !important;
-		background-attachment: local;
-		padding: 0 0.15em;
-		/* For excessive length */
-		overflow-y: scroll;
-		word-break: break-word;
-	}
+}
+/* About */
+#about {
+	display: grid;
 
-	@media (max-width: 40rem) {
-		grid-template-columns: 1fr;
+	img {
+		border: calc(3 * var(--border-width)) solid var(--text);
+		height: 10em;
+		width: 8em;
+		object-fit: cover;
+		align-self: end;
+	}
+}
+#description {
+	line-height: 1.6em;
+	--percent: 87%;
+	background-image: linear-gradient(
+		transparent calc(var(--percent) - var(--border-width)),
+		var(--text) calc(var(--percent) - var(--border-width)),
+		var(--text) var(--percent),
+		transparent var(--percent)
+	);
+	background-size: 100% 1.6em;
+	background-position: center top !important;
+	background-attachment: local;
+	padding: 0 0.15em;
+	/* For excessive length */
+	overflow-y: scroll;
+	word-break: break-word;
+}
+/* Media resizing */
+@media (max-width: 40rem) {
+	#notepad {
+		width: 100%;
 		max-width: 20em;
+		height: 100%;
+		max-height: 32.5em;
 		padding-block-start: 2em;
-		
+
 		&::before {
 			width: 100%;
 			height: 2.5em;
@@ -383,8 +390,9 @@ dialog .closebtn {
 			background-size: 1.32em 100%;
 			background-position: center;
 			top: -1.5em;
+			left: 0;
 		}
-		
+
 		h2 {
 			grid-column: 1;
 			grid-row: 2;
@@ -392,22 +400,31 @@ dialog .closebtn {
 			border-block-end: none;
 			text-decoration: var(--border-width) var(--text) solid underline;
 			text-underline-offset: 0.05em;
-			margin-block-end: 0.5em;
+			margin-block: 0.5em 1em;
 		}
+	}
+
+	#about {
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto 1fr;
+		height: 100%;
+
 		img {
 			grid-row: 1;
 			justify-self: center;
 			border-width: calc(2 * var(--border-width));
-			width: 6em;
-		}
-		#description {
-			height: 20em;
-			max-height: 40vh;
 		}
 	}
-	@media (min-width: 40rem) {
-		padding-inline-start: 2em;
-		
+}
+@media (min-width: 40rem) {
+	#notepad {
+		width: 100%;
+		height: 100%;
+		max-width: 37.5em;
+		max-height: 16em;
+		padding-inline: 2.5em 1em;
+		padding-block: 1em 1.4em;
+
 		&::before {
 			height: 100%;
 			width: 2.5em;
@@ -417,12 +434,23 @@ dialog .closebtn {
 				var(--text) 80%,
 				transparent 80%
 			);
-			background-size: 100% 1.4em;
+			background-size: 100% 1.44em;
 			background-position: center;
 			left: -1.5em;
+			top: 0;
 		}
+
+		h2 { padding-inline: 0.2em }
+	}
+
+	#about {
+		grid-template-columns: auto 1fr;
+		grid-template-rows: auto 1fr;
+		gap: 0.5em 1.5em;
+		height: 100%;
 	}
 }
+/* #endregion */
 /* #endregion */
 
 /* #region Center */
@@ -455,7 +483,7 @@ dialog .closebtn {
 	bottom: 0.5em;
 	font-size: 0.8em;
 	text-decoration: none;
-	
+
 	body.sidebarleft & {
 		left: 21vw;
 		transform: translateX(-50%);
@@ -482,7 +510,7 @@ dialog .closebtn {
 	.separator {
 		height: min(1.5em,5vmin);
 		width: auto;
-		
+
 		@container posts (min-width: 42rem) {
 			margin-block-start: 1.25em;
 			margin-inline-start: 5em;
@@ -511,7 +539,7 @@ dialog .closebtn {
 .bodyitem {
 	display: grid;
 	grid-template-columns: auto 1fr;
-	
+
 	@container posts (max-width: 42rem) {
 		gap: var(--post-content-spacing) var(--post-content-spacing);
 		align-items: center;
@@ -547,7 +575,7 @@ dialog .closebtn {
 		text-decoration: none;
 		color: var(--text);
 		width: fit-content;
-		
+
 		@container posts (max-width: 42rem) {
 			font-size: 1.25em;
 			grid-row: 1;
@@ -589,7 +617,7 @@ dialog .closebtn {
 		width: var(--size);
 		height: var(--size);
 		border: var(--border-width) solid var(--text);
-		
+
 		@container posts (max-width: 42rem) {
 			--base-size: 2.5em;
 			grid-row: 1;
@@ -756,7 +784,7 @@ body:has(dialog[open]) { overflow: hidden }
 		& > :first-child { margin-block-start: 0 }
 		& > :last-child { margin-block-end: 0 }
 	}
-	
+
 	&.complete {
 		.option {
 			color: var(--text);
