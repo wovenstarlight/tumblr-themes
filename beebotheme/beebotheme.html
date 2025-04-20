@@ -121,7 +121,7 @@
 
 	<nav id="blognav">
 		{block:HideTitle}{block:HideAvatar}<a href="/">{lang:Home}</a>{/block:HideAvatar}{/block:HideTitle}
-		{block:Description}{block:ShowDescription}<button id="opennotepad">{lang:About}</button>{/block:ShowDescription}{/block:Description}
+		<button id="opennotepad" class="{block:Description}{block:ShowDescription}hasdesc{/block:ShowDescription}{/block:Description} {block:HasFeaturedTags}hasfeatured{/block:HasFeaturedTags}">{lang:About}</button>
 		{block:AskEnabled}<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}">{AskLabel}</a>{/block:AskEnabled}
 		{block:SubmissionsEnabled}<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
 		{block:IfRandomPostLink}<a href="/random" class="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
@@ -210,11 +210,41 @@
 		<!-- #endregion -->
 	</nav>
 
-	{block:Description}{block:ShowDescription}
 	<dialog id="notepad">
-		<h2>{lang:About}</h2>
-		<img src="{PortraitURL-128}" class="{AvatarShape}{block:IfAvatarBorder} border{/block:IfAvatarBorder}" />
-		<div id="description">{Description}</div>
+		<section id="notepadtabs">
+			{block:Description}{block:ShowDescription}
+			<input type="radio" name="nbtabs" id="tab-about" class="visually-hidden" checked>
+			<label for="tab-about">{lang:About}</label>
+			{/block:ShowDescription}{/block:Description}
+
+			{block:HasFeaturedTags}
+			<input type="radio" name="nbtabs" id="tab-featured" class="visually-hidden">
+			<label for="tab-featured">{lang:Tags}</label>
+			{/block:HasFeaturedTags}
+		</section>
+
+		{block:Description}{block:ShowDescription}
+		<section id="about">
+			<h2>{Name}</h2>
+			<img src="{PortraitURL-128}" class="{AvatarShape}{block:IfAvatarBorder} border{/block:IfAvatarBorder}" />
+			<div id="description">{Description}</div>
+		</section>
+		{/block:ShowDescription}{/block:Description}
+
+		{block:HasFeaturedTags}
+		<section id="featured">
+			<h2>Featured tags</h2>
+			<ul>
+				{block:FeaturedTags}
+				<li>
+					<span class="name">{Tag}</span>
+					<a href="{TagURL}">newest first</a>
+					<a href="{TagURLChrono}">oldest first</a>
+				</li>
+				{/block:FeaturedTags}
+			</ul>
+		</section>
+		{/block:HasFeaturedTags}
 
 		<button class="closebtn">
 			<span class="visually-hidden">Close</span>
@@ -231,7 +261,6 @@
 			</svg>
 		</button>
 	</dialog>
-	{/block:ShowDescription}{/block:Description}
 
 	{block:IfSearchBar}
 	<!-- SEARCH BAR -->
@@ -861,6 +890,9 @@ document.querySelectorAll("dialog").forEach(dialog => {
 		) && (
 			e.offsetX < 0 || e.offsetX > e.target.offsetWidth ||
 			e.offsetY < 0 || e.offsetY > e.target.offsetHeight
+		) && (
+			// If this is the notepad, make sure you're not switching tabs
+			dialog.id === "notepad" ? !e.target.closest("#notepadtabs") : true
 		)) {
 			dialog._close ? dialog._close() : dialog.close();
 		}
