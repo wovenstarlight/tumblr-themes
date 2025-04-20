@@ -709,6 +709,11 @@ dialog .closebtn {
 }
 
 /* #region Post body */
+.post .body {
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
 .bodyitem {
 	display: grid;
 	grid-template-columns: auto 1fr;
@@ -1160,46 +1165,6 @@ body:has(dialog[open]) { overflow: hidden }
 		cursor: pointer;
 		margin-top: 0px;
 		/* Needed to keep the Edge thumb centered */
-	}
-}
-/* #endregion */
-
-/* #region Paywall block */
-.paywall {
-	background-color: var(--bg);
-	color: var(--text);
-	padding: 1em 5%;
-	margin-block: 1em;
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-	align-items: center;
-	gap: 1em;
-
-	&.divider {
-		padding: unset;
-		background-color: unset;
-		color: var(--color);
-		flex-direction: row;
-		gap: 0.25em;
-
-		&::before, &::after {
-			content: "";
-			flex-grow: 1;
-			display: block;
-			border: thin solid var(--color);
-		}
-	}
-
-	* { margin-block: 0 }
-	h2 { font-family: var(--font) }
-	h2, strong, a { color: var(--accent) }
-	a {
-		text-decoration: none;
-		border: solid var(--accent);
-		padding: 0.5em 1em;
-		display: block;
-		border-radius: 5em;
 	}
 }
 /* #endregion */
