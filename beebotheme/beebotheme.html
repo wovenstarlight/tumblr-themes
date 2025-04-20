@@ -1120,7 +1120,9 @@ var notesTooltipInstances, notesTooltips;
 // #endregion
 
 // Set up keyboard navigation
-keyboardNav();
+keyboardNav({
+	postOffset: 3 * em,	// Don't stick to top of page
+});
 // #endregion
 
 

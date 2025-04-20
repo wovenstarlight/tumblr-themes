@@ -690,6 +690,7 @@ dialog .closebtn {
 	gap: 2em;
 	container: posts / inline-size;
 
+	padding-block: 3em;
 	.separator {
 		height: min(1.5em,5vmin);
 		width: auto;
