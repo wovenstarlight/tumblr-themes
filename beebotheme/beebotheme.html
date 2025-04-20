@@ -3,6 +3,7 @@
 	https://github.com/tumblr/docs/blob/master/npf-spec.md
 
 	Majority of graphics recreated from the game Detective Beebo: Night at the Mansion. https://bwobbers.itch.io/detective-beebo-night-at-the-mansion
+	Tippy.js tooltips by atomiks: https://atomiks.github.io/tippyjs
 -->
 <!DOCTYPE html>
 <html lang="en" class="{select:Color palette}">
@@ -67,6 +68,9 @@
 	{/block:Hidden}
 
 	<!-- TODO: Resource imports -->
+	<!-- Tippy.js tooltips by atomiks -->
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
 
 	<!-- Standardization of theme styles -->
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
@@ -619,6 +623,15 @@ let icons = {
  * @type {number}
  */
 const em = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+/** For use with Tippy tooltips. Standard themeing for all tooltips. */
+let tippyOptions = {
+	// Basic layout
+	theme: "beebo",
+	placement: "bottom",
+	arrow: false,
+	duration: 0, // Don't fade in/out
+};
 
 // #region Lightbox setup
 /** The lightbox dialog.
@@ -1240,19 +1253,19 @@ function makeViaSource(wrapper, postData, avatars = false) {
 
 	// Add via
 	via.href = postData.via.url;
-	via.title = postData.via.label;
+	via.setAttribute("data-tippy-content", postData.via.label);
 	wrapper.append(via);
 
 	// Check if source blog/post still exists
 	let sourceTrail = postData.npf.trail[0];
 	if (sourceTrail?.blog) {
 		source.href = sourceTrail.blog.url.concat(sourceTrail.blog.url.endsWith("/") ? `post/${sourceTrail.post.id}` : `/${sourceTrail.post.id}`);
-		source.title = postData.source.label;
+		source.setAttribute("data-tippy-content", postData.source.label);
 		wrapper.append(source);
 	}
 	else if (postData.source.url !== "") {
 		source.href = postData.source.url;
-		source.title = postData.source.label;
+		source.setAttribute("data-tippy-content", postData.source.label);
 		wrapper.append(source);
 	}
 
@@ -1387,7 +1400,7 @@ function makeSubmitter(wrapper, postData, label = true, avatar = false) {
 		}
 	}
 	else {
-		sublabel.title = subData.label;
+		sublabel.setAttribute("data-tippy-attribute", subData.label);
 	}
 }
 
@@ -2466,10 +2479,27 @@ function cleanNotes() {
 			action.children[1].innerText = action.children[1].innerText.substring(0, action.children[1].innerText.length - 1)
 		}
 
+		// Replace [title] with [data-tippy-content]
+		note.querySelectorAll("[title]:not([title=''])").forEach(el => {
+			el.setAttribute("data-tippy-content", el.title);
+			el.removeAttribute("title");
+		})
+
 		// Mark note as cleaned
 		note.classList.add("cleaned");
 	})
+
+	// Create a new singleton tooltip for the full notes section
+	notesTooltipInstances = tippy("#notes [data-tippy-content]");
+	notesTooltips = tippy.createSingleton(notesTooltipInstances, tippyOptions);
 }
+/** Removes note tooltips in preparation for new set of notes to be added. */
+function tumblrNotesLoaded() {
+	// Remove the last singleton and its instances
+	notesTooltips?.destroy();
+	notesTooltipInstances?.forEach(instance => instance.destroy());
+}
+/** Cleans up notes and adds tooltips back in. */
 function tumblrNotesInserted() { cleanNotes() }
 // #endregion
 
