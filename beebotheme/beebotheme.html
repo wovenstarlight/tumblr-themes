@@ -121,7 +121,7 @@
 
 	<nav id="blognav">
 		{block:HideTitle}{block:HideAvatar}<a href="/">{lang:Home}</a>{/block:HideAvatar}{/block:HideTitle}
-		{block:Description}{block:ShowDescription}<button id="openabout">{lang:About}</button>{/block:ShowDescription}{/block:Description}
+		{block:Description}{block:ShowDescription}<button id="opennotepad">{lang:About}</button>{/block:ShowDescription}{/block:Description}
 		{block:AskEnabled}<a href="/ask" class="asklink {block:AskPage}current-page{/block:AskPage}">{AskLabel}</a>{/block:AskEnabled}
 		{block:SubmissionsEnabled}<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
 		{block:IfRandomPostLink}<a href="/random" class="randomlink">{lang:Random}</a>{/block:IfRandomPostLink}
@@ -211,7 +211,7 @@
 	</nav>
 
 	{block:Description}{block:ShowDescription}
-	<dialog id="about">
+	<dialog id="notepad">
 		<h2>{lang:About}</h2>
 		<img src="{PortraitURL-128}" class="{AvatarShape}{block:IfAvatarBorder} border{/block:IfAvatarBorder}" />
 		<div id="description">{Description}</div>
@@ -834,7 +834,7 @@ if (posts.at(0)?.postNotes) {
 
 // #region Remaining page functionality (base features)
 /*{block:Description}{block:ShowDescription}*/
-document.getElementById("openabout").addEventListener("click", () => document.getElementById("about").showModal());
+document.getElementById("opennotepad").addEventListener("click", () => document.getElementById("notepad").showModal());
 /*{/block:ShowDescription}{/block:Description}*/
 
 // #region Dialog closure

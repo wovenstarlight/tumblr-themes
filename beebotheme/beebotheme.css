@@ -300,7 +300,7 @@ dialog .closebtn {
 	}
 }
 
-#about[open] {
+#notepad[open] {
 	border: calc(2 * var(--border-width)) solid var(--text);
 	background-color: var(--accent);
 	color: var(--bg);
