@@ -688,6 +688,9 @@ dialog .closebtn {
 	align-items: center;
 	gap: 2em;
 	container: posts / inline-size;
+	--width-large: 39.9em;
+	--avatar-size-large: 4.25em;
+	--post-content-spacing: 0.5em;
 
 	padding-block: 3em;
 	.separator {
@@ -702,15 +705,14 @@ dialog .closebtn {
 }
 .post {
 	width: 100%;
-	--post-content-spacing: 0.5em;
 
 	@container posts (max-width: 42rem) {
 		max-width: calc(34.15em + (var(--post-content-spacing) * 2));
 		--avatar-size: 2.5em;
 	}
 	@container posts (min-width: 42rem) {
-		max-width: 39.9em;
-		--avatar-size: 4.25em;
+		max-width: var(--width-large);
+		--avatar-size: var(--avatar-size-large);
 	}
 
 	h3 {
@@ -735,7 +737,7 @@ dialog .closebtn {
 			align-items: center;
 			padding: 1em;
 			gap: 0.75em;
-			
+
 			@container posts (min-width: 42rem) {
 				margin-inline-start: calc(var(--avatar-size) + var(--post-content-spacing));
 			}
@@ -893,7 +895,7 @@ dialog .closebtn {
 		margin-inline: 0.3em;
 		margin-block: 1.5em;
 		position: relative;
-		
+
 		&::before {
 			content: "more";
 			color: rgb(from var(--text) r g b / 0.5);
@@ -1401,4 +1403,120 @@ body:has(dialog[open]) { overflow: hidden }
 	}
 }
 /* #endregion */
+/* #endregion */
+
+/* #region Post notes */
+#notes {
+	width: 100%;
+	max-width: var(--width-large);
+	border: calc(3 * var(--border-width)) double var(--text);
+
+	@container posts (min-width: 42rem) {
+		max-width: calc(var(--width-large) - (var(--avatar-size-large) + var(--post-content-spacing)));
+		margin-inline-start: calc(var(--avatar-size-large) + var(--post-content-spacing));
+	}
+
+	h3 {
+		text-align: center;
+		font-weight: normal;
+		margin: 1em 0;
+	}
+
+	.notes {
+		list-style: none;
+		padding: 1em;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-evenly;
+		gap: 0.75em;
+		font-family: "Squeezed Pixels", var(--font);
+	}
+
+	a:not(.more_notes_link) {
+		text-decoration: none;
+		&:hover, &:focus-within { color: var(--text) }
+	}
+
+	/* Individual notes */
+	li {
+		display: grid;
+		position: relative; /* For icon positioning */
+
+		&:not(.reply, .reblog.with_commentary) .action {
+			font-size: 0;
+
+			& > a:first-child::after {
+				content: "";
+				display: block;
+				position: absolute;
+				top: 100%;
+				left: 100%;
+				transform: translate(-80%, -80%);
+				--size: 1.25em;
+				width: var(--size);
+				height: var(--size);
+				background: var(--bg) center no-repeat;
+				background-size: 70%;
+				font-size: 1rem;
+			}
+		}
+
+		&:is(:hover, :focus-within) a::after { background-color: var(--text) !important; }
+
+		&.reblog.without_commentary .action > a:first-child::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 11 11' preserveAspectRatio='xMidYMid meet' rendering='crispEdges' fill='%23fff'%3E%3Crect x='1' y='8' width='2' height='1'%3E%3C/rect%3E%3Crect x='0' y='3' width='1' height='5'%3E%3C/rect%3E%3Crect x='1' y='2' width='6' height='1'%3E%3C/rect%3E%3Crect x='5' y='1' width='1' height='3'%3E%3C/rect%3E%3Crect x='4' y='0' width='1' height='1'%3E%3C/rect%3E%3Crect x='4' y='4' width='1' height='1'%3E%3C/rect%3E%3Crect x='8' y='2' width='2' height='1'%3E%3C/rect%3E%3Crect x='10' y='3' width='1' height='5'%3E%3C/rect%3E%3Crect x='4' y='8' width='6' height='1'%3E%3C/rect%3E%3Crect x='5' y='7' width='1' height='3'%3E%3C/rect%3E%3Crect x='6' y='6' width='1' height='1'%3E%3C/rect%3E%3Crect x='6' y='10' width='1' height='1'%3E%3C/rect%3E%3C/svg%3E") }
+		&.like.like .action > a:first-child::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='10' viewBox='0 0 11 10' preserveAspectRatio='xMidYMid meet' rendering='crispEdges' fill='%23fff'%3E%3Crect x='2' y='0' width='2' height='1'%3E%3C/rect%3E%3Crect x='7' y='0' width='2' height='1'%3E%3C/rect%3E%3Crect x='1' y='1' width='1' height='1'%3E%3C/rect%3E%3Crect x='4' y='1' width='1' height='1'%3E%3C/rect%3E%3Crect x='6' y='1' width='1' height='1'%3E%3C/rect%3E%3Crect x='9' y='1' width='1' height='1'%3E%3C/rect%3E%3Crect x='0' y='2' width='1' height='3'%3E%3C/rect%3E%3Crect x='5' y='2' width='1' height='1'%3E%3C/rect%3E%3Crect x='10' y='2' width='1' height='3'%3E%3C/rect%3E%3Crect x='1' y='5' width='1' height='1'%3E%3C/rect%3E%3Crect x='9' y='5' width='1' height='1'%3E%3C/rect%3E%3Crect x='2' y='6' width='1' height='1'%3E%3C/rect%3E%3Crect x='8' y='6' width='1' height='1'%3E%3C/rect%3E%3Crect x='3' y='7' width='1' height='1'%3E%3C/rect%3E%3Crect x='7' y='7' width='1' height='1'%3E%3C/rect%3E%3Crect x='4' y='8' width='1' height='1'%3E%3C/rect%3E%3Crect x='6' y='8' width='1' height='1'%3E%3C/rect%3E%3Crect x='5' y='9' width='1' height='1'%3E%3C/rect%3E%3C/svg%3E") }
+	}
+
+	.reply, .reblog.with_commentary {
+		width: 100%;
+		grid-template-columns: auto 1fr;
+		gap: 0 var(--post-content-spacing);
+
+		&:not(:first-child) { margin-block-start: 0.75em }
+		&:not(:last-child, :has(+ .reply, + .reblog.with_commentary)) { margin-block-end: 0.75em }
+
+		.action {
+			grid-column: 1 / span 2;
+			grid-row: 1;
+		}
+
+		.avatar_frame {
+			grid-row: 2;
+			grid-column: 1;
+		}
+
+		blockquote {
+			grid-row: 2;
+			grid-column: 2;
+			border: var(--border-width) solid var(--text);
+			margin: 0;
+			padding: 0.6em 1em;
+			font-family: "Nokia", var(--font);
+			font-size: 0.8em;
+		}
+	}
+
+	/* Icons */
+	.avatar_frame, .avatar { display: block }
+	.avatar {
+		width: 2.5em;
+		height: 2.5em;
+		border: var(--border-width) solid var(--text);
+	}
+
+	/* More notes */
+	.more_notes_link_container {
+		border: var(--border-width) solid var(--text);
+		width: 100%;
+		.more_notes_link, .notes_loading {
+			display: block;
+			padding: 0.25em 0.75em;
+			font-family: "Nokia", var(--font);
+			font-size: 0.8em;
+			text-decoration: none;
+		}
+
+		.more_notes_link:hover, .more_notes_link:focus { background-color: var(--text) }
+	}
+}
 /* #endregion */

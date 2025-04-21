@@ -2419,12 +2419,15 @@ function formatText(content) {
  * @param {string} notesURL The URL for the HTML partial of this post's Notes.
  */
 function createNotes(notesURL) {
+	// Insert separator
+	postContainer.append(postSeparator.cloneNode(true));
+
 	// Create base notes section
 	let notes = document.createElement("section"),
 		header = document.createElement(textSubtypes.heading1);
 	notes.id = "notes";
 	header.textContent = "{lang:Notes}";
-	document.getElementById("main").append(notes);
+	postContainer.append(notes);
 
 	// Get notes
 	var xhttp = new XMLHttpRequest();
@@ -2450,9 +2453,9 @@ function cleanNotes() {
 		// No cleaning to be done on load more button
 		if (note.classList.contains("more_notes_link_container")) { return }
 
-		// Get higher-resolution avatar
+		// Get higher-resolution avatar (16x16 is useless)
 		let avatar = note.querySelector("img");
-		safeSetAvatar(avatar, `https://api.tumblr.com/v2/blog/${action.firstElementChild.innerText ?? ""}/avatar/128`);
+		safeSetAvatar(avatar, `https://api.tumblr.com/v2/blog/${action.firstElementChild.innerText ?? ""}/avatar/64`);
 		// ...or remove avatars
 		// note.firstChild.remove();
 
@@ -2473,9 +2476,12 @@ function cleanNotes() {
 			action.childNodes[1].append(action.childNodes[2]);
 		}
 
-		// Remove colon from "said:"
+		// Turn reply into blockquote format
 		else if (note.classList.contains("reply")) {
-			action.children[1].innerText = action.children[1].innerText.substring(0, action.children[1].innerText.length - 1)
+			let replyText = document.createElement("blockquote");
+			note.append(replyText);
+			replyText.innerHTML = Array.from(action.children).at(-1).innerHTML;
+			Array.from(action.children).at(-1).remove();
 		}
 
 		// Replace [title] with [data-tippy-content]
