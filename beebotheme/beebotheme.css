@@ -129,6 +129,7 @@ a {
 	background-color: var(--bg);
 	color: var(--text);
 	padding: 0.15em 0.5em;
+	text-align: center;
 
 	.tippy-content {
 		font-family: "Squeezed Pixels", var(--font);
