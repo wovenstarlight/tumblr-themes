@@ -923,6 +923,19 @@ dialog .closebtn {
 	}
 }
 
+/* Link blocks */
+.post .npf-link-block {
+	border-width: var(--border-width);
+	border-color: var(--text);
+	border-radius: 0;
+
+	.poster { border-block-end: var(--border-width) solid var(--text) };
+
+	&:has(a:hover, a:focus-within) {
+		&, .poster { border-color: color-mix(in srgb, var(--accent) 40%, currentColor) }
+	}
+}
+
 /* Video blocks */
 .video {
 	width: 100%;
