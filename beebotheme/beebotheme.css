@@ -735,7 +735,8 @@ dialog .closebtn {
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			padding: 1em;
+			text-align: center;
+			padding: 2em;
 			gap: 0.75em;
 
 			@container posts (min-width: 42rem) {
