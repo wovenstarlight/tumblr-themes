@@ -62,7 +62,7 @@
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/npfbase/npfbase.min.css">
 
 	<style>{CustomCSS}</style>
-	
+
 	<!-- Keyboard navigation -->
 	<script src="https://wovenstarlight.github.io/tumblr-themes/keyboardnav.min.js"></script>
 </head>
@@ -287,7 +287,7 @@ lightbox._moveTo = (direction, focusTarget, eventType = null) => {
 			lightbox._addImage(lightbox._images[lightbox._index - 1], "left");
 			lightbox.querySelector(".".concat(focusTarget))?.focus();
 			break;
-		
+
 		case "right":
 			if (lightbox._index + 1 === lightbox._images.length) {
 				if (eventType !== "arrow") lightbox._close();
@@ -301,7 +301,7 @@ lightbox._moveTo = (direction, focusTarget, eventType = null) => {
 			lightbox._addImage(lightbox._images[lightbox._index + 1], "right");
 			lightbox.querySelector(".".concat(focusTarget))?.focus();
 			break;
-		
+
 		default:
 			break;
 	}
@@ -323,17 +323,17 @@ lightbox.addEventListener("click", e => {
 		case "left":
 			lightbox._moveTo("left", "left");
 			break;
-		
+
 		case "center":
 			lightbox._moveTo("right", "center");
 			break;
-		
+
 		case "right":
 			lightbox._moveTo("right", "right");
 			break;
-		
+
 		// Don't add event handler for the close button; that's already taken care of
-		
+
 		default:
 			break;
 	}
@@ -355,17 +355,17 @@ lightbox.addEventListener("keydown", e => {
 		case "left":
 			lightbox._moveTo("left", currFocus);
 			break;
-		
+
 		case "center":
 			lightbox._moveTo("right", currFocus);
 			break;
-		
+
 		case "right":
 			lightbox._moveTo("right", currFocus);
 			break;
-		
+
 		// Don't add event handler for the close button; that's already taken care of
-		
+
 		default:
 			break;
 	}
@@ -410,7 +410,7 @@ let posts = [
 
 		id: {JSPostID},
 		permalink: {JSPermalink},
-		
+
 		date: {
 			day: {JSDayOfWeek},
 			textDM: "{DayOfMonth} {Month}, {Year}",
@@ -459,7 +459,7 @@ let posts = [
 		noteCountWithLabel: {JSNoteCountWithLabel},
 		postNotes: {JSPostNotesURL},
 		/*{/block:NoteCount}*/
-		
+
 		like_html: {JSLikeButton size="30"},
 		reblog_url: {JSReblogURL},
 
@@ -534,7 +534,7 @@ posts.forEach(post => {
 
 	// Content available via NPF
 	// Create, but put guards in for header/footer just in case pages are parsed as NPF too
-	
+
 	if (post.id !== undefined)
 		createPostHeader(article, post);
 
@@ -661,13 +661,13 @@ document.querySelectorAll(".bodyitem:first-child .bodyitemcontent > :is(".concat
 	let bodyitemcontent = el.parentElement,
 		wrapper = document.createElement("div");
 	wrapper.classList.add("mediawrapper");
-	
+
 	// Put wrapper in post body
 	bodyitemcontent.closest(".body").prepend(wrapper);
-	
+
 	// Add this element
 	wrapper.prepend(el);
-	
+
 	// If this is a photoset element, check for additional rows in the photoset and add them
 	if (el.classList.contains("row")) {
 		while (bodyitemcontent.childElementCount !== 0 && bodyitemcontent.children[0].classList.contains("row")) {
@@ -724,7 +724,7 @@ function createPostHeader(wrapper, postData) {
 function createPostFooter(wrapper, postData) {
 	let footer = document.createElement("footer");
 	wrapper.append(footer);
-	
+
 	// Populate post footer
 	let vsn = document.createElement("span");
 	vsn.classList.add("vsn");
@@ -770,7 +770,7 @@ function makeLike(wrapper, postData, icons = null) {
 	likeButton.classList.add("customlike");
 	likeButton.innerHTML = postData.like_html;
 	wrapper.append(likeButton);
-	
+
 	// Icon or text, as needed
 	let labels = {
 		like: `{block:English}Like{/block:English}{block:German}Liken{/block:German}{block:French}J'aime{/block:French}{block:Italian}Mi piace{/block:Italian}{block:Japanese}スキ{/block:Japanese}{block:Turkish}Beğen{/block:Turkish}{block:Spanish}Me gusta{/block:Spanish}{block:Russian}Нравится{/block:Russian}{block:Polish}Lubię{/block:Polish}{block:PortuguesePT}Gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir{/block:PortugueseBR}{block:Dutch}Vind ik leuk{/block:Dutch}{block:Korean}좋아요{/block:Korean}{block:ChineseSimplified}喜欢{/block:ChineseSimplified}{block:ChineseTraditional}喜歡{/block:ChineseTraditional}{block:ChineseHK}喜歡{/block:ChineseHK}{block:Indonesian}Suka{/block:Indonesian}{block:Hindi}पसंद करें{/block:Hindi}`,
@@ -1102,10 +1102,10 @@ function createTrailItem(post, npf, postID, expand = false) {
 	let item = document.createElement("div");
 	item.classList.add("bodyitem");
 	post.append(item);
-	
+
 	// extant blog; create directly
 	if (npf.blog !== undefined) { createTrailItemHeader(item, npf.blog, npf.post) }
-	
+
 	// deleted/unrecoverable blog; provide the anon avatar
 	else if (npf.broken_blog_name !== undefined) {
 		createTrailItemHeader(item, {
@@ -1113,10 +1113,10 @@ function createTrailItem(post, npf, postID, expand = false) {
 			 avatar: anonAvatar,
 		});
 	}
-	
+
 	// blog is currentUser; provide directly-pulled info
 	else { createTrailItemHeader(item, currentUser, { id: postID }) }
-	
+
 	// create the body of their contribution
 	createTrailItemBody(item, npf, { id: postID }, expand);
 }
@@ -1133,10 +1133,10 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	trailItem.append(header);
 	let link = document.createElement("a");
 	header.append(link);
-	
+
 	// mark broken trail items
 	if (postData === null || blogData.active === false) { header.classList.add("deactivated") }
-	
+
 	// add link where original posts exist, with safeguards for pages
 	if (postData?.id === undefined && blogData.active != null) {
 		// page! link back to itself
@@ -1145,7 +1145,7 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	else if (blogData.url && blogData.active) {
 		link.href = blogData.url.concat(blogData.url.endsWith("/") ? `post/${postData.id}` : `/${postData.id}`);
 	}
-	
+
 	// Get the username and avatar
 	let username = document.createElement("span");
 	username.classList.add("name");
@@ -1213,14 +1213,14 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 			// For paywall content blocks, the paywaller's info and the post object for the viewer's subscription status
 			npf.blog ?? currentUser,
 			npf.post);
-		
+
 		// cut off the post and add a readmore, if one is present and you aren't currently on the post's permalink page
 		if (i === rows?.truncate_after && !expand) {
 			let readmore = document.createElement("a");
 			readmore.classList.add("readmore");
 			readmore.innerText = "{lang:Read more}";
 			body.append(readmore);
-			
+
 			let link;
 			if (npf.blog !== undefined) { // blog is extant
 				link = npf.blog.url.concat(npf.blog.url.endsWith("/") ? `post/${npf.post.id}` : `/${npf.post.id}`);
@@ -1239,7 +1239,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 			body.append(readmore);
 		}
 	}
-	
+
 	// All base content blocks are done. Adjust layout
 	// Put columns into rows
 	if (rows) {
@@ -1247,7 +1247,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		rows.display.filter(i => (i.blocks.length > 1)).forEach((iRow, index) => {
 			// Need to move further columns out of their rows into the first column
 			// the -offset is because of however many items being put inside rows and therefore being removed from the indices
-			
+
 			// Narrow images might not be in NPF rows, so wrap the first element in a row+col if it's not
 			var row = body.children[iRow.blocks[0] - offset];
 			if (!row.classList.contains("row")) {
@@ -1260,7 +1260,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 				newRow.append(row);
 				row = newRow;
 			}
-			
+
 			// and now, move the corresponding columns inside the row
 			// skipping the first element, which is already in the row
 			for (let i = 1; i < iRow.blocks.length; i ++) {
@@ -1281,7 +1281,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 			offset += iRow.blocks.length - 1;
 		})
 	}
-	
+
 	// If there's an ask, separate it from its answer, if any
 	let askNPF = npf.layout.find(l => l.type === "ask");
 	if (askNPF) {
@@ -1309,14 +1309,14 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		askingLabel.innerText = " asked:";
 		asker.append(askerWrapper);
 		askerWrapper.append(askerIcon, askerName, askingLabel);
-		
+
 		let ask = document.createElement("div");
 		ask.classList.add("ask");
 		ask.append(asker);
 		let askBody = document.createElement("div");
 		askBody.classList.add("bodyitemcontent");
 		ask.append(askBody);
-		
+
 		if (rows) {
 			// Blocks may already be nested in rows; count off how many should be in the ask
 			let i = askNPF.blocks.length;
@@ -1329,7 +1329,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 			// just a simple stack. take however many off the top and put them in the ask
 			askNPF.blocks.forEach(b => askBody.append(body.children[0]));
 		}
-		
+
 		// PLACEMENT OPTIONS (note, none of these are inside .bodyitemcontent!):
 		// Case 1. In root post body, above answer trail item
 		trailItem.parentElement.insertBefore(ask, trailItem);
@@ -1360,23 +1360,23 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = {}, postObj = {}) {
 	let curr = content[i];
 	switch (curr.type) {
-		
+
 		case "text":
 			bit = document.createElement(textSubtypes[curr.subtype] ?? "p");
 
 			if (curr.subtype?.startsWith("heading")) bit.classList.add(curr.subtype);
-			
+
 			bit.innerHTML = formatText(curr);
-			
+
 			if (curr.subtype?.includes("ordered-list-item")) {
 				// if first bullet point of a type, start a new list
 				if (content[i - 1]?.subtype !== curr.subtype) {
 					if (list) { trailItem.append(list); }
 					list = document.createElement(curr.subtype === "ordered-list-item" ? "ol" : "ul")
 				}
-				
+
 				list.append(bit); // continue the list
-				
+
 				// if last item in the list, or a last list, end the list and add the whole thing
 				if (content[i + 1]?.subtype !== curr.subtype || i + 1 === content.length) {
 					trailItem.append(list);
@@ -1389,9 +1389,9 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 			}
 			// otherwise it's a simple paragraph or blockquote or whatever. add
 			else { trailItem.append(bit) }
-			
+
 			break;
-		
+
 		case "image":
 			let breakpoint = 300;
 			// wrappers
@@ -1402,7 +1402,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 			if (curr.media[0].width >= breakpoint) {
 				fig.classList.add("tmblr-full");
 			}
-			
+
 			// actual image
 			bit = document.createElement("img");
 			bit.src = curr.media[0].url;
@@ -1419,20 +1419,20 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 			if (curr.media[0].width >= breakpoint) {
 				// Make large images lightbox-capable
 				bit.classList.add("lightboxable");
-				
+
 				row.append(fig);
 				trailItem.append(row);
 			}
 			else {
 				trailItem.append(fig);
 			}
-			
+
 			if (curr.caption) { // add caption, if present
 				let caption = document.createElement("p");
 				caption.innerText = curr.caption;
 				fig.insertBefore(caption, bit.nextElementSibling);
 			}
-			
+
 			if (curr.attribution) {
 				let attrib = document.createElement("p");
 				attrib.classList.add("tmblr-attribution");
@@ -1447,7 +1447,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 				fig.insertBefore(attrib, bit.nextElementSibling);
 			}
 			break;
-		
+
 		case "link":
 			bit = document.createElement("div");
 			bit.classList.add("npf-link-block");
@@ -1483,13 +1483,13 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 			// use display url if sitename is absent, as in older links
 			sitename.innerText = curr.site_name ? curr.site_name : curr.display_url;
 			bottom.append(sitename);
-			
+
 			link.append(bottom);
 			link.href = curr.url;
 			bit.append(link);
 			trailItem.append(bit);
 			break;
-		
+
 		case "audio":
 			// Soundcloud links keep throwing 401 errors for some reason, so exclude
 			if (curr.media && curr.provider !== "soundcloud") {
@@ -1522,7 +1522,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 			}
 			trailItem.append(bit);
 			break;
-		
+
 		case "video":
 			// Use media object to display default video player
 			if (curr.media) {
@@ -1562,14 +1562,14 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 			bit.style.setProperty("--text", blogObj.theme.title_color);
 			bit.style.setProperty("--accent", blogObj.theme.link_color);
 			bit.style.setProperty("--font", blogObj.theme.title_font);
-			
+
 			if (postObj.paywall_access === "member") {
 				// Shouldn't see this block at all! No need to render anything inside
 				bit.style.setProperty("display", "none");
 				trailItem.append(bit);
 				break;
 			}
-			
+
 			// Block should be visible. Format as appropriate
 			switch (content[i].subtype) {
 				case "cta":
@@ -1583,14 +1583,14 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 					supportlink.href = content[i].url ?? `https://www.tumblr.com/${blogObj.name}/support`;
 					bit.append(title, label, supportlink);
 					break;
-				
+
 				case "divider":
 					// For creators looking at own +Posts
 					bit.classList.add("divider");
 					bit.style.setProperty("--color", content[i].color);
 					bit.innerText = content[i].text;
 					break;
-				
+
 				case "disabled":
 					// For blogs that have disabled Post+
 					title = document.createElement("h2");
@@ -1600,7 +1600,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 					bit.append(title, label);
 					break;
 			}
-			
+
 			trailItem.append(bit);
 			break;
 
@@ -1676,12 +1676,12 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 				moreInfo.classList.add("timeleft");
 			}
 			break;
-		
+
 		default:
 			bit = document.createElement("p");
 			bit.innerHTML = `Error! This theme can't currently display ${curr.type} blocks :( Please contact <a href="https://starlightthemes.tumblr.com">the theme maker</a> to let them know about this issue.`;
 			trailItem.append(bit);
-	
+
 	}
 }
 
@@ -1783,7 +1783,7 @@ function createTumblrAudio(npf, defaultIcons = {}) {
 	// #endregion
 
 	left.append(playPause, textInfo, seekbar);
-	
+
 	wrapper.append(audio, left);
 
 	// Add album art, if any
@@ -2015,7 +2015,7 @@ function formatText(content) {
 	let base = content.text;
 	if (!content.formatting)
 		return base.replaceAll(String.fromCharCode(10), "<br />");
-	
+
 	let text = "",
 		formats = new Array(),
 		i = 0;
@@ -2045,11 +2045,11 @@ function formatText(content) {
 					break;
 			}
 		})
-		
+
 		// add the actual character, subbing in linebreaks
 		if (char === String.fromCharCode(10)) { text += "<br />" }
 		else { text += char }
-		
+
 		// close any formatting tags
 		formats = content.formatting.filter(f => (f.end === i + 1));
 		formats.forEach(f => {
@@ -2074,7 +2074,7 @@ function formatText(content) {
 					break;
 			}
 		})
-		
+
 		i ++;
 	}
 	return text;
@@ -2125,13 +2125,13 @@ function cleanNotes() {
 
 		// Remove clears
 		note.querySelector(".clear").remove();
-		
+
 		// Add specific action wrapper
 		let acted = document.createElement("span");
 		acted.classList.add("acted");
 		acted.innerText = action.childNodes[1].textContent;
 		action.childNodes[1].replaceWith(acted);
-		
+
 		// Collapse via, addition label into reblog action
 		if (note.classList.contains("reblog") && !note.classList.contains("original_post")) {
 			action.childNodes[1].append(action.childNodes[2]);
@@ -2139,7 +2139,7 @@ function cleanNotes() {
 		if (note.classList.contains("with_commentary") && !note.classList.contains("original_post")) {
 			action.childNodes[1].append(action.childNodes[2]);
 		}
-		
+
 		// Remove colon from "said:"
 		else if (note.classList.contains("reply")) {
 			action.children[1].innerText = action.children[1].innerText.substring(0, action.children[1].innerText.length - 1)
