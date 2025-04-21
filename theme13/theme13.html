@@ -7,7 +7,7 @@
 		Tippy.js tooltips by atomiks: https://atomiks.github.io/tippyjs
 		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
 	
-	Last updated 14 November 2024.
+	Last updated 22 Apr 2025.
 -->
 <!DOCTYPE html>
 <html lang="en" class="{select:Default palette}">
@@ -2333,9 +2333,10 @@ function createPage(wrapper, postData) {
 		bodyWrapper.append(title);
 	}
 	{block:AskPage}{block:IfFAQ}
-	let faq = document.createElement("div"),
+	let faq = document.createElement("div");
 	faq.id = "askfaq";
 	faq.innerHTML = `{text:FAQ}`;
+	bodyWrapper.append(faq);
 	{/block:IfFAQ}{/block:AskPage}
 	bodyWrapper.innerHTML += unescapeHTML(postData.body);
 
