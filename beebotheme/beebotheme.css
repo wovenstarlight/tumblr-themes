@@ -886,6 +886,20 @@ dialog .closebtn {
 		border-color: rgb(from var(--text) r g b / 0.5);
 		border-style: dashed;
 		margin-inline: 0.3em;
+		margin-block: 1.5em;
+		position: relative;
+		
+		&::before {
+			content: "more";
+			color: rgb(from var(--text) r g b / 0.5);
+			background-color: var(--bg);
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translate(-50%, calc(-50% + 0.3em));
+			font-family: "Squeezed Pixels", var(--font);
+			padding: 0.5em;
+		}
 	}
 
 	a& {
