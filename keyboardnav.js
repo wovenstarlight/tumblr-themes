@@ -1,23 +1,18 @@
 // J/K post navigation inspired by eggdesign's https://static.tumblr.com/svdghan/uIEropkzb/keyboardscrolling.js
 // and from https://yashmahalwal.medium.com/scrollspy-using-intersection-observer-36acb7520e46
 
-/**
- * The height at the top of the screen taken up by other elements; posts being navigated to will be this many px away from the top of the screen.
+/** The height at the top of the screen taken up by other elements; posts being navigated to will be this many px away from the top of the screen.
  * @type number
  */
 let offset;
 
-/**
- * Fakes a small scroll, jittering to get the observer to fire and update the current post.
- */
+/** Fakes a small scroll, jittering to get the observer to fire and update the current post. */
 function fakeScroll() {
 	window.scrollBy(0, 2);
 	window.scrollBy(0, -2);
 }
 
-/**
- * Scrolls the viewport up by <offset>, the height of any headers or other top spacing.
- */
+/** Scrolls the viewport up by <offset>, the height of any headers or other top spacing. */
 function scrollByOffset() {
 	let diff = document.children[0].getBoundingClientRect().height - (window.scrollY + window.innerHeight)
 	if (diff > 1) {  // not at bottom of window; jump back up after scrolling
@@ -26,8 +21,7 @@ function scrollByOffset() {
 	}
 }
 
-/**
- * Sets up keyboard navigation for a given page of posts.
+/** Sets up keyboard navigation for a given page of posts.
  * @param {Object} customOptions The selectors and values with which to set up keyboard navigation.
  * @param {string} [customOptions.postSelector=".post"] CSS selector for the posts themselves.
  * @param {string} [customOptions.postContainerSelector="#posts"] CSS selector for the container of the post elements.
@@ -58,15 +52,14 @@ function keyboardNav(customOptions) {
 		prev = document.querySelector(options.prevPageSelector),
 		search = document.querySelector(options.searchSelector);
 	let currPost, oldPost, y;
-	
+
 	offset = options.postOffset === null ? 0 : options.postOffset;
 
 	// attach observers
 	const observer = new IntersectionObserver(
 		(entries) => {
 			for (const entry of entries)
-				if (entry.isIntersecting)
-					currPost = entry.target;
+				if (entry.isIntersecting) currPost = entry.target;
 		},
 		{rootMargin: `-${offset}px 0px -${window.innerHeight - offset}px`}  // top of screen
 	);
@@ -75,7 +68,7 @@ function keyboardNav(customOptions) {
 		e.setAttribute('tabindex', '-1');
 	})
 
-	
+
 	document.addEventListener('keydown', (e) => {
 		let key = e.key.toUpperCase();
 
@@ -103,8 +96,7 @@ function keyboardNav(customOptions) {
 					// for some reason this doesn't always update currPost properly so check and manually update as needed
 					oldPost = currPost;
 					currPost.nextElementSibling.scrollIntoView();
-					if (currPost == oldPost)
-						currPost = currPost.nextElementSibling;
+					if (currPost == oldPost) currPost = currPost.nextElementSibling;
 					scrollByOffset();
 					currPost.focus();
 				}
@@ -134,8 +126,7 @@ function keyboardNav(customOptions) {
 					// at top of post, scroll to previous
 					oldPost = currPost;
 					currPost.previousElementSibling.scrollIntoView();
-					if (currPost == oldPost)
-						currPost = currPost.previousElementSibling;
+					if (currPost == oldPost) currPost = currPost.previousElementSibling;
 					scrollByOffset();
 				}
 			}
@@ -165,9 +156,9 @@ function keyboardNav(customOptions) {
 		}
 
 		// optional pagination
-		else if (next != null && !(document.body.classList.contains('lightboxed') || document.querySelector("#lightbox[open]")) && e.key === 'ArrowRight')
+		else if (next != null && !(document.body.classList.contains('lightboxed') || document.querySelector("dialog[open]")) && e.key === 'ArrowRight')
 			next.click();
-		else if (prev != null && !(document.body.classList.contains('lightboxed') || document.querySelector("#lightbox[open]")) && e.key === 'ArrowLeft')
+		else if (prev != null && !(document.body.classList.contains('lightboxed') || document.querySelector("dialog[open]")) && e.key === 'ArrowLeft')
 			prev.click();
 
 		// optional palette toggle
