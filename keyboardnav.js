@@ -95,8 +95,14 @@ function keyboardNav(customOptions) {
 					// at top of post, scroll to next
 					// for some reason this doesn't always update currPost properly so check and manually update as needed
 					oldPost = currPost;
-					currPost.nextElementSibling.scrollIntoView();
-					if (currPost == oldPost) currPost = currPost.nextElementSibling;
+					let next = currPost.nextElementSibling;
+					while (next && !next.matches(options.postSelector)) next = next.nextElementSibling;
+
+					// Might not have a next post even if it does have a next sibling
+					if (!next) return;
+
+					next.scrollIntoView();
+					if (currPost == oldPost) currPost = next;
 					scrollByOffset();
 					currPost.focus();
 				}
@@ -125,8 +131,15 @@ function keyboardNav(customOptions) {
 				else if (currPost.previousElementSibling != null) {
 					// at top of post, scroll to previous
 					oldPost = currPost;
-					currPost.previousElementSibling.scrollIntoView();
-					if (currPost == oldPost) currPost = currPost.previousElementSibling;
+
+					let prev = currPost.previousElementSibling;
+					while (prev && !prev.matches(options.postSelector)) prev = prev.previousElementSibling;
+
+					// Might not have a previous post even if it does have a previous sibling
+					if (!prev) return;
+
+					prev.scrollIntoView();
+					if (currPost == oldPost) currPost = prev;
 					scrollByOffset();
 				}
 			}
