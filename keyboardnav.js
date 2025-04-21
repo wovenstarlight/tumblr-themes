@@ -61,7 +61,7 @@ function keyboardNav(customOptions) {
 			for (const entry of entries)
 				if (entry.isIntersecting) currPost = entry.target;
 		},
-		{rootMargin: `-${offset}px 0px -${window.innerHeight - offset}px`}  // top of screen
+		{rootMargin: `-${offset}px 0px -${window.innerHeight - offset - 1}px`}  // top of screen
 	);
 	sections.forEach((e, i) => {
 		observer.observe(e);
