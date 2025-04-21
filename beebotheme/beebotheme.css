@@ -92,6 +92,8 @@ body {
 		&.sidebarright { grid-template-columns: 3fr 2fr }
 	}
 }
+/* Headings */
+h1, h2 { font-weight: normal }
 /* Links */
 a {
 	color: var(--accent);
@@ -189,10 +191,7 @@ dialog .closebtn {
 	text-decoration: none;
 	text-align: center;
 
-	h1 {
-		margin: 0;
-		font-weight: var(--title-font-weight);
-	}
+	h1 { margin: 0 }
 
 	img {
 		display: block;
@@ -355,7 +354,6 @@ dialog .closebtn {
 		grid-column: 1 / span 2;
 		margin: 0;
 		font-size: 1.1em;
-		font-weight: normal;
 		line-height: 1;
 	}
 }
