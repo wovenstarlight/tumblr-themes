@@ -2551,6 +2551,12 @@ function createPage(wrapper, postData) {
 		title.innerHTML = unescapeHTML(postData.title);
 		bodyWrapper.append(title);
 	}
+	/*{block:AskPage}{block:IfFAQ}*/
+	let faq = document.createElement("div");
+	faq.id = "askfaq";
+	faq.innerHTML = `{text:FAQ}`;
+	bodyWrapper.append(faq);
+	/*{/block:IfFAQ}{/block:AskPage}*/
 	bodyWrapper.innerHTML += unescapeHTML(postData.body);
 
 	// Plug the whole thing in
