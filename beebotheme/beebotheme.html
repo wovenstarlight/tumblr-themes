@@ -974,9 +974,8 @@ posts.forEach((post, index) => {
 
 	// Content available via NPF
 	// Create, but put guards in for header/footer just in case pages are parsed as NPF too
-	
-	if (post.id !== undefined)
-		createPostHeader(article, post);
+
+	// No header for this theme; put everything in footer
 
 	/** The body of the post, to be populated with trail items */
 	let postBody = document.createElement("section");
@@ -1130,22 +1129,6 @@ keyboardNav({
 // #region CONSTRUCTOR FUNCTIONS
 
 // #region FOR POST HEADER/FOOTER
-/** Creates a post header object and appends it to the given post object.
- * The individual elements in the header can be rearranged as per theme preference.
- * @param {HTMLElement} wrapper The HTML object for this post, to which the header will be added.
- * @param {Object} postData This post's data, containing relevant information to populate the header with.
- */
-function createPostHeader(wrapper, postData) {
-	let header = document.createElement("header");
-	wrapper.append(header);
-
-	// Populate post header
-
-	makeContentSource(header, postData);
-
-	makeSubmitter(header, postData);
-}
-
 /** Creates a post footer object and appends it to the given post object.
  * The individual elements in the footer can be rearranged as per theme preference.
  * @param {HTMLElement} wrapper The HTML object for this post, to which the footer will be added.
@@ -1156,7 +1139,7 @@ function createPostFooter(wrapper, postData) {
 	wrapper.append(footer);
 
 	let topBar = document.createElement("p");
-	topBar.classList.add("topbar");
+	topBar.classList.add("top", "bar");
 	footer.append(topBar);
 
 	let topLeft = document.createElement("span");
@@ -1192,6 +1175,15 @@ function createPostFooter(wrapper, postData) {
 	/*{block:IfReblogButtons}*/makeReblog(topRight, postData);/*{/block:IfReblogButtons}*/
 	/*{block:IfLikeButtons}*/makeLike(topRight, postData);/*{/block:IfLikeButtons}*/
 
+	// Content source and "submitted by" label
+	if (postData.contentSource || postData.submission) {
+		let bottomBar = document.createElement("p");
+		bottomBar.classList.add("bottom", "bar");
+		footer.append(bottomBar);
+
+		makeContentSource(bottomBar, postData);
+		makeSubmitter(bottomBar, postData);
+	}
 }
 
 // #region Helpers

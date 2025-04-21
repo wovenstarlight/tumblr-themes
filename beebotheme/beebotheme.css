@@ -1228,15 +1228,22 @@ body:has(dialog[open]) { overflow: hidden }
 	}
 
 	p { margin: 0 }
+
+	.bar {
+		font-family: "Squeezed Pixels", var(--font);
+		border: var(--border-width) solid var(--text);
+		display: flex;
+
+		@container posts (max-width: 32.5rem) {
+			flex-direction: column;
+
+			.left { justify-content: center }
+			.right { border-block-start: thin solid rgb(from var(--text) r g b / 0.3) }
+		}
+	}
 }
-.topbar {
-	font-family: "Squeezed Pixels", var(--font);
-	border: var(--border-width) solid var(--text);
-	display: flex;
-
+.top.bar {
 	@container posts (max-width: 32.5rem) {
-		flex-direction: column;
-
 		.left { justify-content: center }
 		.right { border-block-start: thin solid rgb(from var(--text) r g b / 0.3) }
 	}
@@ -1293,6 +1300,8 @@ body:has(dialog[open]) { overflow: hidden }
 	}
 	.right {
 		display: flex;
+
+		&:empty { display: none }
 
 		a, span, button {
 			flex-grow: 1;
@@ -1356,6 +1365,22 @@ body:has(dialog[open]) { overflow: hidden }
 		text-decoration: none;
 
 		&:hover, &:focus { background-color: var(--text) }
+	}
+}
+.bottom.bar {
+	padding: 0.5em 1em;
+	gap: 0.5em 2em;
+	justify-content: space-evenly;
+
+	span {
+		position: relative;
+		top: 0.3em;
+		text-align: center;
+	}
+
+	a[href] {
+		text-decoration: none;
+		&:hover, &:focus { color: var(--text) }
 	}
 }
 /* #endregion */
