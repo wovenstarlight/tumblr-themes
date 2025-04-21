@@ -425,7 +425,7 @@ dialog .closebtn {
 	/* For excessive length */
 	overflow-y: scroll;
 	word-break: break-word;
-	
+
 	a {
 		color: var(--text);
 		text-decoration: none;
@@ -620,27 +620,27 @@ dialog .closebtn {
 
 	/* Hide duplicate title on permalink pages */
 	:is(.ask, .submit) ~ .permalink { display: none }
-	
+
 	.tag, .search_query { color: var(--accent) }
-	
+
 	.tag::before { content: "#" }
 	.search_query::before, .search_query::after {
 		content: '"';
 		color: var(--text);
 	}
-	
+
 	p:has(a) {
 		display: flex;
 		text-align: center;
 		justify-content: center;
 		gap: 1em;
 	}
-	
+
 	a {
 		border: var(--border-width) solid var(--text);
 		padding: 0.25em 0.75em;
 		text-decoration: none;
-		
+
 		&:hover, &:focus { background-color: var(--text) }
 	}
 }
@@ -737,18 +737,18 @@ dialog .closebtn {
 			padding: 1em;
 			gap: 0.75em;
 		}
-		
+
 		p { margin: 0 }
-		
+
 		.tags { color: var(--accent) }
-		
+
 		button {
 			border: var(--border-width) solid var(--text);
 			background-color: var(--bg);
 			color: var(--accent);
 			padding: 0.5em 1em;
 			cursor: pointer;
-			
+
 			&:hover, &:focus { background-color: var(--text) }
 		}
 	}
@@ -1113,7 +1113,7 @@ body:has(dialog[open]) { overflow: hidden }
 			}
 		}
 	}
-	
+
 	svg {
 		width: 0.8em;
 		height: auto;
@@ -1226,17 +1226,17 @@ body:has(dialog[open]) { overflow: hidden }
 	@container posts (min-width: 42rem) {
 		margin-inline-start: calc(var(--avatar-size) + var(--post-content-spacing));
 	}
-	
+
 	p { margin: 0 }
 }
 .topbar {
 	font-family: "Squeezed Pixels", var(--font);
 	border: var(--border-width) solid var(--text);
 	display: flex;
-	
+
 	@container posts (max-width: 32.5rem) {
 		flex-direction: column;
-		
+
 		.left { justify-content: center }
 		.right { border-block-start: thin solid rgb(from var(--text) r g b / 0.3) }
 	}
@@ -1262,13 +1262,13 @@ body:has(dialog[open]) { overflow: hidden }
 		}
 		:first-child { order: 0 }
 		:last-child { order: 2 }
-		
+
 		/* Hide when empty */
 		&:empty {
 			display: none;
 			& + .right { flex-grow: 1 }
 		}
-		
+
 		a {
 			position: relative;
 			top: 0.3em;
@@ -1283,7 +1283,7 @@ body:has(dialog[open]) { overflow: hidden }
 		justify-content: center;
 		text-decoration: none;
 		padding: 0.5em;
-		
+
 		&.viasource {
 			img {
 				width: 1.5em;
@@ -1318,12 +1318,12 @@ body:has(dialog[open]) { overflow: hidden }
 	color: var(--accent);
 	font-size: inherit;
 	cursor: pointer;
-	
+
 	&:not(.hidden) {
 		background-color: var(--text);
 		color: var(--bg);
 	}
-	
+
 	&:hover, &:focus { color: var(--accent) }
 }
 .customlike {
@@ -1354,7 +1354,7 @@ body:has(dialog[open]) { overflow: hidden }
 		flex-grow: 1;
 		text-align: center;
 		text-decoration: none;
-		
+
 		&:hover, &:focus { background-color: var(--text) }
 	}
 }
