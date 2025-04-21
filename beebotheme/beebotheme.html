@@ -1146,7 +1146,6 @@ function createPostFooter(wrapper, postData) {
 	topLeft.classList.add("left");
 	let topRight = document.createElement("span");
 	topRight.classList.add("right");
-	topBar.append(topLeft, topRight);
 
 	// Date
 	/*{block:IfPostDates}*/
@@ -1174,6 +1173,10 @@ function createPostFooter(wrapper, postData) {
 	/*{/block:IfPostTags}*/
 	/*{block:IfReblogButtons}*/makeReblog(topRight, postData);/*{/block:IfReblogButtons}*/
 	/*{block:IfLikeButtons}*/makeLike(topRight, postData);/*{/block:IfLikeButtons}*/
+
+	// Mark non-empty
+	if (topLeft.childElementCount) topBar.append(topLeft);
+	if (topRight.childElementCount) topBar.append(topRight);
 
 	// Content source and "submitted by" label
 	if (postData.contentSource || postData.submission) {

@@ -1235,6 +1235,9 @@ body:has(dialog[open]) { overflow: hidden }
 	flex-direction: column;
 	gap: var(--post-content-spacing);
 
+	/* Hide if the only child has nothing in it */
+	&:has(.top.bar:only-child:empty) { display: none }
+
 	@container posts (min-width: 42rem) {
 		margin-inline-start: calc(var(--avatar-size) + var(--post-content-spacing));
 	}
@@ -1255,6 +1258,9 @@ body:has(dialog[open]) { overflow: hidden }
 	}
 }
 .top.bar {
+	/* Hide if empty */
+	&:empty { display: none }
+
 	@container posts (max-width: 32.5rem) {
 		.left { justify-content: center }
 		.right { border-block-start: thin solid rgb(from var(--text) r g b / 0.3) }
@@ -1282,17 +1288,25 @@ body:has(dialog[open]) { overflow: hidden }
 		:first-child { order: 0 }
 		:last-child { order: 2 }
 
-		/* Hide when empty */
-		&:empty {
-			display: none;
-			& + .right { flex-grow: 1 }
-		}
-
 		a {
 			position: relative;
 			top: 0.3em;
 
 			&:hover, &:focus-within { color: var(--text) }
+		}
+	}
+
+	.right {
+		display: flex;
+
+		&:only-child { flex-grow: 1 }
+
+		a, span, button {
+			flex-grow: 1;
+			border-inline-start: thin solid rgb(from var(--text) r g b / 0.3);
+			padding-inline: 0.5em;
+
+			&:hover, &:focus-within { background-color: var(--text) }
 		}
 	}
 
@@ -1308,19 +1322,6 @@ body:has(dialog[open]) { overflow: hidden }
 				width: 1.5em;
 				height: auto;
 			}
-		}
-	}
-	.right {
-		display: flex;
-
-		&:empty { display: none }
-
-		a, span, button {
-			flex-grow: 1;
-			border-inline-start: thin solid rgb(from var(--text) r g b / 0.3);
-			padding-inline: 0.5em;
-
-			&:hover, &:focus-within { background-color: var(--text) }
 		}
 	}
 
