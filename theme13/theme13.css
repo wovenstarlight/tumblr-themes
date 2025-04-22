@@ -1134,7 +1134,7 @@ body.hasnotes #posts { margin-right: 1.25em }
 		display: flex;
 		flex-direction: column;
 	}
-	
+
 	/* #region Alter sidebar layout and add scroll shadows */
 	#showleft, #hideleft { display: none }
 	#left {
@@ -1145,7 +1145,7 @@ body.hasnotes #posts { margin-right: 1.25em }
 	#leftcontent {
 		max-height: 50vh;
 		padding-bottom: 1em;
-		
+
 		--bgTrans: rgb(from var(--bg) r g b / 0);
 		--shadow: rgb(from var(--text) r g b / 0.1);
 
@@ -1161,7 +1161,7 @@ body.hasnotes #posts { margin-right: 1.25em }
 				var(--bgTrans), 
 				var(--bg) 70%
 			) center bottom,
-			
+
 			/* Shadow TOP */
 			linear-gradient(
 				to bottom,
@@ -1181,7 +1181,7 @@ body.hasnotes #posts { margin-right: 1.25em }
 		background-attachment: local, local, scroll, scroll;
 	}
 	/* #endregion */
-	
+
 	/* Pad posts */
 	#main { margin-inline: min(1.25em, 2vw) }
 	.lrd { transform: translateX(min(0.75em, 1vw)) }
@@ -1209,7 +1209,7 @@ body.hasnotes #posts { margin-right: 1.25em }
 		display: flex;
 		flex-direction: column;
 	}
-	
+
 	/* #region Alter sidebar layout and add scroll shadows */
 	body.hasnotes #showleft, body.hasnotes #hideleft { display: none }
 	body.hasnotes #left {
@@ -1220,7 +1220,7 @@ body.hasnotes #posts { margin-right: 1.25em }
 	body.hasnotes #leftcontent {
 		max-height: 50vh;
 		padding-bottom: 1em;
-		
+
 		--bgTrans: rgb(from var(--bg) r g b / 0);
 		--shadow: rgb(from var(--text) r g b / 0.1);
 
@@ -1236,7 +1236,7 @@ body.hasnotes #posts { margin-right: 1.25em }
 				var(--bgTrans), 
 				var(--bg) 70%
 			) center bottom,
-			
+
 			/* Shadow TOP */
 			linear-gradient(
 				to bottom,
@@ -1256,7 +1256,7 @@ body.hasnotes #posts { margin-right: 1.25em }
 		background-attachment: local, local, scroll, scroll;
 	}
 	/* #endregion */
-	
+
 	/* Pad posts */
 	body.hasnotes #main { margin-inline: min(1.25em, 2vw) }
 	body.hasnotes .lrd { transform: translateX(min(0.75em, 1vw)) }

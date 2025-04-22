@@ -864,8 +864,8 @@ p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 		left: 0;
 		min-width: 20rem;
 	}
-	
-	
+
+
 	#page {
 		grid-template-columns: auto 1fr auto;
 		grid-template-rows: repeat(4, auto) 1fr;
@@ -912,7 +912,7 @@ p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 
 @media (max-width: 60rem) { /* Mobile */
 	#page { padding: 0.5em 3.5% 3.5em }
-	
+
 	#links-search { padding: 0 0.7em 0 0 }
 	#mobnav span { cursor: help }
 	#mobnav:not(:hover) .dropdown { opacity: 0; pointer-events: none }
@@ -936,8 +936,8 @@ p.npf_chat { font-family: 'Monaco', 'Consolas', Courier, monospace }
 		background-color: rgb(from var(--bg) r g b / 0.25);
 	}
 	#links .dropdown { width: 100% }
-	
-	
+
+
 	/* About section toggling*/
 	#body.showright {
 		--right-width: 16em;

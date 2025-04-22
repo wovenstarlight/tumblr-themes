@@ -72,22 +72,22 @@
 	body {
 		--Spoiler-Overlay-Color: var(--bg);
 		--Spoiler-Overlay-Transparency: 0%; /* MUST be in % */
-		
+
 		--Warning-Text-Size: 0.85em;
 		--Warning-Text-Color: var(--text);
 		--Spoiler-Tags-Color: var(--links);
-		
+
 		--ViewPost-Button-Padding: 0.625rem;
 		--ViewPost-Button-Border: var(--accent2);
 		--ViewPost-Button-Roundness: 0;
 		--ViewPost-Button-Background: rgb(from var(--links) r g b / 0.1);
 		--ViewPost-Button-FontSize: 85%;
 		--ViewPost-Button-Text-Color: var(--links);
-		
+
 		--ViewPost-Button-HOVER-Border: var(--accent2);
 		--ViewPost-Button-HOVER-Background: var(--links);
 		--ViewPost-Button-HOVER-Text-Color: var(--bg);
-		
+
 		--ShrinkPost-Transition-Speed: 699ms; /* can be in ms or s */
 	}
 
@@ -595,7 +595,7 @@ body.light {
 					<span id="pinnedpost">{PinnedPostLabel}</span>
 					<span class="divider">•</span>
 					{/block:PinnedPostLabel}
-					
+
 					{block:ifShowDates}
 					<a class="date" href="{Permalink}">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfShowTimestamps}, {block:If24HourTimestamps}{24Hour}{/block:If24HourTimestamps}{block:IfNot24HourTimestamps}{12Hour}{/block:IfNot24HourTimestamps}:{Minutes}{block:IfNot24HourTimestamps} {CapitalAmPm}{/block:IfNot24HourTimestamps}{/block:IfShowTimestamps}</a>
 					<span class="divider">•</span>

@@ -664,7 +664,7 @@ body.light #darklight .feather-sun {
 @media (max-width: 700px) {
 	/* Resize elements */
 	#title > a { font-size: 1.5em }
-	
+
 	/* For when only one link block is enabled */
 	/* Only ask/submit */
 	#links.ask:not(.random, .archive),
@@ -683,7 +683,7 @@ body.light #darklight .feather-sun {
 	#links.submit.archive {
 		grid-template-columns: 1fr 2fr 2fr
 	}
-	
+
 	#sidebar { padding-left: 1em }
 }
 @media (max-width: 600px) {
@@ -693,7 +693,7 @@ body.light #darklight .feather-sun {
 		display: flex;
 		flex-direction: column;
 	}
-	
+
 	/* Resetting sidebar styles for vertical positioning */
 	#sidebar {
 		margin-top: 0.2em;
@@ -705,7 +705,7 @@ body.light #darklight .feather-sun {
 		max-width: unset;
 		padding: 1em;
 	}
-	
+
 	/* Repositioning title elements */
 	#title { grid-template-columns: 1fr 1fr }
 	#currdate { max-width: 6em }
@@ -714,7 +714,7 @@ body.light #darklight .feather-sun {
 		grid-row: 2;
 		grid-column: 1 / span 2;
 	}
-	
+
 	/* Stacking links to give them more space */
 	#links {
 		display: flex;

@@ -180,27 +180,27 @@
 		});
 	});
 	</script>
-		
+
 	<style>
 	:root {
 		--Spoiler-Overlay-Color: var(--bg);
 		--Spoiler-Overlay-Transparency: 0%; /* MUST be in % */
-		
+
 		--Warning-Text-Size: 1em;
 		--Warning-Text-Color: var(--text);
 		--Spoiler-Tags-Color: var(--accent);
-		
+
 		--ViewPost-Button-Padding: 0.75em;
 		--ViewPost-Button-Border: var(--bg2);
 		--ViewPost-Button-Roundness: 0.25em;
 		--ViewPost-Button-Background: var(--bg) linear-gradient(var(--bg),var(--bg2));
 		--ViewPost-Button-FontSize: 80%;
 		--ViewPost-Button-Text-Color: var(--text);
-		
+
 		--ViewPost-Button-HOVER-Border: var(--bg2);
 		--ViewPost-Button-HOVER-Background: var(--bg) linear-gradient(var(--bg),var(--bg2));
 		--ViewPost-Button-HOVER-Text-Color: var(--accent);
-		
+
 		--ShrinkPost-Transition-Speed: 699ms; /* can be in ms or s */
 	}
 
@@ -253,7 +253,7 @@
 		{block:IfLogoImage}<img src="{image:Logo}" id="logo" {block:IfPadLogo}class="padded"{/block:IfPadLogo}/>{/block:IfLogoImage}
 		{block:ShowTitle}<h1>{Title}</h1>{/block:ShowTitle}
 	</a>
-	
+
 	<section id="links-search">
 		<!-- BLOG NAVIGATION -->
 		<nav id="links">
@@ -266,7 +266,7 @@
 					{block:IfArchiveLink}<a href="/archive" class="archivelink">{lang:Archive}</a>{/block:IfArchiveLink}
 				</div>
 			</div>
-			
+
 			{block:IfNotCustomLinksOnSidebar}{block:HasPages}
 			<!-- CUSTOM PAGES -->
 			<div id="pages">
@@ -275,7 +275,7 @@
 			</div>
 			{/block:HasPages}{/block:IfNotCustomLinksOnSidebar}
 		</nav>
-		
+
 		{block:IfSearchBar}
 		<!-- SEARCH BAR -->
 		<form action="/search" method="get" id="search">
@@ -308,9 +308,9 @@
 		</script>{/block:IfNotSecondaryTitle}{/block:PermalinkPage}
 
 		{block:SearchPage}{lang:SearchResultCount results for SearchQuery 2}{block:NoSearchResults}{lang:No results for SearchQuery 2}{/block:NoSearchResults}{/block:SearchPage}
-		
+
 		{block:TagPage}{lang:TagResultCount posts tagged Tag 3}{/block:TagPage}
-		
+
 		{block:DayPage}{lang:Viewing everything posted on Month DayOfMonth Year}{/block:DayPage}
 	</h2>
 
@@ -340,13 +340,13 @@
 		{/block:JumpPagination}
 		<a {block:NextPage}href="{NextPage}"{/block:NextPage} class="next" class="button">{lang:Next} →</a>
 	</nav>{/block:Pagination}
-	
+
 	{block:PermalinkPagination}<nav class="top pagination">
 		<a {block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost} class="prev" class="button">← {lang:Previous}</a>
 		<span class="curr">{lang:See more posts}</span>
 		<a {block:NextPost}href="{NextPost}"{/block:NextPost} class="next" class="button">{lang:Next} →</a>
 	</nav>{/block:PermalinkPagination}
-	
+
 	{block:DayPage}{block:DayPagination}<nav class="top pagination">
 		<a {block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage} class="prev" class="button">← {lang:Previous}</a>
 		<span class="curr">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonthWithZero}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonthWithZero} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}</span>
@@ -369,7 +369,7 @@
 					<span class="title"><a href="{Permalink}">{PostTypeNoun}</a> <span>{block:RebloggedFrom}{lang:Originally from ReblogRootName 2}{/block:RebloggedFrom}{block:NotReblog}{lang:By PostAuthorName 2}{/block:NotReblog}</span></span>
 					{block:RebloggedFrom}<span class="subtitle">{lang:Reblogged from ReblogParentName 2}</span>{/block:RebloggedFrom}
 				</div>
-				
+
 				{block:IfPostDates}<span class="date {block:IfDatesInMonospaceFont}mono{/block:IfDatesInMonospaceFont}" title="{lang:Posted TimeAgo}">{block:IfDatesFormattedMonthFirst}{ShortMonth} {DayOfMonthWithZero}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonthWithZero} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}{block:IfPostTimes}, {block:If24HourTimes}{24HourWithZero}{/block:If24HourTimes}{block:IfNot24HourTimes}{12HourWithZero}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes}{CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</span>{/block:IfPostDates}
 
 				{block:IfPostTags}{block:HasTags}<div class="tags-container">
@@ -383,68 +383,68 @@
 
 
 			<section class="body">
-			
+
 			{block:Title}<h2 class="ptitle"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
-			
+
 
 			{block:Text}
-			
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">
 					{block:AskPage}<div class="askwrapper">{text:Ask guidelines}</div>{/block:AskPage}
 					{Body}
 				</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-				
+
 			{/block:Text}
 
 
 			{block:Photo}
-				
+
 				<div class="photowrapper">
 					{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
 					<a class="highres" href="{PhotoURL-1280}"><span>?</span><span>{lang:View high resolution}</span></a>
 				</div>
-				
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">{Caption}</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-				
+
 			{/block:Photo}
 
 
 			{block:Panorama}
-				
+
 				<div class="photowrapper">
 					{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
 					<a class="highres" href="{PhotoURL-Panorama}"><span>?</span><span>{lang:View high resolution}</span></a>
 				</div>
-				
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">{Caption}</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-				
+
 			{/block:Panorama}
 
 
@@ -457,18 +457,18 @@
 						</figure>
 					{/block:Photos}
 				</div>
-				
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">{Caption}</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-			
+
 			{/block:Photoset}
 
 
@@ -529,7 +529,7 @@
 
 
 			{block:Chat}
-			
+
 				{block:RebloggedFrom}<div class="bodyitem">{/block:RebloggedFrom}
 				<div class="bodyitemcontent">
 				{block:Lines}
@@ -542,7 +542,7 @@
 
 
 			{block:Audio}
-			
+
 				{block:AudioPlayer}
 				<div class="audiowrapper {block:AlbumArt}hasart{/block:AlbumArt}">
 					{AudioPlayer}
@@ -565,69 +565,69 @@
 							<span class="custom_audio_time_left"></span>
 						</div>
 					</div>
-					
+
 					{block:AlbumArt}<img class="albumart" src="{AlbumArtURL}">{/block:AlbumArt}
 				</div>
 				{/block:AudioPlayer}
-				
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">{Body}</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-			
+
 			{/block:Audio}
 
 
 			{block:Video}
-			
+
 				<div class="videowrapper">
 					{Video-500}
 				</div>
-				
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">{Caption}</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-				
+
 			{/block:Video}
 
 
 			{block:Answer}
-				
+
 				<div class="bodyitem ask">
 					<p class="asker">{lang:Asker asked 2}:</p>
 					<div class="bodyitemcontent">{Question}</div>
 				</div>
-				
+
 				{block:RebloggedFrom}<div class="bodyitem">
 					{block:Answerer}
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} href="{Permalink}">{ReblogRootName}</a>
 					{/block:Answerer}{/block:RebloggedFrom}
-					
+
 					<div class="bodyitemcontent">{Answer}</div>
 				{block:RebloggedFrom}</div>
-				
+
 				{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 			{/block:Answer}
-			
+
 			</section>
 
 
@@ -662,7 +662,7 @@
 					<span class="to-unlike">{block:English}Unlike{/block:English}{block:German}Entliken{/block:German}{block:French}Je n'aime plus{/block:French}{block:Italian}Non mi piace{/block:Italian}{block:Japanese}スキ解除{/block:Japanese}{block:Turkish}Beğenme{/block:Turkish}{block:Spanish}Ya no me gusta{/block:Spanish}{block:Russian}Не нравится{/block:Russian}{block:Polish}Nie lubię{/block:Polish}{block:PortuguesePT}Deixar de gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir (desfazer){/block:PortugueseBR}{block:Dutch}Vind ik niet meer leuk{/block:Dutch}{block:Korean}좋아요 취소{/block:Korean}{block:ChineseSimplified}取消喜欢{/block:ChineseSimplified}{block:ChineseTraditional}收回喜歡{/block:ChineseTraditional}{block:ChineseHK}收回喜歡{/block:ChineseHK}{block:Indonesian}Tidak Suka{/block:Indonesian}{block:Hindi}पसंद हटाएँ{/block:Hindi}</span>
 					</a>
 					{/block:IfLikeButtons}
-					
+
 					{block:IfReblogButtons}
 					<a href="{ReblogURL}" class="customreblog button">{block:English}Reblog{/block:English}{block:German}Rebloggen{/block:German}{block:French}Rebloguer{/block:French}{block:Italian}Reblogga{/block:Italian}{block:Japanese}リブログ{/block:Japanese}{block:Turkish}Yeniden Blogla{/block:Turkish}{block:Spanish}Rebloguear{/block:Spanish}{block:Russian}Реблог{/block:Russian}{block:Polish}Rebloguj{/block:Polish}{block:PortuguesePT}Reblogar{/block:PortuguesePT}{block:PortugueseBR}Reblogar{/block:PortugueseBR}{block:Dutch}Rebloggen{/block:Dutch}{block:Korean}리블로그{/block:Korean}{block:ChineseSimplified}转发{/block:ChineseSimplified}{block:ChineseTraditional}轉格{/block:ChineseTraditional}{block:ChineseHK}轉載{/block:ChineseHK}{block:Indonesian}Reblog{/block:Indonesian}{block:Hindi}रीब्लॉग करेंे{/block:Hindi}</a>
 					{/block:IfReblogButtons}
@@ -670,8 +670,8 @@
 			</footer>{/block:Date}
 		</article>
 		{/block:Posts}
-		
-		
+
+
 		{block:PostNotes}
 		<!-- NOTES SECTION ON PERMALINK PAGES -->
 		<section id="postnotes">
@@ -691,13 +691,13 @@
 		{/block:JumpPagination}
 		<a {block:NextPage}href="{NextPage}"{/block:NextPage} class="next" class="button">{lang:Next} →</a>
 	</nav>{/block:Pagination}
-	
+
 	{block:PermalinkPagination}<nav class="bottom pagination">
 		<a {block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost} class="prev" class="button">← {lang:Previous}</a>
 		<span class="curr">{lang:See more posts}</span>
 		<a {block:NextPost}href="{NextPost}"{/block:NextPost} class="next" class="button">{lang:Next} →</a>
 	</nav>{/block:PermalinkPagination}
-	
+
 	{block:DayPage}{block:DayPagination}<nav class="bottom pagination">
 		<a {block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage} class="prev" class="button">← {lang:Previous}</a>
 		<span class="curr">{block:IfDatesFormattedMonthFirst}{DayOfMonthWithZero} {DayOfMonthWithZero}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonthWithZero} {ShortMonth}{/block:IfNotDatesFormattedMonthFirst} {Year}</span>
@@ -781,8 +781,8 @@
 		});
 		</script>
 		{/block:IfUpdates}
-		
-		
+
+
 		{block:IfToggles}
 		{block:IfTogglesTitle}
 		<div id="toggles">
@@ -801,8 +801,8 @@
 		});
 		</script>
 		{/block:IfToggles}
-		
-		
+
+
 		{block:IfProgressBars}
 		{block:IfProgressBarsTitle}
 		<div id="progbars">
@@ -861,7 +861,7 @@
 		tags.forEach((e) => {
 			let tag = e.trim();
 			$("#ft-tags").append("<a href=\"/tagged/"+tag+"\" data-tag=\""+tag+"\">"+tag+"</a>");
-			
+
 			$.getJSON("https://{Name}.tumblr.com/api/read/json?tagged="+tag+"&num=1&callback=?").done(function (a) {
 				$("[data-tag=\""+tag+"\"]").append(" ("+cleanNotes(a["posts-total"])+")");
 			});

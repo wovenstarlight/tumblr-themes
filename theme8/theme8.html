@@ -277,27 +277,27 @@ html.alt { /* ALTERNATE PALETTE */
 		});
 	});
 	</script>
-		
+
 	<style>
 	:root {
 		--Spoiler-Overlay-Color: var(--bg);
 		--Spoiler-Overlay-Transparency: 0%; /* MUST be in % */
-		
+
 		--Warning-Text-Size: 1em;
 		--Warning-Text-Color: var(--text);
 		--Spoiler-Tags-Color: var(--links);
-		
+
 		--ViewPost-Button-Padding: 0.7em;
 		--ViewPost-Button-Border: none;
 		--ViewPost-Button-Roundness: var(--roundness);
 		--ViewPost-Button-Background: var(--tt-bg) var(--tt-repeat);
 		--ViewPost-Button-FontSize: 90%;
 		--ViewPost-Button-Text-Color: var(--tt-text);
-		
+
 		--ViewPost-Button-HOVER-Border: none;
 		--ViewPost-Button-HOVER-Background: var(--tt-bg) var(--tt-repeat);
 		--ViewPost-Button-HOVER-Text-Color: var(--tt-text);
-		
+
 		--ShrinkPost-Transition-Speed: 699ms; /* can be in ms or s */
 	}
 
@@ -352,7 +352,7 @@ html.alt { /* ALTERNATE PALETTE */
 
 <nav id="tapes">
 	<button class="tape active" data-page="posts"><span>{lang:Posts}</span></button>
-	
+
 	{block:ShowDescription}{block:Description}<button class="tape" data-page="about"><span>{lang:About}</span></button>{/block:Description}{/block:ShowDescription}
 	<nav class="tape {block:AskEnabled}a{/block:AskEnabled} {block:SubmissionsEnabled}s{/block:SubmissionsEnabled} {block:IfRandomPostLink}r{/block:IfRandomPostLink} {block:IfArchiveLink}c{/block:IfArchiveLink}"><span> <!-- for if description is missing or hidden -->
 		{block:AskEnabled}<a href="/ask" class="asklink" {block:AskPage}class="current-page"{/block:AskPage} title="{AskLabel}"><i class="ph-envelope"></i></a>{/block:AskEnabled}
@@ -360,9 +360,9 @@ html.alt { /* ALTERNATE PALETTE */
 		{block:IfRandomPostLink}<a href="/random" class="randomlink" title="{lang:Random}"><i class="ph-shuffle"></i></a>{/block:IfRandomPostLink}
 		{block:IfArchiveLink}<a href="/archive" class="archivelink" title="{lang:Archive}"><i class="ph-archive"></i></a>{/block:IfArchiveLink}
 	</span></nav>
-	
+
 	<button class="tape nav {block:HasPages}pages{/block:HasPages} {block:IfSearchBar}search{/block:IfSearchBar}" {block:HasPages}data-page="nav"{/block:HasPages} {block:IfSearchBar}data-page="nav"{/block:IfSearchBar}><span>{lang:Navigate}</span></button>
-	
+
 	{block:IfStickerImage}<img class="og sticker" src="{image:Sticker}">{/block:IfStickerImage}
 	{block:IfAltStickerImage}<img class="alt sticker" src="{image:ALT Sticker}">{/block:IfAltStickerImage}
 </nav>
@@ -381,12 +381,12 @@ html.alt { /* ALTERNATE PALETTE */
 				</p>
 			</div>
 		{/block:TagPage}
-		
+
 		{block:DayPage}
 			<!-- SPECIAL PAGE HEADER: DAY -->
 			<div class="page title"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
 		{/block:DayPage}
-		
+
 		{block:SearchPage}
 			<!-- SPECIAL PAGE HEADER: SEARCH -->
 			<div class="page title">
@@ -418,35 +418,35 @@ html.alt { /* ALTERNATE PALETTE */
 
 
 				{block:Text}
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">
 						{block:AskPage}<div class="askwrapper">{text:FAQ}</div>{/block:AskPage}
 						{Body}
 					</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}><span class="username">{Username}</span></a>
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Text}
 
 
 				{block:Photo}
-				
+
 					<div class="photowrapper">
 						{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
 						<a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -455,21 +455,21 @@ html.alt { /* ALTERNATE PALETTE */
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Photo}
 
 
 				{block:Panorama}
-				
+
 					<div class="photowrapper">
 						{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
 						<a class="highres" href="{PhotoURL-Panorama}">{lang:View high resolution}</a>
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -478,7 +478,7 @@ html.alt { /* ALTERNATE PALETTE */
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Panorama}
 
 
@@ -490,11 +490,11 @@ html.alt { /* ALTERNATE PALETTE */
 							</figure>
 						{/block:Photos}
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -516,7 +516,7 @@ html.alt { /* ALTERNATE PALETTE */
 
 
 				{block:Link}
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">
 						<a class="link" href="{URL}" {Target}>
@@ -527,7 +527,7 @@ html.alt { /* ALTERNATE PALETTE */
 						{Body}
 					</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -545,7 +545,7 @@ html.alt { /* ALTERNATE PALETTE */
 						</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Link}
 
 
@@ -559,7 +559,7 @@ html.alt { /* ALTERNATE PALETTE */
 
 
 				{block:Audio}
-				
+
 					{block:AudioPlayer}
 					<div class="audiowrapper">
 						{AudioPlayer}
@@ -577,11 +577,11 @@ html.alt { /* ALTERNATE PALETTE */
 						</div>
 					</div>
 					{/block:AudioPlayer}
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -590,20 +590,20 @@ html.alt { /* ALTERNATE PALETTE */
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Audio}
-				
-				
+
+
 				{block:Video}
-				
+
 					<div class="videowrapper">
 						{Video-500}
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -612,18 +612,18 @@ html.alt { /* ALTERNATE PALETTE */
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Video}
 
 
 				{block:Answer}
-				
+
 					<div class="ask {PostID}">
-					
+
 						<div class="user">
 							<span class="username"><i class="ph-envelope-open"></i>{Asker}</span>
 						</div>
-						
+
 						<script>
 							asker = $(".{PostID} .asker");
 							if ( asker.length ) {
@@ -634,21 +634,21 @@ html.alt { /* ALTERNATE PALETTE */
 							asker.children(".username").prepend('<i class="ph-envelope-open"></i>');
 							}
 						</script>
-						
+
 						<div class="question">{Question}</div>
-						
+
 					</div>
-					
+
 					{block:RebloggedFrom}<div class="bodyitem">
 						{block:Answerer}
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" href="{ReblogRootURL}">
 							<span class="username">{ReblogRootName}</span>
 						</a>
 						{/block:Answerer}{/block:RebloggedFrom}
-						
+
 						<div class="bodyitemcontent">{Answer}</div>
 					{block:RebloggedFrom}</div>
-					
+
 					{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -657,22 +657,22 @@ html.alt { /* ALTERNATE PALETTE */
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Answer}
 
 			</section>
-			
-			
+
+
 			{block:Date}<footer>
 				<section class="stickies">
 					{block:ContentSource}<span class="source">{lang:Source}: <a href="{SourceURL}">{SourceTitle}</a></span>{/block:ContentSource}
-				
+
 					{block:RebloggedFrom}<span class="viasource">
 						<!-- VIA/SOURCE -->
 						<a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}"><img src="{ReblogParentPortraitURL-48}" /></a>
 						<a href="{ReblogRootURL}" title="{lang:Originally from ReblogRootName}"><img src="{ReblogRootPortraitURL-48}" /></a>
 					</span>{/block:RebloggedFrom}
-					
+
 					<span class="likereblog">
 						<!-- LIKE/REBLOG/SHOW TAGS -->
 						{block:IfLikeButtons}
@@ -690,7 +690,7 @@ html.alt { /* ALTERNATE PALETTE */
 						{/block:IfShowTagsOnClick}{/block:HasTags}{/block:IfPostTags}
 					</span>
 				</section>
-				
+
 				{block:IfPostTags}{block:HasTags}<section class="tags" {block:IfShowTagsOnClick}style="display: none;"{/block:IfShowTagsOnClick}>
 					<!-- TAGS SECTION -->
 					{block:Tags}<a href="{TagURL}" init-tags>{Tag}</a>{/block:Tags}
@@ -705,13 +705,13 @@ html.alt { /* ALTERNATE PALETTE */
 			<span id="curr">{lang:CurrentPage of TotalPages}</span>
 			{block:NextPage}<a href="{NextPage}" id="next" title="{lang:Next page}"><i class="ph-arrow-right"></i></a>{/block:NextPage}
 		</nav>{/block:Pagination}
-		
+
 		{block:PermalinkPagination}<nav id="pagination">
 			{block:PreviousPost}<a href="{PreviousPost}" id="prev" title="{lang:Previous post}"><i class="ph-arrow-left"></i></a>{/block:PreviousPost}
 			<span id="curr">{lang:See more posts}</span>
 			{block:NextPost}<a href="{NextPost}" id="next" title="{lang:Next post}"><i class="ph-arrow-right"></i></a>{/block:NextPost}
 		</nav>{/block:PermalinkPagination}
-		
+
 		{block:DayPage}{block:DayPagination}<nav id="pagination">
 			{block:PreviousDayPage}<a href="{PreviousDayPage}" id="prev" title="{lang:Previous day}"><i class="ph-arrow-left"></i></a>{/block:PreviousDayPage}
 			<span id="curr">{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst}, {Year}</span>
@@ -728,7 +728,7 @@ html.alt { /* ALTERNATE PALETTE */
 			</section>
 		</section>
 		{/block:PostNotes}
-		
+
 	</section>
 
 
@@ -752,7 +752,7 @@ html.alt { /* ALTERNATE PALETTE */
 			<input id="q" type="text" name="q" value="{SearchQuery}" placeholder="Search"/>
 		</form>
 		{/block:IfSearchBar}
-		
+
 		{block:HasPages}
 		<!-- CUSTOM PAGES -->
 		<nav id="pages">
@@ -770,14 +770,14 @@ html.alt { /* ALTERNATE PALETTE */
 			</div>
 		</div>
 		{/block:IfBackToTopButton}
-	
+
 		{block:IfPaletteToggle}
 		<a id="darklight" tabindex="0" title="Toggle palette">
 			<i class="ph-moon"></i>
 			<i class="ph-sun"></i>
 		</a>
 		{/block:IfPaletteToggle}
-	
+
 		<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
 		<a id="credit" href="https://starlightthemes.tumblr.com/theme8" title="{lang:Install this theme}"><i class="ph-code"></i></a>
 		<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->

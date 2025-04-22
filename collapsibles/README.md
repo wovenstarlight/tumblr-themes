@@ -99,14 +99,14 @@ When nesting collapsibles, you should place the inner collapsible `div` inside t
 	<p class="clpbutton">Click to open the collapsible</p>
 	<div class="clpcontent">
 		<p>Collapsible content goes here. This one's got a nested collapsible.</p>
-		
+
 		<div class="collapsible">
 			<p class="clpbutton">Click to open the collapsible</p>
 			<div class="clpcontent">
 				<p>This is a nested collapsible! It'll appear inside the main collapsible.</p>
 			</div>
 		</div>
-		
+
 	</div>
 </div>
 ```
@@ -123,7 +123,7 @@ Here's another example; this one's a shortened excerpt from the "My S-Ranks" sec
 		<div class="collapsible">
 			<p class="clpbutton">midnight musings [SERIES]</p>
 			<div class="clpcontent">
-				
+
 				<!-- This one has another nested layer. -->
 				<div class="collapsible">
 					<p class="clpbutton">i don't think this is what pillow talk means</p>
@@ -131,7 +131,7 @@ Here's another example; this one's a shortened excerpt from the "My S-Ranks" sec
 						<p>“Yoojin-ah…?”</p>
 					</div>
 				</div>
-				
+
 				<div class="collapsible">
 					<p class="clpbutton">midnight musings</p>
 					<div class="clpcontent">

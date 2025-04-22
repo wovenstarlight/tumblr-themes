@@ -44,12 +44,12 @@
 		- Replace All with icon name of your choice from the Cappuccicons page
 		Example: When replacing the theme icon with the icon "yarn", this: <i class="cp cp-flash-o"></i>
 		...should have changed to this: <i class="cp cp-yarn"></i>
-	
+
 	2. Replace fonts
 		- Body font: Search/Replace All "Bitter"
 		- Title/headings font: Search/Replace All "Lora"
 		You can check "font-family" and "--title-font" below to see if these were correctly replaced.
-	
+
 	3. Edit other layout/color options just below this
 		- font-size, post-width: Self-explanatory. Measured in px values.
 */
@@ -58,8 +58,8 @@ html {
 	--post-width: 500px;
 	font-family: "Bitter", serif; /* General */
 	--title-font: "Lora", serif; /* Headings */
-	
-	
+
+
 	/** COLORS SECTION 1
 		Dark mode colors (if you choose to have two color palettes), OR
 		General page colors (if not).
@@ -130,17 +130,17 @@ html.light body { background-image: url("{HeaderImage}") }
 
 <!-- Accessibility: SKIP TO MAIN -->
 <a href="#main" id="skip">Skip to main content</a>
-	
+
 {block:HideTitle}<h1 id="hiddentitle">{Title}</h1>{/block:HideTitle}
 
 <header>
 	<div id="left">
-		
+
 		<div class="planet">
 			<div class="ring"></div>
 			<img src="{PortraitURL-128}"/>
 		</div>
-		
+
 		<!-- CUSTOMIZE: TITLE
 			Generally, this will inherit the settings of your blog, including what your title actually is and if you've set it to show or not.
 			However, if you'd like, you can replace this text and add a custom heading!
@@ -148,15 +148,15 @@ html.light body { background-image: url("{HeaderImage}") }
 			<a id="title"><h1>YOUR TEXT HERE</h1></a>
 		-->
 		{block:ShowTitle}<a href="/" id="title"><h1>{Title}</h1></a>{/block:ShowTitle}
-	
+
 	</div>
 
 	<nav>
 		<a href="/" data-tippy-content="{lang:Home}"><i class="cp cp-home-o"></i></a>
 		{block:AskEnabled}<a href="/ask" id="asklink" data-tippy-content="{AskLabel}"><i class="cp cp-envelope-o"></i></a>{/block:AskEnabled}
 		{block:SubmissionsEnabled}<a href="/submit" id="submitlink" data-tippy-content="{SubmitLabel}"><i class="cp cp-gift-o"></i></a>{/block:SubmissionsEnabled}
-		
-		
+
+
 		<!-- CUSTOMIZE: DARK/LIGHT MODE TOGGLE
 			If you want two color palettes, leave this part as is.
 			If you only want one color palette, delete everything from START HERE to END HERE.
@@ -167,8 +167,8 @@ html.light body { background-image: url("{HeaderImage}") }
 			<i class="cp cp-sun"></i>
 		</a>
 		<!-- END HERE -->
-		
-		
+
+
 		<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
 		<a href="https://starlightthemes.tumblr.com/pg2" id="creditlink" data-tippy-content="Page by starlightthemes"><i class="cp cp-code"></i></a>
 		<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
@@ -187,7 +187,7 @@ html.light body { background-image: url("{HeaderImage}") }
 
 		<!-- START OF SECTION -->
 		<article class="post frame">
-			
+
 			<h2 class="title"><a>
 				<!-- SECTION TITLE
 				Add your title on the next line!
@@ -198,23 +198,23 @@ html.light body { background-image: url("{HeaderImage}") }
 				-->
 				Category one
 			</a></h2>
-			
+
 			<ul class="links">
 				<!-- LINKS LIST
 				To add a link, copy/paste the following line:
 				<li><a href="/">ABC</a></li>
 				Then replace "ABC" with the link text,
 				and "/" with the URL of the page you want this to link to.
-				
+
 				Add your links AFTER this line! -->
-			
+
 				<li><a href="https://starlightpreviews.tumblr.com"><i class="cp cp-link"></i>Link one</a></li>
 				<li><a href="/"><i class="cp cp-link"></i>Link two</li>
 				<li><a href="/"><i class="cp cp-link"></i>Link three</li>
 
 				<!-- Add your links BEFORE this line! -->
 			</ul>
-		
+
 		</article>
 		<!-- END OF SECTION -->
 
@@ -222,17 +222,17 @@ html.light body { background-image: url("{HeaderImage}") }
 
 		<!-- START OF SECTION -->
 		<article class="post frame">
-			
+
 			<h2 class="title"><a href="/">
 				Category two
 			</a></h2>
-			
+
 			<ul class="links">
 				<li><a href="/">Link one</a></li>
 				<li><a href="/">Link two</a></li>
 				<li><a href="/">Link three</a></li>
 			</ul>
-		
+
 		</article>
 		<!-- END OF SECTION -->
 
@@ -272,7 +272,7 @@ if ( currTheme == "light" ) {
 // Color mode button click
 $("#darklight").on("click keypress", function() {
 	body.toggleClass("light");
-	
+
 	var newTheme = "dark";
 	if (body.hasClass("light")) {
 		newTheme = "light";

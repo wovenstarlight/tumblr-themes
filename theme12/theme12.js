@@ -19,7 +19,7 @@ $(document).ready( function() {
 	// Button click
 	$("#palette").on("click keypress", function() {
 		page.toggleClass("alt");
-		
+
 		var newPalette = "normal";
 		if (page.hasClass("alt")) {
 			newPalette = "alt";
@@ -43,7 +43,7 @@ $(document).ready( function() {
 			$("#dropnav").removeClass("active");
 		}
 	});
-	
+
 	// #region Audio post setup
 	customAudio({
 		playButton: "<i class='ph-play'></i>",

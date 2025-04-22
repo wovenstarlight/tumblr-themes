@@ -15,7 +15,7 @@ $(document).ready( function() {
 
 	// Persistent color mode toggle
 	const body = $("body");
-			
+
 	const currTheme = localStorage.getItem("theme");
 
 	if ( currTheme == "light" ) {
@@ -24,7 +24,7 @@ $(document).ready( function() {
 
 	$("#darklight").click( function() {
 		body.toggleClass("light");
-		
+
 		var newTheme = "dark";
 		if (body.hasClass("light")) {
 			newTheme = "light";

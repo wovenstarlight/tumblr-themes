@@ -718,7 +718,7 @@ div:not(.hasimg) .feature img {
 
 @media (max-width: 50em) {
 	body #right, #right:empty ~ #showright { display: none }
-	
+
 	body.showright { overflow: hidden }	
 	body.showright #right {
 		position: fixed;
@@ -733,7 +733,7 @@ div:not(.hasimg) .feature img {
 		padding: 4em 1em;
 		z-index: 6;
 	}
-	
+
 	#scrolltotop_parent { bottom: 3.75em }
 	body.showright #scrolltotop_parent { display: none }
 	body.showright #showright {

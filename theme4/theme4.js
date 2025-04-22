@@ -20,24 +20,24 @@ function chronoCheck(firstHTML, prevHTML, nextHTML, lastHTML, totalpages, firstU
 		const prev = $(".pagination .prevpage");
 		const next = $(".pagination .nextpage");
 		const last = $(".pagination .lastpage");
-		
+
 		if (prev.length && next.length) {
 			swapPrevNext(prev, next);
-			
+
 			if (last.length) { last.attr("href", "/tagged/" + arr[arr.length - 4] + "/chrono/page/" + totalpages); }
 		}
-		
+
 		else if (prev.length) {
 			// Change to next/latest
 			updateLink(first, nextHTML, prev.attr("href"), "firstpage", "nextpage");
-			
+
 			updateLink(prev, lastHTML, "/tagged/" + arr[arr.length - 2] + "/chrono/page/" + totalpages, "prevpage", "lastpage");
 		}
-		
+
 		else if (next.length) {
 			// Change to first/prev
 			updateLink(last, prevHTML, next.attr("href"), "lastpage", "prevpage");
-			
+
 			updateLink(next, firstHTML, firstURL, "nextpage", "firstpage");
 		}
 	}
@@ -74,7 +74,7 @@ $(document).ready( function() {
 	// Color mode button click
 	$("#darklight").on("click keypress", function() {
 		body.toggleClass("light");
-		
+
 		var newTheme = "dark";
 		if (body.hasClass("light")) {
 			newTheme = "light";

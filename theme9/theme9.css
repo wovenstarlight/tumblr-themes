@@ -704,7 +704,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 @media (min-width: 60em) { /* Desktop */
 	/* Stop body from overlapping navigation */
 	body { margin-right: 9.25em }
-	
+
 	/* Title and subtitle */
 	#title h1, #h1 { width: calc(100% - 12rem) }
 	#title h2 { width: calc(100% - 7rem) }
@@ -735,7 +735,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 	}
 	header::after { content: "" }
 	#pagination i.h { display: none }
-	
+
 	/* Pinned post marker */
 	#pinnedpost {
 		margin: 0;
@@ -755,7 +755,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		background-position: top right;
 		color: var(--t1-text);
 	}
-	
+
 	/* Post title */
 	.post .title { margin: 0 -0.75em }
 }
@@ -794,7 +794,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		margin: 0 calc(-1 * ((100vw - 100%) / 2));
 	}
 	#pagination i.v { display: none }
-	
+
 	.post .title { margin: 0 -0.2em }
 }
 

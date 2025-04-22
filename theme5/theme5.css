@@ -742,7 +742,7 @@ form input {
 		flex-direction: column;
 	}
 	.posts { margin: 3em 0 3em 2em }
-	
+
 	/* Position/resize page nav */
 	#pagination {
 		position: fixed;
@@ -756,7 +756,7 @@ form input {
 		height: calc(100% - 2em);
 	}
 	#pagination .current-page i { display: none }
-	
+
 	/* Position sidebar */
 	#sidebar {
 		position: fixed;
@@ -779,10 +779,10 @@ form input {
 		justify-items: center;
 		width: 100%;
 	}
-	
+
 	/* Stop page from scrolling sideways because of crosshairs */
 	.posts { padding: 0 1em }
-	
+
 	/* Reshape navigation */
 	#pagination {
 		position: relative;

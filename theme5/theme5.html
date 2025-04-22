@@ -218,27 +218,27 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 		});
 	});
 	</script>
-		
+
 	<style>
 	:root {
 		--Spoiler-Overlay-Color: var(--post);
 		--Spoiler-Overlay-Transparency: 0%; /* MUST be in % */
-		
+
 		--Warning-Text-Size: 0.8em;
 		--Warning-Text-Color: var(--text);
 		--Spoiler-Tags-Color: var(--links);
-		
+
 		--ViewPost-Button-Padding: 0.75em;
 		--ViewPost-Button-Border: none;
 		--ViewPost-Button-Roundness: 0;
 		--ViewPost-Button-Background: rgb(from var(--accent) r g b / 0.2);
 		--ViewPost-Button-FontSize: 100%;
 		--ViewPost-Button-Text-Color: var(--links);
-		
+
 		--ViewPost-Button-HOVER-Border: none;
 		--ViewPost-Button-HOVER-Background: var(--links);
 		--ViewPost-Button-HOVER-Text-Color: var(--post);
-		
+
 		--ShrinkPost-Transition-Speed: 699ms; /* can be in ms or s */
 	}
 	.post[style*="max-height"] .frame::before,
@@ -280,7 +280,7 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 
 <!-- Accessibility: SKIP TO MAIN -->
 <a href="#main" id="skip">Skip to main content</a>
-	
+
 {block:HideTitle}<h1 id="hiddentitle">{Title}</h1>{/block:HideTitle}
 
 
@@ -297,12 +297,12 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 			<p>Sort <a href="/tagged/{URLSafeTag}">newest first</a> or <a href="/tagged/{URLSafeTag}/chrono">oldest first</a></p>
 		</div>
 	{/block:TagPage}
-	
+
 	{block:DayPage}
 		<!-- SPECIAL PAGE HEADER: DAY -->
 		<div class="page title"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
 	{/block:DayPage}
-	
+
 	{block:SearchPage}
 		<!-- SPECIAL PAGE HEADER: SEARCH -->
 		<div class="page title">
@@ -333,14 +333,14 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 			<section class="frame">
 				{block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
 				{block:Text}
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">
 						{block:AskPage}<div class="askwrapper">{text:FAQ}</div>{/block:AskPage}
 						{Body}
 					</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -350,21 +350,21 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Text}
 
 
 				{block:Photo}
-				
+
 					<div class="photowrapper">
 						{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
 						<a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -374,21 +374,21 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Photo}
 
 
 				{block:Panorama}
-				
+
 					<div class="photowrapper">
 						{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
 						<a class="highres" href="{PhotoURL-Panorama}">{lang:View high resolution}</a>
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -398,7 +398,7 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Panorama}
 
 
@@ -410,11 +410,11 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 							</figure>
 						{/block:Photos}
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -425,8 +425,8 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
 				{/block:Photoset}
-		
-		
+
+
 				{block:Quote}
 					<div class="quote">
 						<h2>{Quote}</h2>
@@ -436,10 +436,10 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 						{/block:Source}
 					</div>
 				{/block:Quote}
-				
-				
+
+
 				{block:Link}
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">
 						<a class="link" href="{URL}" {Target}>
@@ -450,7 +450,7 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 						{Body}
 					</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -469,10 +469,10 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 						</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Link}
-				
-				
+
+
 				{block:Chat}
 					<ol class="chat">
 						{block:Lines}
@@ -480,10 +480,10 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 						{/block:Lines}
 					</ol>
 				{/block:Chat}
-				
-				
+
+
 				{block:Audio}
-				
+
 					{block:AudioPlayer}
 					<div class="audiowrapper">
 						{AudioPlayer}
@@ -499,11 +499,11 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 						<div class="custom_audio_seekbar"></div>
 					</div>
 					{/block:AudioPlayer}
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -513,20 +513,20 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Audio}
-				
-				
+
+
 				{block:Video}
-				
+
 					<div class="videowrapper">
 						{Video-500}
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -536,21 +536,21 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Video}
-				
-				
+
+
 				{block:Answer}
-				
+
 					<div class="ask">
-					
+
 						<div class="user">
 							<img src="{AskerPortraitURL-64}" class="usericon">
 							<span class="username">{lang:Asker asked 2}</span>
 						</div>
 						<div class="question">{Question}</div>
 					</div>
-					
+
 					{block:RebloggedFrom}<div class="bodyitem">
 						{block:Answerer}
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" href="{ReblogRootURL}">
@@ -558,10 +558,10 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 							<span class="username">{ReblogRootName}</span>
 						</a>
 						{/block:Answerer}{/block:RebloggedFrom}
-						
+
 						<div class="bodyitemcontent">{Answer}</div>
 					{block:RebloggedFrom}</div>
-					
+
 					{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -571,7 +571,7 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Answer}
 			</section>
 
@@ -618,7 +618,7 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 	{/block:PostNotes}
 
 	</section>
-	
+
 	<!-- DIVIDER -->
 	<nav id="pagination">
 		<hr>
@@ -639,29 +639,29 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 		<a href="{URL}">{PageNumber}</a>
 		{/block:JumpPage}
 		{/block:JumpPagination}
-		
+
 		{block:NextPage}
 		<a class="arrows" href="{NextPage}"><i class="cp cp-chevron-down"></i></a>
 		{/block:NextPage}
 		{/block:Pagination}
-		
+
 		{block:PermalinkPagination}
 		<!-- PERMALINK PAGINATION -->
 		{block:PreviousPost}
 		<a class="arrows" href="{PreviousPost}"><i class="cp cp-chevron-up"></i></a>
 		{/block:PreviousPost}
-		
+
 		{block:NextPost}
 		<a class="arrows" href="{NextPost}"><i class="cp cp-chevron-down"></i></a>
 		{/block:NextPost}
 		{/block:PermalinkPagination}
-		
+
 		{block:DayPagination}
 		<!-- DAY PAGINATION -->
 		{block:PreviousDayPage}
 		<a class="arrows" href="{PreviousDayPage}"><i class="cp cp-chevron-up"></i></a>
 		{/block:PreviousDayPage}
-		
+
 		{block:NextDayPage}
 		<a class="arrows" href="{NextDayPage}"><i class="cp cp-chevron-down"></i></a>
 		{/block:NextDayPage}
@@ -679,7 +679,7 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 			<img {block:ShowAvatar}src="{PortraitURL-128}"{/block:ShowAvatar} {block:IfLMAvatarImage}class="dark"{/block:IfLMAvatarImage}/>
 			{block:IfLMAvatarImage}<img src="{image:LM Avatar}" class="light"/>{/block:IfLMAvatarImage}
 		</div>
-		
+
 		<div id="btnctr">
 			<!-- SPECIAL BUTTONS -->
 			<div id="buttons">
@@ -693,7 +693,7 @@ html.light .planet .dark, html:not(.light) .planet .light { display: none }
 				{block:IfNotColorModeToggle}
 				<a><i class="cp cp-{text:Main theme icon}"></i></a>
 				{/block:IfNotColorModeToggle}
-				
+
 				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
 				<a href="https://starlightthemes.tumblr.com/theme5" id="creditlink" data-tippy-content="{lang:Install this theme}" data-tippy-placement="right"><i class="cp cp-code"></i></a>
 				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->

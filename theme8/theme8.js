@@ -13,7 +13,7 @@ $(document).ready( function() {
 	// Color mode button click
 	$("#darklight").on("click keypress", function() {
 		page.toggleClass("alt");
-		
+
 		var newPalette = "normal";
 		if (page.hasClass("alt")) {
 			newPalette = "alt";

@@ -1,6 +1,6 @@
 $(document).ready( function() {
 	const body = $("body");
-	
+
 	// Color theme
 	const currTheme = localStorage.getItem("theme");
 
@@ -11,7 +11,7 @@ $(document).ready( function() {
 
 	$("#darklight").click( function() {
 		body.toggleClass("dark light");
-		
+
 		var newTheme = "dark";
 		if (body.hasClass("light")) {
 			newTheme = "light";
@@ -52,6 +52,6 @@ $(document).ready( function() {
 		placement: "top",
 		theme: "default"
 	});
-	
+
 	tippy(".timestamp [data-tippy-content], .actions [data-tippy-content]", { theme: "default" });
 });

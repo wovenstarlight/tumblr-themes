@@ -29,7 +29,7 @@ $(document).ready( function() {
 	// Color mode button click
 	$("#darklight").on("click keypress", function() {
 		body.toggleClass("light");
-		
+
 		var newTheme = "dark";
 		if (body.hasClass("light")) {
 			newTheme = "light";

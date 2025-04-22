@@ -40,7 +40,7 @@
 			- Body font: Search/Replace All "BODYFONT"
 			- Title/headings font: Search/Replace All "TITLEFONT"
 			You can check "--bfont" and "--tfont" below to see if these were correctly replaced.
-		
+
 		2. Edit other layout/color options just below this
 			- font-size: Self-explanatory. Measured in px values.
 			- tweight: Whether the title is bolded or not. Choose between "normal" or "bold".
@@ -122,7 +122,7 @@
 			If you'd rather hide one of them while ignoring the settings of your blog:
 				- TO HIDE AVATAR: delete the line below, from {block:ShowAvatar} to {/block:ShowAvatar}.
 				- TO HIDE TITLE: delete the second line below, from {block:ShowTitle} to {/block:ShowTitle}.
-			
+
 			If you'd like to insert an image as a "logo", copy+paste the following line BETWEEN the Avatar and Title lines:
 			<img src="https://YOUR-URL-HERE.com" id="logo" class="" />
 			And replace https://YOUR-URL-HERE.com with the link to your image.
@@ -134,7 +134,7 @@
 		{block:ShowAvatar}<img src="{PortraitURL-128}" id="avatar" class="{AvatarShape}" />{/block:ShowAvatar}
 		{block:ShowTitle}<h1>{Title}</h1>{/block:ShowTitle}
 	</a>
-	
+
 	<section id="links-search">
 		<!-- BLOG NAVIGATION -->
 		<nav id="links">
@@ -145,7 +145,7 @@
 					{block:SubmissionsEnabled}<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
 				</div>
 			</div>
-			
+
 			{block:HasPages}
 			<!-- CUSTOM PAGES -->
 			<div id="pages">
@@ -154,7 +154,7 @@
 			</div>
 			{/block:HasPages}
 		</nav>
-		
+
 		<!-- SEARCH BAR -->
 		<form action="/search" method="get" id="search">
 			<label for="q">{lang:Search}</label>
@@ -188,12 +188,12 @@
 			<!--
 				CUSTOMIZE: TAGS
 				As you can see below, the tags section is written in the following format:
-				
+
 				<dt>Label here</dt>
 					<dd>Corresponding value here</dd>
-				
+
 				A template has been given below, in the format of AO3's actual work tags header, filled with example "tags".
-				
+
 				You can edit both the labels and tags to say whatever you want.
 					- You don't need to add a colon (:) to the end of the labels; the page code will handle that automatically.
 					- To bold a label/value, add class="warning" to the opening dt/dd element tag, as seen below with Archive Warnings.
@@ -202,7 +202,7 @@
 						Examples can be seen in the Relationships and Additional Tags sections.
 						(You can also link to other pages on your blog by omitting the "https://YOUR-USERNAME-HERE.tumblr.com" part of the url, and just writing "/pagename". For example, if I was using this page on https://starlightpreviews.tumblr.com, and I wanted to link to https://starlightpreviews.tumblr.com/theme11, I would write <a href="/theme11">TEXT HERE</a> )
 					- Add new labels and tags by adding more <dt></dt> <dd></dd> pairs. Make sure they're added ABOVE the </dl></aside> tags!
-				
+
 				See below for additional notes.
 			-->
 
@@ -211,28 +211,28 @@
 
 				<dt>Rating</dt>
 					<dd>General Audiences</dd>
-				
+
 				<dt class="warning">Archive Warnings</dt>
 					<dd class="warning">No Archive Warnings Apply</dd>
-				
+
 				<dt>Categories</dt>
 					<dd>Multi, M/F</dd>
-				
+
 				<dt>Fandoms</dt>
 					<dd>No Fandom</dd>
-				
+
 				<dt>Relationships</dt>
 					<dd><a href="/">Character A & Character B</a>, Character A/Character C, Minor or Background Relationship(s)</dd>
-				
+
 				<dt>Characters</dt>
 					<dd>Character A, Character B, Character C</dd>
-				
+
 				<dt>Additional Tags</dt>
 					<dd>Tag 1, <a href="/">Tag 2 With a Link</a></dd>
-				
+
 				<dt>Language</dt>
 					<dd>English</dd>
-				
+
 				<!--
 					Additional customization notes: SERIES
 					Each series is in the following format. You can copy/paste this to add more. Make sure to add commas to split up different series!
@@ -246,7 +246,7 @@
 					If there is no previous/next work, simply delete the first/third lines, including the "separator" span element.
 
 					Additionally, to ensure the spacing between each line is proper, you'll have to add comments between lines. They're the arrow-bracket and dash combinations around this text, looking like this but without the spaces: < !-- -- >
-					
+
 					See below for examples. The first series has both a Previous and a Next link, while the second has only a Previous link.
 				-->
 				<dt>Series</dt>
@@ -277,7 +277,7 @@
 				<dt>Stats</dt>
 					<dd><dl class="stats">
 					<!-- Add new stats BELOW this line! -->
-					
+
 					<dt>Published</dt>
 						<dd>2022-10-10</dd>
 
@@ -286,7 +286,7 @@
 
 					<!-- Add new stats ABOVE this line! -->
 					</dl></dd>
-				
+
 				<!-- Add new labels/values ABOVE this line! -->
 			</dl>
 		</aside>
@@ -302,7 +302,7 @@
 
 			<h2>Title Goes Here</h2>
 			<h3>{Name}</h3>
-			
+
 			<section id="summary">
 				<h3 class="heading">Summary:</h3>
 
@@ -310,14 +310,14 @@
 					<p>Your text here! Add new paragraphs inside p tags, like the ones around this block.</p>
 				</div>
 			</section>
-			
+
 			<section id="top" class="notes">
 				<h3 class="heading">Notes:</h3>
 
 				<div>
 					<p>Your text here! Add new paragraphs inside p tags, like the ones around this block.</p>
 				</div>
-			
+
 				<!-- Delete the next line if you don't have end notes. -->
 				<p class="jump">(See the end of the work for <a href="#bottom">more notes</a>.)</p>
 			</section>

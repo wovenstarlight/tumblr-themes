@@ -388,7 +388,7 @@
 					</a>
 				</footer>
 			</dialog>
-			
+
 			<dialog id="lightbox">
 				<button class="closemodal">
 					<span class="visuallyhidden">Close</span>
@@ -629,7 +629,7 @@ postViewer._open = (targetPostContent) => {
 	if (targetPostContent._filteredTags && !targetPostContent.classList.contains("filtered")) {
 		// Hide post content
 		targetPostContent.classList.add("filtered");
-		
+
 		// Assemble and insert filter message
 		let msg = document.createElement("div"),
 			warning = document.createElement("p"),
@@ -637,17 +637,17 @@ postViewer._open = (targetPostContent) => {
 			btn = document.createElement("button");
 		msg.append(warning, tagList, btn);
 		targetPostContent.insertBefore(msg, targetPostContent.firstElementChild);
-		
+
 		// Add classes
 		msg.classList.add("filter");
 		tagList.classList.add("tags");
 		btn.classList.add("button-solid-blue");
-		
+
 		// Add text to all elements
 		warning.innerText = "This post contains filtered tags.";
 		tagList.innerHTML = "<span class='tag'>#".concat(targetPostContent._filteredTags.map(el => el.name).join("</span>, <span class='tag'>#")).concat("</span>");
 		btn.innerText = "View post";
-		
+
 		// Set up viewing function
 		btn.addEventListener("click", () => {
 			msg.remove();
@@ -742,7 +742,7 @@ lightbox._moveTo = (direction, focusTarget, eventType = null) => {
 			lightbox._addImage(lightbox._images[lightbox._index - 1], "left");
 			lightbox.querySelector(".".concat(focusTarget))?.focus();
 			break;
-		
+
 		case "right":
 			if (lightbox._index + 1 === lightbox._images.length) {
 				if (eventType !== "arrow") lightbox._close();
@@ -756,7 +756,7 @@ lightbox._moveTo = (direction, focusTarget, eventType = null) => {
 			lightbox._addImage(lightbox._images[lightbox._index + 1], "right");
 			lightbox.querySelector(".".concat(focusTarget))?.focus();
 			break;
-		
+
 		default:
 			break;
 	}
@@ -768,17 +768,17 @@ lightbox.addEventListener("click", e => {
 		case "left":
 			lightbox._moveTo("left", "left");
 			break;
-		
+
 		case "center":
 			lightbox._moveTo("right", "center");
 			break;
-		
+
 		case "right":
 			lightbox._moveTo("right", "right");
 			break;
-		
+
 		// Don't add event handler for the close button; that's already taken care of
-		
+
 		default:
 			break;
 	}
@@ -800,17 +800,17 @@ lightbox.addEventListener("keydown", e => {
 		case "left":
 			lightbox._moveTo("left", currFocus);
 			break;
-		
+
 		case "center":
 			lightbox._moveTo("right", currFocus);
 			break;
-		
+
 		case "right":
 			lightbox._moveTo("right", currFocus);
 			break;
-		
+
 		// Don't add event handler for the close button; that's already taken care of
-		
+
 		default:
 			break;
 	}
@@ -838,7 +838,7 @@ let posts = [
 
 		id: {JSPostID},
 		permalink: {JSPermalink},
-		
+
 		date: {
 			day: {JSDayOfWeek},
 			textDM: "{DayOfMonth} {Month}, {Year}",
@@ -884,7 +884,7 @@ let posts = [
 		noteCountWithLabel: {JSNoteCountWithLabel},
 		postNotes: {JSPostNotesURL},
 		{/block:NoteCount}
-		
+
 		like_html: {JSLikeButton size="30"},
 		reblog_url: {JSReblogURL},
 
@@ -946,7 +946,7 @@ posts.forEach(post => {
 	else {
 		// Content available via NPF
 		// Create, but put guards in for header/footer just in case pages are parsed as NPF too
-		
+
 		if (post.id !== undefined)
 			createPostHeader(postContent, post);
 
@@ -1082,7 +1082,7 @@ document.querySelectorAll(".modal, #lightbox").forEach(modal => {
 				});
 				postViewer.children[1]._container.append(postViewer.children[1]);
 				break;
-			
+
 			case "lightbox":
 				modal.close();
 				// Remove the images in the lightbox
@@ -1091,7 +1091,7 @@ document.querySelectorAll(".modal, #lightbox").forEach(modal => {
 				lightbox._images = null;
 				lightbox._index = null;
 				break;
-			
+
 			default:
 				modal.close();
 				break;
@@ -1270,13 +1270,13 @@ document.querySelectorAll(".bodyitem:first-child .bodyitemcontent > :is(".concat
 	let bodyitemcontent = el.parentElement,
 		wrapper = document.createElement("div");
 	wrapper.classList.add("mediawrapper");
-	
+
 	// Put wrapper in post body
 	bodyitemcontent.closest(".body").prepend(wrapper);
-	
+
 	// Add this element
 	wrapper.prepend(el);
-	
+
 	// If this is a photoset element, check for additional rows in the photoset and add them
 	if (el.classList.contains("row")) {
 		while (bodyitemcontent.childElementCount !== 0 && bodyitemcontent.children[0].classList.contains("row")) {
@@ -1334,11 +1334,11 @@ tippy.createSingleton(tippy("#pfoot [title]", tippyOptions), tippyOptions);
 						currPost.firstElementChild.focus();
 					}
 					break;
-				
+
 				case false:
 					document.getElementById("nextpost").click();
 					break;
-			
+
 				default:
 					break;
 			}
@@ -1359,11 +1359,11 @@ tippy.createSingleton(tippy("#pfoot [title]", tippyOptions), tippyOptions);
 						currPost.firstElementChild.focus();
 					}
 					break;
-				
+
 				case false:
 					document.getElementById("prevpost").click();
 					break;
-			
+
 				default:
 					break;
 			}
@@ -1495,7 +1495,7 @@ function createPostHeader(wrapper, postData) {
 function createPostFooter(wrapper, postData) {
 	let footer = document.createElement("footer");
 	wrapper.append(footer);
-	
+
 	// Populate post footer
 	// Tags
 	{block:IfPostTags}makeTags(footer, postData);{/block:IfPostTags}
@@ -1549,7 +1549,7 @@ function makeLike(wrapper, postData, icons = null) {
 	likeButton.classList.add("customlike");
 	likeButton.innerHTML = postData.like_html;
 	wrapper.append(likeButton);
-	
+
 	// Icon or text, as needed
 	let labels = {
 		like: `{block:English}Like{/block:English}{block:German}Liken{/block:German}{block:French}J'aime{/block:French}{block:Italian}Mi piace{/block:Italian}{block:Japanese}スキ{/block:Japanese}{block:Turkish}Beğen{/block:Turkish}{block:Spanish}Me gusta{/block:Spanish}{block:Russian}Нравится{/block:Russian}{block:Polish}Lubię{/block:Polish}{block:PortuguesePT}Gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir{/block:PortugueseBR}{block:Dutch}Vind ik leuk{/block:Dutch}{block:Korean}좋아요{/block:Korean}{block:ChineseSimplified}喜欢{/block:ChineseSimplified}{block:ChineseTraditional}喜歡{/block:ChineseTraditional}{block:ChineseHK}喜歡{/block:ChineseHK}{block:Indonesian}Suka{/block:Indonesian}{block:Hindi}पसंद करें{/block:Hindi}`,
@@ -1624,7 +1624,7 @@ function makeDayLink(wrapper, postData, icon = null) {
  * @param {HTMLElement} wrapper The child element of the post to which the tag toggle will be added. Usually the footer.
  * @param {HTMLElement} tagContainer The element containing the tags, on which to toggle the hide/show class.
  */
- function makeTagToggle(wrapper, tagContainer, icon = null) {
+function makeTagToggle(wrapper, tagContainer, icon = null) {
 	// Make element
 	let tagToggle = document.createElement("button");
 	tagToggle.classList.add("tagtoggle", "hidden");
@@ -1902,7 +1902,7 @@ function getPostIcon(npf, postContent = null, postType = null, forceSVG = false)
 			// Didn't return at any point above, so no image found. Use SVG
 			return getPostIconSVG(type);
 			break;
-	
+
 		case false:
 			trailItem = npf.trail[0] ?? npf;
 			if ((block = trailItem.content.find(el => el.type === "video")) != null && block.poster?.length) {
@@ -1932,7 +1932,7 @@ function getPostIcon(npf, postContent = null, postType = null, forceSVG = false)
 			// Didn't return at any point above, so no image found. Use SVG
 			return getPostIconSVG(type);
 			break;
-	
+
 		default:
 			break;
 	}
@@ -2053,10 +2053,10 @@ function createTrailItem(post, npf, postID, expand = false) {
 	let item = document.createElement("div");
 	item.classList.add("bodyitem");
 	post.append(item);
-	
+
 	// extant blog; create directly
 	if (npf.blog !== undefined) { createTrailItemHeader(item, npf.blog, npf.post) }
-	
+
 	// deleted/unrecoverable blog; provide the anon avatar
 	else if (npf.broken_blog_name !== undefined) {
 		createTrailItemHeader(item, {
@@ -2064,10 +2064,10 @@ function createTrailItem(post, npf, postID, expand = false) {
 			 avatar: anonAvatar,
 		});
 	}
-	
+
 	// blog is currentUser; provide directly-pulled info
 	else { createTrailItemHeader(item, currentUser, { id: postID }) }
-	
+
 	// create the body of their contribution
 	createTrailItemBody(item, npf, { id: postID }, expand);
 }
@@ -2084,10 +2084,10 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	trailItem.append(header);
 	let link = document.createElement("a");
 	header.append(link);
-	
+
 	// mark broken trail items
 	if (postData === null || blogData.active === false) { header.classList.add("deactivated") }
-	
+
 	// add link where original posts exist, with safeguards for pages
 	if (postData?.id === undefined && blogData.active != null) {
 		// page! link back to itself
@@ -2096,7 +2096,7 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	else if (blogData.url && blogData.active) {
 		link.href = blogData.url.concat(blogData.url.endsWith("/") ? `post/${postData.id}` : `/${postData.id}`);
 	}
-	
+
 	// Get the username and avatar
 	let username = document.createElement("span");
 	username.classList.add("name");
@@ -2276,7 +2276,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		askingLabel.innerText = " asked:";
 		asker.append(askerWrapper);
 		askerWrapper.append(askerIcon, askerName, askingLabel);
-		
+
 		let ask = document.createElement("div");
 		ask.classList.add("ask");
 		ask.append(asker);
@@ -2301,8 +2301,8 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		// - below answerer's name for Neue format
 		// - above answerer's name for legacy format
 		trailItem.insertBefore(ask, body{block:IfUseLegacyFormatForPostMedia}.previousElementSibling{/block:IfUseLegacyFormatForPostMedia});
-		
-		
+
+
 		// Sometimes asks have no answer content (i.e. nothing left in body); in this case, clean up answerer section
 		if (body.childElementCount === 0) {
 			{block:IfUseLegacyFormatForPostMedia}
@@ -2859,7 +2859,7 @@ function formatText(content) {
 	let base = content.text;
 	if (!content.formatting)
 		return base.replaceAll(String.fromCharCode(10), "<br />");
-	
+
 	let text = "",
 		formats = new Array(),
 		i = 0;
@@ -2889,11 +2889,11 @@ function formatText(content) {
 					break;
 			}
 		})
-		
+
 		// add the actual character, subbing in linebreaks
 		if (char === String.fromCharCode(10)) { text += "<br />" }
 		else { text += char }
-		
+
 		// close any formatting tags
 		formats = content.formatting.filter(f => (f.end === i + 1));
 		formats.forEach(f => {
@@ -2918,7 +2918,7 @@ function formatText(content) {
 					break;
 			}
 		})
-		
+
 		i ++;
 	}
 	return text;
@@ -2968,13 +2968,13 @@ function cleanNotes(initial = false) {
 
 		// Remove clears
 		note.querySelector(".clear").remove();
-		
+
 		// Add specific action wrapper
 		let acted = document.createElement("span");
 		acted.classList.add("acted");
 		acted.innerText = action.childNodes[1].textContent;
 		action.childNodes[1].replaceWith(acted);
-		
+
 		// Collapse via, addition label into reblog action
 		if (note.classList.contains("reblog") && !note.classList.contains("original_post")) {
 			action.childNodes[1].append(action.childNodes[2]);
@@ -2982,7 +2982,7 @@ function cleanNotes(initial = false) {
 		if (note.classList.contains("with_commentary") && !note.classList.contains("original_post")) {
 			action.childNodes[1].append(action.childNodes[2]);
 		}
-		
+
 		// Remove colon from "said:"
 		else if (note.classList.contains("reply")) {
 			action.children[1].innerText = action.children[1].innerText.substring(0, action.children[1].innerText.length - 1)

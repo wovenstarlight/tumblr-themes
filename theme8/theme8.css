@@ -785,7 +785,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		max-height: 10rem;
 		max-width: 10rem;
 	}
-	
+
 	/* Layout */
  	body {
 		height: 100%;
@@ -803,7 +803,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		bottom: 1em;
 		left: 7.5em;
 	}
-	
+
 	/* Pinned post label */
 	#pinnedpost {
 		margin: 0;
@@ -881,8 +881,8 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		max-height: 7em;
 		max-width: 23vw;
 	}
-	
-	
+
+
 	#main > section {
 		top: 2em;
 		padding: 0 0.5em;

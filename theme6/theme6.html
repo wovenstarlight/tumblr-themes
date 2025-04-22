@@ -205,7 +205,7 @@ aside {
 	<!-- TITLE -->
 	<a href="/" id="title"><h1 {block:IfBoldTitle}style="font-weight: bold;"{/block:IfBoldTitle}>{Title}</h1></a>
 	{/block:ShowTitle}
-	
+
 	<div id="blognav">
 		<a id="dropdown" title="{lang:Navigate}" tabindex="0"><i class="cp cp-menu"></i></a>
 		<nav>
@@ -235,7 +235,7 @@ aside {
 		</nav>
 		{/block:HasPages}
 	</div>
-	
+
 	{block:IfSearchBar}
 	<!-- SEARCH BAR -->
 	<form action="/search" method="get" id="search">
@@ -260,17 +260,17 @@ aside {
 		{block:JumpPage}<a href="{URL}">{PageNumber}</a>{/block:JumpPage}
 		{/block:JumpPagination}
 		</span>
-		
+
 		{block:NextPage}<a class="arrows next" title="{lang:Next page}" href="{NextPage}"><i class="cp cp-chevron-right"></i></a>{/block:NextPage}
 	</nav>{/block:Pagination}
-		
+
 	{block:PermalinkPagination}<nav class="pagination">
 		<!-- PERMALINK PAGINATION -->
 		{block:PreviousPost}<a class="arrows prev" title="{lang:Previous post}" href="{PreviousPost}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousPost}
 		<span class="jump">{lang:See more posts}</span>
 		{block:NextPost}<a class="arrows next" title="{lang:Next post}" href="{NextPost}"><i class="cp cp-chevron-right"></i></a>{/block:NextPost}
 	</nav>{/block:PermalinkPagination}
-		
+
 	{block:DayPagination}<nav class="pagination">
 		<!-- DAY PAGINATION -->
 		{block:PreviousDayPage}<a class="arrows prev" title="{lang:Previous day}" href="{PreviousDayPage}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousDayPage}
@@ -288,12 +288,12 @@ aside {
 				<p>Sort <a href="/tagged/{URLSafeTag}">newest first</a> or <a href="/tagged/{URLSafeTag}/chrono">oldest first</a></p>
 			</div>
 		{/block:TagPage}
-		
+
 		{block:DayPage}
 			<!-- SPECIAL PAGE HEADER: DAY -->
 			<div class="page title"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
 		{/block:DayPage}
-		
+
 		{block:SearchPage}
 			<!-- SPECIAL PAGE HEADER: SEARCH -->
 			<div class="page title">
@@ -322,18 +322,18 @@ aside {
 					{/block:PinnedPostLabel}
 					<i class="cp cp-link"></i>
 				</a>
-				
+
 				<div>
 					<span class="datenotes">
 						{block:IfPostDates}<a href="{Permalink}" class="date" title="{lang:Posted TimeAgo}">{block:IfDatesFormattedMonthFirst}{MonthNumberWithZero}.{DayOfMonthWithZero}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonthWithZero}.{MonthNumberWithZero}{/block:IfNotDatesFormattedMonthFirst}.{Year}{block:IfPostTimes} @ {block:If24HourTimes}{24HourWithZero}{/block:If24HourTimes}{block:IfNot24HourTimes}{12Hour}{/block:IfNot24HourTimes}:{Minutes}{block:IfNot24HourTimes} {CapitalAmPm}{/block:IfNot24HourTimes}{/block:IfPostTimes}</a>{/block:IfPostDates}
 						{block:NoteCount}<a href="{Permalink}#notes" class="notes">{NoteCountWithLabel}</a>{/block:NoteCount}
 					</span>
-					
+
 					{block:RebloggedFrom}<span class="viasource">
 						<a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}">{ReblogParentName}</a> <i class="cp cp-reblog-alt"></i> <a href="{ReblogRootURL}" title="{lang:Originally from ReblogRootName}">{ReblogRootName}</a>
 					</span>{/block:RebloggedFrom}
 				</div>
-				
+
 				<span class="likereblog">
 					{block:IfLikeButtons}
 					<a href="#" class="customlike">
@@ -353,14 +353,14 @@ aside {
 			<div class="postbody">
 
 				{block:Text}
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">
 						{block:AskPage}<div class="askwrapper">{text:FAQ}</div>{/block:AskPage}
 						{Body}
 					</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -370,21 +370,21 @@ aside {
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Text}
 
 
 				{block:Photo}
-				
+
 					<div class="photowrapper">
 						{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
 						<a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -394,21 +394,21 @@ aside {
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Photo}
 
 
 				{block:Panorama}
-				
+
 					<div class="photowrapper">
 						{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
 						<a class="highres" href="{PhotoURL-Panorama}">{lang:View high resolution}</a>
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -418,7 +418,7 @@ aside {
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Panorama}
 
 
@@ -430,11 +430,11 @@ aside {
 							</figure>
 						{/block:Photos}
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -445,8 +445,8 @@ aside {
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
 				{/block:Photoset}
-		
-		
+
+
 				{block:Quote}
 					<div class="quote">
 						<h2>{Quote}</h2>
@@ -454,10 +454,10 @@ aside {
 						{block:Source}<p>{Source}</p>{/block:Source}
 					</div>
 				{/block:Quote}
-				
-				
+
+
 				{block:Link}
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">
 						<a class="link" href="{URL}" {Target}>
@@ -468,7 +468,7 @@ aside {
 						{Body}
 					</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -487,10 +487,10 @@ aside {
 						</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Link}
-				
-				
+
+
 				{block:Chat}
 					<ol class="chat">
 						{block:Lines}
@@ -498,10 +498,10 @@ aside {
 						{/block:Lines}
 					</ol>
 				{/block:Chat}
-				
-				
+
+
 				{block:Audio}
-				
+
 					{block:AudioPlayer}
 					<div class="audiowrapper {block:AlbumArt}hasart{/block:AlbumArt}">
 						{AudioPlayer}
@@ -516,11 +516,11 @@ aside {
 						<div class="custom_audio_seekbar"></div>
 					</div>
 					{/block:AudioPlayer}
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -530,20 +530,20 @@ aside {
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Audio}
-				
-				
+
+
 				{block:Video}
-				
+
 					<div class="videowrapper">
 						{Video-500}
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -553,21 +553,21 @@ aside {
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Video}
-				
-				
+
+
 				{block:Answer}
-				
+
 					<div class="ask">
-					
+
 						<div class="user">
 							<img src="{AskerPortraitURL-64}" class="usericon">
 							<span class="username">{lang:Asker asked 2}</span>
 						</div>
 						<div class="question">{Question}</div>
 					</div>
-					
+
 					{block:RebloggedFrom}<div class="bodyitem">
 						{block:Answerer}
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" href="{ReblogRootURL}">
@@ -575,10 +575,10 @@ aside {
 							<span class="username">{ReblogRootName}</span>
 						</a>
 						{/block:Answerer}{/block:RebloggedFrom}
-						
+
 						<div class="bodyitemcontent">{Answer}</div>
 					{block:RebloggedFrom}</div>
-					
+
 					{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -588,10 +588,10 @@ aside {
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Answer}	
 			</div>
-	
+
 			{block:Date}{block:IfPostTags}{block:HasTags}
 			<!-- POST FOOTER -->
 			<footer>
@@ -604,7 +604,7 @@ aside {
 				</p>
 			</footer>
 			{/block:HasTags}{/block:IfPostTags}{/block:Date}
-			
+
 		</article>
 
 		{/block:Posts}
@@ -630,17 +630,17 @@ aside {
 		{block:JumpPage}<a href="{URL}">{PageNumber}</a>{/block:JumpPage}
 		{/block:JumpPagination}
 		</span>
-		
+
 		{block:NextPage}<a class="arrows next" title="{lang:Next page}" href="{NextPage}"><i class="cp cp-chevron-right"></i></a>{/block:NextPage}
 	</nav>{/block:Pagination}
-		
+
 	{block:PermalinkPagination}<nav class="pagination">
 		<!-- PERMALINK PAGINATION -->
 		{block:PreviousPost}<a class="arrows prev" title="{lang:Previous post}" href="{PreviousPost}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousPost}
 		<span class="jump">{lang:See more posts}</span>
 		{block:NextPost}<a class="arrows next" title="{lang:Next post}" href="{NextPost}"><i class="cp cp-chevron-right"></i></a>{/block:NextPost}
 	</nav>{/block:PermalinkPagination}
-		
+
 	{block:DayPagination}<nav class="pagination">
 		<!-- DAY PAGINATION -->
 		{block:PreviousDayPage}<a class="arrows prev" title="{lang:Previous day}" href="{PreviousDayPage}"><i class="cp cp-chevron-left"></i></a>{/block:PreviousDayPage}

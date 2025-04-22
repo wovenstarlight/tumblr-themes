@@ -2,7 +2,7 @@ $(document).ready( function() {
 
 	// adding name to original posts
 	$(".viasource .BLOGNAME").append($("html").css("--name").replace(/"/g, ""));
-	
+
 	// set up tooltips
 	$("[title]").style_my_tooltips();
 
@@ -33,7 +33,7 @@ $(document).ready( function() {
 	$("#palette").on("click keypress", function() {
 		$(this).toggleClass("alt");
 		page.toggleClass("alt");
-		
+
 		var newPalette = "normal";
 		if ($(this).hasClass("alt")) {
 			newPalette = "alt";

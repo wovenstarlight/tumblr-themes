@@ -77,22 +77,22 @@
 	body {
 		--Spoiler-Overlay-Color: var(--post-bg);
 		--Spoiler-Overlay-Transparency: 0%; /* MUST be in % */
-			
+
 		--Warning-Text-Size: 0.9em;
 		--Warning-Text-Color: var(--text);
 		--Spoiler-Tags-Color: var(--links);
-			
+
 		--ViewPost-Button-Padding: 1em;
 		--ViewPost-Button-Border: transparent;
 		--ViewPost-Button-Roundness: var(--roundness);
 		--ViewPost-Button-Background: var(--accent2);
 		--ViewPost-Button-FontSize: 80%;
 		--ViewPost-Button-Text-Color: var(--links);
-			
+
 		--ViewPost-Button-HOVER-Border: transparent;
 		--ViewPost-Button-HOVER-Background: var(--accent1);
 		--ViewPost-Button-HOVER-Text-Color: var(--text);
-			
+
 		--ShrinkPost-Transition-Speed: 699ms; /* can be in ms or s */
 	}
 
@@ -108,7 +108,7 @@
 	<meta name="if:Use Tumblr fonts" content="0">
 	<meta name="text:Font size" content="16px">
 	<meta name="text:Post width" content="600px">
-	
+
 	<meta name="color:Text" content="#e5e5e5">
 	<meta name="color:Headings" content="#ffffff">
 	<meta name="color:Links" content="#ff9e29">
@@ -124,7 +124,7 @@
 	<meta name="color:Credits and mode toggle" content="#ff9e29">
 	<meta name="color:Text highlight" content="#ffbf92">
 	<meta name="color:Text highlight background" content="#0e6600">
-	
+
 	<meta name="if:Show color mode toggle" content="1">
 	<meta name="if:Default to light mode" content="0">
 	<meta name="color:LM Text" content="#1f1f1f">
@@ -142,7 +142,7 @@
 	<meta name="color:LM Credits and mode toggle" content="#95d99f">
 	<meta name="color:LM Text highlight" content="#d1d1d1">
 	<meta name="color:LM Text highlight background" content="#6e402f">
-	
+
 	<meta name="image:Background accent" content="{HeaderImage}">
 	<meta name="select:Background image position" title="Center" content="center">
 	<meta name="select:Background image position" title="Left" content="left">
@@ -171,7 +171,7 @@
 	<meta name="select:Right accent image size" title="Cover" content="cover; background-repeat: no-repeat">
 	<meta name="select:Right accent image size" title="Contain" content="contain; background-repeat: no-repeat">
 	<meta name="select:Right accent image size" title="Tiled" content="contain; background-repeat: repeat">
-	
+
 	<meta name="image:LM Background accent" content="{HeaderImage}">
 	<meta name="select:LM Background image position" title="Center" content="center">
 	<meta name="select:LM Background image position" title="Left" content="left">
@@ -200,7 +200,7 @@
 	<meta name="select:LM Right accent image size" title="Cover" content="cover; background-repeat: no-repeat">
 	<meta name="select:LM Right accent image size" title="Contain" content="contain; background-repeat: no-repeat">
 	<meta name="select:LM Right accent image size" title="Tiled" content="contain; background-repeat: repeat">
-	
+
 	<meta name="text:Custom links title" content="Links">
 	<meta name="text:Filtered tags" content="spoiler, spoilers">
 	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever code or plain text you want. If you don't want an FAQ, leave this field blank!">
@@ -223,7 +223,7 @@
 	<meta name="if:Infinite scroll" content="0">
 	<meta name="if:Manual load for infinite scroll" content="1">
 	{/block:Hidden}
-	
+
 	{block:IfNotUseTumblrFonts}<link href="https://fonts.googleapis.com/css2?family={text:Google font for body}:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet"> {/block:IfNotUseTumblrFonts}
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme2/theme2.min.css">
@@ -357,7 +357,7 @@ body.light #pinnedpost { border: .1em solid }
 		{block:IfShowRandomPostLink}<a href="/random" data-tippy-content="{lang:Random post}"><i data-feather="shuffle"></i></a>{/block:IfShowRandomPostLink}
 		{block:IfShowArchiveLink}<a href="/archive" data-tippy-content="{lang:Archive}"><i data-feather="archive"></i></a>{/block:IfShowArchiveLink}
 	</nav>
-		
+
 	{block:IfShowGroupBlogMembers}{block:GroupMembers}
 	<div id="blogmembers">
 		<h2>{lang:Group members}</h2>
@@ -392,9 +392,9 @@ body.light #pinnedpost { border: .1em solid }
 	{block:NoPosts}
 	<div class="post no-posts"><h2>{lang:This Tumblr hasnt posted anything}</h2></div>
 	{/block:NoPosts}
-	
+
 	<div id="postwrapper">
-	
+
 	{block:Posts inlineMediaWidth="1000" inlineNestedMediaWidth="1000"}
 	<section class="post" post-type="{PostType}">
 		{block:PinnedPostLabel}<span id="pinnedpost" data-tippy-content="{PinnedPostLabel}"><i data-feather="star"></i></span>{/block:PinnedPostLabel}
@@ -418,21 +418,21 @@ body.light #pinnedpost { border: .1em solid }
 		</div>
 		{/block:RebloggedFrom}
 		{/block:Date}
-		
+
 		{block:IfFilteredTags}<div class="posts-selector" posts-selector>{/block:IfFilteredTags}
-		
+
 		{block:Title}<h2 class="title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
 		<div class="postbody">
-		
+
 		{block:AskPage}<div class="asksubmitwrapper">{text:FAQ}</div>{/block:AskPage}
 		{block:SubmitPage}<div class="asksubmitwrapper">{text:Submission guidelines}</div>{/block:SubmitPage}
-		
+
 		{block:Text}
-			
+
 			{block:NotReblog}
 			<div class="bodyitemcontent">{Body}</div>
 			{/block:NotReblog}
-			
+
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -442,21 +442,21 @@ body.light #pinnedpost { border: .1em solid }
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
 			{/block:Reblogs}{/block:RebloggedFrom}
-			
+
 		{/block:Text}
-		
-		
+
+
 		{block:Photo}
-		
+
 			<div class="photowrapper">
 				{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
 				<a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
 			</div>
-			
+
 			{block:NotReblog}
 			<div class="bodyitemcontent">{Caption}</div>
 			{/block:NotReblog}
-			
+
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -466,21 +466,21 @@ body.light #pinnedpost { border: .1em solid }
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
 			{/block:Reblogs}{/block:RebloggedFrom}
-			
+
 		{/block:Photo}
-		
-		
+
+
 		{block:Panorama}
-		
+
 			<div class="photowrapper">
 				{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
 				<a class="highres" href="{PhotoURL-Panorama}">{lang:View high resolution}</a>
 			</div>
-			
+
 			{block:NotReblog}
 			<div class="bodyitemcontent">{Caption}</div>
 			{/block:NotReblog}
-			
+
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -490,20 +490,20 @@ body.light #pinnedpost { border: .1em solid }
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
 			{/block:Reblogs}{/block:RebloggedFrom}
-			
+
 		{/block:Panorama}
-		
-		
+
+
 		{block:Photoset}
-		
+
 			<div class="photowrapper">
 				{Photoset}
 			</div>
-			
+
 			{block:NotReblog}
 			<div class="bodyitemcontent">{Caption}</div>
 			{/block:NotReblog}
-			
+
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -513,20 +513,20 @@ body.light #pinnedpost { border: .1em solid }
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
 			{/block:Reblogs}{/block:RebloggedFrom}
-			
+
 		{/block:Photoset}
-		
-		
+
+
 		{block:Quote}
 			<div class="quote">
 				<h2>{Quote}</h2>
 				{block:Source}<p>— {Source}</p>{/block:Source}
 			</div>
 		{/block:Quote}
-		
-		
+
+
 		{block:Link}
-			
+
 			{block:NotReblog}
 			<div class="bodyitemcontent">
 				<a class="link" href="{URL}" {Target}>
@@ -537,7 +537,7 @@ body.light #pinnedpost { border: .1em solid }
 				{Body}
 			</div>
 			{/block:NotReblog}
-			
+
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -556,10 +556,10 @@ body.light #pinnedpost { border: .1em solid }
 				</div>
 			</div>
 			{/block:Reblogs}{/block:RebloggedFrom}
-			
+
 		{/block:Link}
-		
-		
+
+
 		{block:Chat}
 			<ol class="chat">
 				{block:Lines}
@@ -567,18 +567,18 @@ body.light #pinnedpost { border: .1em solid }
 				{/block:Lines}
 			</ol>
 		{/block:Chat}
-		
-		
+
+
 		{block:Audio}
-		
+
 			<div class="audiowrapper">
 				{AudioEmbed}
 			</div>
-			
+
 			{block:NotReblog}
 			<div class="bodyitemcontent">{Caption}</div>
 			{/block:NotReblog}
-			
+
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -588,20 +588,20 @@ body.light #pinnedpost { border: .1em solid }
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
 			{/block:Reblogs}{/block:RebloggedFrom}
-			
+
 		{/block:Audio}
-		
-		
+
+
 		{block:Video}
-		
+
 			<div class="videowrapper">
 				{Video-500}
 			</div>
-			
+
 			{block:NotReblog}
 			<div class="bodyitemcontent">{Caption}</div>
 			{/block:NotReblog}
-			
+
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -611,21 +611,21 @@ body.light #pinnedpost { border: .1em solid }
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
 			{/block:Reblogs}{/block:RebloggedFrom}
-			
+
 		{/block:Video}
-		
-		
+
+
 		{block:Answer}
-		
+
 			<div class="ask">
-			
+
 				<div class="user">
 					<img src="{AskerPortraitURL-64}" class="{AvatarShape} usericon">
 					<span class="username">{lang:Asker asked 2}</span>
 				</div>
 				<div class="question">{Question}</div>
 			</div>
-			
+
 			<div class="bodyitem">
 				{block:RebloggedFrom}{block:Answerer}
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" href="{ReblogRootURL}">
@@ -633,10 +633,10 @@ body.light #pinnedpost { border: .1em solid }
 					<span class="username">{ReblogRootName}</span>
 				</a>
 				{/block:Answerer}{/block:RebloggedFrom}
-				
+
 				<div class="bodyitemcontent">{Answer}</div>
 			</div>
-			
+
 			{block:RebloggedFrom}{block:Reblogs}
 			<div class="bodyitem">
 				<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -646,16 +646,16 @@ body.light #pinnedpost { border: .1em solid }
 				<div class="bodyitemcontent">{Body}</div>
 			</div>
 			{/block:Reblogs}{/block:RebloggedFrom}
-			
+
 		{/block:Answer}
-		
-		
+
+
 		</div>
-		
-		
-		
+
+
+
 		{block:Date}
-		
+
 		<div class="datenotes below">
 			<a class="date" href="{Permalink}">
 				<i data-feather="clock"></i>
@@ -669,7 +669,7 @@ body.light #pinnedpost { border: .1em solid }
 			</a>
 			{/block:NoteCount}
 		</div>
-		
+
 		{block:IfShowTags}{block:HasTags}
 		<div class="tags below">
 			<i data-feather="tag"></i>
@@ -678,26 +678,26 @@ body.light #pinnedpost { border: .1em solid }
 			{/block:Tags}
 		</div>
 		{/block:HasTags}{/block:IfShowTags}
-		
+
 		{/block:Date}
 
 		{block:IfFilteredTags}</div>{/block:IfFilteredTags}
 	</section>
 	{/block:Posts}
-	
+
 	</div>
-	
-	
+
+
 	{block:PostNotes}
 	<section class="post" id="notes">
 		<h2 class="title">{lang:Notes}</h2>
 		{PostNotes-64}
 	</section>
 	{/block:PostNotes}
-	
-	
-	
-	
+
+
+
+
 	{block:Pagination}
 	{block:IfInfiniteScroll}{block:IfManualLoadForInfiniteScroll}
 	<div id="loadmore">{lang:Load more posts}</div>
@@ -708,7 +708,7 @@ body.light #pinnedpost { border: .1em solid }
 		{block:NextPage}<a id="nextpage" href="{NextPage}" data-tippy-content="{lang:Next page}"><i data-feather="chevron-right"></i></a>{/block:NextPage}
 	</nav>
 	{/block:Pagination}
-		
+
 	{block:PermalinkPagination}
 	<nav id="navigation">
 		{block:PreviousPost}<a href="{PreviousPost}" data-tippy-content="{lang:Previous post}"><i data-feather="chevron-left"></i></a>{/block:PreviousPost}
@@ -716,7 +716,7 @@ body.light #pinnedpost { border: .1em solid }
 		{block:NextPost}<a href="{NextPost}" data-tippy-content="{lang:Next post}"><i data-feather="chevron-right"></i></a>{/block:NextPost}
 	</nav>
 	{/block:PermalinkPagination}
-		
+
 	{block:DayPagination}
 	<nav id="navigation">
 		{block:PreviousDayPage}<a href="{PreviousDayPage}" data-tippy-content="{lang:Previous day}"><i data-feather="chevron-left"></i></a>{/block:PreviousDayPage}
@@ -771,7 +771,7 @@ $("#postwrapper").infiniteScroll({
 
 $("#postwrapper").on( 'append.infiniteScroll', function( event, body, path, items, response ) {
 	feather.replace();
-	
+
 	tippy("#pinnedpost", { theme: 'standard' });
 	tippy(".left.actions [data-tippy-content]", { placement: 'right', theme: 'standard' });
 	tippy(".right.actions [data-tippy-content]", { placement: 'left', theme: 'standard' });

@@ -704,7 +704,7 @@ aside.desc.pages div {
 @media (min-width: 35em) {
 	/* Blog navigation */
 	#dropdown { display: none }
-	
+
 	/* Tumblr controls */
 	.tmblr-iframe.tmblr-iframe--unified-controls {
 		top: 2.25em;
@@ -748,7 +748,7 @@ aside.desc.pages div {
 	/* Have blognav/iframe slide out together */
 	#blognav nav,
 	.tmblr-iframe.tmblr-iframe--unified-controls { transition: .3s ease }
-	
+
 	/* Reorder description/pages to stop squishing */
 	aside.desc.pages div {
 		grid-template-columns: 1fr;
@@ -761,7 +761,7 @@ aside.desc.pages div {
 		left: 5%;
 		top: -0.5em;
 	}
-	
+
 	/* Post headers */
 	.datenotes { font-size: 0.9em }
 	.likereblog {

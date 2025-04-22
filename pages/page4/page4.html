@@ -40,7 +40,7 @@
 			- Body font: Search/Replace All "BODYFONT"
 			- Title/headings font: Search/Replace All "TITLEFONT"
 			You can check "--bfont" and "--tfont" below to see if these were correctly replaced.
-		
+
 		2. Edit other layout/color options just below this
 			- font-size: Self-explanatory. Measured in px values.
 			- tweight: Whether the title is bolded or not. Choose between "normal" or "bold".
@@ -122,7 +122,7 @@
 			If you'd rather hide one of them while ignoring the settings of your blog:
 				- TO HIDE AVATAR: delete the line below, from {block:ShowAvatar} to {/block:ShowAvatar}.
 				- TO HIDE TITLE: delete the second line below, from {block:ShowTitle} to {/block:ShowTitle}.
-			
+
 			If you'd like to insert an image as a "logo", copy+paste the following line BETWEEN the Avatar and Title lines:
 			<img src="https://YOUR-URL-HERE.com" id="logo" class="" />
 			And replace https://YOUR-URL-HERE.com with the link to your image.
@@ -134,7 +134,7 @@
 		{block:ShowAvatar}<img src="{PortraitURL-128}" id="avatar" class="{AvatarShape}" />{/block:ShowAvatar}
 		{block:ShowTitle}<h1>{Title}</h1>{/block:ShowTitle}
 	</a>
-	
+
 	<section id="links-search">
 		<!-- BLOG NAVIGATION -->
 		<nav id="links">
@@ -145,7 +145,7 @@
 					{block:SubmissionsEnabled}<a href="/submit" class="submitlink {block:SubmitPage}current-page{/block:SubmitPage}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
 				</div>
 			</div>
-			
+
 			{block:HasPages}
 			<!-- CUSTOM PAGES -->
 			<div id="pages">
@@ -154,7 +154,7 @@
 			</div>
 			{/block:HasPages}
 		</nav>
-		
+
 		<!-- SEARCH BAR -->
 		<form action="/search" method="get" id="search">
 			<label for="q">{lang:Search}</label>
@@ -171,7 +171,7 @@
 
 	<!--
 		CUSTOMIZE: ICON AND NAME
-		
+
 		To change the icon, replace {PortraitURL-128} with the link to your icon image,
 			and delete any instances of {block:ShowAvatar} or {/block:ShowAvatar}.
 			(Make sure not to delete the text *between* these {block}s!)
@@ -198,9 +198,9 @@
 				<a href="https://YOUR-URL-HERE.com" class="button">LABEL HERE</a>
 		-->
 		<a id="palette" tabindex="0" class="button">Toggle Palette</a>
-		
+
 		<a href="//tumblr.com/follow/{Name}" class="button">{lang:Follow}</a>
-		
+
 		<a href="//tumblr.com/message/{Name}" class="button">Message</a>
 	</div>
 
@@ -209,12 +209,12 @@
 		<!--
 			CUSTOMIZE: PERSONAL DATA
 			As you can see below, the personal stats section is written in the following format:
-			
+
 			<dt>Label here</dt>
 				<dd>Corresponding value here</dd>
-			
+
 			A template has been given below, in the format of AO3's actual profile page.
-			
+
 			You can edit both the labels and tags to say whatever you want, and add as many extra stats as you'd like.
 				- You don't need to add a colon (:) to the end of the labels; the page code will handle that automatically.
 				- To bold a label/value, add class="warning" to the opening dt/dd element tag- for example, <dt> ... </dt> would become <dt class="warning"> ... </dt>
@@ -223,7 +223,7 @@
 					Examples can be seen in the "My pseuds" field.
 					(You can also link to other pages on your blog by omitting the "https://YOUR-USERNAME-HERE.tumblr.com" part of the url, and just writing "/pagename". For example, if I was using this page on https://starlightpreviews.tumblr.com, and I wanted to link to https://starlightpreviews.tumblr.com/theme11, I would write <a href="/theme11">TEXT HERE</a> )
 				- Add new labels and tags by adding more <dt></dt> <dd></dd> pairs. Make sure they're added ABOVE the </dl></aside> tags!
-			
+
 			See below for additional notes.
 		-->
 
@@ -232,10 +232,10 @@
 
 			<dt>My pseuds</dt>
 				<dd><a href="//wovenstarlight.tumblr.com">wovenstarlight</a>, <a href="//starlightthemes.tumblr.com">starlightthemes</a>, <a href="//starlightpreviews.tumblr.com">starlightpreviews</a></dd>
-			
+
 			<dt>I joined on</dt>
 				<dd>2021-06-10</dd>
-			
+
 			<!-- Add new labels/values ABOVE this line! -->
 		</dl>
 	</aside>
@@ -251,7 +251,7 @@
 		<div class="body"> <!-- Add your bio text below this line! -->
 
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	
+
 			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
 
 		</div> <!-- Add your bio text above this line! -->

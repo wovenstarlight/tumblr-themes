@@ -389,7 +389,7 @@ h3.heading {
 
 @media (max-width: 60rem) { /* Mobile */
 	#page { padding: 0.5em 3.5% 3.5em }
-	
+
 	#links-search { padding: 0 0.7em 0 0 }
 	#mobnav span { cursor: help }
 	#mobnav:not(:hover) .dropdown { opacity: 0; pointer-events: none }
@@ -413,13 +413,13 @@ h3.heading {
 		background-color: rgb(var(--bg) r g b / 0.25);
 	}
 	#links .dropdown { width: 100% }
-	
+
 	#workhead, #workbody, #workfoot { margin: auto 1.5% }
 }
 
 @media (max-width: 40em) {
 	html { font-size: calc(0.875 * var(--font-size)) }
-	
+
 	#worktags { display: block }
 	#worktags > dd { margin: 0 0 0.75em 1em }
 }

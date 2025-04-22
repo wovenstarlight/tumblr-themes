@@ -727,7 +727,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		bottom: 3em;
 	}
 	#pagination { padding-left: 40em }
-	
+
 	/* Navigation */
 	#blognav {
 		flex-direction: column;
@@ -768,7 +768,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		background-repeat: var(--t3-repeat);
 		background-size: var(--t3-size);
 	}
-	
+
 	/* Footer */
 	#buttons {
 		gap: 1em;
@@ -785,7 +785,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		max-height: 15em;
 		max-width: 10em;
 	}
-	
+
 	/* Pinned post marker */
 	#pinnedpost {
 		margin: 0;
@@ -804,7 +804,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		background-size: var(--t1-size);
 		color: var(--t1-text);
 	}
-	
+
 	/* Post title */
 	.post .title {
 		width: calc(100% + 1.5em);
@@ -837,7 +837,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		right: 2.5em;
 		z-index: 3;
 	}
-	
+
 	/* Navigation */
 	#blognav {
 		margin: 1em 0;
@@ -890,9 +890,9 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		background-size: var(--t3-size);
 		margin: 2em calc(-1 * ((100vw - 100%) / 2)) 0;
 	}
-	
+
 	main { padding: 0 1.5em }
-	
+
 	/* Footer */
 	#buttons {
 		gap: .5em;
@@ -909,7 +909,7 @@ html.alt body.noaimg3 .custom_audio_seekbar_progress {
 		opacity: 0;
 		pointer-events: none;
 	}
-	
+
 	/* Post title */
 	.post .title {
 		width: calc(100% + .4em);

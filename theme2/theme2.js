@@ -19,7 +19,7 @@ $(document).ready( function() {
 
 	// Set up color mode toggle
 	const body = $("body"); // This will also be useful in responsiveness setup
-			
+
 	const currTheme = localStorage.getItem("theme");
 
 	if ( currTheme == "light" ) {
@@ -28,7 +28,7 @@ $(document).ready( function() {
 
 	$("#darklight").click( function() {
 		body.toggleClass("light");
-		
+
 		var newTheme = "dark";
 		if (body.hasClass("light")) {
 			newTheme = "light";
@@ -53,15 +53,15 @@ $(document).ready( function() {
 	function updatetops(narrowness) {
 		// Remove preexisting positioning (important when moving between narrow1/narrow2)
 		$("main, #pagessearch").removeAttr("style");
-		
+
 		var bloginfoHeight = $("#bloginfo").height();
 		var pagessearchHeight = $("#pagessearch").height();
 
 		maintop = bloginfoHeight;
-		
+
 		// If pagessearch is displaying, adjust positioning of both
 		if (body.hasClass("haspages") || body.hasClass("hassearch")) {
-			
+
 			if (narrowness === "narrow1") {
 				// Position main just under both sidecards
 				maintop = Math.max(maintop, pagessearchHeight);
@@ -71,7 +71,7 @@ $(document).ready( function() {
 				// Position pagessearch under bloginfo and adjust main positioning
 				searchtop = maintop;
 				maintop += pagessearchHeight;
-				
+
 				$("#pagessearch").css( "top", "calc(35% + " + searchtop + "px - " + 2*em + "px" )
 			}
 		}
@@ -82,19 +82,19 @@ $(document).ready( function() {
 	// Set up actual repositioning calls
 	var narrow2width = 32*em;
 	$(window).resize( function() {
-			
+
 		var width = $(window).width();
-			
+
 		if ( width < narrow2width ) {
 			body.addClass("narrow1");
 			body.addClass("narrow2");
-			
+
 			updatetops("narrow2");
 		}
 		else if ( width < narrow1width ) {
 			body.addClass("narrow1");
 			body.removeClass("narrow2");
-			
+
 			updatetops("narrow1");
 		}
 		else {

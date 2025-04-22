@@ -1,12 +1,12 @@
 <!--
 	THEME 13: DOCUMENT by starlightthemes
-	
+
 	Credits:
 		Layout and design by Google: https://docs.google.com
 		Material Symbols by Google: https://fonts.google.com/icons
 		Tippy.js tooltips by atomiks: https://atomiks.github.io/tippyjs
 		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
-	
+
 	Last updated 22 Apr 2025.
 -->
 <!DOCTYPE html>
@@ -41,7 +41,7 @@
 	<meta name="color:ALT Post background" content="#303134">
 	<meta name="color:ALT Text" content="#ffffff">
 	<meta name="color:ALT Accent" content="#8ab4f8">
-	
+
 	<!-- Navbar -->
 	<meta name="if:Search bar" content="1">
 	<meta name="text:Search bar title" content="Search">
@@ -67,12 +67,12 @@
 	<meta name="if:Post tags" content="1">
 	<meta name="text:Filtered tags" content="text post, long post">
 	<meta name="if:Shorten long posts" content="0">
-	
+
 	<!-- Other -->
 	<meta name="text:FAQ" content="This will go on your ask page, above your ask box.&NewLine;Add whatever HTML or plain text you want. If you don't want an FAQ, leave this field blank!">
 	<!-- #endregion -->
 	{/block:Hidden}
-	
+
 	<!-- Standardization of theme styles -->
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/normalize.min.css">
 
@@ -105,7 +105,7 @@
 	</style>
 	<link rel="stylesheet" href="https://wovenstarlight.github.io/tumblr-themes/theme13/theme13.min.css">
 	<style>{CustomCSS}</style>
-	
+
 	<!-- Keyboard navigation -->
 	<script src="https://wovenstarlight.github.io/tumblr-themes/keyboardnav.min.js"></script>
 </head>
@@ -168,7 +168,7 @@
 			{block:PostSummary}<span>{PostSummary}</span>{/block:PostSummary}
 		{/block:PermalinkPage}
 	</h2>
-	
+
 	{block:ShowAvatar}
 	<a href="/" id="avatar">
 		<img src="{PortraitURL-128}" class="{AvatarShape}" />
@@ -231,7 +231,7 @@
 			{/block:IfArchiveLink}
 
 			<hr>
-			
+
 			<a id="blogcredit" data-tippy-content="{Name} © {CopyrightYears}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" fill="currentColor" /></svg></a>
 
 			<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
@@ -459,7 +459,7 @@ lightbox._moveTo = (direction, focusTarget, eventType = null) => {
 			lightbox._addImage(lightbox._images[lightbox._index - 1], "left");
 			lightbox.querySelector(".".concat(focusTarget))?.focus();
 			break;
-		
+
 		case "right":
 			if (lightbox._index + 1 === lightbox._images.length) {
 				if (eventType !== "arrow") lightbox._close();
@@ -473,7 +473,7 @@ lightbox._moveTo = (direction, focusTarget, eventType = null) => {
 			lightbox._addImage(lightbox._images[lightbox._index + 1], "right");
 			lightbox.querySelector(".".concat(focusTarget))?.focus();
 			break;
-		
+
 		default:
 			break;
 	}
@@ -495,17 +495,17 @@ lightbox.addEventListener("click", e => {
 		case "left":
 			lightbox._moveTo("left", "left");
 			break;
-		
+
 		case "center":
 			lightbox._moveTo("right", "center");
 			break;
-		
+
 		case "right":
 			lightbox._moveTo("right", "right");
 			break;
-		
+
 		// Don't add event handler for the close button; that's already taken care of
-		
+
 		default:
 			break;
 	}
@@ -527,17 +527,17 @@ lightbox.addEventListener("keydown", e => {
 		case "left":
 			lightbox._moveTo("left", currFocus);
 			break;
-		
+
 		case "center":
 			lightbox._moveTo("right", currFocus);
 			break;
-		
+
 		case "right":
 			lightbox._moveTo("right", currFocus);
 			break;
-		
+
 		// Don't add event handler for the close button; that's already taken care of
-		
+
 		default:
 			break;
 	}
@@ -611,7 +611,7 @@ let posts = [
 
 		id: {JSPostID},
 		permalink: {JSPermalink},
-		
+
 		date: {
 			day: {JSDayOfWeek},
 			textDM: "{DayOfMonth} {Month}, {Year}",
@@ -657,7 +657,7 @@ let posts = [
 		noteCount: {JSNoteCountWithLabel},
 		postNotes: {JSPostNotesURL},
 		{/block:NoteCount}
-		
+
 		like_html: {JSLikeButton size="30"},
 		reblog_url: {JSReblogURL},
 
@@ -732,7 +732,7 @@ posts.forEach(post => {
 
 	// Content available via NPF
 	// Create, but put guards in for header/footer just in case pages are parsed as NPF too
-	
+
 	if (post.id !== undefined)
 		createPostHeader(article, post);
 
@@ -769,7 +769,7 @@ posts.forEach(post => {
 		if (filters.length > 0) {
 			// Hide post content
 			article.classList.add("filtered");
-			
+
 			// Assemble and insert filter message
 			let msg = document.createElement("div"),
 				warning = document.createElement("p"),
@@ -777,16 +777,16 @@ posts.forEach(post => {
 				btn = document.createElement("button");
 			msg.append(warning, tagList, btn);
 			article.insertBefore(msg, article.firstElementChild);
-			
+
 			// Add classes
 			msg.classList.add("filter");
 			tagList.classList.add("tags");
-			
+
 			// Add text to all elements
 			warning.innerText = "This post contains filtered tags.";
 			tagList.innerText = "#".concat(filters.map(el => el.name).join(", #"));
 			btn.innerText = "View post";
-			
+
 			// Set up viewing function
 			btn.addEventListener("click", () => {
 				msg.remove();
@@ -863,16 +863,16 @@ let fontsize = document.getElementById("fontsize"),
 fontsize.addEventListener("change", e => {
 	let input = e.target,
 		val = Math.round(parseFloat(input.value));
-	
+
 	// Valid and non-empty
 	if (input.checkValidity() && input.value !== "")
 		fontSizeSetter(parseInt(input.value));
-	
+
 	// Otherwise, some variant of invalid, whether that be:
 	// Empty string or non-numerical
 	else if (input.checkValidity() || isNaN(val))
 		fontSizeSetter(parseInt(input.getAttribute("data-current")) ?? 16);
-	
+
 	// OR either a float, <min, or >max
 	else {
 		let val2 = Math.max(
@@ -1042,7 +1042,7 @@ function createPostHeader(wrapper, postData) {
 function createPostFooter(wrapper, postData) {
 	let footer = document.createElement("footer");
 	wrapper.append(footer);
-	
+
 	// Populate post footer
 	let vsn = document.createElement("span");
 	vsn.classList.add("vsn");
@@ -1080,7 +1080,7 @@ function makeLike(wrapper, postData, icons = null) {
 	likeButton.classList.add("customlike");
 	likeButton.innerHTML = postData.like_html;
 	wrapper.append(likeButton);
-	
+
 	// Icon or text, as needed
 	let labels = {
 		like: `{block:English}Like{/block:English}{block:German}Liken{/block:German}{block:French}J'aime{/block:French}{block:Italian}Mi piace{/block:Italian}{block:Japanese}スキ{/block:Japanese}{block:Turkish}Beğen{/block:Turkish}{block:Spanish}Me gusta{/block:Spanish}{block:Russian}Нравится{/block:Russian}{block:Polish}Lubię{/block:Polish}{block:PortuguesePT}Gostar{/block:PortuguesePT}{block:PortugueseBR}Curtir{/block:PortugueseBR}{block:Dutch}Vind ik leuk{/block:Dutch}{block:Korean}좋아요{/block:Korean}{block:ChineseSimplified}喜欢{/block:ChineseSimplified}{block:ChineseTraditional}喜歡{/block:ChineseTraditional}{block:ChineseHK}喜歡{/block:ChineseHK}{block:Indonesian}Suka{/block:Indonesian}{block:Hindi}पसंद करें{/block:Hindi}`,
@@ -1343,18 +1343,18 @@ function createTrailItem(post, npf, postID, expand = false) {
 	let item = document.createElement("div");
 	item.classList.add("bodyitem");
 	post.append(item);
-	
+
 	// extant blog; create directly
 	if (npf.blog !== undefined) { createTrailItemHeader(item, npf.blog, npf.post) }
-	
+
 	// deleted/unrecoverable blog
 	else if (npf.broken_blog_name !== undefined) {
 		createTrailItemHeader(item, { name: npf.broken_blog_name });
 	}
-	
+
 	// blog is currentUser; provide directly-pulled info
 	else { createTrailItemHeader(item, currentUser, { id: postID }) }
-	
+
 	// create the body of their contribution
 	createTrailItemBody(item, npf, { id: postID }, expand);
 }
@@ -1371,10 +1371,10 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	trailItem.append(header);
 	let link = document.createElement("a");
 	header.append(link);
-	
+
 	// mark broken trail items
 	if (postData === null || blogData.active === false) { header.classList.add("deactivated") }
-	
+
 	// add link where original posts exist, with safeguards for pages
 	if (postData?.id === undefined && blogData.active != null) {
 		// page! link back to itself
@@ -1383,7 +1383,7 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 	else if (blogData.url && blogData.active) {
 		link.href = blogData.url.concat(blogData.url.endsWith("/") ? `post/${postData.id}` : `/${postData.id}`);
 	}
-	
+
 	// Get the username
 	let username = document.createElement("span");
 	username.classList.add("name");
@@ -1400,7 +1400,7 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
  * @param {string} postID The ID of this specific iteration of the post, as seen in the URL.
  * @param {boolean} expand True if any "read more" dividers in a post should be skipped and the full post rendered; false if the "read more" should be rendered and subsequent content hidden.
  */
- function createTrailItemBody(trailItem, npf, postData, expand) {
+function createTrailItemBody(trailItem, npf, postData, expand) {
 	let content = npf.content;
 	let rows = npf.layout.find(l => l.type === "rows");
 	let body = document.createElement("div");
@@ -1513,7 +1513,7 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 		}
 		askingLabel.innerText = " asked:";
 		asker.append(askerName, askingLabel);
-		
+
 		let ask = document.createElement("div");
 		ask.classList.add("ask");
 		ask.append(asker);
@@ -1541,7 +1541,7 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 		// trailItem.insertBefore(ask, body.previousElementSibling);
 		// Case 3. Inside same trail item, below answerer's name
 		// trailItem.insertBefore(ask, body);
-		
+
 		// Sometimes asks have no answer content (i.e. nothing left in body); in this case, clean up answerer section
 		if (body.childElementCount === 0) {
 			// Case 1
@@ -1933,7 +1933,7 @@ function createCustomAudio(npf, defaultIcons = {}) {
 		poster.height = npf.poster[0].height;
 	}
 	else { poster.innerHTML = icons.audio }
-	
+
 	top.append(poster, textInfo);
 	wrapper.append(top);
 	// #endregion
@@ -2068,7 +2068,7 @@ function formatText(content) {
 	let base = content.text;
 	if (!content.formatting)
 		return base.replaceAll(String.fromCharCode(10), "<br />");
-	
+
 	let text = "",
 		formats = new Array(),
 		i = 0;
@@ -2098,11 +2098,11 @@ function formatText(content) {
 					break;
 			}
 		})
-		
+
 		// add the actual character, subbing in linebreaks
 		if (char === String.fromCharCode(10)) { text += "<br />" }
 		else { text += char }
-		
+
 		// close any formatting tags
 		formats = content.formatting.filter(f => (f.end === i + 1));
 		formats.forEach(f => {
@@ -2127,7 +2127,7 @@ function formatText(content) {
 					break;
 			}
 		})
-		
+
 		i ++;
 	}
 	return text;
@@ -2146,20 +2146,20 @@ function formatLegacyStyle() {
 		".bodyitem:first-child .bodyitemcontent > iframe:first-child",
 		".bodyitem:first-child .bodyitemcontent > h2:first-child",
 	].join(", ");
-	
+
 	document.querySelectorAll(selector).forEach(el => {
 		// Move el outside its bodyitem into a "mediawrapper" div at the top of the post body
 		let bodyitemcontent = el.parentElement,
 			wrapper = document.createElement("div");
 		wrapper.classList.add("mediawrapper");
-		
+
 		// Put wrapper in post body
 		// .bodyitemcontent to .bodyitem to .body
 		bodyitemcontent.parentElement.parentElement.prepend(wrapper);
-		
+
 		// Add this element
 		wrapper.prepend(el);
-		
+
 		// If this is a photoset element, check for additional rows in the photoset and add them
 		if (el.classList.contains("row")) {
 			while (bodyitemcontent.childElementCount !== 0 && bodyitemcontent.children[0].classList.contains("row")) {
@@ -2211,13 +2211,13 @@ function cleanNotes() {
 		// Remove avatars and clears
 		note.firstChild.remove();
 		note.querySelector(".clear").remove();
-		
+
 		// Add specific action wrapper
 		let acted = document.createElement("span");
 		acted.classList.add("acted");
 		acted.innerText = note.firstChild.childNodes[1].textContent.trim();
 		note.firstChild.childNodes[1].replaceWith(acted);
-		
+
 		// Collapse via into reblog action
 		if (note.classList.contains("reblog") && !note.classList.contains("original_post")) {
 			note.firstChild.childNodes[1].append(note.firstChild.childNodes[2]);
@@ -2225,7 +2225,7 @@ function cleanNotes() {
 			if (note.classList.contains("with_commentary"))
 				note.firstChild.childNodes[2].remove();
 		}
-		
+
 		// Remove colon from "said:"
 		else if (note.classList.contains("reply")) {
 			note.firstChild.children[1].innerText = note.firstChild.children[1].innerText.substring(0, note.firstChild.children[1].innerText.length - 1)

@@ -238,7 +238,7 @@
 		}
 		{/block:IfAltBackgroundImage}
 	}
-	
+
 	/* HEADER IMAGE */
 	{block:IfHeaderImage}
 	#banner img.og {
@@ -328,27 +328,27 @@
 		});
 	});
 	</script>
-		
+
 	<style>
 	:root {
 		--Spoiler-Overlay-Color: var(--bg);
 		--Spoiler-Overlay-Transparency: 0%; /* MUST be in % */
-		
+
 		--Warning-Text-Size: 1em;
 		--Warning-Text-Color: var(--text);
 		--Spoiler-Tags-Color: var(--accent);
-		
+
 		--ViewPost-Button-Padding: 0.6em;
 		--ViewPost-Button-Border: transparent;
 		--ViewPost-Button-Roundness: var(--roundness);
 		--ViewPost-Button-Background: var(--bg-pg);
 		--ViewPost-Button-FontSize: 90%;
 		--ViewPost-Button-Text-Color: var(--text);
-		
+
 		--ViewPost-Button-HOVER-Border: transparent;
 		--ViewPost-Button-HOVER-Background: var(--bg-pg);
 		--ViewPost-Button-HOVER-Text-Color: var(--accent);
-		
+
 		--ShrinkPost-Transition-Speed: 699ms; /* can be in ms or s */
 	}
 
@@ -398,7 +398,7 @@
 	{block:IfHeaderText}<span class="og {block:IfHeaderImageOverlay}bg{/block:IfHeaderImageOverlay}">{text:Header text}</span>{/block:IfHeaderText}
 	<img src="{image:Header}" alt="Header" class="og">
 	{/block:IfHeaderImage}
-	
+
 	{block:IfAltHeaderImage}
 	{block:IfAltHeaderText}<span class="alt {block:IfAltHeaderImageOverlay}bg{/block:IfAltHeaderImageOverlay}">{text:ALT Header text}</span>{/block:IfAltHeaderText}
 	<img src="{image:ALT Header}" alt="Header" class="alt">
@@ -443,7 +443,7 @@
 		</form>
 	</div>
 	{/block:IfSearchBar}
-	
+
 	<main id="main">
 		{block:HomePage}
 		<!-- ACCESSIBILITY: HOME PAGE HEADER -->
@@ -465,12 +465,12 @@
 			</p>
 		</div>
 		{/block:TagPage}
-		
+
 		{block:DayPage}
 		<!-- SPECIAL PAGE HEADER: DAY -->
 		<div id="hdr" class="day"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
 		{/block:DayPage}
-		
+
 		{block:SearchPage}
 		<!-- SPECIAL PAGE HEADER: SEARCH -->
 		<div id="hdr day"><h2>
@@ -486,7 +486,7 @@
 		</div></section></section>
 		{/block:NoPosts}
 
-		
+
 		{block:Posts}
 		{block:Date}{block:NewDayDate}{block:IfPostDates}<a class="newdate" href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}/">
 			<h3>{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}</h3>
@@ -519,63 +519,63 @@
 			{block:Title}<a href="{Permalink}" class="title"><h4>{Title}</h4></a>{/block:Title}
 
 			{block:Text}
-			
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">
 					{block:AskPage}{block:IfAskGuidelines}<div class="askwrapper">{text:Ask guidelines}</div>{/block:IfAskGuidelines}{/block:AskPage}
 					{Body}
 				</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user {block:IsDeactivated}deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-				
+
 			{/block:Text}
 
 
 			{block:Photo}
-				
+
 				<div class="photowrapper">
 					{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
 					<a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
 				</div>
-				
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">{Caption}</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-				
+
 			{/block:Photo}
 
 
 			{block:Panorama}
-				
+
 				<div class="photowrapper">
 					{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
 					<a class="highres" href="{PhotoURL-Panorama}">{lang:View high resolution}</a>
 				</div>
-				
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">{Caption}</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-				
+
 			{/block:Panorama}
 
 
@@ -588,18 +588,18 @@
 						</figure>
 					{/block:Photos}
 				</div>
-				
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">{Caption}</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-			
+
 			{/block:Photoset}
 
 
@@ -669,11 +669,11 @@
 
 
 			{block:Audio}
-			
+
 				{block:AudioPlayer}
 				<div class="audiowrapper {block:AlbumArt}hasart" style="background-image: url('{AlbumArtURL}'){/block:AlbumArt}">
 					{AudioPlayer}
-					
+
 					<div class="top">
 						<span class="custom_audio_buttons"></span>
 						<div class="textinfo">
@@ -686,63 +686,63 @@
 					<div class="custom_audio_seekbar"></div>
 				</div>
 				{/block:AudioPlayer}
-				
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">{Body}</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-			
+
 			{/block:Audio}
 
 
 			{block:Video}
-			
+
 				<div class="videowrapper">
 					{Video-500}
 				</div>
-				
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">{Caption}</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-				
+
 			{/block:Video}
 
-			
+
 			{block:Answer}
-				
+
 				<div class="ask">
 					<i class="ph-envelope-open"></i>
 					<div class="question"><span class="asker">{Asker}:</span> {Question}</div>
 				</div>
-				
+
 				{block:RebloggedFrom}<div class="bodyitem">
 					{block:Answerer}
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} href="{ReblogRootURL}">{ReblogRootName}</a>
 					{/block:Answerer}{/block:RebloggedFrom}
-					
+
 					<div class="bodyitemcontent">{Answer}</div>
 				{block:RebloggedFrom}</div>
-				
+
 				{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>{Username}</a>
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 			{/block:Answer}
 
 			</section>
@@ -825,13 +825,13 @@
 			<span id="curr">{lang:CurrentPage of TotalPages}</span>
 			{block:NextPage}<a href="{NextPage}" id="next">Forth</a>{/block:NextPage}
 		</nav>{/block:Pagination}
-		
+
 		{block:PermalinkPagination}<nav id="pagination">
 			{block:PreviousPost}<a href="{PreviousPost}" id="prev">Back</a>{/block:PreviousPost}
 			<span id="curr">{lang:See more posts}</span>
 			{block:NextPost}<a href="{NextPost}" id="next">Forth</a>{/block:NextPost}
 		</nav>{/block:PermalinkPagination}
-		
+
 		{block:DayPage}{block:DayPagination}<nav id="pagination">
 			{block:PreviousDayPage}<a href="{PreviousDayPage}" id="prev">Back</a>{/block:PreviousDayPage}
 			<span id="curr">{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth} {Month}{/block:IfNotDatesFormattedMonthFirst} {Year}</span>

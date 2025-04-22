@@ -205,12 +205,12 @@ html.alt {
 				<p>Sort <a href="/tagged/{URLSafeTag}">newest first</a> or <a href="/tagged/{URLSafeTag}/chrono">oldest first</a></p>
 			</div>
 		{/block:TagPage}
-		
+
 		{block:DayPage}
 			<!-- SPECIAL PAGE HEADER: DAY -->
 			<div id="pagehead"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
 		{/block:DayPage}
-		
+
 		{block:SearchPage}
 			<!-- SPECIAL PAGE HEADER: SEARCH -->
 			<div id="pagehead">
@@ -244,21 +244,21 @@ html.alt {
 			</header>
 			{/block:Date}
 
-			
-			
+
+
 			<section class="body">
-			
+
 			{block:Title}<h1 class="title">{Title}</h1>{/block:Title}
-			
+
 			{block:Text}
-			
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">
 					{block:AskPage}<div class="askwrapper">{text:FAQ}</div>{/block:AskPage}
 					{Body}
 				</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -268,18 +268,18 @@ html.alt {
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-				
+
 			{/block:Text}
 
 
 			{block:Photo}
-				
+
 				{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
-				
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">{Caption}</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -289,18 +289,18 @@ html.alt {
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-				
+
 			{/block:Photo}
 
 
 			{block:Panorama}
-				
+
 				{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
-				
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">{Caption}</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -310,7 +310,7 @@ html.alt {
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-				
+
 			{/block:Panorama}
 
 
@@ -323,11 +323,11 @@ html.alt {
 						</figure>
 					{/block:Photos}
 				</div>
-				
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">{Caption}</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -337,7 +337,7 @@ html.alt {
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-			
+
 			{/block:Photoset}
 
 
@@ -410,7 +410,7 @@ html.alt {
 
 
 			{block:Audio}
-			
+
 				{block:AudioPlayer}
 					<div class="audiowrapper {block:AlbumArt}hasart{/block:AlbumArt}">
 						{AudioPlayer}
@@ -426,11 +426,11 @@ html.alt {
 						{block:AlbumArt}<img class="albumart" src="{AlbumArtURL}">{/block:AlbumArt}
 					</div>
 				{/block:AudioPlayer}
-				
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">{Body}</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -440,20 +440,20 @@ html.alt {
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-			
+
 			{/block:Audio}
 
 
 			{block:Video}
-			
+
 				<div class="videowrapper">
 					{Video-500}
 				</div>
-				
+
 				{block:NotReblog}
 				<div class="bodyitemcontent">{Caption}</div>
 				{/block:NotReblog}
-				
+
 				{block:RebloggedFrom}{block:Reblogs}
 				<div class="bodyitem">
 					<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -463,12 +463,12 @@ html.alt {
 					<div class="bodyitemcontent">{Body}</div>
 				</div>
 				{/block:Reblogs}{/block:RebloggedFrom}
-				
+
 			{/block:Video}
 
 
 			{block:Answer}
-				
+
 				<div class="ask">
 						<div class="question">
 						<p class="asker">{lang:Asker asked 2}:</p>
@@ -476,7 +476,7 @@ html.alt {
 						</div>
 						<img src="{AskerPortraitURL-64}" class="usericon">
 					</div>
-					
+
 					{block:RebloggedFrom}<div class="bodyitem">
 						{block:Answerer}
 						<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} href="{ReblogRootURL}">
@@ -484,10 +484,10 @@ html.alt {
 							<span class="username">{ReblogRootName}</span>
 						</a>
 						{/block:Answerer}{/block:RebloggedFrom}
-						
+
 						<div class="bodyitemcontent">{Answer}</div>
 					{block:RebloggedFrom}</div>
-					
+
 					{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user" {block:IsDeactivated}title="Deactivated"{/block:IsDeactivated} {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -497,9 +497,9 @@ html.alt {
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 			{/block:Answer}
-			
+
 			</section>
 
 
@@ -530,7 +530,7 @@ html.alt {
 						{block:Tags}<a href="{TagURL}">{Tag}</a>{/block:Tags}
 					</span>{/block:HasTags}{/block:IfPostTags}
 				</p>
-				
+
 				{block:NoteCount}<a href="{Permalink}#notes" class="notecount">{NoteCountWithLabel}</a>{/block:NoteCount}
 
 				<span class="buttons">
@@ -578,28 +578,28 @@ html.alt {
 	</section>
 	<script>
 		function cleanNotes() {
-		
+
 			$("#notes li:not(.original_post, .cleaned)").each( function() {
-				
+
 				var action = $(this).children(".action");
-				
+
 				// Add icons
 				if ($(this).hasClass("reply")) {
 					$(this).children(".avatar_frame").append("<svg xmlns='http://www.w3.org/2000/svg' viewBox='2 2 18 18'><path fill='#00b8ff' d='M2 11a9 9 0 1118 0 9 9 0 01-18 0z'></path><path fill='white' d='M11.112 6a4.89 4.89 0 00-4.888 4.88c0 .688.147 1.367.428 1.994-.105.372-.248.886-.392 1.456l-.243.955a.575.575 0 00.71.695l.95-.26 1.432-.39A4.89 4.89 0 0016 10.88 4.889 4.889 0 0011.112 6z'></path></svg>");
 				}
-				
+
 				else if ($(this).hasClass("reblog")) {
 					$(this).children(".avatar_frame").append("<svg xmlns='http://www.w3.org/2000/svg' viewBox='2 2 18 18'><path fill='#00cf35' d='M2 11a9 9 0 1118 0 9 9 0 01-18 0z'></path><path fill='white' d='M16.25 11.5a.75.75 0 00-1.5 0v1a1.25 1.25 0 01-1.25 1.25H9.25V12.5a.75.75 0 00-1.28-.53l-2 2a.747.747 0 00.002 1.063L7.97 17.03a.75.75 0 001.28-.53v-1.25h4.25a2.75 2.75 0 002.75-2.75v-1z'></path><path fill='white' d='M5.75 10.5a.75.75 0 001.5 0v-1A1.25 1.25 0 018.5 8.25h4.25V9.5a.75.75 0 001.28.53l2-2a.747.747 0 00-.002-1.063L14.03 4.97a.75.75 0 00-1.28.53v1.25H8.5A2.75 2.75 0 005.75 9.5v1z'></path></svg>");
-					
+
 					action.html(action.html().replace(" reblogged this from ", "<svg role=\"img\" height=\"0.875em\" width=\"0.875em\" viewBox=\"0 0 12.3 13.7\" fill=\"currentColor\"><path d=\"M9.2.2C8.7-.2 8 .2 8 .8v1.1H3.1c-2 0-3.1 1-3.1 2.6v1.9c0 .5.4.9.9.9.1 0 .2 0 .3-.1.3-.1.6-.5.6-.8V5.2c0-1.4.3-1.5 1.3-1.5H8v1.1c0 .6.7 1 1.2.6l3.1-2.6L9.2.2zM12 7.4c0-.5-.4-.9-.9-.9s-.9.4-.9.9v1.2c0 1.4-.3 1.5-1.3 1.5H4.3V9c0-.6-.7-.9-1.2-.5L0 11l3.1 2.6c.5.4 1.2.1 1.2-.5v-1.2h4.6c2 0 3.1-1 3.1-2.6V7.4z\"></path></svg>").replace(" and added:", ""));
 				}
-				
+
 				else if ($(this).hasClass("like")) {
 					$(this).children(".avatar_frame").append("<svg xmlns='http://www.w3.org/2000/svg' viewBox='2 2 18 18'><path fill='#ff4930' d='M2 11a9 9 0 1118 0 9 9 0 01-18 0z'></path><path fill='white' d='M11.098 8.078C11.723 7.384 12.515 7 13.329 7c.567 0 1.118.194 1.596.559 1.383 1.061 1.297 2.942.5 4.25-1.08 1.767-3.279 3.59-3.708 3.937a1.15 1.15 0 01-.718.254 1.15 1.15 0 01-.719-.254c-.43-.348-2.628-2.17-3.707-3.938-.798-1.304-.879-3.184.508-4.25A2.607 2.607 0 018.675 7c.808 0 1.598.383 2.226 1.078.03.033.061.07.098.113.035-.044.069-.081.098-.113z'></path></svg>");
-					
+
 					action.html(action.html().replace(" liked this", ""));
 				}
-				
+
 				$(this).addClass("cleaned");
 			});
 		}
@@ -613,7 +613,7 @@ html.alt {
 <aside id="right" style="--top: {block:IfFeaturedPosts}-6.5625em{/block:IfFeaturedPosts}{block:IfNotFeaturedPosts}1.25em{/block:IfNotFeaturedPosts}">
 	{block:IfFeaturedPosts}
 	<!-- EDIT HERE: FEATURED POSTS
-	
+
 		retrieves the latest three posts of a selected tag. by default, this is #featured.
 		to customize the tag, find the line that ends "tagged=featured"
 		(marked "EDIT YOUR TAG HERE") and change it to "tagged=YOURTAGHERE".
@@ -629,10 +629,10 @@ html.alt {
 		var url = "https://{Name}.tumblr.com/api/read/json?&tagged=featured"; // EDIT YOUR TAG HERE
 		$.getScript(url, function() {
 			readData = tumblr_api_read;
-			
+
 			for (var i = 0; i < 3; i++) {
 				var posts = readData.posts[i]; // the post itself
-				
+
 				var img = posts["photo-url-500"],
 					question = posts["question"],
 					quote = posts["quote-text"],
@@ -644,9 +644,9 @@ html.alt {
 					textTitle = posts["regular-title"],
 					textBody = posts["regular-body"],
 					posturl = posts["url"];
-				
+
 				insert = "<div";
-				
+
 				if (img != null) { // photo posts
 					insert += ' class="hasimg"><img src="' + img + '">';
 				}
@@ -680,9 +680,9 @@ html.alt {
 					}
 					insert += textBody;
 				}
-				
+
 				insert += '</div>';
-				
+
 				html = $.parseHTML(insert, document);
 				$.each(html, function() {
 					$(this).find(".tumblr_blog").parent().remove();
@@ -691,7 +691,7 @@ html.alt {
 					$(this).find("> :not(:first-child)").remove();
 					$(this).children().wrap('<a class="feature" href="' + posturl + '"></a>');
 				});
-				
+
 				$('#featured').append(html);
 			}
 		});
@@ -704,9 +704,9 @@ html.alt {
 
 	{block:IfUpdatesSection}
 	<!-- EDIT HERE: UPDATES
-	
+
 		to add an update, copy and paste the following:
-		
+
 		<div class="update">
 			<span class="ud-time">
 				<span class="ud-month">3-LETTER MONTH HERE</span>
@@ -744,13 +744,13 @@ html.alt {
 	{block:IfMembersList}
 	{block:IfCustomMembersList}
 	<!-- EDIT HERE: MEMBERS LIST
-	
+
 		this is for if you're not a group blog, or if you want to add custom labels/descriptions to your members.
 		if not, turn OFF "Custom members list" in the Tumblr options.
 
 		to add a group member, copy and paste the following.
 		replace everything in UPPERCASE:
-		
+
 		<a class="member" href="//BLOGNAME.tumblr.com">
 			<img src="//api.tumblr.com/v2/blog/BLOGNAME.tumblr.com/avatar" />
 			<div class="mtext">
@@ -759,7 +759,7 @@ html.alt {
 			</div>
 		</a>
 	-->
-	
+
 	<section id="members">
 		<h2>Blog members</h2>
 
@@ -772,7 +772,7 @@ html.alt {
 				<span class="mdesc">daily 100htmL code intake</span>
 			</div>
 		</a>
-		
+
 		<a class="member" href="//starlightpreviews.tumblr.com">
 			<img src="//api.tumblr.com/v2/blog/starlightpreviews.tumblr.com/avatar" />
 			<div class="mtext">

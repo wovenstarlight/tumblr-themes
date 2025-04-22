@@ -358,8 +358,8 @@ html, body { height: 100vh }
 		left: 0;
 		min-width: 20rem;
 	}
-	
-	
+
+
 	#page { grid-template-columns: auto 1fr }
 	/* Left */
 	#left {
@@ -389,7 +389,7 @@ html, body { height: 100vh }
 
 @media (max-width: 60rem) { /* Mobile */
 	#page { padding: 0.5em 3.5% 3.5em }
-	
+
 	#links-search { padding: 0 0.7em 0 0 }
 	#mobnav span { cursor: help }
 	#mobnav:not(:hover) .dropdown { opacity: 0; pointer-events: none }
@@ -413,8 +413,8 @@ html, body { height: 100vh }
 		background-color: rgb(from var(--bg) r g b / 0.25);
 	}
 	#links .dropdown { width: 100% }
-	
-	
+
+
 	/* Left */
 	#left {
 		grid-row: 1; grid-column: 1;
@@ -432,7 +432,7 @@ html, body { height: 100vh }
 
 @media (max-width: 40em) {
 	html { font-size: calc(0.875 * var(--font-size)) }
-	
+
 	#mystats { display: block; padding-bottom: 0.25em }
 	#mystats dd { margin: 0 0 0.75em 1em }
 }

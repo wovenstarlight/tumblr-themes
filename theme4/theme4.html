@@ -73,7 +73,7 @@
 	<meta name="color:LM Like button" content="#592f8b">
 	<meta name="color:LM Text highlight" content="#3c000a">
 	<meta name="color:LM Text highlight background" content="#f17ea9">
-	
+
 	<!-- Comic options -->
 	<meta name="if:Comic navigation" content="1">
 	<meta name="text:First comic page URL" content="">
@@ -93,7 +93,7 @@
 	<meta name="text:Tag 3 label" content="Asks">
 	<meta name="text:Tag 4 name" content="submitted">
 	<meta name="text:Tag 4 label" content="Submissions">
-	
+
 	<!-- Background visuals -->
 	<meta name="select:Body background opacity" content="1.00" title="100%">
 	<meta name="select:Body background opacity" content="0.9" title="90%">
@@ -272,7 +272,7 @@ body {
 	<script>
 	$(document).ready(function(){
 		$(".tags").hide();
-		
+
 		$(".showtags").on("click keypress", function(){
 			$(this).parent().next(".tags").slideToggle();
 			$(this).toggleClass('active');
@@ -289,15 +289,15 @@ body {
 
 	<!-- Accessibility: SKIP TO MAIN -->
 	<a href="#main" id="skip">Skip to main content</a>
-	
+
 	{block:HideTitle}<h1 id="hiddentitle">{Title}</h1>{/block:HideTitle}
 
 	<!-- HEADER -->
 	<header id="pageheader" class="{block:IfFixedHeader}sticky{/block:IfFixedHeader} {block:IfNotHomeButton}nohome{/block:IfNotHomeButton} {block:IfNotReadChronologicallyButton}nochrono{/block:IfNotReadChronologicallyButton}">
 		{block:IfHomeButton}<a href="/" data-tippy-content="{lang:Home}" data-tippy-placement="bottom"><i class="fas fa-home"></i></a>{/block:IfHomeButton}
-		
+
 		<a href="/" id="title">{block:ShowTitle}<h1>{Title}</h1>{/block:ShowTitle}</a>
-		
+
 		{block:IfReadChronologicallyButton}<a href="/tagged/{text:Main content tag}/chrono" data-tippy-content="Read from the start" data-tippy-placement="bottom"><i class="fas fa-hourglass-half"></i></a>{/block:IfReadChronologicallyButton}
 	</header>
 
@@ -332,7 +332,7 @@ body {
 			{/block:PreviousPage}
 		</nav>
 		{/block:Pagination}
-		
+
 		{block:PermalinkPagination}
 		<!-- TOP COMIC NAVIGATION -->
 		<nav class="pagination {block:IfNotFirstButtonImage}{block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}{block:IfNotLastButtonImage}noimages{/block:IfNotLastButtonImage}{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}{/block:IfNotFirstButtonImage}">
@@ -358,7 +358,7 @@ body {
 			{/block:PreviousPost}
 		</nav>
 		{/block:PermalinkPagination}
-		
+
 		{block:DayPagination}
 		<!-- TOP COMIC NAVIGATION -->
 		<nav class="pagination {block:IfNotFirstButtonImage}{block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}{block:IfNotLastButtonImage}noimages{/block:IfNotLastButtonImage}{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}{/block:IfNotFirstButtonImage}">
@@ -410,7 +410,7 @@ body {
 			</h2>
 		</div>
 		{/block:SearchPage}
-		
+
 		{block:NoPosts}
 		<!-- SPECIAL MESSAGE: EMPTY BLOG -->
 		<section class="post no-posts"><p>{lang:This Tumblr hasnt posted anything}</p></section>
@@ -421,7 +421,7 @@ body {
 		{block:Posts}
 		<!-- POST -->
 		<article class="post">
-			
+
 			{block:Date}
 			<header class="postheader">
 				{block:NoteCount}
@@ -460,14 +460,14 @@ body {
 			<div class="postbody">
 
 				{block:Text}
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">
 						{block:AskPage}<div class="askwrapper">{text:FAQ}</div>{/block:AskPage}
 						{Body}
 					</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -477,21 +477,21 @@ body {
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Text}
 
 
 				{block:Photo}
-				
+
 					<div class="photowrapper">
 						{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
 						<a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -501,21 +501,21 @@ body {
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Photo}
 
 
 				{block:Panorama}
-				
+
 					<div class="photowrapper">
 						{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
 						<a class="highres" href="{PhotoURL-Panorama}">{lang:View high resolution}</a>
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -525,7 +525,7 @@ body {
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Panorama}
 
 
@@ -537,11 +537,11 @@ body {
 							</figure>
 						{/block:Photos}
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -552,18 +552,18 @@ body {
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
 				{/block:Photoset}
-		
-		
+
+
 				{block:Quote}
 					<div class="quote">
 						<h2>{Quote}</h2>
 						{block:Source}<p>— {Source}</p>{/block:Source}
 					</div>
 				{/block:Quote}
-				
-				
+
+
 				{block:Link}
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">
 						<a class="link" href="{URL}" {Target}>
@@ -574,7 +574,7 @@ body {
 						{Body}
 					</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -593,10 +593,10 @@ body {
 						</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Link}
-				
-				
+
+
 				{block:Chat}
 					<ol class="chat">
 						{block:Lines}
@@ -604,10 +604,10 @@ body {
 						{/block:Lines}
 					</ol>
 				{/block:Chat}
-				
-				
+
+
 				{block:Audio}
-				
+
 					{block:AudioPlayer}
 					<div class="audiowrapper">
 						{AudioPlayer}
@@ -630,11 +630,11 @@ body {
 						</div>
 					</div>
 					{/block:AudioPlayer}
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -644,20 +644,20 @@ body {
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Audio}
-				
-				
+
+
 				{block:Video}
-				
+
 					<div class="videowrapper">
 						{Video-500}
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -667,21 +667,21 @@ body {
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Video}
-				
-				
+
+
 				{block:Answer}
-				
+
 					<div class="ask">
-					
+
 						<div class="user">
 							<img src="{AskerPortraitURL-64}" class="usericon">
 							<span class="username">{lang:Asker asked 2}</span>
 						</div>
 						<div class="question">{Question}</div>
 					</div>
-					
+
 					{block:RebloggedFrom}<div class="bodyitem">
 						{block:Answerer}
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" href="{ReblogRootURL}">
@@ -689,10 +689,10 @@ body {
 							<span class="username">{ReblogRootName}</span>
 						</a>
 						{/block:Answerer}{/block:RebloggedFrom}
-						
+
 						<div class="bodyitemcontent">{Answer}</div>
 					{block:RebloggedFrom}</div>
-					
+
 					{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -702,13 +702,13 @@ body {
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Answer}
 
 			</div>
 
-			
-			
+
+
 			<footer class="postfooter">
 				<div class="linksbar">
 					<!-- PERMALINK BUTTON -->
@@ -801,7 +801,7 @@ body {
 			);
 		</script>
 		{/block:Pagination}
-		
+
 		{block:PermalinkPagination}
 		<!-- BOTTOM COMIC NAVIGATION -->
 		<nav class="pagination {block:IfNotFirstButtonImage}{block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}{block:IfNotLastButtonImage}noimages{/block:IfNotLastButtonImage}{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}{/block:IfNotFirstButtonImage}">
@@ -827,7 +827,7 @@ body {
 			{/block:PreviousPost}
 		</nav>
 		{/block:PermalinkPagination}
-		
+
 		{block:DayPagination}
 		<!-- BOTTOM COMIC NAVIGATION -->
 		<nav class="pagination {block:IfNotFirstButtonImage}{block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}{block:IfNotLastButtonImage}noimages{/block:IfNotLastButtonImage}{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}{/block:IfNotFirstButtonImage}">
@@ -854,7 +854,7 @@ body {
 		</nav>
 		{/block:DayPagination}
 		{/block:IfComicNavigation}
-		
+
 		{block:IfNotComicNavigation}
 		{block:Pagination}
 		<!-- BOTTOM NORMAL NAVIGATION -->
@@ -867,7 +867,7 @@ body {
 			{/block:NextPage}
 		</nav>
 		{/block:Pagination}
-		
+
 		{block:PermalinkPagination}
 		<!-- BOTTOM NORMAL NAVIGATION -->
 		<nav class="pagination {block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}noimages{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}">
@@ -879,7 +879,7 @@ body {
 			{/block:NextPost}
 		</nav>
 		{/block:PermalinkPagination}
-		
+
 		{block:DayPagination}
 		<!-- BOTTOM NORMAL NAVIGATION -->
 		<nav class="pagination {block:IfNotPreviousButtonImage}{block:IfNotNextButtonImage}noimages{/block:IfNotNextButtonImage}{/block:IfNotPreviousButtonImage}">
@@ -908,12 +908,12 @@ body {
 				<a href="/" id="blogname">{Name}</a>
 				{block:SubmissionsEnabled}<a href="/submit" id="submitlink" data-tippy-content="{SubmitLabel}"><i class="fas fa-inbox"></i></a>{/block:SubmissionsEnabled}
 			</div>
-			
+
 			{block:ShowDescription}{block:Description}
 			<!-- DESCRIPTION -->
 			<div id="description">{Description}</div>
 			{/block:Description}{/block:ShowDescription}
-			
+
 			{block:IfTagLinksSection}
 			<!-- TAG LINKS -->
 			<nav id="taglinks">
@@ -964,7 +964,7 @@ body {
 			</div>
 		</div>
 		{/block:IfBackToTopButton}
-		
+
 		{block:IfColorModeToggle}
 		<!-- DARK/LIGHT MODE TOGGLE -->
 		<div id="darklight" tabindex="0" data-tippy-content="Toggle color mode" data-tippy-placement="left">

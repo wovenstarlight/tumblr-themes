@@ -24,7 +24,7 @@ $(document).ready( function() {
 	// Color mode button click
 	$("#palette").on("click keypress", function() {
 		page.toggleClass("alt");
-		
+
 		var newPalette = "normal";
 		if (page.hasClass("alt")) {
 			newPalette = "alt";

@@ -43,12 +43,12 @@
 		- Replace All with icon name of your choice from the Cappuccicons page
 		Example: When replacing the theme icon with the icon "yarn", this: <i class="cp cp-flash-o"></i>
 		...should have changed to this: <i class="cp cp-yarn"></i>
-	
+
 	2. Replace fonts
 		- Body font: Search/Replace All "Bitter"
 		- Title/headings font: Search/Replace All "Lora"
 		You can check "font-family" and "--title-font" below to see if these were correctly replaced.
-	
+
 	3. Edit other layout/color options just below this
 		- font-size, post-width: Self-explanatory. Measured in px values.
 		- sidebar-width: Options are 50% (wide), 42% (medium), and 35% (narrow).
@@ -59,8 +59,8 @@ html {
 	--sidebar-width: 42%;
 	font-family: "Bitter", serif; /* General */
 	--title-font: "Lora", serif; /* Headings */
-	
-	
+
+
 	/** COLORS SECTION 1
 		Dark mode colors (if you choose to have two color palettes), OR
 		General page colors (if not).
@@ -125,14 +125,14 @@ html.light body { background-image: url("{HeaderImage}") }
 	<script src="https://wovenstarlight.github.io/tumblr-themes/scrolltotop.min.js"></script>
 	<script>
 		$(document).ready( function() {
-		
+
 			// set up tooltips
 			tippy("[data-tippy-content]", {
 				theme: 'standard'
 			});
-			
+
 			const body = $("body, html");
-		
+
 			// Color mode on first load
 			const currTheme = localStorage.getItem("theme");
 			if ( currTheme == "light" ) {
@@ -141,14 +141,14 @@ html.light body { background-image: url("{HeaderImage}") }
 			// Color mode button click
 			$("#darklight").on("click keypress", function() {
 				body.toggleClass("light");
-				
+
 				var newTheme = "dark";
 				if (body.hasClass("light")) {
 					newTheme = "light";
 				}
 				localStorage.setItem("theme", newTheme);
 			});
-		
+
 		});
 	</script>
 
@@ -158,7 +158,7 @@ html.light body { background-image: url("{HeaderImage}") }
 
 <!-- Accessibility: SKIP TO MAIN -->
 <a href="#main" id="skip">Skip to main content</a>
-	
+
 {block:HideTitle}<h1 id="hiddentitle">{Title}</h1>{/block:HideTitle}
 
 
@@ -173,7 +173,7 @@ html.light body { background-image: url("{HeaderImage}") }
 
 		<!-- START OF SECTION -->
 		<article class="post"><section class="frame">
-			
+
 			<h2 class="title"><a>
 				<!-- SECTION TITLE
 				Add your title on the next line!
@@ -184,23 +184,23 @@ html.light body { background-image: url("{HeaderImage}") }
 				-->
 				Category one
 			</a></h2>
-			
+
 			<ul class="links">
 				<!-- LINKS LIST
 				To add a link, copy/paste the following line:
 				<li><a href="/">ABC</a></li>
 				Then replace "ABC" with the link text,
 				and "/" with the URL of the page you want this to link to.
-				
+
 				Add your links AFTER this line! -->
-			
+
 				<li><a href="https://starlightpreviews.tumblr.com"><i class="cp cp-link"></i>Link one</a></li>
 				<li><a href="/"><i class="cp cp-link"></i>Link two</li>
 				<li><a href="/"><i class="cp cp-link"></i>Link three</li>
 
 				<!-- Add your links BEFORE this line! -->
 			</ul>
-		
+
 		</section></article>
 		<!-- END OF SECTION -->
 
@@ -208,23 +208,23 @@ html.light body { background-image: url("{HeaderImage}") }
 
 		<!-- START OF SECTION -->
 		<article class="post"><section class="frame">
-			
+
 			<h2 class="title"><a href="/">
 				Category two
 			</a></h2>
-			
+
 			<ul class="links">
 				<li><a href="/">Link one</a></li>
 				<li><a href="/">Link two</a></li>
 				<li><a href="/">Link three</a></li>
 			</ul>
-		
+
 		</section></article>
 		<!-- END OF SECTION -->
 
 
 	</section>
-	
+
 	<!-- DIVIDER -->
 	<nav id="pagination">
 		<hr>
@@ -240,12 +240,12 @@ html.light body { background-image: url("{HeaderImage}") }
 			<div class="ring"></div>
 			<img src="{PortraitURL-128}"/>
 		</div>
-		
+
 		<div id="btnctr">
 			<!-- SPECIAL BUTTONS -->
 			<div id="buttons">
-			
-			
+
+
 				<!-- CUSTOMIZE: DARK/LIGHT MODE TOGGLE
 					If you want two color palettes, leave this part as is.
 					If you only want one color palette, delete everything from START HERE to END HERE and replace it with the following line:
@@ -257,9 +257,9 @@ html.light body { background-image: url("{HeaderImage}") }
 					<i class="cp cp-sun"></i>
 				</a>
 				<!-- END HERE -->
-				
-				
-				
+
+
+
 				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
 				<a href="https://starlightthemes.tumblr.com/pg1" id="creditlink" data-tippy-content="Page by starlightthemes" data-tippy-placement="right"><i class="cp cp-code"></i></a>
 				<!-- DO NOT REMOVE CREDIT. LEAVE THIS INTACT. -->
@@ -287,14 +287,14 @@ html.light body { background-image: url("{HeaderImage}") }
 	</div>
 
 	<section id="sidebartext" class="frame">
-		
+
 		<!-- CUSTOMIZE: TITLE/DESCRIPTION
 			Generally, this will inherit the settings of your blog, including what your title/description actually are and if you've set them to show or not.
 			However, if you'd like, you can replace this text and add an About or other text! You can even delete it altogether.
-			
+
 			To replace the TITLE, delete everything from {block:ShowTitle} to {/block:ShowTitle} and replace it with the following line:
 			<a id="title"><h1>YOUR TEXT HERE</h1></a>
-			
+
 			To replace the DESCRIPTION, delete everything from {block:ShowDescription} to {/block:ShowDescription} and replace it with the following line:
 			<div id="description">YOUR TEXT HERE</div>
 		-->
@@ -307,8 +307,8 @@ html.light body { background-image: url("{HeaderImage}") }
 		<!-- DESCRIPTION -->
 		<div id="description">{Description}</div>
 		{/block:Description}{/block:ShowDescription}
-		
-		
+
+
 	</section>
 </aside>
 

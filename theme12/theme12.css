@@ -749,13 +749,13 @@ div.npf-link-block:not(.has-poster) .bottom:empty { padding-top: 0 }
 	body.sright #main { justify-self: end; grid-column: 1; grid-row: 1 }
 	body.sleft #sidebar { justify-self: end; grid-column: 1; grid-row: 1 }
 	body.sleft #main { justify-self: start; grid-column: 2; grid-row: 1 }
-	
+
 	body.ntop #shownav { display: none }
 	body.ntop #dropper {
 		display: flex;
 		gap: 0.5em;
 	}
-	
+
 	.post header, .post footer { margin: 1em }
 	.post .user, .post .bodyitemcontent, .post .notes { margin-inline: 1em }
 	.npf_photoset { --backing: -1em }
@@ -763,7 +763,7 @@ div.npf-link-block:not(.has-poster) .bottom:empty { padding-top: 0 }
 @media (max-width: 60rem) { /* Mobile sizing */
 	body:not(.ntop) { --navbar-size: 2.5em }
 	#avatar { --size: 2em }
-	
+
 	body.ntop #dropnav {
 		position: relative;
 		display: flex;
@@ -782,14 +782,14 @@ div.npf-link-block:not(.has-poster) .bottom:empty { padding-top: 0 }
 	}
 	body.ntop #dropnav:not(.active) #dropper { opacity: 0; pointer-events: none }
 	body.ntop #dropper a { padding: 0.75em 1em }
-	
+
 	#center {
 		justify-items: center;
 		gap: 2em;
 		padding: 2em 5%;
 	}
 	#sidebar { grid-row: 1 }
-	
+
 	.post header, .post footer { margin: 1em 4% }
 	.post .user, .post .bodyitemcontent, .post .notes { margin-inline: 4% }
 	.npf_photoset { --backing: -4.3% }

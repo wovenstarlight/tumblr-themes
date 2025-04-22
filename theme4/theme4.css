@@ -729,20 +729,20 @@ body:not(.light) .fa-moon, body.light .fa-sun { display: none }
 	body {
 		grid-template-columns: 1fr min(var(--post-width), 100%) 1fr;
 	}
-	
+
 	aside {
 		grid-row: 3;
 		grid-column: 1 / span 3;
 		--avatar-size: 5em;
 		border-top: 0.5em solid var(--border);
 	}
-	
+
 	#blogavatar {
 		width: var(--avatar-size);
 		height: var(--avatar-size);
 		position: absolute;
 	}
-	
+
 	#name-asksubmit {
 		display: grid;
 		height: var(--avatar-size);
@@ -762,7 +762,7 @@ body:not(.light) .fa-moon, body.light .fa-sun { display: none }
 	#name-asksubmit.noavatar,
 	#name-asksubmit.ask.submit #blogname { grid-column: 1 / span 2 }
 	#asklink, #submitlink { width: 100% }
-	
+
 	.postfooter .dropdown {
 		left: unset;
 		transform: unset;
@@ -800,17 +800,17 @@ body:not(.light) .fa-moon, body.light .fa-sun { display: none }
 		grid-column: 3;
 	}
 	#blogpages { grid-column: 1 / span 3 }
-	
+
 	/* If description alone is missing */
 	.sticky:not(.description) #search { grid-column: 1 / span 2 }
 	.sticky:not(.description) #credit-ra { grid-row: 2 }
-	
+
 	/* If taglinks alone is missing */
 	.sticky.notaglinks.description #credit-ra { grid-row: 2 / span 2 }
-	
+
 	/* If search alone is missing */
 	.sticky.nosearch.description #credit-ra { grid-row: 2 / span 2 }
-	
+
 	/* If two things are missing */
 	.sticky:not(.description).notaglinks #name-asksubmit,
 	.sticky:not(.description).nosearch #name-asksubmit,
@@ -819,13 +819,13 @@ body:not(.light) .fa-moon, body.light .fa-sun { display: none }
 	.sticky:not(.description).notaglinks #name-asksubmit.noavatar,
 	.sticky:not(.description).nosearch #name-asksubmit.noavatar,
 	.sticky.notaglinks.nosearch.description #name-asksubmit.noavatar { grid-column: 1 / span 3 }
-	
+
 	/* If one of the missing two is description */
 	.sticky:not(.description).notaglinks #credit-ra,
 	.stick:not(.description).nosearch #credit-ra { grid-row: 2 }
 	/* If the other of the missing two is search */
 	.sticky:not(.description).nosearch #taglinks { grid-column: 1 / span 2}
-	
+
 	/* If description, taglinks, and search are all missing */
 	.sticky:not(.description).nosearch.notaglinks #name-asksubmit { grid-column: 2 }
 	.sticky:not(.description).nosearch.notaglinks #credit-ra { grid-row: 1; grid-column: 3 }

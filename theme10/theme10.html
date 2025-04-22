@@ -148,7 +148,7 @@
 		--bfont: {block:IfNotUseTumblrFontsForBody}{text:Google font for body}{/block:IfNotUseTumblrFontsForBody}{block:IfUseTumblrFontsForBody}{font:Tumblr font for body}{/block:IfUseTumblrFontsForBody};
 		--roundness: {select:Corner roundness};
 	}
-	
+
 	html:not(.alt) { /* REGULAR PALETTE */
 		--bg: {color:Background};
 		--text: {color:Text};
@@ -246,27 +246,27 @@
 		});
 	});
 	</script>
-		
+
 	<style>
 	:root {
 		--Spoiler-Overlay-Color: var(--bg);
 		--Spoiler-Overlay-Transparency: 0%; /* MUST be in % */
-		
+
 		--Warning-Text-Size: 1em;
 		--Warning-Text-Color: var(--text);
 		--Spoiler-Tags-Color: var(--links);
-		
+
 		--ViewPost-Button-Padding: 0.7em;
 		--ViewPost-Button-Border: none;
 		--ViewPost-Button-Roundness: var(--roundness);
 		--ViewPost-Button-Background: var(--ta-bg) var(--ta-repeat);
 		--ViewPost-Button-FontSize: 90%;
 		--ViewPost-Button-Text-Color: var(--ta-text);
-		
+
 		--ViewPost-Button-HOVER-Border: none;
 		--ViewPost-Button-HOVER-Background: var(--ta-bg) var(--ta-repeat);
 		--ViewPost-Button-HOVER-Text-Color: var(--ta-text);
-		
+
 		--ShrinkPost-Transition-Speed: 699ms; /* can be in ms or s */
 	}
 
@@ -359,14 +359,14 @@
 			<div id="desc">{Description}</div>
 			{/block:Description}{/block:ShowDescription}
 		</div>
-		
+
 		{block:IfNotCustomPagesOnSidebar}{block:HasPages}
 		<!-- CUSTOM PAGES -->
 		<nav id="pages">
 			{block:Pages}<a href="{URL}" class="{CurrentState}">{Label}</a>{/block:Pages}
 		</nav>
 		{/block:HasPages}{block:IfNotCustomPagesOnSidebar}
-		
+
 		<!-- SHOW/HIDE ABOUT -->
 		<button id="toggle">
 			<span class="show">{block:IfShowAboutLabel}{text:Show About label}{/block:IfShowAboutLabel}{block:IfNotShowAboutLabel}<i class="ph-arrow-down" style="margin-right: .5em"></i> About me <i class="ph-arrow-down" style="margin-left: .5em"></i>{/block:IfNotShowAboutLabel}</span>
@@ -387,12 +387,12 @@
 				</p>
 			</div>
 		{/block:TagPage}
-		
+
 		{block:DayPage}
 			<!-- SPECIAL PAGE HEADER: DAY -->
 			<div class="page title"><h2>{lang:Viewing everything posted on Month DayOfMonth Year}</h2></div>
 		{/block:DayPage}
-		
+
 		{block:SearchPage}
 			<!-- SPECIAL PAGE HEADER: SEARCH -->
 			<div class="page title">
@@ -424,35 +424,35 @@
 
 
 				{block:Text}
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">
 						{block:AskPage}<div class="askwrapper">{text:FAQ}</div>{/block:AskPage}
 						{Body}
 					</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}><span class="username">{Username}</span></a>
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Text}
 
 
 				{block:Photo}
-				
+
 					<div class="photowrapper">
 						{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
 						<a class="highres" href="{PhotoURL-1280}">{lang:View high resolution}</a>
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -461,21 +461,21 @@
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Photo}
 
 
 				{block:Panorama}
-				
+
 					<div class="photowrapper">
 						{LinkOpenTag}<img class="photopost" src="{PhotoURL-500}" alt="{PhotoAlt}">{LinkCloseTag}
 						<a class="highres" href="{PhotoURL-Panorama}">{lang:View high resolution}</a>
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -484,7 +484,7 @@
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Panorama}
 
 
@@ -496,11 +496,11 @@
 							</figure>
 						{/block:Photos}
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -522,7 +522,7 @@
 
 
 				{block:Link}
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">
 						<a class="link" href="{URL}" {Target}>
@@ -533,7 +533,7 @@
 						{Body}
 					</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -551,7 +551,7 @@
 						</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Link}
 
 
@@ -565,7 +565,7 @@
 
 
 				{block:Audio}
-				
+
 					{block:AudioPlayer}
 					<div class="audiowrapper">
 						{AudioPlayer}
@@ -583,11 +583,11 @@
 						</div>
 					</div>
 					{/block:AudioPlayer}
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -596,20 +596,20 @@
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Audio}
-				
-				
+
+
 				{block:Video}
-				
+
 					<div class="videowrapper">
 						{Video-500}
 					</div>
-					
+
 					{block:NotReblog}
 					<div class="bodyitemcontent">{Caption}</div>
 					{/block:NotReblog}
-					
+
 					{block:RebloggedFrom}{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -618,32 +618,32 @@
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Video}
 
 
 				{block:Answer}
-				
+
 					<div class="ask">
-					
+
 						<div class="user">
 							<span class="username"><i class="ph-envelope-open"></i>{Asker}</span>
 						</div>
-						
+
 						<div class="question">{Question}</div>
-						
+
 					</div>
-					
+
 					{block:RebloggedFrom}<div class="bodyitem">
 						{block:Answerer}
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" href="{ReblogRootURL}">
 							<span class="username">{ReblogRootName}</span>
 						</a>
 						{/block:Answerer}{/block:RebloggedFrom}
-						
+
 						<div class="bodyitemcontent">{Answer}</div>
 					{block:RebloggedFrom}</div>
-					
+
 					{block:Reblogs}
 					<div class="bodyitem">
 						<a class="user{block:IsDeactivated} deactivated{/block:IsDeactivated}" {block:HasPermalink}href="{Permalink}"{/block:HasPermalink}>
@@ -652,22 +652,22 @@
 						<div class="bodyitemcontent">{Body}</div>
 					</div>
 					{/block:Reblogs}{/block:RebloggedFrom}
-					
+
 				{/block:Answer}
 
 			</section>
-			
-			
+
+
 			{block:Date}<footer>
 				<section class="stickies">
 					{block:ContentSource}<span class="source">{lang:Source}: <a href="{SourceURL}">{SourceTitle}</a></span>{/block:ContentSource}
-				
+
 					{block:RebloggedFrom}<span class="viasource">
 						<!-- VIA/SOURCE -->
 						<a href="{ReblogParentURL}" title="{lang:Reblogged from ReblogParentName}"><img src="{ReblogParentPortraitURL-48}" /></a>
 						<a href="{ReblogRootURL}" title="{lang:Originally from ReblogRootName}"><img src="{ReblogRootPortraitURL-48}" /></a>
 					</span>{/block:RebloggedFrom}
-					
+
 					<span class="likereblog">
 						<!-- LIKE/REBLOG/SHOW TAGS -->
 						{block:IfLikeButtons}
@@ -685,7 +685,7 @@
 						{/block:IfShowTagsOnClick}{/block:HasTags}{/block:IfPostTags}
 					</span>
 				</section>
-				
+
 				{block:IfPostTags}{block:HasTags}<section class="tags" {block:IfShowTagsOnClick}style="display: none;"{/block:IfShowTagsOnClick}>
 					<!-- TAGS SECTION -->
 					{block:Tags}<a href="{TagURL}" {block:IfFilteredTags}init-tags{/block:IfFilteredTags}>{Tag}</a>{/block:Tags}
@@ -704,7 +704,7 @@
 			</section>
 		</section>
 		{/block:PostNotes}
-		
+
 	</section>
 
 
@@ -714,13 +714,13 @@
 		<span id="curr">{lang:CurrentPage of TotalPages}</span>
 		{block:NextPage}<a href="{NextPage}" id="next" title="{lang:Next page}"><i class="ph-arrow-right"></i></a>{/block:NextPage}
 	</nav>{/block:Pagination}
-	
+
 	{block:PermalinkPagination}<nav id="pagination">
 		{block:PreviousPost}<a href="{PreviousPost}" id="prev" title="{lang:Previous post}"><i class="ph-arrow-left"></i></a>{/block:PreviousPost}
 		<span id="curr">{lang:See more posts}</span>
 		{block:NextPost}<a href="{NextPost}" id="next" title="{lang:Next post}"><i class="ph-arrow-right"></i></a>{/block:NextPost}
 	</nav>{/block:PermalinkPagination}
-	
+
 	{block:DayPage}{block:DayPagination}<nav id="pagination">
 		{block:PreviousDayPage}<a href="{PreviousDayPage}" id="prev" title="{lang:Previous day}"><i class="ph-arrow-left"></i></a>{/block:PreviousDayPage}
 		<span id="curr">{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst}, {Year}</span>
