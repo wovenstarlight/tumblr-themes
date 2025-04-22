@@ -317,38 +317,30 @@
 
 <script>
 // #region CONSTANTS AND GLOBAL VARIABLES
-/**
- * Information of the blog this theme is being used on. For use when this blog makes/adds to posts.
+/** Information of the blog this theme is being used on. For use when this blog makes/adds to posts.
  */
 const currentUser = {
-	/**
-	 * Blog username
+	/** Blog username
 	 * @type {string}
 	 */
 	name: {JSName},
-	/**
-	 * Blog title
+	/** Blog title
 	 * @type {string}
 	 */
 	title: {JSTitle},
-	/**
-	 * Blog description. May contain HTML
+	/** Blog description. May contain HTML
 	 * @type {string}
 	 */
 	description: {JSDescription},
-	/**
-	 * URL to the blog (in the format https://username.tumblr.com)
+	/** URL to the blog (in the format https://username.tumblr.com)
 	 * @type {string}
 	 */
 	url: {JSBlogURL},
-	/**
-	 * Whether the blog is active. Always true
+	/** Whether the blog is active. Always true
 	 * @type {boolean}
 	 */
 	active: true,
-	/**
-	 * Blog theme object. Contains information about colors/blog layout
-	 */
+	/** Blog theme object. Contains information about colors/blog layout */
 	theme: {
 		background_color: {JSBackgroundColor},
 		title_color: {JSTitleColor},
@@ -357,8 +349,7 @@ const currentUser = {
 	},
 }
 
-/**
- * Default HTML tags to wrap specific text content block types in.
+/** Default HTML tags to wrap specific text content block types in.
  * @type {Object.<string, string>}
  */
 const textSubtypes = {
@@ -372,43 +363,36 @@ const textSubtypes = {
 	"unordered-list-item": "li",
 }
 
-/**
- * For use in trail item body construction. The base element (paragraph, blockquote etc.) as selected from textSubtypes.
+/** For use in trail item body construction. The base element (paragraph, blockquote etc.) as selected from textSubtypes.
  * @type {HTMLElement}
  */
 let bit;
-/**
- * For use in trail item body construction. The parent element for list items. Null when no list is being constructed.
+/** For use in trail item body construction. The parent element for list items. Null when no list is being constructed.
  * @type {?string}
  */
 let list;
 
-/**
- * For use in audio posts. Stores the request ID for the animation frames.
+/** For use in audio posts. Stores the request ID for the animation frames.
  * @type {?long}
  */
 let rAF = null;
-/**
- * For use in audio posts. Stores the currently playing audio element, if any.
+/** For use in audio posts. Stores the currently playing audio element, if any.
  * @type {?HTMLElement}
  */
 let currentlyPlaying = null;
 
 // #region Lightbox
-/**
- * The lightbox dialog.
+/** The lightbox dialog.
  * @type {HTMLElement}
  */
 let lightbox = document.getElementById("lightbox");
 
-/**
- * All images from the trail item currently being represented in the lightbox. Null if no lightbox is active.
+/** All images from the trail item currently being represented in the lightbox. Null if no lightbox is active.
  * @type {?HTMLElement[]}
  */
 lightbox._images = null;
 
-/**
- * The index in lightbox._images of the image currently being viewed in the lightbox. Null if no lightbox is active.
+/** The index in lightbox._images of the image currently being viewed in the lightbox. Null if no lightbox is active.
  * @type {?number}
  */
 lightbox._index = null;
@@ -578,20 +562,17 @@ lightbox.addEventListener("click", e => {
 });
 // #endregion
 
-/**
- * For use with the sidebar. The "open sidebar" button.
+/** For use with the sidebar. The "open sidebar" button.
  * @type {HTMLButtonElement}
  */
 let showleft = document.getElementById("showleft");
-/**
- * For use with the sidebar. The "close sidebar" button.
+/** For use with the sidebar. The "close sidebar" button.
  * @type {HTMLButtonElement}
  */
 let hideleft = document.getElementById("hideleft");
 
 {block:IfFilteredTags}
-/**
- * For use in tag filtering. The user-provided list of tags to filter for.
+/** For use in tag filtering. The user-provided list of tags to filter for.
  * All tags converted to lowercase for ease of comparison.
  * @type {string[]}
  */
@@ -916,8 +897,7 @@ fontminus.addEventListener("click", e => {
 		: Math.max(parseInt(fontsize.value) - 1, parseInt(fontsize.getAttribute("min")));
 	fontSizeSetter(parseInt(val));
 });
-/**
- * Helper for font size event listeners. Updates font size and toggles sizing buttons as necessary.
+/** Helper for font size event listeners. Updates font size and toggles sizing buttons as necessary.
  * @param {number} sizeValue The integer value for the new font size.
  */
 function fontSizeSetter(sizeValue) {
@@ -1029,8 +1009,7 @@ keyboardNav({
 // #region CONSTRUCTOR FUNCTIONS
 
 // #region FOR POST HEADER/FOOTER
-/**
- * Creates a post header object and appends it to the given post object.
+/** Creates a post header object and appends it to the given post object.
  * The individual elements in the header can be rearranged as per theme preference.
  * @param {HTMLElement} wrapper The HTML object for this post, to which the header will be added.
  * @param {Object} postData This post's data, containing relevant information to populate the header with.
@@ -1055,8 +1034,7 @@ function createPostHeader(wrapper, postData) {
 	makeSubmitter(header, postData);
 }
 
-/**
- * Creates a post footer object and appends it to the given post object.
+/** Creates a post footer object and appends it to the given post object.
  * The individual elements in the footer can be rearranged as per theme preference.
  * @param {HTMLElement} wrapper The HTML object for this post, to which the footer will be added.
  * @param {Object} postData This post's data, containing relevant information to populate the footer with.
@@ -1088,8 +1066,7 @@ function createPostFooter(wrapper, postData) {
 }
 
 // #region Helpers
-/**
- * Creates a like button for a given post.
+/** Creates a like button for a given post.
  * @param {HTMLElement} wrapper The child element of the post to which the like button will be added. Usually the footer.
  * @param {Object} postData This post's data, containing relevant information to create the like button with.
  * @param {Object} [icons=null] HTML strings representing the icons to use for the like and unlike buttons, or null if a text label should be used.
@@ -1127,8 +1104,7 @@ function makeLike(wrapper, postData, icons = null) {
 	}
 }
 
-/**
- * Creates a reblog button for a given post.
+/** Creates a reblog button for a given post.
  * @param {HTMLElement} wrapper The child element of the post to which the reblog button will be added. Usually the footer.
  * @param {Object} postData This post's data, containing relevant information to create the reblog button with.
  * @param {?string} icon An HTML string representing the icon for the reblog button, or null if a text label should be used.
@@ -1151,8 +1127,7 @@ function makeReblog(wrapper, postData, icon = null) {
 	}
 }
 
-/**
- * Creates a link to the corresponding day page for a given post.
+/** Creates a link to the corresponding day page for a given post.
  * @param {HTMLElement} wrapper The child element of the post to which the day page link will be added. Usually the footer.
  * @param {Object} postData This post's data, containing relevant information to create the day page link with.
  * @param {?string} icon An HTML string representing the icon for the day page link, or null if a text label should be used.
@@ -1175,8 +1150,7 @@ function makeDayLink(wrapper, postData, icon = null) {
 	}
 }
 
-/**
- * Creates a label indicating that a given post is a pinned post.
+/** Creates a label indicating that a given post is a pinned post.
  * @param {HTMLElement} wrapper The child element of the post to which the pinned marker will be added. Usually the header.
  * @param {Object} postData This post's data, containing relevant information to create the pinned marker with.
  * @param {?string} icon An HTML string representing the icon for the pinned marker, or null if a text label should be used.
@@ -1197,8 +1171,7 @@ function makePin(wrapper, postData, icon = null) {
 	}
 }
 
-/**
- * Creates links to the blogs that a given post was reblogged from (via) and originally made by (source).
+/** Creates links to the blogs that a given post was reblogged from (via) and originally made by (source).
  * @param {HTMLElement} wrapper The child element of the post to which the via/source links will be added. Usually the footer.
  * @param {Object} postData This post's data, containing relevant information to create the via/source links with.
  */
@@ -1231,8 +1204,7 @@ function makeViaSource(wrapper, postData) {
 	source.innerText = "{lang:Source}";
 }
 
-/**
- * Creates a label for the number of notes on a given post.
+/** Creates a label for the number of notes on a given post.
  * @param {HTMLElement} wrapper The child element of the post to which the note count will be added. Usually the footer.
  * @param {Object} postData This post's data, containing relevant information to create the note count with.
  */
@@ -1245,8 +1217,7 @@ function makeNoteCount(wrapper, postData) {
 	wrapper.append(notes);
 }
 
-/**
- * Creates links to the tags a given post was tagged with.
+/** Creates links to the tags a given post was tagged with.
  * @param {HTMLElement} wrapper The child element of the post to which the tags will be added. Usually the footer.
  * @param {Object} postData This post's data, containing relevant information to create the tag links with.
  * @param {Object} [tagOptions={}] Options for how to display the tags.
@@ -1275,8 +1246,7 @@ function makeTags(wrapper, postData, tagOptions = {}) {
 	wrapper.append(tags);
 }
 
-/**
- * Creates a date label showing when a given post was posted/reblogged.
+/** Creates a date label showing when a given post was posted/reblogged.
  * @param {HTMLElement} wrapper The child element of the post to which the date label will be added. Usually the header.
  * @param {Object} postData This post's data, containing relevant information to create the date label with.
  * @param {Object} [dateOptions={}] Options for the formatting of the date.
@@ -1311,8 +1281,7 @@ function makeDate(wrapper, postData, dateOptions = {}) {
 	}
 }
 
-/**
- * Creates a label indicating a given post is a submission.
+/** Creates a label indicating a given post is a submission.
  * @param {HTMLElement} wrapper The child element of the post to which the submission label will be added. Usually the header.
  * @param {Object} postData This post's data, containing relevant information to create the submission label with.
  * @param {boolean} [label=true] True if a text label should be included giving the submitter's name, potentially with a link to their blog
@@ -1337,8 +1306,7 @@ function makeSubmitter(wrapper, postData, label = true) {
 	}
 }
 
-/**
- * Creates a label indicating the source of a given post's content.
+/** Creates a label indicating the source of a given post's content.
  * @param {HTMLElement} wrapper The child element of the post to which the content source label will be added. Usually the header.
  * @param {Object} postData This post's data, containing relevant information to create the content source with.
  * @param {boolean} [label=true] True if a "Source:" prefix should be included before the link to the source, false otherwise
@@ -1392,8 +1360,7 @@ function createTrailItem(post, npf, postID, expand = false) {
 }
 
 
-/**
- * Creates the header for a specific trail item, rendering the blog that authored this trail item (and any badges/accessories they use). Includes links to the versions of the post on the contributing blogs, where available.
+/** Creates the header for a specific trail item, rendering the blog that authored this trail item (and any badges/accessories they use). Includes links to the versions of the post on the contributing blogs, where available.
  * @param {HTMLElement} trailItem The trail item wrapper into which to insert the header.
  * @param {Object} blogData Information about the user that authored this trail item.
  * @param {Object} [postData=null] Information about this iteration of the post; null if the blog that authored this iteration is deactivated/broken or if the post is otherwise unavailable.
@@ -1427,8 +1394,7 @@ function createTrailItemHeader(trailItem, blogData, postData = null) {
 }
 
 
-/**
- * Renders the body of each individual trail item.
+/** Renders the body of each individual trail item.
  * @param {HTMLElement} trailItem The trail item wrapper into which to insert the body.
  * @param {Object} npf The NPF object containing information about this trail item.
  * @param {string} postID The ID of this specific iteration of the post, as seen in the URL.
@@ -1584,8 +1550,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 }
 
 
-/**
- * Renders a single content block in the body of a trail item.
+/** Renders a single content block in the body of a trail item.
  * @param {HTMLElement} trailItem The trail item body wrapper into which to insert this content block.
  * @param {Object} content The NPF content for the entire trail item, to assist in rendering certain content block types in relation to others in the trail item.
  * @param {number} i The index of this content block in the "content" object, i.e. this block's position in relation to other blocks.
@@ -1891,8 +1856,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 	}
 }
 
-/**
- * Helper function for createContentBlock, specifically for audio content blocks.
+/** Helper function for createContentBlock, specifically for audio content blocks.
  * Renders an audio player in a custom style, with pause/play, skip to start/end, muting, and looping functionality.
  * @param {Object} npf The NPF object with links to and data on the audio file.
  * @param {Object} [defaultIcons={}] HTML strings representing the icons to use for the audio player.
@@ -2089,8 +2053,7 @@ function calculateTime(secs) {
 }
 
 
-/**
- * Renders text block content with inline formatting applied.
+/** Renders text block content with inline formatting applied.
  * @param {Object} content The NPF object representing this content block.
  * @param {string} content.text The actual string of text to be displayed in this text block.
  * @param {Object[]} content.formatting An array of objects representing formatting applied to this text block, with start/end indices.
@@ -2166,8 +2129,7 @@ function formatText(content) {
 }
 
 
-/**
- * Moves any media at the start of posts to the top of the post body, as in legacy formatting.
+/** Moves any media at the start of posts to the top of the post body, as in legacy formatting.
  */
 function formatLegacyStyle() {
 	// Select all special media elements at the very start of posts
@@ -2208,8 +2170,7 @@ function formatLegacyStyle() {
 // #endregion
 
 // #region FOR POST NOTES
-/**
- * Creates the Notes section for posts on permalink pages.
+/** Creates the Notes section for posts on permalink pages.
  * @param {string} notesURL The URL for the HTML partial of this post's Notes.
  */
 function createNotes(notesURL) {
@@ -2235,8 +2196,7 @@ function createNotes(notesURL) {
 	notes.prepend(header);
 }
 
-/**
- * Cleans newly added notes in the notes section.
+/** Cleans newly added notes in the notes section.
  */
 function cleanNotes() {
 	document.getElementById("notes").querySelectorAll("li:not(.cleaned)").forEach(note => {
@@ -2292,8 +2252,7 @@ function tumblrNotesInserted() { cleanNotes() }
 // #endregion
 
 // #region FOR NON-POST PAGES
-/**
- * Renders page content on non-post pages.
+/** Renders page content on non-post pages.
  * @param {HTMLElement} wrapper The HTML element in which to insert the page content.
  * @param {Object} postData The object containing relevant info with which to populate the page
  * @param {string} postData.title An HTML string containing the title of this page
@@ -2344,8 +2303,7 @@ function createPage(wrapper, postData) {
 	trailItem.append(bodyWrapper);
 }
 
-/**
- * Unescapes HTML strings which have quotations, ampersands, or arrow brackets replaced with HTML entities.
+/** Unescapes HTML strings which have quotations, ampersands, or arrow brackets replaced with HTML entities.
  * @param {string} string The escaped HTML string to unescape.
  * @returns An unescaped version of the provided HTML string, fit for adding to innerHTML.
  */
