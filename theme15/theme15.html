@@ -1572,88 +1572,93 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 	let content = npf.content;
 	let rows = npf.layout.find(l => l.type === "rows");
 	let body = document.createElement("div");
+	let args = [
+		// For poll content blocks, a link to the in-dashboard view
+		npf.blog !== undefined ? npf.blog.blog_view_url.concat("/", npf.post.id)
+			: npf.broken_blog_name === undefined ? `https://tumblr.com/${currentUser.name}/${postData.id}`
+			: "",
+		// For paywall content blocks, the paywaller's info and the post object for the viewer's subscription status
+		npf.blog ?? currentUser,
+		npf.post,
+	];
 	body.classList.add("bodyitemcontent");
 	trailItem.append(body);
 
-	for (let i = 0; i < content.length; i ++) {
-		// figure out the content type and create the block based on that
-		createContentBlock(
-			body, content, i,
-			// For poll content blocks, a link to the in-dashboard view
-			npf.blog !== undefined ? npf.blog.blog_view_url.concat("/", npf.post.id)
-				: npf.broken_blog_name === undefined ? `https://tumblr.com/${currentUser.name}/${postData.id}`
-				: "",
-			// For paywall content blocks, the paywaller's info and the post object for the viewer's subscription status
-			npf.blog ?? currentUser,
-			npf.post);
+	// Rather than make the blocks and *then* rearranging them into order,
+	// Make the blocks in order to begin with
+	if (rows) { // Some order present; make them in order
+		for (let i = 0; i < rows.display.length; i++) {
+			const row = rows.display[i];
 
-		// cut off the post and add a readmore, if one is present and you aren't currently on the post's permalink page
-		if (i === rows?.truncate_after && !expand) {
-			let readmore = document.createElement("a");
-			readmore.classList.add("readmore");
-			readmore.innerText = "{lang:Read more}";
-			body.append(readmore);
+			// Render the row, depending on the number of blocks it contains
+			if (row.blocks.length > 1) {
+				// First make the blocks
+				let allBlocks = row.blocks.map(index => createContentBlock(body, content, index, ...args));
 
-			let link;
-			if (npf.blog !== undefined) { // blog is extant
-				link = npf.blog.url.concat(npf.blog.url.endsWith("/") ? `post/${npf.post.id}` : `/${npf.post.id}`);
-			} else if (npf.broken_blog_name !== undefined) { // blog is unreachable; no link
-				link = null;
-			} else { // blog is current user's
-				link = currentUser.url.concat(currentUser.url.endsWith("/") ? `post/${postData.id}` : `/${postData.id}`);
+				// Get the row containing the first element
+				// (creating said row if need be)
+				let currRow = allBlocks[0];
+				if (!currRow.classList.contains("row")) {
+					// Create a new row
+					let newRow = document.createElement("div");
+					newRow.classList.add("row", "NEWLYMADE");
+					body.append(newRow);
+					// Put the row's first element inside it
+					newRow.append(currRow);
+					// And update what we're considering the first row
+					currRow = newRow;
+				}
+
+				// Add the rest of the elements
+				allBlocks.forEach((el, i) => {
+					if (i === 0) return;
+
+					if (el.classList.contains("row")) {
+						currRow.append(el.firstElementChild);
+						el.remove();
+					}
+					else {
+						currRow.append(el);
+						el.setAttribute("data-index", row.blocks[i]);
+						// For images, make the image itself lightbox-capable
+						if (el.tagName === "FIGURE") el.firstElementChild.classList.add("lightboxable");
+					}
+				});
 			}
-			// add link if reachable
-			if (link !== null) { readmore.href = link }
-			break; // don't render any more post blocks
-		}
-		else if (i === rows?.truncate_after) {
-			let readmore = document.createElement("hr");
-			readmore.classList.add("readmore");
-			body.append(readmore);
+			else {
+				// figure out the content type and create the block based on that
+				createContentBlock(body, content, row.blocks[0], ...args);
+			}
+
+			// And finally, check if the post truncates after this row
+			if (row.blocks.includes(rows.truncate_after) && expand) {	// Readmore that should be expanded
+				let readmore = document.createElement("hr");
+				readmore.classList.add("readmore");
+				body.append(readmore);
+			}
+			else if (row.blocks.includes(rows.truncate_after)) {		// Readmore that shouldn't be expanded
+				let readmore = document.createElement("a");
+				readmore.classList.add("readmore");
+				readmore.innerText = "{lang:Read more}";
+				body.append(readmore);
+
+				let link;
+				if (npf.blog !== undefined) // blog is extant
+					link = npf.blog.url.concat(npf.blog.url.endsWith("/") ? `post/${npf.post.id}` : `/${npf.post.id}`);
+				else if (npf.broken_blog_name !== undefined) // blog is unreachable; no link
+					link = null;
+				else // blog is current user's
+					link = currentUser.url.concat(currentUser.url.endsWith("/") ? `post/${postData.id}` : `/${postData.id}`);
+
+				// add link if reachable
+				if (link !== null) readmore.href = link;
+				break; // don't render any more post blocks
+			}
 		}
 	}
-
-	// All base content blocks are done. Adjust layout
-	// Put columns into rows
-	if (rows) {
-		let offset = 0;
-		rows.display.filter(i => (i.blocks.length > 1)).forEach((iRow, index) => {
-			// Need to move further columns out of their rows into the first column
-			// the -offset is because of however many items being put inside rows and therefore being removed from the indices
-
-			// Narrow images might not be in NPF rows, so wrap the first element in a row+col if it's not
-			var row = body.children[iRow.blocks[0] - offset];
-			if (!row.classList.contains("row")) {
-				// Make sure to make it lightbox-capable
-				row.children[0].classList.add("lightboxable");
-				let newRow = document.createElement("div");
-				newRow.classList.add("row");
-				// Insert in place of element
-				row.parentElement.insertBefore(newRow, row);
-				newRow.append(row);
-				row = newRow;
-			}
-
-			// and now, move the corresponding columns inside the row
-			// skipping the first element, which is already in the row
-			for (let i = 1; i < iRow.blocks.length; i ++) {
-				if (row.nextElementSibling.classList.contains("row")) {
-					// Move next column into row
-					row.append(row.nextElementSibling.children[0]);
-					// Delete now-empty next row
-					row.nextElementSibling.remove();
-				}
-				else {
-					// Image-figure, not row
-					// Make sure to make it lightbox-capable
-					row.nextElementSibling.children[0].classList.add("lightboxable");
-					// Move into row
-					row.append(row.nextElementSibling);
-				}
-			}
-			offset += iRow.blocks.length - 1;
-		})
-	}
+	// No defined order; make them in index order
+	// No `rows` also means no readmore!
+	else content.forEach((block, i) => createContentBlock(body, content, i, ...args));
 
 	// If there's an ask, separate it from its answer, if any
 	let askNPF = npf.layout.find(l => l.type === "ask");
@@ -1697,17 +1702,17 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 		ask.append(askBody);
 
 		if (rows) {
-			// Blocks may already be nested in rows; count off how many should be in the ask
-			let i = askNPF.blocks.length;
+			// Find where the last row containing a block included in the ask is
+			// That (plus one for zero-indexing) is the number of rows that should be in the ask
+			let i = rows.display.findLastIndex(row => askNPF.blocks.some(blockIndex => row.blocks.includes(blockIndex))) + 1;
+
 			while (i > 0) {
-				i -= Math.max(1, body.children[0].childElementCount);
+				i --;
 				askBody.append(body.children[0]);
 			}
 		}
-		else {
-			// just a simple stack. take however many off the top and put them in the ask
-			askNPF.blocks.forEach(b => askBody.append(body.children[0]));
-		}
+		// just a simple stack. take the specified blocks and put them in the ask
+		else askNPF.blocks.forEach(() => askBody.append(body.children[0]));
 
 		// Place in root post body, above answer trail item
 		trailItem.parentElement.insertBefore(ask, trailItem);
@@ -1723,6 +1728,7 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
  * @param {Object} content The NPF content for the entire trail item, to assist in rendering certain content block types in relation to others in the trail item.
  * @param {number} i The index of this content block in the "content" object, i.e. this block's position in relation to other blocks.
  * @param {string} [blogViewLink=""] The URL to this post in the in-dashboard view, i.e. a link formatted in the style "https://tumblr.com/username/1234567890".
+ * @returns The newly-created block.
  */
 function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = {}, postObj = {}) {
 	let curr = content[i];
@@ -1761,17 +1767,25 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 
 		case "image":
 			let breakpoint = 300;
-			// wrappers
-			// for some reason this breaks if col/row are also in the >=540 block
-			let row = document.createElement("div");
-			row.classList.add("row");
-			let fig = document.createElement("figure");
+			// assemble
+			let row,
+				fig = document.createElement("figure");
+			bit = document.createElement("img");
+			fig.append(bit);
 			if (curr.media[0].width >= breakpoint) {
+				// .row > figure.tmblr-full > img
+				row = document.createElement("div");
+				row.classList.add("row");
 				fig.classList.add("tmblr-full");
+				row.append(fig);
+				trailItem.append(row);
+				// Make large images lightbox-capable
+				bit.classList.add("lightboxable");
 			}
+			// figure > img
+			else trailItem.append(fig);
 
 			// actual image
-			bit = document.createElement("img");
 			bit.src = curr.media[0].url;
 			bit.width = curr.media[0].width;
 			bit.height = curr.media[0].height;
@@ -1780,18 +1794,6 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 			// include colors, if present
 			for (color in curr.colors) {
 				bit.setAttribute("data-".concat(color), "#".concat(curr.colors[color]));
-			}
-			// nest the structure and append it to the post
-			fig.append(bit);
-			if (curr.media[0].width >= breakpoint) {
-				// Make large images lightbox-capable
-				bit.classList.add("lightboxable");
-
-				row.append(fig);
-				trailItem.append(row);
-			}
-			else {
-				trailItem.append(fig);
 			}
 
 			if (curr.caption) { // add caption, if present
@@ -1813,7 +1815,9 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 				}
 				fig.insertBefore(attrib, bit.nextElementSibling);
 			}
-			break;
+
+			// We're not appending bit itself, that's the image, so return the wrapper
+			return row ?? fig;
 
 		case "link":
 			bit = document.createElement("div");
@@ -2047,6 +2051,7 @@ function createContentBlock(trailItem, content, i, blogViewLink = "", blogObj = 
 			trailItem.append(bit);
 
 	}
+	return bit;
 }
 
 /** Helper function for createContentBlock, specifically for audio content blocks.
