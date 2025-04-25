@@ -4,7 +4,7 @@ A Javascript-based theme styled after SUPERSTAR JYPNATION, powered by [the NPF v
 
 Designed for my sister, with love.
 
-<!-- PREVIEWS: [Live preview](https://themenametheme.tumblr.com), [(static) index page](https://starlightpreviews.tumblr.com/theme14), [(static) permalink](https://starlightpreviews.tumblr.com/theme14/permalink) -->
+[PREVIEW](https://rhythmictheme.tumblr.com)
 
 [INSTALL](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme14/theme14.html)
 <!-- INSTALL: [Theme Garden](https://tumblr.com/themes/1234), [Github](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme14/theme14.html) -->
