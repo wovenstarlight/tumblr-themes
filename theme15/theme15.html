@@ -6,7 +6,7 @@
 		Tippy.js tooltips by atomiks: https://atomiks.github.io/tippyjs
 		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
 
-	Last updated 22 Apr 2025.
+	Last updated 26 Apr 2025.
 -->
 <!DOCTYPE html>
 <html lang="en" class="{select:Color palette}">
@@ -530,6 +530,10 @@
 		<rect x="0" y="7" width="11" height="1"/>
 	</svg>
 </template>
+
+<template id="readmore">
+	<hr class="readmore" />
+</template>
 {block:Hidden}<!-- #endregion -->{/block:Hidden}
 
 {block:Hidden}<!-- The actual functionality of the theme. -->{/block:Hidden}
@@ -625,6 +629,9 @@ let filterMessage = document.getElementById("filtermessage").content;
 
 /** Post separation border. */
 let postSeparator = document.getElementById("curlyborder").content;
+
+/** Read more divider. */
+let readmoreHR = document.getElementById("readmore").content;
 
 /** Icons for posts. */
 let icons = {
@@ -1631,28 +1638,18 @@ function createTrailItemBody(trailItem, npf, postData, expand) {
 			}
 
 			// And finally, check if the post truncates after this row
-			if (row.blocks.includes(rows.truncate_after) && expand) {	// Readmore that should be expanded
-				let readmore = document.createElement("hr");
-				readmore.classList.add("readmore");
-				body.append(readmore);
-			}
-			else if (row.blocks.includes(rows.truncate_after)) {		// Readmore that shouldn't be expanded
-				let readmore = document.createElement("a");
+			if (row.blocks.includes(rows.truncate_after) && expand)	// Readmore that should be expanded
+				body.append(readmoreHR.cloneNode(true));
+			else if (row.blocks.includes(rows.truncate_after)) {	// Readmore that shouldn't be expanded
+				let readmore = document.createElement("button");
 				readmore.classList.add("readmore");
 				readmore.innerText = "{lang:Read more}";
+				readmore.addEventListener("click", e => {
+					e.currentTarget.closest(".post").querySelectorAll(".readmore").forEach(el => el.replaceWith(readmoreHR.cloneNode(true)));
+				});
 				body.append(readmore);
 
-				let link;
-				if (npf.blog !== undefined) // blog is extant
-					link = npf.blog.url.concat(npf.blog.url.endsWith("/") ? `post/${npf.post.id}` : `/${npf.post.id}`);
-				else if (npf.broken_blog_name !== undefined) // blog is unreachable; no link
-					link = null;
-				else // blog is current user's
-					link = currentUser.url.concat(currentUser.url.endsWith("/") ? `post/${postData.id}` : `/${postData.id}`);
-
-				// add link if reachable
-				if (link !== null) readmore.href = link;
-				break; // don't render any more post blocks
+				// Render the rest of the blocks, they just won't be shown via CSS
 			}
 		}
 	}
