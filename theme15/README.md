@@ -2,7 +2,7 @@
 
 A Javascript-based theme styled after [Detective Beebo: Night at the Mansion](https://bwobbers.itch.io/detective-beebo-night-at-the-mansion) by Bwob, powered by [the NPF variable](https://github.com/tumblr/docs/blob/master/npf-spec.md) offered by Tumblr.
 
-PREVIEWS: [Live preview](https://haunted-theme.tumblr.com)
+<!-- PREVIEWS: [Live preview](https://haunted-theme.tumblr.com) -->
 
 [INSTALL](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme15/theme15.html)
 <!-- INSTALL: [Theme Garden](https://tumblr.com/themes/1234), [Github](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme15/theme15.html) -->
