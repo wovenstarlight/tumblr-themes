@@ -142,6 +142,25 @@
 
 		{block:Hidden}<!-- #region PAGINATION -->{/block:Hidden}
 		{block:Pagination}<section id="pagination">
+			<a {block:PreviousPage}href="{block:SearchPage}/search/{URLSafeSearchQuery}{/block:SearchPage}/page/1"{/block:PreviousPage} class="jump prev" data-tippy-content="Jump to start">
+				<svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+					<rect x="0" y="4" width="2" height="1" />
+					<rect x="1" y="3" width="2" height="1" />
+					<rect x="1" y="5" width="2" height="1" />
+					<rect x="2" y="2" width="2" height="1" />
+					<rect x="2" y="6" width="2" height="1" />
+					<rect x="3" y="1" width="2" height="1" />
+					<rect x="3" y="7" width="2" height="1" />
+					<rect x="4" y="0" width="2" height="1" />
+					<rect x="4" y="8" width="2" height="1" />
+
+					<rect x="3" y="4" width="1" height="1" />
+					<rect x="4" y="3" width="1" height="3" />
+					<rect x="5" y="2" width="1" height="5" />
+					<rect x="6" y="1" width="1" height="7" />
+					<rect x="7" y="0" width="2" height="9" />
+				</svg>
+			</a>
 			<a {block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage} class="prev" data-tippy-content="{lang:Previous page}">
 				<svg xmlns="http://www.w3.org/2000/svg" width="6" height="9" viewBox="0 0 6 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
 					<rect x="0" y="4" width="1" height="1" />
@@ -162,6 +181,25 @@
 					<rect x="3" y="2" width="1" height="5" />
 					<rect x="4" y="3" width="1" height="3" />
 					<rect x="5" y="4" width="1" height="1" />
+				</svg>
+			</a>
+			<a {block:NextPage}href="{block:SearchPage}/search/{URLSafeSearchQuery}{/block:SearchPage}/page/{TotalPages}"{/block:NextPage} class="jump next" data-tippy-content="Jump to end">
+				<svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
+					<rect x="0" y="0" width="2" height="9" />
+					<rect x="2" y="1" width="1" height="7" />
+					<rect x="3" y="2" width="1" height="5" />
+					<rect x="4" y="3" width="1" height="3" />
+					<rect x="5" y="4" width="1" height="1" />
+
+					<rect x="3" y="0" width="2" height="1" />
+					<rect x="3" y="8" width="2" height="1" />
+					<rect x="4" y="1" width="2" height="1" />
+					<rect x="4" y="7" width="2" height="1" />
+					<rect x="5" y="2" width="2" height="1" />
+					<rect x="5" y="6" width="2" height="1" />
+					<rect x="6" y="3" width="2" height="1" />
+					<rect x="6" y="5" width="2" height="1" />
+					<rect x="7" y="4" width="2" height="1" />
 				</svg>
 			</a>
 		</section>{/block:Pagination}
@@ -1084,6 +1122,11 @@ document.querySelectorAll("dialog").forEach(dialog => {
 	});
 });
 // #endregion
+
+/*{block:TagPage}*/
+// Correcting jump links on tag pages (can't do it directly in the HTML due to the optional presence of /chrono)
+document.querySelectorAll("#pagination .jump").forEach(link => link.href = window.location.pathname.split("/page/")[0].concat(link.href));
+/*{/block:TagPage}*/
 // #endregion
 
 // #region Remaining page functionality (accessibility features)
