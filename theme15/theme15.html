@@ -6,7 +6,7 @@
 		Tippy.js tooltips by atomiks: https://atomiks.github.io/tippyjs
 		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
 
-	Last updated 26 Apr 2025.
+	Last updated 28 Apr 2025.
 -->
 <!DOCTYPE html>
 <html lang="en" class="{select:Color palette}">
@@ -142,12 +142,12 @@
 
 		{block:Hidden}<!-- #region PAGINATION -->{/block:Hidden}
 		{block:Pagination}<section id="pagination">
-			<a {block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage} id="prev" data-tippy-content="{lang:Previous page}">
+			<a {block:PreviousPage}href="{PreviousPage}"{/block:PreviousPage} class="prev" data-tippy-content="{lang:Previous page}">
 				<svg xmlns="http://www.w3.org/2000/svg" width="6" height="9" viewBox="0 0 6 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
-					<rect x="0" y="4" width="2" height="1" />
-					<rect x="1" y="3" width="2" height="3" />
-					<rect x="2" y="2" width="2" height="5" />
-					<rect x="3" y="1" width="2" height="7" />
+					<rect x="0" y="4" width="1" height="1" />
+					<rect x="1" y="3" width="1" height="3" />
+					<rect x="2" y="2" width="1" height="5" />
+					<rect x="3" y="1" width="1" height="7" />
 					<rect x="4" y="0" width="2" height="9" />
 				</svg>
 			</a>
@@ -155,57 +155,57 @@
 				{block:CurrentPage}<span id="curr">{PageNumber}</span>{/block:CurrentPage}
 				{block:JumpPage}<a href="{URL}">{PageNumber}</a>{/block:JumpPage}
 			{/block:JumpPagination}
-			<a {block:NextPage}href="{NextPage}"{/block:NextPage} id="next" data-tippy-content="{lang:Next page}">
+			<a {block:NextPage}href="{NextPage}"{/block:NextPage} class="next" data-tippy-content="{lang:Next page}">
 				<svg xmlns="http://www.w3.org/2000/svg" width="6" height="9" viewBox="0 0 6 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
 					<rect x="0" y="0" width="2" height="9" />
-					<rect x="1" y="1" width="2" height="7" />
-					<rect x="2" y="2" width="2" height="5" />
-					<rect x="3" y="3" width="2" height="3" />
-					<rect x="4" y="4" width="2" height="1" />
+					<rect x="2" y="1" width="1" height="7" />
+					<rect x="3" y="2" width="1" height="5" />
+					<rect x="4" y="3" width="1" height="3" />
+					<rect x="5" y="4" width="1" height="1" />
 				</svg>
 			</a>
 		</section>{/block:Pagination}
 
 		{block:PermalinkPagination}<section id="pagination">
-			<a {block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost} id="prev" data-tippy-content="{lang:Previous post}">
+			<a {block:PreviousPost}href="{PreviousPost}"{/block:PreviousPost} class="prev" data-tippy-content="{lang:Previous post}">
 				<svg xmlns="http://www.w3.org/2000/svg" width="6" height="9" viewBox="0 0 6 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
-					<rect x="0" y="4" width="2" height="1" />
-					<rect x="1" y="3" width="2" height="3" />
-					<rect x="2" y="2" width="2" height="5" />
-					<rect x="3" y="1" width="2" height="7" />
+					<rect x="0" y="4" width="1" height="1" />
+					<rect x="1" y="3" width="1" height="3" />
+					<rect x="2" y="2" width="1" height="5" />
+					<rect x="3" y="1" width="1" height="7" />
 					<rect x="4" y="0" width="2" height="9" />
 				</svg>
 			</a>
 			<span>{lang:See more posts}</span>
-			<a {block:NextPost}href="{NextPost}"{/block:NextPost} id="next" data-tippy-content="{lang:Next post}">
+			<a {block:NextPost}href="{NextPost}"{/block:NextPost} class="next" data-tippy-content="{lang:Next post}">
 				<svg xmlns="http://www.w3.org/2000/svg" width="6" height="9" viewBox="0 0 6 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
 					<rect x="0" y="0" width="2" height="9" />
-					<rect x="1" y="1" width="2" height="7" />
-					<rect x="2" y="2" width="2" height="5" />
-					<rect x="3" y="3" width="2" height="3" />
-					<rect x="4" y="4" width="2" height="1" />
+					<rect x="2" y="1" width="1" height="7" />
+					<rect x="3" y="2" width="1" height="5" />
+					<rect x="4" y="3" width="1" height="3" />
+					<rect x="5" y="4" width="1" height="1" />
 				</svg>
 			</a>
 		</section>{/block:PermalinkPagination}
 
 		{block:DayPage}{block:DayPagination}<section id="pagination">
-			<a {block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage} id="prev" data-tippy-content="{lang:Previous day}">
+			<a {block:PreviousDayPage}href="{PreviousDayPage}"{/block:PreviousDayPage} class="prev" data-tippy-content="{lang:Previous day}">
 				<svg xmlns="http://www.w3.org/2000/svg" width="6" height="9" viewBox="0 0 6 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
-					<rect x="0" y="4" width="2" height="1" />
-					<rect x="1" y="3" width="2" height="3" />
-					<rect x="2" y="2" width="2" height="5" />
-					<rect x="3" y="1" width="2" height="7" />
+					<rect x="0" y="4" width="1" height="1" />
+					<rect x="1" y="3" width="1" height="3" />
+					<rect x="2" y="2" width="1" height="5" />
+					<rect x="3" y="1" width="1" height="7" />
 					<rect x="4" y="0" width="2" height="9" />
 				</svg>
 			</a>
 			<span>{block:IfDatesFormattedMonthFirst}{Month} {DayOfMonth}{DayOfMonthSuffix}{/block:IfDatesFormattedMonthFirst}{block:IfNotDatesFormattedMonthFirst}{DayOfMonth}{DayOfMonthSuffix} {Month}{/block:IfNotDatesFormattedMonthFirst}, {Year}</span>
-			<a {block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage} id="next" data-tippy-content="{lang:Next day}">
+			<a {block:NextDayPage}href="{NextDayPage}"{/block:NextDayPage} class="next" data-tippy-content="{lang:Next day}">
 				<svg xmlns="http://www.w3.org/2000/svg" width="6" height="9" viewBox="0 0 6 9" preserveAspectRatio="xMidYMid meet" rendering="crispEdges" fill="currentColor" aria-hidden="true">
 					<rect x="0" y="0" width="2" height="9" />
-					<rect x="1" y="1" width="2" height="7" />
-					<rect x="2" y="2" width="2" height="5" />
-					<rect x="3" y="3" width="2" height="3" />
-					<rect x="4" y="4" width="2" height="1" />
+					<rect x="2" y="1" width="1" height="7" />
+					<rect x="3" y="2" width="1" height="5" />
+					<rect x="4" y="3" width="1" height="3" />
+					<rect x="5" y="4" width="1" height="1" />
 				</svg>
 			</a>
 		</section>{/block:DayPagination}{/block:DayPage}

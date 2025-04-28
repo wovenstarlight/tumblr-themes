@@ -260,10 +260,10 @@ dialog .closebtn {
 
 	a {
 		&[href]:is(:hover, :focus) { background-color: var(--text) }
-		&:not([href]) { opacity: 0.25 }
+		&:not([href]) svg { opacity: 0.25 }
 	}
 
-	#prev, #next {
+	.prev, .next {
 		max-width: 4em;
 
 		svg {
