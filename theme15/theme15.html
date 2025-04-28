@@ -1125,7 +1125,9 @@ document.querySelectorAll("dialog").forEach(dialog => {
 
 /*{block:TagPage}*/
 // Correcting jump links on tag pages (can't do it directly in the HTML due to the optional presence of /chrono)
-document.querySelectorAll("#pagination .jump").forEach(link => link.href = window.location.pathname.split("/page/")[0].concat(link.href));
+document.querySelectorAll("#pagination .jump").forEach(link => {
+	if (link.href) link.href = window.location.pathname.split("/page/")[0].concat(link.getAttribute("href"));
+});
 /*{/block:TagPage}*/
 // #endregion
 
