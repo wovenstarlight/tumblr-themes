@@ -99,6 +99,13 @@ a {
 	color: var(--accent);
 	&:not(:hover, :focus) { text-decoration: none }
 }
+/* Blockquotes */
+blockquote {
+	margin-inline-start: 1em;
+	border-inline-start: var(--border-width) solid var(--text);
+	padding-inline-start: 1em;
+	padding-block: 0.25em;
+}
 /* A11y: Hidden */
 .visually-hidden {
 	position: fixed;
