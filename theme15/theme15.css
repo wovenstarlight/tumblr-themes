@@ -266,8 +266,6 @@ dialog .closebtn {
 	}
 
 	.prev, .next {
-		max-width: 4em;
-
 		svg {
 			height: 1em;
 			width: auto;
