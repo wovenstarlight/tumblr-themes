@@ -6,7 +6,7 @@
 		Tippy.js tooltips by atomiks: https://atomiks.github.io/tippyjs
 		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
 
-	Last updated 28 Apr 2025.
+	Last updated 16 May 2025.
 -->
 <!DOCTYPE html>
 <html lang="en" class="{select:Color palette}">
@@ -22,7 +22,7 @@
 	<link rel="alternate" type="application/rss+xml" href="{RSS}">
 
 	{block:Hidden}
-	<!-- #region TODO: Custom variables -->
+	<!-- #region Custom variables -->
 	<!-- Color options -->
 	<meta name="select:Color palette" content="house" title="House of Vera">
 	<meta name="select:Color palette" content="gallery" title="Art gallery">
@@ -43,6 +43,22 @@
 	<meta name="color:Custom background" content="{BackgroundColor}">
 	<meta name="color:Custom text" content="{TitleColor}">
 	<meta name="color:Custom accent" content="{AccentColor}">
+
+	<!-- Background image -->
+	<meta name="image:Background" content="{HeaderImage}">
+	<meta name="select:BG image position" title="Center" content="center">
+	<meta name="select:BG image position" title="Top left" content="top left">
+	<meta name="select:BG image position" title="Top middle" content="top center">
+	<meta name="select:BG image position" title="Top right" content="top right">
+	<meta name="select:BG image position" title="Middle left" content="center left">
+	<meta name="select:BG image position" title="Middle right" content="center right">
+	<meta name="select:BG image position" title="Bottom left" content="bottom left">
+	<meta name="select:BG image position" title="Bottom middle" content="bottom center">
+	<meta name="select:BG image position" title="Bottom right" content="bottom right">
+	<meta name="select:BG image size" title="Cover" content="no-repeat; background-size: cover">
+	<meta name="select:BG image size" title="Contain" content="no-repeat; background-size: contain">
+	<meta name="select:BG image size" title="Tiled" content="repeat">
+	<meta name="select:BG image size" title="True size" content="no-repeat; background-size: initial">
 
 	<!-- Sidebar options -->
 	<meta name="select:Sidebar placement" content="left" title="Left">
@@ -83,6 +99,7 @@
 	<style>
 		/* Variables */
 		html {
+			--bg-img: url("{image:Background}");
 			--title-font: {TitleFont};
 			--title-font-weight: {TitleFontWeight};
 			&.custom {
@@ -90,6 +107,13 @@
 				--text: {color:Custom text};
 				--accent: {color:Custom accent};
 			}
+		}
+
+		body, #notepad::backdrop {
+			background-image: url("{image:Background}");
+			background-position: {select:BG image position};
+			background-repeat: {select:BG image size};
+			background-attachment: fixed;
 		}
 
 		@font-face {

@@ -77,7 +77,7 @@ html {
 body {
 	padding: 2vh 2vw;
 	min-height: 100vh;
-	background: var(--bg);
+	background-color: var(--bg);
 	color: var(--text);
 	--font: var(--title-font), "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
 	font-family: "Nokia", var(--font);
@@ -120,7 +120,7 @@ blockquote {
 * {
 	scrollbar-color: var(--text) var(--bg);
 	scrollbar-width: thin;
-	background-position: center !important;
+	background-position: center;
 }
 ::-webkit-scrollbar {
 	width: 0.5em;
@@ -215,6 +215,7 @@ dialog .closebtn {
 	flex-direction: column;
 	border: calc(3 * var(--border-width)) double;
 	--border: thin solid rgb(from var(--text) r g b / 0.3);
+	background-color: var(--bg);
 
 	button, & > a {
 		display: block;
@@ -425,7 +426,7 @@ dialog .closebtn {
 		transparent var(--percent)
 	);
 	background-size: 100% 1.6em;
-	background-position: center top !important;
+	background-position: center top;
 	background-attachment: local;
 	padding: 0 0.15em;
 	/* For excessive length */
@@ -732,6 +733,7 @@ dialog .closebtn {
 			text-align: center;
 			padding: 2em;
 			gap: 0.75em;
+			background-color: var(--bg);
 
 			@container posts (min-width: 42rem) {
 				margin-inline-start: calc(var(--avatar-size) + var(--post-content-spacing));
@@ -786,6 +788,12 @@ dialog .closebtn {
 	}
 
 	p:empty { min-height: 1em }
+
+	/* Make margins collapse properly, and center */
+	video, iframe {
+		display: block;
+		margin: auto;
+	}
 
 	& > * { margin-block: 1em }
 	& > :first-child { margin-block-start: 0 }
@@ -1268,6 +1276,7 @@ body:has(dialog[open]) { overflow: hidden }
 		font-family: "Squeezed Pixels", var(--font);
 		border: var(--border-width) solid var(--text);
 		display: flex;
+		background-color: var(--bg);
 
 		@container posts (max-width: 32.5rem) {
 			flex-direction: column;
@@ -1395,6 +1404,7 @@ body:has(dialog[open]) { overflow: hidden }
 		flex-grow: 1;
 		text-align: center;
 		text-decoration: none;
+		background-color: var(--bg);
 
 		&:hover, &:focus { background-color: var(--text) }
 	}
