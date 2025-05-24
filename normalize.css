@@ -16,17 +16,13 @@ html {
 /* Sections
 	========================================================================== */
 
-/**
-* Remove the margin in all browsers.
-*/
+/** Remove the margin in all browsers. */
 
 body {
 	margin: 0;
 }
 
-/**
-* Render the `main` element consistently in IE.
-*/
+/** Render the `main` element consistently in IE. */
 
 main {
 	display: block;
@@ -69,9 +65,7 @@ pre {
 /* Text-level semantics
 	========================================================================== */
 
-/**
-* Remove the gray background on active links in IE 10.
-*/
+/** Remove the gray background on active links in IE 10. */
 
 a {
 	background-color: transparent;
@@ -88,9 +82,7 @@ abbr[title] {
 	text-decoration: underline dotted; /* 2 */
 }
 
-/**
-* Add the correct font weight in Chrome, Edge, and Safari.
-*/
+/** Add the correct font weight in Chrome, Edge, and Safari. */
 
 b,
 strong {
@@ -109,9 +101,7 @@ samp {
 	font-size: 1em; /* 2 */
 }
 
-/**
-* Add the correct font size in all browsers.
-*/
+/** Add the correct font size in all browsers. */
 
 small {
 	font-size: 80%;
@@ -141,9 +131,7 @@ sup {
 /* Embedded content
 	========================================================================== */
 
-/**
-* Remove the border on images inside links in IE 10.
-*/
+/** Remove the border on images inside links in IE 10. */
 
 img {
 	border-style: none;
@@ -188,9 +176,7 @@ select { /* 1 */
 	text-transform: none;
 }
 
-/**
-* Correct the inability to style clickable types in iOS and Safari.
-*/
+/** Correct the inability to style clickable types in iOS and Safari. */
 
 button,
 [type="button"],
@@ -199,9 +185,7 @@ button,
 	-webkit-appearance: button;
 }
 
-/**
-* Remove the inner border and padding in Firefox.
-*/
+/** Remove the inner border and padding in Firefox. */
 
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
@@ -211,9 +195,7 @@ button::-moz-focus-inner,
 	padding: 0;
 }
 
-/**
-* Restore the focus styles unset by the previous rule.
-*/
+/** Restore the focus styles unset by the previous rule. */
 
 button:-moz-focusring,
 [type="button"]:-moz-focusring,
@@ -222,9 +204,7 @@ button:-moz-focusring,
 	outline: 1px dotted ButtonText;
 }
 
-/**
-* Correct the padding in Firefox.
-*/
+/** Correct the padding in Firefox. */
 
 fieldset {
 	padding: 0.35em 0.75em 0.625em;
@@ -246,17 +226,13 @@ legend {
 	white-space: normal; /* 1 */
 }
 
-/**
-* Add the correct vertical alignment in Chrome, Firefox, and Opera.
-*/
+/** Add the correct vertical alignment in Chrome, Firefox, and Opera. */
 
 progress {
 	vertical-align: baseline;
 }
 
-/**
-* Remove the default vertical scrollbar in IE 10+.
-*/
+/** Remove the default vertical scrollbar in IE 10+. */
 
 textarea {
 	overflow: auto;
@@ -273,9 +249,7 @@ textarea {
 	padding: 0; /* 2 */
 }
 
-/**
-* Correct the cursor style of increment and decrement buttons in Chrome.
-*/
+/** Correct the cursor style of increment and decrement buttons in Chrome. */
 
 [type="number"]::-webkit-inner-spin-button,
 [type="number"]::-webkit-outer-spin-button {
@@ -292,9 +266,7 @@ textarea {
 	outline-offset: -2px; /* 2 */
 }
 
-/**
-* Remove the inner padding in Chrome and Safari on macOS.
-*/
+/** Remove the inner padding in Chrome and Safari on macOS. */
 
 [type="search"]::-webkit-search-decoration {
 	-webkit-appearance: none;
@@ -332,55 +304,47 @@ summary {
 /* Misc
 	========================================================================== */
 
-/**
-* Add the correct display in IE 10+.
-*/
+/** Add the correct display in IE 10+. */
 
 template {
 	display: none;
 }
 
-/**
-* Add the correct display in IE 10.
-*/
+/** Add the correct display in IE 10. */
 
 [hidden] {
 	display: none;
 }
 
-/* Misc
+/* Custom styles
 	========================================================================== */
-/**
-* Set consistent box sizing for everything.
-*/
+
+/** Set consistent box sizing for everything. */
 * {
 	box-sizing: border-box;
 }
 
-/**
-* Make images and iframes fit their containers.
-*/
+/** Make images and iframes fit their containers. */
 img, iframe {
 	max-width: 100%;
 }
 
-/**
-* Make Tumblr's "circle" images round.
-*/
+/** Hide empty image attributions. */
+.tmblr-attribution:empty {
+	display: none;
+}
+
+/** Make Tumblr's "circle" images round. */
 img.circle {
 	border-radius: 100%;
 }
 
-/**
-* Stop SMTooltips from blocking access to elements behind it when invisible.
-*/
+/** Stop SMTooltips from blocking access to elements behind it when invisible. */
 #s-m-t-tooltip[style*='opacity: 0'] {
 	pointer-events: none;
 }
 
-/**
-* Remove excess margins from polls.
-*/
+/** Remove excess margins from polls. */
 .poll-post .poll-question {
 	margin-block-start: 0;
 }
@@ -388,9 +352,7 @@ img.circle {
 	margin-block-end: 0;
 }
 
-/**
-* Ensure poll option text is wrapped and centered.
-*/
+/** Ensure poll option text is wrapped and centered. */
 .poll-row {
 	text-align: center;
 }
