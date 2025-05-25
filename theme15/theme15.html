@@ -6,7 +6,7 @@
 		Tippy.js tooltips by atomiks: https://atomiks.github.io/tippyjs
 		Expanded Tumblr localization by codematurgy: https://github.com/boscoxvi/expandedtumblrlocalization
 
-	Last updated 16 May 2025.
+	Last updated 25 May 2025.
 -->
 <!DOCTYPE html>
 <html lang="en" class="{select:Color palette}">
@@ -1190,6 +1190,8 @@ var notesTooltipInstances, notesTooltips;
 // Set up keyboard navigation
 keyboardNav({
 	postOffset: 3 * em,	// Don't stick to top of page
+	nextPageSelector: "#pagination a[href].next:not(.jump)",
+	prevPageSelector: "#pagination a[href].prev:not(.jump)",
 });
 // #endregion
 
