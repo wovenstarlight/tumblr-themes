@@ -1082,6 +1082,7 @@ body:has(dialog[open]) { overflow: hidden }
 		gap: 1em;
 		padding: 1em 2em;
 	}
+	& > .top { text-align: center }
 	.hasart {
 		background-position: center;
 		background-size: cover;
