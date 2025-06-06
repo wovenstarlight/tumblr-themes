@@ -1433,6 +1433,7 @@ body:has(dialog[open]) { overflow: hidden }
 	width: 100%;
 	max-width: var(--width-large);
 	border: calc(3 * var(--border-width)) double var(--text);
+	background-color: var(--bg);
 
 	@container posts (min-width: 42rem) {
 		max-width: calc(var(--width-large) - (var(--avatar-size-large) + var(--post-content-spacing)));
