@@ -25,7 +25,7 @@ No. | Name | Status | Last Updated | Previews | Install | On Tumblr
 12 | [Subzero](https://wovenstarlight.github.io/tumblr-themes/theme12) | Complete | 16 Dec 2024 | [Live preview](https://subzerotheme.tumblr.com) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme12/theme12.html) | [Reblog](https://starlightthemes.tumblr.com/post/701753684245266432)
 13 | [Document](https://wovenstarlight.github.io/tumblr-themes/theme13) | Complete | 22 Apr 2025 | N/A | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme13/theme13.html) | N/A
 14 | [Rhythmic](https://wovenstarlight.github.io/tumblr-themes/theme14) | Complete | 22 Apr 2025 | [Live preview](https://rhythmictheme.tumblr.com) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme14/theme14.html) | N/A
-15 | [Haunted](https://wovenstarlight.github.io/tumblr-themes/theme15) | Complete | 25 May 2025 | [Live preview](https://haunted-theme.tumblr.com) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme15/theme15.html) | N/A
+15 | [Haunted](https://wovenstarlight.github.io/tumblr-themes/theme15) | Complete | 06 Jun 2025 | [Live preview](https://haunted-theme.tumblr.com) | [Code](https://raw.githubusercontent.com/wovenstarlight/tumblr-themes/main/theme15/theme15.html) | N/A
 
 ## List of pages
 No. | Name | Status | Last Updated | Associated Theme | Preview | Install | On Tumblr
