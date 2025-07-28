@@ -72,6 +72,11 @@ html {
 		--text: #fac15a;
 		--bg: #7d122c;
 	}
+
+	&.trainofficial {
+		--text: #8b444b;
+		--bg: #33020d;
+	}
 }
 /* Layout */
 body {
